@@ -1,0 +1,15 @@
+﻿@inherits LayoutComponentBase
+@inject NavigationManager navigationManager
+
+<div class="page">
+	<main>
+		<div class="top-row px-4">
+			Uri: @navigationManager.Uri
+			<a href="https://vladislavantonyuk.azurewebsites.net/" target="_blank">About</a>
+		</div>
+
+		<article class="content px-4">
+			@Body
+		</article>
+	</main>
+</div>

@@ -1,0 +1,25 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAuth.MainPage"
+             BackgroundColor="{DynamicResource SecondaryColor}">
+
+    <ScrollView>
+        <VerticalStackLayout>
+
+            <Label 
+                Text=""
+                FontSize="18"
+                FontAttributes="Bold"
+                x:Name="LoginResultLabel"
+                HorizontalOptions="Center" />
+
+            <Button 
+                Text="Login"
+                FontAttributes="Bold"
+                SemanticProperties.Hint="Login"
+                Clicked="OnLoginClicked"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
