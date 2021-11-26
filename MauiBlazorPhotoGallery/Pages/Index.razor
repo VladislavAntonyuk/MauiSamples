@@ -1,6 +1,7 @@
 ﻿@page "/"
 
 @using MauiBlazorPhotoGallery.Data
+@using Sve.Blazor.InfiniteScroll.Components
 @inject MediaService mediaService
 
 @if (items == null)
@@ -9,22 +10,26 @@
 }
 else
 {
-    <div class="grid">
-        @foreach (var item in items)
-        {
-            <div class="grid-item">
-                <img src = "@item.Link"/>
-            </div>
-        }
-    </div>
+    <InfiniteScroll ObserverTargetId="observerTarget" ObservableTargetReached="(e) => GetMediaItems()">
+        <div class="grid">
+            @foreach (var item in items)
+            {
+                <div class="grid-item">
+                    <img src="@item.Link" />
+                </div>
+            }
+
+            @*The target element that we observe. Once this is reached the callback will be triggered.*@
+            <div id="observerTarget"></div>
+        </div>
+    </InfiniteScroll>
 }
 
 @code {
-    private IEnumerable<MediaItem> items;
+    private List<MediaItem> items = new();
 
-    protected override void OnInitialized()
+    void GetMediaItems()
     {
-        base.OnInitialized();
-        items = mediaService.GetMediaItems(100);
+        items.AddRange(mediaService.GetMediaItems(100));
     }
 }
