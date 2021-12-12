@@ -1,0 +1,23 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiSqlite.MainPage"
+             BackgroundColor="{DynamicResource SecondaryColor}">
+
+    <VerticalStackLayout>
+        <Button Clicked="AddAccountClicked" Text="Add account"/>
+        <Button Clicked="UpdateAccountClicked" Text="Update account"/>
+        <Button Clicked="DeleteAccountClicked" Text="Delete account"/>
+        <Button Clicked="Filter1AccountClicked" Text="Accounts with positive balance"/>
+        <Button Clicked="Filter2AccountClicked" Text="Accounts with zero balance"/>
+        <CollectionView x:Name="collectionView" SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout>
+                        <Label Text="{Binding Email}" />
+                        <Label Text="{Binding Balance}" />
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>
