@@ -2,37 +2,35 @@
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace MauiAuth
-{
-    public class AuthService
-    {
-        private readonly IPublicClientApplication authenticationClient;
-        public AuthService()
-        {
-            authenticationClient = PublicClientApplicationBuilder.Create(Constants.ClientId)
-                .WithRedirectUri($"msal{Constants.ClientId}://auth")
-                .Build();
-        }
+namespace MauiAuth;
 
-        public async Task<AuthenticationResult> LoginAsync(CancellationToken cancellationToken)
+public class AuthService
+{
+    private readonly IPublicClientApplication authenticationClient;
+    public AuthService()
+    {
+        authenticationClient = PublicClientApplicationBuilder.Create(Constants.ClientId)
+            .WithRedirectUri($"msal{Constants.ClientId}://auth")
+            .Build();
+    }
+
+    public async Task<AuthenticationResult> LoginAsync(CancellationToken cancellationToken)
+    {
+        AuthenticationResult result;
+        try
         {
-            AuthenticationResult result;
-            try
-            {
-                result = await authenticationClient
-                    .AcquireTokenInteractive(Constants.Scopes)
-                    .WithPrompt(Prompt.ForceLogin)
+            result = await authenticationClient
+                .AcquireTokenInteractive(Constants.Scopes)
+                .WithPrompt(Prompt.ForceLogin)
 #if ANDROID
                 .WithParentActivityOrWindow(Microsoft.Maui.Essentials.Platform.CurrentActivity)
 #endif
                 .ExecuteAsync(cancellationToken);
-                return result;
-            }
-            catch (MsalClientException)
-            {
-                return null;
-            }
+            return result;
+        }
+        catch (MsalClientException)
+        {
+            return null;
         }
     }
-
 }

@@ -1,15 +1,13 @@
 ﻿using Application = Microsoft.Maui.Controls.Application;
 
-namespace MauiAuth
-{
-    public partial class App : Application
-	{		
-		public App()
-		{
-			InitializeComponent();
+namespace MauiAuth;
 
-			MainPage = new MainPage();
-		}
-	}
+public partial class App : Application
+{		
+    public App()
+    {
+        InitializeComponent();
 
+        MainPage = new MainPage();
+    }
 }

@@ -1,7 +1,5 @@
 ﻿using Microsoft.Maui.Controls;
-using Microsoft.Maui.Essentials;
 using System;
-using System.Threading.Tasks;
 
 namespace MauiSqlite;
 public partial class MainPage : ContentPage

@@ -1,5 +1,3 @@
-using System;
-
 namespace MauiBlazorPhotoGallery.Data;
 public class MediaItem
 {
