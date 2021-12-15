@@ -10,6 +10,7 @@ public class AuthService
     public AuthService()
     {
         authenticationClient = PublicClientApplicationBuilder.Create(Constants.ClientId)
+            //.WithB2CAuthority(Constants.AuthoritySignIn) // uncomment to support B2C
             .WithRedirectUri($"msal{Constants.ClientId}://auth")
             .Build();
     }
