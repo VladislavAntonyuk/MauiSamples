@@ -14,7 +14,7 @@
 		<ApplicationTitle>MauiBlazorPhotoGallery</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.vladislavantonyuk.MauiBlazorPhotoGallery</ApplicationId>
+		<ApplicationId>com.vladislavantonyuk.mauiblazorphotogallery</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationVersion>1</ApplicationVersion>
@@ -50,7 +50,7 @@
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
 		<OutputType>WinExe</OutputType>
-		<RuntimeIdentifier>win-x64</RuntimeIdentifier>
+		<RuntimeIdentifier>win10-x64</RuntimeIdentifier>
 	</PropertyGroup>
 
 	<ItemGroup>
