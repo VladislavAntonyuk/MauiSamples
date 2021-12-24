@@ -7,7 +7,9 @@
 		<RootNamespace>MauiSqlite</RootNamespace>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
+		<ImplicitUsings>enable</ImplicitUsings>
 		<EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
+		<Nullable>enable</Nullable>
 
 		<!-- Display name -->
 		<ApplicationTitle>MauiSqlite</ApplicationTitle>
@@ -54,5 +56,8 @@
 		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.0.7" />
 		<PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.0.7" />
 	</ItemGroup>
-	
+
+	<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+		<RuntimeIdentifiers Condition="$(TargetFramework.Contains('-android'))">android-arm;android-arm64;android-x86;android-x64</RuntimeIdentifiers>
+	</PropertyGroup>
 </Project>

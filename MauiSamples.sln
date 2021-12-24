@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiAuth", "MauiAuth\MauiAu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiBlazorPhotoGallery", "MauiBlazorPhotoGallery\MauiBlazorPhotoGallery.csproj", "{C9A17F44-78CB-4EDC-86C9-E307C2F25FF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiSqlite", "MauiSqlite\MauiSqlite.csproj", "{43BACDC9-2889-476E-AF08-727E1B31D0B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiSqlite", "MauiSqlite\MauiSqlite.csproj", "{43BACDC9-2889-476E-AF08-727E1B31D0B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiMultiWindow", "MauiMultiWindow\MauiMultiWindow.csproj", "{29665799-9B98-48AF-AE04-B010E1183334}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiMultiWindow", "MauiMultiWindow\MauiMultiWindow.csproj", "{432B4EFB-447B-4FA8-8083-6A00B56D0F13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,10 +33,12 @@ Global
 		{43BACDC9-2889-476E-AF08-727E1B31D0B8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{43BACDC9-2889-476E-AF08-727E1B31D0B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43BACDC9-2889-476E-AF08-727E1B31D0B8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{29665799-9B98-48AF-AE04-B010E1183334}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{29665799-9B98-48AF-AE04-B010E1183334}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{29665799-9B98-48AF-AE04-B010E1183334}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{29665799-9B98-48AF-AE04-B010E1183334}.Release|Any CPU.Build.0 = Release|Any CPU
+		{432B4EFB-447B-4FA8-8083-6A00B56D0F13}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{432B4EFB-447B-4FA8-8083-6A00B56D0F13}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{432B4EFB-447B-4FA8-8083-6A00B56D0F13}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{432B4EFB-447B-4FA8-8083-6A00B56D0F13}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{432B4EFB-447B-4FA8-8083-6A00B56D0F13}.Release|Any CPU.Build.0 = Release|Any CPU
+		{432B4EFB-447B-4FA8-8083-6A00B56D0F13}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
