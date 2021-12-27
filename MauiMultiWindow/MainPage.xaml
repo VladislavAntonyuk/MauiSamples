@@ -3,13 +3,21 @@
              x:Class="MauiMultiWindow.MainPage"
              BackgroundColor="{DynamicResource SecondaryColor}">
 
-
-    <Button 
+    <HorizontalStackLayout>
+        <Button 
         Text="Open new window"
         FontAttributes="Bold"
-        Grid.Row="3"
         SemanticProperties.Hint="Open new window"
         Clicked="OpenClicked"
         HorizontalOptions="Center" />
+    
+    <Button 
+        Text="Close all windows"
+        FontAttributes="Bold"
+        SemanticProperties.Hint="Close all windows"
+        Clicked="CloseAllClicked"
+        HorizontalOptions="Center" />
+    </HorizontalStackLayout>
+    
 
 </ContentPage>
