@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using SQLite;
+﻿using SQLite;
 
-namespace MauiSqlite;
+namespace SqliteRepository;
 
 public class AccountRepository
 {

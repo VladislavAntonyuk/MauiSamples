@@ -1,0 +1,78 @@
+﻿@page "/"
+@using SqliteRepository
+
+@inject AccountRepository accountRepository
+
+<h1>Accounts</h1>
+
+<button @onclick="AddAccountClicked">Add account</button>
+
+@if (accounts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Email</th>
+                <th>Balance</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var account in accounts)
+            {
+                <tr>
+                    <td>@account.Id</td>
+                    <td>@account.Email</td>
+                    <td>@account.Balance</td>
+                    <td>
+                        <button @onclick="()=>UpdateAccountClicked(account)">Update account</button>
+                        <button @onclick="()=>DeleteAccountClicked(account)">Delete account</button>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+}
+
+@code {
+    private List<Account>? accounts;
+
+    protected override void OnInitialized()
+    {
+        GetAccounts();
+    }
+
+    private void AddAccountClicked()
+    {
+        var account = new Account()
+            {
+                Balance = Random.Shared.Next(0, 10),
+                Email = "test@email.com"
+            };
+        accountRepository.CreateAccount(account);
+        GetAccounts();
+    }
+
+    private void UpdateAccountClicked(Account account)
+    {
+        account.Balance = 0;
+        accountRepository.UpdateAccount(account);
+        GetAccounts();
+    }
+
+    private void DeleteAccountClicked(Account account)
+    {
+        accountRepository.DeleteAccount(account);
+        GetAccounts();
+    }
+
+    void GetAccounts()
+    {
+        accounts = accountRepository.GetAccounts();
+    }
+}

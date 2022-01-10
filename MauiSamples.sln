@@ -11,6 +11,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiSqlite", "MauiSqlite\Ma
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiMultiWindow", "MauiMultiWindow\MauiMultiWindow.csproj", "{432B4EFB-447B-4FA8-8083-6A00B56D0F13}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sqlite", "Sqlite", "{671C019C-7DCC-4B9E-AD7D-B9F6F35D044E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiSqliteBlazor", "MauiSqliteBlazor\MauiSqliteBlazor.csproj", "{591E6CC5-EE07-423C-A6D1-48AD8AB3DC34}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqliteRepository", "SqliteRepository\SqliteRepository.csproj", "{13DAE136-5BF2-460C-BFD7-7BDB0785C935}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,9 +45,24 @@ Global
 		{432B4EFB-447B-4FA8-8083-6A00B56D0F13}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{432B4EFB-447B-4FA8-8083-6A00B56D0F13}.Release|Any CPU.Build.0 = Release|Any CPU
 		{432B4EFB-447B-4FA8-8083-6A00B56D0F13}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{591E6CC5-EE07-423C-A6D1-48AD8AB3DC34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{591E6CC5-EE07-423C-A6D1-48AD8AB3DC34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{591E6CC5-EE07-423C-A6D1-48AD8AB3DC34}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{591E6CC5-EE07-423C-A6D1-48AD8AB3DC34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{591E6CC5-EE07-423C-A6D1-48AD8AB3DC34}.Release|Any CPU.Build.0 = Release|Any CPU
+		{591E6CC5-EE07-423C-A6D1-48AD8AB3DC34}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{13DAE136-5BF2-460C-BFD7-7BDB0785C935}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13DAE136-5BF2-460C-BFD7-7BDB0785C935}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13DAE136-5BF2-460C-BFD7-7BDB0785C935}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13DAE136-5BF2-460C-BFD7-7BDB0785C935}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{43BACDC9-2889-476E-AF08-727E1B31D0B8} = {671C019C-7DCC-4B9E-AD7D-B9F6F35D044E}
+		{591E6CC5-EE07-423C-A6D1-48AD8AB3DC34} = {671C019C-7DCC-4B9E-AD7D-B9F6F35D044E}
+		{13DAE136-5BF2-460C-BFD7-7BDB0785C935} = {671C019C-7DCC-4B9E-AD7D-B9F6F35D044E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}

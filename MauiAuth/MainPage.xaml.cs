@@ -1,9 +1,5 @@
-﻿using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
+﻿using System.IdentityModel.Tokens.Jwt;
 using System.Text;
-using System.Threading;
-using Microsoft.Maui.Controls;
 
 namespace MauiAuth;
 

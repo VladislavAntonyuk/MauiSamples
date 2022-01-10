@@ -1,22 +1,21 @@
-﻿using Microsoft.Maui.Controls;
-using System;
+﻿using SqliteRepository;
 
 namespace MauiSqlite;
 public partial class MainPage : ContentPage
 {
-private readonly AccountRepository _accountRepository;
+    private readonly AccountRepository _accountRepository;
 
-public MainPage(AccountRepository accountRepository)
-{
-    _accountRepository = accountRepository;
-    InitializeComponent();
-}
+    public MainPage(AccountRepository accountRepository)
+    {
+        _accountRepository = accountRepository;
+        InitializeComponent();
+    }
 
-protected override void OnAppearing()
-{
-    base.OnAppearing();
-    GetAccounts();
-}
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        GetAccounts();
+    }
 
     private void AddAccountClicked(object sender, EventArgs e)
     {
@@ -46,7 +45,7 @@ protected override void OnAppearing()
             return;
 
         var account = collectionView.SelectedItem as Account;
-        _accountRepository.DeleteAccount(account); 
+        _accountRepository.DeleteAccount(account);
         GetAccounts();
     }
 

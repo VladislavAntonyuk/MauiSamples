@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-
 namespace MauiBlazorPhotoGallery.Data;
 public class MediaService
 {

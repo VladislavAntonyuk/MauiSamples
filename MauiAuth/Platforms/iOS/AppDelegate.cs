@@ -1,7 +1,5 @@
 ﻿using Foundation;
 using Microsoft.Identity.Client;
-using Microsoft.Maui;
-using Microsoft.Maui.Hosting;
 using UIKit;
 
 namespace MauiAuth;

@@ -1,7 +1,4 @@
-﻿using Microsoft.Maui.Hosting;
-using Microsoft.Maui.Controls.Hosting;
-
-namespace MauiAuth;
+﻿namespace MauiAuth;
 
 public static class MauiProgram
 {

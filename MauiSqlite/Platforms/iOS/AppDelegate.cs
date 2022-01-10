@@ -1,6 +1,4 @@
 ﻿using Foundation;
-using Microsoft.Maui;
-using Microsoft.Maui.Hosting;
 using SQLitePCL;
 
 namespace MauiSqlite;

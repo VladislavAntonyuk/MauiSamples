@@ -1,8 +1,5 @@
 ﻿using MauiBlazorPhotoGallery.Data;
 using Microsoft.AspNetCore.Components.WebView.Maui;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Maui.Controls.Hosting;
-using Microsoft.Maui.Hosting;
 
 namespace MauiBlazorPhotoGallery;
 public static class MauiProgram

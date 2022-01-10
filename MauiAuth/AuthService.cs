@@ -1,6 +1,4 @@
 ﻿using Microsoft.Identity.Client;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace MauiAuth;
 
