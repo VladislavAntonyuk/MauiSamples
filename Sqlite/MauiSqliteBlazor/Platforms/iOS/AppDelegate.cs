@@ -1,8 +1,8 @@
 ﻿using Foundation;
 using SQLitePCL;
 
-namespace MauiSqlite;
-[Register("AppDelegate")]
+namespace MauiSqliteBlazor;
+[Register(nameof(AppDelegate))]
 public class AppDelegate : MauiUIApplicationDelegate
 {
     protected override MauiApp CreateMauiApp()

@@ -7,7 +7,7 @@ public static class MauiProgram
     {
         var builder = MauiApp.CreateBuilder();
         builder.UseMauiApp<App>();
-        builder.Services.AddSingleton<AccountRepository>();
+        builder.Services.AddSingleton(new AccountRepository("accounts.db"));
         builder.Services.AddScoped<MainPage>();
 
         return builder.Build();
