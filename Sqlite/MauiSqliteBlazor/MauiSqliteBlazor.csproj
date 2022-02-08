@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
@@ -59,9 +59,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="SQLitePCLRaw.core" Version="2.0.7" />
-		<PackageReference Include="SQLitePCLRaw.provider.sqlite3" Version="2.0.7" />
-		<PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.0.7" />
+		<PackageReference Include="SQLitePCLRaw.core" Version="2.1.0-pre20220207221914" />
+		<PackageReference Include="SQLitePCLRaw.provider.sqlite3" Version="2.1.0-pre20220207221914" />
+		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.0-pre20220207221914" />
+		<PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.0-pre20220207221914" />
 	</ItemGroup>
 
 	<ItemGroup>
