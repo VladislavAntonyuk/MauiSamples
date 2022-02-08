@@ -34,6 +34,9 @@ public partial class MainPage : ContentPage
             return;
 
         var account = collectionView.SelectedItem as Account;
+        if (account is null)
+            return;
+
         account.Balance = 0;
         _accountRepository.UpdateAccount(account);
         GetAccounts();
@@ -45,6 +48,9 @@ public partial class MainPage : ContentPage
             return;
 
         var account = collectionView.SelectedItem as Account;
+        if (account is null)
+            return;
+
         _accountRepository.DeleteAccount(account);
         GetAccounts();
     }

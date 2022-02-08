@@ -6,9 +6,9 @@ public class AccountRepository
 {
     private readonly SQLiteConnection _database;
 
-    public AccountRepository()
+    public AccountRepository(string dbName)
     {
-        var dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "accounts.db");
+        var dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), dbName);
         _database = new SQLiteConnection(dbPath);
         _database.CreateTable<Account>();
     }

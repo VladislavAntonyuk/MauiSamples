@@ -7,15 +7,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiAuth", "MauiAuth\MauiAu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiBlazorPhotoGallery", "MauiBlazorPhotoGallery\MauiBlazorPhotoGallery.csproj", "{C9A17F44-78CB-4EDC-86C9-E307C2F25FF0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiSqlite", "MauiSqlite\MauiSqlite.csproj", "{43BACDC9-2889-476E-AF08-727E1B31D0B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiSqlite", "Sqlite\MauiSqlite\MauiSqlite.csproj", "{43BACDC9-2889-476E-AF08-727E1B31D0B8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiMultiWindow", "MauiMultiWindow\MauiMultiWindow.csproj", "{432B4EFB-447B-4FA8-8083-6A00B56D0F13}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sqlite", "Sqlite", "{671C019C-7DCC-4B9E-AD7D-B9F6F35D044E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiSqliteBlazor", "MauiSqliteBlazor\MauiSqliteBlazor.csproj", "{591E6CC5-EE07-423C-A6D1-48AD8AB3DC34}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiSqliteBlazor", "Sqlite\MauiSqliteBlazor\MauiSqliteBlazor.csproj", "{591E6CC5-EE07-423C-A6D1-48AD8AB3DC34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqliteRepository", "SqliteRepository\SqliteRepository.csproj", "{13DAE136-5BF2-460C-BFD7-7BDB0785C935}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqliteRepository", "Sqlite\SqliteRepository\SqliteRepository.csproj", "{13DAE136-5BF2-460C-BFD7-7BDB0785C935}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
