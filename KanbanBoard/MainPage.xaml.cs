@@ -5,14 +5,13 @@ namespace KanbanBoard;
 
 public partial class MainPage : ContentPage
 {
-    private readonly IPath path;
+    private readonly IPath _path;
 
     public MainPage(MainPageViewModel viewModel, IPath path)
     {
         InitializeComponent();
         BindingContext = viewModel;
-        ResetButton ??= new();
-        this.path = path;
+        _path = path;
     }
 
     private async void ResetButton_OnClicked(object sender, EventArgs e)
@@ -26,17 +25,17 @@ public partial class MainPage : ContentPage
             Font = Font.SystemFontOfSize(14),
         };
         await ResetButton.DisplaySnackbar(
-            "All your data will be deleted in 3 seconds. Application will be closed",
+            "All your data will be deleted. Application will be closed",
             DeleteDbAndCloseApp,
-            "Confirm and delete immediately",
+            "Confirm and delete",
             TimeSpan.FromSeconds(5),
             options);
     }
 
     private void DeleteDbAndCloseApp()
     {
-        var dbPath = path.GetDatabasePath();
-        path.DeleteFile(dbPath);
+        var dbPath = _path.GetDatabasePath();
+        _path.DeleteFile(dbPath);
         Environment.Exit(0);
     }
 }

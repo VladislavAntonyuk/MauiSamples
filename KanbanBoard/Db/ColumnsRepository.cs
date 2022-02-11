@@ -1,31 +1,57 @@
 using KanbanBoard.Models;
-using SQLiteNetExtensions.Extensions;
+using Microsoft.EntityFrameworkCore;
 
 namespace KanbanBoard.Db;
 
-public class ColumnsRepository : BaseRepository<Column>, IColumnsRepository
+public class ColumnsRepository : IColumnsRepository
 {
-    public ColumnsRepository(IPath path) : base(path)
+    private readonly KanbanBoardDbContext _dbContext;
+
+    public ColumnsRepository(KanbanBoardDbContext dbContext)
     {
+        _dbContext = dbContext;
     }
 
-    public override Task<List<Column>> GetItems()
+    public async Task DeleteItem(int id)
     {
-        var columns = Database.Table<Column>().ToList();
-        var cards = Database.Table<Card>().ToList();
-        var result = columns.GroupJoin(cards, column => column.Id, card => card.ColumnId,
-                    (column, columnCards) =>
-                    {
-                        column.Cards = columnCards.ToObservableCollection();
-                        return column;
-                    }).ToList();
-        return Task.FromResult(result);
+        var column = await _dbContext.Columns.SingleOrDefaultAsync(x => x.Id == id);
+        if (column != null)
+        {
+            _dbContext.Remove(column);
+            await _dbContext.SaveChangesAsync();
+        }
     }
 
-    public Task DeleteColumnWithCards(Column column)
+    public Task<Column?> GetItem(int id)
     {
-        Database.Delete(column, true);
-        return Task.CompletedTask;
+        return _dbContext.Columns.Include(x => x.Cards).FirstOrDefaultAsync(x => x.Id == id);
+    }
 
+    public Task<List<Column>> GetItems()
+    {
+        return _dbContext.Columns.Include(x => x.Cards).ToListAsync();
+    }
+
+    public async Task<Column?> UpdateItem(Column item)
+    {
+        var column = await _dbContext.Columns.SingleOrDefaultAsync(x => x.Id == item.Id);
+        if (column == null)
+        {
+            return column;
+        }
+        
+        column.Name = item.Name;
+        column.Wip = item.Wip;
+        column.Order = item.Order;
+
+        await _dbContext.SaveChangesAsync();
+        return column;
+    }
+
+    public async Task<Column> SaveItem(Column item)
+    {
+        await _dbContext.Columns.AddAsync(item);
+        await _dbContext.SaveChangesAsync();
+        return item;
     }
 }

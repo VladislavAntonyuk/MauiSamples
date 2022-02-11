@@ -1,25 +1,32 @@
 ﻿using KanbanBoard.Db;
 using KanbanBoard.Models;
+using Microsoft.EntityFrameworkCore;
 using Application = Microsoft.Maui.Controls.Application;
 
 namespace KanbanBoard;
 
 public partial class App : Application
 {
-    private IServiceProvider serviceProvider;
+    private readonly IServiceProvider _serviceProvider;
 
     public App(IServiceProvider serviceProvider)
     {
         InitializeComponent();
-        this.serviceProvider = serviceProvider;
+        _serviceProvider = serviceProvider;
         AddTestData().Wait();
-        MainPage = serviceProvider.GetRequiredService<MainPage>(); ;
+        MainPage = serviceProvider.GetRequiredService<MainPage>();
     }
 
     public async Task AddTestData()
     {
-        var columnsRepository = serviceProvider.GetRequiredService<IColumnsRepository>();
-        var cardsRepository = serviceProvider.GetRequiredService<ICardsRepository>();
+        using (var scope = _serviceProvider.CreateScope())
+        {
+            await using var appContext = scope.ServiceProvider.GetRequiredService<KanbanBoardDbContext>();
+            await appContext.Database.EnsureCreatedAsync();
+        }
+
+        var columnsRepository = _serviceProvider.GetRequiredService<IColumnsRepository>();
+        var cardsRepository = _serviceProvider.GetRequiredService<ICardsRepository>();
         var items = await cardsRepository.GetItems();
         if (!items.Any())
         {

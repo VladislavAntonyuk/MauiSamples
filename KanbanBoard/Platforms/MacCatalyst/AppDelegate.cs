@@ -8,7 +8,7 @@ public class AppDelegate : MauiUIApplicationDelegate
 {
     protected override MauiApp CreateMauiApp()
     {
-        raw.SetProvider(new SQLite3Provider_sqlite3());
+        Batteries_V2.Init();
         return MauiProgram.CreateMauiApp();
     }
 }
