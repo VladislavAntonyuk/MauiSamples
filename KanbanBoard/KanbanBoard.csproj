@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
-		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net6.0-windows10.0.17763</TargetFrameworks>
+		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows')) and '$(MSBuildRuntimeType)' == 'Full'">$(TargetFrameworks);net6.0-windows10.0.19041</TargetFrameworks>
 		<OutputType>Exe</OutputType>
 		<RootNamespace>KanbanBoard</RootNamespace>
 		<UseMaui>true</UseMaui>
@@ -56,12 +56,7 @@
 	<ItemGroup>
         <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-pre6" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview1" />
-        <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
-		<PackageReference Include="SQLiteNetExtensions.Async" Version="2.1.0" />
-		<PackageReference Include="SQLitePCLRaw.core" Version="2.1.0-pre20220207221914" />
-        <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.0-pre20220207221914" />
-        <PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.0-pre20220207221914" />
-        <PackageReference Include="SQLitePCLRaw.provider.sqlite3" Version="2.1.0-pre20220207221914" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.2" />
     </ItemGroup>
 
     <PropertyGroup>

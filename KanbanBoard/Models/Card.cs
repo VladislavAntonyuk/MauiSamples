@@ -1,11 +1,13 @@
-﻿using SQLite;
-using SQLiteNetExtensions.Attributes;
-
-namespace KanbanBoard.Models;
+﻿namespace KanbanBoard.Models;
 
 public sealed class Card
 {
-    [PrimaryKey, AutoIncrement]
+    public Card()
+    {
+        Name = string.Empty;
+        Description = string.Empty;
+    }
+
     public int Id { get; set; }
 
     public string Name { get; set; }
@@ -13,10 +15,8 @@ public sealed class Card
     public string Description { get; set; }
 
     public int Order { get; set; }
-
-    [ForeignKey(typeof(Column))]
+    
     public int ColumnId { get; set; }
-
-    [ManyToOne]
-    public Column Column { get; set; }
+    
+    public Column? Column { get; set; }
 }

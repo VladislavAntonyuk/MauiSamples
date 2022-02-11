@@ -13,15 +13,15 @@ namespace KanbanBoard;
 public class MainPageViewModel : ObservableObject
 {
     private ObservableCollection<ColumnInfo> _columns;
-    private Card _dragCard;
+    private Card? _dragCard;
     private int _position;
-    private readonly ICardsRepository cardsRepository;
-    private readonly IColumnsRepository columnsRepository;
+    private readonly ICardsRepository _cardsRepository;
+    private readonly IColumnsRepository _columnsRepository;
 
     public MainPageViewModel(ICardsRepository cardsRepository, IColumnsRepository columnsRepository)
     {
-        this.cardsRepository = cardsRepository;
-        this.columnsRepository = columnsRepository;
+        this._cardsRepository = cardsRepository;
+        this._columnsRepository = columnsRepository;
         RefreshCommand.Execute(null);
     }
 
@@ -31,11 +31,11 @@ public class MainPageViewModel : ObservableObject
     {
         if (_dragCard is null || columnInfo.Column.Cards.Count >= columnInfo.Column.Wip) return;
 
-        var cardToUpdate = await cardsRepository.GetItem(_dragCard.Id);
+        var cardToUpdate = await _cardsRepository.GetItem(_dragCard.Id);
         if (cardToUpdate is not null)
         {
             cardToUpdate.ColumnId = columnInfo.Column.Id;
-            await cardsRepository.UpdateItem(cardToUpdate);
+            await _cardsRepository.UpdateItem(cardToUpdate);
         }
 
         await UpdateCollection();
@@ -61,14 +61,14 @@ public class MainPageViewModel : ObservableObject
         } while (wip < 0);
 
         var column = new Column { Name = columnName, Wip = wip, Order = _columns.Count + 1 };
-        await columnsRepository.SaveItem(column);
+        await _columnsRepository.SaveItem(column);
         await UpdateCollection();
         await ToastAsync("Column is added");
     });
 
     public ICommand AddCard => new AsyncRelayCommand<int>(async columnId =>
     {
-        var column = await columnsRepository.GetItem(columnId);
+        var column = await _columnsRepository.GetItem(columnId);
         var columnInfo = new ColumnInfo(0, column);
         if (columnInfo.IsWipReached)
         {
@@ -80,7 +80,7 @@ public class MainPageViewModel : ObservableObject
         if (string.IsNullOrWhiteSpace(cardName)) return;
 
         var cardDescription = await UserPromptAsync("New card", "Enter card description", Keyboard.Default);
-        await cardsRepository.SaveItem(new Card
+        await _cardsRepository.SaveItem(new Card
         {
             Name = cardName,
             Description = cardDescription,
@@ -98,15 +98,14 @@ public class MainPageViewModel : ObservableObject
         if (!result) return;
 
         bool isCancelled = false;
-        Action action = () => isCancelled = true;
-        await SnackbarAsync("The card is about to be removed", "Cancel", action);
+        await SnackbarAsync("The card is about to be removed", "Cancel", () => isCancelled = true);
         if (isCancelled)
         {
             await ToastAsync("Task is cancelled");
         }
         else
         {
-            await cardsRepository.DeleteItem(card.Id);
+            await _cardsRepository.DeleteItem(card.Id);
             await UpdateCollection();
         }
     });
@@ -119,16 +118,15 @@ public class MainPageViewModel : ObservableObject
 
         Columns.Remove(columnInfo);
         bool isCancelled = false;
-        Action action = () =>
+        await SnackbarAsync("The column is removed", "Cancel", () =>
         {
             Columns.Add(columnInfo);
             isCancelled = true;
-        };
-        await SnackbarAsync("The column is removed", "Cancel", action);
+        });
 
         if (isCancelled)
         {
-            await columnsRepository.DeleteColumnWithCards(columnInfo.Column);
+            await _columnsRepository.DeleteItem(columnInfo.Column.Id);
         }
 
         await UpdateCollection();
@@ -148,7 +146,7 @@ public class MainPageViewModel : ObservableObject
 
     private async Task UpdateCollection()
     {
-        var items = await columnsRepository.GetItems();
+        var items = await _columnsRepository.GetItems();
         Columns = items
             .OrderBy(c => c.Order)
             .ToList()
