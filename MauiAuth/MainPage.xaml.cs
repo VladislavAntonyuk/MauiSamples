@@ -1,5 +1,7 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Text;
+using CommunityToolkit.Maui.Alerts;
+using Microsoft.Identity.Client;
 
 namespace MauiAuth;
 
@@ -14,13 +16,21 @@ public partial class MainPage : ContentPage
 
     private async void OnLoginClicked(object sender, EventArgs e)
     {
-        var result = await authService.LoginAsync(CancellationToken.None);
+        AuthenticationResult? result = null;
+        try
+        {
+            result = await authService.LoginAsync(CancellationToken.None);
+        }
+        catch (MsalClientException ex)
+        {
+            await Toast.Make(ex.Message).Show();
+        }
+
         var token = result?.IdToken;
         if (token != null)
         {
             var handler = new JwtSecurityTokenHandler();
             var data = handler.ReadJwtToken(token);
-            var claims = data.Claims.ToList();
             if (data != null)
             {
                 var stringBuilder = new StringBuilder();

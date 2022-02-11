@@ -1,4 +1,6 @@
-﻿namespace MauiAuth;
+﻿using CommunityToolkit.Maui;
+
+namespace MauiAuth;
 
 public static class MauiProgram
 {
@@ -11,7 +13,7 @@ public static class MauiProgram
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
             });
-
+        builder.UseMauiCommunityToolkit();
         return builder.Build();
     }
 }

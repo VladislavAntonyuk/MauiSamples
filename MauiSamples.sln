@@ -13,9 +13,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiMultiWindow", "MauiMult
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sqlite", "Sqlite", "{671C019C-7DCC-4B9E-AD7D-B9F6F35D044E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiSqliteBlazor", "Sqlite\MauiSqliteBlazor\MauiSqliteBlazor.csproj", "{591E6CC5-EE07-423C-A6D1-48AD8AB3DC34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiSqliteBlazor", "Sqlite\MauiSqliteBlazor\MauiSqliteBlazor.csproj", "{591E6CC5-EE07-423C-A6D1-48AD8AB3DC34}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SqliteRepository", "Sqlite\SqliteRepository\SqliteRepository.csproj", "{13DAE136-5BF2-460C-BFD7-7BDB0785C935}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqliteRepository", "Sqlite\SqliteRepository\SqliteRepository.csproj", "{13DAE136-5BF2-460C-BFD7-7BDB0785C935}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KanbanBoard", "KanbanBoard\KanbanBoard.csproj", "{5E4780D5-8A16-44CE-975D-155E578351D0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CE4ABC8D-3F54-49AA-BA5A-DD47E7CEB56B}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +63,12 @@ Global
 		{13DAE136-5BF2-460C-BFD7-7BDB0785C935}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13DAE136-5BF2-460C-BFD7-7BDB0785C935}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13DAE136-5BF2-460C-BFD7-7BDB0785C935}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E4780D5-8A16-44CE-975D-155E578351D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E4780D5-8A16-44CE-975D-155E578351D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E4780D5-8A16-44CE-975D-155E578351D0}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{5E4780D5-8A16-44CE-975D-155E578351D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E4780D5-8A16-44CE-975D-155E578351D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E4780D5-8A16-44CE-975D-155E578351D0}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

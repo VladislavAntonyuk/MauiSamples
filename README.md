@@ -5,3 +5,5 @@ MauiBlazorPhotoGallery - https://vladislavantonyuk.azurewebsites.net/articles/Cr
 MauiSqlite - https://vladislavantonyuk.azurewebsites.net/articles/Adding-SQLite-to-the-.NET-MAUI-application
 
 MauiMultiWindow - https://vladislavantonyuk.azurewebsites.net/articles/.NET-MAUI-Multi-Window-support
+
+KanbanBoard - https://vladislavantonyuk.azurewebsites.net/articles/Creating-Kanban-Board-using-Xamarin-Forms-5

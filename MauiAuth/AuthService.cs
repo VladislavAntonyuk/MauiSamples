@@ -13,23 +13,14 @@ public class AuthService
             .Build();
     }
 
-    public async Task<AuthenticationResult> LoginAsync(CancellationToken cancellationToken)
+    public Task<AuthenticationResult?> LoginAsync(CancellationToken cancellationToken)
     {
-        AuthenticationResult result;
-        try
-        {
-            result = await authenticationClient
-                .AcquireTokenInteractive(Constants.Scopes)
-                .WithPrompt(Prompt.ForceLogin)
+        return authenticationClient
+                   .AcquireTokenInteractive(Constants.Scopes)
+                   .WithPrompt(Prompt.ForceLogin)
 #if ANDROID
-                .WithParentActivityOrWindow(Microsoft.Maui.Essentials.Platform.CurrentActivity)
+                .WithParentActivityOrWindow(Platform.CurrentActivity)
 #endif
                 .ExecuteAsync(cancellationToken);
-            return result;
-        }
-        catch (MsalClientException)
-        {
-            return null;
-        }
     }
 }
