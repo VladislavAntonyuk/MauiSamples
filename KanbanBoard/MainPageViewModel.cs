@@ -20,8 +20,9 @@ public class MainPageViewModel : ObservableObject
 
     public MainPageViewModel(ICardsRepository cardsRepository, IColumnsRepository columnsRepository)
     {
-        this._cardsRepository = cardsRepository;
-        this._columnsRepository = columnsRepository;
+        _cardsRepository = cardsRepository;
+        _columnsRepository = columnsRepository;
+        _columns = new();
         RefreshCommand.Execute(null);
     }
 
@@ -29,7 +30,7 @@ public class MainPageViewModel : ObservableObject
 
     public ICommand DropCommand => new AsyncRelayCommand<ColumnInfo>(async columnInfo =>
     {
-        if (_dragCard is null || columnInfo.Column.Cards.Count >= columnInfo.Column.Wip) return;
+        if (_dragCard is null || columnInfo is null || columnInfo.Column.Cards.Count >= columnInfo.Column.Wip) return;
 
         var cardToUpdate = await _cardsRepository.GetItem(_dragCard.Id);
         if (cardToUpdate is not null)
@@ -69,6 +70,7 @@ public class MainPageViewModel : ObservableObject
     public ICommand AddCard => new AsyncRelayCommand<int>(async columnId =>
     {
         var column = await _columnsRepository.GetItem(columnId);
+        if (column is null) return;
         var columnInfo = new ColumnInfo(0, column);
         if (columnInfo.IsWipReached)
         {
@@ -94,6 +96,7 @@ public class MainPageViewModel : ObservableObject
 
     public ICommand DeleteCard => new AsyncRelayCommand<Card>(async card =>
     {
+        if (card is null) return;
         var result = await AlertAsync("Delete card", $"Do you want to delete card \"{card.Name}\"?");
         if (!result) return;
 
@@ -110,8 +113,9 @@ public class MainPageViewModel : ObservableObject
         }
     });
 
-    public ICommand DeleteColumn => new Command<ColumnInfo>(async columnInfo =>
+    public ICommand DeleteColumn => new AsyncRelayCommand<ColumnInfo>(async columnInfo =>
     {
+        if (columnInfo is null) return;
         var result = await AlertAsync("Delete column",
             $"Do you want to delete column \"{columnInfo.Column.Name}\" and all its cards?");
         if (!result) return;
@@ -163,16 +167,19 @@ public class MainPageViewModel : ObservableObject
 
     private static Task<bool> AlertAsync(string title, string message)
     {
+        if (Application.Current?.MainPage is null) return Task.FromResult(false);
         return Application.Current.MainPage.DisplayAlert(title, message, "Yes", "No");
     }
 
     private static Task<string> UserPromptAsync(string title, string message, Keyboard keyboard)
     {
+        if (Application.Current?.MainPage is null) return Task.FromResult(string.Empty);
         return Application.Current.MainPage.DisplayPromptAsync(title, message, keyboard: keyboard);
     }
 
     private static Task SnackbarAsync(string title, string buttonText, Action action)
     {
+        if (Application.Current?.MainPage is null) return Task.FromResult(false);
         return Application.Current.MainPage.DisplaySnackbar(title, action, buttonText, TimeSpan.FromSeconds(3));
     }
 

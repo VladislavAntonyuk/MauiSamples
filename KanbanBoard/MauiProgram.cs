@@ -1,7 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using KanbanBoard.Db;
 using KanbanBoard.Models;
-using Microsoft.EntityFrameworkCore;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 

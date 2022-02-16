@@ -81,7 +81,7 @@
                             </DataTrigger>
                         </Frame.Triggers>
 
-                        <StackLayout Margin="10">
+                        <VerticalStackLayout Margin="10">
                             <HorizontalStackLayout Margin="10">
                                 <Label
                                     FontAttributes="Bold"
@@ -178,7 +178,7 @@
                                 Command="{Binding BindingContext.AddCard, Source={x:Reference Board}}"
                                 CommandParameter="{Binding Column.Id}"
                                 Text="Add new card" />
-                        </StackLayout>
+                        </VerticalStackLayout>
                     </Frame>
                 </DataTemplate>
             </CarouselView.ItemTemplate>

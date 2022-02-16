@@ -1,6 +1,5 @@
 ﻿using KanbanBoard.Db;
 using KanbanBoard.Models;
-using Microsoft.EntityFrameworkCore;
 using Application = Microsoft.Maui.Controls.Application;
 
 namespace KanbanBoard;
