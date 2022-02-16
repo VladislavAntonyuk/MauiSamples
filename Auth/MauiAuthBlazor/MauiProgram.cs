@@ -1,6 +1,7 @@
-﻿using CommunityToolkit.Maui;
+﻿using Microsoft.AspNetCore.Components.WebView.Maui;
+using CommunityToolkit.Maui;
 
-namespace MauiAuth;
+namespace MauiAuthBlazor;
 
 public static class MauiProgram
 {
@@ -8,12 +9,18 @@ public static class MauiProgram
     {
         var builder = MauiApp.CreateBuilder();
         builder
+            .RegisterBlazorMauiWebView()
             .UseMauiApp<App>()
+            .ConfigureEssentials()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
             });
+            
+        builder.Services.AddBlazorWebView();
+        builder.Services.AddSingleton<AuthServices.AuthService>();
         builder.UseMauiCommunityToolkit();
+
         return builder.Build();
     }
 }

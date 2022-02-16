@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiAuth", "MauiAuth\MauiAuth.csproj", "{B91198E0-08DE-41B6-9056-95F90C3E0AD8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiAuth", "Auth\MauiAuth\MauiAuth.csproj", "{B91198E0-08DE-41B6-9056-95F90C3E0AD8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiBlazorPhotoGallery", "MauiBlazorPhotoGallery\MauiBlazorPhotoGallery.csproj", "{C9A17F44-78CB-4EDC-86C9-E307C2F25FF0}"
 EndProject
@@ -24,6 +24,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Build.props = Directory.Build.props
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Auth", "Auth", "{14D979DA-85FE-41DC-9C59-A49EE52EC9A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiAuthBlazor", "Auth\MauiAuthBlazor\MauiAuthBlazor.csproj", "{6BF7A52A-311B-41C0-A112-3D8A06DA12FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthServices", "Auth\AuthServices\AuthServices.csproj", "{1C9ECD3D-B554-4FDA-92BE-B8CE461BCBA4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,14 +75,27 @@ Global
 		{5E4780D5-8A16-44CE-975D-155E578351D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5E4780D5-8A16-44CE-975D-155E578351D0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{5E4780D5-8A16-44CE-975D-155E578351D0}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{6BF7A52A-311B-41C0-A112-3D8A06DA12FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6BF7A52A-311B-41C0-A112-3D8A06DA12FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6BF7A52A-311B-41C0-A112-3D8A06DA12FF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6BF7A52A-311B-41C0-A112-3D8A06DA12FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6BF7A52A-311B-41C0-A112-3D8A06DA12FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6BF7A52A-311B-41C0-A112-3D8A06DA12FF}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{1C9ECD3D-B554-4FDA-92BE-B8CE461BCBA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C9ECD3D-B554-4FDA-92BE-B8CE461BCBA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C9ECD3D-B554-4FDA-92BE-B8CE461BCBA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C9ECD3D-B554-4FDA-92BE-B8CE461BCBA4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
+		{B91198E0-08DE-41B6-9056-95F90C3E0AD8} = {14D979DA-85FE-41DC-9C59-A49EE52EC9A5}
 		{43BACDC9-2889-476E-AF08-727E1B31D0B8} = {671C019C-7DCC-4B9E-AD7D-B9F6F35D044E}
 		{591E6CC5-EE07-423C-A6D1-48AD8AB3DC34} = {671C019C-7DCC-4B9E-AD7D-B9F6F35D044E}
 		{13DAE136-5BF2-460C-BFD7-7BDB0785C935} = {671C019C-7DCC-4B9E-AD7D-B9F6F35D044E}
+		{6BF7A52A-311B-41C0-A112-3D8A06DA12FF} = {14D979DA-85FE-41DC-9C59-A49EE52EC9A5}
+		{1C9ECD3D-B554-4FDA-92BE-B8CE461BCBA4} = {14D979DA-85FE-41DC-9C59-A49EE52EC9A5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}

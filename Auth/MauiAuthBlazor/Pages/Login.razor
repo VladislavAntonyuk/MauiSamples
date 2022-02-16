@@ -1,20 +1,18 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Text;
-using CommunityToolkit.Maui.Alerts;
-using Microsoft.Identity.Client;
+﻿@page "/"
+@using Microsoft.Identity.Client
+@using CommunityToolkit.Maui.Alerts
+@using System.IdentityModel.Tokens.Jwt
+@using System.Text
+@using AuthServices
+@inject AuthService authService
 
-namespace MauiAuth;
-
-public partial class MainPage : ContentPage
+<button @onclick="LoginAsync">Login</button>
+<p>@resultMessage</p>
+@code
 {
-    private readonly AuthService authService;
-    public MainPage()
-    {
-        InitializeComponent();
-        authService = new AuthService();
-    }
+    string resultMessage = string.Empty;
 
-    private async void OnLoginClicked(object sender, EventArgs e)
+    async Task LoginAsync()
     {
         AuthenticationResult? result = null;
         try
@@ -35,7 +33,7 @@ public partial class MainPage : ContentPage
             {
                 var stringBuilder = new StringBuilder();
                 stringBuilder.AppendLine($"Name: {data.Claims.FirstOrDefault(x => x.Type.Equals("name"))?.Value}");
-                LoginResultLabel.Text = stringBuilder.ToString();
+                resultMessage = stringBuilder.ToString();
             }
         }
     }

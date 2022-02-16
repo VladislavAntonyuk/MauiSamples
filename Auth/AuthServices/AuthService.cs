@@ -1,6 +1,6 @@
 ﻿using Microsoft.Identity.Client;
 
-namespace MauiAuth;
+namespace AuthServices;
 
 public class AuthService
 {
@@ -10,6 +10,9 @@ public class AuthService
         authenticationClient = PublicClientApplicationBuilder.Create(Constants.ClientId)
             //.WithB2CAuthority(Constants.AuthoritySignIn) // uncomment to support B2C
             .WithRedirectUri($"msal{Constants.ClientId}://auth")
+#if ANDROID
+            .WithParentActivityOrWindow(() => Platform.CurrentActivity)
+#endif
             .Build();
     }
 
@@ -18,9 +21,6 @@ public class AuthService
         return authenticationClient
                    .AcquireTokenInteractive(Constants.Scopes)
                    .WithPrompt(Prompt.ForceLogin)
-#if ANDROID
-                .WithParentActivityOrWindow(Platform.CurrentActivity)
-#endif
                 .ExecuteAsync(cancellationToken);
     }
 }
