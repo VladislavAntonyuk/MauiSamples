@@ -18,8 +18,8 @@ public class KanbanBoardDbContext : DbContext
         optionsBuilder.UseSqlite($"Filename={_path.GetDatabasePath()}");
     }
 
-    public DbSet<Card> Cards { get; set; }
-    public DbSet<Column> Columns { get; set; }
+    public DbSet<Card> Cards { get; set; } = null!;
+    public DbSet<Column> Columns { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

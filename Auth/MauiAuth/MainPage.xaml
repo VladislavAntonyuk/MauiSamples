@@ -3,23 +3,21 @@
              x:Class="MauiAuth.MainPage"
              BackgroundColor="{DynamicResource SecondaryColor}">
 
-    <ScrollView>
-        <VerticalStackLayout>
+    <VerticalStackLayout>
 
-            <Label 
-                Text=""
-                FontSize="18"
-                FontAttributes="Bold"
-                x:Name="LoginResultLabel"
-                HorizontalOptions="Center" />
-
-            <Button 
+        <Button 
                 Text="Login"
                 FontAttributes="Bold"
                 SemanticProperties.Hint="Login"
-                Clicked="OnLoginClicked"
+                Clicked="AzureADPageClicked"
                 HorizontalOptions="Center" />
 
-        </VerticalStackLayout>
-    </ScrollView>
+        <Button 
+                Text="Login B2C"
+                FontAttributes="Bold"
+                SemanticProperties.Hint="Login"
+                Clicked="AzureB2CPageClicked"
+                HorizontalOptions="Center" />
+
+    </VerticalStackLayout>
 </ContentPage>

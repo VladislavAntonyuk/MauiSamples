@@ -4,7 +4,7 @@
 @using System.IdentityModel.Tokens.Jwt
 @using System.Text
 @using AuthServices
-@inject AuthService authService
+@inject IAuthService authService
 
 <button @onclick="LoginAsync">Login</button>
 <p>@resultMessage</p>
@@ -17,24 +17,23 @@
         AuthenticationResult? result = null;
         try
         {
-            result = await authService.LoginAsync(CancellationToken.None);
+            result = await authService.SignInInteractively(CancellationToken.None);
+            var token = result?.IdToken;
+            if (token != null)
+            {
+                var handler = new JwtSecurityTokenHandler();
+                var data = handler.ReadJwtToken(token);
+                if (data != null)
+                {
+                    var stringBuilder = new StringBuilder();
+                    stringBuilder.AppendLine($"Name: {data.Claims.FirstOrDefault(x => x.Type.Equals("name"))?.Value}");
+                    resultMessage = stringBuilder.ToString();
+                }
+            }
         }
         catch (MsalClientException ex)
         {
             await Toast.Make(ex.Message).Show();
-        }
-
-        var token = result?.IdToken;
-        if (token != null)
-        {
-            var handler = new JwtSecurityTokenHandler();
-            var data = handler.ReadJwtToken(token);
-            if (data != null)
-            {
-                var stringBuilder = new StringBuilder();
-                stringBuilder.AppendLine($"Name: {data.Claims.FirstOrDefault(x => x.Type.Equals("name"))?.Value}");
-                resultMessage = stringBuilder.ToString();
-            }
         }
     }
 }
