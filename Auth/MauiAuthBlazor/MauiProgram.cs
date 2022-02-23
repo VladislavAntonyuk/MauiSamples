@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Components.WebView.Maui;
+﻿using AuthServices;
+using Microsoft.AspNetCore.Components.WebView.Maui;
 using CommunityToolkit.Maui;
 
 namespace MauiAuthBlazor;
@@ -18,7 +19,7 @@ public static class MauiProgram
             });
             
         builder.Services.AddBlazorWebView();
-        builder.Services.AddSingleton<AuthServices.AuthService>();
+        builder.Services.AddSingleton<IAuthService, AuthService>();
         builder.UseMauiCommunityToolkit();
 
         return builder.Build();

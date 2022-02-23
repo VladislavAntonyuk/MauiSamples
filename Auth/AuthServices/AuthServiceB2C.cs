@@ -2,11 +2,13 @@
 
 namespace AuthServices;
 
-public class AuthService: BaseAuthService
+public class AuthServiceB2C : BaseAuthService
 {
-    public AuthService()
+    public AuthServiceB2C()
     {
         authenticationClient = PublicClientApplicationBuilder.Create(Constants.ClientId)
+            .WithIosKeychainSecurityGroup(Constants.IosKeychainSecurityGroups)
+            .WithB2CAuthority(Constants.AuthoritySignIn)
             .WithRedirectUri($"msal{Constants.ClientId}://auth")
 #if ANDROID
             .WithParentActivityOrWindow(() => Platform.CurrentActivity)
