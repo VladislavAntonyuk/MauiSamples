@@ -1,5 +1,7 @@
 ﻿using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
+using Microsoft.Maui.Controls.PlatformConfiguration;
+using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Font = Microsoft.Maui.Font;
 
 namespace KanbanBoard;
@@ -11,6 +13,7 @@ public partial class MainPage : ContentPage
     public MainPage(MainPageViewModel viewModel, IPath path)
     {
         InitializeComponent();
+        On<iOS>().SetUseSafeArea(true);
         BindingContext = viewModel;
         _path = path;
     }
@@ -21,6 +24,8 @@ public partial class MainPage : ContentPage
         {
             BackgroundColor = Colors.Red,
             TextColor = Colors.Green,
+            CharacterSpacing = 1,
+            ActionButtonFont = Font.SystemFontOfSize(14),
             ActionButtonTextColor = Colors.Yellow,
             CornerRadius = new CornerRadius(10),
             Font = Font.SystemFontOfSize(14),

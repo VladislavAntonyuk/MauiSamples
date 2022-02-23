@@ -100,17 +100,14 @@ public class MainPageViewModel : ObservableObject
         var result = await AlertAsync("Delete card", $"Do you want to delete card \"{card.Name}\"?");
         if (!result) return;
 
-        bool isCancelled = false;
-        await SnackbarAsync("The card is about to be removed", "Cancel", () => isCancelled = true);
-        if (isCancelled)
+        await SnackbarAsync("The card is removed", "Cancel", async () =>
         {
             await ToastAsync("Task is cancelled");
-        }
-        else
-        {
-            await _cardsRepository.DeleteItem(card.Id);
+            await _cardsRepository.SaveItem(card);
             await UpdateCollection();
-        }
+        });
+        await _cardsRepository.DeleteItem(card.Id);
+        await UpdateCollection();
     });
 
     public ICommand DeleteColumn => new AsyncRelayCommand<ColumnInfo>(async columnInfo =>
@@ -120,19 +117,13 @@ public class MainPageViewModel : ObservableObject
             $"Do you want to delete column \"{columnInfo.Column.Name}\" and all its cards?");
         if (!result) return;
 
-        Columns.Remove(columnInfo);
-        bool isCancelled = false;
-        await SnackbarAsync("The column is removed", "Cancel", () =>
+        await SnackbarAsync("The column is removed", "Cancel", async () =>
         {
-            Columns.Add(columnInfo);
-            isCancelled = true;
+            await _columnsRepository.SaveItem(columnInfo.Column);
+            await UpdateCollection();
         });
 
-        if (isCancelled)
-        {
-            await _columnsRepository.DeleteItem(columnInfo.Column.Id);
-        }
-
+        await _columnsRepository.DeleteItem(columnInfo.Column.Id);
         await UpdateCollection();
     });
 
@@ -179,8 +170,7 @@ public class MainPageViewModel : ObservableObject
 
     private static Task SnackbarAsync(string title, string buttonText, Action action)
     {
-        if (Application.Current?.MainPage is null) return Task.FromResult(false);
-        return Application.Current.MainPage.DisplaySnackbar(title, action, buttonText, TimeSpan.FromSeconds(3));
+        return Snackbar.Make(title, action, buttonText, TimeSpan.FromSeconds(3)).Show();
     }
 
     private static Task ToastAsync(string title)
