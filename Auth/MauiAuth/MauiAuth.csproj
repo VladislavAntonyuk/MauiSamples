@@ -34,6 +34,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-pre7" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview2" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">

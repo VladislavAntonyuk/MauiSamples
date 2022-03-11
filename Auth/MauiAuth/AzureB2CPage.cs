@@ -2,9 +2,9 @@
 
 namespace MauiAuth;
 
-public class AzureB2C : AuthPage
+public class AzureB2CPage : AuthPage
 {
-    public AzureB2C() : base(new AuthServiceB2C())
+    public AzureB2CPage(AuthServiceB2C authServiceB2C) : base(authServiceB2C)
     {
     }
 }

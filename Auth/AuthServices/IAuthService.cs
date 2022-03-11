@@ -11,7 +11,13 @@ public interface IAuthService
 
 public abstract class BaseAuthService : IAuthService
 {
-    protected IPublicClientApplication authenticationClient;
+    private readonly IPublicClientApplication authenticationClient;
+
+    protected BaseAuthService(IPublicClientApplication authenticationClient)
+    {
+        this.authenticationClient = authenticationClient;
+    }
+
     public Task<AuthenticationResult?> SignInInteractively(CancellationToken cancellationToken)
     {
         return authenticationClient

@@ -19,7 +19,7 @@ public static class MauiProgram
             });
             
         builder.Services.AddBlazorWebView();
-        builder.Services.AddSingleton<IAuthService, AuthService>();
+        builder.Services.RegisterServices();
         builder.UseMauiCommunityToolkit();
 
         return builder.Build();

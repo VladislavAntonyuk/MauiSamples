@@ -1,4 +1,5 @@
-﻿using CommunityToolkit.Maui;
+﻿using AuthServices;
+using CommunityToolkit.Maui;
 
 namespace MauiAuth;
 
@@ -13,7 +14,10 @@ public static class MauiProgram
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
             });
-        builder.Services.AddSingleton<AuthServices.AuthService>();
+        builder.Services.AddScoped<MainPage>();
+        builder.Services.AddScoped<AzureB2CPage>();
+        builder.Services.AddScoped<AzureADPage>();
+        builder.Services.RegisterServices();
         builder.UseMauiCommunityToolkit();
         return builder.Build();
     }

@@ -4,9 +4,11 @@
 @using System.IdentityModel.Tokens.Jwt
 @using System.Text
 @using AuthServices
-@inject IAuthService authService
+@inject AuthService authService
+@inject AuthServiceB2C authServiceB2C
 
 <button @onclick="LoginAsync">Login</button>
+<button @onclick="LoginB2CAsync">Login B2C</button>
 <p>@resultMessage</p>
 @code
 {
@@ -14,26 +16,42 @@
 
     async Task LoginAsync()
     {
-        AuthenticationResult? result = null;
         try
         {
-            result = await authService.SignInInteractively(CancellationToken.None);
-            var token = result?.IdToken;
-            if (token != null)
-            {
-                var handler = new JwtSecurityTokenHandler();
-                var data = handler.ReadJwtToken(token);
-                if (data != null)
-                {
-                    var stringBuilder = new StringBuilder();
-                    stringBuilder.AppendLine($"Name: {data.Claims.FirstOrDefault(x => x.Type.Equals("name"))?.Value}");
-                    resultMessage = stringBuilder.ToString();
-                }
-            }
+            var result = await authService.SignInInteractively(CancellationToken.None);
+            GetResult(result);
         }
         catch (MsalClientException ex)
         {
             await Toast.Make(ex.Message).Show();
+        }
+    }
+    async Task LoginB2CAsync()
+    {
+        try
+        {
+            var result = await authServiceB2C.SignInInteractively(CancellationToken.None);
+            GetResult(result);
+        }
+        catch (MsalClientException ex)
+        {
+            await Toast.Make(ex.Message).Show();
+        }
+    }
+
+    void GetResult(AuthenticationResult? result)
+    {
+        var token = result?.IdToken;
+        if (token != null)
+        {
+            var handler = new JwtSecurityTokenHandler();
+            var data = handler.ReadJwtToken(token);
+            if (data != null)
+            {
+                var stringBuilder = new StringBuilder();
+                stringBuilder.AppendLine($"Name: {data.Claims.FirstOrDefault(x => x.Type.Equals("name"))?.Value}");
+                resultMessage = stringBuilder.ToString();
+            }
         }
     }
 }
