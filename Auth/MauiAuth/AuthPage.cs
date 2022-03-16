@@ -2,6 +2,7 @@
 using System.Text;
 using AuthServices;
 using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.Input;
 using Microsoft.Identity.Client;
 using Button = Microsoft.Maui.Controls.Button;
 
@@ -9,7 +10,7 @@ namespace MauiAuth;
 
 public abstract class AuthPage : ContentPage
 {
-    protected readonly IAuthService authService;
+    private readonly IAuthService authService;
     private readonly Button loginButton;
     private readonly Button logoutButton;
 
@@ -19,13 +20,13 @@ public abstract class AuthPage : ContentPage
         loginButton = new Button
         {
             Text = "Login",
-            Command = new Command(async () => await OnLoginClicked())
+            Command = new AsyncRelayCommand(OnLoginClicked)
         };
         logoutButton = new Button
         {
             Text = "Logout",
             IsVisible = false,
-            Command = new Command(async () => await OnLogoutClicked())
+            Command = new AsyncRelayCommand(OnLogoutClicked)
         };
         Content = new VerticalStackLayout
         {

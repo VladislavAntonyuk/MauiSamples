@@ -2,15 +2,9 @@
 
 namespace AuthServices;
 
-public class AuthService: BaseAuthService
+public class AuthService : BaseAuthService
 {
-    public AuthService()
+    public AuthService(IPublicClientApplication publicClientApplication) : base(publicClientApplication)
     {
-        authenticationClient = PublicClientApplicationBuilder.Create(Constants.ClientId)
-            .WithRedirectUri($"msal{Constants.ClientId}://auth")
-#if ANDROID
-            .WithParentActivityOrWindow(() => Platform.CurrentActivity)
-#endif
-            .Build();
     }
 }

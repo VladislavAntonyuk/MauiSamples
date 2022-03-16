@@ -1,22 +1,22 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiMultiWindow.MainPage"
-             BackgroundColor="{DynamicResource SecondaryColor}">
+             >
 
     <HorizontalStackLayout>
         <Button 
-        Text="Open new window"
-        FontAttributes="Bold"
-        SemanticProperties.Hint="Open new window"
-        Clicked="OpenClicked"
-        HorizontalOptions="Center" />
+            Text="Open new window"
+            FontAttributes="Bold"
+            SemanticProperties.Hint="Open new window"
+            Clicked="OpenClicked"
+            HorizontalOptions="Center" />
     
-    <Button 
-        Text="Close all windows"
-        FontAttributes="Bold"
-        SemanticProperties.Hint="Close all windows"
-        Clicked="CloseAllClicked"
-        HorizontalOptions="Center" />
+        <Button 
+            Text="Close all windows"
+            FontAttributes="Bold"
+            SemanticProperties.Hint="Close all windows"
+            Clicked="CloseAllClicked"
+            HorizontalOptions="Center" />
     </HorizontalStackLayout>
     
 
