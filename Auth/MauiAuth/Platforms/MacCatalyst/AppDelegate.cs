@@ -1,8 +1,7 @@
-﻿using Foundation;
+﻿namespace MauiAuth;
+using Foundation;
 using Microsoft.Identity.Client;
 using UIKit;
-
-namespace MauiAuth;
 
 [Register(nameof(AppDelegate))]
 public class AppDelegate : MauiUIApplicationDelegate

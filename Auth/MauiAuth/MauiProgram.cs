@@ -1,7 +1,6 @@
-﻿using AuthServices;
+﻿namespace MauiAuth;
+using AuthServices;
 using CommunityToolkit.Maui;
-
-namespace MauiAuth;
 
 public static class MauiProgram
 {

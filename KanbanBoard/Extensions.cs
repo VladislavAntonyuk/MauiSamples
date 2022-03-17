@@ -1,6 +1,5 @@
-﻿using System.Collections.ObjectModel;
-
-namespace KanbanBoard;
+﻿namespace KanbanBoard;
+using System.Collections.ObjectModel;
 
 public static class Extensions
 {

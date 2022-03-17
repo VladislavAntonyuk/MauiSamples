@@ -1,7 +1,6 @@
-﻿using Android.App;
+﻿namespace KanbanBoard;
+using Android.App;
 using Android.Runtime;
-
-namespace KanbanBoard;
 
 [Application]
 public class MainApplication : MauiApplication

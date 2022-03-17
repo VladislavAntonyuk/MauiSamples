@@ -1,6 +1,5 @@
-﻿using UIKit;
-
-namespace MauiAuth;
+﻿namespace MauiAuth;
+using UIKit;
 
 public class Program
 {

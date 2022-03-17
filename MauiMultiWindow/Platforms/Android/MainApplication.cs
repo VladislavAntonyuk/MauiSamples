@@ -1,7 +1,6 @@
-﻿using Android.App;
+﻿namespace MauiMultiWindow;
+using Android.App;
 using Android.Runtime;
-
-namespace MauiMultiWindow;
 
 [Application(ResizeableActivity = true)]
 public class MainApplication : MauiApplication

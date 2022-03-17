@@ -1,6 +1,6 @@
-﻿using Foundation;
+﻿namespace MauiBlazorPhotoGallery;
+using Foundation;
 
-namespace MauiBlazorPhotoGallery;
 [Register(nameof(AppDelegate))]
 public class AppDelegate : MauiUIApplicationDelegate
 {

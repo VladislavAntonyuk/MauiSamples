@@ -1,7 +1,7 @@
-﻿using Android.App;
+﻿namespace MauiBlazorPhotoGallery;
+using Android.App;
 using Android.Runtime;
 
-namespace MauiBlazorPhotoGallery;
 [Application]
 public class MainApplication : MauiApplication
 {

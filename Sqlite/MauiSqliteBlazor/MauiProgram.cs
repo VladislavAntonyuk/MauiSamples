@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Components.WebView.Maui;
+﻿namespace MauiSqliteBlazor;
+using Microsoft.AspNetCore.Components.WebView.Maui;
 using SqliteRepository;
 
-namespace MauiSqliteBlazor;
 public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()

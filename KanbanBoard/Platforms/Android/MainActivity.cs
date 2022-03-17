@@ -1,8 +1,6 @@
-﻿using Android.App;
+﻿namespace KanbanBoard;
+using Android.App;
 using Android.Content.PM;
-using Android.OS;
-
-namespace KanbanBoard;
 
 [Activity(
     Theme = "@style/Maui.SplashTheme",

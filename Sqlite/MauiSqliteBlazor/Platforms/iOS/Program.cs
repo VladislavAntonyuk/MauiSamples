@@ -1,6 +1,6 @@
-﻿using UIKit;
+﻿namespace MauiSqliteBlazor;
+using UIKit;
 
-namespace MauiSqliteBlazor;
 public class Program
 {
     // This is the main entry point of the application.

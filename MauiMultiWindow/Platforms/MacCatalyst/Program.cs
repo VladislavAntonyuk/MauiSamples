@@ -1,6 +1,5 @@
-﻿using UIKit;
-
-namespace MauiMultiWindow;
+﻿namespace MauiMultiWindow;
+using UIKit;
 
 public class Program
 {

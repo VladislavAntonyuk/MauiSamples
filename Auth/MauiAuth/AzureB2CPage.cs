@@ -1,6 +1,5 @@
-﻿using AuthServices;
-
-namespace MauiAuth;
+﻿namespace MauiAuth;
+using AuthServices;
 
 public class AzureB2CPage : AuthPage
 {

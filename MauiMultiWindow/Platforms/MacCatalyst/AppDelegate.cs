@@ -1,6 +1,5 @@
-﻿using Foundation;
-
-namespace MauiMultiWindow;
+﻿namespace MauiMultiWindow;
+using Foundation;
 
 [Register(nameof(AppDelegate))]
 public class AppDelegate : MauiUIApplicationDelegate

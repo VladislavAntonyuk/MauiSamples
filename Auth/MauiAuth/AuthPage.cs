@@ -1,12 +1,11 @@
-﻿using System.IdentityModel.Tokens.Jwt;
+﻿namespace MauiAuth;
+using System.IdentityModel.Tokens.Jwt;
 using System.Text;
 using AuthServices;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Identity.Client;
 using Button = Microsoft.Maui.Controls.Button;
-
-namespace MauiAuth;
 
 public abstract class AuthPage : ContentPage
 {

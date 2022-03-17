@@ -1,9 +1,8 @@
-﻿using Android.App;
+﻿namespace MauiAuth;
+using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Microsoft.Identity.Client;
-
-namespace MauiAuth;
 
 [Activity(Theme = "@style/Maui.SplashTheme",
     MainLauncher = true,

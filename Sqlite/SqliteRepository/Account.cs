@@ -1,6 +1,5 @@
-﻿using SQLite;
-
-namespace SqliteRepository;
+﻿namespace SqliteRepository;
+using SQLite;
 
 public class Account
 {

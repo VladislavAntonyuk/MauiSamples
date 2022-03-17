@@ -1,7 +1,7 @@
-﻿using MauiBlazorPhotoGallery.Data;
+﻿namespace MauiBlazorPhotoGallery;
+using MauiBlazorPhotoGallery.Data;
 using Microsoft.AspNetCore.Components.WebView.Maui;
 
-namespace MauiBlazorPhotoGallery;
 public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()

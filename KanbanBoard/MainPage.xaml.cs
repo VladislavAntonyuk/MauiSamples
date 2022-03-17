@@ -1,10 +1,9 @@
-﻿using CommunityToolkit.Maui.Alerts;
+﻿namespace KanbanBoard;
+using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Font = Microsoft.Maui.Font;
-
-namespace KanbanBoard;
 
 public partial class MainPage : ContentPage
 {

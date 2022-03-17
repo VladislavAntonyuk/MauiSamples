@@ -1,7 +1,7 @@
-﻿using Foundation;
+﻿namespace MauiSqlite;
+using Foundation;
 using SQLitePCL;
 
-namespace MauiSqlite;
 [Register(nameof(AppDelegate))]
 public class AppDelegate : MauiUIApplicationDelegate
 {

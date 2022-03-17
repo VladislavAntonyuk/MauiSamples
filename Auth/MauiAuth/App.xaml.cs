@@ -1,6 +1,5 @@
-﻿using Application = Microsoft.Maui.Controls.Application;
-
-namespace MauiAuth;
+﻿namespace MauiAuth;
+using Application = Microsoft.Maui.Controls.Application;
 
 public partial class App : Application
 {		

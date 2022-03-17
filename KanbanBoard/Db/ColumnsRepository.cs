@@ -1,7 +1,6 @@
+namespace KanbanBoard.Db;
 using KanbanBoard.Models;
 using Microsoft.EntityFrameworkCore;
-
-namespace KanbanBoard.Db;
 
 public class ColumnsRepository : IColumnsRepository
 {

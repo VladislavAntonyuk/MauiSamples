@@ -1,6 +1,5 @@
-﻿using Microsoft.Identity.Client;
-
-namespace AuthServices;
+﻿namespace AuthServices;
+using Microsoft.Identity.Client;
 
 public class AuthServiceB2C : BaseAuthService
 {
