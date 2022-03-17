@@ -9,11 +9,7 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .RegisterBlazorMauiWebView()
-            .UseMauiApp<App>()
-            .ConfigureFonts(fonts =>
-            {
-                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-            });
+            .UseMauiApp<App>();
 
         builder.Services.AddBlazorWebView();
         builder.Services.AddSingleton(new AccountRepository("accounts-blazor.db"));

@@ -10,8 +10,10 @@
 
 		<!-- App Identifier -->
 		<ApplicationId>com.vladislavantonyuk.kanbanboard</ApplicationId>
+		<ApplicationId Condition="$(TargetFramework.Contains('-windows'))">F46BB7C8-E6A5-4D9E-AAFE-8173B0819787</ApplicationId>
 
 		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
 		<!-- Required for C# Hot Reload -->
@@ -23,7 +25,9 @@
 		<MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg.svg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\appiconfg.svg" Color="#512BD4" />
+		<MauiSplashScreen Include="Resources\appiconfg.svg" Color="#512BD4" BaseSize="128,128"/>
+
+		<MauiFont Include="Resources\Fonts\*"/>
 	</ItemGroup>
 
 	<ItemGroup>

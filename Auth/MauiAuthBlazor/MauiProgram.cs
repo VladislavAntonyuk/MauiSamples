@@ -12,11 +12,7 @@ public static class MauiProgram
         builder
             .RegisterBlazorMauiWebView()
             .UseMauiApp<App>()
-            .ConfigureEssentials()
-            .ConfigureFonts(fonts =>
-            {
-                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-            });
+            .ConfigureEssentials();
             
         builder.Services.AddBlazorWebView();
         builder.Services.RegisterServices();

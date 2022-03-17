@@ -10,8 +10,10 @@
 
 		<!-- App Identifier -->
 		<ApplicationId>com.vladislavantonyuk.mauiauth</ApplicationId>
+		<ApplicationId Condition="$(TargetFramework.Contains('-windows'))">F0C4FB5F-C353-4024-8306-D405C06EFE90</ApplicationId>
 
 		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 
 		<!-- Required for C# Hot Reload -->
@@ -23,7 +25,7 @@
 		<MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg.svg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\appiconfg.svg" Color="#512BD4" />
+		<MauiSplashScreen Include="Resources\appiconfg.svg" Color="#512BD4" BaseSize="128,128"/>
 	</ItemGroup>
 
 	<ItemGroup>
