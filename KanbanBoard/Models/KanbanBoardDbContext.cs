@@ -1,6 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace KanbanBoard.Models;
+﻿namespace KanbanBoard.Models;
+using Microsoft.EntityFrameworkCore;
 
 public class KanbanBoardDbContext : DbContext
 {

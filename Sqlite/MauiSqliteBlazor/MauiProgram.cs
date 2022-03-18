@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Components.WebView.Maui;
+﻿namespace MauiSqliteBlazor;
+using Microsoft.AspNetCore.Components.WebView.Maui;
 using SqliteRepository;
 
-namespace MauiSqliteBlazor;
 public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
@@ -9,11 +9,7 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
         builder
             .RegisterBlazorMauiWebView()
-            .UseMauiApp<App>()
-            .ConfigureFonts(fonts =>
-            {
-                fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-            });
+            .UseMauiApp<App>();
 
         builder.Services.AddBlazorWebView();
         builder.Services.AddSingleton(new AccountRepository("accounts-blazor.db"));

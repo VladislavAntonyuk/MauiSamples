@@ -1,6 +1,5 @@
-﻿using AuthServices;
-
-namespace MauiAuth;
+﻿namespace MauiAuth;
+using AuthServices;
 
 public class AzureADPage : AuthPage
 {

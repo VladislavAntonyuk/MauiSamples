@@ -9,6 +9,6 @@ public partial class SecondPage : ContentPage
 
 	private void CloseClicked(object sender, EventArgs e)
 	{
-		Application.Current?.CloseWindow(this.GetParentWindow());
+		Application.Current?.CloseWindow(GetParentWindow());
 	}
 }

@@ -1,7 +1,7 @@
-﻿using Android.App;
+﻿namespace MauiSqlite;
+using Android.App;
 using Android.Runtime;
 
-namespace MauiSqlite;
 [Application]
 public class MainApplication : MauiApplication
 {

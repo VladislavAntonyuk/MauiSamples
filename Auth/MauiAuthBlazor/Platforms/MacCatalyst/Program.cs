@@ -1,7 +1,5 @@
-﻿using ObjCRuntime;
+﻿namespace MauiAuthBlazor;
 using UIKit;
-
-namespace MauiAuthBlazor;
 
 public class Program
 {

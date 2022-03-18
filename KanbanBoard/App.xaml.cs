@@ -1,8 +1,7 @@
-﻿using KanbanBoard.Db;
+﻿namespace KanbanBoard;
+using KanbanBoard.Db;
 using KanbanBoard.Models;
 using Application = Microsoft.Maui.Controls.Application;
-
-namespace KanbanBoard;
 
 public partial class App : Application
 {

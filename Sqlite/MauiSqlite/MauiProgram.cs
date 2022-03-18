@@ -1,6 +1,6 @@
-﻿using SqliteRepository;
+﻿namespace MauiSqlite;
+using SqliteRepository;
 
-namespace MauiSqlite;
 public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()

@@ -15,7 +15,7 @@ public static class MauiProgram
             .UseMauiApp<App>()
             .ConfigureFonts(fonts =>
             {
-                fonts.AddFont("FontAwesome5Solid.otf", "FASolid");
+                fonts.AddFont("Font Awesome 6 Free-Solid-900.otf", "FASolid");
             });
         builder.UseMauiCommunityToolkit();
 

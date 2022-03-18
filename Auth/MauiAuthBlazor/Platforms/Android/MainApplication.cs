@@ -1,7 +1,6 @@
-﻿using Android.App;
+﻿namespace MauiAuthBlazor;
+using Android.App;
 using Android.Runtime;
-
-namespace MauiAuthBlazor;
 
 [Application]
 public class MainApplication : MauiApplication

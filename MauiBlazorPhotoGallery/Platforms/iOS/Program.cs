@@ -1,6 +1,6 @@
-﻿using UIKit;
+﻿namespace MauiBlazorPhotoGallery;
+using UIKit;
 
-namespace MauiBlazorPhotoGallery;
 public class Program
 {
     // This is the main entry point of the application.

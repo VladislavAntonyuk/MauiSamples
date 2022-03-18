@@ -1,6 +1,6 @@
-﻿using UIKit;
+﻿namespace MauiSqlite;
+using UIKit;
 
-namespace MauiSqlite;
 public class Program
 {
     // This is the main entry point of the application.

@@ -1,6 +1,6 @@
-﻿using SqliteRepository;
+﻿namespace MauiSqlite;
+using SqliteRepository;
 
-namespace MauiSqlite;
 public partial class MainPage : ContentPage
 {
     private readonly AccountRepository _accountRepository;

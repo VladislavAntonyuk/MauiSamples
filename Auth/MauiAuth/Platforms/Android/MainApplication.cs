@@ -1,7 +1,6 @@
-﻿using Android.App;
+﻿namespace MauiAuth;
+using Android.App;
 using Android.Runtime;
-
-namespace MauiAuth;
 
 [Application]
 public class MainApplication : MauiApplication

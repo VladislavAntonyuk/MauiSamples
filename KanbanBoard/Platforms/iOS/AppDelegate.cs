@@ -1,7 +1,6 @@
-﻿using Foundation;
+﻿namespace KanbanBoard;
+using Foundation;
 using SQLitePCL;
-
-namespace KanbanBoard;
 
 [Register(nameof(AppDelegate))]
 public class AppDelegate : MauiUIApplicationDelegate

@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿namespace KanbanBoard;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
@@ -7,8 +8,6 @@ using CommunityToolkit.Mvvm.Input;
 using KanbanBoard.Db;
 using KanbanBoard.Models;
 using Application = Microsoft.Maui.Controls.Application;
-
-namespace KanbanBoard;
 
 public class MainPageViewModel : ObservableObject
 {

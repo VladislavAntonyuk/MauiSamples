@@ -1,6 +1,5 @@
-﻿using System.Collections.ObjectModel;
-
-namespace KanbanBoard.Models;
+﻿namespace KanbanBoard.Models;
+using System.Collections.ObjectModel;
 
 public sealed class Column
 {

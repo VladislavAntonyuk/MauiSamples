@@ -1,7 +1,7 @@
-﻿using Android.App;
+﻿namespace MauiSqliteBlazor;
+using Android.App;
 using Android.Runtime;
 
-namespace MauiSqliteBlazor;
 [Application]
 public class MainApplication : MauiApplication
 {

@@ -1,6 +1,6 @@
-﻿using Application = Microsoft.Maui.Controls.Application;
+﻿namespace MauiSqlite;
+using Application = Microsoft.Maui.Controls.Application;
 
-namespace MauiSqlite;
 public partial class App : Application
 {
     public App(IServiceProvider serviceProvider)
