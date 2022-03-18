@@ -25,13 +25,13 @@
 		<MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg.svg" Color="#512BD4" />
 
 		<!-- Splash Screen -->
-		<MauiSplashScreen Include="Resources\appiconfg.svg" Color="#512BD4" BaseSize="128,128"/>
+		<MauiSplashScreen Include="Resources\appiconfg.svg" Color="#512BD4" BaseSize="128,128" />
 
-		<MauiFont Include="Resources\Fonts\*"/>
+		<MauiFont Include="Resources\Fonts\*" />
 	</ItemGroup>
 
 	<ItemGroup>
-        <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-pre7" />
+        <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-pre8" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview2" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.3" />
         <PackageReference Include="SQLitePCLRaw.core" Version="2.1.0-pre20220207221914" />
