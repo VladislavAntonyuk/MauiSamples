@@ -39,10 +39,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="SQLitePCLRaw.core" Version="2.1.0-pre20220207221914" />
-		<PackageReference Include="SQLitePCLRaw.provider.sqlite3" Version="2.1.0-pre20220207221914" />
-		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.0-pre20220207221914" />
-		<PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.0-pre20220207221914" />
+		<PackageReference Include="SQLitePCLRaw.core" Version="2.1.0-pre20220318192836" />
+		<PackageReference Include="SQLitePCLRaw.provider.sqlite3" Version="2.1.0-pre20220318192836" />
+		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.0-pre20220318192836" />
+		<PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.0-pre20220318192836" />
 	</ItemGroup>
 
 	<ItemGroup>
