@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PizzaShop.MainPage"
+			 xmlns:vm="clr-namespace:PizzaShop"
+			 BackgroundColor="{DynamicResource SecondaryColor}"
+			 Title="Pizza">
+	<ContentPage.ToolbarItems>
+		<ToolbarItem x:Name="OrderButton" IconImageSource="https://images.vexels.com/media/users/3/157222/isolated/lists/53798bcd7054e4feaef568a5cf49574b-pizza-sticker.png"/>
+		<ToolbarItem Text="?" Clicked="ToolbarItem_Clicked"/>
+	</ContentPage.ToolbarItems>
+	<ContentPage.BindingContext>
+		<vm:MainViewModel/>
+	</ContentPage.BindingContext>
+
+    <ScrollView>
+		<CollectionView ItemsSource="{Binding Pizzas}" x:Name="PizzasCollectionView">
+			<CollectionView.ItemsLayout>
+				<LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
+			</CollectionView.ItemsLayout>
+			<CollectionView.ItemTemplate>
+				<DataTemplate>
+					<Grid RowDefinitions="60, *, 30, 30" ColumnDefinitions="*, 60">
+						<Image Grid.RowSpan="4" Grid.ColumnSpan="2" Aspect="AspectFit" Source="{Binding Image}"/>
+						<Button  Grid.Row="0" Grid.Column="1" Text="Like"/>
+						<Label Grid.Row="2" Grid.Column="0" Text="{Binding Name}"/>
+						<Label Grid.Row="3" Grid.Column="0" Text="{Binding Price}" VerticalOptions="End"/>
+						<Button Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Text="Buy"/>
+					</Grid>
+				</DataTemplate>
+			</CollectionView.ItemTemplate>
+		</CollectionView>
+	</ScrollView>
+</ContentPage>

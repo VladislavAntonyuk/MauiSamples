@@ -35,6 +35,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TutorialHelp", "TutorialHel
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiPaint", "MauiPaint\MauiPaint.csproj", "{CA6EF2BC-720F-41BF-8247-4BB971CBA57B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaShop", "PizzaShop\PizzaShop.csproj", "{E95BAD41-0356-4981-83EB-2D7AE785FA24}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -101,6 +103,11 @@ Global
 		{CA6EF2BC-720F-41BF-8247-4BB971CBA57B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA6EF2BC-720F-41BF-8247-4BB971CBA57B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CA6EF2BC-720F-41BF-8247-4BB971CBA57B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E95BAD41-0356-4981-83EB-2D7AE785FA24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E95BAD41-0356-4981-83EB-2D7AE785FA24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E95BAD41-0356-4981-83EB-2D7AE785FA24}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E95BAD41-0356-4981-83EB-2D7AE785FA24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E95BAD41-0356-4981-83EB-2D7AE785FA24}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
