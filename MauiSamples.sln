@@ -27,9 +27,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Auth", "Auth", "{14D979DA-85FE-41DC-9C59-A49EE52EC9A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiAuthBlazor", "Auth\MauiAuthBlazor\MauiAuthBlazor.csproj", "{6BF7A52A-311B-41C0-A112-3D8A06DA12FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiAuthBlazor", "Auth\MauiAuthBlazor\MauiAuthBlazor.csproj", "{6BF7A52A-311B-41C0-A112-3D8A06DA12FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthServices", "Auth\AuthServices\AuthServices.csproj", "{1C9ECD3D-B554-4FDA-92BE-B8CE461BCBA4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthServices", "Auth\AuthServices\AuthServices.csproj", "{1C9ECD3D-B554-4FDA-92BE-B8CE461BCBA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TutorialHelp", "TutorialHelp\TutorialHelp.csproj", "{104D085F-85E6-4014-99B7-9CF026558FC5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,6 +87,12 @@ Global
 		{1C9ECD3D-B554-4FDA-92BE-B8CE461BCBA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C9ECD3D-B554-4FDA-92BE-B8CE461BCBA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C9ECD3D-B554-4FDA-92BE-B8CE461BCBA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{104D085F-85E6-4014-99B7-9CF026558FC5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{104D085F-85E6-4014-99B7-9CF026558FC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{104D085F-85E6-4014-99B7-9CF026558FC5}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{104D085F-85E6-4014-99B7-9CF026558FC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{104D085F-85E6-4014-99B7-9CF026558FC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{104D085F-85E6-4014-99B7-9CF026558FC5}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

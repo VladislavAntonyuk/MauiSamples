@@ -2,15 +2,15 @@
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<RootNamespace>MauiMultiWindow</RootNamespace>
+		<RootNamespace>TutorialHelp</RootNamespace>
 		<EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
-    
+
 		<!-- Display name -->
-		<ApplicationTitle>MauiMultiWindow</ApplicationTitle>
+		<ApplicationTitle>TutorialHelp</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.vladislavantonyuk.mauimultiwindow</ApplicationId>
-		<ApplicationId Condition="$(TargetFramework.Contains('-windows'))">2DFD10F0-8335-4B45-9405-4869685E8B0F</ApplicationId>
+		<ApplicationId>com.vladislavantonyuk.tutorialhelp</ApplicationId>
+		<ApplicationId Condition="$(TargetFramework.Contains('-windows'))">21653F6C-7B0B-45D0-B7A5-9FA7CD0A6940</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -26,6 +26,11 @@
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\appiconfg.svg" Color="#512BD4" BaseSize="128,128" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-pre8" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview3" />
 	</ItemGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
