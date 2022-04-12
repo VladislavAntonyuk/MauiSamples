@@ -1,4 +1,5 @@
 ﻿namespace AuthServices;
+
 using Microsoft.Identity.Client;
 
 public class AuthService : BaseAuthService

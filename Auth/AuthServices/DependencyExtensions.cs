@@ -1,4 +1,5 @@
 ﻿namespace AuthServices;
+
 using Microsoft.Identity.Client;
 
 public static class DependencyExtensions
@@ -11,9 +12,9 @@ public static class DependencyExtensions
 #endif
             .WithRedirectUri($"msal{Constants.ClientId}://auth");
 
-        services.AddSingleton<AuthServices.AuthService>(new AuthService(clientApplicationBuilder.Build()));
+        services.AddSingleton(new AuthService(clientApplicationBuilder.Build()));
 
-        services.AddSingleton<AuthServices.AuthServiceB2C>(new AuthServiceB2C(
+        services.AddSingleton(new AuthServiceB2C(
             clientApplicationBuilder
                 .WithIosKeychainSecurityGroup(Constants.IosKeychainSecurityGroups)
                 .WithB2CAuthority(Constants.AuthoritySignIn)

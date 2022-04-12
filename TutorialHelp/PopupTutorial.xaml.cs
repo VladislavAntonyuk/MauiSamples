@@ -10,7 +10,7 @@ public partial class PopupTutorial : Popup
 #if WINDOWS
 		Size = size;
 #else
-		var mainDisplayInfo = DeviceDisplay.Current.GetMainDisplayInfo();
+		var mainDisplayInfo = DeviceDisplay.Current.MainDisplayInfo;
 		Size = new Size(mainDisplayInfo.Width / mainDisplayInfo.Density, mainDisplayInfo.Height / mainDisplayInfo.Density);
 #endif
 	}

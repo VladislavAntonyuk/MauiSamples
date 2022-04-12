@@ -3,7 +3,6 @@
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
 		<RootNamespace>KanbanBoard</RootNamespace>
-		<EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
 
 		<!-- Display name -->
 		<ApplicationTitle>KanbanBoard</ApplicationTitle>
@@ -15,9 +14,6 @@
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
-
-		<!-- Required for C# Hot Reload -->
-		<UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -33,16 +29,11 @@
 	<ItemGroup>
         <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-pre8" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview3" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.3" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.4" />
         <PackageReference Include="SQLitePCLRaw.core" Version="2.1.0-pre20220318192836" />
         <PackageReference Include="SQLitePCLRaw.provider.sqlite3" Version="2.1.0-pre20220318192836" />
         <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.0-pre20220318192836" />
         <PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.0-pre20220318192836" />
     </ItemGroup>
-
-	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
-		<OutputType>WinExe</OutputType>
-		<RuntimeIdentifier>win10-x64</RuntimeIdentifier>
-	</PropertyGroup>
 
 </Project>
