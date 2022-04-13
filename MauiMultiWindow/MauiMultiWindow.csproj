@@ -3,21 +3,17 @@
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
 		<RootNamespace>MauiMultiWindow</RootNamespace>
-		<EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
     
 		<!-- Display name -->
 		<ApplicationTitle>MauiMultiWindow</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.vladislavantonyuk.mauimultiwindow</ApplicationId>
-		<ApplicationId Condition="$(TargetFramework.Contains('-windows'))">2DFD10F0-8335-4B45-9405-4869685E8B0F</ApplicationId>
+		<ApplicationIdGuid>2DFD10F0-8335-4B45-9405-4869685E8B0F</ApplicationIdGuid>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
-
-		<!-- Required for C# Hot Reload -->
-		<UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -27,10 +23,5 @@
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\appiconfg.svg" Color="#512BD4" BaseSize="128,128" />
 	</ItemGroup>
-
-	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
-		<OutputType>WinExe</OutputType>
-		<RuntimeIdentifier>win10-x64</RuntimeIdentifier>
-	</PropertyGroup>
 
 </Project>

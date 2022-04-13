@@ -1,4 +1,5 @@
 ﻿namespace Microsoft.Identity.Client;
+
 using Foundation;
 
 /// <summary>

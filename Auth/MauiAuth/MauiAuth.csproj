@@ -3,21 +3,17 @@
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
 		<RootNamespace>MauiAuth</RootNamespace>
-		<EnablePreviewMsixTooling>true</EnablePreviewMsixTooling>
 
 		<!-- Display name -->
 		<ApplicationTitle>MauiAuth</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.vladislavantonyuk.mauiauth</ApplicationId>
-		<ApplicationId Condition="$(TargetFramework.Contains('-windows'))">F0C4FB5F-C353-4024-8306-D405C06EFE90</ApplicationId>
+		<ApplicationIdGuid>F0C4FB5F-C353-4024-8306-D405C06EFE90</ApplicationIdGuid>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
-
-		<!-- Required for C# Hot Reload -->
-		<UseInterpreter Condition="'$(Configuration)' == 'Debug'">True</UseInterpreter>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -29,14 +25,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-pre8" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-pre9" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview3" />
 	</ItemGroup>
-
-	<PropertyGroup Condition="$(TargetFramework.Contains('-windows'))">
-		<OutputType>WinExe</OutputType>
-		<RuntimeIdentifier>win10-x64</RuntimeIdentifier>
-	</PropertyGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\AuthServices\AuthServices.csproj" />
