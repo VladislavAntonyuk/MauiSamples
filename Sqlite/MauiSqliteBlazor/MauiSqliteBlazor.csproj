@@ -10,7 +10,7 @@
 
 		<!-- App Identifier -->
 		<ApplicationId>com.vladislavantonyuk.mauisqliteblazor</ApplicationId>
-		<ApplicationId Condition="$(TargetFramework.Contains('-windows'))">9963DE78-BA75-45A9-B699-50BB4A9E2E72</ApplicationId>
+		<ApplicationIdGuid>9963DE78-BA75-45A9-B699-50BB4A9E2E72</ApplicationIdGuid>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>

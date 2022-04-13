@@ -9,7 +9,7 @@
 
 		<!-- App Identifier -->
 		<ApplicationId>com.vladislavantonyuk.tutorialhelp</ApplicationId>
-		<ApplicationId Condition="$(TargetFramework.Contains('-windows'))">21653F6C-7B0B-45D0-B7A5-9FA7CD0A6940</ApplicationId>
+		<ApplicationIdGuid>21653F6C-7B0B-45D0-B7A5-9FA7CD0A6940</ApplicationIdGuid>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>

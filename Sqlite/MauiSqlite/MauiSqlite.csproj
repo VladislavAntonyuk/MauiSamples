@@ -9,7 +9,7 @@
 
 		<!-- App Identifier -->
 		<ApplicationId>com.vladislavantonyuk.mauisqlite</ApplicationId>
-		<ApplicationId Condition="$(TargetFramework.Contains('-windows'))">62039440-B213-481B-A0D2-2B5F1E9234C3</ApplicationId>
+		<ApplicationIdGuid>62039440-B213-481B-A0D2-2B5F1E9234C3</ApplicationIdGuid>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>

@@ -11,7 +11,7 @@
 
 		<!-- App Identifier -->
 		<ApplicationId>com.vladislavantonyuk.mauiblazorphotogallery</ApplicationId>
-		<ApplicationId Condition="$(TargetFramework.Contains('-windows'))">4AF9388C-BD4A-45A4-A477-03A479BF075A</ApplicationId>
+		<ApplicationIdGuid>4AF9388C-BD4A-45A4-A477-03A479BF075A</ApplicationIdGuid>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>

@@ -9,7 +9,7 @@
 
 		<!-- App Identifier -->
 		<ApplicationId>com.vladislavantonyuk.mauiauth</ApplicationId>
-		<ApplicationId Condition="$(TargetFramework.Contains('-windows'))">F0C4FB5F-C353-4024-8306-D405C06EFE90</ApplicationId>
+		<ApplicationIdGuid>F0C4FB5F-C353-4024-8306-D405C06EFE90</ApplicationIdGuid>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
