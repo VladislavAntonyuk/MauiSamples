@@ -16,21 +16,22 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    # - name: Setup .NET
-    #   uses: actions/setup-dotnet@v1
-    #   with:
-    #     dotnet-version: 6.x
-    - name: Windows Install .NET 6.0.300-preview.22204.3
-      if: startsWith(matrix.os, 'windows')
-      shell: pwsh
-      run: |
-        Invoke-WebRequest 'https://dot.net/v1/dotnet-install.ps1' -OutFile 'dotnet-install.ps1';
-        ./dotnet-install.ps1 -Version 6.0.300-preview.22204.3
-        dotnet --info
-    - name: macOS Install .NET 6.0.300-preview.22204.3
-      if: startsWith(matrix.os, 'macos')
-      run: |
-        curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --version 6.0.300-preview.22204.3 --quality preview
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: 6.0.300-preview.22204.3
+        include-prerelease: true
+    # - name: Windows Install .NET 6.0.300-preview.22204.3
+    #   if: startsWith(matrix.os, 'windows')
+    #   shell: pwsh
+    #   run: |
+    #     Invoke-WebRequest 'https://dot.net/v1/dotnet-install.ps1' -OutFile 'dotnet-install.ps1';
+    #     ./dotnet-install.ps1 -Version 6.0.300-preview.22204.3
+    #     dotnet --info
+    # - name: macOS Install .NET 6.0.300-preview.22204.3
+    #   if: startsWith(matrix.os, 'macos')
+    #   run: |
+    #     curl -sSL https://dot.net/v1/dotnet-install.sh | bash /dev/stdin --version 6.0.300-preview.22204.3 --quality preview
     - name: Install dependencies
       run: dotnet workload install maui
     - name: Build
