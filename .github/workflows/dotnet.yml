@@ -24,10 +24,9 @@ jobs:
       if: startsWith(matrix.os, 'windows')
       shell: pwsh
       run: |
-        wget https://dot.net/v1/dotnet-install.ps1 -OutFile C:\dotnet-install.ps1
-        C:\dotnet-install.ps1 -Version 6.0.300-preview.22204.3
+        Invoke-WebRequest 'https://dot.net/v1/dotnet-install.ps1' -OutFile 'dotnet-install.ps1';
+        ./dotnet-install.ps1 -Version 6.0.300-preview.22204.3
         dotnet --info
-        Write-Host "##vso[task.prependpath]C:\\Users\\VssAdministrator\\AppData\\Local\\Microsoft\\dotnet"
     - name: macOS Install .NET 6.0.300-preview.22204.3
       if: startsWith(matrix.os, 'macos')
       run: |
