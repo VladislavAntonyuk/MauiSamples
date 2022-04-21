@@ -27,7 +27,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-        <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-pre9" />
+        <PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-rc1" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview3" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.4" />
         <PackageReference Include="SQLitePCLRaw.core" Version="2.1.0-pre20220318192836" />

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+           xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+           xmlns:sys="clr-namespace:System;assembly=netstandard"
+           x:Class="MauiPaint.Help"
+		   Color="Transparent">
+
+	<ScrollView>
+		<VerticalStackLayout>
+			<Label HorizontalOptions="Center" Text=".NET MAUI Paint" FontSize="Large"/>
+			<Label HorizontalOptions="Center" Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{0:yyyy}'}" FontSize="Large" />
+			<Label Text="Draw any amount of lines, configure background color, line width, and line color.
+				   Save project and open it later. Export image. Toggle Light/Dark Mode."
+			       FontSize="Medium"
+			       Padding="0,10,0,0"/>
+		</VerticalStackLayout>
+	</ScrollView>
+
+</mct:Popup>

@@ -31,7 +31,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiAuthBlazor", "Auth\Maui
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AuthServices", "Auth\AuthServices\AuthServices.csproj", "{1C9ECD3D-B554-4FDA-92BE-B8CE461BCBA4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TutorialHelp", "TutorialHelp\TutorialHelp.csproj", "{104D085F-85E6-4014-99B7-9CF026558FC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TutorialHelp", "TutorialHelp\TutorialHelp.csproj", "{104D085F-85E6-4014-99B7-9CF026558FC5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiPaint", "MauiPaint\MauiPaint.csproj", "{CA6EF2BC-720F-41BF-8247-4BB971CBA57B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -93,6 +95,12 @@ Global
 		{104D085F-85E6-4014-99B7-9CF026558FC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{104D085F-85E6-4014-99B7-9CF026558FC5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{104D085F-85E6-4014-99B7-9CF026558FC5}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{CA6EF2BC-720F-41BF-8247-4BB971CBA57B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA6EF2BC-720F-41BF-8247-4BB971CBA57B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA6EF2BC-720F-41BF-8247-4BB971CBA57B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{CA6EF2BC-720F-41BF-8247-4BB971CBA57B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA6EF2BC-720F-41BF-8247-4BB971CBA57B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA6EF2BC-720F-41BF-8247-4BB971CBA57B}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
