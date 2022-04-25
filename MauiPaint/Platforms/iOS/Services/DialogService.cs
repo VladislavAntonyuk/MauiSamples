@@ -11,18 +11,19 @@ public class DialogService : IDialogService
 		var fileManager = NSFileManager.DefaultManager;
 		var fileUrl = fileManager.GetTemporaryDirectory().Append($"temp{fileExtension}", false);
 		await WriteStream(stream, fileUrl.Path, cancellationToken);
-		using var documentPickerViewController = new UIDocumentPickerViewController(new[] { fileUrl });
+		var documentPickerViewController = new UIDocumentPickerViewController(new[] { fileUrl });
 		var currentViewController = GetCurrentUIController();
 		var taskCompetedSource = new TaskCompletionSource<bool>();
+		documentPickerViewController.DidPickDocumentAtUrls += (s, e) =>
+		{
+			taskCompetedSource.SetResult(true);
+		};
 		documentPickerViewController.WasCancelled += (s, e) =>
 		{
 			taskCompetedSource.SetResult(false);
 		};
-		currentViewController?.PresentViewController(documentPickerViewController, true, () =>
-		{
-			taskCompetedSource.SetResult(true);
-		});
-		return taskCompetedSource.Task.Result;
+		currentViewController?.PresentViewController(documentPickerViewController, true, null);
+		return await taskCompetedSource.Task;
 	}
 
 	public async Task<Stream> OpenFileDialog(CancellationToken cancellationToken)
