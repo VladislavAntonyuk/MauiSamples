@@ -140,7 +140,7 @@ public partial class MainPageViewModel : ObservableObject
 	{
 		await using var stream = await DrawingView.GetImageStream(
 			lines,
-			new Size(100, 100),
+			new Size(1000, 1000),
 			Background is SolidColorBrush solidColorBrush ? solidColorBrush.Color : Colors.White);
 		await SaveToFile(stream, ".png", cancellationToken);
 	}
