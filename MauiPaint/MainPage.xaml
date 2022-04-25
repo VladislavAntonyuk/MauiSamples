@@ -6,7 +6,7 @@
              x:Class="MauiPaint.MainPage"
 			 x:DataType="vm:MainPageViewModel"
 			 Title=" ">
-
+	
 	<ContentPage.MenuBarItems>
 		<MenuBarItem Text="File">
 			<MenuFlyoutItem Text="New" Clicked="NewCommand"  Command="{Binding NewCommand}"/>

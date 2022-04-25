@@ -1,5 +1,6 @@
 ﻿namespace MauiPaint;
 using System.Collections.ObjectModel;
+using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Core.Extensions;
 using CommunityToolkit.Maui.Views;
@@ -7,10 +8,19 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Figures;
 using Serializer;
+using Services;
 
 public partial class MainPageViewModel : ObservableObject
 {
 	private readonly ISerializerService serializerService;
+	private readonly IDialogService dialogService;
+    private static List<IFigure> _figures = new ();
+
+    public MainPageViewModel(ISerializerService serializerService, IDialogService dialogService)
+    {
+	    this.serializerService = serializerService;
+	    this.dialogService = dialogService;
+    }
 
 	[ObservableProperty]
     private ObservableCollection<IDrawingLine> lines = new();
@@ -29,12 +39,6 @@ public partial class MainPageViewModel : ObservableObject
 		    figure.Draw(canvas, rect);
 	    }
     };
-    private static List<IFigure> _figures = new ();
-
-    public MainPageViewModel(ISerializerService serializerService)
-    {
-	    this.serializerService = serializerService;
-    }
 
     [ICommand]
 	void Quit()
@@ -102,13 +106,7 @@ public partial class MainPageViewModel : ObservableObject
 	[ICommand]
 	async Task Open(CancellationToken cancellationToken)
 	{
-		var fileResult = await FilePicker.PickAsync(PickOptions.Default);
-		if (fileResult is null)
-		{
-			return;
-		}
-		
-		await using var stream = await fileResult.OpenReadAsync();
+		await using var stream = await dialogService.OpenFileDialog(cancellationToken);
 		var projectState = await serializerService.Deserialize<ProjectState>(stream, cancellationToken);
 		if (projectState is null)
 		{
@@ -134,7 +132,7 @@ public partial class MainPageViewModel : ObservableObject
 			Background = Background
 		};
 		await using var stream = await serializerService.Serialize(projectState, cancellationToken);
-		await SaveToFile(stream, "Save project", cancellationToken);
+		await SaveToFile(stream, ".json", cancellationToken);
 	}
 
 	[ICommand]
@@ -144,32 +142,15 @@ public partial class MainPageViewModel : ObservableObject
 			lines,
 			new Size(100, 100),
 			Background is SolidColorBrush solidColorBrush ? solidColorBrush.Color : Colors.White);
-		await SaveToFile(stream, "Save image", cancellationToken);
+		await SaveToFile(stream, ".png", cancellationToken);
 	}
 
-	static async Task SaveToFile(Stream stream, string title, CancellationToken cancellationToken)
+	async Task SaveToFile(Stream stream, string fileExtension, CancellationToken cancellationToken)
 	{
-		if (Application.Current?.MainPage is null)
+		var isSaved = await dialogService.SaveFileDialog(stream, fileExtension, cancellationToken);
+		if (isSaved)
 		{
-			return;
+			await Toast.Make("File is saved", ToastDuration.Long).Show(cancellationToken);
 		}
-
-		string fileName;
-		do
-		{
-			fileName = await Application.Current.MainPage.DisplayPromptAsync(title, "Enter file name");
-		} while (string.IsNullOrWhiteSpace(fileName));
-		var filePath = Path.Combine(FileSystem.CacheDirectory, fileName);
-		await using (var fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write))
-		{
-			stream.Seek(0, SeekOrigin.Begin);
-			await stream.CopyToAsync(fileStream, cancellationToken);
-		}
-		
-		await Share.RequestAsync(new ShareFileRequest
-		{
-			Title = title,
-			File = new ShareFile(filePath)
-		});
 	}
 }
