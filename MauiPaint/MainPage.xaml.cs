@@ -1,4 +1,4 @@
-﻿namespace MauiPaint;
+namespace MauiPaint;
 
 using System.Windows.Input;
 
@@ -20,9 +20,15 @@ public partial class MainPage : ContentPage
 
 		BindingContext = viewModel = mainPageViewModel;
 	}
+	
+	public void RotateSlideValueChanged(object sender, ValueChangedEventArgs args)
+	{
+		viewModel.RotateCommand.Execute(args.NewValue);
+	}
 
 	// https://github.com/dotnet/maui/issues/6303
 	readonly MainPageViewModel viewModel;
+
 	public void NewCommand(object sender, EventArgs args)
 	{
 		viewModel.NewCommand.Execute(this);

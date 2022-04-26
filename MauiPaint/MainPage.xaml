@@ -68,10 +68,7 @@
 				</mct:UniformItemsLayout>
 				
 				<Label Text="Rotate"/>
-				<mct:UniformItemsLayout>
-					<Button Text="left" Command="{Binding RotateCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}"/>
-					<Button Text="right" Command="{Binding RotateCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}"/>
-				</mct:UniformItemsLayout>
+				<Slider Maximum="360" ValueChanged="RotateSlideValueChanged"/>
 			</VerticalStackLayout>
 		</ScrollView>
 		<mct:DrawingView Grid.Column="1"
@@ -80,6 +77,8 @@
 						 LineColor="{Binding LineColor}"
 						 LineWidth="{Binding LineWidth}"
 						 IsMultiLineModeEnabled="True"
-						 DrawAction="{Binding DrawAction}"/>
+						 DrawAction="{Binding DrawAction}"
+						 Width="{Binding CanvasWidth, Mode=OneWayToSource}"
+						 Height="{Binding CanvasHeight, Mode=OneWayToSource}"/>
 	</Grid>
 </ContentPage>

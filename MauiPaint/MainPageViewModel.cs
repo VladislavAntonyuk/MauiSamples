@@ -16,33 +16,37 @@ public partial class MainPageViewModel : ObservableObject
 {
 	private readonly ISerializerService serializerService;
 	private readonly IDialogService dialogService;
-    private static List<IFigure> _figures = new ();
+	private static List<IFigure> _figures = new();
 
-    public MainPageViewModel(ISerializerService serializerService, IDialogService dialogService)
-    {
-	    this.serializerService = serializerService;
-	    this.dialogService = dialogService;
-    }
+	public MainPageViewModel(ISerializerService serializerService, IDialogService dialogService)
+	{
+		this.serializerService = serializerService;
+		this.dialogService = dialogService;
+	}
 
 	[ObservableProperty]
-    private ObservableCollection<IDrawingLine> lines = new();
+	private ObservableCollection<IDrawingLine> lines = new();
 	[ObservableProperty]
-    private Brush background = Brush.White;
+	private Brush background = Brush.White;
 	[ObservableProperty]
-    private Color lineColor = Colors.Black;
+	private Color lineColor = Colors.Black;
 	[ObservableProperty]
-    private float lineWidth = 5;
+	private float lineWidth = 5;
+	[ObservableProperty]
+	private float canvasWidth;
+	[ObservableProperty]
+	private float canvasHeight;
 
-    [ObservableProperty]
-    private Action<ICanvas, RectF>? drawAction = (canvas, rect) =>
-    {
-	    foreach (var figure in _figures)
-	    {
-		    figure.Draw(canvas, rect);
-	    }
-    };
+	[ObservableProperty]
+	private Action<ICanvas, RectF>? drawAction = (canvas, rect) =>
+	{
+		foreach (var figure in _figures)
+		{
+			figure.Draw(canvas, rect);
+		}
+	};
 
-    [ICommand]
+	[ICommand]
 	void Quit()
 	{
 		Application.Current?.Quit();
@@ -79,7 +83,7 @@ public partial class MainPageViewModel : ObservableObject
 		LineColor = Colors.Black;
 		LineWidth = 5;
 	}
-	
+
 	[ICommand]
 	void SetLineColor(Color color)
 	{
@@ -89,7 +93,7 @@ public partial class MainPageViewModel : ObservableObject
 	[ICommand]
 	void SetEraser()
 	{
-		LineColor = Background is SolidColorBrush solidColorBrush? solidColorBrush.Color : Colors.White;
+		LineColor = Background is SolidColorBrush solidColorBrush ? solidColorBrush.Color : Colors.White;
 	}
 
 	[ICommand]
@@ -106,9 +110,8 @@ public partial class MainPageViewModel : ObservableObject
 	}
 
 	[ICommand]
-	void Rotate()
+	void Rotate(double angle)
 	{
-		var angle = 90;
 		var oldLines = Lines.ToImmutableList();
 		foreach (var line in oldLines)
 		{
@@ -116,20 +119,29 @@ public partial class MainPageViewModel : ObservableObject
 			line.Points.Clear();
 			foreach (var point in points)
 			{
-				line.Points.Add(RotatePoint(angle, point));
+				line.Points.Add(RotatePoint(point, new PointF(canvasWidth / 2, canvasHeight / 2), angle));
 			}
 		}
 
 		Lines = oldLines.ToObservableCollection();
-	}
-
-	public static PointF RotatePoint(float angle, PointF pt)
-	{
-		var a = angle * System.Math.PI / 180.0;
-		float cosa = (float)Math.Cos(a);
-		float sina = (float)Math.Sin(a);
-		PointF newPoint = new PointF((pt.X * cosa - pt.Y * sina) + 200, (pt.X * sina + pt.Y * cosa) - 200);
-		return newPoint;
+		
+		static PointF RotatePoint(PointF pointToRotate, PointF centerPoint, double angleInDegrees)
+		{
+			double angleInRadians = angleInDegrees * (Math.PI / 180);
+			double cosTheta = Math.Cos(angleInRadians);
+			double sinTheta = Math.Sin(angleInRadians);
+			return new PointF
+			{
+				X =
+					(float)
+					(cosTheta * (pointToRotate.X - centerPoint.X) -
+						sinTheta * (pointToRotate.Y - centerPoint.Y) + centerPoint.X),
+				Y =
+					(float)
+					(sinTheta * (pointToRotate.X - centerPoint.X) +
+					 cosTheta * (pointToRotate.Y - centerPoint.Y) + centerPoint.Y)
+			};
+		}
 	}
 
 	[ICommand]
