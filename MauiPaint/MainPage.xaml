@@ -66,6 +66,12 @@
 					<Button Text="Rectangle" Command="{Binding AddFigureCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}"/>
 					<Button Text="Ellipse" Command="{Binding AddFigureCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}"/>
 				</mct:UniformItemsLayout>
+				
+				<Label Text="Rotate"/>
+				<mct:UniformItemsLayout>
+					<Button Text="left" Command="{Binding RotateCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}"/>
+					<Button Text="right" Command="{Binding RotateCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}"/>
+				</mct:UniformItemsLayout>
 			</VerticalStackLayout>
 		</ScrollView>
 		<mct:DrawingView Grid.Column="1"

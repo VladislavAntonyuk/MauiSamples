@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
@@ -9,8 +9,7 @@
 
 		<!-- App Identifier -->
 		<ApplicationId>com.vladislavantonyuk.paint</ApplicationId>
-		<ApplicationGuidId>85D4B2EC-90E0-497E-8DE5-6B48395939C2</ApplicationGuidId>
-		<ApplicationId Condition="$(TargetFramework.Contains('-windows'))">85D4B2EC-90E0-497E-8DE5-6B48395939C2</ApplicationId>
+		<ApplicationIdGuid>85D4B2EC-90E0-497E-8DE5-6B48395939C2</ApplicationIdGuid>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>

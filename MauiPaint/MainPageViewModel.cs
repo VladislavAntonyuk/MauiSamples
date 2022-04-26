@@ -1,4 +1,6 @@
 ﻿namespace MauiPaint;
+
+using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
@@ -104,6 +106,33 @@ public partial class MainPageViewModel : ObservableObject
 	}
 
 	[ICommand]
+	void Rotate()
+	{
+		var angle = 90;
+		var oldLines = Lines.ToImmutableList();
+		foreach (var line in oldLines)
+		{
+			var points = line.Points.ToImmutableList();
+			line.Points.Clear();
+			foreach (var point in points)
+			{
+				line.Points.Add(RotatePoint(angle, point));
+			}
+		}
+
+		Lines = oldLines.ToObservableCollection();
+	}
+
+	public static PointF RotatePoint(float angle, PointF pt)
+	{
+		var a = angle * System.Math.PI / 180.0;
+		float cosa = (float)Math.Cos(a);
+		float sina = (float)Math.Sin(a);
+		PointF newPoint = new PointF((pt.X * cosa - pt.Y * sina) + 200, (pt.X * sina + pt.Y * cosa) - 200);
+		return newPoint;
+	}
+
+	[ICommand]
 	async Task Open(CancellationToken cancellationToken)
 	{
 		await using var stream = await dialogService.OpenFileDialog(cancellationToken);
@@ -141,7 +170,7 @@ public partial class MainPageViewModel : ObservableObject
 		await using var stream = await DrawingView.GetImageStream(
 			lines,
 			new Size(1000, 1000),
-			Background is SolidColorBrush solidColorBrush ? solidColorBrush.Color : Colors.White);
+			Background);
 		await SaveToFile(stream, ".png", cancellationToken);
 	}
 
