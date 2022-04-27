@@ -8,7 +8,7 @@
   <Identity Publisher="CN=Vladislav Antonyuk" />
 
   <Properties>
-    <PublisherDisplayName>MauiSqlite</PublisherDisplayName>
+    <PublisherDisplayName>Vladislav Antonyuk</PublisherDisplayName>
   </Properties>
 
   <Dependencies>

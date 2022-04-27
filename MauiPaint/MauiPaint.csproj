@@ -25,7 +25,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-rc1" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-rc2" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview3" />
 		<PackageReference Include="InterfaceConverter.SystemTextJson" Version="1.0.3" />
 	</ItemGroup>
