@@ -26,7 +26,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-pre9" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-rc2" />
 	</ItemGroup>
 
 	<ItemGroup>

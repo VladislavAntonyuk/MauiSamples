@@ -103,7 +103,7 @@
                                 </Label>
 
                                 <ImageButton
-                                    Command="{Binding BindingContext.DeleteColumn, Source={x:Reference Board}}"
+                                    Command="{Binding BindingContext.DeleteColumnCommand, Source={x:Reference Board}}"
                                     CommandParameter="{Binding .}"
                                     HorizontalOptions="EndAndExpand"
                                     VerticalOptions="Center">
@@ -154,7 +154,7 @@
                                                     Grid.RowSpan="2"
                                                     Grid.Column="1"
                                                     BackgroundColor="{DynamicResource CardBackgroundColor}"
-                                                    Command="{Binding BindingContext.DeleteCard, Source={x:Reference Board}}"
+                                                    Command="{Binding BindingContext.DeleteCardCommand, Source={x:Reference Board}}"
                                                     CommandParameter="{Binding .}"
                                                     WidthRequest="{StaticResource CardTitleSize}"
                                                     HeightRequest="{StaticResource CardTitleSize}"
@@ -174,7 +174,7 @@
                             </CollectionView>
 
                             <Button
-                                Command="{Binding BindingContext.AddCard, Source={x:Reference Board}}"
+                                Command="{Binding BindingContext.AddCardCommand, Source={x:Reference Board}}"
                                 CommandParameter="{Binding Column.Id}"
                                 Text="Add new card" />
                         </VerticalStackLayout>
@@ -191,7 +191,7 @@
 
         <Button
             BackgroundColor="Transparent"
-            Command="{Binding AddColumn}"
+            Command="{Binding AddColumnCommand}"
             Text="Add new column" />
     </VerticalStackLayout>
 </ContentPage>

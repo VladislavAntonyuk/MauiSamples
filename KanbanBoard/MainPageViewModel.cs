@@ -7,46 +7,55 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using KanbanBoard.Db;
 using KanbanBoard.Models;
-using Application = Microsoft.Maui.Controls.Application;
 
-public class MainPageViewModel : ObservableObject
+public partial class MainPageViewModel : ObservableObject
 {
-    private ObservableCollection<ColumnInfo> _columns;
-    private Card? _dragCard;
-    private int _position;
-    private readonly ICardsRepository _cardsRepository;
-    private readonly IColumnsRepository _columnsRepository;
+	[ObservableProperty]
+    private ObservableCollection<ColumnInfo> columns = new();
+	[ObservableProperty]
+    private int position;
+
+    private Card? dragCard;
+    private readonly ICardsRepository cardsRepository;
+    private readonly IColumnsRepository columnsRepository;
 
     public MainPageViewModel(ICardsRepository cardsRepository, IColumnsRepository columnsRepository)
     {
-        _cardsRepository = cardsRepository;
-        _columnsRepository = columnsRepository;
-        _columns = new();
+        this.cardsRepository = cardsRepository;
+        this.columnsRepository = columnsRepository;
         RefreshCommand.Execute(null);
     }
 
-    public ICommand RefreshCommand => new AsyncRelayCommand(UpdateCollection);
-
-    public ICommand DropCommand => new AsyncRelayCommand<ColumnInfo>(async columnInfo =>
+	[ICommand]
+    async Task DropCommand(ColumnInfo columnInfo)
     {
-        if (_dragCard is null || columnInfo is null || columnInfo.Column.Cards.Count >= columnInfo.Column.Wip) return;
+        if (dragCard is null || columnInfo is null || columnInfo.Column.Cards.Count >= columnInfo.Column.Wip) return;
 
-        var cardToUpdate = await _cardsRepository.GetItem(_dragCard.Id);
+        var cardToUpdate = await cardsRepository.GetItem(dragCard.Id);
         if (cardToUpdate is not null)
         {
             cardToUpdate.ColumnId = columnInfo.Column.Id;
-            await _cardsRepository.UpdateItem(cardToUpdate);
+            await cardsRepository.UpdateItem(cardToUpdate);
         }
 
-        await UpdateCollection();
+        await Refresh();
         Position = columnInfo.Index;
-    });
+    }
 
-    public ICommand DragStartingCommand => new RelayCommand<Card>(card => { _dragCard = card; });
+	[ICommand]
+    void DragStarting(Card card)
+	{
+		dragCard = card;
+	}
 
-    public ICommand DropCompletedCommand => new RelayCommand(() => { _dragCard = null; });
+	[ICommand]
+    void DragCompleted()
+	{
+		dragCard = null;
+	}
 
-    public ICommand AddColumn => new AsyncRelayCommand(async () =>
+	[ICommand]
+    async Task AddColumn()
     {
         var columnName = await UserPromptAsync("New column", "Enter column name", Keyboard.Default);
         if (string.IsNullOrWhiteSpace(columnName)) return;
@@ -60,15 +69,16 @@ public class MainPageViewModel : ObservableObject
             int.TryParse(wipString, out wip);
         } while (wip < 0);
 
-        var column = new Column { Name = columnName, Wip = wip, Order = _columns.Count + 1 };
-        await _columnsRepository.SaveItem(column);
-        await UpdateCollection();
+        var column = new Column { Name = columnName, Wip = wip, Order = columns.Count + 1 };
+        await columnsRepository.SaveItem(column);
+        await Refresh();
         await ToastAsync("Column is added");
-    });
+    }
 
-    public ICommand AddCard => new AsyncRelayCommand<int>(async columnId =>
+	[ICommand]
+    async Task AddCard(int columnId)
     {
-        var column = await _columnsRepository.GetItem(columnId);
+        var column = await columnsRepository.GetItem(columnId);
         if (column is null) return;
         var columnInfo = new ColumnInfo(0, column);
         if (columnInfo.IsWipReached)
@@ -81,7 +91,7 @@ public class MainPageViewModel : ObservableObject
         if (string.IsNullOrWhiteSpace(cardName)) return;
 
         var cardDescription = await UserPromptAsync("New card", "Enter card description", Keyboard.Default);
-        await _cardsRepository.SaveItem(new Card
+        await cardsRepository.SaveItem(new Card
         {
             Name = cardName,
             Description = cardDescription,
@@ -89,11 +99,12 @@ public class MainPageViewModel : ObservableObject
             Order = column.Cards.Count + 1
         });
 
-        await UpdateCollection();
+        await Refresh();
         await ToastAsync("Card is added");
-    });
+    }
 
-    public ICommand DeleteCard => new AsyncRelayCommand<Card>(async card =>
+	[ICommand]
+    async Task DeleteCard(Card card)
     {
         if (card is null) return;
         var result = await AlertAsync("Delete card", $"Do you want to delete card \"{card.Name}\"?");
@@ -102,14 +113,15 @@ public class MainPageViewModel : ObservableObject
         await SnackbarAsync("The card is removed", "Cancel", async () =>
         {
             await ToastAsync("Task is cancelled");
-            await _cardsRepository.SaveItem(card);
-            await UpdateCollection();
+            await cardsRepository.SaveItem(card);
+            await Refresh();
         });
-        await _cardsRepository.DeleteItem(card.Id);
-        await UpdateCollection();
-    });
+        await cardsRepository.DeleteItem(card.Id);
+        await Refresh();
+    }
 
-    public ICommand DeleteColumn => new AsyncRelayCommand<ColumnInfo>(async columnInfo =>
+	[ICommand]
+    async Task DeleteColumn(ColumnInfo columnInfo)
     {
         if (columnInfo is null) return;
         var result = await AlertAsync("Delete column",
@@ -118,29 +130,18 @@ public class MainPageViewModel : ObservableObject
 
         await SnackbarAsync("The column is removed", "Cancel", async () =>
         {
-            await _columnsRepository.SaveItem(columnInfo.Column);
-            await UpdateCollection();
+            await columnsRepository.SaveItem(columnInfo.Column);
+            await Refresh();
         });
 
-        await _columnsRepository.DeleteItem(columnInfo.Column.Id);
-        await UpdateCollection();
-    });
-
-    public ObservableCollection<ColumnInfo> Columns
-    {
-        get => _columns;
-        set => SetProperty(ref _columns, value);
+        await columnsRepository.DeleteItem(columnInfo.Column.Id);
+        await Refresh();
     }
 
-    public int Position
+	[ICommand]
+    private async Task Refresh()
     {
-        get => _position;
-        set => SetProperty(ref _position, value);
-    }
-
-    private async Task UpdateCollection()
-    {
-        var items = await _columnsRepository.GetItems();
+        var items = await columnsRepository.GetItems();
         Columns = items
             .OrderBy(c => c.Order)
             .ToList()
