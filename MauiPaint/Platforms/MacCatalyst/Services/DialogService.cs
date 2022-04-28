@@ -2,7 +2,6 @@
 
 using Foundation;
 using MauiPaint.Services;
-using MobileCoreServices;
 using UIKit;
 
 public class DialogService : IDialogService

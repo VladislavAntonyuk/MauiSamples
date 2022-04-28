@@ -12,7 +12,9 @@ public static class MauiProgram
         builder.Services.AddMauiBlazorWebView();
         builder.Services.RegisterServices();
         builder.UseMauiCommunityToolkit();
-
-        return builder.Build();
+#if DEBUG
+        builder.Services.AddBlazorWebViewDeveloperTools();
+#endif
+		return builder.Build();
     }
 }
