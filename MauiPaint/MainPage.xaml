@@ -26,7 +26,7 @@
 
 	<Grid ColumnDefinitions="200, *" ColumnSpacing="10">
 		<ScrollView Grid.Column="0">
-			<VerticalStackLayout>
+			<VerticalStackLayout Spacing="10">
 				<Label Text="Background"/>
 				<mct:UniformItemsLayout>
 					<Button BackgroundColor="Red" Command="{Binding SetBackgroundCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=BackgroundColor}"/>
