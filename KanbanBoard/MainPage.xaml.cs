@@ -3,6 +3,7 @@ using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+using Application = Application;
 using Font = Microsoft.Maui.Font;
 
 public partial class MainPage : ContentPage
@@ -41,6 +42,6 @@ public partial class MainPage : ContentPage
     {
         var dbPath = _path.GetDatabasePath();
         _path.DeleteFile(dbPath);
-        Environment.Exit(0);
+		Application.Current?.Quit();
     }
 }

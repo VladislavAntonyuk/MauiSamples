@@ -24,7 +24,7 @@
 		</MenuBarItem>
 	</ContentPage.MenuBarItems>
 
-	<Grid ColumnDefinitions="200, *">
+	<Grid ColumnDefinitions="200, *" ColumnSpacing="10">
 		<ScrollView Grid.Column="0">
 			<VerticalStackLayout>
 				<Label Text="Background"/>
@@ -39,6 +39,8 @@
 					<Button BackgroundColor="Pink" Command="{Binding SetBackgroundCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=BackgroundColor}"/>
 					<Button BackgroundColor="Brown" Command="{Binding SetBackgroundCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=BackgroundColor}"/>
 					<Button BackgroundColor="Purple" Command="{Binding SetBackgroundCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=BackgroundColor}"/>
+					<Button BackgroundColor="SkyBlue" Command="{Binding SetBackgroundCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=BackgroundColor}"/>
+					<Button BackgroundColor="Orange" Command="{Binding SetBackgroundCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=BackgroundColor}"/>
 				</mct:UniformItemsLayout>
 
 				<Label Text="Line width"/>
@@ -56,6 +58,8 @@
 					<Button BackgroundColor="Pink" Command="{Binding SetLineColorCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=BackgroundColor}"/>
 					<Button BackgroundColor="Brown" Command="{Binding SetLineColorCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=BackgroundColor}"/>
 					<Button BackgroundColor="Purple" Command="{Binding SetLineColorCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=BackgroundColor}"/>
+					<Button BackgroundColor="SkyBlue" Command="{Binding SetLineColorCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=BackgroundColor}"/>
+					<Button BackgroundColor="Orange" Command="{Binding SetLineColorCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=BackgroundColor}"/>
 				</mct:UniformItemsLayout>
 
 				<Label Text="Eraser"/>
@@ -65,6 +69,8 @@
 				<mct:UniformItemsLayout>
 					<Button Text="Rectangle" Command="{Binding AddFigureCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}"/>
 					<Button Text="Ellipse" Command="{Binding AddFigureCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}"/>
+					<Button Text="Text" Command="{Binding AddFigureCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}"/>
+					<Button Text="Image" Command="{Binding AddFigureCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}"/>
 				</mct:UniformItemsLayout>
 				
 				<Label Text="Rotate"/>

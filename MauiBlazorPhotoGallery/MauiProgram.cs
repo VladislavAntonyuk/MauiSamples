@@ -1,4 +1,7 @@
 ﻿namespace MauiBlazorPhotoGallery;
+
+using Data;
+
 public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()
@@ -6,6 +9,7 @@ public static class MauiProgram
         var builder = MauiApp.CreateBuilder();
 		builder.UseMauiApp<App>();
 
+		builder.Services.AddSingleton<MediaService>();
 		builder.Services.AddMauiBlazorWebView();
 #if DEBUG
 		builder.Services.AddBlazorWebViewDeveloperTools();

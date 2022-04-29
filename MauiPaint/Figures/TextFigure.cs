@@ -1,22 +1,20 @@
 ﻿namespace MauiPaint.Figures;
 
-public class Rectangle : IFigure
+public class TextFigure : IFigure
 {
 	public int X { get; set; }
 	public int Y { get; set; }
-	public int Width { get; set; } = 100;
-	public int Height { get; set; } = 100;
+	public string? Text { get; set; }
 
 	public void Draw(ICanvas canvas, RectF rectF)
 	{
-		canvas.DrawRectangle(X, Y, Width, Height);
+		canvas.DrawString(Text ?? string.Empty, X, Y, HorizontalAlignment.Center);
 	}
 
 	public async Task Configure()
 	{
 		X = await FigureExtensions.SetParameter<int>("X");
 		Y = await FigureExtensions.SetParameter<int>("Y");
-		Width = await FigureExtensions.SetParameter<int>("Width");
-		Height = await FigureExtensions.SetParameter<int>("Height");
+		Text = await FigureExtensions.SetParameter<string>("Text");
 	}
 }
