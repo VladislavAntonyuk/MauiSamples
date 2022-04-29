@@ -1,6 +1,6 @@
 ﻿namespace MauiPaint.Figures;
 
-public class FigureFactory
+public static class FigureFactory
 {
 	public static async Task<IFigure> CreateFigure(string name)
 	{
@@ -8,6 +8,8 @@ public class FigureFactory
 		{
 			"Ellipse" => new Ellipse(),
 			"Rectangle" => new Rectangle(),
+			"Text" => new TextFigure(),
+			"Image" => new ImageFigure(),
 			_ => throw new NotSupportedException()
 		};
 		await figure.Configure();
