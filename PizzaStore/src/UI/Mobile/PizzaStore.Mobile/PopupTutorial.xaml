@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+           xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+           xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+           x:Class="PizzaStore.Mobile.PopupTutorial"
+		   Color="Transparent"
+		   CanBeDismissedByTappingOutsideOfPopup="False">
+
+	<Grid RowDefinitions="55, 150, .37*, 80,*,60" ColumnDefinitions="75, *, 160,60">
+		<HorizontalStackLayout Grid.Row="0" Grid.Column="2">
+			<Label Text="Check your order" VerticalOptions="Center"/>
+			<Rectangle WidthRequest="55" HeightRequest="55"  Opacity="0.5" />
+		</HorizontalStackLayout>
+		<VerticalStackLayout Grid.Row="1" Grid.Column="3">
+			<Rectangle WidthRequest="60" HeightRequest="60"  Opacity="0.5" />
+			<Label Text="Add pizza to the favorite list" HorizontalTextAlignment="End"/>
+		</VerticalStackLayout>
+		<VerticalStackLayout Grid.Row="3" Grid.Column="0" >
+			<Label Text="Name and price of the pizza" VerticalOptions="End"/>
+			<Rectangle WidthRequest="75" HeightRequest="60"  Opacity="0.5"/>
+		</VerticalStackLayout>
+		<VerticalStackLayout Grid.Row="3" Grid.Column="3">
+			<Label Text="Add pizza to the order" HorizontalTextAlignment="End"/>
+			<Rectangle WidthRequest="60" HeightRequest="60"  Opacity="0.5"/>
+		</VerticalStackLayout>
+		<Button Grid.Row="5" Grid.ColumnSpan="4" Text="Close" Clicked="Button_Clicked"/>
+	</Grid>
+
+</mct:Popup>

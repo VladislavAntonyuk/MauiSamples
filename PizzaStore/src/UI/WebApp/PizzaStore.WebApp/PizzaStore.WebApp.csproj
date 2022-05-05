@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFrameworks>net6.0</TargetFrameworks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Application\PizzaStore.Application\PizzaStore.Application.csproj" />
+    <ProjectReference Include="..\..\..\Infrastructure\WebApp\PizzaStore.Infrastructure.WebApp.Business\PizzaStore.Infrastructure.WebApp.Business.csproj" />
+    <ProjectReference Include="..\..\..\Infrastructure\WebApp\PizzaStore.Infrastructure.WebApp.Data\PizzaStore.Infrastructure.WebApp.Data.csproj" />
+  </ItemGroup>
+
+</Project>

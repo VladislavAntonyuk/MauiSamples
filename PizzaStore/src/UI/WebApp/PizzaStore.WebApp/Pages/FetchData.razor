@@ -1,0 +1,72 @@
+﻿@page "/fetchdata"
+@using PizzaStore.Application.Interfaces.CQRS
+@using PizzaStore.Application.UseCases.Pizza
+@using PizzaStore.Application.UseCases.Pizza.Commands.Create
+@using PizzaStore.Application.UseCases.Pizza.Queries.GetPizza
+
+<PageTitle>Pizza</PageTitle>
+@inject IQueryDispatcher QueryDispatcher
+@inject ICommandDispatcher CommandDispatcher
+
+<h1>Pizza</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+
+<button onclick="@CreateItem">Create item</button>
+@if (classes == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var pizza in classes)
+            {
+                <tr>
+                    <td>@pizza.Id</td>
+                    <td>@pizza.Name</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private PizzaDto[]? classes;
+
+    protected override async Task OnInitializedAsync()
+    {
+	    await GetItems();
+    }
+
+	async Task GetItems()
+	{
+		var result = await QueryDispatcher.SendAsync<GetPizzaByFilterResponse, GetPizzaQuery>(new GetPizzaQuery
+		{
+			Limit = 25
+		});
+		if (result.IsSuccessful)
+		{
+			classes = result.Value.Items.ToArray();
+		}
+	}
+
+	async Task CreateItem()
+	{
+		var result = await CommandDispatcher.SendAsync<PizzaDto, CreatePizzaCommand>(new CreatePizzaCommand
+		{
+			Name = Path.GetRandomFileName()
+		});
+		if (result.IsSuccessful)
+		{
+			await GetItems();
+		}
+	}
+}

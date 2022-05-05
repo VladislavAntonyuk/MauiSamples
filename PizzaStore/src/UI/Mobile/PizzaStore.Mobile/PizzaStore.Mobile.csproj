@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<RootNamespace>PizzaStore.Mobile</RootNamespace>
+
+		<ApplicationTitle>PizzaStore</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.vladislavantonyuk.pizzastore</ApplicationId>
+		<ApplicationIdGuid>FCA5700A-30D6-4A26-AF60-D051E6A3F173</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\appicon.svg" ForegroundFile="Resources\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\appiconfg.svg" Color="#512BD4" BaseSize="128,128" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-rc2" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview3" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\Application\PizzaStore.Application\PizzaStore.Application.csproj" />
+	  <ProjectReference Include="..\..\..\Infrastructure\Mobile\PizzaStore.Infrastructure.Mobile.Business\PizzaStore.Infrastructure.Mobile.Business.csproj" />
+	  <ProjectReference Include="..\..\..\Infrastructure\Mobile\PizzaStore.Infrastructure.Mobile.Data\PizzaStore.Infrastructure.Mobile.Data.csproj" />
+	</ItemGroup>
+
+</Project>
