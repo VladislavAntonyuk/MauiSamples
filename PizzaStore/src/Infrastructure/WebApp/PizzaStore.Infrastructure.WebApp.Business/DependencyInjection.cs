@@ -8,7 +8,7 @@ public static class DependencyInjection
 {
 	public static void AddInfrastructureBusiness(this IServiceCollection services)
 	{
-		services.AddScoped<IWebAppInterface, WebServicePizza>();
+		services.AddScoped<IPaymentService, CreditCardPaymentService>();
 		services.AddScoped<IServiceInterface1, ServicePizza>();
 	}
 }

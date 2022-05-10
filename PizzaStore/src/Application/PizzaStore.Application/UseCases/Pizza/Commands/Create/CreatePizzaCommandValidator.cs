@@ -16,7 +16,7 @@ public class CreatePizzaCommandValidator : AbstractValidator<CreatePizzaCommand>
 
 	private void ConfigureValidation()
 	{
-		RuleFor(x => x).NotEmpty();
+		RuleFor(x => x.Price).GreaterThan(0);
 
 		RuleFor(x => x.Name)
 			.NotEmpty()

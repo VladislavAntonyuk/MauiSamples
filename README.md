@@ -8,4 +8,6 @@ MauiMultiWindow - https://vladislavantonyuk.azurewebsites.net/articles/.NET-MAUI
 
 KanbanBoard - https://vladislavantonyuk.azurewebsites.net/articles/Creating-Kanban-Board-using-Xamarin-Forms-5
 
-TutorialHelp - https://vladislavantonyuk.azurewebsites.net/articles/Interactive-app-tutorial-in-.NET-MAUI
+TutorialHelp - https://vladislavantonyuk.azurewebsites.net/articles/Interactive-app-tutorial-in-.NET-
+
+PizzaStore - https://vladislavantonyuk.azurewebsites.net/articles/Onion-architecture-in-the-development-of-cross-platform-applications.-Part-1.-Overview
