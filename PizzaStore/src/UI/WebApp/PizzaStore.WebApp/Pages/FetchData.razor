@@ -12,8 +12,8 @@
 
 <p>This component demonstrates fetching data from a service.</p>
 
-<button onclick="@CreateItem">Create item</button>
-@if (classes == null)
+<button @onclick="CreateItem">Create item</button>
+@if (pizzas == null)
 {
     <p><em>Loading...</em></p>
 }
@@ -27,7 +27,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var pizza in classes)
+            @foreach (var pizza in pizzas)
             {
                 <tr>
                     <td>@pizza.Id</td>
@@ -39,7 +39,7 @@ else
 }
 
 @code {
-    private PizzaDto[]? classes;
+    private PizzaDto[]? pizzas;
 
     protected override async Task OnInitializedAsync()
     {
@@ -54,7 +54,7 @@ else
 		});
 		if (result.IsSuccessful)
 		{
-			classes = result.Value.Items.ToArray();
+			pizzas = result.Value.Items.ToArray();
 		}
 	}
 
