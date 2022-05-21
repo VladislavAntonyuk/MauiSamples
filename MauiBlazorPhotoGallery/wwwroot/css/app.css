@@ -1,4 +1,4 @@
-﻿html, body {
+html, body {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
@@ -7,7 +7,7 @@ h1:focus {
 }
 
 a, .btn-link {
-	color: #0077cc;
+    color: #0071c1;
 }
 
 .btn-primary {
@@ -57,6 +57,26 @@ a, .btn-link {
 	color: white;
 }
 
-	.blazor-error-boundary::after {
-		content: "An error has occurred."
+.blazor-error-boundary::after {
+    content: "An error has occurred."
+}
+
+.status-bar-safe-area {
+    display: none;
+}
+
+@supports (-webkit-touch-callout: none) {
+    .status-bar-safe-area {
+        display: flex;
+        position: sticky;
+        top: 0;
+        height: env(safe-area-inset-top);
+        background-color: #f7f7f7;
+        width: 100%;
+        z-index: 1;
+    }
+
+	.flex-column, .navbar-brand {
+		padding-left: env(safe-area-inset-left);
 	}
+}

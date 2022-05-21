@@ -1,0 +1,123 @@
+variables:
+  solution: 'PizzaStore.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  isMain: $[eq(variables['Build.SourceBranch'], 'refs/heads/main')]
+  isDevelop: $[eq(variables['Build.SourceBranch'], 'refs/heads/develop')]
+
+trigger:
+- main
+- develop
+
+stages:
+- stage: Build
+  jobs:
+  - job: Build
+    pool:
+      vmImage: 'ubuntu-latest'
+
+    steps:
+    
+    - checkout: self
+      submodules: recursive
+
+    - task: UseDotNet@2
+      displayName: 'Use .NET SDK'
+      inputs:
+        packageType: 'sdk'
+        version: '6.x'
+        includePreviewVersions: true
+
+    - task: PowerShell@2
+      displayName: 'Restore package'
+      inputs:
+        targetType: 'inline'
+        script: |
+          dotnet restore $(solution)
+        pwsh: true
+
+    - task: DotNetCoreCLI@2
+      displayName: 'Check Dependencies'
+      inputs:
+        command: 'custom'
+        custom: 'list'
+        arguments: 'package --vulnerable --include-transitive'
+        projects: $(solution)
+
+    - task: DockerCompose@0
+      displayName: "Run a Docker Compose command"
+      inputs:
+        dockerComposeFile: "docker-compose-integration-tests.yml"
+        dockerComposeCommand: "up -d"
+
+    - task: DotNetCoreCLI@2
+      displayName: 'Tests'
+      inputs:
+        command: 'test'
+        projects: '$(solution)'
+        arguments: '--configuration $(buildConfiguration) --no-restore --settings ".runsettings" --collect "XPlat code coverage" --logger trx --results-directory $(Agent.TempDirectory)'
+        publishTestResults: false
+  
+    - task: PublishTestResults@2
+      displayName: 'Publish Test Results'
+      inputs:
+        testResultsFormat: VSTest
+        testResultsFiles: '**/*.trx'
+        searchFolder: $(Agent.TempDirectory)
+
+    - task: reportgenerator@4
+      inputs:
+        reports: '$(Agent.TempDirectory)/**/coverage.cobertura.xml'
+        targetdir: '$(Build.SourcesDirectory)/CoverageResults'
+
+    - task: PublishCodeCoverageResults@1
+      displayName: 'Publish Code Coverage Results'
+      inputs:
+        codeCoverageTool: 'Cobertura'
+        summaryFileLocation: '$(Build.SourcesDirectory)/CoverageResults/Cobertura.xml'
+        failIfCoverageEmpty: true
+
+    - task: DotNetCoreCLI@2
+      displayName: 'Publish WebApp'
+      inputs:
+        command: publish
+        publishWebProjects: false
+        projects: 'src/UI/WebApp/PizzaStore.WebApp.csproj'
+        arguments: '--configuration $(buildConfiguration) --no-restore --output "$(Build.ArtifactStagingDirectory)/webapp" -p:Version="$(Build.BuildId)"'
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+        ArtifactName: 'WebApp-$(Build.SourceBranchName)-$(Build.DefinitionVersion)'
+
+- stage: Deploy
+  jobs:
+    - deployment: deploy
+      displayName: 'Deploy to Azure'
+      pool:
+        vmImage: 'windows-latest'
+      environment: 'prod'
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+            - task: AzureRmWebAppDeployment@4    
+              displayName: 'Preview Azure Web App Deploy'
+              condition: and(succeeded(), eq(variables.isDevelop, true))
+              inputs:
+                azureSubscription: 'PizzaStore Subscription'
+                appType: 'webApp'
+                WebAppName: 'PizzaStore-preview'
+                packageForLinux: '$(Pipeline.Workspace)/**/WebApp*.zip'
+                enableCustomDeployment: true
+                RemoveAdditionalFilesFlag: true
+
+            - task: AzureRmWebAppDeployment@4    
+              displayName: 'Production Azure Web App Deploy'
+              condition: and(succeeded(), eq(variables.isMain, true))
+              inputs:
+                azureSubscription: 'PizzaStore Subscription'
+                appType: 'webApp'
+                WebAppName: 'pizzastore'
+                packageForLinux: '$(Pipeline.Workspace)/**/WebApp*.zip'
+                enableCustomDeployment: true
+                RemoveAdditionalFilesFlag: true

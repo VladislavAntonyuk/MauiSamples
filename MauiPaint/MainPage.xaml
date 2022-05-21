@@ -4,8 +4,7 @@
 			 xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
 			 xmlns:vm="clr-namespace:MauiPaint"
              x:Class="MauiPaint.MainPage"
-			 x:DataType="vm:MainPageViewModel"
-			 Title=" ">
+			 x:DataType="vm:MainPageViewModel">
 	
 	<ContentPage.MenuBarItems>
 		<MenuBarItem Text="File">

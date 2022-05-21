@@ -1,0 +1,43 @@
+﻿@page "/fetchdata"
+@using PizzaStore.Application.UseCases.Pizza
+@inherits PizzaStoreBaseComponent
+
+<Head Title="Pizza" />
+
+<MudText Typo="Typo.h1">Pizza</MudText>
+
+<MudText Typo="Typo.body1">This component demonstrates fetching data from a service.</MudText>
+
+<MudButton OnClick="@CreatePizza" Color="Color.Primary">Create item</MudButton>
+
+<MudTable @ref="table" ServerData="@(new Func<TableState, Task<TableData<PizzaDto>>>(LoadPizzas))" Virtualize="true" FixedHeader="true">
+    <ToolBarContent>
+        <MudText Typo="Typo.h6">Pizza</MudText>
+        <MudSpacer />
+        <MudTextField @ref="searchString" T="string" ValueChanged="OnSearch" Placeholder="Search" Adornment="Adornment.Start"
+                      AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0">
+        </MudTextField>
+    </ToolBarContent>
+    <HeaderContent>
+        <MudTh>Id</MudTh>
+        <MudTh>Name</MudTh>
+        <MudTh></MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Id">@context.Id</MudTd>
+        <MudTd DataLabel="Name">@context.Name</MudTd>
+        <MudTd DataLabel="">
+            <MudButton Color="Color.Primary" Command="updateCommand" CommandParameter="@context.Id">Update</MudButton>
+            <MudButton Color="Color.Primary" Command="deleteCommand" CommandParameter="@context.Id">Delete</MudButton>
+        </MudTd>
+    </RowTemplate>
+    <NoRecordsContent>
+        <MudText>No matching records found</MudText>
+    </NoRecordsContent>
+    <LoadingContent>
+        <MudText>Loading...</MudText>
+    </LoadingContent>
+    <PagerContent>
+        <MudTablePager />
+    </PagerContent>
+</MudTable>

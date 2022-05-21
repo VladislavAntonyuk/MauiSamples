@@ -1,0 +1,52 @@
+﻿@inherits LayoutComponentBase
+
+<PageTitle>PizzaStore.WebApp</PageTitle>
+
+
+<MudRTLProvider RightToLeft="@rightToLeft">
+	<MudThemeProvider @ref="@mudThemeProvider" @bind-IsDarkMode="@isDarkMode"/>
+	<ErrorBoundary>
+		<ChildContent>
+			<MudDialogProvider CloseButton="true"
+			                   CloseOnEscapeKey="true"
+			                   DisableBackdropClick="true"
+			                   Position="DialogPosition.Center"/>
+		</ChildContent>
+	</ErrorBoundary>
+	<MudSnackbarProvider/>
+
+	<MudLayout>
+		<MudAppBar Elevation="1">
+			<MudHidden Breakpoint="Breakpoint.SmAndDown">
+				<MudLink Href="/">
+					<img src="favicon.ico" alt="PizzaStore" class="mud-icon-root mud-icon-size-large"/>
+				</MudLink>
+			</MudHidden>
+			<MudHidden Breakpoint="Breakpoint.MdAndUp">
+				<MudIconButton Icon="@Icons.Material.Outlined.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="DrawerToggle"/>
+			</MudHidden>
+			<MudHidden Breakpoint="Breakpoint.Xs">
+				<MudLink Href="/" Typo="Typo.h6" Class="ml-4">PizzaStore</MudLink>
+			</MudHidden>
+			<MudHidden Breakpoint="Breakpoint.Xs" Invert="true">
+				<MudLink Href="/" Typo="Typo.subtitle2">PizzaStore</MudLink>
+			</MudHidden>
+			<MudSpacer/>
+			<MudToggleIconButton @bind-Toggled="rightToLeft" Icon="@Icons.Material.Filled.FormatTextdirectionRToL"
+			                     ToggledIcon="@Icons.Material.Filled.FormatTextdirectionRToL"/>
+		</MudAppBar>
+
+		<MudDrawer @bind-Open="drawerOpen" Elevation="1" ClipMode="DrawerClipMode.Always">
+			<NavMenu/>
+		</MudDrawer>
+		<MudMainContent>
+			<MudContainer MaxWidth="MaxWidth.False">
+				<ErrorBoundary>
+					<ChildContent>
+						@Body
+					</ChildContent>
+				</ErrorBoundary>
+			</MudContainer>
+		</MudMainContent>
+	</MudLayout>
+</MudRTLProvider>

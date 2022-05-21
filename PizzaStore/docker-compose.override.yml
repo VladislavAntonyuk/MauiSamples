@@ -1,0 +1,16 @@
+version: '3.4'
+
+services:
+  webapp:
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+
+  db:
+    ports:
+      - "3306:3306"
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - "8080:8080"

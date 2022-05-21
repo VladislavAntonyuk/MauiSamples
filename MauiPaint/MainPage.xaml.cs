@@ -1,4 +1,4 @@
-namespace MauiPaint;
+﻿namespace MauiPaint;
 
 using System.Windows.Input;
 
