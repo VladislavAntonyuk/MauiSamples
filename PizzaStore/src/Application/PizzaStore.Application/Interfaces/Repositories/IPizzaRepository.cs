@@ -10,5 +10,9 @@ public interface IPizzaRepository
 	Task<Pizza?> GetById(int id, CancellationToken cancellationToken);
 	Task<bool> IsExist(string parameter, CancellationToken cancellationToken);
 	Task<IEnumerable<Pizza>> GetAll(CancellationToken cancellationToken);
-	Task<IPaginatedList<Pizza>> GetPagedAsync(string? parameter, int requestOffset, int requestLimit, CancellationToken cancellationToken);
+
+	Task<IPaginatedList<Pizza>> GetPagedAsync(string? parameter,
+		int requestOffset,
+		int requestLimit,
+		CancellationToken cancellationToken);
 }

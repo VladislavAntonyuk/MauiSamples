@@ -4,8 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 public partial class MobileAppContext : DbContext
 {
-	public MobileAppContext(DbContextOptions<MobileAppContext> options)
-		: base(options)
+	public MobileAppContext(DbContextOptions<MobileAppContext> options) : base(options)
 	{
 	}
 

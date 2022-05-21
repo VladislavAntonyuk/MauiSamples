@@ -1,4 +1,4 @@
-namespace PizzaStore.Application.UseCases.Pizza.Commands.Update;
+﻿namespace PizzaStore.Application.UseCases.Pizza.Commands.Update;
 
 using FluentValidation;
 using Interfaces.Repositories;
@@ -16,7 +16,9 @@ public class UpdatePizzaCommandValidator : AbstractValidator<UpdatePizzaCommand>
 
 	private void ConfigureValidation()
 	{
-		RuleFor(x => x.Price).GreaterThan(0);
+		RuleFor(x => x.Price)
+			.GreaterThan(0)
+			.When(x => x.Price is not null);
 
 		RuleFor(x => x.Name)
 			.NotEmpty()

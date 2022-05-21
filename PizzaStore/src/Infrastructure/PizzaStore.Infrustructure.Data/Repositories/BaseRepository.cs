@@ -25,5 +25,4 @@ public abstract class BaseRepository
 
 		await context.SaveChangesAsync(cancellationToken);
 	}
-
 }

@@ -4,14 +4,14 @@ using Interfaces.CQRS;
 
 public class UpdatePizzaCommand : ICommand<PizzaDto>
 {
-	public UpdatePizzaCommand(int pizzaId)
+	public UpdatePizzaCommand(int id)
 	{
-		PizzaId = pizzaId;
+		Id = id;
 	}
 
-	public int PizzaId { get; }
+	public int Id { get; }
 	public string Name { get; set; } = string.Empty;
 	public string? Description { get; set; }
 	public string? Image { get; set; }
-	public decimal Price { get; set; }
+	public decimal? Price { get; set; }
 }

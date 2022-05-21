@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PizzaStore.Infrastructure.WebApp.Data.Repositories.Models;
 
@@ -10,9 +11,10 @@ using PizzaStore.Infrastructure.WebApp.Data.Repositories.Models;
 namespace PizzaStore.Infrastructure.WebApp.Data.Migrations
 {
     [DbContext(typeof(WebAppContext))]
-    partial class WebAppContextModelSnapshot : ModelSnapshot
+    [Migration("20220521132347_PizzaStore")]
+    partial class PizzaStore
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

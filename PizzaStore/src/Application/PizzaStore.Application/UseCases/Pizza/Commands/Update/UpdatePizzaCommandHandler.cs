@@ -17,6 +17,7 @@ public class UpdatePizzaCommandHandler : BasePizzaHandler, ICommandHandler<Pizza
 		if (pizza is not null)
 		{
 			var classToUpdate = Mapper.Map<Pizza>(command);
+			classToUpdate.Price = classToUpdate.Price == 0 ? pizza.Price : classToUpdate.Price;
 			var updatedClass = await PizzaRepository.Update(classToUpdate, cancellationToken);
 			return new OperationResult<PizzaDto>
 			{

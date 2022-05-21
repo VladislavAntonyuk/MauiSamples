@@ -12,7 +12,7 @@ public class CommandDispatcher : ICommandDispatcher
 		this.sender = sender;
 	}
 
-	public Task<IOperationResult<TResult>> SendAsync<TResult, TCommand>(TCommand command, CancellationToken cancellationToken = default)
+	public Task<IOperationResult<TResult>> SendAsync<TResult, TCommand>(TCommand command, CancellationToken cancellationToken)
 		where TCommand : ICommand<TResult>
 	{
 		return sender.Send(command, cancellationToken);

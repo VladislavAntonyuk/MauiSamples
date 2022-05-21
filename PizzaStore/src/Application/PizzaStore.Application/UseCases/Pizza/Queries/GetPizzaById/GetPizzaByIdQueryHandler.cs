@@ -24,6 +24,5 @@ public class GetPizzaByIdQueryHandler : BasePizzaHandler, IQueryHandler<PizzaDto
 		var result = new OperationResult<PizzaDto>();
 		result.Errors.Add("Pizza not found");
 		return result;
-
 	}
 }

@@ -12,7 +12,7 @@ public class QueryDispatcher : IQueryDispatcher
 		this.sender = sender;
 	}
 
-	public Task<IOperationResult<TResult>> SendAsync<TResult, TQuery>(TQuery query, CancellationToken cancellationToken = default)
+	public Task<IOperationResult<TResult>> SendAsync<TResult, TQuery>(TQuery query, CancellationToken cancellationToken)
 		where TQuery : IQuery<TResult>
 	{
 		return sender.Send(query, cancellationToken);

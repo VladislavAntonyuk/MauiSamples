@@ -89,6 +89,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiPaint", "MauiPaint\MauiPaint.csproj", "{CA6EF2BC-720F-41BF-8247-4BB971CBA57B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PizzaStore", "PizzaStore", "{9C13204C-97BB-4962-96FC-B3796A85B98F}"
+	ProjectSection(SolutionItems) = preProject
+		PizzaStore\Directory.Build.props = PizzaStore\Directory.Build.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

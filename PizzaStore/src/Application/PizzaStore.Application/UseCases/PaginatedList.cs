@@ -12,12 +12,12 @@ public class PaginatedList<T> : IPaginatedList<T>
 		Items = items;
 	}
 
+	public bool HasPreviousPage => PageIndex > 1;
+
+	public bool HasNextPage => PageIndex < TotalPages;
+
 	public IReadOnlyCollection<T> Items { get; }
 	public int PageIndex { get; }
 	public int TotalPages { get; }
 	public int TotalCount { get; }
-
-	public bool HasPreviousPage => PageIndex > 1;
-
-	public bool HasNextPage => PageIndex < TotalPages;
 }

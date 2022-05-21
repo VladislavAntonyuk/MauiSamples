@@ -1,4 +1,4 @@
-namespace PizzaStore.Application.UseCases.Pizza.Commands.Create;
+﻿namespace PizzaStore.Application.UseCases.Pizza.Commands.Create;
 
 using AutoMapper;
 using Domain.Entities;
@@ -11,9 +11,9 @@ public class CreatePizzaCommandHandler : BasePizzaHandler, ICommandHandler<Pizza
 	{
 	}
 
-	public async Task<IOperationResult<PizzaDto>> Handle(CreatePizzaCommand request, CancellationToken cancellationToken)
+	public async Task<IOperationResult<PizzaDto>> Handle(CreatePizzaCommand command, CancellationToken cancellationToken)
 	{
-		var pizza = Mapper.Map<Pizza>(request);
+		var pizza = Mapper.Map<Pizza>(command);
 		var result = await PizzaRepository.Add(pizza, cancellationToken);
 		return new OperationResult<PizzaDto>
 		{

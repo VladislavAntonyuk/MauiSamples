@@ -1,4 +1,4 @@
-﻿namespace PizzaStore.Application.Configuration.Behaviors;
+namespace PizzaStore.Application.Configuration.Behaviors;
 
 using FluentValidation;
 using MediatR;
@@ -8,7 +8,10 @@ public sealed class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<
 {
 	private readonly IEnumerable<IValidator<TRequest>> validators;
 
-	public ValidationBehavior(IEnumerable<IValidator<TRequest>> validators) => this.validators = validators;
+	public ValidationBehavior(IEnumerable<IValidator<TRequest>> validators)
+	{
+		this.validators = validators;
+	}
 
 	public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
 	{

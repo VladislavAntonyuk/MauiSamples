@@ -1,10 +1,10 @@
 ﻿namespace PizzaStore.Infrastructure.WebApp.Data.Repositories;
 
-using PizzaStore.Infrastructure.Data.Repositories;
 using Application.Interfaces;
 using Application.Interfaces.Repositories;
 using Application.UseCases;
 using AutoMapper;
+using Infrastructure.Data.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Models;
 using DomainPizza = Domain.Entities.Pizza;
@@ -64,14 +64,6 @@ public class PizzaRepository : BaseRepository, IPizzaRepository
 		return await context.Pizza.AnyAsync(x => x.Name == parameter, cancellationToken);
 	}
 
-	public async Task<DomainPizza?> GetByName(string name, CancellationToken cancellationToken)
-	{
-		cancellationToken.ThrowIfCancellationRequested();
-		await using var context = await factory.CreateDbContextAsync(cancellationToken);
-		var pizza = await context.Pizza.AsNoTracking().SingleOrDefaultAsync(x => x.Name.Contains(name), cancellationToken);
-		return mapper.Map<DomainPizza>(pizza);
-	}
-
 	public async Task<IEnumerable<DomainPizza>> GetAll(CancellationToken cancellationToken)
 	{
 		await using var context = await factory.CreateDbContextAsync(cancellationToken);
@@ -79,23 +71,33 @@ public class PizzaRepository : BaseRepository, IPizzaRepository
 		return mapper.Map<IEnumerable<DomainPizza>>(pizza);
 	}
 
-	public async Task<IPaginatedList<DomainPizza>> GetPagedAsync(string? requestName, int requestOffset, int requestLimit, CancellationToken cancellationToken)
+	public async Task<IPaginatedList<DomainPizza>> GetPagedAsync(string? requestName,
+		int requestOffset,
+		int requestLimit,
+		CancellationToken cancellationToken)
 	{
 		cancellationToken.ThrowIfCancellationRequested();
 		await using var context = await factory.CreateDbContextAsync(cancellationToken);
-		var totalCount = await context.Pizza
-		                              .AsNoTracking()
-		                              .CountAsync(x => x.Name.Contains(requestName ?? string.Empty), cancellationToken);
+		var totalCount = await context.Pizza.AsNoTracking()
+									  .CountAsync(x => x.Name.Contains(requestName ?? string.Empty), cancellationToken);
 
-		var result = await context.Pizza
-		                          .AsNoTracking()
-		                          .Where(x => x.Name.Contains(requestName ?? string.Empty))
-		                          .OrderBy(q => q.Id)
-		                          .Skip(requestOffset)
-		                          .Take(requestLimit)
-		                          .ToListAsync(cancellationToken);
+		var result = await context.Pizza.AsNoTracking()
+								  .Where(x => x.Name.Contains(requestName ?? string.Empty))
+								  .OrderBy(q => q.Id)
+								  .Skip(requestOffset)
+								  .Take(requestLimit)
+								  .ToListAsync(cancellationToken);
 
 		return new PaginatedList<DomainPizza>(mapper.Map<List<DomainPizza>>(result), totalCount, requestOffset,
-		                                       requestLimit);
+											   requestLimit);
+	}
+
+	public async Task<DomainPizza?> GetByName(string name, CancellationToken cancellationToken)
+	{
+		cancellationToken.ThrowIfCancellationRequested();
+		await using var context = await factory.CreateDbContextAsync(cancellationToken);
+		var pizza = await context.Pizza.AsNoTracking()
+								  .SingleOrDefaultAsync(x => x.Name.Contains(name), cancellationToken);
+		return mapper.Map<DomainPizza>(pizza);
 	}
 }

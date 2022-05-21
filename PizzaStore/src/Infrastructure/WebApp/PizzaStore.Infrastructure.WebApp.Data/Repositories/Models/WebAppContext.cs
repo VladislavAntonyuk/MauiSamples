@@ -4,8 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 public partial class WebAppContext : DbContext
 {
-	public WebAppContext(DbContextOptions<WebAppContext> options)
-		: base(options)
+	public WebAppContext(DbContextOptions<WebAppContext> options) : base(options)
 	{
 	}
 

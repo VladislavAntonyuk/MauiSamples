@@ -12,7 +12,6 @@ public class AutoMapperProfile : Profile
 
 	private void SetupBanner()
 	{
-		CreateMap<Pizza, Domain.Entities.Pizza>()
-			.ReverseMap();
+		CreateMap<Pizza, Domain.Entities.Pizza>().ReverseMap();
 	}
 }

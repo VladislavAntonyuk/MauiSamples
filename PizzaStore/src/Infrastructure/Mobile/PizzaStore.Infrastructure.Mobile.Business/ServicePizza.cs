@@ -4,5 +4,4 @@ using Application.Interfaces;
 
 public class ServicePizza : IServiceInterface1
 {
-
 }

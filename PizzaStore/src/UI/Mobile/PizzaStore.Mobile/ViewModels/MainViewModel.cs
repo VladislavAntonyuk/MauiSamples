@@ -1,11 +1,8 @@
-﻿namespace PizzaStore.Mobile;
+﻿namespace PizzaStore.Mobile.ViewModels;
 
 using System.Collections.ObjectModel;
-using System.Globalization;
 using Application.Interfaces.CQRS;
 using Application.UseCases.Pizza;
-using Application.UseCases.Pizza.Commands.Create;
-using Application.UseCases.Pizza.Commands.Delete;
 using Application.UseCases.Pizza.Commands.Update;
 using Application.UseCases.Pizza.Queries.GetPizza;
 using CommunityToolkit.Maui.Alerts;
@@ -51,45 +48,12 @@ public partial class MainViewModel : ObservableObject
 	}
 
 	[ICommand]
-	async Task CreateItem(CancellationToken cancellationToken)
-	{
-		var result = await commandDispatcher.SendAsync<PizzaDto, CreatePizzaCommand>(new CreatePizzaCommand
-		{
-			Name = DateTime.Now.ToString("O")
-		}, cancellationToken);
-		if (result.IsSuccessful)
-		{
-			await GetItems(cancellationToken);
-		}
-		else
-		{
-			var errors = string.Join(Environment.NewLine, result.Errors);
-			await Toast.Make(errors, ToastDuration.Long).Show(cancellationToken);
-		}
-	}
-
-	[ICommand]
-	async Task UpdateItem(int itemId, CancellationToken cancellationToken)
+	async Task Buy(int itemId, CancellationToken cancellationToken)
 	{
 		var result = await commandDispatcher.SendAsync<PizzaDto, UpdatePizzaCommand>(new UpdatePizzaCommand(itemId)
 		{
 			Name = DateTime.Now.ToString("O")
 		}, cancellationToken);
-		if (result.IsSuccessful)
-		{
-			await GetItems(cancellationToken);
-		}
-		else
-		{
-			var errors = string.Join(Environment.NewLine, result.Errors);
-			await Toast.Make(errors, ToastDuration.Long).Show(cancellationToken);
-		}
-	}
-
-	[ICommand]
-	async Task DeleteItem(int itemId, CancellationToken cancellationToken)
-	{
-		var result = await commandDispatcher.SendAsync<bool, DeletePizzaCommand>(new DeletePizzaCommand(itemId), cancellationToken);
 		if (result.IsSuccessful)
 		{
 			await GetItems(cancellationToken);

@@ -1,6 +1,8 @@
-﻿namespace PizzaStore.Mobile;
+﻿namespace PizzaStore.Mobile.Views;
 
 using CommunityToolkit.Maui.Views;
+using ViewModels;
+using Application = Microsoft.Maui.Controls.Application;
 
 public partial class MainPage : ContentPage
 {
@@ -10,18 +12,12 @@ public partial class MainPage : ContentPage
 		BindingContext = mainViewModel;
 	}
 
-	protected override void OnHandlerChanged()
+	private async void OrderButton_Clicked(object sender, EventArgs e)
 	{
-		base.OnHandlerChanged();
-		ShowPopup();
+		await ((AppShell)Application.Current!.MainPage!).GoToAsync("//BasketPage");
 	}
 
-	private void ToolbarItem_Clicked(object sender, EventArgs e)
-	{
-		ShowPopup();
-	}
-
-	void ShowPopup()
+	private void Help_Clicked(object sender, EventArgs e)
 	{
 		PizzasCollectionView.ScrollTo(0);
 		var simplePopup = new PopupTutorial();

@@ -4,6 +4,10 @@ using System.Windows.Input;
 
 public class ModelCommand<T> : ICommand
 {
+	private readonly Predicate<T?>? canExecute;
+
+	private readonly Action<T?>? execute;
+
 	public ModelCommand(Action<T?> execute, Predicate<T?>? canExecute = null)
 	{
 		this.execute = execute;
@@ -34,7 +38,4 @@ public class ModelCommand<T> : ICommand
 	{
 		CanExecuteChanged?.Invoke(this, EventArgs.Empty);
 	}
-
-	private readonly Action<T?>? execute;
-	private readonly Predicate<T?>? canExecute;
 }

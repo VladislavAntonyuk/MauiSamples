@@ -10,7 +10,7 @@ public class DeletePizzaCommandHandler : BasePizzaHandler, ICommandHandler<bool,
 	{
 	}
 
-	public async Task<IOperationResult<bool>> Handle(DeletePizzaCommand command, CancellationToken cancellationToken = default)
+	public async Task<IOperationResult<bool>> Handle(DeletePizzaCommand command, CancellationToken cancellationToken)
 	{
 		var pizza = await PizzaRepository.GetById(command.PizzaId, cancellationToken);
 		if (pizza is not null)
