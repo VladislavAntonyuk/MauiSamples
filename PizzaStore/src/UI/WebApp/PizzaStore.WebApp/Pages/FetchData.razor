@@ -1,72 +1,43 @@
 ﻿@page "/fetchdata"
-@using PizzaStore.Application.Interfaces.CQRS
 @using PizzaStore.Application.UseCases.Pizza
-@using PizzaStore.Application.UseCases.Pizza.Commands.Create
-@using PizzaStore.Application.UseCases.Pizza.Queries.GetPizza
+@inherits PizzaStoreBaseComponent
 
-<PageTitle>Pizza</PageTitle>
-@inject IQueryDispatcher QueryDispatcher
-@inject ICommandDispatcher CommandDispatcher
+<Head Title="Pizza"/>
 
-<h1>Pizza</h1>
+<MudText Typo="Typo.h1">Pizza</MudText>
 
-<p>This component demonstrates fetching data from a service.</p>
+<MudText Typo="Typo.body1">This component demonstrates fetching data from a service.</MudText>
 
-<button @onclick="CreateItem">Create item</button>
-@if (pizzas == null)
-{
-    <p><em>Loading...</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var pizza in pizzas)
-            {
-                <tr>
-                    <td>@pizza.Id</td>
-                    <td>@pizza.Name</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-}
+<MudButton OnClick="@CreatePizza" Color="Color.Primary">Create item</MudButton>
 
-@code {
-    private PizzaDto[]? pizzas;
-
-    protected override async Task OnInitializedAsync()
-    {
-	    await GetItems();
-    }
-
-	async Task GetItems()
-	{
-		var result = await QueryDispatcher.SendAsync<GetPizzaByFilterResponse, GetPizzaQuery>(new GetPizzaQuery
-		{
-			Limit = 25
-		});
-		if (result.IsSuccessful)
-		{
-			pizzas = result.Value.Items.ToArray();
-		}
-	}
-
-	async Task CreateItem()
-	{
-		var result = await CommandDispatcher.SendAsync<PizzaDto, CreatePizzaCommand>(new CreatePizzaCommand
-		{
-			Name = Path.GetRandomFileName()
-		});
-		if (result.IsSuccessful)
-		{
-			await GetItems();
-		}
-	}
-}
+<MudTable @ref="table" ServerData="@(new Func<TableState, Task<TableData<PizzaDto>>>(LoadPizzas))" Virtualize="true" FixedHeader="true">
+	<ToolBarContent>
+		<MudText Typo="Typo.h6">Pizza</MudText>
+		<MudSpacer />
+		<MudTextField @ref="searchString" T="string" ValueChanged="OnSearch" Placeholder="Search" Adornment="Adornment.Start"
+		              AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0">
+		</MudTextField>
+	</ToolBarContent>
+	<HeaderContent>
+		<MudTh>Id</MudTh>
+		<MudTh>Name</MudTh>
+		<MudTh></MudTh>
+	</HeaderContent>
+	<RowTemplate>
+		<MudTd DataLabel="Id">@context.Id</MudTd>
+		<MudTd DataLabel="Name">@context.Name</MudTd>
+		<MudTd DataLabel="">
+			<MudButton Color="Color.Primary" Command="updateCommand" CommandParameter="@context.Id">Update</MudButton>
+			<MudButton Color="Color.Primary" Command="deleteCommand" CommandParameter="@context.Id">Delete</MudButton>
+		</MudTd>
+	</RowTemplate>
+	<NoRecordsContent>
+		<MudText>No matching records found</MudText>
+	</NoRecordsContent>
+	<LoadingContent>
+		<MudText>Loading...</MudText>
+	</LoadingContent>
+	<PagerContent>
+		<MudTablePager />
+	</PagerContent>
+</MudTable>

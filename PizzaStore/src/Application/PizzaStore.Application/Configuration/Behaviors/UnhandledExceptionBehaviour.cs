@@ -25,7 +25,7 @@ public class UnhandledExceptionBehaviour<TRequest, TResponse> : IPipelineBehavio
 		{
 			var requestName = typeof(TRequest).Name;
 			logger.LogError(ex, "Request: Unhandled Exception for Request {Name} {@Request}",
-							requestName, request);
+			                requestName, request);
 			throw;
 		}
 	}

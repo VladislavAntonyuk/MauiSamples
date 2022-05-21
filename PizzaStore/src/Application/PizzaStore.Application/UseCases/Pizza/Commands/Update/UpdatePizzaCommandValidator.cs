@@ -1,15 +1,15 @@
-﻿namespace PizzaStore.Application.UseCases.Pizza.Commands.Update;
+namespace PizzaStore.Application.UseCases.Pizza.Commands.Update;
 
 using FluentValidation;
 using Interfaces.Repositories;
 
 public class UpdatePizzaCommandValidator : AbstractValidator<UpdatePizzaCommand>
 {
-	private readonly IUnitOfWork unitOfWork;
+	private readonly IPizzaRepository pizzaRepository;
 
-	public UpdatePizzaCommandValidator(IUnitOfWork unitOfWork)
+	public UpdatePizzaCommandValidator(IPizzaRepository pizzaRepository)
 	{
-		this.unitOfWork = unitOfWork;
+		this.pizzaRepository = pizzaRepository;
 
 		ConfigureValidation();
 	}
@@ -22,7 +22,7 @@ public class UpdatePizzaCommandValidator : AbstractValidator<UpdatePizzaCommand>
 			.NotEmpty()
 			.MustAsync(async (command, name, ctx, cancellationToken) =>
 			{
-				var isExist = await unitOfWork.PizzaRepository.IsExist(name, cancellationToken);
+				var isExist = await pizzaRepository.IsExist(name, cancellationToken);
 
 				if (!isExist)
 				{

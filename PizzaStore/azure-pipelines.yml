@@ -51,11 +51,31 @@ stages:
         dockerComposeCommand: "up -d"
 
     - task: DotNetCoreCLI@2
-      displayName: 'Unit Tests'
+      displayName: 'Tests'
       inputs:
-        command: test
+        command: 'test'
         projects: '$(solution)'
-        arguments: '--configuration $(buildConfiguration) --no-restore --settings ".runsettings" --collect "Code coverage"'
+        arguments: '--configuration $(buildConfiguration) --no-restore --settings ".runsettings" --collect "XPlat code coverage" --logger trx --results-directory $(Agent.TempDirectory)'
+        publishTestResults: false
+  
+    - task: PublishTestResults@2
+      displayName: 'Publish Test Results'
+      inputs:
+        testResultsFormat: VSTest
+        testResultsFiles: '**/*.trx'
+        searchFolder: $(Agent.TempDirectory)
+
+    - task: reportgenerator@4
+      inputs:
+        reports: '$(Agent.TempDirectory)/**/coverage.cobertura.xml'
+        targetdir: '$(Build.SourcesDirectory)/CoverageResults'
+
+    - task: PublishCodeCoverageResults@1
+      displayName: 'Publish Code Coverage Results'
+      inputs:
+        codeCoverageTool: 'Cobertura'
+        summaryFileLocation: '$(Build.SourcesDirectory)/CoverageResults/Cobertura.xml'
+        failIfCoverageEmpty: true
 
     - task: DotNetCoreCLI@2
       displayName: 'Publish WebApp'

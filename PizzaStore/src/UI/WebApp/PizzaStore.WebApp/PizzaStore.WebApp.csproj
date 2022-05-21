@@ -4,10 +4,15 @@
     <TargetFrameworks>net6.0</TargetFrameworks>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Application\PizzaStore.Application\PizzaStore.Application.csproj" />
-    <ProjectReference Include="..\..\..\Infrastructure\WebApp\PizzaStore.Infrastructure.WebApp.Business\PizzaStore.Infrastructure.WebApp.Business.csproj" />
-    <ProjectReference Include="..\..\..\Infrastructure\WebApp\PizzaStore.Infrastructure.WebApp.Data\PizzaStore.Infrastructure.WebApp.Data.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="MudBlazor" Version="6.0.10" />
+		<PackageReference Include="Toolbelt.Blazor.I18nText" Version="12.0.0-preview.1.10" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Application\PizzaStore.Application\PizzaStore.Application.csproj" />
+		<ProjectReference Include="..\..\..\Infrastructure\WebApp\PizzaStore.Infrastructure.WebApp.Business\PizzaStore.Infrastructure.WebApp.Business.csproj" />
+		<ProjectReference Include="..\..\..\Infrastructure\WebApp\PizzaStore.Infrastructure.WebApp.Data\PizzaStore.Infrastructure.WebApp.Data.csproj" />
+	</ItemGroup>
 
 </Project>

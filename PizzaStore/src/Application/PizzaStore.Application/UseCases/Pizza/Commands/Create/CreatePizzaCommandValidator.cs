@@ -1,15 +1,15 @@
-﻿namespace PizzaStore.Application.UseCases.Pizza.Commands.Create;
+namespace PizzaStore.Application.UseCases.Pizza.Commands.Create;
 
 using FluentValidation;
 using Interfaces.Repositories;
 
 public class CreatePizzaCommandValidator : AbstractValidator<CreatePizzaCommand>
 {
-	private readonly IUnitOfWork unitOfWork;
+	private readonly IPizzaRepository pizzaRepository;
 
-	public CreatePizzaCommandValidator(IUnitOfWork unitOfWork)
+	public CreatePizzaCommandValidator(IPizzaRepository pizzaRepository)
 	{
-		this.unitOfWork = unitOfWork;
+		this.pizzaRepository = pizzaRepository;
 
 		ConfigureValidation();
 	}
@@ -22,7 +22,7 @@ public class CreatePizzaCommandValidator : AbstractValidator<CreatePizzaCommand>
 			.NotEmpty()
 			.MustAsync(async (command, name, ctx, cancellationToken) =>
 			{
-				var isExist = await unitOfWork.PizzaRepository.IsExist(name, cancellationToken);
+				var isExist = await pizzaRepository.IsExist(name, cancellationToken);
 
 				if (!isExist)
 				{

@@ -5,10 +5,10 @@ using Domain.Entities;
 public interface IPizzaRepository
 {
 	Task<Pizza> Add(Pizza pizza, CancellationToken cancellationToken);
-	void Update(Pizza pizza);
-	void Delete(Pizza pizza);
+	Task<Pizza> Update(Pizza pizza, CancellationToken cancellationToken);
+	Task Delete(Pizza pizza, CancellationToken cancellationToken);
 	Task<Pizza?> GetById(int id, CancellationToken cancellationToken);
 	Task<bool> IsExist(string parameter, CancellationToken cancellationToken);
-	IEnumerable<Pizza> GetAll();
+	Task<IEnumerable<Pizza>> GetAll(CancellationToken cancellationToken);
 	Task<IPaginatedList<Pizza>> GetPagedAsync(string? parameter, int requestOffset, int requestLimit, CancellationToken cancellationToken);
 }

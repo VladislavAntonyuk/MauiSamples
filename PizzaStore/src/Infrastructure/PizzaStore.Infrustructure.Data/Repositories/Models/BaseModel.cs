@@ -1,4 +1,4 @@
-﻿namespace PizzaStore.Infrastructure.WebApp.Data.Repositories.Models;
+﻿namespace PizzaStore.Infrastructure.Data.Repositories.Models;
 
 public abstract class BaseModel
 {

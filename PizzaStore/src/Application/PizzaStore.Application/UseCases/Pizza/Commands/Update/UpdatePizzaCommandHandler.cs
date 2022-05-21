@@ -7,18 +7,25 @@ using Interfaces.Repositories;
 
 public class UpdatePizzaCommandHandler : BasePizzaHandler, ICommandHandler<PizzaDto, UpdatePizzaCommand>
 {
-	public UpdatePizzaCommandHandler(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
+	public UpdatePizzaCommandHandler(IPizzaRepository pizzaRepository, IMapper mapper) : base(pizzaRepository, mapper)
 	{
 	}
 
-	public async Task<IOperationResult<PizzaDto>> Handle(UpdatePizzaCommand request, CancellationToken cancellationToken)
+	public async Task<IOperationResult<PizzaDto>> Handle(UpdatePizzaCommand command, CancellationToken cancellationToken)
 	{
-		var banner = Mapper.Map<Pizza>(request);
-		UnitOfWork.PizzaRepository.Update(banner);
-		await UnitOfWork.Save(cancellationToken);
-		return new OperationResult<PizzaDto>
+		var pizza = await PizzaRepository.GetById(command.Id, cancellationToken);
+		if (pizza is not null)
 		{
-			Value = Mapper.Map<PizzaDto>(banner)
-		};
+			var classToUpdate = Mapper.Map<Pizza>(command);
+			var updatedClass = await PizzaRepository.Update(classToUpdate, cancellationToken);
+			return new OperationResult<PizzaDto>
+			{
+				Value = Mapper.Map<PizzaDto>(updatedClass)
+			};
+		}
+
+		var result = new OperationResult<PizzaDto>();
+		result.Errors.Add("Pizza not found");
+		return result;
 	}
 }

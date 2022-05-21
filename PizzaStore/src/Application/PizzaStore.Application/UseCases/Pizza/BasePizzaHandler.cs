@@ -5,12 +5,12 @@ using Interfaces.Repositories;
 
 public abstract class BasePizzaHandler
 {
-	protected readonly IUnitOfWork UnitOfWork;
+	protected readonly IPizzaRepository PizzaRepository;
 	protected readonly IMapper Mapper;
 
-	protected BasePizzaHandler(IUnitOfWork unitOfWork, IMapper mapper)
+	protected BasePizzaHandler(IPizzaRepository pizzaRepository, IMapper mapper)
 	{
-		this.UnitOfWork = unitOfWork;
-		this.Mapper = mapper;
+		PizzaRepository = pizzaRepository;
+		Mapper = mapper;
 	}
 }

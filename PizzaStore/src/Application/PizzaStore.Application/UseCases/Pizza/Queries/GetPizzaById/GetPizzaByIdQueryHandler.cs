@@ -6,13 +6,13 @@ using Interfaces.Repositories;
 
 public class GetPizzaByIdQueryHandler : BasePizzaHandler, IQueryHandler<PizzaDto, GetPizzaByIdQuery>
 {
-	public GetPizzaByIdQueryHandler(IUnitOfWork unitOfWork, IMapper mapper) : base(unitOfWork, mapper)
+	public GetPizzaByIdQueryHandler(IPizzaRepository pizzaRepository, IMapper mapper) : base(pizzaRepository, mapper)
 	{
 	}
 
 	public async Task<IOperationResult<PizzaDto>> Handle(GetPizzaByIdQuery request, CancellationToken cancellationToken)
 	{
-		var pizza = await UnitOfWork.PizzaRepository.GetById(request.Id, cancellationToken);
+		var pizza = await PizzaRepository.GetById(request.Id, cancellationToken);
 		if (pizza is not null)
 		{
 			return new OperationResult<PizzaDto>

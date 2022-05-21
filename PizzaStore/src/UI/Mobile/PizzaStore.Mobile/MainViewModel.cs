@@ -1,10 +1,15 @@
 ﻿namespace PizzaStore.Mobile;
 
 using System.Collections.ObjectModel;
+using System.Globalization;
 using Application.Interfaces.CQRS;
 using Application.UseCases.Pizza;
 using Application.UseCases.Pizza.Commands.Create;
+using Application.UseCases.Pizza.Commands.Delete;
+using Application.UseCases.Pizza.Commands.Update;
 using Application.UseCases.Pizza.Queries.GetPizza;
+using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -20,6 +25,7 @@ public partial class MainViewModel : ObservableObject
 	{
 		this.queryDispatcher = queryDispatcher;
 		this.commandDispatcher = commandDispatcher;
+		GetItemsCommand.Execute(null);
 	}
 
 	[ICommand]
@@ -31,7 +37,16 @@ public partial class MainViewModel : ObservableObject
 		}, cancellationToken);
 		if (result.IsSuccessful)
 		{
-			items = new ObservableCollection<PizzaDto>(result.Value.Items);
+			items.Clear();
+			foreach (var item in result.Value.Items)
+			{
+				items.Add(item);
+			}
+		}
+		else
+		{
+			var errors = string.Join(Environment.NewLine, result.Errors);
+			await Toast.Make(errors, ToastDuration.Long).Show(cancellationToken);
 		}
 	}
 
@@ -40,11 +55,49 @@ public partial class MainViewModel : ObservableObject
 	{
 		var result = await commandDispatcher.SendAsync<PizzaDto, CreatePizzaCommand>(new CreatePizzaCommand
 		{
-			Name = Path.GetRandomFileName()
+			Name = DateTime.Now.ToString("O")
 		}, cancellationToken);
 		if (result.IsSuccessful)
 		{
 			await GetItems(cancellationToken);
+		}
+		else
+		{
+			var errors = string.Join(Environment.NewLine, result.Errors);
+			await Toast.Make(errors, ToastDuration.Long).Show(cancellationToken);
+		}
+	}
+
+	[ICommand]
+	async Task UpdateItem(int itemId, CancellationToken cancellationToken)
+	{
+		var result = await commandDispatcher.SendAsync<PizzaDto, UpdatePizzaCommand>(new UpdatePizzaCommand(itemId)
+		{
+			Name = DateTime.Now.ToString("O")
+		}, cancellationToken);
+		if (result.IsSuccessful)
+		{
+			await GetItems(cancellationToken);
+		}
+		else
+		{
+			var errors = string.Join(Environment.NewLine, result.Errors);
+			await Toast.Make(errors, ToastDuration.Long).Show(cancellationToken);
+		}
+	}
+
+	[ICommand]
+	async Task DeleteItem(int itemId, CancellationToken cancellationToken)
+	{
+		var result = await commandDispatcher.SendAsync<bool, DeletePizzaCommand>(new DeletePizzaCommand(itemId), cancellationToken);
+		if (result.IsSuccessful)
+		{
+			await GetItems(cancellationToken);
+		}
+		else
+		{
+			var errors = string.Join(Environment.NewLine, result.Errors);
+			await Toast.Make(errors, ToastDuration.Long).Show(cancellationToken);
 		}
 	}
 }

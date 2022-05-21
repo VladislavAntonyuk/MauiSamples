@@ -10,7 +10,7 @@ public class MobileAppContextFactory : IDesignTimeDbContextFactory<MobileAppCont
 	public MobileAppContext CreateDbContext(string[] args)
 	{
 		var optionsBuilder = new DbContextOptionsBuilder<MobileAppContext>();
-		const string connectionString = "server=localhost;port=3306;database=PizzaStore;user=root;password=password";
+		const string connectionString = "Filename=PizzaStore.db";
 		optionsBuilder.UseSqlite(connectionString, builder =>
 		{
 			builder.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);

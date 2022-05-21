@@ -1,13 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PizzaStore.Mobile.MainPage">
+             x:Class="PizzaStore.Mobile.MainPage"
+			 xmlns:viewModels="clr-namespace:PizzaStore.Mobile;assembly=PizzaStore.Mobile"
+             x:Name="PizzaPage">
+
 	<ContentPage.ToolbarItems>
 		<ToolbarItem x:Name="OrderButton" IconImageSource="https://images.vexels.com/media/users/3/157222/isolated/lists/53798bcd7054e4feaef568a5cf49574b-pizza-sticker.png"/>
 		<ToolbarItem Text="?" Clicked="ToolbarItem_Clicked"/>
 	</ContentPage.ToolbarItems>
-	
-	<CollectionView ItemsSource="{Binding Pizzas}" x:Name="PizzasCollectionView">
+
+	<CollectionView ItemsSource="{Binding Items}"
+	                x:Name="PizzasCollectionView"
+	                EmptyView="No items">
 		<CollectionView.ItemsLayout>
 			<LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
 		</CollectionView.ItemsLayout>
@@ -18,7 +23,9 @@
 					<Button  Grid.Row="0" Grid.Column="1" Text="Like"/>
 					<Label Grid.Row="2" Grid.Column="0" Text="{Binding Name}"/>
 					<Label Grid.Row="3" Grid.Column="0" Text="{Binding Price}" VerticalOptions="End"/>
-					<Button Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Text="Buy"/>
+					<Button Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Text="Buy"
+					        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:MainViewModel}}, Path=UpdateItemCommand}"
+					        CommandParameter="{Binding Id}"/>
 				</Grid>
 			</DataTemplate>
 		</CollectionView.ItemTemplate>
