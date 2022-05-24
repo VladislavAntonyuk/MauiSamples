@@ -5,7 +5,6 @@ using AuthServices;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Identity.Client;
-using Button = Microsoft.Maui.Controls.Button;
 
 public abstract class AuthPage : ContentPage
 {
@@ -45,7 +44,7 @@ public abstract class AuthPage : ContentPage
         await GetResult(result);
     }
 
-    protected async Task GetResult(AuthenticationResult? result)
+    private async Task GetResult(AuthenticationResult? result)
     {
         var token = result?.IdToken;
         if (token != null)
