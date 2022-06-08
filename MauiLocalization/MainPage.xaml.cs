@@ -11,6 +11,7 @@ public partial class MainPage : ContentPage
 		LanguagePicker.Items.Add("en-us");
 		LanguagePicker.Items.Add("uk-ua");
 		LanguagePicker.SelectedIndex = 0;
+		LocalizationResourceManager = LocalizationResourceManager.Instance;
 		BindingContext = this;
 	}
 
@@ -18,4 +19,6 @@ public partial class MainPage : ContentPage
 	{
 		LocalizationResourceManager.Instance.SetCulture(new CultureInfo(LanguagePicker.Items[LanguagePicker.SelectedIndex]));
 	}
+
+	public LocalizationResourceManager LocalizationResourceManager { get; }
 }

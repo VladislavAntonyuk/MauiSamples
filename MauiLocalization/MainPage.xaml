@@ -2,7 +2,6 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:res="clr-namespace:MauiLocalization.Resources.Localization"
              xmlns:localization="clr-namespace:MauiLocalization.Resources.Localization"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="MauiLocalization.MainPage"
@@ -10,6 +9,14 @@
 	<ContentPage.Resources>
 		<ResourceDictionary>
 			<toolkit:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter" />
+			<Style TargetType="Label">
+				<Setter Property="FontSize" Value="18"/>
+				<Setter Property="HorizontalOptions" Value="Center"/>
+			</Style>
+			<Style x:Key="Description" TargetType="Label">
+				<Setter Property="FontSize" Value="14"/>
+				<Setter Property="HorizontalOptions" Value="Center"/>
+			</Style>
 		</ResourceDictionary>
 	</ContentPage.Resources>
 
@@ -21,17 +28,23 @@
 
 			<Image
 				Source="{localization:Translate flag, Converter={StaticResource ByteArrayToImageSourceConverter}}"
-				SemanticProperties.Description="Cute dot net bot waving hi to you!"
+				SemanticProperties.Description="Flag"
 				HeightRequest="200"
 				HorizontalOptions="Center" />
 
-			<Label
-				Text="{localization:Translate Intro}"
-				FontSize="18"
-				HorizontalOptions="Center" />
+			<Label Text ="Static resource. Updates on App restart." Style="{StaticResource Description}"/>
+			<Label Text="{x:Static localization:AppResources.Intro}" />
+
+			<Label Text ="Resource updated dynamically, thanks to Binding. No restart needed."
+			       Style="{StaticResource Description}"/>
+			<Label Text="{Binding LocalizationResourceManager[Intro], Mode=OneWay}" />
+
+			<Label Text ="The same as above, but using MarkupExtension"
+			       Style="{StaticResource Description}"/>
+			<Label Text="{localization:Translate Intro}" />
 
 			<Picker x:Name="LanguagePicker"
-			        SelectedIndexChanged="LanguageChanged"
+					SelectedIndexChanged="LanguageChanged"
 			        HorizontalOptions="Center" />
 
 		</VerticalStackLayout>

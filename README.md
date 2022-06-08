@@ -11,3 +11,5 @@ KanbanBoard - https://vladislavantonyuk.azurewebsites.net/articles/Creating-Kanb
 TutorialHelp - https://vladislavantonyuk.azurewebsites.net/articles/Interactive-app-tutorial-in-.NET-
 
 PizzaStore - https://vladislavantonyuk.azurewebsites.net/articles/Onion-architecture-in-the-development-of-cross-platform-applications.-Part-1.-Overview
+
+MauiLocalization - https://vladislavantonyuk.azurewebsites.net/articles/Localize-.NET-MAUI-application
