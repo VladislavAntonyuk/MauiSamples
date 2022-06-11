@@ -7,6 +7,6 @@ public enum Language
 	[Description("en")]
 	English,
 
-	[Description("uk")]
+	[Description("ua")]
 	Ukrainian
 }
