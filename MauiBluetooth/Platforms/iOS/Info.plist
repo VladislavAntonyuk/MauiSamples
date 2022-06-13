@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>LSRequiresIPhoneOS</key>
+	<true/>
+	<key>UIDeviceFamily</key>
+	<array>
+		<integer>1</integer>
+		<integer>2</integer>
+	</array>
+	<key>UIRequiredDeviceCapabilities</key>
+	<array>
+		<string>arm64</string>
+	</array>
+	<key>UISupportedInterfaceOrientations</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>UISupportedInterfaceOrientations~ipad</key>
+	<array>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
+		<string>UIInterfaceOrientationLandscapeLeft</string>
+		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>XSAppIconAssets</key>
+	<string>Assets.xcassets/appicon.appiconset</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<!--for connecting to devices (client)-->
+		<string>bluetooth-central</string>
+
+		<!--for server configurations if needed-->
+		<string>bluetooth-peripheral</string>
+	</array>
+
+	<!--Description of the Bluetooth request message (required on iOS 10, deprecated)-->
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>YOUR CUSTOM MESSAGE</string>
+
+	<!--Description of the Bluetooth request message (required on iOS 13)-->
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>YOUR CUSTOM MESSAGE</string>
+</dict>
+</plist>

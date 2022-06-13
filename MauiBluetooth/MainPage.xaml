@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:contracts="clr-namespace:Plugin.BLE.Abstractions.Contracts;assembly=Plugin.BLE.Abstractions"
+             xmlns:mauiBluetooth="clr-namespace:MauiBluetooth"
+             x:Class="MauiBluetooth.MainPage"
+             x:Name="Main">
+
+	<CollectionView ItemsSource="{Binding Devices}">
+		<CollectionView.ItemTemplate>
+			<DataTemplate x:DataType="contracts:IDevice">
+				<Grid>
+					<Label Text="{Binding Name}" />
+					<Button x:DataType="mauiBluetooth:MainPageViewModel"
+					        Command="{Binding Source={x:Reference Name=Main},Path=BindingContext.ConnectCommand}"
+					        CommandParameter="{Binding .}"/>
+				</Grid>
+			</DataTemplate>
+		</CollectionView.ItemTemplate>
+	</CollectionView>
+
+</ContentPage>
