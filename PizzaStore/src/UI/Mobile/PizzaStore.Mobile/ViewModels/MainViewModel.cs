@@ -25,7 +25,7 @@ public partial class MainViewModel : ObservableObject
 		GetItemsCommand.Execute(null);
 	}
 
-	[ICommand]
+	[RelayCommand]
 	async Task GetItems(CancellationToken cancellationToken)
 	{
 		var result = await queryDispatcher.SendAsync<GetPizzaByFilterResponse, GetPizzaQuery>(new GetPizzaQuery
@@ -47,7 +47,7 @@ public partial class MainViewModel : ObservableObject
 		}
 	}
 
-	[ICommand]
+	[RelayCommand]
 	async Task Buy(int itemId, CancellationToken cancellationToken)
 	{
 		var result = await commandDispatcher.SendAsync<PizzaDto, UpdatePizzaCommand>(new UpdatePizzaCommand(itemId)
