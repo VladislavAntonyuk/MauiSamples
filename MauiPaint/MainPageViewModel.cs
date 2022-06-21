@@ -148,6 +148,11 @@ public partial class MainPageViewModel : ObservableObject
 	async Task Open(CancellationToken cancellationToken)
 	{
 		await using var stream = await dialogService.OpenFileDialog(cancellationToken);
+		if (stream == Stream.Null)
+		{
+			return;
+		}
+		
 		var projectState = await serializerService.Deserialize<ProjectState>(stream, cancellationToken);
 		if (projectState is null)
 		{

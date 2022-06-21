@@ -163,7 +163,7 @@ public class FileDialog
 			// Call registered listener supplied with the chosen directory
 
 			{
-				if (selectType == FileOpen || selectType == FileSave)
+				if (selectType is FileOpen or FileSave)
 				{
 					selectedFileName = inputText?.Text + "";
 					result = mDir + "/" + selectedFileName;
@@ -195,12 +195,10 @@ public class FileDialog
 	}
 
 
-	private bool CreateSubDir(string newDir)
+	private static bool CreateSubDir(string newDir)
 	{
 		File newDirFile = new File(newDir);
-		if (!newDirFile.Exists())
-			return newDirFile.Mkdir();
-		return false;
+		return !newDirFile.Exists() && newDirFile.Mkdir();
 	}
 
 	private List<string> GetDirectories(string dir)
@@ -229,7 +227,7 @@ public class FileDialog
 					// Add "/" to directory names to identify them in the list
 					dirs.Add(file.Name + "/");
 				}
-				else if (selectType == FileSave || selectType == FileOpen)
+				else if (selectType is FileSave or FileOpen)
 				{
 					// Add file names to the list if we are doing a file save or file open operation
 					dirs.Add(file.Name);
@@ -348,7 +346,7 @@ public class FileDialog
 
 		titleLayout.AddView(mTitleView);
 
-		if (selectType == FileOpen || selectType == FileSave)
+		if (selectType is FileOpen or FileSave)
 		{
 			inputText = new EditText(mContext);
 			inputText.Text = defaultFileName;
@@ -383,7 +381,7 @@ public class FileDialog
 		}
 
 		//#scorch
-		if ((selectType == FileSave || selectType == FileOpen) && inputText != null)
+		if (selectType is FileSave or FileOpen && inputText != null)
 		{
 			inputText.Text = selectedFileName;
 		}
