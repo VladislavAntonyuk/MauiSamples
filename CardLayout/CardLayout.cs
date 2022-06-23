@@ -119,11 +119,15 @@ public partial class CardLayout : Layout, ILayoutManager
 		double totalHeight = 0;
 
 		int i = Children.Count - 1;
+		var maxHeight = Children[^1].DesiredSize.Height;
 		foreach (var child in Children)
 		{
 			var width = child.DesiredSize.Width;
 			var height = child.DesiredSize.Height * Math.Pow(CardScaling, i);
-			child.Arrange(new Rect(x, y + (child.DesiredSize.Height - height) * 2 / Children.Count, width, height));
+			child.Arrange(new Rect(x,
+								   y + (maxHeight - height) / 2,
+								   width,
+								   height));
 
 			totalWidth = Math.Max(totalWidth, x + width);
 			totalHeight = Math.Max(totalHeight, y + height);

@@ -17,7 +17,9 @@
 						</local:CardView.Header>
 						<local:CardView.CardContent>
 							<Image Source="{Binding Image}"
-							       Aspect="Center"/>
+								   Aspect="Fill"
+							       WidthRequest="250"
+							       HeightRequest="250"/>
 						</local:CardView.CardContent>
 						<local:CardView.Footer>
 							<Label Text="{Binding Price}" />
