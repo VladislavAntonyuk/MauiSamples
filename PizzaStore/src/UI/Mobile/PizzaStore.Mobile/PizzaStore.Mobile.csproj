@@ -47,16 +47,4 @@
 	  <ProjectReference Include="..\..\..\Infrastructure\Mobile\PizzaStore.Infrastructure.Mobile.Data\PizzaStore.Infrastructure.Mobile.Data.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Compile Update="Views\BasketPage.xaml.cs">
-	    <DependentUpon>BasketPage.xaml</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="Views\BasketPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	</ItemGroup>
-
 </Project>

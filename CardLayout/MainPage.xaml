@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:CardLayout;assembly=CardLayout"
+             x:Class="CardLayout.MainPage">
+
+	<ScrollView>
+		<local:CardLayout CardScaling="0.8"
+						  x:DataType="local:MainPageViewModel"
+		                  Spacing="25"
+		                  Items="{Binding Pizzas}">
+			<local:CardLayout.ItemTemplate>
+				<DataTemplate>
+					<local:CardView x:DataType="local:Pizza">
+						<local:CardView.Header>
+							<Label Text="{Binding Name}" />
+						</local:CardView.Header>
+						<local:CardView.CardContent>
+							<Image Source="{Binding Image}"
+							       Aspect="Center"/>
+						</local:CardView.CardContent>
+						<local:CardView.Footer>
+							<Label Text="{Binding Price}" />
+						</local:CardView.Footer>
+					</local:CardView>
+				</DataTemplate>
+			</local:CardLayout.ItemTemplate>
+		</local:CardLayout>
+	</ScrollView>
+
+</ContentPage>
