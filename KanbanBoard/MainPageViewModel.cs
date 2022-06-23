@@ -1,6 +1,5 @@
 ﻿namespace KanbanBoard;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -26,8 +25,8 @@ public partial class MainPageViewModel : ObservableObject
         RefreshCommand.Execute(null);
     }
 
-	[ICommand]
-    async Task DropCommand(ColumnInfo columnInfo)
+	[RelayCommand]
+    async Task DropCommand(ColumnInfo? columnInfo)
     {
         if (dragCard is null || columnInfo is null || columnInfo.Column.Cards.Count >= columnInfo.Column.Wip) return;
 
@@ -42,19 +41,19 @@ public partial class MainPageViewModel : ObservableObject
         Position = columnInfo.Index;
     }
 
-	[ICommand]
+	[RelayCommand]
     void DragStarting(Card card)
 	{
 		dragCard = card;
 	}
 
-	[ICommand]
+	[RelayCommand]
     void DragCompleted()
 	{
 		dragCard = null;
 	}
 
-	[ICommand]
+	[RelayCommand]
     async Task AddColumn()
     {
         var columnName = await UserPromptAsync("New column", "Enter column name", Keyboard.Default);
@@ -75,7 +74,7 @@ public partial class MainPageViewModel : ObservableObject
         await ToastAsync("Column is added");
     }
 
-	[ICommand]
+	[RelayCommand]
     async Task AddCard(int columnId)
     {
         var column = await columnsRepository.GetItem(columnId);
@@ -103,8 +102,8 @@ public partial class MainPageViewModel : ObservableObject
         await ToastAsync("Card is added");
     }
 
-	[ICommand]
-    async Task DeleteCard(Card card)
+	[RelayCommand]
+    async Task DeleteCard(Card? card)
     {
         if (card is null) return;
         var result = await AlertAsync("Delete card", $"Do you want to delete card \"{card.Name}\"?");
@@ -120,8 +119,8 @@ public partial class MainPageViewModel : ObservableObject
         await Refresh();
     }
 
-	[ICommand]
-    async Task DeleteColumn(ColumnInfo columnInfo)
+	[RelayCommand]
+    async Task DeleteColumn(ColumnInfo? columnInfo)
     {
         if (columnInfo is null) return;
         var result = await AlertAsync("Delete column",
@@ -138,7 +137,7 @@ public partial class MainPageViewModel : ObservableObject
         await Refresh();
     }
 
-	[ICommand]
+	[RelayCommand]
     private async Task Refresh()
     {
         var items = await columnsRepository.GetItems();
@@ -158,14 +157,16 @@ public partial class MainPageViewModel : ObservableObject
 
     private static Task<bool> AlertAsync(string title, string message)
     {
-        if (Application.Current?.MainPage is null) return Task.FromResult(false);
-        return Application.Current.MainPage.DisplayAlert(title, message, "Yes", "No");
+	    return Application.Current?.MainPage is null ?
+		    Task.FromResult(false) :
+		    Application.Current.MainPage.DisplayAlert(title, message, "Yes", "No");
     }
 
     private static Task<string> UserPromptAsync(string title, string message, Keyboard keyboard)
     {
-        if (Application.Current?.MainPage is null) return Task.FromResult(string.Empty);
-        return Application.Current.MainPage.DisplayPromptAsync(title, message, keyboard: keyboard);
+	    return Application.Current?.MainPage is null ?
+		    Task.FromResult(string.Empty) :
+		    Application.Current.MainPage.DisplayPromptAsync(title, message, keyboard: keyboard);
     }
 
     private static Task SnackbarAsync(string title, string buttonText, Action action)

@@ -33,9 +33,9 @@ public class DialogService : IDialogService
 		await stream.CopyToAsync(fileStream, cancellationToken);
 	}
 
-	string? GetExternalDirectory()
+	static string GetExternalDirectory()
 	{
 		return Platform.CurrentActivity?.GetExternalFilesDir(null)
-		               ?.ParentFile?.ParentFile?.ParentFile?.ParentFile?.AbsolutePath;
+		               ?.ParentFile?.ParentFile?.ParentFile?.ParentFile?.AbsolutePath ?? "/storage/emulated/0";
 	}
 }

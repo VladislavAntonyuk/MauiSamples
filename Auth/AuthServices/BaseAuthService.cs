@@ -15,7 +15,10 @@ public abstract class BaseAuthService : IAuthService
 	{
 		return authenticationClient
 		       .AcquireTokenInteractive(Constants.Scopes)
-		       .ExecuteAsync(cancellationToken);
+#if WINDOWS
+				.WithUseEmbeddedWebView(false)				
+#endif
+			   .ExecuteAsync(cancellationToken);
 	}
 
 	public async Task<AuthenticationResult?> AcquireTokenSilent(CancellationToken cancellationToken)

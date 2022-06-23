@@ -75,6 +75,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		Directory.Build.props = Directory.Build.props
 		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
+		NuGet.config = NuGet.config
 		README.md = README.md
 	EndProjectSection
 EndProject
@@ -93,7 +94,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PizzaStore", "PizzaStore", 
 		PizzaStore\Directory.Build.props = PizzaStore\Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiLocalization", "MauiLocalization\MauiLocalization.csproj", "{1A18FCF6-DA42-4CB4-96EC-CF7307FA69DC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiLocalization", "MauiLocalization\MauiLocalization.csproj", "{1A18FCF6-DA42-4CB4-96EC-CF7307FA69DC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CardLayout", "CardLayout\CardLayout.csproj", "{EABD8EA3-E455-4F5F-A2C7-D1A5681CD13C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -227,6 +230,12 @@ Global
 		{1A18FCF6-DA42-4CB4-96EC-CF7307FA69DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1A18FCF6-DA42-4CB4-96EC-CF7307FA69DC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{1A18FCF6-DA42-4CB4-96EC-CF7307FA69DC}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{EABD8EA3-E455-4F5F-A2C7-D1A5681CD13C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EABD8EA3-E455-4F5F-A2C7-D1A5681CD13C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EABD8EA3-E455-4F5F-A2C7-D1A5681CD13C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{EABD8EA3-E455-4F5F-A2C7-D1A5681CD13C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EABD8EA3-E455-4F5F-A2C7-D1A5681CD13C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EABD8EA3-E455-4F5F-A2C7-D1A5681CD13C}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -46,26 +46,26 @@ public partial class MainPageViewModel : ObservableObject
 		}
 	};
 
-	[ICommand]
+	[RelayCommand]
 	void Quit()
 	{
 		Application.Current?.Quit();
 	}
 
-	[ICommand]
+	[RelayCommand]
 	void Help()
 	{
 		var help = new Help();
 		Application.Current?.MainPage?.ShowPopup(help);
 	}
 
-	[ICommand]
+	[RelayCommand]
 	Task About()
 	{
 		return Launcher.OpenAsync("https://vladislavantonyuk.azurewebsites.net");
 	}
 
-	[ICommand]
+	[RelayCommand]
 	void ToggleTheme()
 	{
 		if (Application.Current is not null)
@@ -74,7 +74,7 @@ public partial class MainPageViewModel : ObservableObject
 		}
 	}
 
-	[ICommand]
+	[RelayCommand]
 	void New()
 	{
 		Lines.Clear();
@@ -84,32 +84,32 @@ public partial class MainPageViewModel : ObservableObject
 		LineWidth = 5;
 	}
 
-	[ICommand]
+	[RelayCommand]
 	void SetLineColor(Color color)
 	{
 		LineColor = color;
 	}
 
-	[ICommand]
+	[RelayCommand]
 	void SetEraser()
 	{
 		LineColor = Background is SolidColorBrush solidColorBrush ? solidColorBrush.Color : Colors.White;
 	}
 
-	[ICommand]
+	[RelayCommand]
 	async Task AddFigure(string figureName)
 	{
 		var figure = await FigureFactory.CreateFigure(figureName);
 		_figures.Add(figure);
 	}
 
-	[ICommand]
+	[RelayCommand]
 	void SetBackground(Color color)
 	{
 		Background = color;
 	}
 
-	[ICommand]
+	[RelayCommand]
 	void Rotate(double angle)
 	{
 		var oldLines = Lines.ToImmutableList();
@@ -144,10 +144,15 @@ public partial class MainPageViewModel : ObservableObject
 		}
 	}
 
-	[ICommand]
+	[RelayCommand]
 	async Task Open(CancellationToken cancellationToken)
 	{
 		await using var stream = await dialogService.OpenFileDialog(cancellationToken);
+		if (stream == Stream.Null)
+		{
+			return;
+		}
+		
 		var projectState = await serializerService.Deserialize<ProjectState>(stream, cancellationToken);
 		if (projectState is null)
 		{
@@ -161,7 +166,7 @@ public partial class MainPageViewModel : ObservableObject
 		LineColor = projectState.LineColor;
 	}
 
-	[ICommand]
+	[RelayCommand]
 	async Task Save(CancellationToken cancellationToken)
 	{
 		var projectState = new ProjectState
@@ -176,7 +181,7 @@ public partial class MainPageViewModel : ObservableObject
 		await SaveToFile(stream, ".json", cancellationToken);
 	}
 
-	[ICommand]
+	[RelayCommand]
 	async Task SaveImage(CancellationToken cancellationToken)
 	{
 		await using var stream = await DrawingView.GetImageStream(

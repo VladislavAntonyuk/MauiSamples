@@ -2,20 +2,21 @@
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<RootNamespace>MauiPaint</RootNamespace>
+		<RootNamespace>CardLayout</RootNamespace>
+		<Nullable>disable</Nullable>
 
 		<!-- Display name -->
-		<ApplicationTitle>Paint</ApplicationTitle>
+		<ApplicationTitle>CardLayout</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.vladislavantonyuk.paint</ApplicationId>
-		<ApplicationIdGuid>85D4B2EC-90E0-497E-8DE5-6B48395939C2</ApplicationIdGuid>
+		<ApplicationId>com.vladislavantonyuk.cardlayout</ApplicationId>
+		<ApplicationIdGuid>78191D14-27EC-40FB-9853-61FE1B63CF32</ApplicationIdGuid>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
 	</PropertyGroup>
-	
+
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
@@ -25,9 +26,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="M.BindableProperty.Generator" Version="0.7.0" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="1.0.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview4" />
-		<PackageReference Include="InterfaceConverter.SystemTextJson" Version="1.1.0" />
 	</ItemGroup>
+
 
 </Project>
