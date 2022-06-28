@@ -1,15 +1,19 @@
-MauiAuth/MauiAuthBlazor - https://vladislavantonyuk.azurewebsites.net/articles/Azure-Active-Directory-authentication-in-.NET-MAUI
+[MauiAuth/MauiAuthBlazor](Auth) - A small mobile application, which requires user authentication, using .NET MAUI (AD and AD B2C)
 
-MauiBlazorPhotoGallery - https://vladislavantonyuk.azurewebsites.net/articles/Create-a-gallery-app-using-MAUI-Blazor
+[MauiBlazorPhotoGallery](MauiBlazorPhotoGallery) - Infinite scrolling gallery app using .NET MAUI Blazor. Replicate Google Photos and Instagram Gallery UI.
 
-MauiSqlite/MauiSqliteBlazor - https://vladislavantonyuk.azurewebsites.net/articles/Adding-SQLite-to-the-.NET-MAUI-application
+[MauiSqlite/MauiSqliteBlazor](Sqlite) - Connect to SQLite from .NET MAUI application.
 
-MauiMultiWindow - https://vladislavantonyuk.azurewebsites.net/articles/.NET-MAUI-Multi-Window-support
+[MauiMultiWindow](MauiMultiWindow) - Work with .NET MAUI Windows.
 
-KanbanBoard - https://vladislavantonyuk.azurewebsites.net/articles/Creating-Kanban-Board-using-Xamarin-Forms-5
+[KanbanBoard](KanbanBoard) - Replicate Kanban board. Drag & Drop Cards, Set Column WIP, Store data in Local Db
 
-TutorialHelp - https://vladislavantonyuk.azurewebsites.net/articles/Interactive-app-tutorial-in-.NET-
+[TutorialHelp](TutorialHelp) - Interactive app tutorial in .NET MAUI using CommunityToolkit.Maui Popup.
 
-PizzaStore - https://vladislavantonyuk.azurewebsites.net/articles/Onion-architecture-in-the-development-of-cross-platform-applications.-Part-1.-Overview
+[PizzaStore](PizzaStore) - Overview of onion architecture. Creating an cross-platform application with the onion architecture.
 
-MauiLocalization - https://vladislavantonyuk.azurewebsites.net/articles/Localize-.NET-MAUI-application
+[MauiPaint](MauiPaint) - Replicate Paint application (drawing canvas, color palette, open/save dialogs).
+
+[MauiLocalization](MauiLocalization) - Demonstrates how to localize .NET MAUI application and switch the language without restarting the app.
+
+[CardLayout](CardLayout) - Create a new Stacked CardView control.
