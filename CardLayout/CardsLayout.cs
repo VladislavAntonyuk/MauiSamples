@@ -1,4 +1,6 @@
-﻿namespace CardLayout;
+﻿#pragma warning disable CS0169
+#pragma warning disable CS0414
+namespace CardLayout;
 
 using System.Collections;
 using Maui.BindableProperty.Generator.Core;
@@ -7,31 +9,27 @@ using Microsoft.Maui.Graphics;
 
 public partial class CardsLayout : Layout, ILayoutManager
 {
-
-#pragma warning disable CS0414
 	[AutoBindable(DefaultValue = "5")]
 	private int spacing = 5;
 
 	[AutoBindable(DefaultValue = "0.8")]
 	private double cardScaling = 0.8;
-
-#pragma warning disable CS0169
+	
 	[AutoBindable(OnChanged = "ItemsChanged", DefaultBindingMode = nameof(BindingMode.OneWay))]
-	private ICollection items;
+	private ICollection? items;
 
 	[AutoBindable]
-	private DataTemplate itemTemplate;
+	private DataTemplate? itemTemplate;
 
 	[AutoBindable]
-	private IView emptyView;
+	private IView? emptyView;
 
 	[AutoBindable]
 	private CardLayoutDirection direction;
 
 	[AutoBindable]
 	private SwipeDirection swipeDirection;
-#pragma warning restore CS0169
-#pragma warning restore CS0414
+
 	private readonly Stack<IView> cards = new();
 
 	private void ItemsChanged()
@@ -70,9 +68,9 @@ public partial class CardsLayout : Layout, ILayoutManager
 		base.OnChildRemoved(child, oldLogicalIndex);
 	}
 
-	protected virtual View ViewFor(object item)
+	protected virtual View? ViewFor(object item)
 	{
-		View view = null;
+		View? view = null;
 
 		if (ItemTemplate != null)
 		{
@@ -91,7 +89,7 @@ public partial class CardsLayout : Layout, ILayoutManager
 	}
 
 	private SwipeDirection? swipedDirection;
-	private void PanGesture_PanUpdated(object sender, PanUpdatedEventArgs e)
+	private void PanGesture_PanUpdated(object? sender, PanUpdatedEventArgs e)
 	{
 		switch (e.StatusType)
 		{
