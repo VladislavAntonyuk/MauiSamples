@@ -1,29 +1,44 @@
 ﻿namespace MauiPaint.Platforms.Services;
 
 using Android.Services;
+using CommunityToolkit.Maui.Alerts;
 using MauiPaint.Services;
 
 public class DialogService : IDialogService
 {
 	public async Task<bool> SaveFileDialog(Stream stream, string fileExtension, CancellationToken cancellationToken)
 	{
-		var dialog = new FileDialog(Platform.CurrentActivity, FileDialog.FileSelectionMode.FileSave, fileExtension);
-		var path = await dialog.GetFileOrDirectoryAsync(GetExternalDirectory());
-		if (string.IsNullOrEmpty(path))
+		var status = await Permissions.RequestAsync<Permissions.StorageWrite>();
+		if (status == PermissionStatus.Granted)
 		{
-			return false;
-		}
-		
-		await WriteStream(stream, path, cancellationToken);
+			var dialog = new FileDialog(Platform.CurrentActivity, FileDialog.FileSelectionMode.FileSave, fileExtension);
+			var path = await dialog.GetFileOrDirectoryAsync(GetExternalDirectory());
+			if (string.IsNullOrEmpty(path))
+			{
+				return false;
+			}
 
-		return true;
+			await WriteStream(stream, path, cancellationToken);
+
+			return true;
+		}
+
+		await Toast.Make("Storage permission is not granted").Show(cancellationToken);
+		return false;
 	}
 
 	public async Task<Stream> OpenFileDialog(CancellationToken cancellationToken)
 	{
-		var dialog = new FileDialog(Platform.CurrentActivity, FileDialog.FileSelectionMode.FileOpen, ".json");
-		var path = await dialog.GetFileOrDirectoryAsync(GetExternalDirectory());
-		return string.IsNullOrEmpty(path) ? Stream.Null : new MemoryStream(await File.ReadAllBytesAsync(path, cancellationToken));
+		var status = await Permissions.RequestAsync<Permissions.StorageRead>();
+		if (status == PermissionStatus.Granted)
+		{
+			var dialog = new FileDialog(Platform.CurrentActivity, FileDialog.FileSelectionMode.FileOpen, ".json");
+			var path = await dialog.GetFileOrDirectoryAsync(GetExternalDirectory());
+			return string.IsNullOrEmpty(path) ? Stream.Null : new MemoryStream(await File.ReadAllBytesAsync(path, cancellationToken));
+		}
+
+		await Toast.Make("Storage permission is not granted").Show(cancellationToken);
+		return Stream.Null;
 	}
 
 	private static async Task WriteStream(Stream stream, string filePath, CancellationToken cancellationToken)

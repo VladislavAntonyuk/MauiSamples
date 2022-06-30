@@ -1,4 +1,5 @@
-﻿namespace CardLayout;
+﻿#pragma warning disable CS0169
+namespace CardLayout;
 
 using Maui.BindableProperty.Generator.Core;
 using Microsoft.Maui.Controls.Shapes;
@@ -6,16 +7,15 @@ using Microsoft.Maui.Controls.Shapes;
 public partial class CardView : ContentView
 {
 	private readonly VerticalStackLayout container = new();
-#pragma warning disable CS0414
-	[AutoBindable(OnChanged = nameof(UpdateView))]
-	private IView cardContent = null;
-	[AutoBindable(OnChanged = nameof(UpdateView))]
-	private IView footer = null;
-	[AutoBindable(OnChanged = nameof(UpdateView))]
-	private IView header = null;
-#pragma warning restore CS0414
 
-	private void UpdateView(IView oldValue, IView newValue)
+	[AutoBindable(OnChanged = nameof(UpdateView))]
+	private IView? cardContent;
+	[AutoBindable(OnChanged = nameof(UpdateView))]
+	private IView? footer;
+	[AutoBindable(OnChanged = nameof(UpdateView))]
+	private IView? header;
+
+	private void UpdateView(IView? oldValue, IView? newValue)
 	{
 		if (oldValue is null && newValue is not null)
 		{

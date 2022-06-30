@@ -6,4 +6,4 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Creating-a-card-st
 
 ### Stacked CardView
 
-![CardLayout](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/CardLayout.png)
+![CardLayout](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/card-layout.gif)

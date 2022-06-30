@@ -3,7 +3,6 @@
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
 		<RootNamespace>CardLayout</RootNamespace>
-		<Nullable>disable</Nullable>
 
 		<!-- Display name -->
 		<ApplicationTitle>CardLayout</ApplicationTitle>
@@ -26,10 +25,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="M.BindableProperty.Generator" Version="0.7.0" />
+		<PackageReference Include="M.BindableProperty.Generator" Version="0.8.1" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="1.0.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0-preview4" />
 	</ItemGroup>
-
 
 </Project>
