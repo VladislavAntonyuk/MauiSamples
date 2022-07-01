@@ -124,7 +124,7 @@ public partial class MainPageViewModel : ObservableObject
 		}
 
 		Lines = oldLines.ToObservableCollection();
-		
+
 		static PointF RotatePoint(PointF pointToRotate, PointF centerPoint, double angleInDegrees)
 		{
 			double angleInRadians = angleInDegrees * (Math.PI / 180);
@@ -152,18 +152,26 @@ public partial class MainPageViewModel : ObservableObject
 		{
 			return;
 		}
-		
-		var projectState = await serializerService.Deserialize<ProjectState>(stream, cancellationToken);
-		if (projectState is null)
+
+		try
 		{
-			return;
+			var projectState = await serializerService.Deserialize<ProjectState>(stream, cancellationToken);
+			if (projectState is null)
+			{
+				return;
+			}
+
+			Background = projectState.Background;
+			Lines = projectState.Lines.ToObservableCollection();
+			_figures = projectState.Figures.ToList();
+			LineWidth = projectState.LineWidth;
+			LineColor = projectState.LineColor;
+		}
+		catch
+		{
+			await Toast.Make("Invalid file").Show(cancellationToken);
 		}
 
-		Background = projectState.Background;
-		Lines = projectState.Lines.ToObservableCollection();
-		_figures = projectState.Figures.ToList();
-		LineWidth = projectState.LineWidth;
-		LineColor = projectState.LineColor;
 	}
 
 	[RelayCommand]

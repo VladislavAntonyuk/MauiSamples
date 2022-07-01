@@ -18,9 +18,17 @@ public class DialogService : IDialogService
 				return false;
 			}
 
-			await WriteStream(stream, path, cancellationToken);
+			try
+			{
+				await WriteStream(stream, path, cancellationToken);
 
-			return true;
+				return true;
+			}
+			catch
+			{
+				await Toast.Make("File is not stored").Show(cancellationToken);
+				return false;
+			}
 		}
 
 		await Toast.Make("Storage permission is not granted").Show(cancellationToken);
@@ -34,7 +42,7 @@ public class DialogService : IDialogService
 		{
 			var dialog = new FileDialog(Platform.CurrentActivity, FileDialog.FileSelectionMode.FileOpen, ".json");
 			var path = await dialog.GetFileOrDirectoryAsync(GetExternalDirectory());
-			return string.IsNullOrEmpty(path) ? Stream.Null : new MemoryStream(await File.ReadAllBytesAsync(path, cancellationToken));
+			return File.Exists(path) ? new MemoryStream(await File.ReadAllBytesAsync(path, cancellationToken)): Stream.Null;
 		}
 
 		await Toast.Make("Storage permission is not granted").Show(cancellationToken);
@@ -43,7 +51,7 @@ public class DialogService : IDialogService
 
 	private static async Task WriteStream(Stream stream, string filePath, CancellationToken cancellationToken)
 	{
-		await using var fileStream = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.Write);
+		await using var fileStream = new FileStream(filePath, FileMode.OpenOrCreate);
 		stream.Seek(0, SeekOrigin.Begin);
 		await stream.CopyToAsync(fileStream, cancellationToken);
 	}
