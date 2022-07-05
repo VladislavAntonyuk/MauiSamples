@@ -6,7 +6,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Identity.Client" Version="4.44.3" />
-		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.20.0" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.21.0" />
 	</ItemGroup>
 
 </Project>
