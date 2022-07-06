@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:blur="clr-namespace:MauiImageEffects.BlurBehavior"
+             x:Class="MauiImageEffects.MainPage">
+
+	<ScrollView>
+		<VerticalStackLayout 
+            Spacing="25" 
+            Padding="30,0" 
+            VerticalOptions="Center">
+
+			<Image
+                Source="dotnet_bot.png"
+                HeightRequest="200" />
+
+			<Label Text="Blur"/>
+			<Label BindingContext="{x:Reference slider}"
+			       Text="{Binding Value}" />
+			<Slider x:Name="slider" Maximum="50" Value="5"/>
+			<Image
+                Source="dotnet_bot.png"
+                HeightRequest="200">
+				<Image.Behaviors>
+					<blur:BlurBehavior BindingContext="{x:Reference Name=slider}"
+					                   Radius="{Binding Value}"/>
+				</Image.Behaviors>
+			</Image>
+
+		</VerticalStackLayout>
+	</ScrollView>
+
+</ContentPage>
