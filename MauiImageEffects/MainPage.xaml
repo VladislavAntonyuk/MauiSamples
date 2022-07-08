@@ -2,7 +2,12 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:blur="clr-namespace:MauiImageEffects.BlurBehavior"
+			 xmlns:saturation="clr-namespace:MauiImageEffects.SaturationBehavior"
              x:Class="MauiImageEffects.MainPage">
+
+	<ContentPage.Resources>
+		<saturation:SaturationConverter x:Key="SaturationConverter"/>
+	</ContentPage.Resources>
 
 	<ScrollView>
 		<VerticalStackLayout 
@@ -15,6 +20,32 @@
                 HeightRequest="200" />
 
 			<Label Text="Blur"/>
+			<Label BindingContext="{x:Reference blurSlider}"
+			       Text="{Binding Value}" />
+			<Slider x:Name="blurSlider" Maximum="50" Value="5"/>
+			<Image
+                Source="dotnet_bot.png"
+                HeightRequest="200">
+				<Image.Behaviors>
+					<blur:BlurBehavior BindingContext="{x:Reference Name=blurSlider}"
+					                   Radius="{Binding Value}"/>
+				</Image.Behaviors>
+			</Image>
+
+			<Label Text="Saturation"/>
+			<Label BindingContext="{x:Reference saturationSlider}"
+			       Text="{Binding Value}" />
+			<Slider x:Name="saturationSlider" Maximum="100" Value="5"/>
+			<Image
+                Source="dotnet_bot.png"
+                HeightRequest="200">
+				<Image.Behaviors>
+					<saturation:SaturationBehavior BindingContext="{x:Reference Name=saturationSlider}"
+					                               Saturation="{Binding Value, Converter={StaticResource SaturationConverter}}"/>
+				</Image.Behaviors>
+			</Image>
+
+			<Label Text="Blur + Saturation"/>
 			<Label BindingContext="{x:Reference slider}"
 			       Text="{Binding Value}" />
 			<Slider x:Name="slider" Maximum="50" Value="5"/>
@@ -24,6 +55,8 @@
 				<Image.Behaviors>
 					<blur:BlurBehavior BindingContext="{x:Reference Name=slider}"
 					                   Radius="{Binding Value}"/>
+					<saturation:SaturationBehavior BindingContext="{x:Reference Name=slider}"
+					                               Saturation="{Binding Value, Converter={StaticResource SaturationConverter}}"/>
 				</Image.Behaviors>
 			</Image>
 
