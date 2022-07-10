@@ -17,3 +17,5 @@
 [MauiLocalization](MauiLocalization) - Demonstrates how to localize .NET MAUI application and switch the language without restarting the app.
 
 [CardLayout](CardLayout) - Create a new Stacked CardView control.
+
+[MauiImageEffects](MauiImageEffects) - Create beautiful effects for images like Blur and Saturation.

@@ -1,6 +1,6 @@
 # Blazor Photo gallery
 
-Article: https://vladislavantonyuk.azurewebsites.net/articles/Create-a-gallery-app-using-MAUI-Blazor
+Article: https://vladislavantonyuk.azurewebsites.net/articles/Create-a-gallery-app-using-.NET-MAUI-Blazor
 
 ## Images
 

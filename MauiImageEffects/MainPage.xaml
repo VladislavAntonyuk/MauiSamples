@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:blur="clr-namespace:MauiImageEffects.BlurBehavior"
+			 xmlns:saturation="clr-namespace:MauiImageEffects.SaturationBehavior"
+			 xmlns:chain="clr-namespace:MauiImageEffects.ChainBehavior"
+             x:Class="MauiImageEffects.MainPage">
+
+	<ContentPage.Resources>
+		<Style TargetType="Slider">
+			<Setter Property="Value" Value="5"/>
+			<Setter Property="Maximum" Value="100"/>
+		</Style>
+		<Style TargetType="Image">
+			<Setter Property="HeightRequest" Value="300"/>
+			<Setter Property="Source" Value="background.jpg"/>
+		</Style>
+		<Style x:Key="MainImage" TargetType="Image">
+			<Setter Property="HeightRequest" Value="200"/>
+			<Setter Property="VerticalOptions" Value="End"/>
+			<Setter Property="Source" Value="dotnet_bot.png"/>
+		</Style>
+		<saturation:SaturationConverter x:Key="SaturationConverter"/>
+	</ContentPage.Resources>
+
+	<ScrollView>
+		<VerticalStackLayout 
+            Spacing="25" 
+            Padding="30,0" 
+            VerticalOptions="Center">
+
+			<Grid>
+				<Image />
+				<Image Style="{StaticResource MainImage}"/>
+			</Grid>
+
+			<Label Text="Blur"/>
+			<Label BindingContext="{x:Reference blurSlider}"
+			       Text="{Binding Value}" />
+			<Slider x:Name="blurSlider"/>
+			<Grid>
+				<Image>
+					<Image.Behaviors>
+						<blur:BlurBehavior BindingContext="{x:Reference Name=blurSlider}"
+						                   Radius="{Binding Value}"/>
+					</Image.Behaviors>
+				</Image>
+				<Image Style="{StaticResource MainImage}" />
+			</Grid>
+
+			<Label Text="Saturation"/>
+			<Label BindingContext="{x:Reference saturationSlider}"
+			       Text="{Binding Value}" />
+			<Slider x:Name="saturationSlider"/>
+			<Grid>
+				<Image>
+					<Image.Behaviors>
+						<saturation:SaturationBehavior BindingContext="{x:Reference Name=saturationSlider}"
+						                               Saturation="{Binding Value, Converter={StaticResource SaturationConverter}}"/>
+					</Image.Behaviors>
+				</Image>
+				<Image Style="{StaticResource MainImage}" />
+			</Grid>
+
+			<Label Text="Chain: Blur + Saturation"/>
+			<Grid>
+				<Image>
+					<Image.Behaviors>
+						<chain:ChainBehavior Effects="blur,saturation"/>
+					</Image.Behaviors>
+				</Image>
+				<Image Style="{StaticResource MainImage}" />
+			</Grid>
+
+		</VerticalStackLayout>
+	</ScrollView>
+
+</ContentPage>

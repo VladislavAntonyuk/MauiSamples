@@ -21,4 +21,20 @@
 	<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
 		<RuntimeIdentifiers Condition="$(TargetFramework.Contains('-android'))">android-arm;android-arm64;android-x86;android-x64</RuntimeIdentifiers>
 	</PropertyGroup>
+
+	<PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows')) == 'false' and $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' and $(Configuration) == 'Release'">
+		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
+		<CodesignEntitlement>Entitlements.plist</CodesignEntitlement>
+		<ArchiveOnBuild>true</ArchiveOnBuild>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' and $(Configuration) == 'Debug'">
+		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
+		<RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="$(TargetFramework.Contains('-windows')) and '$(Configuration)' == 'Release'">
+		<GenerateAppxPackageOnBuild>true</GenerateAppxPackageOnBuild>
+		<AppxPackageSigningEnabled>False</AppxPackageSigningEnabled>
+	</PropertyGroup>
 </Project>
