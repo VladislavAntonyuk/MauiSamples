@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 xmlns:blur="clr-namespace:MauiImageEffects.BlurBehavior"
 			 xmlns:saturation="clr-namespace:MauiImageEffects.SaturationBehavior"
+			 xmlns:chain="clr-namespace:MauiImageEffects.ChainBehavior"
              x:Class="MauiImageEffects.MainPage">
 
 	<ContentPage.Resources>
@@ -45,18 +46,12 @@
 				</Image.Behaviors>
 			</Image>
 
-			<Label Text="Blur + Saturation"/>
-			<Label BindingContext="{x:Reference slider}"
-			       Text="{Binding Value}" />
-			<Slider x:Name="slider" Maximum="50" Value="5"/>
+			<Label Text="Chain: Blur + Saturation"/>
 			<Image
                 Source="dotnet_bot.png"
                 HeightRequest="200">
 				<Image.Behaviors>
-					<blur:BlurBehavior BindingContext="{x:Reference Name=slider}"
-					                   Radius="{Binding Value}"/>
-					<saturation:SaturationBehavior BindingContext="{x:Reference Name=slider}"
-					                               Saturation="{Binding Value, Converter={StaticResource SaturationConverter}}"/>
+					<chain:ChainBehavior Effects="blur,saturation"/>
 				</Image.Behaviors>
 			</Image>
 
