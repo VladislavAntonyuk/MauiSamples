@@ -19,3 +19,5 @@
 [CardLayout](CardLayout) - Create a new Stacked CardView control.
 
 [MauiImageEffects](MauiImageEffects) - Create beautiful effects for images like Blur and Saturation.
+
+[MauiWorkflowBuilder](MauiWorkflowBuilder) - .NET MAUI Blazor Workflow builder.
