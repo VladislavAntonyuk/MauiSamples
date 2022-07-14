@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+	<link href="site.css" rel="stylesheet" />
+</head>
+
+<body>
+
+	<app></app>
+
+	<div id="blazor-error-ui">
+		An unhandled error has occurred.
+		<a href="" class="reload">Reload</a>
+		<a class="dismiss">🗙</a>
+	</div>
+
+	<script src="_framework/blazor.webview.js" autostart="false"></script>
+	<script src="blockly.min.js"></script>
+	<script>
+		let workspace;
+		const darkTheme = Blockly.Theme.defineTheme('dark',
+			{
+				'base': Blockly.Themes.Classic,
+				'componentStyles': {
+					'workspaceBackgroundColour': '#1e1e1e',
+					'toolboxBackgroundColour': 'blackBackground',
+					'toolboxForegroundColour': '#fff',
+					'flyoutBackgroundColour': '#252526',
+					'flyoutForegroundColour': '#ccc',
+					'flyoutOpacity': 1,
+					'scrollbarColour': '#797979',
+					'insertionMarkerColour': '#fff',
+					'insertionMarkerOpacity': 0.3,
+					'scrollbarOpacity': 0.4,
+					'cursorColour': '#d0d0d0',
+					'blackBackground': '#333'
+				}
+			});
+		function InitWorkflow(toolbox, program) {
+			workspace = Blockly.inject('blocklyDiv', {
+				toolbox: toolbox,
+				renderer: "zelos",
+				theme: darkTheme
+			});
+			const newXml = Blockly.Xml.textToDom(program);
+			Blockly.Xml.domToWorkspace(newXml, workspace);
+		}
+
+		function getXml() {
+			const xml = Blockly.Xml.workspaceToDom(workspace);
+			return new XMLSerializer().serializeToString(xml);
+		}
+	</script>
+</body>
+
+</html>
