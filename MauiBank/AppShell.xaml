@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MauiBank.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiBank"
+    xmlns:views="clr-namespace:MauiBank.Views"
+    xmlns:fonts="clr-namespace:MauiBank.Resources.Fonts"
+    Shell.FlyoutBehavior="Disabled">
+
+	<ShellContent Route="PinPage" ContentTemplate="{DataTemplate views:PinPage}" />
+
+	<TabBar Route="home">
+		<Tab Route="CardPage" Title="Card">
+			<Tab.Icon>
+				<FontImageSource FontFamily="FASolid" Glyph="{x:Static fonts:FontAwesomeIcons.CreditCard}" />
+			</Tab.Icon>
+			<ShellContent ContentTemplate="{DataTemplate views:CardPage}" />
+		</Tab>
+		<Tab Route="CreditsPage" Title="Credits">
+			<Tab.Icon>
+				<FontImageSource FontFamily="FASolid" Glyph="{x:Static fonts:FontAwesomeIcons.ChartPie}" />
+			</Tab.Icon>
+			<ShellContent ContentTemplate="{DataTemplate views:CreditsPage}" />
+		</Tab>
+
+		<Tab Route="DepositsPage" Title="Deposits">
+			<Tab.Icon>
+				<FontImageSource FontFamily="FASolid" Glyph="{x:Static fonts:FontAwesomeIcons.PiggyBank}" />
+			</Tab.Icon>
+			<ShellContent ContentTemplate="{DataTemplate views:CreditsPage}" />
+		</Tab>
+
+		<Tab Route="CashBackPage" Title="CashBack">
+			<Tab.Icon>
+				<FontImageSource FontFamily="FASolid" Glyph="{x:Static fonts:FontAwesomeIcons.Gift}" />
+			</Tab.Icon>
+			<ShellContent ContentTemplate="{DataTemplate views:CreditsPage}" />
+		</Tab>
+
+		<Tab Route="MorePage" Title="More">
+			<Tab.Icon>
+				<FontImageSource FontFamily="FASolid" Glyph="{x:Static fonts:FontAwesomeIcons.Braille}" />
+			</Tab.Icon>
+			<ShellContent ContentTemplate="{DataTemplate views:CreditsPage}" />
+		</Tab>
+	</TabBar>
+
+</Shell>

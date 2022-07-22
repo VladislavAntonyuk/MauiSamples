@@ -1,0 +1,150 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:local="clr-namespace:MauiBank.Views"
+             xmlns:fonts="clr-namespace:MauiBank.Resources.Fonts"
+             x:Class="MauiBank.Views.PinPage"
+             x:DataType="local:PinPageViewModel">
+
+	<ContentPage.Resources>
+		<local:StringLengthToColorConverter x:Key="StringLengthToColorConverter"/>
+		<Style TargetType="Label">
+			<Setter Property="VerticalOptions" Value="Center"/>
+			<Setter Property="HorizontalOptions" Value="Center"/>
+			<Setter Property="Padding" Value="10"/>
+		</Style>
+		<Style TargetType="Border">
+			<Setter Property="Stroke" Value="LightGray"/>
+			<Setter Property="StrokeThickness" Value="4"/>
+			<Setter Property="WidthRequest" Value="50"/>
+			<Setter Property="HeightRequest" Value="50"/>
+			<Setter Property="StrokeShape">
+				<Setter.Value>
+					<Ellipse/>
+				</Setter.Value>
+			</Setter>
+		</Style>
+		<ControlTemplate x:Key="Keyboard">
+			<Border>
+				<ContentPresenter/>
+			</Border>
+		</ControlTemplate>
+		<Style TargetType="ContentView">
+			<Setter Property="ControlTemplate" Value="{StaticResource Keyboard}"/>
+		</Style>
+	</ContentPage.Resources>
+	<ScrollView>
+		<VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+			<Image
+                Source="dotnet_bot.png"
+                SemanticProperties.Description="Cute dot net bot waving hi to you!"
+                HeightRequest="200"
+                HorizontalOptions="Center">
+				<Image.Clip>
+					<EllipseGeometry RadiusX="100"
+					                 RadiusY="100"
+					                 Center="100,100"/>
+				</Image.Clip>
+			</Image>
+
+			<Label Text="Your pin"/>
+
+			<HorizontalStackLayout HorizontalOptions="Center" Spacing="25">
+				<Border WidthRequest="30" HeightRequest="30" Background="{Binding Pin, Converter={StaticResource StringLengthToColorConverter}, ConverterParameter=1}"/>
+				<Border WidthRequest="30" HeightRequest="30" Background="{Binding Pin, Converter={StaticResource StringLengthToColorConverter}, ConverterParameter=2}"/>
+				<Border WidthRequest="30" HeightRequest="30" Background="{Binding Pin, Converter={StaticResource StringLengthToColorConverter}, ConverterParameter=3}"/>
+				<Border WidthRequest="30" HeightRequest="30" Background="{Binding Pin, Converter={StaticResource StringLengthToColorConverter}, ConverterParameter=4}"/>
+			</HorizontalStackLayout>
+
+			<toolkit:UniformItemsLayout MaxColumns="3">
+				<ContentView>
+					<ContentView.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding KeyboardButtonClickedCommand}" CommandParameter="1"/>
+					</ContentView.GestureRecognizers>
+					<Label Text="1" />
+				</ContentView>
+				<ContentView>
+					<ContentView.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding KeyboardButtonClickedCommand}" CommandParameter="2"/>
+					</ContentView.GestureRecognizers>
+					<Label Text="2"/>
+				</ContentView>
+				<ContentView>
+					<ContentView.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding KeyboardButtonClickedCommand}" CommandParameter="3"/>
+					</ContentView.GestureRecognizers>
+					<Label Text="3"/>
+				</ContentView>
+				<ContentView>
+					<ContentView.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding KeyboardButtonClickedCommand}" CommandParameter="4"/>
+					</ContentView.GestureRecognizers>
+					<Label Text="4"/>
+				</ContentView>
+				<ContentView>
+					<ContentView.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding KeyboardButtonClickedCommand}" CommandParameter="5"/>
+					</ContentView.GestureRecognizers>
+					<Label Text="5"/>
+				</ContentView>
+				<ContentView>
+					<ContentView.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding KeyboardButtonClickedCommand}" CommandParameter="6"/>
+					</ContentView.GestureRecognizers>
+					<Label Text="6"/>
+				</ContentView>
+				<ContentView>
+					<ContentView.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding KeyboardButtonClickedCommand}" CommandParameter="7"/>
+					</ContentView.GestureRecognizers>
+					<Label Text="7"/>
+				</ContentView>
+				<ContentView>
+					<ContentView.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding KeyboardButtonClickedCommand}" CommandParameter="8"/>
+					</ContentView.GestureRecognizers>
+					<Label Text="8"/>
+				</ContentView>
+				<ContentView>
+					<ContentView.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding KeyboardButtonClickedCommand}" CommandParameter="9"/>
+					</ContentView.GestureRecognizers>
+					<Label Text="9"/>
+				</ContentView>
+				<ContentView>
+					<ContentView.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding BiometryAuthClickedCommand}"/>
+					</ContentView.GestureRecognizers>
+					<Label Text="{x:Static fonts:FontAwesomeIcons.Fingerprint}"
+					       FontFamily="FASolid" />
+				</ContentView>
+				<ContentView>
+					<ContentView.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding KeyboardButtonClickedCommand}" CommandParameter="0"/>
+					</ContentView.GestureRecognizers>
+					<Label Text="0"/>
+				</ContentView>
+				<ContentView>
+					<ContentView.GestureRecognizers>
+						<TapGestureRecognizer Command="{Binding DeleteButtonClickedCommand}"/>
+					</ContentView.GestureRecognizers>
+					<Label Text="{x:Static fonts:FontAwesomeIcons.DeleteLeft}"
+					       FontFamily="FASolid" />
+				</ContentView>
+
+			</toolkit:UniformItemsLayout>
+
+			<Label Text="Forgot password?">
+				<Label.GestureRecognizers>
+					<TapGestureRecognizer Command="{Binding ForgotPasswordButtonClickedCommand}"/>
+				</Label.GestureRecognizers>
+			</Label>
+		</VerticalStackLayout>
+	</ScrollView>
+
+</ContentPage>
