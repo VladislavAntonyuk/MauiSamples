@@ -28,9 +28,12 @@
 		<ArchiveOnBuild>true</ArchiveOnBuild>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' and $(Configuration) == 'Debug'">
-		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
-		<RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
+	<PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows')) == 'false' and $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' and $(Configuration) == 'Debug'">
+		<RuntimeIdentifiers>ios-arm64;iossimulator-x64</RuntimeIdentifiers>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows')) == 'false' and $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)'))=='maccatalyst'">
+		<RuntimeIdentifiers>maccatalyst-arm64;maccatalyst-x64</RuntimeIdentifiers>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="$(TargetFramework.Contains('-windows')) and '$(Configuration)' == 'Release'">

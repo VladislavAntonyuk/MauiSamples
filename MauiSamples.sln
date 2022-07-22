@@ -100,7 +100,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CardLayout", "CardLayout\Ca
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiImageEffects", "MauiImageEffects\MauiImageEffects.csproj", "{F7B88462-82EC-413D-95D7-A19B02108B74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiWorkflowBuilder", "MauiWorkflowBuilder\MauiWorkflowBuilder.csproj", "{F5DCF294-E0C8-4466-9EFE-04C7C3F17BF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiWorkflowBuilder", "MauiWorkflowBuilder\MauiWorkflowBuilder.csproj", "{F5DCF294-E0C8-4466-9EFE-04C7C3F17BF7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiBank", "MauiBank\MauiBank.csproj", "{3FB23A30-2E79-4524-9FBE-41F230395F4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -252,6 +254,12 @@ Global
 		{F5DCF294-E0C8-4466-9EFE-04C7C3F17BF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F5DCF294-E0C8-4466-9EFE-04C7C3F17BF7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F5DCF294-E0C8-4466-9EFE-04C7C3F17BF7}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{3FB23A30-2E79-4524-9FBE-41F230395F4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FB23A30-2E79-4524-9FBE-41F230395F4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FB23A30-2E79-4524-9FBE-41F230395F4C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{3FB23A30-2E79-4524-9FBE-41F230395F4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FB23A30-2E79-4524-9FBE-41F230395F4C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FB23A30-2E79-4524-9FBE-41F230395F4C}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
