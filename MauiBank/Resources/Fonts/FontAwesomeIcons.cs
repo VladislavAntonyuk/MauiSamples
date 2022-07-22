@@ -1,5 +1,4 @@
 ﻿namespace MauiBank.Resources.Fonts;
-using System;
 
 /// <summary>
 /// The unicode values for all FontAwesome v6.1.1 icons.

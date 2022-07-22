@@ -21,3 +21,5 @@
 [MauiImageEffects](MauiImageEffects) - Create beautiful effects for images like Blur and Saturation.
 
 [MauiWorkflowBuilder](MauiWorkflowBuilder) - .NET MAUI Blazor Workflow builder.
+
+[.NET MAUI Bank](MauiBank) - Replicate Monobank design.

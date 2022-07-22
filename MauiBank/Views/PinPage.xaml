@@ -3,12 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:local="clr-namespace:MauiBank.Views"
+             xmlns:vm="clr-namespace:MauiBank.ViewModels"
+             xmlns:converters="clr-namespace:MauiBank.Converters"
              xmlns:fonts="clr-namespace:MauiBank.Resources.Fonts"
              x:Class="MauiBank.Views.PinPage"
-             x:DataType="local:PinPageViewModel">
+             x:DataType="vm:PinPageViewModel">
 
 	<ContentPage.Resources>
-		<local:StringLengthToColorConverter x:Key="StringLengthToColorConverter"/>
+		<converters:StringLengthToColorConverter x:Key="StringLengthToColorConverter"/>
 		<Style TargetType="Label">
 			<Setter Property="VerticalOptions" Value="Center"/>
 			<Setter Property="HorizontalOptions" Value="Center"/>

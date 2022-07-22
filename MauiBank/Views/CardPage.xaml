@@ -4,12 +4,17 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
 			 xmlns:local="clr-namespace:MauiBank.Views"
 			 xmlns:fonts="clr-namespace:MauiBank.Resources.Fonts"
+             xmlns:vm="clr-namespace:MauiBank.ViewModels"
+             xmlns:models="clr-namespace:MauiBank.Models"
+             xmlns:animations="clr-namespace:MauiBank.Animations"
+             xmlns:converters="clr-namespace:MauiBank.Converters"
              x:Class="MauiBank.Views.CardPage"
-             x:DataType="local:CardPageViewModel"
+             x:DataType="vm:CardPageViewModel"
              x:Name="CardsPage">
 
 	<ContentPage.Resources>
-		<local:BoolToColorConverter x:Key="BoolToColorConverter"/>
+		<converters:BoolToColorConverter x:Key="BoolToColorConverter"/>
+		<toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter"/>
 		<Style TargetType="Border" x:Key="RewardStyle">
 			<Setter Property="Stroke" Value="LightGray"/>
 			<Setter Property="Background" Value="Gray"/>
@@ -49,7 +54,7 @@
 
 		<DataTemplate x:Key="RewardsTemplate">
 			<CollectionView ItemsSource="{Binding Source={x:Reference Name=CardsPage},Path=BindingContext.Rewards}"
-			                x:DataType="local:Reward"
+			                x:DataType="models:Reward"
 			                ItemSizingStrategy="MeasureFirstItem">
 				<CollectionView.Header>
 					<VerticalStackLayout Spacing="25">
@@ -242,18 +247,35 @@
 						</Border.StrokeShape>
 
 						<Grid ColumnDefinitions="*,*,*,*" RowDefinitions="*,100,*,*,*"
-						  Padding="30">
-							<Label Grid.Row="0" Grid.Column="0" Text=".NET MAUI Bank" TextColor="PapayaWhip" FontAttributes="Bold" FontSize="18"/>
-							<Label Grid.Row="0" Grid.Column="3" Text="UAH" TextColor="PapayaWhip" FontAttributes="Bold" FontSize="18" HorizontalOptions="End"/>
-							<Label Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" Text="1234" TextColor="PapayaWhip" FontAttributes="Bold" FontSize="30" />
-							<Label Grid.Row="2" Grid.Column="1" HorizontalOptions="Center" Text="5678" TextColor="PapayaWhip" FontAttributes="Bold" FontSize="30" />
-							<Label Grid.Row="2" Grid.Column="2" HorizontalOptions="Center" Text="9098" TextColor="PapayaWhip" FontAttributes="Bold" FontSize="30" />
-							<Label Grid.Row="2" Grid.Column="3" HorizontalOptions="Center" Text="7654" TextColor="PapayaWhip" FontAttributes="Bold" FontSize="30" />
-							<Label Grid.Row="3" Grid.Column="2" Text="08/29" HorizontalOptions="Center" TextColor="PapayaWhip" FontAttributes="Bold" FontSize="25" />
+						      Padding="30">
+							<Label Grid.Row="0" Grid.Column="0" Text=".NET MAUI Bank" FontAttributes="Bold" FontSize="18"/>
+							<Label Grid.Row="0" Grid.Column="3" Text="UAH" FontAttributes="Bold" FontSize="18" HorizontalOptions="End"/>
+							<Label IsVisible="{Binding Source={x:Reference Name=CardsPage},Path=BindingContext.IsCvvMode, Converter={StaticResource InvertedBoolConverter}}"
+							       Grid.Row="2" Grid.Column="0" HorizontalOptions="Center" Text="1234" FontAttributes="Bold" FontSize="30" />
+							<Label IsVisible="{Binding Source={x:Reference Name=CardsPage},Path=BindingContext.IsCvvMode, Converter={StaticResource InvertedBoolConverter}}"
+							       Grid.Row="2" Grid.Column="1" HorizontalOptions="Center" Text="5678" FontAttributes="Bold" FontSize="30" />
+							<Label IsVisible="{Binding Source={x:Reference Name=CardsPage},Path=BindingContext.IsCvvMode, Converter={StaticResource InvertedBoolConverter}}"
+							       Grid.Row="2" Grid.Column="2" HorizontalOptions="Center" Text="9098" FontAttributes="Bold" FontSize="30" />
+							<Label IsVisible="{Binding Source={x:Reference Name=CardsPage},Path=BindingContext.IsCvvMode, Converter={StaticResource InvertedBoolConverter}}"
+							       Grid.Row="2" Grid.Column="3" HorizontalOptions="Center" Text="7654" FontAttributes="Bold" FontSize="30" />
+							<Label IsVisible="{Binding Source={x:Reference Name=CardsPage},Path=BindingContext.IsCvvMode, Converter={StaticResource InvertedBoolConverter}}"
+							       Grid.Row="3" Grid.Column="2" Text="08/29" HorizontalOptions="Center" FontAttributes="Bold" FontSize="25" />
 							<Label Grid.Row="4" Grid.Column="4" Text="{x:Static fonts:FontAwesomeIcons.CcMastercard}" HorizontalOptions="End"
-						       TextColor="PapayaWhip" FontAttributes="Bold" FontSize="50"
+						       FontAttributes="Bold" FontSize="50"
 						       FontFamily="FABrands"/>
+
+							<Label IsVisible="{Binding Source={x:Reference Name=CardsPage},Path=BindingContext.IsCvvMode}"
+							       Grid.Row="2" Grid.Column="2" HorizontalOptions="Center" Text="CVV" FontAttributes="Bold" FontSize="30" />
+							<Label IsVisible="{Binding Source={x:Reference Name=CardsPage},Path=BindingContext.IsCvvMode}"
+							       Grid.Row="3" Grid.Column="2" Text="321" HorizontalOptions="Center" FontAttributes="Bold" FontSize="25" />
 						</Grid>
+						<Border.Behaviors>
+							<toolkit:AnimationBehavior Command="{Binding Source={x:Reference Name=CardsPage},Path=BindingContext.SwitchCvvModeCommand}">
+								<toolkit:AnimationBehavior.AnimationType>
+									<animations:FlipAnimation />
+								</toolkit:AnimationBehavior.AnimationType>
+							</toolkit:AnimationBehavior>
+						</Border.Behaviors>
 					</Border>
 
 					<IndicatorView ItemsSource="{Binding Source={x:Reference Name=CardsPage},Path=BindingContext.Pages}"

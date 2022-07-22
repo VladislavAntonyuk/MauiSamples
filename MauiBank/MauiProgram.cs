@@ -1,6 +1,7 @@
 ﻿namespace MauiBank;
 
 using CommunityToolkit.Maui;
+using ViewModels;
 using Views;
 
 public static class MauiProgram

@@ -1,5 +1,5 @@
 ﻿namespace MauiBank;
-using ObjCRuntime;
+
 using UIKit;
 
 public class Program
