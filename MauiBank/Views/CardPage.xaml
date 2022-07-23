@@ -58,16 +58,10 @@
 			                ItemSizingStrategy="MeasureFirstItem">
 				<CollectionView.Header>
 					<VerticalStackLayout Spacing="25">
-						<Image Source="https://picsum.photos/200"
+						<Image Source="dotnet_bot.png"
 							       WidthRequest="200"
 							       HeightRequest="200"
-							       Margin="0,50,0,15">
-							<Image.Clip>
-								<EllipseGeometry RadiusX="100"
-									                 RadiusY="100"
-									                 Center="100,100"/>
-							</Image.Clip>
-						</Image>
+							       Margin="0,50,0,15"/>
 						<Label Text="You opened 10 rewards" HorizontalOptions="Center"/>
 						<IndicatorView ItemsSource="{Binding Source={x:Reference Name=CardsPage},Path=BindingContext.Pages}"
 							               Position="0"

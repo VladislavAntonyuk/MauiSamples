@@ -46,13 +46,7 @@
                 Source="dotnet_bot.png"
                 SemanticProperties.Description="Cute dot net bot waving hi to you!"
                 HeightRequest="200"
-                HorizontalOptions="Center">
-				<Image.Clip>
-					<EllipseGeometry RadiusX="100"
-					                 RadiusY="100"
-					                 Center="100,100"/>
-				</Image.Clip>
-			</Image>
+                HorizontalOptions="Center"/>
 
 			<Label Text="Your pin"/>
 

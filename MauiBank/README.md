@@ -1,31 +1,21 @@
 # .NET MAUI Bank
 
-Article: https://vladislavantonyuk.azurewebsites.net/articles/Create-a-gallery-app-using-.NET-MAUI-Blazor
+Article: https://vladislavantonyuk.azurewebsites.net/articles/Replicate-a-bank-application-UI-using-.NET-MAUI
 
 ## Images
 
 ### Secure window
 
-![Android](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/MauiBlazorGallery.gif)
-
-![iOS](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/MauiBlazorGallery.gif)
+![iOS](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles//dotnet-maui-bank-secure.gif)
 
 ### Login Pin
 
-![Login pin](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/MauiBlazorGallery.gif)
+![Login pin](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/dotnet-maui-bank-pin-login.gif)
 
 ### Login Biometrics
 
-![Login biometrics](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/MauiBlazorGallery.gif)
+![Login biometrics](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/dotnet-maui-bank-pin-bio.gif)
 
-### Main page
+### App
 
-![Main page](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/MauiBlazorGallery.gif)
-
-### Rewards page
-
-![Rewards page](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/MauiBlazorGallery.gif)
-
-### Card page
-
-![Card page](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/MauiBlazorGallery.gif)
+![Main page](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/dotnet-maui-bank-app.gif)
