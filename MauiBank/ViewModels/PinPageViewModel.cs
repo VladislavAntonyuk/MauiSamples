@@ -52,14 +52,18 @@ public partial class PinPageViewModel : ObservableObject
 	}
 
 	[RelayCommand]
-	async Task BiometryAuthClicked()
+	async Task BiometryAuthClicked(CancellationToken cancellationToken)
 	{
 #pragma warning disable CA1416
 		var request = new AuthenticationRequestConfiguration("Prove you have fingers!", "Because without it you can't have access");
-		var result = await CrossFingerprint.Current.AuthenticateAsync(request);
+		var result = await CrossFingerprint.Current.AuthenticateAsync(request, cancellationToken);
 		if (result.Authenticated)
 		{
 			await GetMainPage().GoToAsync("//home");
+		}
+		else
+		{
+			await Toast.Make("Biometric authentication is not supported").Show(cancellationToken);
 		}
 #pragma warning restore CA1416
 	}
