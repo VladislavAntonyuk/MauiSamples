@@ -18,11 +18,11 @@ public class AppDelegate : MauiUIApplicationDelegate
 		var blurEffect = UIBlurEffect.FromStyle(UIBlurEffectStyle.Dark);
 		var blurEffectView = new UIVisualEffectView(blurEffect)
 		{
-			Frame = keyWindow.Subviews.First().Bounds,
+			Frame = keyWindow.Subviews[0].Bounds,
 			AutoresizingMask = UIViewAutoresizing.FlexibleDimensions,
 			Tag = 12
 		};
-		keyWindow.Subviews.Last().AddSubview(blurEffectView);
+		keyWindow.AddSubview(blurEffectView);
 		base.OnResignActivation(application);
 	}
 
