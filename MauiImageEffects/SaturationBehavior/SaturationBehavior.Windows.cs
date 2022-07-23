@@ -19,7 +19,7 @@ public partial class SaturationBehavior : PlatformBehavior<Image, Microsoft.UI.X
 		SetRendererEffect(platformView, 0);
 	}
 
-	static void SetRendererEffect(Microsoft.UI.Xaml.Controls.Image imageView, float saturation)
+	void SetRendererEffect(Microsoft.UI.Xaml.Controls.Image imageView, float saturation)
 	{
 		var graphicsEffect = new SaturationEffect()
 		{

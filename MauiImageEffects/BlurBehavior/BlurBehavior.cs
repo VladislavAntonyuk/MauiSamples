@@ -18,6 +18,6 @@ public partial class BlurBehavior
 			return;
 		}
 
-		SetRendererEffect(behavior.imageView, Convert.ToSingle(newValue));
+		behavior.SetRendererEffect(behavior.imageView, Convert.ToSingle(newValue));
 	}
 }

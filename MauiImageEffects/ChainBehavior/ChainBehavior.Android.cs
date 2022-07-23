@@ -17,7 +17,7 @@ public partial class ChainBehavior : PlatformBehavior<Image, ImageView>
 		SetRendererEffect(platformView, null);
 	}
 
-	static void SetRendererEffect(ImageView imageView, string? effects)
+	void SetRendererEffect(ImageView imageView, string? effects)
 	{
 		if (OperatingSystem.IsAndroidVersionAtLeast(31))
 		{

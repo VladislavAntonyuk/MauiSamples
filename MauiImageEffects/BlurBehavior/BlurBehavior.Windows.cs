@@ -19,7 +19,7 @@ public partial class BlurBehavior : PlatformBehavior<Image, Microsoft.UI.Xaml.Co
 		SetRendererEffect(platformView, 0);
 	}
 
-	static void SetRendererEffect(Microsoft.UI.Xaml.Controls.Image imageView, float radius)
+	void SetRendererEffect(Microsoft.UI.Xaml.Controls.Image imageView, float radius)
 	{
 		var graphicsEffect = new GaussianBlurEffect()
 		{

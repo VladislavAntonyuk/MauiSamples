@@ -17,7 +17,7 @@ public partial class SaturationBehavior : PlatformBehavior<Image, ImageView>
 		SetRendererEffect(platformView, 0);
 	}
 
-	static void SetRendererEffect(ImageView imageView, float radius)
+	void SetRendererEffect(ImageView imageView, float radius)
 	{
 		if (OperatingSystem.IsAndroidVersionAtLeast(31))
 		{

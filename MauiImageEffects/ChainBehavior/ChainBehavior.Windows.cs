@@ -20,7 +20,7 @@ public partial class ChainBehavior : PlatformBehavior<Image, Microsoft.UI.Xaml.C
 		SetRendererEffect(platformView, null);
 	}
 
-	static void SetRendererEffect(Microsoft.UI.Xaml.Controls.Image imageView, string? effects)
+	void SetRendererEffect(Microsoft.UI.Xaml.Controls.Image imageView, string? effects)
 	{
 		var compositor = ElementCompositionPreview.GetElementVisual(imageView).Compositor;
 		var effectFactory = compositor.CreateEffectFactory(GetEffect(effects));

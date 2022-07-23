@@ -18,6 +18,6 @@ public partial class ChainBehavior
 			return;
 		}
 		
-		SetRendererEffect(behavior.imageView, Convert.ToString(newValue));
+		behavior.SetRendererEffect(behavior.imageView, Convert.ToString(newValue));
 	}
 }

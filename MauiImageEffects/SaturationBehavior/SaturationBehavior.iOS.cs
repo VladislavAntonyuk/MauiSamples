@@ -2,19 +2,18 @@
 
 namespace MauiImageEffects.SaturationBehavior;
 
-using CoreGraphics;
 using CoreImage;
 
 public partial class SaturationBehavior : PlatformBehavior<Image, UIImageView>
 {
-	private CGImage? originalImage;
+	private UIImage? originalImage;
 	UIImageView? imageView;
 
 	protected override void OnAttachedTo(Image bindable, UIImageView platformView)
 	{
 		imageView = platformView;
 
-		originalImage = platformView.Image?.CGImage;
+		originalImage = platformView.Image;
 		SetRendererEffect(imageView, Saturation);
 	}
 
@@ -23,30 +22,41 @@ public partial class SaturationBehavior : PlatformBehavior<Image, UIImageView>
 		SetImage(platformView, originalImage);
 	}
 
-	static void SetImage(UIImageView imageView, CGImage? image)
+	static void SetImage(UIImageView imageView, UIImage? image)
 	{
 		if (image is null)
 		{
 			return;
 		}
 
-		imageView.Image = new UIImage(image);
+		imageView.Image = image;
 	}
 
-	static void SetRendererEffect(UIImageView imageView, float saturation)
+	void SetRendererEffect(UIImageView imageView, float saturation)
 	{
-		if (imageView.Image?.CGImage is null)
+		if (originalImage is null)
 		{
 			return;
 		}
 
 		var myContext = CIContext.Create();
-		var inputImage = CIImage.FromCGImage(imageView.Image.CGImage);
-		var filter = new CISaturationBlendMode()
+		var inputImage = new CIImage(originalImage);
+		var filter = new CIColorControls()
 		{
-			InputImage = inputImage
+			InputImage = inputImage,
+			Saturation = saturation
 		};
-		var resultImage = myContext.CreateCGImage(filter.OutputImage!, inputImage.Extent);
-		SetImage(imageView, resultImage);
+		if (filter.OutputImage is null)
+		{
+			return;
+		}
+
+		var resultImage = myContext.CreateCGImage(filter.OutputImage, inputImage.Extent);
+		if (resultImage is null)
+		{
+			return;
+		}
+
+		SetImage(imageView, new UIImage(resultImage));
 	}
 }

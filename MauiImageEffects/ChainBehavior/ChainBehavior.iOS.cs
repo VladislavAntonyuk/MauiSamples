@@ -2,20 +2,19 @@
 
 namespace MauiImageEffects.ChainBehavior;
 
-using CoreGraphics;
 using CoreImage;
 
 public partial class ChainBehavior : PlatformBehavior<Image, UIImageView>
 {
-	private CGImage? originalImage;
+	private UIImage? originalImage;
 	UIImageView? imageView;
 
 	protected override void OnAttachedTo(Image bindable, UIImageView platformView)
 	{
 		imageView = platformView;
 
-		originalImage = platformView.Image?.CGImage;
-		SetRendererEffect(imageView, null);
+		originalImage = platformView.Image;
+		SetRendererEffect(imageView, Effects);
 	}
 
 	protected override void OnDetachedFrom(Image bindable, UIImageView platformView)
@@ -23,38 +22,43 @@ public partial class ChainBehavior : PlatformBehavior<Image, UIImageView>
 		SetImage(platformView, originalImage);
 	}
 
-	static void SetImage(UIImageView imageView, CGImage? image)
+	static void SetImage(UIImageView imageView, UIImage? image)
 	{
 		if (image is null)
 		{
 			return;
 		}
 
-		imageView.Image = new UIImage(image);
+		imageView.Image = image;
 	}
 
-	static void SetRendererEffect(UIImageView imageView, string? effects)
+	void SetRendererEffect(UIImageView imageView, string? effects)
 	{
-		if (imageView.Image?.CGImage is null)
+		if (originalImage is null)
 		{
 			return;
 		}
 
-		var inputImage = CIImage.FromCGImage(imageView.Image.CGImage);
+		var inputImage = new CIImage(originalImage);
 		var ciImage = GetEffect(effects, inputImage);
+		if (ciImage is null)
+		{
+			return;
+		}
+
 		var myContext = CIContext.Create();
-		var resultImage = myContext.CreateCGImage(ciImage!, inputImage.Extent);
-		SetImage(imageView, resultImage);
+		var resultImage = myContext.CreateCGImage(ciImage, inputImage.Extent);
+		if (resultImage is null)
+		{
+			return;
+		}
+
+		SetImage(imageView, new UIImage(resultImage));
 	}
 
 
 	static CIImage? GetEffect(string? effects, CIImage inputImage)
 	{
-		if (!OperatingSystem.IsAndroidVersionAtLeast(31))
-		{
-			return null;
-		}
-
 		var effectNames = effects?.Split(',', StringSplitOptions.RemoveEmptyEntries);
 		return effectNames?.Length switch
 		{
@@ -66,11 +70,6 @@ public partial class ChainBehavior : PlatformBehavior<Image, UIImageView>
 
 	static CIImage? CreateEffectByName(string effectName, CIImage inputImage)
 	{
-		if (!OperatingSystem.IsAndroidVersionAtLeast(31))
-		{
-			return null;
-		}
-		
 		CIFilter? filter = effectName switch
 		{
 			"blur" => new CIGaussianBlur
@@ -78,9 +77,10 @@ public partial class ChainBehavior : PlatformBehavior<Image, UIImageView>
 				InputImage = inputImage,
 				Radius = 5
 			},
-			"saturation" => new CISaturationBlendMode()
+			"saturation" => new CIColorControls()
 			{
-				InputImage = inputImage
+				InputImage = inputImage,
+				Saturation = 0.05f
 			},
 			_ => null
 		};
@@ -91,19 +91,14 @@ public partial class ChainBehavior : PlatformBehavior<Image, UIImageView>
 
 	static CIImage? CreateChainEffect(string[] effects, CIImage inputImage)
 	{
-		if (!OperatingSystem.IsAndroidVersionAtLeast(31))
-		{
-			return null;
-		}
-
 		var outputImage = CreateEffectByName(effects[0], inputImage);
-		if (effects.Length == 1)
+		if (effects.Length == 1 || outputImage is null)
 		{
 			return outputImage;
 		}
 
 		var innerEffectNames = effects[1..];
 
-		return CreateChainEffect(innerEffectNames, outputImage!);
+		return CreateChainEffect(innerEffectNames, outputImage);
 	}
 }
