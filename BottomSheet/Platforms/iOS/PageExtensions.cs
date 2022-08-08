@@ -5,7 +5,7 @@ using UIKit;
 
 public static partial class PageExtensions
 {
-	public static void ShowBottomSheetPlatform(this Page page, IView bottomSheetContent)
+	public static void ShowBottomSheet(this Page page, IView bottomSheetContent, bool dimDismiss)
 	{
 		var mauiContext = page.Handler?.MauiContext ?? throw new Exception("MauiContext is null");
 		var viewController = page.ToUIViewController(mauiContext);
@@ -19,7 +19,7 @@ public static partial class PageExtensions
 				UISheetPresentationControllerDetent.CreateMediumDetent(),
 				UISheetPresentationControllerDetent.CreateLargeDetent(),
 			};
-			sheet.LargestUndimmedDetentIdentifier = UISheetPresentationControllerDetentIdentifier.Medium;
+			sheet.LargestUndimmedDetentIdentifier = dimDismiss ? UISheetPresentationControllerDetentIdentifier.Unknown : UISheetPresentationControllerDetentIdentifier.Medium;
 			sheet.PrefersScrollingExpandsWhenScrolledToEdge = false;
 			sheet.PrefersEdgeAttachedInCompactHeight = true;
 			sheet.WidthFollowsPreferredContentSizeWhenEdgeAttached = true;

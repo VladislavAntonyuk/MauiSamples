@@ -15,14 +15,14 @@
 					       WidthRequest="200"
 					       HeightRequest="200"/>
 
-					<Label 
+					<Label
 						Text="Welcome to .NET Multi-platform App UI"
 						SemanticProperties.HeadingLevel="Level1"
 						SemanticProperties.Description="Welcome to dot net Multi platform App U I"
 						FontSize="18"
 						HorizontalOptions="Center" />
 
-					<Label 
+					<Label
 						Text="{Binding Count, StringFormat='Current count: {0}'}"
 						SemanticProperties.Hint="Counts the number of times you click"
 						FontSize="18"
@@ -36,10 +36,11 @@
 			</ScrollView>
 		</DataTemplate>
 	</ContentPage.Resources>
+
 	<Button
 		Text="Open bottom sheet"
 		SemanticProperties.Hint="Opens bottom sheet"
-		Clicked="ShowBottomSheet" />
-
+		Clicked="ShowBottomSheet"
+		VerticalOptions="Center"/>
 
 </ContentPage>

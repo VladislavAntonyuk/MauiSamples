@@ -17,7 +17,7 @@ public partial class MainPage : ContentPage
 
 	private void ShowBottomSheet(object sender, EventArgs e)
 	{
-		this.ShowBottomSheet(GetBottomSheetView());
+		this.ShowBottomSheet(GetBottomSheetView(), true);
 	}
 
 
