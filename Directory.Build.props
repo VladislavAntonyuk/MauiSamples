@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <Project>
 	<PropertyGroup>
 		<TargetFrameworks>net6.0-android;net6.0-ios;net6.0-maccatalyst</TargetFrameworks>
@@ -18,8 +18,8 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
-	<PropertyGroup Condition="'$(Configuration)' == 'Debug'">
-		<RuntimeIdentifiers Condition="$(TargetFramework.Contains('-android'))">android-arm;android-arm64;android-x86;android-x64</RuntimeIdentifiers>
+	<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android' and '$(Configuration)' == 'Debug'">
+		<RuntimeIdentifiers>android-arm;android-arm64;android-x86;android-x64</RuntimeIdentifiers>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows')) == 'false' and $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' and $(Configuration) == 'Release'">
@@ -29,7 +29,8 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows')) == 'false' and $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' and $(Configuration) == 'Debug'">
-		<RuntimeIdentifiers>ios-arm64;iossimulator-x64</RuntimeIdentifiers>
+		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
+		<RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows')) == 'false' and $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)'))=='maccatalyst'">

@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BottomSheet.MainPage">
+
+	<ContentPage.Resources>
+		<DataTemplate x:Name="BottomSheetTemplate" x:Key="BottomSheetTemplate">
+			<ScrollView>
+				<VerticalStackLayout
+					Spacing="25"
+					Padding="30,0"
+					VerticalOptions="Center">
+
+					<Image Source="dotnet_bot.png"
+					       WidthRequest="200"
+					       HeightRequest="200"/>
+
+					<Label
+						Text="Welcome to .NET Multi-platform App UI"
+						SemanticProperties.HeadingLevel="Level1"
+						SemanticProperties.Description="Welcome to dot net Multi platform App U I"
+						FontSize="18"
+						HorizontalOptions="Center" />
+
+					<Label
+						Text="{Binding Count, StringFormat='Current count: {0}'}"
+						SemanticProperties.Hint="Counts the number of times you click"
+						FontSize="18"
+						HorizontalOptions="Center" />
+
+					<Button Text="Increment count"
+					        SemanticProperties.Hint="Increments the number of times you click"
+					        Clicked="OnCounterClicked"/>
+
+				</VerticalStackLayout>
+			</ScrollView>
+		</DataTemplate>
+	</ContentPage.Resources>
+
+	<Button
+		Text="Open bottom sheet"
+		SemanticProperties.Hint="Opens bottom sheet"
+		Clicked="ShowBottomSheet"
+		VerticalOptions="Center"/>
+
+</ContentPage>

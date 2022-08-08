@@ -11,6 +11,11 @@ public partial class PinPageViewModel : ObservableObject
 	[ObservableProperty]
 	private string pin = string.Empty;
 
+	public PinPageViewModel()
+	{
+		BiometryAuthCommand.Execute(null);
+	}
+
 	[RelayCommand]
 	async Task KeyboardButtonClicked(string parameter, CancellationToken cancellationToken)
 	{
@@ -19,10 +24,8 @@ public partial class PinPageViewModel : ObservableObject
 		{
 			case < 4:
 				break;
-			case 4:
+			default:
 				await ValidatePin(cancellationToken);
-				break;
-			case > 4:
 				break;
 		}
 	}
@@ -51,33 +54,41 @@ public partial class PinPageViewModel : ObservableObject
 		}
 	}
 
+#pragma warning disable CA1416
 	[RelayCommand]
 	async Task BiometryAuthClicked(CancellationToken cancellationToken)
 	{
-#pragma warning disable CA1416
+		if (!await BiometryAuth(cancellationToken))
+		{
+			await Toast.Make("Biometric authentication is not supported").Show(cancellationToken);
+		}
+	}
+
+	[RelayCommand]
+	async Task<bool> BiometryAuth(CancellationToken cancellationToken)
+	{
 		var request = new AuthenticationRequestConfiguration("Prove you have fingers!", "Because without it you can't have access");
 		var result = await CrossFingerprint.Current.AuthenticateAsync(request, cancellationToken);
 		if (result.Authenticated)
 		{
 			await GetMainPage().GoToAsync("//home");
 		}
-		else
-		{
-			await Toast.Make("Biometric authentication is not supported").Show(cancellationToken);
-		}
-#pragma warning restore CA1416
+
+		return result.Authenticated;
 	}
+#pragma warning restore CA1416
 
 	[RelayCommand]
 	async Task ForgotPasswordButtonClicked()
 	{
+		await Toast.Make("Password: 1111").Show();
 		var result = await GetMainPage().DisplayAlert(
-			"Restore password", "This will open browser. Do you want to continue?"
-			, "OK",
+			"Restore password", "This will open browser. Do you want to continue?",
+			"OK",
 			"Cancel");
 		if (result)
 		{
-			await Browser.OpenAsync("https://google.com");
+			await Browser.OpenAsync("https://monobank.ua/r/XLXmz6");
 		}
 	}
 

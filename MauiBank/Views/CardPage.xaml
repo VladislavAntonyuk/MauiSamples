@@ -14,11 +14,11 @@
 
 	<ContentPage.Resources>
 		<converters:BoolToColorConverter x:Key="BoolToColorConverter"/>
+		<converters:BoolToStrokeThicknessConverter x:Key="BoolToStrokeThicknessConverter"/>
 		<toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter"/>
 		<Style TargetType="Border" x:Key="RewardStyle">
 			<Setter Property="Stroke" Value="LightGray"/>
 			<Setter Property="Background" Value="Gray"/>
-			<Setter Property="StrokeThickness" Value="4"/>
 			<Setter Property="WidthRequest" Value="50"/>
 			<Setter Property="HeightRequest" Value="50"/>
 			<Setter Property="StrokeShape">
@@ -81,7 +81,8 @@
 					<DataTemplate>
 						<VerticalStackLayout Spacing="10">
 							<Border Style="{StaticResource RewardStyle}"
-								        Stroke="{Binding IsAchieved, Converter={StaticResource BoolToColorConverter}}">
+								    Stroke="{Binding IsAchieved, Converter={StaticResource BoolToColorConverter}}"
+								    StrokeThickness="{Binding IsAchieved, Converter={StaticResource BoolToStrokeThicknessConverter}}">
 								<Image Source="{Binding Image}"
 									       WidthRequest="50"
 									       HeightRequest="50"/>
@@ -129,7 +130,7 @@
 								<Label Text="{x:Static fonts:FontAwesomeIcons.Download}"
 									   Style="{StaticResource MainActionsLabelStyle}"/>
 							</Border>
-							<Label Text="Transfer money" HorizontalOptions="Center"/>
+							<Label Text="Top up your card" HorizontalOptions="Center"/>
 						</VerticalStackLayout>
 
 						<VerticalStackLayout>
