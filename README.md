@@ -23,3 +23,5 @@
 [MauiWorkflowBuilder](MauiWorkflowBuilder) - .NET MAUI Blazor Workflow builder.
 
 [.NET MAUI Bank](MauiBank) - Replicate Monobank design.
+
+[iOS Extensions](iOSExtensions) - Extend .NET MAUI application with iOS App Extensions.
