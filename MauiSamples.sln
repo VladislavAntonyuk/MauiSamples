@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31611.283
@@ -105,6 +105,15 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiBank", "MauiBank\MauiBank.csproj", "{3FB23A30-2E79-4524-9FBE-41F230395F4C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BottomSheet", "BottomSheet\BottomSheet.csproj", "{29FEFF3E-62BD-4156-993A-7264EC281AA9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "iOSExtensions", "iOSExtensions", "{F215B6A7-4C79-4415-95D2-6F561143C9AC}"
+	ProjectSection(SolutionItems) = preProject
+		iOSExtensions\Directory.Build.props = iOSExtensions\Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppContainer", "iOSExtensions\AppContainer\AppContainer.csproj", "{E3B8C927-987B-410C-9B8F-9C683B2F494A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppContainerExtension", "iOSExtensions\AppContainerExtension\AppContainerExtension.csproj", "{74032D84-5715-43FF-B4D7-A0811210FD5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -268,6 +277,10 @@ Global
 		{29FEFF3E-62BD-4156-993A-7264EC281AA9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{29FEFF3E-62BD-4156-993A-7264EC281AA9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{29FEFF3E-62BD-4156-993A-7264EC281AA9}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{E3B8C927-987B-410C-9B8F-9C683B2F494A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3B8C927-987B-410C-9B8F-9C683B2F494A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74032D84-5715-43FF-B4D7-A0811210FD5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74032D84-5715-43FF-B4D7-A0811210FD5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -305,6 +318,8 @@ Global
 		{13DAE136-5BF2-460C-BFD7-7BDB0785C935} = {671C019C-7DCC-4B9E-AD7D-B9F6F35D044E}
 		{6BF7A52A-311B-41C0-A112-3D8A06DA12FF} = {14D979DA-85FE-41DC-9C59-A49EE52EC9A5}
 		{1C9ECD3D-B554-4FDA-92BE-B8CE461BCBA4} = {14D979DA-85FE-41DC-9C59-A49EE52EC9A5}
+		{E3B8C927-987B-410C-9B8F-9C683B2F494A} = {F215B6A7-4C79-4415-95D2-6F561143C9AC}
+		{74032D84-5715-43FF-B4D7-A0811210FD5D} = {F215B6A7-4C79-4415-95D2-6F561143C9AC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
