@@ -1,3 +1,7 @@
+[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://stand-with-ukraine.pp.ua)
+
+# .NET MAUI Samples
+
 [MauiAuth/MauiAuthBlazor](Auth) - A small mobile application, which requires user authentication, using .NET MAUI (AD and AD B2C)
 
 [MauiBlazorPhotoGallery](MauiBlazorPhotoGallery) - Infinite scrolling gallery app using .NET MAUI Blazor. Replicate Google Photos and Instagram Gallery UI.

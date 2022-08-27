@@ -1,3 +1,5 @@
+[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://stand-with-ukraine.pp.ua)
+
 # Blazor Photo gallery
 
 Article: https://vladislavantonyuk.azurewebsites.net/articles/Create-a-gallery-app-using-.NET-MAUI-Blazor
@@ -6,4 +8,4 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Create-a-gallery-a
 
 ### Infinite scrollable gallery
 
-![MAUI Blazor gallery](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/MauiBlazorGallery.gif)
+![MAUI Blazor gallery](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/16/MauiBlazorGallery.gif)

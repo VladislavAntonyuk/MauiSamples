@@ -1,3 +1,5 @@
+[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://stand-with-ukraine.pp.ua)
+
 # Paint
 
 Article: https://vladislavantonyuk.azurewebsites.net/articles/Drawing-View-in-Xamarin-Community-Toolkit
@@ -6,7 +8,7 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Drawing-View-in-Xa
 
 ### DrawingView
 
-![.NET MAUI Paint](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/paint-dotnet.png)
+![.NET MAUI Paint](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/7/paint-dotnet.png)
 
 ### Save project
 
