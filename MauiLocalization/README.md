@@ -1,3 +1,5 @@
+[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://stand-with-ukraine.pp.ua)
+
 # Localization
 
 Article: https://vladislavantonyuk.azurewebsites.net/articles/Localize-.NET-MAUI-application
@@ -6,4 +8,4 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Localize-.NET-MAUI
 
 ### Switch languages
 
-![.NET MAUI Localization](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/MauiLocalization.gif)
+![.NET MAUI Localization](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/20/MauiLocalization.gif)

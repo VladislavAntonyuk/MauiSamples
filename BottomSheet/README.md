@@ -1,3 +1,5 @@
+[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://stand-with-ukraine.pp.ua)
+
 # Bottom sheet
 
 Article: https://vladislavantonyuk.azurewebsites.net/articles/Creating-a-bottom-sheet-using-.NET-MAUI
@@ -6,4 +8,4 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Creating-a-bottom-
 
 ### Bottom sheet on Android
 
-![Bottom sheet on Android](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/bottom-sheet-android.gif)
+![Bottom sheet on iOS](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/26/logo.gif)
