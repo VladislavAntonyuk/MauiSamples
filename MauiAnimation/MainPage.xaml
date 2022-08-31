@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mauiAnimation="clr-namespace:MauiAnimation"
+             xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MauiAnimation.MainPage"
+             Background="LightBlue">
+
+	<Grid Background="LightBlue">
+		<Grid VerticalOptions="End" TranslationX="100">
+			<Path Fill="Gray">
+				<Path.Data>
+					<RectangleGeometry Rect="0,0,5,600" />
+				</Path.Data>
+			</Path>
+			<mauiAnimation:Flag WidthRequest="400" TranslationY="-50" HorizontalOptions="Start"/>
+
+		</Grid>
+
+
+		<Path
+			 Aspect="Uniform"
+			 HorizontalOptions="Start"
+			 VerticalOptions="End"
+			 Fill="Green"
+			 Data="m 0 0 q 131 -110 224 -118 q 132 48 261 31 q 269 -129 423 -114 c 281 53 252 131 377 107 c 99 -21 221 22 279 94Z"/>
+
+		<mauiAnimation:Sky
+			 HorizontalOptions="End"
+			 VerticalOptions="Start"/>
+
+		<Image
+			TranslationY="-10"
+			HorizontalOptions="Start"
+                Source="dotnet_bot.png"
+				VerticalOptions="End"
+                HeightRequest="200" />
+
+		<Image
+			TranslationY="-30"
+			RotationY="180"
+                Source="dotnet_bot.png"
+				VerticalOptions="End"
+                HeightRequest="200">
+		</Image>
+
+	</Grid>
+
+</ContentPage>

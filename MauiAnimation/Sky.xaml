@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:mauiAnimation="clr-namespace:MauiAnimation"
+             xmlns:mauiApp1="clr-namespace:MauiApp1"
+             x:Class="MauiAnimation.Sky">
+	<Grid>
+		<mauiApp1:Cloud
+			x:Name="Cloud1"
+		                TranslationX="550"
+		                TranslationY="23"/>
+		<mauiApp1:Cloud 
+			x:Name="Cloud2"
+		                TranslationX="350"
+		                TranslationY="14" />
+		<mauiApp1:Cloud 
+			x:Name="Cloud3"
+		                TranslationX="250"
+		                TranslationY="45"/>
+		<Grid WidthRequest="200" HeightRequest="200"
+		      HorizontalOptions="End"
+		      VerticalOptions="Start"
+		      Margin ="10">
+			<Grid.Behaviors>
+				<toolkit:AnimationBehavior>
+					<toolkit:AnimationBehavior.AnimationType>
+						<mauiAnimation:SunAnimation />
+					</toolkit:AnimationBehavior.AnimationType>
+				</toolkit:AnimationBehavior>
+			</Grid.Behaviors>
+			<Ellipse WidthRequest="120" HeightRequest="120" Fill="Yellow" HorizontalOptions="Center"
+			         VerticalOptions="Center"/>
+
+			<Path WidthRequest="200" HeightRequest="200" Fill="Red" HorizontalOptions="Center"
+			      VerticalOptions="Center"
+				Data="M 140.796 -67.661 l 14.956 -12.837 l 0.39 -0.336 l -0.39 -0.334 l -14.604 -12.536 c -2.146 -2.287 -2.559 -4.183 -1.79 -7.121 l 6.53 -18.594 l 0.172 -0.487 l -0.505 -0.094 l -18.959 -3.563 c -2.94 -0.728 -4.426 -2.378 -5.058 -5.213 l -3.651 -19.418 l -0.093 -0.506 l -0.483 0.169 l -18.19 6.39 c -2.94 0.607 -4.755 0.607 -7.365 -2.062 L 78.531 -159.61 L 78.195 -160 l -0.334 0.39 L 64.634 -144.202 c -1.702 1.843 -3.353 2.669 -6.025 1.608 l -19.15 -6.727 l -0.484 -0.17 l -0.095 0.505 l -3.75 19.95 c -0.332 2.271 -0.746 3.591 -4.153 4.135 l -19.419 3.65 l -0.506 0.095 l 0.172 0.484 l 6.379 18.161 c 1.6 4.128 0.692 4.705 -1.993 7.045 L 0.638 -82.615 l -0.389 0.335 l 0.389 0.334 l 14.594 12.529 c 1.908 1.81 2.815 3.543 1.792 7.155 L 10.5 -43.693 l -0.17 0.484 l 0.504 0.095 l 18.906 3.554 c 3.406 0.666 4.479 2.48 5.124 5.288 l 3.637 19.354 l 0.096 0.506 l 0.485 -0.173 l 18.108 -6.36 c 3.102 -0.788 5.082 -0.376 7.131 2.016 l 12.816 14.929 l 0.336 0.391 l 0.335 -0.391 l 12.503 -14.565 c 1.827 -1.849 3.808 -2.921 7.205 -1.811 l 18.54 6.515 l 0.489 0.17 l 0.091 -0.506 l 3.553 -18.895 c 0.661 -3.163 1.898 -4.235 5.29 -5.133 l 19.354 -3.636 l 0.505 -0.098 l -0.169 -0.484 l -6.371 -18.132 C 137.764 -63.729 138.095 -65.544 140.796 -67.661 z M 78.196 -28.06 c -29.54 0 -53.487 -23.947 -53.487 -53.486 c 0 -29.541 23.947 -53.488 53.487 -53.488 c 0.825 0 1.645 0.025 2.46 0.062 l 0 0 c 28.396 1.287 51.027 24.711 51.027 53.426 C 131.684 -52.006 107.736 -28.06 78.196 -28.06 z"/>
+		</Grid>
+
+		<Path Fill="White"
+		  x:Name="Plane"
+							   TranslationY="200"
+				Data="M 289.7 176.5 c 4.9 4.9 7.5 11.4 7.5 18.3 c 0 14.2 -11.6 25.8 -25.8 25.8 H 66.6 c -60.8 0 -66.1 -28.5 -66.2 -37.8 c -1.9 -39.6 23.1 -77.5 24.2 -79 c 1.8 -2.7 4.9 -4.4 8.2 -4.4 h 11.3 c 4.5 0 8.5 3.1 9.6 7.5 l 9.4 37.6 h 18.2 l -25.4 -53.3 c -1.5 -3 -1.2 -6.6 0.6 -9.5 c 1.8 -2.9 5 -4.6 8.3 -4.6 h 22.6 c 2.1 0 4.2 0.7 5.9 2 l 87.6 65.5 h 66.2 c 6.9 0 13.4 2.7 18.2 7.6 L 289.7 176.5 z M 277.5 194.7 c 0 -1.6 -0.6 -3.1 -1.8 -4.3 l -24.5 -24.5 c -1.1 -1.1 -2.7 -1.8 -4.3 -1.8 h -39.8 l 8.6 6.4 c 3.4 2.5 4.8 7 3.5 11 c -1.3 4 -5.1 6.8 -9.4 6.8 h -101.5 c -3.8 0 -7.3 -2.2 -8.9 -5.6 l -8.8 -18.6 h -35.3 c -4.5 0 -8.5 -3.1 -9.6 -7.5 l -8.8 -35.2 c -6.4 11.6 -18.1 36.3 -16.9 60.5 c 0 0.2 0 0.3 0 0.5 c 0 11 18.7 18.3 46.5 18.3 h 204.9 C 274.8 200.8 277.5 198.1 277.5 194.7 z M 114.6 168.6 h 65.6 l -96.2 -71.9 h -3.6 L 114.6 168.6 z"/>
+
+
+		<HorizontalStackLayout HorizontalOptions="Center" VerticalOptions="Start"
+		                       Spacing="15"
+							   TranslationY="250"
+		                       x:Name="GloryToUkraine">
+			<Image Source="Ukraine.png"
+			       WidthRequest="75"/>
+			<Label
+				Text="Glory to Ukraine!"
+				FontSize="40"
+				TextColor="Black"
+				LineBreakMode="WordWrap"
+				FontFamily="Ontel"
+				VerticalOptions="Center"
+				HorizontalTextAlignment="Center"/>
+		</HorizontalStackLayout>
+	</Grid>
+</ContentView>
