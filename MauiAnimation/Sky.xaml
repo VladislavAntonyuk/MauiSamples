@@ -10,11 +10,11 @@
 			x:Name="Cloud1"
 		                TranslationX="550"
 		                TranslationY="23"/>
-		<mauiApp1:Cloud 
+		<mauiApp1:Cloud
 			x:Name="Cloud2"
 		                TranslationX="350"
 		                TranslationY="14" />
-		<mauiApp1:Cloud 
+		<mauiApp1:Cloud
 			x:Name="Cloud3"
 		                TranslationX="250"
 		                TranslationY="45"/>
