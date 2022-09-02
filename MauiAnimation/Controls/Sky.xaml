@@ -11,11 +11,11 @@
 			x:Name="Cloud1"
 		                TranslationX="550"
 		                TranslationY="23"/>
-		<controls:Cloud 
+		<controls:Cloud
 			x:Name="Cloud2"
 		                TranslationX="350"
 		                TranslationY="14" />
-		<controls:Cloud 
+		<controls:Cloud
 			x:Name="Cloud3"
 		                TranslationX="250"
 		                TranslationY="45"/>

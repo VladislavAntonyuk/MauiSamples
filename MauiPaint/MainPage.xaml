@@ -5,7 +5,7 @@
 			 xmlns:vm="clr-namespace:MauiPaint"
              x:Class="MauiPaint.MainPage"
 			 x:DataType="vm:MainPageViewModel">
-	
+
 	<ContentPage.MenuBarItems>
 		<MenuBarItem Text="File">
 			<MenuFlyoutItem Text="New" Clicked="NewCommand" Command="{Binding NewCommand}"/>
