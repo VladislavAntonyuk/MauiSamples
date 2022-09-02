@@ -1,4 +1,4 @@
-namespace MauiApp1;
+namespace MauiAnimation.Controls;
 
 public partial class Cloud : ContentView
 {

@@ -53,6 +53,10 @@ public partial class MainPage : ContentPage
 	{
 		viewModel.ToggleThemeCommand.Execute(this);
 	}
+	public void PasteFromClipboardCommand(object sender, EventArgs args)
+	{
+		viewModel.PasteFromClipboardCommand.Execute(this);
+	}
 	public void HelpCommand(object sender, EventArgs args)
 	{
 		viewModel.HelpCommand.Execute(this);

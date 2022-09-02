@@ -1,6 +1,6 @@
-﻿namespace MauiAnimation;
+﻿namespace MauiAnimation.Animations;
 
-using MauiApp1;
+using MauiAnimation.Controls;
 
 public class CloudAnimation : CommunityToolkit.Maui.Animations.BaseAnimation<Cloud>
 {

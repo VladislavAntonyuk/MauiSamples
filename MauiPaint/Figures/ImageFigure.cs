@@ -11,8 +11,10 @@ public class ImageFigure : IFigure
 	public void Draw(ICanvas canvas, RectF rectF)
 	{
 #if ANDROID || IOS || MACCATALYST
+		ImageStream.Position = 0;
 		var image = Microsoft.Maui.Graphics.Platform.PlatformImage.FromStream(ImageStream);
-		canvas.DrawImage(image, X, Y, Width, Height);
+		var newImage = image.Resize(Width, Height, ResizeMode.Stretch, true);
+		canvas.DrawImage(newImage, X, Y, newImage.Width, newImage.Height);
 #endif
 	}
 
@@ -23,7 +25,7 @@ public class ImageFigure : IFigure
 		Width = await FigureExtensions.SetParameter<int>("Width");
 		Height = await FigureExtensions.SetParameter<int>("Height");
 		var path = await FigureExtensions.SetParameter<string>("Path");
-		if (path != null)
+		if (File.Exists(path))
 		{
 			ImageStream = new MemoryStream(await File.ReadAllBytesAsync(path));
 		}

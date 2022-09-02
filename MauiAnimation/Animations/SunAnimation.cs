@@ -1,4 +1,4 @@
-﻿namespace MauiAnimation;
+﻿namespace MauiAnimation.Animations;
 
 public class SunAnimation : CommunityToolkit.Maui.Animations.BaseAnimation
 {

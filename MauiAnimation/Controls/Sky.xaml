@@ -3,18 +3,19 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:mauiAnimation="clr-namespace:MauiAnimation"
-             xmlns:mauiApp1="clr-namespace:MauiApp1"
-             x:Class="MauiAnimation.Sky">
+             xmlns:controls="clr-namespace:MauiAnimation.Controls"
+             xmlns:animations="clr-namespace:MauiAnimation.Animations"
+             x:Class="MauiAnimation.Controls.Sky">
 	<Grid>
-		<mauiApp1:Cloud
+		<controls:Cloud
 			x:Name="Cloud1"
 		                TranslationX="550"
 		                TranslationY="23"/>
-		<mauiApp1:Cloud 
+		<controls:Cloud 
 			x:Name="Cloud2"
 		                TranslationX="350"
 		                TranslationY="14" />
-		<mauiApp1:Cloud 
+		<controls:Cloud 
 			x:Name="Cloud3"
 		                TranslationX="250"
 		                TranslationY="45"/>
@@ -25,7 +26,7 @@
 			<Grid.Behaviors>
 				<toolkit:AnimationBehavior>
 					<toolkit:AnimationBehavior.AnimationType>
-						<mauiAnimation:SunAnimation />
+						<animations:SunAnimation />
 					</toolkit:AnimationBehavior.AnimationType>
 				</toolkit:AnimationBehavior>
 			</Grid.Behaviors>

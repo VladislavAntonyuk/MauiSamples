@@ -6,7 +6,7 @@
 
 		<ApplicationTitle>MauiAnimation</ApplicationTitle>
 		
-		<ApplicationId>com.companyname.mauianimation</ApplicationId>
+		<ApplicationId>com.vladislavantonyuk.mauianimation</ApplicationId>
 		<ApplicationIdGuid>4f421faf-6030-4aa8-bd7c-c703a48370d9</ApplicationIdGuid>
 
 		<!-- Versions -->
@@ -23,32 +23,11 @@
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
-		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
-
-		<!-- Custom Fonts -->
 		<MauiFont Include="Resources\Fonts\*" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="1.2.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Update="Sky.xaml.cs">
-	    <DependentUpon>Sky.xaml</DependentUpon>
-	  </Compile>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiXaml Update="Cloud.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Sky.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Flag.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	</ItemGroup>
 
 </Project>

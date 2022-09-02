@@ -2,6 +2,7 @@
 
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
+using System.Threading;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Core.Extensions;
@@ -142,6 +143,30 @@ public partial class MainPageViewModel : ObservableObject
 					 cosTheta * (pointToRotate.Y - centerPoint.Y) + centerPoint.Y)
 			};
 		}
+	}
+
+	[RelayCommand]
+	async Task PasteFromClipboard(CancellationToken cancellationToken)
+	{
+#if IOS || MACCATALYST
+		var image = UIKit.UIPasteboard.General.Image;
+		if (image is null)
+		{
+			await Toast.Make("Clipboard doesn't contain images").Show(cancellationToken);
+		}
+		else
+		{
+			var imageFigure = new ImageFigure();
+			var stream = new MemoryStream();
+			image.AsPNG().AsStream().CopyTo(stream);
+			imageFigure.ImageStream = stream;
+			imageFigure.Width = (int)image.Size.Width;
+			imageFigure.Height = (int)image.Size.Height;
+			_figures.Add(imageFigure);
+		}
+#else
+		await Toast.Make("Not supported").Show(cancellationToken);
+#endif
 	}
 
 	[RelayCommand]
