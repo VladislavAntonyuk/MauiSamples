@@ -1,4 +1,6 @@
-﻿namespace MauiAnimation;
+﻿namespace MauiAnimation.Controls;
+
+using Animations;
 
 public partial class Sky : ContentView
 {

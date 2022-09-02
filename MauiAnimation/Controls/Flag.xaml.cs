@@ -1,4 +1,4 @@
-﻿namespace MauiAnimation;
+﻿namespace MauiAnimation.Controls;
 
 using Microsoft.Maui.Controls.Shapes;
 

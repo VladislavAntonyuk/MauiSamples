@@ -8,7 +8,7 @@
 	
 	<ContentPage.MenuBarItems>
 		<MenuBarItem Text="File">
-			<MenuFlyoutItem Text="New" Clicked="NewCommand"  Command="{Binding NewCommand}"/>
+			<MenuFlyoutItem Text="New" Clicked="NewCommand" Command="{Binding NewCommand}"/>
 			<MenuFlyoutItem Text="Open" Clicked="OpenCommand"  Command="{Binding OpenCommand}"/>
 			<MenuFlyoutItem Text="Save Project" Clicked="SaveCommand" Command="{Binding SaveCommand}"/>
 			<MenuFlyoutItem Text="Save Image" Clicked="SaveImageCommand" Command="{Binding SaveImageCommand}"/>
@@ -16,6 +16,9 @@
 		</MenuBarItem>
 		<MenuBarItem Text="View">
 			<MenuFlyoutItem Text="Toggle Light/Dark Mode" Clicked="ToggleThemeCommand" Command="{Binding ToggleThemeCommand}"/>
+		</MenuBarItem>
+		<MenuBarItem Text="Tools">
+			<MenuFlyoutItem Text="Paste from Clipboard" Clicked="PasteFromClipboardCommand" Command="{Binding PasteFromClipboardCommand}"/>
 		</MenuBarItem>
 		<MenuBarItem Text="Help">
 			<MenuFlyoutItem Text="Help" Clicked="HelpCommand" Command="{Binding HelpCommand}"/>

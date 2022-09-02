@@ -29,3 +29,5 @@
 [.NET MAUI Bank](MauiBank) - Replicate Monobank design.
 
 [iOS Extensions](iOSExtensions) - Extend .NET MAUI application with iOS App Extensions.
+
+[MauiAnimation](MauiAnimation) - Create custom animations using .NET MAUI CommunityToolkit.

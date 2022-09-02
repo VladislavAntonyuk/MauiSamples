@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mauiAnimation="clr-namespace:MauiAnimation"
-             xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:controls="clr-namespace:MauiAnimation.Controls"
              x:Class="MauiAnimation.MainPage"
              Background="LightBlue">
 
@@ -13,8 +13,7 @@
 					<RectangleGeometry Rect="0,0,5,600" />
 				</Path.Data>
 			</Path>
-			<mauiAnimation:Flag WidthRequest="400" TranslationY="-50" HorizontalOptions="Start"/>
-
+			<controls:Flag WidthRequest="400" TranslationY="-50" HorizontalOptions="Start"/>
 		</Grid>
 
 
@@ -25,7 +24,7 @@
 			 Fill="Green"
 			 Data="m 0 0 q 131 -110 224 -118 q 132 48 261 31 q 269 -129 423 -114 c 281 53 252 131 377 107 c 99 -21 221 22 279 94Z"/>
 
-		<mauiAnimation:Sky
+		<controls:Sky
 			 HorizontalOptions="End"
 			 VerticalOptions="Start"/>
 

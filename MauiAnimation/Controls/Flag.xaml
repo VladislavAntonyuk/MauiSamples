@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:mauiAnimation="clr-namespace:MauiAnimation"
-             x:Class="MauiAnimation.Flag">
+             x:Class="MauiAnimation.Controls.Flag">
 	<Grid RowDefinitions="150,150">
 		<Path Fill="#0057B8"
 				  TranslationY="50"
