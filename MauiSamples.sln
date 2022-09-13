@@ -110,11 +110,25 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "iOSExtensions", "iOSExtensi
 		iOSExtensions\Directory.Build.props = iOSExtensions\Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppContainer", "iOSExtensions\AppContainer\AppContainer.csproj", "{E3B8C927-987B-410C-9B8F-9C683B2F494A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppContainer", "iOSExtensions\ShareExtension\AppContainer\AppContainer.csproj", "{E3B8C927-987B-410C-9B8F-9C683B2F494A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppContainerExtension", "iOSExtensions\AppContainerExtension\AppContainerExtension.csproj", "{74032D84-5715-43FF-B4D7-A0811210FD5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppContainerExtension", "iOSExtensions\ShareExtension\AppContainerExtension\AppContainerExtension.csproj", "{74032D84-5715-43FF-B4D7-A0811210FD5D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiAnimation", "MauiAnimation\MauiAnimation.csproj", "{DFBD9B26-52C3-46D0-96F1-A65E14ABF99F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JokeApp", "iOSExtensions\JokeApp\JokeApp\JokeApp.csproj", "{CCC3A6CB-7C8D-4401-BD6C-2B0C4606CDFF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ShareExtension", "ShareExtension", "{937CCB6F-427B-415E-813E-025AF73741CC}"
+	ProjectSection(SolutionItems) = preProject
+		iOSExtensions\ShareExtension\README.md = iOSExtensions\ShareExtension\README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JokeApp", "JokeApp", "{D7258BEF-416D-4F3E-A359-87BD545A84A9}"
+	ProjectSection(SolutionItems) = preProject
+		iOSExtensions\JokeApp\README.md = iOSExtensions\JokeApp\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JokeAppWidget", "iOSExtensions\JokeApp\JokeAppWidget\JokeAppWidget.csproj", "{8CE62F62-CE5D-48F4-8754-3F07FF72C3C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -298,6 +312,14 @@ Global
 		{DFBD9B26-52C3-46D0-96F1-A65E14ABF99F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFBD9B26-52C3-46D0-96F1-A65E14ABF99F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{DFBD9B26-52C3-46D0-96F1-A65E14ABF99F}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{CCC3A6CB-7C8D-4401-BD6C-2B0C4606CDFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCC3A6CB-7C8D-4401-BD6C-2B0C4606CDFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCC3A6CB-7C8D-4401-BD6C-2B0C4606CDFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCC3A6CB-7C8D-4401-BD6C-2B0C4606CDFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CE62F62-CE5D-48F4-8754-3F07FF72C3C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CE62F62-CE5D-48F4-8754-3F07FF72C3C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CE62F62-CE5D-48F4-8754-3F07FF72C3C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CE62F62-CE5D-48F4-8754-3F07FF72C3C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -335,8 +357,12 @@ Global
 		{13DAE136-5BF2-460C-BFD7-7BDB0785C935} = {671C019C-7DCC-4B9E-AD7D-B9F6F35D044E}
 		{6BF7A52A-311B-41C0-A112-3D8A06DA12FF} = {14D979DA-85FE-41DC-9C59-A49EE52EC9A5}
 		{1C9ECD3D-B554-4FDA-92BE-B8CE461BCBA4} = {14D979DA-85FE-41DC-9C59-A49EE52EC9A5}
-		{E3B8C927-987B-410C-9B8F-9C683B2F494A} = {F215B6A7-4C79-4415-95D2-6F561143C9AC}
-		{74032D84-5715-43FF-B4D7-A0811210FD5D} = {F215B6A7-4C79-4415-95D2-6F561143C9AC}
+		{E3B8C927-987B-410C-9B8F-9C683B2F494A} = {937CCB6F-427B-415E-813E-025AF73741CC}
+		{74032D84-5715-43FF-B4D7-A0811210FD5D} = {937CCB6F-427B-415E-813E-025AF73741CC}
+		{CCC3A6CB-7C8D-4401-BD6C-2B0C4606CDFF} = {D7258BEF-416D-4F3E-A359-87BD545A84A9}
+		{937CCB6F-427B-415E-813E-025AF73741CC} = {F215B6A7-4C79-4415-95D2-6F561143C9AC}
+		{D7258BEF-416D-4F3E-A359-87BD545A84A9} = {F215B6A7-4C79-4415-95D2-6F561143C9AC}
+		{8CE62F62-CE5D-48F4-8754-3F07FF72C3C2} = {D7258BEF-416D-4F3E-A359-87BD545A84A9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}

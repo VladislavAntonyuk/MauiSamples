@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+     <PropertyGroup>
+        <TargetFrameworks>net6.0-ios</TargetFrameworks>
+        <OutputType>Library</OutputType>
+
+        <ApplicationId>com.vladislavantonyuk.jokeapp.Widget</ApplicationId>
+
+        <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+     </PropertyGroup>
+
+     <PropertyGroup>
+		<IsAppExtension>True</IsAppExtension>
+		<IsWatchExtension>False</IsWatchExtension>
+      </PropertyGroup>
+  </Project>
