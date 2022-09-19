@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
@@ -27,13 +27,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
-        <PackageReference Include="CommunityToolkit.Maui" Version="1.2.0" />
+        <PackageReference Include="CommunityToolkit.Maui" Version="1.3.0" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.8" />
-        <PackageReference Include="SQLitePCLRaw.core" Version="2.1.1" />
-        <PackageReference Include="SQLitePCLRaw.provider.sqlite3" Version="2.1.1" />
-        <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.1" />
-        <PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.1" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.9" />
+    </ItemGroup>
+
+	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' or $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) =='maccatalyst' ">
+        <PackageReference Include="SQLitePCLRaw.core" Version="2.1.2" />
+        <PackageReference Include="SQLitePCLRaw.provider.sqlite3" Version="2.1.2" />
+        <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.2" />
+        <PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.2" />
     </ItemGroup>
 
 </Project>

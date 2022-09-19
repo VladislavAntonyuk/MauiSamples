@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<RootNamespace>KanbanBoard</RootNamespace>
+
+		<!-- Display name -->
+		<ApplicationTitle>KanbanBoard</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.vladislavantonyuk.kanbanboard</ApplicationId>
+		<ApplicationIdGuid>F46BB7C8-E6A5-4D9E-AAFE-8173B0819787</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<MauiFont Include="Resources\Fonts\*" />
+	</ItemGroup>
+
+	<ItemGroup>
+        <PackageReference Include="CommunityToolkit.Maui" Version="1.3.0" />
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.9" />
+        <PackageReference Include="SQLitePCLRaw.core" Version="2.1.2" />
+        <PackageReference Include="SQLitePCLRaw.provider.sqlite3" Version="2.1.1" />
+        <PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.2" />
+        <PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.1" />
+    </ItemGroup>
+
+</Project>

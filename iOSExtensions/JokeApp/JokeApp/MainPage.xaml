@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:JokeApp"
+             x:Class="JokeApp.MainPage">
+
+    <ContentPage.Resources>
+        <ControlTemplate x:Key="JokeContainer">
+            <Border StrokeThickness="4"
+                    StrokeShape="RoundRectangle 40,0,0,40"
+                    Background="#2B0B98"
+                    Padding="16,8">
+                <Border.Stroke>
+                    <LinearGradientBrush EndPoint="0,1">
+                        <GradientStop Color="Orange"
+                                        Offset="0.1" />
+                        <GradientStop Color="Brown"
+                                        Offset="1.0" />
+                    </LinearGradientBrush>
+                </Border.Stroke>
+                <ContentPresenter Padding="10" />
+            </Border>
+        </ControlTemplate>
+        <Style TargetType="ContentView">
+            <Setter Property="ControlTemplate" Value="{StaticResource JokeContainer}"/>
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <VerticalStackLayout
+            x:DataType="vm:MainPageViewModel"
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Picker
+                ItemsSource="{Binding JokeTypes}"
+                SelectedItem="{Binding JokeType}"
+                HorizontalOptions="Center" />
+
+            <ContentView>
+                <Label
+                    Text="{Binding Joke.Setup}"
+                    Style="{StaticResource JokeStyle}"
+                    Background="Colors.Gray"
+                    HorizontalOptions="Start" />
+            </ContentView>
+
+            <ContentView>
+                <Label
+                    Text="{Binding Joke.Punchline}"
+                    Style="{StaticResource JokeStyle}"
+                    Background="Colors.Grey"
+                    HorizontalOptions="End" />
+            </ContentView>
+
+            <Button
+                Text="Get random joke"
+                Command="{Binding GetJokeByTypeCommand}"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>
+
