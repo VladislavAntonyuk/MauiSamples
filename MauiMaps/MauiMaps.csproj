@@ -3,7 +3,7 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <RootNamespace>MauiMaps</RootNamespace>
-        
+
 		<!-- Display name -->
         <ApplicationTitle>MauiMaps</ApplicationTitle>
 
@@ -26,7 +26,7 @@
         <!-- Images -->
         <MauiImage Include="Resources\Images\*" />
     </ItemGroup>
-	
+
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="7.0.0-rc.1.6683" />
 	</ItemGroup>

@@ -9,7 +9,7 @@
   <shortcut-list />
   <privileges>
     <privilege>http://tizen.org/privilege/internet</privilege>
-  </privileges> 
+  </privileges>
   <dependencies />
   <provides-appdefined-privileges />
 </manifest>
