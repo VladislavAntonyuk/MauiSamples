@@ -8,16 +8,16 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Replicate-a-bank-a
 
 ### Secure window
 
-![iOS](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/23/dotnet-maui-bank-secure.gif)
+![iOS](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/23/dotnet-maui-bank-secure.gif)
 
 ### Login Pin
 
-![Login pin](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/23/dotnet-maui-bank-pin-login.gif)
+![Login pin](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/23/dotnet-maui-bank-pin-login.gif)
 
 ### Login Biometrics
 
-![Login biometrics](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/23/dotnet-maui-bank-pin-bio.gif)
+![Login biometrics](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/23/dotnet-maui-bank-pin-bio.gif)
 
 ### App
 
-![Main page](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/23/dotnet-maui-bank-app.gif)
+![Main page](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/23/dotnet-maui-bank-app.gif)

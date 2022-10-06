@@ -4,4 +4,4 @@
 
 Article: https://vladislavantonyuk.azurewebsites.net/articles/Azure-Active-Directory-authentication-in-.NET-MAUI
 
-![MAUI Auth](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/13/maui-auth.gif)
+![MAUI Auth](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/13/maui-auth.gif)

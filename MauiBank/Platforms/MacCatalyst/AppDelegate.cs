@@ -20,7 +20,7 @@ public class AppDelegate : MauiUIApplicationDelegate
 		{
 			Frame = keyWindow.Subviews[0].Bounds,
 			AutoresizingMask = UIViewAutoresizing.FlexibleDimensions,
-			Tag = 12
+			Tag = new IntPtr(12)
 		};
 		keyWindow.AddSubview(blurEffectView);
 		base.OnResignActivation(application);
@@ -36,7 +36,7 @@ public class AppDelegate : MauiUIApplicationDelegate
 
 		foreach (var vv in sub.Subviews)
 		{
-			if (vv.Tag == 12)
+			if (vv.Tag == new IntPtr(12))
 			{
 				vv.RemoveFromSuperview();
 			}

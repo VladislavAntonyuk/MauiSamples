@@ -8,4 +8,4 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Adding-SQLite-to-t
 
 ### CRUD operations
 
-![.NET MAUI Sqlite](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/14/sqlite2.png)
+![.NET MAUI Sqlite](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/14/sqlite2.png)

@@ -8,12 +8,12 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Creating-beautiful
 
 ### Blur
 
-![Blur](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/22/blur-effect.png)
+![Blur](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/22/blur-effect.png)
 
 ### Saturation
 
-![Saturation](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/22/saturation-effect.png)
+![Saturation](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/22/saturation-effect.png)
 
 ### Chain: Blur + Saturation
 
-![Chain: Blur + Saturation](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/22/chain-effect.png)
+![Chain: Blur + Saturation](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/22/chain-effect.png)
