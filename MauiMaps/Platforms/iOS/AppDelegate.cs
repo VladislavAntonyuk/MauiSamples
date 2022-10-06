@@ -2,10 +2,7 @@
 
 namespace MauiMaps;
 
-using Microsoft.Maui.Handlers;
-using Microsoft.Maui.Maps.Handlers;
-
-[Register("AppDelegate")]
+[Register(nameof(AppDelegate))]
 public class AppDelegate : MauiUIApplicationDelegate
 {
 	protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
