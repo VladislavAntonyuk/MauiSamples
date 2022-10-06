@@ -8,7 +8,7 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Drawing-View-in-Xa
 
 ### DrawingView
 
-![.NET MAUI Paint](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/7/paint-dotnet.png)
+![.NET MAUI Paint](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/7/paint-dotnet.png)
 
 ### Save project
 

@@ -8,4 +8,4 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Creating-a-bottom-
 
 ### Bottom sheet on Android
 
-![Bottom sheet on iOS](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/26/logo.gif)
+![Bottom sheet on iOS](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/26/logo.gif)

@@ -6,4 +6,4 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Create-custom-anim
 
 ## Images
 
-![Animation](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/27/dotnet-maui-animation.gif)
+![Animation](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/27/dotnet-maui-animation.gif)

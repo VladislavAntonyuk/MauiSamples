@@ -8,4 +8,4 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Localize-.NET-MAUI
 
 ### Switch languages
 
-![.NET MAUI Localization](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/20/MauiLocalization.gif)
+![.NET MAUI Localization](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/20/MauiLocalization.gif)

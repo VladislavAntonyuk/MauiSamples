@@ -8,4 +8,4 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Create-a-gallery-a
 
 ### Infinite scrollable gallery
 
-![MAUI Blazor gallery](https://vladislavantonyuk.sirv.com/vladislavantonyuk/articles/16/MauiBlazorGallery.gif)
+![MAUI Blazor gallery](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/16/MauiBlazorGallery.gif)
