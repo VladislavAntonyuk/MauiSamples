@@ -42,7 +42,7 @@
                 <Label
                     Text="{Binding Joke.Setup}"
                     Style="{StaticResource JokeStyle}"
-                    Background="Colors.Gray"
+                    BackgroundColor="Color.Gray"
                     HorizontalOptions="Start" />
             </ContentView>
 
@@ -50,7 +50,7 @@
                 <Label
                     Text="{Binding Joke.Punchline}"
                     Style="{StaticResource JokeStyle}"
-                    Background="Colors.Grey"
+                    BackgroundColor="Color.Grey"
                     HorizontalOptions="End" />
             </ContentView>
 
