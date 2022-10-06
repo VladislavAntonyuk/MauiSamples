@@ -24,5 +24,7 @@ jobs:
         include-prerelease: true
     - name: Install dependencies
       run: dotnet workload install maui
+    - name: Restore
+      run: dotnet restore MauiSamples.sln --configfile NuGet.config
     - name: Build
-      run: dotnet build
+      run: dotnet build MauiSamples.sln
