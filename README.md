@@ -33,3 +33,5 @@
 [MauiAnimation](MauiAnimation) - Create custom animations using .NET MAUI CommunityToolkit.
 
 [iOS Widgets](iOSExtensions/JokeApp) - Extend .NET MAUI application with iOS Widgets.
+
+[MauiMaps](MauiMaps) - Customize map pins in .NET MAUI.

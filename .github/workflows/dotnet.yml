@@ -12,8 +12,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest]
-        # os: [windows-latest, macos-latest]
+        # os: [windows-latest]
+        os: [windows-latest, macos-latest]
 
     steps:
     - uses: actions/checkout@v2
@@ -24,7 +24,5 @@ jobs:
         include-prerelease: true
     - name: Install dependencies
       run: dotnet workload install maui
-    - name: Restore
-      run: dotnet restore MauiSamples.sln --configfile NuGet.config
     - name: Build
-      run: dotnet build MauiSamples.sln
+      run: dotnet build
