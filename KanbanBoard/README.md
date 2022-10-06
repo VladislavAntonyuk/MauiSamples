@@ -5,6 +5,7 @@
 Article: https://vladislavantonyuk.azurewebsites.net/articles/Creating-Kanban-Board-using-Xamarin-Forms-5
 
 ## Build
+
 ```pwsh
 dotnet build KanbanBoard.csproj -t:Run -f net7.0-android
 dotnet build KanbanBoard.csproj -t:Run -f net7.0-ios
