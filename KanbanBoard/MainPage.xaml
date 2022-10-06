@@ -4,7 +4,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KanbanBoard.MainPage">
 	<ContentPage.Resources>
-		<Color x:Key="ColumnBackgroundColor">DimGray</Color>
 		<Color x:Key="ColumnWipReachedBackgroundColor">IndianRed</Color>
 		<x:Double x:Key="BoardTitleSize">20</x:Double>
 		<x:Double x:Key="CardTitleSize">14</x:Double>
