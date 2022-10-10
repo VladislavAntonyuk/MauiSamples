@@ -1,7 +1,9 @@
 ﻿namespace MauiMaps;
 
 using Android.App;
+using Android.Content;
 using Android.Gms.Maps.Model;
+using Android.Widget;
 using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 using Microsoft.Maui.Maps.Handlers;
 
@@ -21,6 +23,8 @@ public static class MapExtensions
 			markerWithIcon.SetIcon(bitmap is null
 				                       ? BitmapDescriptorFactory.DefaultMarker()
 				                       : BitmapDescriptorFactory.FromBitmap(bitmap));
+
+			googleMap.SetOnMarkerClickListener(new CustomMarkerClickListener(bitmap));
 
 			googleMap.AddMarker(markerWithIcon);
 		}
