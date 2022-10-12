@@ -23,7 +23,7 @@ public static partial class MapExtensions
 		var nativeMap = (MauiMKMapView?)pin.Map?.Handler?.PlatformView;
 		if (nativeMap is not null)
 		{
-			var customAnnotations = nativeMap.Annotations.OfType<CustomAnnotation>().Where(x=>x.Identifier == annotation.Identifier).ToArray();
+			var customAnnotations = nativeMap.Annotations.OfType<CustomAnnotation>().Where(x => x.Identifier == annotation.Identifier).ToArray();
 			nativeMap.RemoveAnnotations(customAnnotations);
 			nativeMap.GetViewForAnnotation += GetViewForAnnotations;
 			nativeMap.AddAnnotation(annotation);
@@ -37,7 +37,7 @@ public static partial class MapExtensions
 		if (annotation is CustomAnnotation customAnnotation)
 		{
 			annotationView = mapView.DequeueReusableAnnotation(customAnnotation.Identifier.ToString()) ??
-			                 new MKAnnotationView(annotation, customAnnotation.Identifier.ToString());
+							 new MKAnnotationView(annotation, customAnnotation.Identifier.ToString());
 			annotationView.Image = customAnnotation.Image;
 			annotationView.CanShowCallout = true;
 		}

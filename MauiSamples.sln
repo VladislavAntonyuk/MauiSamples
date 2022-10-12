@@ -114,9 +114,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppContainer", "iOSExtensio
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppContainerExtension", "iOSExtensions\ShareExtension\AppContainerExtension\AppContainerExtension.csproj", "{74032D84-5715-43FF-B4D7-A0811210FD5D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiAnimation", "MauiAnimation\MauiAnimation.csproj", "{DFBD9B26-52C3-46D0-96F1-A65E14ABF99F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiAnimation", "MauiAnimation\MauiAnimation.csproj", "{DFBD9B26-52C3-46D0-96F1-A65E14ABF99F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JokeApp", "iOSExtensions\JokeApp\JokeApp\JokeApp.csproj", "{CCC3A6CB-7C8D-4401-BD6C-2B0C4606CDFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JokeApp", "iOSExtensions\JokeApp\JokeApp\JokeApp.csproj", "{CCC3A6CB-7C8D-4401-BD6C-2B0C4606CDFF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ShareExtension", "ShareExtension", "{937CCB6F-427B-415E-813E-025AF73741CC}"
 	ProjectSection(SolutionItems) = preProject
@@ -128,9 +128,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JokeApp", "JokeApp", "{D725
 		iOSExtensions\JokeApp\README.md = iOSExtensions\JokeApp\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JokeAppWidget", "iOSExtensions\JokeApp\JokeAppWidget\JokeAppWidget.csproj", "{8CE62F62-CE5D-48F4-8754-3F07FF72C3C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JokeAppWidget", "iOSExtensions\JokeApp\JokeAppWidget\JokeAppWidget.csproj", "{8CE62F62-CE5D-48F4-8754-3F07FF72C3C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiMaps", "MauiMaps\MauiMaps.csproj", "{3A12303A-CF37-4B50-B135-09759F466904}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiMaps", "MauiMaps\MauiMaps.csproj", "{3A12303A-CF37-4B50-B135-09759F466904}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -316,14 +316,17 @@ Global
 		{DFBD9B26-52C3-46D0-96F1-A65E14ABF99F}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{CCC3A6CB-7C8D-4401-BD6C-2B0C4606CDFF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CCC3A6CB-7C8D-4401-BD6C-2B0C4606CDFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCC3A6CB-7C8D-4401-BD6C-2B0C4606CDFF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{CCC3A6CB-7C8D-4401-BD6C-2B0C4606CDFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCC3A6CB-7C8D-4401-BD6C-2B0C4606CDFF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8CE62F62-CE5D-48F4-8754-3F07FF72C3C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8CE62F62-CE5D-48F4-8754-3F07FF72C3C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CE62F62-CE5D-48F4-8754-3F07FF72C3C2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{8CE62F62-CE5D-48F4-8754-3F07FF72C3C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8CE62F62-CE5D-48F4-8754-3F07FF72C3C2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{3A12303A-CF37-4B50-B135-09759F466904}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{3A12303A-CF37-4B50-B135-09759F466904}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A12303A-CF37-4B50-B135-09759F466904}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{3A12303A-CF37-4B50-B135-09759F466904}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A12303A-CF37-4B50-B135-09759F466904}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
