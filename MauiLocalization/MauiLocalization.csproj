@@ -29,7 +29,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="1.3.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="1.0.0-build-681.80604" />
 	</ItemGroup>
 
 	<ItemGroup>

@@ -5,7 +5,7 @@
 			 xmlns:vm="clr-namespace:MauiPaint"
              x:Class="MauiPaint.MainPage"
 			 x:DataType="vm:MainPageViewModel">
-	
+
 	<ContentPage.MenuBarItems>
 		<MenuBarItem Text="File">
 			<MenuFlyoutItem Text="New" Clicked="NewCommand" Command="{Binding NewCommand}"/>
@@ -78,11 +78,13 @@
 						<Button Text="Rectangle" Command="{Binding AddFigureCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}"/>
 						<Button Text="Ellipse" Command="{Binding AddFigureCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}"/>
 						<Button Text="Text" Command="{Binding AddFigureCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}"/>
-						<Button Text="Image" Command="{Binding AddFigureCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}"/>
+						<Button Text="Image" Command="{Binding AddFigureCommand}" CommandParameter="{Binding Source={RelativeSource Self}, Path=Text}"
+						        ToolTipProperties.Text="Doesn't work on Windows"/>
 					</mct:UniformItemsLayout>
 
 					<Label Text="Rotate"/>
-					<Slider Maximum="360" ValueChanged="RotateSlideValueChanged"/>
+					<Slider Maximum="360"
+					        ValueChanged="RotateSlideValueChanged"/>
 				</VerticalStackLayout>
 			</ScrollView>
 		</Border>
@@ -94,6 +96,12 @@
 						 IsMultiLineModeEnabled="True"
 						 DrawAction="{Binding DrawAction}"
 						 Width="{Binding CanvasWidth, Mode=OneWayToSource}"
-						 Height="{Binding CanvasHeight, Mode=OneWayToSource}"/>
+						 Height="{Binding CanvasHeight, Mode=OneWayToSource}">
+			<FlyoutBase.ContextFlyout>
+				<MenuFlyout>
+					<MenuFlyoutItem Text="Clear" Command="{Binding NewCommand}"/>
+				</MenuFlyout>
+			</FlyoutBase.ContextFlyout>
+		</mct:DrawingView>
 	</Grid>
 </ContentPage>
