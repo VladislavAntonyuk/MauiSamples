@@ -25,4 +25,6 @@ jobs:
     - name: Install dependencies
       run: dotnet workload install maui
     - name: Build
-      run: dotnet build
+      run: |
+        dotnet restore --configfile NuGet.config
+        dotnet build
