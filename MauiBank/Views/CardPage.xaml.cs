@@ -2,7 +2,7 @@
 
 using ViewModels;
 
-public partial class CardPage : ContentPage
+public partial class CardPage : BasePage
 {
 	public CardPage(CardPageViewModel cardPageViewModel)
 	{

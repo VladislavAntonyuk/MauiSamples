@@ -6,7 +6,8 @@
     xmlns:local="clr-namespace:MauiBank"
     xmlns:views="clr-namespace:MauiBank.Views"
     xmlns:fonts="clr-namespace:MauiBank.Resources.Fonts"
-    Shell.FlyoutBehavior="Disabled">
+    NavBarIsVisible="False"
+    FlyoutBehavior="Disabled">
 
 	<ShellContent Route="PinPage" ContentTemplate="{DataTemplate views:PinPage}" />
 
