@@ -1,4 +1,4 @@
-﻿namespace KanbanBoard;
+namespace KanbanBoard;
 using System.Collections.ObjectModel;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
@@ -26,7 +26,7 @@ public partial class MainPageViewModel : ObservableObject
     }
 
 	[RelayCommand]
-    async Task DropCommand(ColumnInfo? columnInfo)
+    async Task Drop(ColumnInfo? columnInfo)
     {
         if (dragCard is null || columnInfo is null || columnInfo.Column.Cards.Count >= columnInfo.Column.Wip) return;
 

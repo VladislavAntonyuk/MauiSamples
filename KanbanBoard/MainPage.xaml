@@ -2,7 +2,10 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="KanbanBoard.MainPage">
+             xmlns:kanbanBoard="clr-namespace:KanbanBoard"
+             xmlns:models="clr-namespace:KanbanBoard.Models"
+             x:Class="KanbanBoard.MainPage"
+             x:DataType="kanbanBoard:MainPageViewModel">
 	<ContentPage.Resources>
 		<Color x:Key="ColumnWipReachedBackgroundColor">IndianRed</Color>
 		<x:Double x:Key="BoardTitleSize">20</x:Double>
@@ -14,56 +17,56 @@
 	<VerticalStackLayout>
 		<Grid ColumnDefinitions="5*,*,*">
 			<Label
-                FontSize="{StaticResource BoardTitleSize}"
+				FontSize="{StaticResource BoardTitleSize}"
 				Grid.Column="0"
-                Text="Test project name" />
+				Text="Test project name" />
 
 			<Button
-                Command="{Binding RefreshCommand}"
+				Command="{Binding RefreshCommand}"
 				Grid.Column="1"
-                Text="Refresh" />
+				Text="Refresh" />
 
 			<Button
-                x:Name="ResetButton"
+				x:Name="ResetButton"
 				Grid.Column="2"
-                Clicked="ResetButton_OnClicked"
-                Text="Reset to default" />
+				Clicked="ResetButton_OnClicked"
+				Text="Reset to default" />
 		</Grid>
 
 		<CarouselView
-            x:Name="Board"
-            IndicatorView="Indicator"
-            EmptyView="No columns to display"
-            ItemsSource="{Binding Columns}"
-            Position="{Binding Position}"
-            Loop="False"
-            PeekAreaInsets="10">
+			x:Name="Board"
+			IndicatorView="Indicator"
+			EmptyView="No columns to display"
+			ItemsSource="{Binding Columns}"
+			Position="{Binding Position}"
+			Loop="False"
+			PeekAreaInsets="10">
 			<CarouselView.ItemsLayout>
 				<LinearItemsLayout ItemSpacing="10" Orientation="Horizontal" />
 			</CarouselView.ItemsLayout>
 			<CarouselView.ItemTemplate>
-				<DataTemplate>
+				<DataTemplate x:DataType="models:ColumnInfo">
 					<Border>
 						<Border.StrokeShape>
 							<RoundRectangle CornerRadius="10" />
 						</Border.StrokeShape>
 						<Border.GestureRecognizers>
 							<DropGestureRecognizer AllowDrop="True"
-                                                   DropCommand="{Binding BindingContext.DropCommand, Source={x:Reference Board}}"
-                                                   DropCommandParameter="{Binding .}" />
+							                       DropCommand="{Binding BindingContext.DropCommand, Source={x:Reference Board}}"
+							                       DropCommandParameter="{Binding .}" />
 						</Border.GestureRecognizers>
 						<Border.Triggers>
 							<DataTrigger
-                                Binding="{Binding IsWipReached}"
-                                TargetType="Border"
-                                Value="True">
+								Binding="{Binding IsWipReached}"
+								TargetType="Border"
+								Value="True">
 								<Setter Property="BackgroundColor"
-                                        Value="{DynamicResource ColumnWipReachedBackgroundColor}" />
+								        Value="{DynamicResource ColumnWipReachedBackgroundColor}" />
 							</DataTrigger>
 							<DataTrigger
-                                Binding="{Binding IsWipReached}"
-                                TargetType="Border"
-                                Value="False">
+								Binding="{Binding IsWipReached}"
+								TargetType="Border"
+								Value="False">
 								<Setter Property="BackgroundColor" Value="Transparent" />
 							</DataTrigger>
 						</Border.Triggers>
@@ -71,16 +74,16 @@
 						<VerticalStackLayout Margin="10">
 							<Grid Margin="10" ColumnDefinitions="*,*,*">
 								<Label
-								Grid.Column="0"
-                                    FontAttributes="Bold"
-                                    FontSize="{StaticResource ColumnTitleSize}"
-                                    Text="{Binding Column.Name}" />
+									Grid.Column="0"
+									FontAttributes="Bold"
+									FontSize="{StaticResource ColumnTitleSize}"
+									Text="{Binding Column.Name}" />
 
 								<Label
-								Grid.Column="1"
-                                    FontSize="{StaticResource ColumnTitleSize}"
-                                    HorizontalOptions="CenterAndExpand"
-                                    VerticalOptions="Center">
+									Grid.Column="1"
+									FontSize="{StaticResource ColumnTitleSize}"
+									HorizontalOptions="CenterAndExpand"
+									VerticalOptions="Center">
 									<Label.FormattedText>
 										<FormattedString>
 											<Span Text="{Binding Column.Cards.Count}" />
@@ -91,16 +94,16 @@
 								</Label>
 
 								<ImageButton
-								Grid.Column="2"
-                                    Command="{Binding BindingContext.DeleteColumnCommand, Source={x:Reference Board}}"
-                                    CommandParameter="{Binding .}"
-                                    HorizontalOptions="EndAndExpand"
-                                    VerticalOptions="Center">
+									Grid.Column="2"
+									Command="{Binding BindingContext.DeleteColumnCommand, Source={x:Reference Board}}"
+									CommandParameter="{Binding .}"
+									HorizontalOptions="EndAndExpand"
+									VerticalOptions="Center">
 									<ImageButton.Source>
 										<FontImageSource
-                                            FontFamily="FASolid"
-                                            Glyph="&#xf2ed;"
-                                            Size="{StaticResource ColumnTitleSize}" />
+											FontFamily="FASolid"
+											Glyph="&#xf2ed;"
+											Size="{StaticResource ColumnTitleSize}" />
 									</ImageButton.Source>
 								</ImageButton>
 							</Grid>
@@ -110,46 +113,46 @@
 									<LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
 								</CollectionView.ItemsLayout>
 								<CollectionView.ItemTemplate>
-									<DataTemplate>
+									<DataTemplate x:DataType="models:Card">
 										<Border>
 											<Border.StrokeShape>
 												<RoundRectangle CornerRadius="10" />
 											</Border.StrokeShape>
 											<Border.GestureRecognizers>
 												<DragGestureRecognizer CanDrag="True"
-                                                                       DragStartingCommand="{Binding BindingContext.DragStartingCommand, Source={x:Reference Board}}"
-                                                                       DragStartingCommandParameter="{Binding .}"
-                                                                       DropCompletedCommand="{Binding BindingContext.DropCompletedCommand, Source={x:Reference Board}}" />
+												                       DragStartingCommand="{Binding BindingContext.DragStartingCommand, Source={x:Reference Board}}"
+												                       DragStartingCommandParameter="{Binding .}"
+												                       DropCompletedCommand="{Binding BindingContext.DropCompletedCommand, Source={x:Reference Board}}" />
 											</Border.GestureRecognizers>
 
 											<Grid Margin="10" Padding="10" RowDefinitions="Auto, Auto" ColumnDefinitions="*, Auto">
 												<Label
-                                                    Grid.Column="0"
-                                                    FontAttributes="Bold"
-                                                    FontSize="{StaticResource CardTitleSize}"
-                                                    Text="{Binding Name}" />
+													Grid.Column="0"
+													FontAttributes="Bold"
+													FontSize="{StaticResource CardTitleSize}"
+													Text="{Binding Name}" />
 
 												<Label
-                                                    Grid.Row="1"
-                                                    Grid.Column="0"
-                                                    FontSize="{StaticResource CardDescriptionSize}"
-                                                    Text="{Binding Description}"
-                                                    VerticalOptions="End" />
+													Grid.Row="1"
+													Grid.Column="0"
+													FontSize="{StaticResource CardDescriptionSize}"
+													Text="{Binding Description}"
+													VerticalOptions="End" />
 
 												<ImageButton
-                                                    Grid.Row="0"
-                                                    Grid.RowSpan="2"
-                                                    Grid.Column="1"
-                                                    Command="{Binding BindingContext.DeleteCardCommand, Source={x:Reference Board}}"
-                                                    CommandParameter="{Binding .}"
-                                                    WidthRequest="{StaticResource CardTitleSize}"
-                                                    HeightRequest="{StaticResource CardTitleSize}"
-                                                    HorizontalOptions="EndAndExpand">
+													Grid.Row="0"
+													Grid.RowSpan="2"
+													Grid.Column="1"
+													Command="{Binding BindingContext.DeleteCardCommand, Source={x:Reference Board}}"
+													CommandParameter="{Binding .}"
+													WidthRequest="{StaticResource CardTitleSize}"
+													HeightRequest="{StaticResource CardTitleSize}"
+													HorizontalOptions="EndAndExpand">
 													<ImageButton.Source>
 														<FontImageSource
-                                                            FontFamily="FASolid"
-                                                            Glyph="&#xf2ed;"
-                                                            Size="{StaticResource CardTitleSize}" />
+															FontFamily="FASolid"
+															Glyph="&#xf2ed;"
+															Size="{StaticResource CardTitleSize}" />
 													</ImageButton.Source>
 												</ImageButton>
 											</Grid>
@@ -159,9 +162,9 @@
 							</CollectionView>
 
 							<Button
-                                Command="{Binding BindingContext.AddCardCommand, Source={x:Reference Board}}"
-                                CommandParameter="{Binding Column.Id}"
-                                Text="Add new card" />
+								Command="{Binding BindingContext.AddCardCommand, Source={x:Reference Board}}"
+								CommandParameter="{Binding Column.Id}"
+								Text="Add new card" />
 						</VerticalStackLayout>
 					</Border>
 				</DataTemplate>
@@ -169,11 +172,11 @@
 		</CarouselView>
 
 		<IndicatorView
-            x:Name="Indicator"
-            HorizontalOptions="Center" />
+			x:Name="Indicator"
+			HorizontalOptions="Center" />
 
 		<Button
-            Command="{Binding AddColumnCommand}"
-            Text="Add new column" />
+			Command="{Binding AddColumnCommand}"
+			Text="Add new column" />
 	</VerticalStackLayout>
 </ContentPage>
