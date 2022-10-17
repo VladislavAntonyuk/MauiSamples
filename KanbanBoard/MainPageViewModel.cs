@@ -1,4 +1,4 @@
-namespace KanbanBoard;
+﻿namespace KanbanBoard;
 using System.Collections.ObjectModel;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
@@ -17,6 +17,8 @@ public partial class MainPageViewModel : ObservableObject
     private Card? dragCard;
     private readonly ICardsRepository cardsRepository;
     private readonly IColumnsRepository columnsRepository;
+
+    public bool IsDragging => dragCard != null;
 
     public MainPageViewModel(ICardsRepository cardsRepository, IColumnsRepository columnsRepository)
     {
@@ -41,16 +43,40 @@ public partial class MainPageViewModel : ObservableObject
         Position = columnInfo.Index;
     }
 
+    [RelayCommand]
+    void DragOver(string direction)
+    {
+	    switch ((SwipeDirection)Convert.ToInt32(direction))
+	    {
+		    case SwipeDirection.Left:
+			    if (Position < Columns.Count - 1)
+			    {
+				    Position++;
+			    }
+
+			    break;
+		    case SwipeDirection.Right:
+			    if (Position > 0)
+			    {
+				    Position--;
+			    }
+
+			    break;
+	    }
+    }
+
 	[RelayCommand]
     void DragStarting(Card card)
 	{
 		dragCard = card;
+		OnPropertyChanged(nameof(IsDragging));
 	}
 
 	[RelayCommand]
-    void DragCompleted()
+    void DropCompleted()
 	{
 		dragCard = null;
+		OnPropertyChanged(nameof(IsDragging));
 	}
 
 	[RelayCommand]
