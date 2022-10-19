@@ -10,6 +10,11 @@ public class DialogService : IDialogService
 	{
 		var fileManager = NSFileManager.DefaultManager;
 		var fileUrl = fileManager.GetTemporaryDirectory().Append($"temp{fileExtension}", false);
+		if (string.IsNullOrEmpty(fileUrl.Path))
+		{
+			return false;
+		}
+
 		await WriteStream(stream, fileUrl.Path, cancellationToken);
 		var documentPickerViewController = new UIDocumentPickerViewController(new[] { fileUrl });
 		var currentViewController = GetCurrentUIController();
