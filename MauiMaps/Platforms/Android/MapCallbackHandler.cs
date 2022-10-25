@@ -2,22 +2,21 @@
 
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
+using Android.Graphics;
+using Microsoft.Maui.Maps;
+using Microsoft.Maui.Maps.Handlers;
 
 class MapCallbackHandler : Java.Lang.Object, IOnMapReadyCallback
 {
-	private readonly IList<MarkerOptions> markerOptions;
+	private readonly IMapHandler mapHandler;
 
-	public MapCallbackHandler(IList<MarkerOptions> markerOptions)
+	public MapCallbackHandler(IMapHandler mapHandler)
 	{
-		this.markerOptions = markerOptions;
+		this.mapHandler = mapHandler;
 	}
 
 	public void OnMapReady(GoogleMap googleMap)
 	{
-		googleMap.Clear();
-		foreach (var markerOptions in markerOptions)
-		{
-			googleMap.AddMarker(markerOptions);
-		}
+		mapHandler.UpdateValue(nameof(IMap.Pins));
 	}
 }
