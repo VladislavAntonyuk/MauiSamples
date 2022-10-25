@@ -1,5 +1,7 @@
 ﻿namespace MauiMaps;
 
+using CommunityToolkit.Maui.Alerts;
+using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
 
 public partial class MainPage : ContentPage
@@ -25,6 +27,10 @@ public partial class MainPage : ContentPage
 		};
 		MyMap.Pins.Add(customPin1);
 		MyMap.Pins.Add(customPin2);
+		customPin1.InfoWindowClicked += async delegate
+		{
+			await Toast.Make("Info Window is clicked").Show();
+		};
 		MyMap.MoveToRegion(new MapSpan(new Location(10,10), 10, 10));
 	}
 }

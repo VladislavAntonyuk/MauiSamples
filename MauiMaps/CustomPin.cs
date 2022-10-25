@@ -5,7 +5,8 @@ using Microsoft.Maui.Controls.Maps;
 public class CustomPin : Pin
 {
 	public static readonly BindableProperty ImageSourceProperty =
-		BindableProperty.Create(nameof(ImageSource), typeof(ImageSource), typeof(CustomPin), propertyChanged:OnImageSourceChanged);
+		BindableProperty.Create(nameof(ImageSource), typeof(ImageSource), typeof(CustomPin),
+		                        propertyChanged: OnImageSourceChanged);
 
 	public ImageSource? ImageSource
 	{
@@ -18,8 +19,6 @@ public class CustomPin : Pin
 	static async void OnImageSourceChanged(BindableObject bindable, object oldValue, object newValue)
 	{
 		var control = (CustomPin)bindable;
-		var imageSource = control.ImageSource;
-
 		if (control.Handler?.PlatformView is null)
 		{
 			// Workaround for when this executes the Handler and PlatformView is null
@@ -27,22 +26,11 @@ public class CustomPin : Pin
 			return;
 		}
 
-		if (imageSource is not null)
-		{
-#if ANDROID || IOS || MACCATALYST
-			await control.AddAnnotation();
+#if IOS || MACCATALYST
+		await control.AddAnnotation();
 #else
-			await Task.CompletedTask;
+		await Task.CompletedTask;
 #endif
-		}
-		else
-		{
-#if ANDROID
-
-#elif IOS
-
-#endif
-		}
 
 		void OnHandlerChanged(object? s, EventArgs e)
 		{
