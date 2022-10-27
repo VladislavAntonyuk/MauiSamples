@@ -27,4 +27,16 @@ public partial class MainPage : ContentPage
 		view.BindingContext = BindingContext;
 		return view;
 	}
+
+	private void ShowBottomSheetWithLongContent(object sender, EventArgs e)
+	{
+		this.ShowBottomSheet(GetBottomSheetViewWithLongContent(), false);
+	}
+
+	private View GetBottomSheetViewWithLongContent()
+	{
+		var view = (View)BottomSheetTemplateWithLongContent.CreateContent();
+		view.BindingContext = BindingContext;
+		return view;
+	}
 }
