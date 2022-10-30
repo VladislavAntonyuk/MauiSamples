@@ -17,8 +17,7 @@ public class PerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequ
 		this.logger = logger;
 	}
 
-	public async Task<TResponse> Handle(
-		TRequest request,
+	public async Task<TResponse> Handle(TRequest request,
 		RequestHandlerDelegate<TResponse> next,
 		CancellationToken cancellationToken)
 	{
@@ -34,7 +33,7 @@ public class PerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequ
 		{
 			var requestName = typeof(TRequest).Name;
 			logger.LogWarning("Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@Request}",
-							  requestName, elapsedMilliseconds, request);
+			                  requestName, elapsedMilliseconds, request);
 		}
 
 		return response;

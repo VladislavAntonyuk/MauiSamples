@@ -13,9 +13,9 @@ public partial class BasketPage : ContentPage
 
 	private async void BackButton_Clicked(object sender, EventArgs e)
 	{
-		await ((AppShell)Application.Current!.MainPage!).GoToAsync("..");
+		await ((AppShell)Application.Current!.MainPage!).GoToAsync("//MainPage");
 	}
-	
+
 	protected override bool OnBackButtonPressed() => false;
 }
 

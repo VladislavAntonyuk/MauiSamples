@@ -1,4 +1,4 @@
-﻿namespace PizzaStore.Application.UseCases.Pizza.Commands.Update;
+namespace PizzaStore.Application.UseCases.Pizza.Commands.Update;
 
 using AutoMapper;
 using Domain.Entities;
@@ -16,9 +16,13 @@ public class UpdatePizzaCommandHandler : BasePizzaHandler, ICommandHandler<Pizza
 		var pizza = await PizzaRepository.GetById(command.Id, cancellationToken);
 		if (pizza is not null)
 		{
-			var classToUpdate = Mapper.Map<Pizza>(command);
-			classToUpdate.Price = classToUpdate.Price == 0 ? pizza.Price : classToUpdate.Price;
-			var updatedClass = await PizzaRepository.Update(classToUpdate, cancellationToken);
+			var pizzaToUpdate = Mapper.Map<Pizza>(command);
+			pizzaToUpdate.Price = pizzaToUpdate.Price == default ? pizza.Price : pizzaToUpdate.Price;
+			pizzaToUpdate.Image ??= pizza.Image;
+			pizzaToUpdate.Description ??= pizza.Description;
+			pizzaToUpdate.CreatedBy = pizza.CreatedBy;
+			pizzaToUpdate.CreatedOn = pizza.CreatedOn;
+			var updatedClass = await PizzaRepository.Update(pizzaToUpdate, cancellationToken);
 			return new OperationResult<PizzaDto>
 			{
 				Value = Mapper.Map<PizzaDto>(updatedClass)

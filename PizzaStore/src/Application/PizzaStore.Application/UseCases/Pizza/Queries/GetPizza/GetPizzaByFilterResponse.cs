@@ -2,7 +2,7 @@
 
 public class GetPizzaByFilterResponse
 {
-	public IReadOnlyCollection<PizzaDto> Items { get; set; } = new List<PizzaDto>();
+	public List<PizzaDto> Items { get; set; } = new ();
 	public int PageIndex { get; }
 	public int TotalPages { get; }
 	public int TotalCount { get; }

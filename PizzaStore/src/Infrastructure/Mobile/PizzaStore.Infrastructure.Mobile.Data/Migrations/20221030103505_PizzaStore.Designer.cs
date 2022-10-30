@@ -11,13 +11,14 @@ using PizzaStore.Infrastructure.Mobile.Data.Repositories.Models;
 namespace PizzaStore.Infrastructure.Mobile.Data.Migrations
 {
     [DbContext(typeof(MobileAppContext))]
-    [Migration("20220521130305_PizzaStore")]
+    [Migration("20221030103505_PizzaStore")]
     partial class PizzaStore
     {
+        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "6.0.5");
+            modelBuilder.HasAnnotation("ProductVersion", "7.0.0-rc.2.22472.11");
 
             modelBuilder.Entity("PizzaStore.Infrastructure.Mobile.Data.Repositories.Models.Pizza", b =>
                 {

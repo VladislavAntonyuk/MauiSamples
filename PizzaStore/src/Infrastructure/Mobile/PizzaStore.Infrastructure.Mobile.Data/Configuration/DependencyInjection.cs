@@ -18,7 +18,7 @@ public static class DependencyInjection
 			builder.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);
 		}));
 
-		services.AddAutoMapper(typeof(DependencyInjection));
+		services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
 		services.AddScoped<IPizzaRepository, PizzaRepository>();
 	}

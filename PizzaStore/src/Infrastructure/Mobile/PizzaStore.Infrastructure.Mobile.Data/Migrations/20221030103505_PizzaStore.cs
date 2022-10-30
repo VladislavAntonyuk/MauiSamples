@@ -4,8 +4,10 @@
 
 namespace PizzaStore.Infrastructure.Mobile.Data.Migrations
 {
+    /// <inheritdoc />
     public partial class PizzaStore : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
@@ -28,6 +30,7 @@ namespace PizzaStore.Infrastructure.Mobile.Data.Migrations
                 defaultValue: 0m);
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(

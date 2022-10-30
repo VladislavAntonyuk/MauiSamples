@@ -1,4 +1,4 @@
-﻿namespace PizzaStore.Mobile;
+namespace PizzaStore.Mobile;
 
 using Application.Configuration;
 using CommunityToolkit.Maui;
@@ -15,7 +15,12 @@ public static class MauiProgram
 	{
 		var builder = MauiApp.CreateBuilder();
 		builder.UseMauiApp<App>();
-		builder.UseMauiCommunityToolkit();
+		builder.UseMauiCommunityToolkit(options =>
+		{
+			options.SetShouldSuppressExceptionsInAnimations(true);
+			options.SetShouldSuppressExceptionsInBehaviors(true);
+			options.SetShouldSuppressExceptionsInConverters(true);
+		});
 		builder.Services.AddApplication();
 		builder.Services.AddInfrastructureData(GetDatabaseConnectionString("PizzaStore"));
 		builder.Services.AddInfrastructureBusiness();

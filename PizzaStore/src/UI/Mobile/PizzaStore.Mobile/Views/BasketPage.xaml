@@ -2,27 +2,33 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PizzaStore.Mobile.Views.BasketPage"
-			 xmlns:viewModels="clr-namespace:PizzaStore.Mobile.ViewModels;assembly=PizzaStore.Mobile"
-             Shell.PresentationMode="ModalAnimated">
+			 xmlns:entities="clr-namespace:PizzaStore.Domain.Entities;assembly=PizzaStore.Domain"
+			 xmlns:viewModels="clr-namespace:PizzaStore.Mobile.ViewModels"
+			 Shell.PresentationMode="ModalAnimated"
+             x:DataType="viewModels:BasketViewModel">
 
 	<CollectionView ItemsSource="{Binding Items}"
-	                x:Name="PizzasCollectionView"
 	                EmptyView="No items">
 		<CollectionView.ItemsLayout>
 			<LinearItemsLayout Orientation="Vertical" ItemSpacing="10" />
 		</CollectionView.ItemsLayout>
+		<CollectionView.Header>
+			<Button Clicked="BackButton_Clicked" Text="Back to catalog"/>
+		</CollectionView.Header>
 		<CollectionView.ItemTemplate>
 			<DataTemplate>
-				<Grid RowDefinitions="60, *, 30, 30" ColumnDefinitions="*, 60">
+				<Grid RowDefinitions="60, *, 30, 30" ColumnDefinitions="*, 60" x:DataType="entities:Pizza">
 					<Image Grid.RowSpan="4" Grid.ColumnSpan="2" Aspect="AspectFit" Source="{Binding Image}"/>
-					<Button  Grid.Row="0" Grid.Column="1" Text="Like"/>
 					<Label Grid.Row="2" Grid.Column="0" Text="{Binding Name}"/>
 					<Label Grid.Row="3" Grid.Column="0" Text="{Binding Price}" VerticalOptions="End"/>
-					<Button Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Text="Buy"
+					<Button Grid.Row="2" Grid.RowSpan="2" Grid.Column="1" Text="Remove"
 					        Command="{Binding Source={RelativeSource AncestorType={x:Type viewModels:BasketViewModel}}, Path=DeleteItemCommand}"
 					        CommandParameter="{Binding Id}"/>
 				</Grid>
 			</DataTemplate>
 		</CollectionView.ItemTemplate>
+		<CollectionView.Footer>
+			<Label Text="{Binding Total, StringFormat='Total: {0}'}"/>
+		</CollectionView.Footer>
 	</CollectionView>
 </ContentPage>

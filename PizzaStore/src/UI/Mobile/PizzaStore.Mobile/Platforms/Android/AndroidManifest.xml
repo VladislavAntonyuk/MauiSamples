@@ -6,4 +6,5 @@
 	             android:roundIcon="@mipmap/appicon_round"
 	             android:supportsRtl="true"/>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<uses-permission android:name="android.permission.INTERNET" />
 </manifest>

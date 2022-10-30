@@ -1,9 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
-		<IsPackable>false</IsPackable>
-	</PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <IsPackable>false</IsPackable>
+    </PropertyGroup>
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
@@ -20,8 +20,8 @@
 		</PackageReference>
 	</ItemGroup>
 
-	<ItemGroup>
-		<ProjectReference Include="..\..\..\..\src\Infrastructure\WebApp\PizzaStore.Infrastructure.WebApp.Data\PizzaStore.Infrastructure.WebApp.Data.csproj" />
-	</ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\..\..\src\Application\PizzaStore.Application\PizzaStore.Application.csproj" />
+    </ItemGroup>
 
 </Project>

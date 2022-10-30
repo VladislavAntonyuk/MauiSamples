@@ -132,6 +132,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JokeAppWidget", "iOSExtensi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiMaps", "MauiMaps\MauiMaps.csproj", "{3A12303A-CF37-4B50-B135-09759F466904}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{7429E8FC-195F-4628-B7E9-626C8837AD92}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PizzaStore.Application.Tests", "PizzaStore\tests\Application\PizzaStore.Application.Tests\PizzaStore.Application.Tests.csproj", "{21098A0C-CA6C-484B-8637-7A3BFAF4AABE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -329,6 +333,10 @@ Global
 		{3A12303A-CF37-4B50-B135-09759F466904}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{3A12303A-CF37-4B50-B135-09759F466904}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A12303A-CF37-4B50-B135-09759F466904}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21098A0C-CA6C-484B-8637-7A3BFAF4AABE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21098A0C-CA6C-484B-8637-7A3BFAF4AABE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21098A0C-CA6C-484B-8637-7A3BFAF4AABE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21098A0C-CA6C-484B-8637-7A3BFAF4AABE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -372,6 +380,8 @@ Global
 		{937CCB6F-427B-415E-813E-025AF73741CC} = {F215B6A7-4C79-4415-95D2-6F561143C9AC}
 		{D7258BEF-416D-4F3E-A359-87BD545A84A9} = {F215B6A7-4C79-4415-95D2-6F561143C9AC}
 		{8CE62F62-CE5D-48F4-8754-3F07FF72C3C2} = {D7258BEF-416D-4F3E-A359-87BD545A84A9}
+		{7429E8FC-195F-4628-B7E9-626C8837AD92} = {71285E56-24EA-49B5-A45B-F6813C88AA8A}
+		{21098A0C-CA6C-484B-8637-7A3BFAF4AABE} = {7429E8FC-195F-4628-B7E9-626C8837AD92}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}

@@ -18,6 +18,9 @@ public partial class BasketViewModel : ObservableObject
 	[ObservableProperty]
 	private ObservableCollection<PizzaDto> items = new();
 
+	[ObservableProperty]
+	private decimal total;
+
 	public BasketViewModel(IQueryDispatcher queryDispatcher, ICommandDispatcher commandDispatcher)
 	{
 		this.queryDispatcher = queryDispatcher;
@@ -39,6 +42,8 @@ public partial class BasketViewModel : ObservableObject
 			{
 				items.Add(item);
 			}
+
+			Total = items.Sum(x => x.Price);
 		}
 		else
 		{
