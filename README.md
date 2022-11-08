@@ -35,3 +35,5 @@
 [iOS Widgets](iOSExtensions/JokeApp) - Extend .NET MAUI application with iOS Widgets.
 
 [MauiMaps](MauiMaps) - Customize map pins in .NET MAUI.
+
+[MauiBluetooth](MauiBluetooth) - Bluetooth + BLE.

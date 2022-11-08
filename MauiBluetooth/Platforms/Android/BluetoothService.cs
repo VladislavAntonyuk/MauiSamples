@@ -3,9 +3,6 @@
 using Android.App;
 using Android.Bluetooth;
 using Android.Content;
-using Android.Nfc;
-using Android.Util;
-using com.xamarin.samples.bluetooth.bluetoothchat;
 using Java.Util;
 using Plugin.BLE.Abstractions.Contracts;
 using Plugin.BLE.Android;
@@ -124,44 +121,5 @@ public class BluetoothService : IBluetoothService
 		}
 
 		return adapter;
-	}
-
-	protected class ConnectThread : Thread
-	{
-		BluetoothSocket? socket;
-
-		public ConnectThread(BluetoothSocket socket)
-		{
-			this.socket = socket;
-		}
-
-		public override void Run()
-		{
-			try
-			{
-				socket?.Connect();
-			}
-			catch (Java.IO.IOException)
-			{
-				try
-				{
-					socket?.Close();
-				}
-				catch (Java.IO.IOException)
-				{
-				}
-			}
-		}
-
-		public void Cancel()
-		{
-			try
-			{
-				socket?.Close();
-			}
-			catch (Java.IO.IOException)
-			{
-			}
-		}
 	}
 }

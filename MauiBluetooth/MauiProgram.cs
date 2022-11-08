@@ -15,9 +15,7 @@ public static class MauiProgram
 		builder.Services.AddSingleton<MainPage>();
 		builder.Services.AddSingleton<IBluetoothLE>(CrossBluetoothLE.Current);
 		builder.Services.AddSingleton<IAdapter>(CrossBluetoothLE.Current.Adapter);
-#if ANDROID
 		builder.Services.AddSingleton<IBluetoothService, BluetoothService>();
-#endif
 		return builder.Build();
 	}
 }
