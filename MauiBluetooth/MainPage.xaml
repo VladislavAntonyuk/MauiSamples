@@ -5,14 +5,20 @@
              xmlns:contracts="clr-namespace:Plugin.BLE.Abstractions.Contracts;assembly=Plugin.BLE.Abstractions"
              xmlns:mauiBluetooth="clr-namespace:MauiBluetooth"
              x:Class="MauiBluetooth.MainPage"
+			 Shell.NavBarIsVisible="False"
              x:Name="Main">
-
 	<CollectionView ItemsSource="{Binding Devices}">
+		<CollectionView.Header>
+			<Button Command="{Binding ScanDevicesCommand}"
+			        Text="Scan devices" />
+		</CollectionView.Header>
 		<CollectionView.ItemTemplate>
-			<DataTemplate x:DataType="contracts:IDevice">
-				<Grid>
-					<Label Text="{Binding Name}" />
-					<Button x:DataType="mauiBluetooth:MainPageViewModel"
+			<DataTemplate>
+				<Grid ColumnDefinitions="*, Auto" Grid.RowDefinitions="*,*">
+					<Label Grid.Column="0" Text="{Binding NativeDevice.Name}"/>
+					<Label Grid.Column="0" Grid.Row="1" Text="{Binding NativeDevice.Address}" />
+					<Button Grid.Column="1" Grid.RowSpan="2" x:DataType="mauiBluetooth:MainPageViewModel"
+							Text="Connect"
 					        Command="{Binding Source={x:Reference Name=Main},Path=BindingContext.ConnectCommand}"
 					        CommandParameter="{Binding .}"/>
 				</Grid>

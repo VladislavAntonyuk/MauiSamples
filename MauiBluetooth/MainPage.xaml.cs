@@ -7,6 +7,8 @@ using Plugin.BLE.Abstractions.Contracts;
 using Plugin.BLE.Abstractions.Exceptions;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Views;
+using System.Linq;
+using System.Text;
 
 public partial class MainPage : ContentPage
 {
@@ -19,25 +21,34 @@ public partial class MainPage : ContentPage
 
 public partial class MainPageViewModel : ObservableObject
 {
-	private readonly IBluetoothLE ble;
 	private readonly IAdapter adapter;
+	private readonly IBluetoothService bluetoothService;
 
 	[ObservableProperty]
 	private ObservableCollection<IDevice> devices = new();
 
-	public MainPageViewModel(IBluetoothLE ble, IAdapter adapter)
+	public MainPageViewModel(IAdapter adapter, IBluetoothService bluetoothService)
 	{
-		this.ble = ble;
 		this.adapter = adapter;
-		ScanDevicesCommand.Execute(null);
-
+		this.bluetoothService = bluetoothService;
 	}
 
 	[RelayCommand]
 	async Task ScanDevices(CancellationToken cancellationToken)
 	{
-		adapter.DeviceDiscovered += (s,a) => devices.Add(a.Device);
+		Devices.Clear();
+		adapter.DeviceDiscovered += (sender, args) =>
+		{
+			if (!Devices.Contains(args.Device))
+			{
+				Devices.Add(args.Device);
+			}
+		};
 		await adapter.StartScanningForDevicesAsync(cancellationToken: cancellationToken);
+		foreach (var device in bluetoothService.GetConnectedDevices())
+		{
+			Devices.Add(device);
+		}
 	}
 
 	[RelayCommand]
@@ -48,10 +59,14 @@ public partial class MainPageViewModel : ObservableObject
 			await adapter.ConnectToDeviceAsync(device, cancellationToken: cancellationToken);
 			if (Application.Current?.MainPage != null)
 			{
-				await Application.Current.MainPage.ShowPopupAsync(new DetailsPage(device));
+				await Application.Current.MainPage.ShowPopupAsync(new DetailsPage(device, bluetoothService));
 			}
 		}
-		catch(DeviceConnectionException e)
+		catch (DeviceConnectionException e)
+		{
+			await Toast.Make(e.Message).Show(cancellationToken);
+		}
+		catch (Exception e)
 		{
 			await Toast.Make(e.Message).Show(cancellationToken);
 		}

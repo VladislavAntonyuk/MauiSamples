@@ -1,8 +1,13 @@
 ﻿namespace MauiBluetooth;
 
+using Plugin.BLE.Abstractions.Contracts;
+
 public interface IBluetoothService
 {
-	string[] GetConnectedDevices();
-	
+	IDevice[] GetConnectedDevices();
+
+	Task Connect(string deviceName);
+	Task Disconnect();
 	Task Send(string deviceName, byte[] content);
+	Task<byte[]> Receive(string deviceName);
 }

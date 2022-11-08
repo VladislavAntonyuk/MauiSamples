@@ -1,62 +1,87 @@
 ﻿namespace MauiBluetooth;
 
+using Android.App;
 using Android.Bluetooth;
 using Android.Content;
+using Android.Nfc;
+using Android.Util;
 using com.xamarin.samples.bluetooth.bluetoothchat;
 using Java.Util;
+using Plugin.BLE.Abstractions.Contracts;
+using Plugin.BLE.Android;
+using Java.Lang;
 
 public class BluetoothService : IBluetoothService
 {
-	/// <summary>
-	/// The standard UDID for SSP
-	/// </summary>
-	private const string SspUuid = "00001101-0000-1000-8000-00805f9b34fb";
-	private BluetoothManager manager;
+	private readonly IAdapter adapter;
 
-	public BluetoothService()
+	static UUID? _myUuidSecure = UUID.FromString("fa87c0d0-afac-11de-8a39-0800200c9a66");
+	private readonly BluetoothManager manager;
+	BluetoothSocket? socket;
+
+	public BluetoothService(IAdapter adapter)
 	{
-		manager = (BluetoothManager)Android.App.Application.Context.GetSystemService(Context.BluetoothService)!;
+		this.adapter = adapter;
+		manager = (BluetoothManager)Application.Context.GetSystemService(Context.BluetoothService)!;
 	}
 
 	/// <inheritdoc />
-	public string[] GetConnectedDevices()
+	public IDevice[] GetConnectedDevices()
 	{
-		var adapter = PrepareAdapter();
+		var bluetoothAdapter = PrepareAdapter();
 
-		if (adapter.IsEnabled)
+		if (bluetoothAdapter.BondedDevices?.Count > 0)
 		{
-			if (adapter.BondedDevices?.Count > 0)
-			{
-				return adapter.BondedDevices.Where(x => !string.IsNullOrEmpty(x.Name)).Select(d => d.Name!).ToArray();
-			}
-		}
-		else
-		{
-			throw new Exception("Bluetooth is not enabled on device");
+			return bluetoothAdapter.BondedDevices.Select(d => new Device((Adapter)adapter, d, null, 0)).ToArray();
 		}
 
-		return Array.Empty<string>();
+		return Array.Empty<IDevice>();
 	}
 
 	/// <inheritdoc />
-	private async Task<BluetoothSocket?> Connect(string deviceName)
+	public Task Connect(string deviceName)
 	{
-		var adapter = PrepareAdapter();
-		var device = adapter.BondedDevices?.FirstOrDefault(d => d.Name == deviceName);
+		var bluetoothAdapter = PrepareAdapter();
+		bluetoothAdapter.CancelDiscovery();
+		var device = bluetoothAdapter.BondedDevices?.FirstOrDefault(d => d.Name == deviceName);
 
-		var socket = device?.CreateRfcommSocketToServiceRecord(UUID.FromString(SspUuid));
+		socket = device?.CreateRfcommSocketToServiceRecord(_myUuidSecure);
 		if (socket is null)
 		{
-			return null;
+			return Task.CompletedTask;
 		}
 
-		await socket.ConnectAsync();
-		return socket;
+		//var thread = new ConnectThread(socket);
+		//thread.Start();
+		try
+		{
+			socket.Connect();
+		}
+		catch (Exception)
+		{
+		}
+		return Task.CompletedTask;
+	}
+
+	/// <inheritdoc />
+	public Task Disconnect()
+	{
+		if (socket is not null && socket.IsConnected)
+		{
+			socket?.Close();
+			socket?.Dispose();
+			socket = null;
+		}
+
+		return Task.CompletedTask;
 	}
 
 	public async Task Send(string deviceName, byte[] content)
 	{
-		var socket = await Connect(deviceName);
+		if (socket is null || !socket.IsConnected)
+		{
+			await Connect(deviceName);
+		}
 
 		if (socket?.OutputStream is null)
 		{
@@ -66,22 +91,28 @@ public class BluetoothService : IBluetoothService
 		await socket.OutputStream.WriteAsync(content, 0, content.Length);
 	}
 
-	public async Task Receive(string deviceName, byte[] content)
+	public async Task<byte[]> Receive(string deviceName)
 	{
-		var socket = await Connect(deviceName);
+		if (socket is null || !socket.IsConnected)
+		{
+			await Connect(deviceName);
+		}
 
 		if (socket?.InputStream is null)
 		{
-			return;
+			return Array.Empty<byte>();
 		}
 
+		byte[] content = new byte[1024];
 		await socket.InputStream.ReadAsync(content, 0, content.Length);
+		return content;
+		
 	}
 
 	BluetoothAdapter PrepareAdapter()
 	{
 		var adapter = manager.Adapter;
-		if (adapter == null)
+		if (adapter is null)
 		{
 			throw new Exception("No Bluetooth adapter found.");
 		}
@@ -89,9 +120,48 @@ public class BluetoothService : IBluetoothService
 		if (!adapter.IsEnabled)
 		{
 			Intent enableBtIntent = new Intent(BluetoothAdapter.ActionRequestEnable);
-			Android.App.Application.Context.StartActivity(enableBtIntent);
+			Application.Context.StartActivity(enableBtIntent);
 		}
 
 		return adapter;
+	}
+
+	protected class ConnectThread : Thread
+	{
+		BluetoothSocket? socket;
+
+		public ConnectThread(BluetoothSocket socket)
+		{
+			this.socket = socket;
+		}
+
+		public override void Run()
+		{
+			try
+			{
+				socket?.Connect();
+			}
+			catch (Java.IO.IOException)
+			{
+				try
+				{
+					socket?.Close();
+				}
+				catch (Java.IO.IOException)
+				{
+				}
+			}
+		}
+
+		public void Cancel()
+		{
+			try
+			{
+				socket?.Close();
+			}
+			catch (Java.IO.IOException)
+			{
+			}
+		}
 	}
 }
