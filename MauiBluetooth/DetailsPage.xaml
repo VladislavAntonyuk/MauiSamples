@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<views:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MauiBluetooth.DetailsPage">
+
+	<VerticalStackLayout>
+		<Label Text="{Binding device.Name}" />
+		<Button Text="Get Services" Clicked="GetServices" />
+		<Button Text="Send message" Clicked="SendMessage" />
+	</VerticalStackLayout>
+</views:Popup>
