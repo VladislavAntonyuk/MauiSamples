@@ -24,6 +24,10 @@ jobs:
         include-prerelease: true
     - name: Install dependencies
       run: dotnet workload install maui
+    - name: Install Tizen
+      run: |
+        Invoke-WebRequest 'https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.ps1' -OutFile 'workload-install.ps1'
+        .\workload-install.ps1
     - name: Build
       run: |
         dotnet restore --configfile NuGet.config
