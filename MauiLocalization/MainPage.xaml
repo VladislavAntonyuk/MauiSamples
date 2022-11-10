@@ -43,6 +43,9 @@
 			       Style="{StaticResource Description}"/>
 			<Label Text="{localization:Translate Intro}" />
 
+			<Label x:Name="CodeBehindTranslator" />
+			<Label x:Name="CodeBehindTranslator2" />
+
 			<Picker x:Name="LanguagePicker"
 					SelectedIndexChanged="LanguageChanged"
 			        HorizontalOptions="Center" />

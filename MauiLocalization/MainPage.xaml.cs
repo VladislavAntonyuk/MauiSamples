@@ -12,12 +12,14 @@ public partial class MainPage : ContentPage
 		LanguagePicker.Items.Add("uk-ua");
 		LanguagePicker.SelectedIndex = 0;
 		LocalizationResourceManager = LocalizationResourceManager.Instance;
+		CodeBehindTranslator.SetBinding(Label.TextProperty, new Binding("LocalizationResourceManager[Intro]", BindingMode.OneWay));
 		BindingContext = this;
 	}
 
 	private void LanguageChanged(object sender, EventArgs e)
 	{
 		LocalizationResourceManager.Instance.SetCulture(new CultureInfo(LanguagePicker.Items[LanguagePicker.SelectedIndex]));
+		CodeBehindTranslator2.Text = LocalizationResourceManager.Instance["Intro"].ToString();
 	}
 
 	public LocalizationResourceManager LocalizationResourceManager { get; }
