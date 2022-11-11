@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<RootNamespace>CirclePacking</RootNamespace>
+
+		<ApplicationTitle>CirclePacking</ApplicationTitle>
+
+		<ApplicationId>com.vladislavantonyuk.circlepacking</ApplicationId>
+		<ApplicationIdGuid>f7c2e1d6-0d0a-4776-8fd6-0c482a36636e</ApplicationIdGuid>
+
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
+	</ItemGroup>
+</Project>
