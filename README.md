@@ -37,3 +37,5 @@
 [MauiMaps](MauiMaps) - Customize map pins in .NET MAUI.
 
 [MauiBluetooth](MauiBluetooth) - Bluetooth + BLE.
+
+[DynamicFab](DynamicFab) - Dynamic floating action button.

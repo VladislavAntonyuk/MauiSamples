@@ -2,14 +2,13 @@
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<RootNamespace>CardLayout</RootNamespace>
+		<RootNamespace>DynamicFab</RootNamespace>
 
-		<!-- Display name -->
-		<ApplicationTitle>CardLayout</ApplicationTitle>
+		<ApplicationTitle>DynamicFab</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.vladislavantonyuk.cardlayout</ApplicationId>
-		<ApplicationIdGuid>78191D14-27EC-40FB-9853-61FE1B63CF32</ApplicationIdGuid>
+		<ApplicationId>com.vladislavantonyuk.dynamicfab</ApplicationId>
+		<ApplicationIdGuid>0cdc73d5-c79b-40f3-990a-11c57c78dc03</ApplicationIdGuid>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -22,11 +21,12 @@
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<MauiFont Include="Resources\Fonts\*" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="M.BindableProperty.Generator" Version="0.9.2" />
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="3.0.0" />
 	</ItemGroup>
 
 </Project>
