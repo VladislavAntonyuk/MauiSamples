@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="DynamicFab.MainPage">
+
+	<Grid>
+
+		<Label
+                Text="Welcome to .NET Multi-platform App UI"
+                FontSize="18"
+                HorizontalOptions="Center" />
+
+		<views:Expander HorizontalOptions="End"
+		                VerticalOptions="End"
+		                Margin="30"
+		                Direction="Up">
+			<views:Expander.Header>
+				<ImageButton
+						BackgroundColor="Gray"
+						CornerRadius="20"
+						HorizontalOptions="End"
+						VerticalOptions="End">
+					<ImageButton.Source>
+						<FontImageSource
+								FontFamily="FASolid"
+								Glyph="&#x2b;" />
+					</ImageButton.Source>
+				</ImageButton>
+			</views:Expander.Header>
+			<views:Expander.Content>
+				<VerticalStackLayout Spacing="20">
+					<ImageButton
+							Clicked="OnFolderClicked"
+							HorizontalOptions="End">
+						<ImageButton.Source>
+							<FontImageSource
+									FontFamily="FASolid"
+									Glyph="&#xf07b;" />
+						</ImageButton.Source>
+					</ImageButton>
+					<views:Expander Direction="Up"
+					                Margin="0,0,0,10">
+						<views:Expander.Header>
+							<ImageButton
+								HorizontalOptions="End"
+								VerticalOptions="Center">
+								<ImageButton.Source>
+									<FontImageSource
+										FontFamily="FASolid"
+										Glyph="&#xf15b;" />
+								</ImageButton.Source>
+							</ImageButton>
+						</views:Expander.Header>
+						<views:Expander.Content>
+							<VerticalStackLayout Margin="0,0,0,10" Spacing="10">
+								<ImageButton
+										Clicked="OnWordClicked"
+										HorizontalOptions="End">
+									<ImageButton.Source>
+										<FontImageSource
+												FontFamily="FASolid"
+												Glyph="&#xf1c2;" />
+									</ImageButton.Source>
+								</ImageButton>
+								<ImageButton
+										Clicked="OnExcelClicked"
+										HorizontalOptions="End">
+									<ImageButton.Source>
+										<FontImageSource
+												FontFamily="FASolid"
+												Glyph="&#xf1c3;" />
+									</ImageButton.Source>
+								</ImageButton>
+							</VerticalStackLayout>
+						</views:Expander.Content>
+					</views:Expander>
+				</VerticalStackLayout>
+			</views:Expander.Content>
+		</views:Expander>
+	</Grid>
+
+</ContentPage>
