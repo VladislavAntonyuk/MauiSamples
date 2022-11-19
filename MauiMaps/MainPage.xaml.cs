@@ -1,7 +1,6 @@
 ﻿namespace MauiMaps;
 
 using CommunityToolkit.Maui.Alerts;
-using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
 
 public partial class MainPage : ContentPage
@@ -9,25 +8,35 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
-		var customPin1 = new CustomPin()
+		var customPinFromUri = new CustomPin()
 		{
-			Label = "label",
+			Label = "From Uri",
 			Location = new Location(10, 10),
 			Address = "Address",
 			ImageSource = ImageSource.FromUri(new Uri("https://picsum.photos/50")),
 			Map = MyMap
 		};
-		var customPin2 = new CustomPin()
+		var customPinFromResource = new CustomPin()
 		{
-			Label = "label2",
-			Location = new Location(11, 11),
-			Address = "Address2",
-			ImageSource = ImageSource.FromUri(new Uri("https://picsum.photos/60")),
+			Label = "From Resource",
+			Location = new Location(12, 12),
+			Address = "Address3",
+			ImageSource = ImageSource.FromResource("MauiMaps.Resources.EmbeddedImages.icon.jpeg"),
 			Map = MyMap
 		};
-		MyMap.Pins.Add(customPin1);
-		MyMap.Pins.Add(customPin2);
-		customPin1.InfoWindowClicked += async delegate
+		var imageData = File.ReadAllBytes("dotnet_bot.png");
+		var customPinFromStream = new CustomPin()
+		{
+			Label = "From Stream",
+			Location = new Location(13, 13),
+			Address = "Address4",
+			ImageSource = ImageSource.FromStream(() => new MemoryStream(imageData)),
+			Map = MyMap
+		};
+		MyMap.Pins.Add(customPinFromUri);
+		MyMap.Pins.Add(customPinFromResource);
+		MyMap.Pins.Add(customPinFromStream);
+		customPinFromUri.InfoWindowClicked += async delegate
 		{
 			await Toast.Make("Info Window is clicked").Show();
 		};
