@@ -23,7 +23,8 @@ jobs:
          cd C:/
          mkdir repos
          cd repos
-         git clone https://github.com/${{ github.repository }}.git
+         git clone https://github.com/${{ github.repository }}.git MauiSamples
+         cd MauiSamples
          git checkout ${{ github.head_ref || github.ref_name }}       
 
     - name: Setup .NET
@@ -43,6 +44,6 @@ jobs:
 
     - name: Build
       run: |
-        cd C:/repos
+        cd C:/repos/MauiSamples
         dotnet restore --configfile NuGet.config
         dotnet build -c Release
