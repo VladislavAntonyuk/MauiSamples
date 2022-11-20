@@ -27,7 +27,6 @@ jobs:
         echo "WORKING_DIRECTORY_PATH=/Users/runner/Projects/MauiSamples" >> $GITHUB_ENV
 
     - name: Clone and checkout
-      if: ${{ matrix.os == 'windows-latest' }}
       run: |
          git clone https://github.com/${{ github.repository }}.git ${{ env.WORKING_DIRECTORY_PATH }}
          cd ${{ env.WORKING_DIRECTORY_PATH }}
