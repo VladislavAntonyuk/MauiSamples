@@ -21,10 +21,15 @@ jobs:
       run: |
          Get-Volume
          Get-ChildItem C:/
-         Get-ChildItem D:/
          Remove-Item -Path "c:\Test Temp\Test Folder" -Force -Recurse -ErrorAction SilentlyContinue
+         cd C:/
 
-    - uses: actions/checkout@v2
+    - name: Clone and checkout
+      run: |
+        mkdir repos
+        cd repos
+        git clone ${{ github.repository }}
+        git checkout ${{ github.head_ref || github.ref_name }} 
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
