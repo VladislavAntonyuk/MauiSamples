@@ -12,19 +12,25 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest]
-        # os: [windows-latest, macos-latest]
+        #os: [windows-latest]
+        os: [windows-latest, macos-latest]
 
     steps:
+    - name: Prepare variables on Windows
+      if: ${{ matrix.os == 'windows-latest' }}
+      run: |
+        run echo "WORKING_DIRECTORY_PATH=C:/Projects/MauiSamples" >> $GITHUB_ENV
+
+    - name: Prepare variables on macOS
+      if: ${{ matrix.os == 'macos-latest' }}
+      run: |
+        run echo "WORKING_DIRECTORY_PATH=/Projects/MauiSamples" >> $GITHUB_ENV
+
     - name: Clone and checkout
       if: ${{ matrix.os == 'windows-latest' }}
       run: |
-         Get-Volume
-         cd C:/
-         mkdir repos
-         cd repos
-         git clone https://github.com/${{ github.repository }}.git MauiSamples
-         cd MauiSamples
+         git clone https://github.com/${{ github.repository }}.git ${{ env.WORKING_DIRECTORY_PATH }}
+         cd ${{ env.WORKING_DIRECTORY_PATH }}
          git checkout ${{ github.head_ref || github.ref_name }}       
 
     - name: Setup .NET
@@ -44,6 +50,6 @@ jobs:
 
     - name: Build
       run: |
-        cd C:/repos/MauiSamples
+        cd ${{ env.WORKING_DIRECTORY_PATH }}
         dotnet restore --configfile NuGet.config
         dotnet build -c Release
