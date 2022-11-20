@@ -16,20 +16,15 @@ jobs:
         # os: [windows-latest, macos-latest]
 
     steps:
-    - name: Clean up image
+    - name: Clone and checkout
       if: ${{ matrix.os == 'windows-latest' }}
       run: |
          Get-Volume
-         Get-ChildItem C:/
-         Remove-Item -Path "c:\Test Temp\Test Folder" -Force -Recurse -ErrorAction SilentlyContinue
          cd C:/
-
-    - name: Clone and checkout
-      run: |
-        mkdir repos
-        cd repos
-        git clone ${{ github.repository }}
-        git checkout ${{ github.head_ref || github.ref_name }} 
+         mkdir repos
+         cd repos
+         git clone https://github.com/${{ github.repository }}.git
+         git checkout ${{ github.head_ref || github.ref_name }}       
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
@@ -48,5 +43,6 @@ jobs:
 
     - name: Build
       run: |
+        cd C:/repos
         dotnet restore --configfile NuGet.config
         dotnet build -c Release
