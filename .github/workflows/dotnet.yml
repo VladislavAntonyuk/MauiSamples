@@ -19,12 +19,12 @@ jobs:
     - name: Prepare variables on Windows
       if: ${{ matrix.os == 'windows-latest' }}
       run: |
-        run echo "WORKING_DIRECTORY_PATH=C:/Projects/MauiSamples" >> $GITHUB_ENV
+        echo "WORKING_DIRECTORY_PATH=C:/Projects/MauiSamples" >> $GITHUB_ENV
 
     - name: Prepare variables on macOS
       if: ${{ matrix.os == 'macos-latest' }}
       run: |
-        run echo "WORKING_DIRECTORY_PATH=/Projects/MauiSamples" >> $GITHUB_ENV
+        echo "WORKING_DIRECTORY_PATH=/Users/runner/Projects/MauiSamples" >> $GITHUB_ENV
 
     - name: Clone and checkout
       if: ${{ matrix.os == 'windows-latest' }}
