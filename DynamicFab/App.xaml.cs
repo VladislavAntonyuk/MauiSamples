@@ -1,12 +1,11 @@
-﻿namespace DynamicFab
-{
-	public partial class App : Application
-	{
-		public App()
-		{
-			InitializeComponent();
+﻿namespace DynamicFab;
 
-			MainPage = new AppShell();
-		}
+public partial class App : Application
+{
+	public App()
+	{
+		InitializeComponent();
+
+		MainPage = new AppShell();
 	}
 }

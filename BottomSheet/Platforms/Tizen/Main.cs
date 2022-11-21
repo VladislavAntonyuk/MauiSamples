@@ -1,17 +1,16 @@
-namespace BottomSheet
+namespace BottomSheet;
+
+using System;
+using Microsoft.Maui;
+using Microsoft.Maui.Hosting;
+
+internal class Program : MauiApplication
 {
-	using System;
-	using Microsoft.Maui;
-	using Microsoft.Maui.Hosting;
+	protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
 
-	internal class Program : MauiApplication
+	static void Main(string[] args)
 	{
-		protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
-
-		static void Main(string[] args)
-		{
-			var app = new Program();
-			app.Run(args);
-		}
+		var app = new Program();
+		app.Run(args);
 	}
 }
