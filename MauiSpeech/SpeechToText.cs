@@ -1,10 +1,9 @@
-using System;
-using System.Globalization;
+﻿using System.Globalization;
 using MauiSpeech.Platforms;
 
 namespace MauiSpeech;
 
-public interface ISpeechToText
+public interface ISpeechToText: IAsyncDisposable
 {
 	Task<bool> RequestPermissions();
 	Task<string> Listen(CultureInfo culture, IProgress<string>? recognitionResult, CancellationToken cancellationToken);

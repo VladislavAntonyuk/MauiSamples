@@ -1,32 +1,29 @@
-﻿using System;
-using System.Globalization;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 using AVFoundation;
 using Foundation;
 using Speech;
 
 namespace MauiSpeech.Platforms;
 
-public class SpeechToTextImplementation : ISpeechToText, IDisposable
+public sealed class SpeechToTextImplementation : ISpeechToText
 {
 	private AVAudioEngine? audioEngine;
 	private SFSpeechAudioBufferRecognitionRequest? liveSpeechRequest;
 	private SFSpeechRecognizer? speechRecognizer;
 	private SFSpeechRecognitionTask? recognitionTask;
 
-	public void Dispose()
+	public ValueTask DisposeAsync()
 	{
 		audioEngine?.Dispose();
 		speechRecognizer?.Dispose();
 		liveSpeechRequest?.Dispose();
 		recognitionTask?.Dispose();
+		return ValueTask.CompletedTask;
 	}
 
 	public async Task<string> Listen(CultureInfo culture, IProgress<string>? recognitionResult, CancellationToken cancellationToken)
 	{
-		speechRecognizer = culture is null
-				? new SFSpeechRecognizer()
-				: new SFSpeechRecognizer(NSLocale.FromLocaleIdentifier(culture.Name));
+		speechRecognizer = new SFSpeechRecognizer(NSLocale.FromLocaleIdentifier(culture.Name));
 
 		if (!speechRecognizer.Available)
 		{
@@ -41,8 +38,8 @@ public class SpeechToTextImplementation : ISpeechToText, IDisposable
 		audioEngine = new AVAudioEngine();
 		liveSpeechRequest = new SFSpeechAudioBufferRecognitionRequest();
 		var node = audioEngine.InputNode;
-		var recordingFormat = node.GetBusOutputFormat(0);
-		node.InstallTapOnBus(0, 1024, recordingFormat, (AVAudioPcmBuffer buffer, AVAudioTime when) =>
+		var recordingFormat = node.GetBusOutputFormat(new UIntPtr(0));
+		node.InstallTapOnBus(new UIntPtr(0), 1024, recordingFormat, (buffer, _) =>
 		{
 			liveSpeechRequest.Append(buffer);
 		});
@@ -84,11 +81,11 @@ public class SpeechToTextImplementation : ISpeechToText, IDisposable
 			}
 		});
 
-		using (cancellationToken.Register(() =>
-		{
-			StopRecording();
-			taskResult.TrySetCanceled();
-		}))
+		await using (cancellationToken.Register(() =>
+		             {
+			             StopRecording();
+			             taskResult.TrySetCanceled();
+		             }))
 		{
 			return await taskResult.Task;
 		}
@@ -96,7 +93,7 @@ public class SpeechToTextImplementation : ISpeechToText, IDisposable
 
 	void StopRecording()
 	{
-		audioEngine?.InputNode?.RemoveTapOnBus(0);
+		audioEngine?.InputNode.RemoveTapOnBus(new UIntPtr(0));
 		audioEngine?.Stop();
 		liveSpeechRequest?.EndAudio();
 		recognitionTask?.Cancel();
