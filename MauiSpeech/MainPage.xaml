@@ -35,6 +35,21 @@
                 Command="{Binding PlayCommand}"
                 HorizontalOptions="Center" />
 
+			<Label
+                Text="{Binding RecognitionText}"
+                FontSize="18"
+                HorizontalOptions="Center" />
+
+            <Button
+                Text="Listen"
+                Command="{Binding ListenCommand}"
+                HorizontalOptions="Center" />
+
+            <Button
+                Text="Listen Cancel"
+                Command="{Binding ListenCancelCommand}"
+                HorizontalOptions="Center" />
+
         </VerticalStackLayout>
     </ScrollView>
 

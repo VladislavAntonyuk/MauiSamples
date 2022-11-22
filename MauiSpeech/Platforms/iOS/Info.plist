@@ -28,5 +28,9 @@
 	</array>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/appicon.appiconset</string>
+	<key>NSSpeechRecognitionUsageDescription</key>  
+	<string>Recognize</string>  
+	<key>NSMicrophoneUsageDescription</key>  
+	<string>Microphone usage</string> 
 </dict>
 </plist>

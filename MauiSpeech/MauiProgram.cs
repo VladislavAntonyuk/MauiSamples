@@ -10,13 +10,10 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
-			.UseMauiCommunityToolkit()
-			.ConfigureFonts(fonts =>
-			{
-				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
-				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-			});
+			.UseMauiCommunityToolkit();
 		builder.Services.AddSingleton(TextToSpeech.Default);
+		builder.Services.AddSingleton(SpeechToText.Default);
+
 		builder.Services.AddSingleton<MainPage, MainViewModel>();
 
 #if DEBUG

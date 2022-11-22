@@ -1,6 +1,7 @@
 ﻿namespace MauiSpeech;
 
 using System.Globalization;
+using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -16,7 +17,7 @@ public partial class MainPage : ContentPage
 public partial class MainViewModel : ObservableObject
 {
 	private readonly ITextToSpeech textToSpeech;
-
+	private readonly ISpeechToText speechToText;
 	[ObservableProperty]
 	private List<Locale>? locales;
 
@@ -26,9 +27,13 @@ public partial class MainViewModel : ObservableObject
 	[ObservableProperty]
 	private string text;
 
-	public MainViewModel(ITextToSpeech textToSpeech)
+	[ObservableProperty]
+	private string? recognitionText;
+
+	public MainViewModel(ITextToSpeech textToSpeech, ISpeechToText speechToText)
 	{
 		this.textToSpeech = textToSpeech;
+		this.speechToText = speechToText;
 		Locales = new();
 		text = @"Slava Uycriayini!
 Heroyim Slava!
@@ -50,29 +55,35 @@ Uycriayina - ponad uysae!";
 	[RelayCommand]
 	async Task Play(CancellationToken cancellationToken)
 	{
-		await TextToSpeech.Default.SpeakAsync(Text, new SpeechOptions()
+		await textToSpeech.SpeakAsync(Text, new SpeechOptions()
 		{
 			Locale = Locale,
 			Pitch = 2,
 			Volume = 1
 		}, cancellationToken);
 	}
-}
 
-public class PickerDisplayConverter : IValueConverter
-{
-	public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
+	[RelayCommand(IncludeCancelCommand =true)]
+	async Task Listen(CancellationToken cancellationToken)
 	{
-		if (value is Locale locale)
+		var isAuthorized = await speechToText.RequestPermissions();
+		if (isAuthorized)
 		{
-			return $"{locale.Language} {locale.Name}";
+			try
+			{
+				RecognitionText = await speechToText.Listen(CultureInfo.GetCultureInfo(Locale?.Language ?? "en-us"), new Progress<string>(partialText =>
+					{
+						RecognitionText += partialText + " ";
+					}), cancellationToken);
+			}
+			catch (Exception ex)
+			{
+				await Toast.Make(ex.Message).Show();
+			}
 		}
-
-		return null;
-	}
-
-	public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
-	{
-		throw new NotImplementedException();
+		else
+		{
+			await Toast.Make("Permission denied").Show();
+		}
 	}
 }
