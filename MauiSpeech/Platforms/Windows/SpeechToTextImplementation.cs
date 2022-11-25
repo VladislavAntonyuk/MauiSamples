@@ -17,16 +17,16 @@ public class SpeechToTextImplementation : ISpeechToText
 		return Task.FromResult(true);
 	}
 
-	public async Task<string> Listen(CultureInfo culture,
+	public Task<string> Listen(CultureInfo culture,
 		IProgress<string>? recognitionResult,
 		CancellationToken cancellationToken)
 	{
 		if (Connectivity.NetworkAccess == NetworkAccess.Internet)
 		{
-			return await ListenOnline(culture, recognitionResult, cancellationToken);
+			return ListenOnline(culture, recognitionResult, cancellationToken);
 		}
 
-		return await ListenOffline(culture, recognitionResult, cancellationToken);
+		return ListenOffline(culture, recognitionResult, cancellationToken);
 	}
 
 	private async Task<string> ListenOnline(CultureInfo culture, IProgress<string>? recognitionResult, CancellationToken cancellationToken)
@@ -75,12 +75,12 @@ public class SpeechToTextImplementation : ISpeechToText
 		{
 			recognitionResult?.Report(e.Result.Text);
 		};
-		speechRecognitionEngine.SetInputToDefaultAudioDevice(); // set the input of the speech recognizer to the default audio device
-		speechRecognitionEngine.RecognizeAsync(RecognizeMode.Multiple); // recognize speech asynchronous
+		speechRecognitionEngine.SetInputToDefaultAudioDevice();
+		speechRecognitionEngine.RecognizeAsync(RecognizeMode.Multiple);
 		var taskResult = new TaskCompletionSource<string>();
-		await using (cancellationToken.Register(async () =>
+		await using (cancellationToken.Register(() =>
 		             {
-			             await StopRecording();
+			             StopOfflineRecording();
 			             taskResult.TrySetCanceled();
 		             }))
 		{
@@ -99,10 +99,17 @@ public class SpeechToTextImplementation : ISpeechToText
 			// ignored. Recording may be already stopped
 		}
 	}
+	
+	private void StopOfflineRecording()
+	{
+		speechRecognitionEngine?.RecognizeAsyncCancel();
+	}
 
 	public async ValueTask DisposeAsync()
 	{
 		await StopRecording();
+		StopOfflineRecording();
+		speechRecognitionEngine?.Dispose();
 		speechRecognizer?.Dispose();
 	}
 }

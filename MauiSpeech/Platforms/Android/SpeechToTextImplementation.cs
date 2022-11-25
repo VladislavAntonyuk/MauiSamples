@@ -16,12 +16,12 @@ public sealed class SpeechToTextImplementation : ISpeechToText
 		var taskResult = new TaskCompletionSource<string>();
 		listener = new SpeechRecognitionListener
 		{
-			Error = ex => taskResult.SetException(new Exception("Failure in speech engine - " + ex)),
+			Error = ex => taskResult.TrySetException(new Exception("Failure in speech engine - " + ex)),
 			PartialResults = sentence =>
 			{
 				recognitionResult?.Report(sentence);
 			},
-			Results = taskResult.SetResult
+			Results = sentence => taskResult.TrySetResult(sentence)
 		};
 		speechRecognizer = SpeechRecognizer.CreateSpeechRecognizer(Android.App.Application.Context);
 		if (speechRecognizer is null)
@@ -64,12 +64,11 @@ public sealed class SpeechToTextImplementation : ISpeechToText
 		return intent;
 	}
 
-	public Task<bool> RequestPermissions()
+	public async Task<bool> RequestPermissions()
 	{
-		var taskResult = new TaskCompletionSource<bool>();
-		taskResult.SetResult(true);
-
-		return taskResult.Task;
+		var status = await Permissions.RequestAsync<Permissions.Microphone>();
+		var isAvailable = SpeechRecognizer.IsRecognitionAvailable(Android.App.Application.Context);
+		return status == PermissionStatus.Granted && isAvailable;
 	}
 
 	public ValueTask DisposeAsync()

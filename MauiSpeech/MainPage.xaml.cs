@@ -35,13 +35,10 @@ public partial class MainViewModel : ObservableObject
 		this.textToSpeech = textToSpeech;
 		this.speechToText = speechToText;
 		Locales = new();
-		text = @"Slava Uycriayini!
-Heroyim Slava!
-Slava Naaseee!
-Smert vorogaam!
-Uycriayina - ponad uysae!
-Uycriayina - ponad uysae!
-Uycriayina - ponad uysae!";
+		text = @"Glory to Ukraine!
+Glory to heroes!
+Glory to the Nation!
+Death to enemies!";
 		SetLocalesCommand.Execute(null);
 	}
 
@@ -78,12 +75,12 @@ Uycriayina - ponad uysae!";
 			}
 			catch (Exception ex)
 			{
-				await Toast.Make(ex.Message).Show();
+				await Toast.Make(ex.Message).Show(cancellationToken);
 			}
 		}
 		else
 		{
-			await Toast.Make("Permission denied").Show();
+			await Toast.Make("Permission denied").Show(cancellationToken);
 		}
 	}
 }

@@ -51,4 +51,4 @@ jobs:
       run: |
         cd ${{ env.WORKING_DIRECTORY_PATH }}
         dotnet restore --configfile NuGet.config
-        dotnet build -c Release
+        dotnet build
