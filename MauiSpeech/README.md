@@ -2,14 +2,10 @@
 
 # .NET MAUI Speech
 
-Article: https://vladislavantonyuk.azurewebsites.net/articles/Drawing-View-in-Xamarin-Community-Toolkit
+Article: https://vladislavantonyuk.azurewebsites.net/articles/Speech-recognition-with-.NET-MAUI
 
 ## Images
 
-### Speech to text
+### Speech to text on Windows
 
-![.NET MAUI Paint](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/7/paint-dotnet.png)
-
-### Text to speech
-
-![.NET MAUI Paint](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/7/paint-dotnet.png)
+![Windows recognition](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/32/recognition-windows.gif)
