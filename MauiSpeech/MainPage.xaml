@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mauiSpeech="clr-namespace:MauiSpeech"
+             x:Class="MauiSpeech.MainPage">
+
+	<ContentPage.Resources>
+		<mauiSpeech:PickerDisplayConverter x:Key="PickerDisplayConverter" />
+	</ContentPage.Resources>
+	
+	<ScrollView>
+		<VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+			<Picker ItemsSource="{Binding Locales}"
+			        SelectedItem="{Binding Locale}"
+			        ItemDisplayBinding="{Binding ., Converter={StaticResource PickerDisplayConverter}}">
+				<!--<Picker.ItemDisplayBinding>
+					<MultiBinding StringFormat="{}{0} {1}">
+						<Binding Path="Language" />
+						<Binding Path="Name" />
+					</MultiBinding>
+				</Picker.ItemDisplayBinding>-->
+			</Picker>
+
+			<Editor
+                Text="{Binding Text}"
+                FontSize="18"
+                HorizontalOptions="Center" />
+
+            <Button
+                Text="Play"
+                Command="{Binding PlayCommand}"
+                HorizontalOptions="Center" />
+
+			<Label
+                Text="{Binding RecognitionText}"
+                FontSize="18"
+                HorizontalOptions="Center" />
+
+            <Button
+                Text="Listen"
+                Command="{Binding ListenCommand}"
+                HorizontalOptions="Center" />
+
+            <Button
+                Text="Listen Cancel"
+                Command="{Binding ListenCancelCommand}"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

@@ -138,7 +138,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PizzaStore.Application.Test
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiBluetooth", "MauiBluetooth\MauiBluetooth.csproj", "{426D4B5D-3EC2-498A-A986-4C4F206E90A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DynamicFab", "DynamicFab\DynamicFab.csproj", "{686F7A93-4139-49BA-AC05-D59728D92DE1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynamicFab", "DynamicFab\DynamicFab.csproj", "{686F7A93-4139-49BA-AC05-D59728D92DE1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiSpeech", "MauiSpeech\MauiSpeech.csproj", "{7D63B03A-437E-4EE2-87F6-753157F4F06A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -357,6 +359,12 @@ Global
 		{686F7A93-4139-49BA-AC05-D59728D92DE1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{686F7A93-4139-49BA-AC05-D59728D92DE1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{686F7A93-4139-49BA-AC05-D59728D92DE1}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{7D63B03A-437E-4EE2-87F6-753157F4F06A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D63B03A-437E-4EE2-87F6-753157F4F06A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D63B03A-437E-4EE2-87F6-753157F4F06A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7D63B03A-437E-4EE2-87F6-753157F4F06A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D63B03A-437E-4EE2-87F6-753157F4F06A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D63B03A-437E-4EE2-87F6-753157F4F06A}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

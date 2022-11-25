@@ -39,3 +39,5 @@
 [MauiBluetooth](MauiBluetooth) - Bluetooth + BLE.
 
 [DynamicFab](DynamicFab) - Dynamic floating action button.
+
+[MauiSpeech](MauiSpeech) - Speech-To-Text and Text-To-Speech.
