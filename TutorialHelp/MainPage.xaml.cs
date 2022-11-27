@@ -20,12 +20,6 @@ public partial class MainPage : ContentPage
 		ShowPopup();
 	}
 
-	protected override void OnHandlerChanged()
-	{
-		base.OnHandlerChanged();
-		//ShowPopup();
-	}
-
 	private void ToolbarItem_Clicked(object sender, EventArgs e)
 	{
 		ShowPopup();

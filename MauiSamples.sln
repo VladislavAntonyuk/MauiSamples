@@ -142,6 +142,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DynamicFab", "DynamicFab\Dy
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiSpeech", "MauiSpeech\MauiSpeech.csproj", "{7D63B03A-437E-4EE2-87F6-753157F4F06A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiBadge", "MauiBadge\MauiBadge.csproj", "{631E2C5B-91EB-4414-B995-14B9C5A014CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -365,6 +367,10 @@ Global
 		{7D63B03A-437E-4EE2-87F6-753157F4F06A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D63B03A-437E-4EE2-87F6-753157F4F06A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7D63B03A-437E-4EE2-87F6-753157F4F06A}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{631E2C5B-91EB-4414-B995-14B9C5A014CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{631E2C5B-91EB-4414-B995-14B9C5A014CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{631E2C5B-91EB-4414-B995-14B9C5A014CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{631E2C5B-91EB-4414-B995-14B9C5A014CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
