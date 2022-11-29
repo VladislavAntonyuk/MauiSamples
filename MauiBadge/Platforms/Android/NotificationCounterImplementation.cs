@@ -19,7 +19,7 @@ public class NotificationCounterImplementation : INotificationCounter
 		notificationManager?.Notify((int)DateTimeOffset.UtcNow.ToUnixTimeMilliseconds(), notification);
 	}
 
-	private void CreateNotificationChannel()
+	private static void CreateNotificationChannel()
 	{
 		if (OperatingSystem.IsAndroidVersionAtLeast(26))
 		{

@@ -7,7 +7,7 @@ using Windows.Globalization;
 using Windows.Media.SpeechRecognition;
 using SpeechRecognizer = Windows.Media.SpeechRecognition.SpeechRecognizer;
 
-public class SpeechToTextImplementation : ISpeechToText
+public sealed class SpeechToTextImplementation : ISpeechToText
 {
 	private SpeechRecognitionEngine? speechRecognitionEngine;
 	private SpeechRecognizer? speechRecognizer;
