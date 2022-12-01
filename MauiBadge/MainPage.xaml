@@ -3,26 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiBadge.MainPage">
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+	<Grid
+		RowDefinitions="*, Auto"
+		ColumnDefinitions="*, *"
+		VerticalOptions="Center">
 
-
-            <Label
+		<Label
                 x:Name="CountLabel"
+				Grid.ColumnSpan="2"
                 FontSize="18"
                 HorizontalOptions="Center" />
 
-            <Button
-                Text="Click me"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Clicked="OnCounterClicked"
-                HorizontalOptions="Center" />
+		<Button
+                Text="+"
+				Grid.Column="0"
+				Grid.Row="1"
+                SemanticProperties.Hint="Increments AppIcon badge"
+                Clicked="OnIncrementClicked"
+                HorizontalOptions="End" />
+		<Button
+                Text="-"
+				Grid.Column="1"
+				Grid.Row="1"
+                SemanticProperties.Hint="Decrements AppIcon badge"
+                Clicked="OnDecrementClicked"
+                HorizontalOptions="Start" />
 
-        </VerticalStackLayout>
-    </ScrollView>
+	</Grid>
 
 </ContentPage>
 
