@@ -2,7 +2,7 @@
 
 # .NET MAUI Badge
 
-Article: https://vladislavantonyuk.azurewebsites.net/articles/Speech-recognition-with-.NET-MAUI
+Article: https://vladislavantonyuk.azurewebsites.net/articles/AppIcon-Badge-with-.NET-MAUI
 
 ## Images
 
@@ -16,4 +16,8 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Speech-recognition
 
 ### Windows
 
-![Windows](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/33/windows.png)
+![Windows](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/33/windows.gif)
+
+### Tizen
+
+![Tizen](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/33/tizen.png)
