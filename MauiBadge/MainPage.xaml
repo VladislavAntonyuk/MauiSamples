@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiBadge.MainPage">
+
+	<Grid
+		RowDefinitions="*, *"
+		ColumnDefinitions="*, *"
+		VerticalOptions="Center">
+
+		<Label
+                x:Name="CountLabel"
+				Grid.ColumnSpan="2"
+                FontSize="18"
+				VerticalOptions="End"
+                HorizontalOptions="Center" />
+
+		<Button
+                Text="+"
+				Grid.Column="0"
+				Grid.Row="1"
+                SemanticProperties.Hint="Increments AppIcon badge"
+                Clicked="OnIncrementClicked"
+			    VerticalOptions="Start"
+                HorizontalOptions="End" />
+
+		<Button
+                Text="-"
+				Grid.Column="1"
+				Grid.Row="1"
+                SemanticProperties.Hint="Decrements AppIcon badge"
+                Clicked="OnDecrementClicked"
+			    VerticalOptions="Start"
+                HorizontalOptions="Start" />
+
+	</Grid>
+
+</ContentPage>
+

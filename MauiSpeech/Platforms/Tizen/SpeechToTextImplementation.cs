@@ -2,7 +2,7 @@
 
 namespace MauiSpeech.Platforms;
 
-public class SpeechToTextImplementation : ISpeechToText
+public sealed class SpeechToTextImplementation : ISpeechToText
 {
 	public Task<bool> RequestPermissions()
 	{

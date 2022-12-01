@@ -41,3 +41,5 @@
 [DynamicFab](DynamicFab) - Dynamic floating action button.
 
 [MauiSpeech](MauiSpeech) - Speech-To-Text and Text-To-Speech.
+
+[MauiBadge](MauiBadge) - AppIcon Badge.

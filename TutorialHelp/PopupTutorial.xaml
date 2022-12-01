@@ -6,16 +6,17 @@
 		   Color="Transparent"
 		   CanBeDismissedByTappingOutsideOfPopup="False">
 
-	<Grid RowDefinitions="96, *,60">
+	<Grid RowDefinitions="96, *,60" BackgroundColor="Transparent">
 		<HorizontalStackLayout Grid.Row="0" HorizontalOptions="End">
 			<Label Text="Open help" VerticalOptions="Center"/>
-			<Rectangle WidthRequest="55" HeightRequest="55"  Opacity="0.5" />
+			<Rectangle WidthRequest="55" HeightRequest="55"  Opacity="0.5" BackgroundColor="Red" />
 		</HorizontalStackLayout>
-		<VerticalStackLayout Grid.Row="1">
-			<Rectangle WidthRequest="90" HeightRequest="40" Opacity="0.5"  HorizontalOptions="Center"/>
-			<Label Text="By clicking this magic button you can increment the counter"  HorizontalOptions="Center"/>
 
+		<VerticalStackLayout Grid.Row="1">
+			<Rectangle WidthRequest="90" HeightRequest="40" Opacity="0.5"  HorizontalOptions="Center" BackgroundColor="Red"/>
+			<Label Text="By clicking this magic button you can increment the counter"  HorizontalOptions="Center"/>
 		</VerticalStackLayout>
+
 		<Button Grid.Row="2" Text="Close" Clicked="Button_Clicked"/>
 	</Grid>
 
