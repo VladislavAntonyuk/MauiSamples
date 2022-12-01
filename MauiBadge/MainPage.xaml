@@ -4,7 +4,7 @@
              x:Class="MauiBadge.MainPage">
 
 	<Grid
-		RowDefinitions="*, Auto"
+		RowDefinitions="*, *"
 		ColumnDefinitions="*, *"
 		VerticalOptions="Center">
 
@@ -12,6 +12,7 @@
                 x:Name="CountLabel"
 				Grid.ColumnSpan="2"
                 FontSize="18"
+				VerticalOptions="End"
                 HorizontalOptions="Center" />
 
 		<Button
@@ -20,13 +21,16 @@
 				Grid.Row="1"
                 SemanticProperties.Hint="Increments AppIcon badge"
                 Clicked="OnIncrementClicked"
+			    VerticalOptions="Start"
                 HorizontalOptions="End" />
+
 		<Button
                 Text="-"
 				Grid.Column="1"
 				Grid.Row="1"
                 SemanticProperties.Hint="Decrements AppIcon badge"
                 Clicked="OnDecrementClicked"
+			    VerticalOptions="Start"
                 HorizontalOptions="Start" />
 
 	</Grid>
