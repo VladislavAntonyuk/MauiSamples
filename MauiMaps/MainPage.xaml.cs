@@ -24,21 +24,15 @@ public partial class MainPage : ContentPage
 			ImageSource = ImageSource.FromResource("MauiMaps.Resources.EmbeddedImages.icon.jpeg"),
 			Map = MyMap
 		};
-		var imageData = File.ReadAllBytes("dotnet_bot.png");
-		var customPinFromStream = new CustomPin()
-		{
-			Label = "From Stream",
-			Location = new Location(13, 13),
-			Address = "Address4",
-			ImageSource = ImageSource.FromStream(() => new MemoryStream(imageData)),
-			Map = MyMap
-		};
 		MyMap.Pins.Add(customPinFromUri);
 		MyMap.Pins.Add(customPinFromResource);
-		MyMap.Pins.Add(customPinFromStream);
 		customPinFromUri.InfoWindowClicked += async delegate
 		{
 			await Toast.Make("Info Window is clicked").Show();
+		};
+		customPinFromUri.MarkerClicked += async delegate
+		{
+			await Toast.Make("Marker is clicked").Show();
 		};
 		MyMap.MoveToRegion(new MapSpan(new Location(10,10), 10, 10));
 	}

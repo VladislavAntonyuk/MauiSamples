@@ -13,8 +13,6 @@ public static class MauiProgram
 		{
 #if ANDROID
 			handlers.AddHandler<Microsoft.Maui.Controls.Maps.Map, CustomMapHandler>();
-#elif IOS || MACCATALYST
-			handlers.AddHandler<CustomPin, CustomPinHandler>();
 #endif
 		});
 

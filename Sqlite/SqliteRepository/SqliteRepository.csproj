@@ -5,6 +5,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
+		<PackageReference Include="sqlite-net-pcl" Version="1.9.141-beta" />
 	</ItemGroup>
 </Project>
