@@ -1,0 +1,37 @@
+﻿@page "/"
+@using RepositoryContributors.Data
+@using System.Net.Http.Json;
+@using System.Net.Http.Headers
+@inject IJSRuntime JsRuntime;
+
+<figure class="highcharts-figure">
+	<div id="container"></div>
+</figure>
+
+
+@code {
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+		await base.OnAfterRenderAsync(firstRender);
+		if (firstRender)
+		{
+			using (var client = new HttpClient())
+			{
+				client.BaseAddress = new Uri("https://api.github.com/");
+				client.DefaultRequestHeaders.Accept.Clear();
+				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
+				client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("RepositoryContributors", "1"));
+
+                var contributors = await client.GetFromJsonAsync<IEnumerable<Contributor>>("repos/CommunityToolkit/Maui/contributors");
+                await JsRuntime.InvokeVoidAsync("JSFunction", ".NET MAUI Contributors", contributors?.Select(x => new
+                {
+	                Name = x.Login,
+	                Value = x.Contributions,
+                    Marker = new { Symbol = $"url({x.AvatarUrl})",  }
+                }));
+			}
+		}
+	}
+}
+
