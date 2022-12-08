@@ -1,6 +1,6 @@
-[![Buy Me A Coffee](https://cdn.buymeacoffee.com/buttons/v2/default-blue.png){width=217px}](https://www.buymeacoffee.com/vlad.antonyuk)
-
 # .NET MAUI Badge
+
+[![Buy Me A Coffee](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/misc/bmc-button.png)](https://www.buymeacoffee.com/vlad.antonyuk)
 
 Article: https://vladislavantonyuk.azurewebsites.net/articles/AppIcon-Badge-with-.NET-MAUI
 
@@ -8,7 +8,7 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/AppIcon-Badge-with
 
 ### Android
 
-![Android](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/33/android.png)
+![Android](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/33/android.jpg)
 
 ### iOS/MacCatalyst
 

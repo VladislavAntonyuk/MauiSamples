@@ -1,6 +1,6 @@
-!INCLUDE "./md/header.mdpp"
-
 # .NET MAUI Speech
+
+!INCLUDE "./md/header.mdpp"
 
 Article: https://vladislavantonyuk.azurewebsites.net/articles/Speech-recognition-with-.NET-MAUI
 

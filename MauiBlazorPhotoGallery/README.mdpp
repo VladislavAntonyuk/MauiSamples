@@ -1,6 +1,6 @@
-!INCLUDE "./md/header.mdpp"
-
 # Blazor Photo gallery
+
+!INCLUDE "./md/header.mdpp"
 
 Article: https://vladislavantonyuk.azurewebsites.net/articles/Create-a-gallery-app-using-.NET-MAUI-Blazor
 

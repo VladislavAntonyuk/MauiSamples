@@ -1,9 +1,9 @@
+# .NET MAUI Samples
+
 !INCLUDE "md/header.mdpp"
 
 !INCLUDE "md/footer.mdpp"
 
-
-# .NET MAUI Samples
 
 [MauiAuth/MauiAuthBlazor](Auth) - A small mobile application, which requires user authentication, using .NET MAUI (AD and AD B2C)
 

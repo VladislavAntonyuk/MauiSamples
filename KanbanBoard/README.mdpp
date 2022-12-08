@@ -1,6 +1,6 @@
-!INCLUDE "./md/header.mdpp"
-
 # KanbanBoard
+
+!INCLUDE "./md/header.mdpp"
 
 Article: https://vladislavantonyuk.azurewebsites.net/articles/Creating-Kanban-Board-using-Xamarin-Forms-5
 

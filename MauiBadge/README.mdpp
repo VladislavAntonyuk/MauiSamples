@@ -1,6 +1,6 @@
-!INCLUDE "./md/header.mdpp"
-
 # .NET MAUI Badge
+
+!INCLUDE "./md/header.mdpp"
 
 Article: https://vladislavantonyuk.azurewebsites.net/articles/AppIcon-Badge-with-.NET-MAUI
 
@@ -8,7 +8,7 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/AppIcon-Badge-with
 
 ### Android
 
-![Android](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/33/android.png)
+![Android](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/33/android.jpg)
 
 ### iOS/MacCatalyst
 

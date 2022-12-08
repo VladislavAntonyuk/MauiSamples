@@ -1,6 +1,6 @@
-!INCLUDE "./md/header.mdpp"
-
 # .NET MAUI Animation
+
+!INCLUDE "./md/header.mdpp"
 
 Article: https://vladislavantonyuk.azurewebsites.net/articles/Create-custom-animations-using-.NET-MAUI-CommunityToolkit
 

@@ -1,6 +1,6 @@
-!INCLUDE "./md/header.mdpp"
-
 # Azure Active Directory authentication
+
+!INCLUDE "./md/header.mdpp"
 
 Article: https://vladislavantonyuk.azurewebsites.net/articles/Azure-Active-Directory-authentication-in-.NET-MAUI
 

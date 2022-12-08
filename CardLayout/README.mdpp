@@ -1,6 +1,6 @@
-!INCLUDE "./md/header.mdpp"
-
 # CardLayout
+
+!INCLUDE "./md/header.mdpp"
 
 Article: https://vladislavantonyuk.azurewebsites.net/articles/Creating-a-card-stack-layout-using-.NET-MAUI
 

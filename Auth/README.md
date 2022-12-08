@@ -1,6 +1,6 @@
-[![Buy Me A Coffee](https://cdn.buymeacoffee.com/buttons/v2/default-blue.png){width=217px}](https://www.buymeacoffee.com/vlad.antonyuk)
-
 # Azure Active Directory authentication
+
+[![Buy Me A Coffee](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/misc/bmc-button.png)](https://www.buymeacoffee.com/vlad.antonyuk)
 
 Article: https://vladislavantonyuk.azurewebsites.net/articles/Azure-Active-Directory-authentication-in-.NET-MAUI
 

@@ -1,6 +1,6 @@
-!INCLUDE "./md/header.mdpp"
-
 # SQLite
+
+!INCLUDE "./md/header.mdpp"
 
 Article: https://vladislavantonyuk.azurewebsites.net/articles/Adding-SQLite-to-the-.NET-MAUI-application
 

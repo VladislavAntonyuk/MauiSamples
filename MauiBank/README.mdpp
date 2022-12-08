@@ -1,6 +1,6 @@
-!INCLUDE "./md/header.mdpp"
-
 # .NET MAUI Bank
+
+!INCLUDE "./md/header.mdpp"
 
 Article: https://vladislavantonyuk.azurewebsites.net/articles/Replicate-a-bank-application-UI-using-.NET-MAUI
 

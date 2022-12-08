@@ -1,6 +1,6 @@
-[![Buy Me A Coffee](https://cdn.buymeacoffee.com/buttons/v2/default-blue.png){width=217px}](https://www.buymeacoffee.com/vlad.antonyuk)
-
 # CardLayout
+
+[![Buy Me A Coffee](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/misc/bmc-button.png)](https://www.buymeacoffee.com/vlad.antonyuk)
 
 Article: https://vladislavantonyuk.azurewebsites.net/articles/Creating-a-card-stack-layout-using-.NET-MAUI
 
