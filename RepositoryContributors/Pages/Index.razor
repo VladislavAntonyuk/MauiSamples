@@ -8,8 +8,15 @@
 <figure class="highcharts-figure">
     @if (Connectivity.NetworkAccess == NetworkAccess.Internet)
     {
-	    <input type="range" value="@maxScale" min="10" max="800" @onchange="OnMaxScaleChange" />
-        @maxScale
+        <div>
+            <input type="text" value="@repositoryName" @onchange="OnRepositoryNameChange" />
+        </div>
+        <div>
+            <input type="range" value="@maxScale" min="10" max="800" @onchange="OnMaxScaleChange"  />
+        </div>
+        <p>
+            @maxScale
+        </p>
         <div id="container"></div>
     }
     else
@@ -21,6 +28,7 @@
 @code {
 
     int maxScale = 600;
+    string? repositoryName = "CommunityToolkit/Maui";
     IEnumerable<Contributor>? contributors;
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -28,16 +36,16 @@
         await base.OnAfterRenderAsync(firstRender);
         if (firstRender)
         {
-            contributors = await GetContributors();
+            await UpdateContributors();
             await Draw();
         }
     }
 
-    async Task<IEnumerable<Contributor>?> GetContributors()
+    async Task UpdateContributors()
     {
         if (Connectivity.NetworkAccess != NetworkAccess.Internet)
         {
-            return Enumerable.Empty<Contributor>();
+            return;
         }
 
         using var client = new HttpClient();
@@ -45,7 +53,7 @@
         client.DefaultRequestHeaders.Accept.Clear();
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
         client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("RepositoryContributors", "1"));
-        return await client.GetFromJsonAsync<IEnumerable<Contributor>>("repos/CommunityToolkit/Maui/contributors");
+        contributors = await client.GetFromJsonAsync<IEnumerable<Contributor>>($"repos/{repositoryName}/contributors");
     }
 
     ValueTask Draw()
@@ -69,4 +77,10 @@
         await Draw();
     }
 
+    private async Task OnRepositoryNameChange(ChangeEventArgs args)
+    {
+        repositoryName = args.Value?.ToString();
+        await UpdateContributors();
+        await Draw();
+    }
 }

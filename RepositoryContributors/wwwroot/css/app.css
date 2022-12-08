@@ -130,3 +130,7 @@ a, .btn-link {
 .highcharts-point {
 	clip-path: circle();
 }
+
+input {
+	width: 100%;
+}
