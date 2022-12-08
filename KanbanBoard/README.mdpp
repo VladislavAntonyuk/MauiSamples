@@ -1,4 +1,4 @@
-!INCLUDE "./md/banner.mdpp"
+!INCLUDE "./md/header.mdpp"
 
 # KanbanBoard
 
@@ -33,3 +33,5 @@ dotnet build KanbanBoard.csproj -t:Run -f net7.0-windows10.0.19041.0
 ### Delete columns
 
 ![Delete column](https://user-images.githubusercontent.com/33021114/109400007-ddc4bc00-794e-11eb-94a4-ebf858198c6d.png)
+
+!INCLUDE "./md/footer.mdpp"

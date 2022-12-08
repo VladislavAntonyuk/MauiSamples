@@ -1,5 +1,7 @@
-!INCLUDE "./md/banner.mdpp"
+!INCLUDE "./md/header.mdpp"
 
 # MauiWorkflowBuilder
 
 Article: https://vladislavantonyuk.azurewebsites.net/articles/Create-a-gallery-app-using-.NET-MAUI-Blazor
+
+!INCLUDE "./md/footer.mdpp"

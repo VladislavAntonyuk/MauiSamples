@@ -1,4 +1,4 @@
-!INCLUDE "./md/banner.mdpp"
+!INCLUDE "./md/header.mdpp"
 
 # iOS Extensions
 
@@ -7,3 +7,5 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Extend-.NET-MAUI-a
 ## Images
 
 ![iOS Share Extension](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/25/logo.gif)
+
+!INCLUDE "./md/footer.mdpp"

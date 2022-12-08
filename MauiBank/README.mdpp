@@ -1,4 +1,4 @@
-!INCLUDE "./md/banner.mdpp"
+!INCLUDE "./md/header.mdpp"
 
 # .NET MAUI Bank
 
@@ -21,3 +21,5 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Replicate-a-bank-a
 ### App
 
 ![Main page](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/23/dotnet-maui-bank-app.gif)
+
+!INCLUDE "./md/footer.mdpp"

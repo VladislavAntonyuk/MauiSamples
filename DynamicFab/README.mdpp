@@ -1,4 +1,4 @@
-!INCLUDE "./md/banner.mdpp"
+!INCLUDE "./md/header.mdpp"
 
 # Dynamic Floating action button
 
@@ -7,3 +7,5 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Creating-dynamic-f
 ## Images
 
 ![Android](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/31/android.gif)
+
+!INCLUDE "./md/footer.mdpp"

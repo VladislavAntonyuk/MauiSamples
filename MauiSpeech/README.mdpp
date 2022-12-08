@@ -1,4 +1,4 @@
-!INCLUDE "./md/banner.mdpp"
+!INCLUDE "./md/header.mdpp"
 
 # .NET MAUI Speech
 
@@ -9,3 +9,5 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Speech-recognition
 ### Speech to text on Windows
 
 ![Windows recognition](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/32/recognition-windows.gif)
+
+!INCLUDE "./md/footer.mdpp"

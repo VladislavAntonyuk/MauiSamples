@@ -1,4 +1,4 @@
-!INCLUDE "./md/banner.mdpp"
+!INCLUDE "./md/header.mdpp"
 
 # .NET MAUI Animation
 
@@ -7,3 +7,5 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Create-custom-anim
 ## Images
 
 ![Animation](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/27/dotnet-maui-animation.gif)
+
+!INCLUDE "./md/footer.mdpp"

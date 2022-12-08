@@ -1,4 +1,4 @@
-!INCLUDE "./md/banner.mdpp"
+!INCLUDE "./md/header.mdpp"
 
 # Image Effects
 
@@ -17,3 +17,5 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Creating-beautiful
 ### Chain: Blur + Saturation
 
 ![Chain: Blur + Saturation](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/22/chain-effect.png)
+
+!INCLUDE "./md/footer.mdpp"

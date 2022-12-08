@@ -1,4 +1,4 @@
-!INCLUDE "./md/banner.mdpp"
+!INCLUDE "./md/header.mdpp"
 
 # Bluetooth + BLE
 
@@ -11,3 +11,5 @@ Bluetooth Classic works only on Android, BLE works on both Android and iOS.
 ### Bluetooth
 
 ![Bluetooth](https://img2.freepng.es/20180804/zui/kisspng-bluetooth-special-interest-group-wireless-logo-mob-hyundai-sonata-2017-best-4-door-sedan-top-safety-p-5b660f201fae19.6991099015334152001298.jpg)
+
+!INCLUDE "./md/footer.mdpp"

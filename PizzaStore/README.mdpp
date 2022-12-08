@@ -1,7 +1,7 @@
-!INCLUDE "./md/banner.mdpp"
+!INCLUDE "./md/header.mdpp"
 
 # PizzaStore
 
 Article: https://vladislavantonyuk.azurewebsites.net/articles/Onion-architecture-in-the-development-of-cross-platform-applications.-Part-1.-Overview
 
-
+!INCLUDE "./md/footer.mdpp"

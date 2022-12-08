@@ -1,4 +1,4 @@
-!INCLUDE "./md/banner.mdpp"
+!INCLUDE "./md/header.mdpp"
 
 # CardLayout
 
@@ -9,3 +9,5 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Creating-a-card-st
 ### Stacked CardView
 
 ![CardLayout](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/21/card-layout.gif)
+
+!INCLUDE "./md/footer.mdpp"

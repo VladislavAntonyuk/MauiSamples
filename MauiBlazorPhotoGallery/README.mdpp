@@ -1,4 +1,4 @@
-!INCLUDE "./md/banner.mdpp"
+!INCLUDE "./md/header.mdpp"
 
 # Blazor Photo gallery
 
@@ -9,3 +9,5 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Create-a-gallery-a
 ### Infinite scrollable gallery
 
 ![MAUI Blazor gallery](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/16/MauiBlazorGallery.gif)
+
+!INCLUDE "./md/footer.mdpp"

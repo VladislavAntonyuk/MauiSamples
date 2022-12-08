@@ -1,4 +1,4 @@
-!INCLUDE "./md/banner.mdpp"
+!INCLUDE "./md/header.mdpp"
 
 # Repository Contributors
 
@@ -9,3 +9,5 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Create-a-gallery-a
 ### .NET MAUI CommunityToolkit
 
 ![.NET MAUI CommunityToolkit](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/Repository-Contributors.png)
+
+!INCLUDE "./md/footer.mdpp"

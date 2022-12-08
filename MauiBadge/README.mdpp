@@ -1,4 +1,4 @@
-!INCLUDE "./md/banner.mdpp"
+!INCLUDE "./md/header.mdpp"
 
 # .NET MAUI Badge
 
@@ -21,3 +21,5 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/AppIcon-Badge-with
 ### Tizen
 
 ![Tizen](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/33/tizen.png)
+
+!INCLUDE "./md/footer.mdpp"

@@ -1,4 +1,7 @@
-!INCLUDE "md/banner.mdpp"
+!INCLUDE "md/header.mdpp"
+
+!INCLUDE "md/footer.mdpp"
+
 
 # .NET MAUI Samples
 
@@ -43,3 +46,5 @@
 [MauiSpeech](MauiSpeech) - Speech-To-Text and Text-To-Speech.
 
 [MauiBadge](MauiBadge) - AppIcon Badge.
+
+!INCLUDE "md/footer.mdpp"

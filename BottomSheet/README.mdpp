@@ -1,4 +1,4 @@
-!INCLUDE "./md/banner.mdpp"
+!INCLUDE "./md/header.mdpp"
 
 # Bottom sheet
 
@@ -9,3 +9,5 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Creating-a-bottom-
 ### Bottom sheet on Android
 
 ![Bottom sheet on iOS](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/26/logo.gif)
+
+!INCLUDE "./md/footer.mdpp"
