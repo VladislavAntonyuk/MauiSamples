@@ -1,4 +1,4 @@
-window.JSFunction = (name, contributors) => {
+window.JSFunction = (name, contributors, maxSize) => {
 	Highcharts.chart('container', {
 		chart: {
 			type: 'packedbubble',
@@ -22,7 +22,7 @@ window.JSFunction = (name, contributors) => {
 		plotOptions: {
 			packedbubble: {
 				minSize: '10%',
-				maxSize: '800%',
+				maxSize: maxSize + '%',
 				zMin: 0,
 				zMax: 1000,
 				layoutAlgorithm: {

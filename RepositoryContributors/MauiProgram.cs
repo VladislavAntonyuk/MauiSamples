@@ -18,7 +18,7 @@
 		builder.Logging.AddDebug();
 #endif
 
-			//builder.Services.AddSingleton<WeatherForecastService>();
+			builder.Services.AddSingleton(Connectivity.Current);
 
 			return builder.Build();
 		}
