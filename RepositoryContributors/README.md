@@ -4,16 +4,12 @@
 
 [![Buy Me A Coffee](https://cdn.buymeacoffee.com/buttons/v2/default-blue.png)](https://www.buymeacoffee.com/vlad.antonyuk)
 
-# Paint
+# Repository Contributors
 
-Article: https://vladislavantonyuk.azurewebsites.net/articles/Drawing-View-in-Xamarin-Community-Toolkit
+Article: https://vladislavantonyuk.azurewebsites.net/articles/Adding-SQLite-to-the-.NET-MAUI-application
 
 ## Images
 
-### DrawingView
+### .NET MAUI CommunityToolkit
 
-![.NET MAUI Paint](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/7/paint-dotnet.png)
-
-### Save project
-
-![.NET MAUI Paint Save dialog](https://user-images.githubusercontent.com/33021114/175909254-61b17272-0823-45d2-b602-e41fbb89117f.png)
+![.NET MAUI CommunityToolkit](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/14/sqlite2.png)

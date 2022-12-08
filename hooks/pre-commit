@@ -1,0 +1,2 @@
+#!/bin/sh
+powershell ./md/run.ps1
