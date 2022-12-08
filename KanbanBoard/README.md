@@ -1,6 +1,6 @@
-[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://stand-with-ukraine.pp.ua)
-
 # KanbanBoard
+
+[![Buy Me A Coffee](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/misc/bmc-button.png)](https://www.buymeacoffee.com/vlad.antonyuk)
 
 Article: https://vladislavantonyuk.azurewebsites.net/articles/Creating-Kanban-Board-using-Xamarin-Forms-5
 
@@ -33,3 +33,5 @@ dotnet build KanbanBoard.csproj -t:Run -f net7.0-windows10.0.19041.0
 ### Delete columns
 
 ![Delete column](https://user-images.githubusercontent.com/33021114/109400007-ddc4bc00-794e-11eb-94a4-ebf858198c6d.png)
+
+[![Stand With Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd700.svg?labelColor=0057b7)](https://stand-with-ukraine.pp.ua)

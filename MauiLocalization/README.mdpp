@@ -1,0 +1,13 @@
+# Localization
+
+!INCLUDE "./md/header.mdpp"
+
+Article: https://vladislavantonyuk.azurewebsites.net/articles/Localize-.NET-MAUI-application
+
+## Images
+
+### Switch languages
+
+![.NET MAUI Localization](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/20/MauiLocalization.gif)
+
+!INCLUDE "./md/footer.mdpp"

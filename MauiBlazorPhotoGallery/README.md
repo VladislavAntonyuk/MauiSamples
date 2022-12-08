@@ -1,6 +1,6 @@
-[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://stand-with-ukraine.pp.ua)
-
 # Blazor Photo gallery
+
+[![Buy Me A Coffee](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/misc/bmc-button.png)](https://www.buymeacoffee.com/vlad.antonyuk)
 
 Article: https://vladislavantonyuk.azurewebsites.net/articles/Create-a-gallery-app-using-.NET-MAUI-Blazor
 
@@ -9,3 +9,5 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Create-a-gallery-a
 ### Infinite scrollable gallery
 
 ![MAUI Blazor gallery](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/16/MauiBlazorGallery.gif)
+
+[![Stand With Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd700.svg?labelColor=0057b7)](https://stand-with-ukraine.pp.ua)

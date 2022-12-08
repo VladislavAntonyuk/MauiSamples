@@ -1,0 +1,86 @@
+﻿@page "/"
+@using RepositoryContributors.Data
+@using System.Net.Http.Json;
+@using System.Net.Http.Headers
+@inject IJSRuntime JsRuntime;
+@inject IConnectivity Connectivity;
+
+<figure class="highcharts-figure">
+    @if (Connectivity.NetworkAccess == NetworkAccess.Internet)
+    {
+        <div>
+            <input type="text" value="@repositoryName" @onchange="OnRepositoryNameChange" />
+        </div>
+        <div>
+            <input type="range" value="@maxScale" min="10" max="800" @onchange="OnMaxScaleChange"  />
+        </div>
+        <p>
+            @maxScale
+        </p>
+        <div id="container"></div>
+    }
+    else
+    {
+        <p>Internet connection is required. Current network access is @Connectivity.NetworkAccess.</p>
+    }
+</figure>
+
+@code {
+
+    int maxScale = 600;
+    string? repositoryName = "CommunityToolkit/Maui";
+    IEnumerable<Contributor>? contributors;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        await base.OnAfterRenderAsync(firstRender);
+        if (firstRender)
+        {
+            await UpdateContributors();
+            await Draw();
+        }
+    }
+
+    async Task UpdateContributors()
+    {
+        if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+        {
+            return;
+        }
+
+        using var client = new HttpClient();
+        client.BaseAddress = new Uri("https://api.github.com/");
+        client.DefaultRequestHeaders.Accept.Clear();
+        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.github+json"));
+        client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("RepositoryContributors", "1"));
+        contributors = await client.GetFromJsonAsync<IEnumerable<Contributor>>($"repos/{repositoryName}/contributors");
+    }
+
+    ValueTask Draw()
+    {
+        if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+        {
+            return ValueTask.CompletedTask;
+        }
+
+        return JsRuntime.InvokeVoidAsync("JSFunction", ".NET MAUI Contributors", contributors?.Select(x => new
+        {
+            Name = x.Login,
+            Value = x.Contributions,
+            Marker = new { Symbol = $"url({x.AvatarUrl})" }
+        }), maxScale);
+    }
+
+    private async Task OnMaxScaleChange(ChangeEventArgs args)
+    {
+        int.TryParse(args.Value?.ToString(), out maxScale);
+        await Draw();
+    }
+
+    private async Task OnRepositoryNameChange(ChangeEventArgs args)
+    {
+        repositoryName = args.Value?.ToString();
+        await UpdateContributors();
+        await Draw();
+    }
+}

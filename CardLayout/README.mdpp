@@ -1,0 +1,13 @@
+# CardLayout
+
+!INCLUDE "./md/header.mdpp"
+
+Article: https://vladislavantonyuk.azurewebsites.net/articles/Creating-a-card-stack-layout-using-.NET-MAUI
+
+## Images
+
+### Stacked CardView
+
+![CardLayout](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/21/card-layout.gif)
+
+!INCLUDE "./md/footer.mdpp"

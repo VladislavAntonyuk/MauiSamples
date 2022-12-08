@@ -1,0 +1,25 @@
+# .NET MAUI Badge
+
+!INCLUDE "./md/header.mdpp"
+
+Article: https://vladislavantonyuk.azurewebsites.net/articles/AppIcon-Badge-with-.NET-MAUI
+
+## Images
+
+### Android
+
+![Android](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/33/android.jpg)
+
+### iOS/MacCatalyst
+
+![iOS/MacCatalyst](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/33/apple.png)
+
+### Windows
+
+![Windows](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/33/windows.gif)
+
+### Tizen
+
+![Tizen](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/33/tizen.png)
+
+!INCLUDE "./md/footer.mdpp"

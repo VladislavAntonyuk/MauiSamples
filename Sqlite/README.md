@@ -1,6 +1,6 @@
-[![Stand With Ukraine](https://raw.githubusercontent.com/vshymanskyy/StandWithUkraine/main/banner2-direct.svg)](https://stand-with-ukraine.pp.ua)
-
 # SQLite
+
+[![Buy Me A Coffee](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/misc/bmc-button.png)](https://www.buymeacoffee.com/vlad.antonyuk)
 
 Article: https://vladislavantonyuk.azurewebsites.net/articles/Adding-SQLite-to-the-.NET-MAUI-application
 
@@ -9,3 +9,5 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Adding-SQLite-to-t
 ### CRUD operations
 
 ![.NET MAUI Sqlite](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/14/sqlite2.png)
+
+[![Stand With Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd700.svg?labelColor=0057b7)](https://stand-with-ukraine.pp.ua)

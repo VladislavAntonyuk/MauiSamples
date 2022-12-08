@@ -144,6 +144,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiSpeech", "MauiSpeech\Ma
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiBadge", "MauiBadge\MauiBadge.csproj", "{631E2C5B-91EB-4414-B995-14B9C5A014CE}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryContributors", "RepositoryContributors\RepositoryContributors.csproj", "{450964EE-07D7-4C4E-8DEE-F79D3CABC4DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitConfiguration", "GitConfiguration\GitConfiguration.csproj", "{33DDBCDB-3E8D-412D-9B26-E566579DD57E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -372,6 +376,16 @@ Global
 		{631E2C5B-91EB-4414-B995-14B9C5A014CE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{631E2C5B-91EB-4414-B995-14B9C5A014CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{631E2C5B-91EB-4414-B995-14B9C5A014CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{450964EE-07D7-4C4E-8DEE-F79D3CABC4DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{450964EE-07D7-4C4E-8DEE-F79D3CABC4DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{450964EE-07D7-4C4E-8DEE-F79D3CABC4DC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{450964EE-07D7-4C4E-8DEE-F79D3CABC4DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{450964EE-07D7-4C4E-8DEE-F79D3CABC4DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{450964EE-07D7-4C4E-8DEE-F79D3CABC4DC}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{33DDBCDB-3E8D-412D-9B26-E566579DD57E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33DDBCDB-3E8D-412D-9B26-E566579DD57E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33DDBCDB-3E8D-412D-9B26-E566579DD57E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33DDBCDB-3E8D-412D-9B26-E566579DD57E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

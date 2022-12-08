@@ -1,0 +1,13 @@
+# SQLite
+
+!INCLUDE "./md/header.mdpp"
+
+Article: https://vladislavantonyuk.azurewebsites.net/articles/Adding-SQLite-to-the-.NET-MAUI-application
+
+## Images
+
+### CRUD operations
+
+![.NET MAUI Sqlite](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/14/sqlite2.png)
+
+!INCLUDE "./md/footer.mdpp"
