@@ -21,7 +21,7 @@ public partial class MainPage : ContentPage
 			Label = "From Resource",
 			Location = new Location(12, 12),
 			Address = "Address3",
-			ImageSource = ImageSource.FromResource("MauiMaps.Resources.EmbeddedImages.icon.jpeg"),
+			ImageSource = ImageSource.FromResource("MauiMaps.Resources.EmbeddedImages.icon.svg"),
 			Map = MyMap
 		};
 		MyMap.Pins.Add(customPinFromUri);
