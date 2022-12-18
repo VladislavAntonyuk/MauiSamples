@@ -7,7 +7,9 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Creating-Kanban-Bo
 ## Build
 ```pwsh
 dotnet build KanbanBoard.csproj -t:Run -f net7.0-android
-dotnet build KanbanBoard.csproj -t:Run -f net7.0-ios
+
+xcrun simctl list devices
+dotnet build KanbanBoard.csproj -t:Run -f net7.0-ios -p:_DeviceName=:v2:udid=XXX
 dotnet build KanbanBoard.csproj -t:Run -f net7.0-maccatalyst
 dotnet build KanbanBoard.csproj -t:Run -f net7.0-windows10.0.19041.0
 ```
