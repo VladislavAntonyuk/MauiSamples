@@ -1,0 +1,35 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<RootNamespace>MauiBells</RootNamespace>
+
+		<!-- Display name -->
+		<ApplicationTitle>MauiBells</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.vladislavantonyuk.mauibells</ApplicationId>
+		<ApplicationIdGuid>3a9110df-72bc-485a-9d65-c1576c0fdb0e</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\bell.png" />
+	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="Plugin.Maui.Audio" />
+	</ItemGroup>
+	<ItemGroup>
+	  <PackageReference Include="Plugin.Maui.Audio" Version="1.0.0" />
+	</ItemGroup>
+</Project>

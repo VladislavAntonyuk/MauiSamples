@@ -75,7 +75,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Build.props = Directory.Build.props
 		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 		NuGet.config = NuGet.config
-		README.md = README.md
+		README.mdpp = README.mdpp
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Auth", "Auth", "{14D979DA-85FE-41DC-9C59-A49EE52EC9A5}"
@@ -147,6 +147,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryContributors", "RepositoryContributors\RepositoryContributors.csproj", "{450964EE-07D7-4C4E-8DEE-F79D3CABC4DC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitConfiguration", "GitConfiguration\GitConfiguration.csproj", "{33DDBCDB-3E8D-412D-9B26-E566579DD57E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiBells", "MauiBells\MauiBells.csproj", "{D74BD533-A90F-440B-8F8C-DE69E03F9F01}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -386,6 +388,10 @@ Global
 		{33DDBCDB-3E8D-412D-9B26-E566579DD57E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33DDBCDB-3E8D-412D-9B26-E566579DD57E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33DDBCDB-3E8D-412D-9B26-E566579DD57E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D74BD533-A90F-440B-8F8C-DE69E03F9F01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D74BD533-A90F-440B-8F8C-DE69E03F9F01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D74BD533-A90F-440B-8F8C-DE69E03F9F01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D74BD533-A90F-440B-8F8C-DE69E03F9F01}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

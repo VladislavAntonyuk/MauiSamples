@@ -47,4 +47,6 @@
 
 [MauiBadge](MauiBadge) - AppIcon Badge.
 
+[MauiBells](MauiBells) - Flip animation, Audio player, Accelerometer.
+
 !INCLUDE "md/footer.mdpp"
