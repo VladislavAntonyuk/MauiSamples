@@ -1,0 +1,11 @@
+# MauiGlobalExceptionHandler
+
+!INCLUDE "./md/header.mdpp"
+
+Article: 
+
+Bluetooth Classic works only on Android, BLE works on both Android and iOS.
+
+## Images
+
+!INCLUDE "./md/footer.mdpp"
