@@ -1,6 +1,5 @@
 ﻿namespace MauiBells;
 
-using Java.Net;
 using Plugin.Maui.Audio;
 
 public partial class MainPage : ContentPage, IDisposable
@@ -18,20 +17,14 @@ public partial class MainPage : ContentPage, IDisposable
 		
 		Task.Factory.StartNew(async () =>
 		{
-			Stream imageData;
+			// "https://jesusful.com/wp-content/uploads/music/2020/09/Boney_M_-_Jingle_Bells_(Jesusful.com).mp3"
+			var fileStream = await FileSystem.OpenAppPackageFileAsync("jingle_bells.mp3");
 
-			using (var wc = new HttpClient())
-				imageData = await wc.GetStreamAsync("https://jesusful.com/wp-content/uploads/music/2020/09/Boney_M_-_Jingle_Bells_(Jesusful.com).mp3");
-
-			audioPlayer = AudioManager.Current.CreatePlayer(imageData);
+			audioPlayer = AudioManager.Current.CreatePlayer(fileStream);
 			while (true)
 			{
-				if (!audioPlayer.IsPlaying)
-				{
-					audioPlayer.Play();
-				}
 				var dateTime = DateTime.Now;
-				var tasks = new Task[]
+				var tasks = new[]
 				{
 					Flip(year, dateTime.Year),
 					Flip(month, dateTime.Month),
@@ -58,7 +51,7 @@ public partial class MainPage : ContentPage, IDisposable
 	private void ShakeDetected(object? sender, EventArgs e)
 	{
 		lastShakeDetected = DateTime.Now;
-		if (audioPlayer != null && !audioPlayer.IsPlaying)
+		if (audioPlayer is { IsPlaying: false })
 		{
 			audioPlayer.Play();
 		}
@@ -82,7 +75,6 @@ public partial class MainPage : ContentPage, IDisposable
 			});
 			await label.RotateXTo(0, 500);
 		}
-		
 	}
 }
 

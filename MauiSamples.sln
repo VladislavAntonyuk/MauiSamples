@@ -146,9 +146,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiBadge", "MauiBadge\Maui
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepositoryContributors", "RepositoryContributors\RepositoryContributors.csproj", "{450964EE-07D7-4C4E-8DEE-F79D3CABC4DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GitConfiguration", "GitConfiguration\GitConfiguration.csproj", "{33DDBCDB-3E8D-412D-9B26-E566579DD57E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitConfiguration", "GitConfiguration\GitConfiguration.csproj", "{33DDBCDB-3E8D-412D-9B26-E566579DD57E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiBells", "MauiBells\MauiBells.csproj", "{D74BD533-A90F-440B-8F8C-DE69E03F9F01}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiBells", "MauiBells\MauiBells.csproj", "{D74BD533-A90F-440B-8F8C-DE69E03F9F01}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -378,6 +378,7 @@ Global
 		{631E2C5B-91EB-4414-B995-14B9C5A014CE}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{631E2C5B-91EB-4414-B995-14B9C5A014CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{631E2C5B-91EB-4414-B995-14B9C5A014CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{631E2C5B-91EB-4414-B995-14B9C5A014CE}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{450964EE-07D7-4C4E-8DEE-F79D3CABC4DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{450964EE-07D7-4C4E-8DEE-F79D3CABC4DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{450964EE-07D7-4C4E-8DEE-F79D3CABC4DC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
@@ -390,8 +391,10 @@ Global
 		{33DDBCDB-3E8D-412D-9B26-E566579DD57E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D74BD533-A90F-440B-8F8C-DE69E03F9F01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D74BD533-A90F-440B-8F8C-DE69E03F9F01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D74BD533-A90F-440B-8F8C-DE69E03F9F01}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{D74BD533-A90F-440B-8F8C-DE69E03F9F01}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D74BD533-A90F-440B-8F8C-DE69E03F9F01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D74BD533-A90F-440B-8F8C-DE69E03F9F01}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

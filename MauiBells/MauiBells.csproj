@@ -25,9 +25,8 @@
 
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\bell.png" />
-	</ItemGroup>
-	<ItemGroup>
-	  <None Remove="Plugin.Maui.Audio" />
+
+		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="Plugin.Maui.Audio" Version="1.0.0" />
