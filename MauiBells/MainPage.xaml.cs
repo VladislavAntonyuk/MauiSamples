@@ -2,7 +2,7 @@
 
 using Plugin.Maui.Audio;
 
-public partial class MainPage : ContentPage, IDisposable
+public sealed partial class MainPage : ContentPage, IDisposable
 {
 	private IAudioPlayer? audioPlayer;
 	public MainPage()
@@ -14,7 +14,7 @@ public partial class MainPage : ContentPage, IDisposable
 			Accelerometer.Default.ReadingChanged += ReadingChanged;
 			Accelerometer.Default.Start(SensorSpeed.UI);
 		}
-		
+
 		Task.Factory.StartNew(async () =>
 		{
 			// "https://jesusful.com/wp-content/uploads/music/2020/09/Boney_M_-_Jingle_Bells_(Jesusful.com).mp3"
@@ -44,7 +44,7 @@ public partial class MainPage : ContentPage, IDisposable
 
 	private async void ReadingChanged(object? sender, AccelerometerChangedEventArgs e)
 	{
-		await bell.RotateTo(e.Reading.Acceleration.X * 180 / 3.14);
+		await bell.RotateTo(e.Reading.Acceleration.X * 180 / Math.PI);
 	}
 
 	DateTime lastShakeDetected;
