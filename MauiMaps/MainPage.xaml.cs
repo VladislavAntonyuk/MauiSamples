@@ -1,13 +1,22 @@
 ﻿namespace MauiMaps;
 
+using System.Collections.ObjectModel;
 using CommunityToolkit.Maui.Alerts;
 using Microsoft.Maui.Maps;
 
 public partial class MainPage : ContentPage
 {
+	public ObservableCollection<Site> Sites { get; } = new();
+	
 	public MainPage()
 	{
 		InitializeComponent();
+		InitMap1();
+		InitMapMvvm();
+	}
+
+	void InitMap1()
+	{
 		var customPinFromUri = new CustomPin()
 		{
 			Label = "From Uri",
@@ -21,7 +30,7 @@ public partial class MainPage : ContentPage
 			Label = "From Resource",
 			Location = new Location(12, 12),
 			Address = "Address3",
-			ImageSource = ImageSource.FromResource("MauiMaps.Resources.EmbeddedImages.icon.svg"),
+			ImageSource = ImageSource.FromResource("MauiMaps.Resources.EmbeddedImages.icon.jpeg"),
 			Map = MyMap
 		};
 		MyMap.Pins.Add(customPinFromUri);
@@ -34,6 +43,36 @@ public partial class MainPage : ContentPage
 		{
 			await Toast.Make("Marker is clicked").Show();
 		};
-		MyMap.MoveToRegion(new MapSpan(new Location(10,10), 10, 10));
+		MyMap.MoveToRegion(new MapSpan(new Location(10, 10), 10, 10));
 	}
+
+	void InitMapMvvm()
+	{
+		BindingContext = this;
+		var site1 = new Site()
+		{
+			Location = new Location(10, 10),
+			Description = "From Uri",
+			Address = "Address",
+			ImageSource = ImageSource.FromUri(new Uri("https://picsum.photos/50")),
+		};
+		var site2 = new Site()
+		{
+			Description = "From Resource",
+			Location = new Location(12, 12),
+			Address = "Address3",
+			ImageSource = ImageSource.FromResource("MauiMaps.Resources.EmbeddedImages.icon.jpeg")
+		};
+		Sites.Add(site1);
+		Sites.Add(site2);
+		MyMap2.MoveToRegion(new MapSpan(new Location(10, 10), 10, 10));
+	}
+}
+
+public class Site
+{
+	public string? Description { get; set; }
+	public string? Address { get; set; }
+	public Location? Location { get; set; }
+	public ImageSource? ImageSource { get; set; }
 }

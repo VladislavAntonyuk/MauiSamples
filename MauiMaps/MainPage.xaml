@@ -1,11 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mauiMaps="clr-namespace:MauiMaps"
              x:Class="MauiMaps.MainPage">
 
-    <Grid>
-            <Map x:Name="MyMap"/>
-
-    </Grid>
+	<Grid RowDefinitions="*,*">
+		<Map x:Name="MyMap" Grid.Row="0"/>
+		<Map x:Name="MyMap2" ItemsSource="{Binding Sites}" Grid.Row="1">
+			<Map.ItemTemplate>
+				<DataTemplate x:DataType="{x:Type mauiMaps:Site}">
+					<mauiMaps:CustomPin
+						Location="{Binding .Location}"
+						Address="{Binding Address}"
+						Label="{Binding Description}"
+						ImageSource="{Binding ImageSource}"
+						Type="Place"/>
+				</DataTemplate>
+			</Map.ItemTemplate>
+		</Map>
+	</Grid>
 
 </ContentPage>

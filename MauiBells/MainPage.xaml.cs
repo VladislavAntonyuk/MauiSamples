@@ -9,6 +9,11 @@ public sealed partial class MainPage : ContentPage, IDisposable
 	public MainPage()
 	{
 		InitializeComponent();
+	}
+
+	protected override void OnAppearing()
+	{
+		base.OnAppearing();
 		if (Accelerometer.Default is { IsSupported: true, IsMonitoring: false })
 		{
 			Accelerometer.Default.ShakeDetected += ShakeDetected;
@@ -26,12 +31,12 @@ public sealed partial class MainPage : ContentPage, IDisposable
 				var dateTime = DateTime.Now;
 				var tasks = new[]
 				{
-					Flip(year, dateTime.Year),
-					Flip(month, dateTime.Month),
-					Flip(day, dateTime.Day),
-					Flip(hour, dateTime.Hour),
-					Flip(minute, dateTime.Minute),
-					Flip(second, dateTime.Second)
+					Flip(Year, dateTime.Year),
+					Flip(Month, dateTime.Month),
+					Flip(Day, dateTime.Day),
+					Flip(Hour, dateTime.Hour),
+					Flip(Minute, dateTime.Minute),
+					Flip(Second, dateTime.Second)
 				};
 				await Task.WhenAll(tasks);
 				if (lastShakeDetected + TimeSpan.FromSeconds(5) < DateTime.Now && audioPlayer is { IsPlaying: true })
@@ -47,7 +52,7 @@ public sealed partial class MainPage : ContentPage, IDisposable
 		var angle = DeviceDisplay.Current.MainDisplayInfo.Orientation == DisplayOrientation.Portrait ?
 			e.Reading.Acceleration.X :
 			e.Reading.Acceleration.Y;
-		await bell.RotateTo(angle * 180 / Math.PI);
+		await Bell.RotateTo(angle * 180 / Math.PI);
 	}
 
 	private void ShakeDetected(object? sender, EventArgs e)

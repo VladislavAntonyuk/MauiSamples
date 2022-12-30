@@ -6,7 +6,7 @@ Article:
 
 ## Video
 
-![Shake to play](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/34/jingle-bells.mp4)
+[Video](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/34/jingle-bells.mp4)
 
 <video width="320" height="240" controls>
   <source src="https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/34/jingle-bells.mp4" type="video/mp4">

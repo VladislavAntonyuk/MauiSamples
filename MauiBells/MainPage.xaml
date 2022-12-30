@@ -3,35 +3,50 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiBells.MainPage">
 
-    <ContentPage.Resources>
-        <Style TargetType="Label">
-            <Setter Property="FontSize" Value="30"/>
-            <Setter Property="HorizontalTextAlignment" Value="Center"/>
-        </Style>
-    </ContentPage.Resources>
+	<ContentPage.Resources>
+		<Style TargetType="Label">
+			<Setter Property="FontSize" Value="30"/>
+			<Setter Property="HorizontalTextAlignment" Value="Center"/>
+		</Style>
+	</ContentPage.Resources>
 
-    <ScrollView>
-        <VerticalStackLayout
-            Spacing="25"
-            Padding="30,0"
-            VerticalOptions="Center">
+	<ScrollView>
+		<VerticalStackLayout
+			Spacing="25"
+			Padding="30,0"
+			VerticalOptions="Center">
 
-	        <Grid ColumnDefinitions="*,*,*,*,*,*,*">
-		        <Label x:Name="year" Grid.Column="0" Text="2022"></Label>
-		        <Label x:Name="month" Grid.Column="1" Text="12"></Label>
-		        <Label x:Name="day" Grid.Column="2" Text="31"></Label>
-		        <Label x:Name="hour" Grid.Column="4" Text="12"></Label>
-		        <Label x:Name="minute" Grid.Column="5" Text="12"></Label>
-		        <Label x:Name="second" Grid.Column="6" Text="12"></Label>
-	        </Grid>
+			<HorizontalStackLayout
+				HorizontalOptions="Center">
+				<Label x:Name="Year" Text="2022"/>
+				<Label Text="/"/>
+				<Label x:Name="Month" Text="12"/>
+				<Label Text="/"/>
+				<Label x:Name="Day" Text="31"/>
+				<Label Text=" "/>
+				<Label x:Name="Hour" Text="12"/>
+				<Label Text=":"/>
+				<Label x:Name="Minute" Text="12"/>
+				<Label Text=":"/>
+				<Label x:Name="Second" Text="12"/>
+			</HorizontalStackLayout>
 
-	        <Image 
-                x:Name="bell"
-                Source="bell.png"
-                HeightRequest="200"
-                HorizontalOptions="Center" />
-        </VerticalStackLayout>
-    </ScrollView>
+			<Image
+		       Source="dotnet.png"
+		       WidthRequest="200"
+		       HeightRequest="200"
+		       HorizontalOptions="Center" />
+
+			<Label Text="Shake me!" />
+
+			<Image
+				x:Name="Bell"
+				Source="bell.png"
+				HeightRequest="200"
+				HorizontalOptions="Center" />
+		</VerticalStackLayout>
+
+	</ScrollView>
 
 </ContentPage>
 
