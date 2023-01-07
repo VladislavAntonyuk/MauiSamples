@@ -49,4 +49,6 @@
 
 [MauiBells](MauiBells) - Flip animation, Audio player, Accelerometer.
 
+[MauiMarkdown](MauiMarkdown) - Create a Markdown control using .NET MAUI Graphics.
+
 !INCLUDE "md/footer.mdpp"

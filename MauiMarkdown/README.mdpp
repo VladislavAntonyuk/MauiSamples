@@ -1,0 +1,17 @@
+# MauiMarkdown
+
+!INCLUDE "./md/header.mdpp"
+
+Article: https://vladislavantonyuk.azurewebsites.net/articles/Creating-Markdown-control-with-.NET-MAUI-Graphics
+
+## Images
+
+### Android
+
+![Markdown Android](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/35/android.png)
+
+### iOS
+
+![Markdown iOS](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/35/ios.png)
+
+!INCLUDE "./md/footer.mdpp"
