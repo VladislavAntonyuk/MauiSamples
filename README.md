@@ -48,4 +48,6 @@
 
 [MauiBells](MauiBells) - Flip animation, Audio player, Accelerometer.
 
+[MauiMarkdown](MauiMarkdown) - Create a Markdown control using .NET MAUI Graphics.
+
 [![Stand With Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd700.svg?labelColor=0057b7)](https://stand-with-ukraine.pp.ua)
