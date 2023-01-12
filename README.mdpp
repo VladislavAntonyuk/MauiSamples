@@ -4,6 +4,13 @@
 
 !INCLUDE "md/footer.mdpp"
 
+!INCLUDE "md/thankyou.mdpp"
+
+## Setup
+
+The development guide can be found at [SETUP.md](./SETUP.md).
+
+## Projects
 
 [MauiAuth/MauiAuthBlazor](Auth) - A small mobile application, which requires user authentication, using .NET MAUI (AD and AD B2C)
 
