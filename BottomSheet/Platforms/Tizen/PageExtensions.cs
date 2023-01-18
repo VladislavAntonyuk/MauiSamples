@@ -9,7 +9,7 @@ using Color = Tizen.NUI.Color;
 
 public static partial class PageExtensions
 {
-	public static void ShowBottomSheet(this Page page, IView bottomSheetContent, bool dimDismiss)
+	public static Popup ShowBottomSheet(this Page page, IView bottomSheetContent, bool dimDismiss)
 	{
 		var mauiContext = page.Handler?.MauiContext ?? throw new Exception("MauiContext is null");
 		var content = bottomSheetContent.ToPlatform(mauiContext);
@@ -36,5 +36,11 @@ public static partial class PageExtensions
 		}
 
 		popup.Open();
+		return popup;
+	}
+
+	public static void CloseBottomSheet(this Popup bottomSheet)
+	{
+		bottomSheet.Close();
 	}
 }
