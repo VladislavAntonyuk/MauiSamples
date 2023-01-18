@@ -41,7 +41,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
 	  <PackageReference Include="Refit" Version="6.3.2" />
 	  <PackageReference Include="Refit.HttpClientFactory" Version="6.3.2" />
 	</ItemGroup>
