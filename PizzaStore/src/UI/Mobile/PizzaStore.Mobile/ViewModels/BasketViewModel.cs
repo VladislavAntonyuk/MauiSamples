@@ -37,13 +37,13 @@ public partial class BasketViewModel : ObservableObject
 		}, cancellationToken);
 		if (result.IsSuccessful)
 		{
-			items.Clear();
+			Items.Clear();
 			foreach (var item in result.Value.Items)
 			{
-				items.Add(item);
+				Items.Add(item);
 			}
 
-			Total = items.Sum(x => x.Price);
+			Total = Items.Sum(x => x.Price);
 		}
 		else
 		{

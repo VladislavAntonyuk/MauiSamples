@@ -94,7 +94,7 @@ public partial class MainPageViewModel : ObservableObject
             int.TryParse(wipString, out wip);
         } while (wip < 0);
 
-        var column = new Column { Name = columnName, Wip = wip, Order = columns.Count + 1 };
+        var column = new Column { Name = columnName, Wip = wip, Order = Columns.Count + 1 };
         await columnsRepository.SaveItem(column);
         await Refresh();
         await ToastAsync("Column is added");
