@@ -8,14 +8,14 @@ using Font = Microsoft.Maui.Font;
 
 public partial class MainPage : ContentPage
 {
-    private readonly IPath _path;
+    private readonly IPath path;
 
     public MainPage(MainPageViewModel viewModel, IPath path)
     {
         InitializeComponent();
         On<iOS>().SetUseSafeArea(true);
         BindingContext = viewModel;
-        _path = path;
+        this.path = path;
     }
 
     private async void ResetButton_OnClicked(object sender, EventArgs e)
@@ -40,8 +40,8 @@ public partial class MainPage : ContentPage
 
     private void DeleteDbAndCloseApp()
     {
-        var dbPath = _path.GetDatabasePath();
-        _path.DeleteFile(dbPath);
+        var dbPath = path.GetDatabasePath();
+        path.DeleteFile(dbPath);
 		Application.Current?.Quit();
     }
 }

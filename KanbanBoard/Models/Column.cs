@@ -15,7 +15,7 @@ public sealed class Column
 
     public int Wip { get; set; } = int.MaxValue;
     
-    public ICollection<Card> Cards { get; set; }
+    public ObservableCollection<Card> Cards { get; set; }
 
     public int Order { get; set; }
 }

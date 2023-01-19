@@ -75,6 +75,10 @@
 					<Button Text="Increment count"
 					        SemanticProperties.Hint="Increments the number of times you click"
 					        Clicked="OnCounterClicked"/>
+					
+					<Button Text="Close"
+					        SemanticProperties.Hint="Closes the bottom sheet"
+					        Clicked="OnCloseClicked"/>
 
 				</VerticalStackLayout>
 			</ScrollView>

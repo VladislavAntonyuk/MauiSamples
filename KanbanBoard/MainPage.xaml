@@ -138,7 +138,10 @@
 									</ImageButton>
 								</Grid>
 
-								<CollectionView EmptyView="No cards to display" ItemsSource="{Binding Column.Cards}">
+								<CollectionView
+									EmptyView="No cards to display"
+									ItemsSource="{Binding Column.Cards}"
+									CanReorderItems="True">
 									<CollectionView.ItemsLayout>
 										<LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
 									</CollectionView.ItemsLayout>
@@ -153,6 +156,10 @@
 													                       DragStartingCommand="{Binding BindingContext.DragStartingCommand, Source={x:Reference Board}}"
 													                       DragStartingCommandParameter="{Binding .}"
 													                       DropCompletedCommand="{Binding BindingContext.DropCompletedCommand, Source={x:Reference Board}}" />
+													<DropGestureRecognizer
+														AllowDrop="True"
+														DragOverCommand="{Binding BindingContext.ItemDragOverCommand, Source={x:Reference Board}}"
+														DragOverCommandParameter="{Binding .}" />
 												</Border.GestureRecognizers>
 
 												<Grid Margin="10" Padding="10" RowDefinitions="Auto, Auto" ColumnDefinitions="*, Auto">

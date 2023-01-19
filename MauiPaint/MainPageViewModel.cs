@@ -120,7 +120,7 @@ public partial class MainPageViewModel : ObservableObject
 			line.Points.Clear();
 			foreach (var point in points)
 			{
-				line.Points.Add(RotatePoint(point, new PointF(canvasWidth / 2, canvasHeight / 2), angle));
+				line.Points.Add(RotatePoint(point, new PointF(CanvasWidth / 2, CanvasHeight / 2), angle));
 			}
 		}
 
@@ -218,7 +218,7 @@ public partial class MainPageViewModel : ObservableObject
 	async Task SaveImage(CancellationToken cancellationToken)
 	{
 		await using var stream = await DrawingView.GetImageStream(
-			lines,
+			Lines,
 			new Size(1000, 1000),
 			Background);
 		await SaveToFile(stream, ".png", cancellationToken);

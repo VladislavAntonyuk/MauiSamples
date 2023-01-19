@@ -34,10 +34,10 @@ public partial class MainViewModel : ObservableObject
 		}, cancellationToken);
 		if (result.IsSuccessful)
 		{
-			items.Clear();
+			Items.Clear();
 			foreach (var item in result.Value.Items)
 			{
-				items.Add(item);
+				Items.Add(item);
 			}
 		}
 		else

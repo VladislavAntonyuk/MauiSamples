@@ -150,7 +150,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GitConfiguration", "GitConf
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiBells", "MauiBells\MauiBells.csproj", "{D74BD533-A90F-440B-8F8C-DE69E03F9F01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiMarkdown", "MauiMarkdown\MauiMarkdown.csproj", "{8F68DCE3-2828-4158-95C0-B25FE0344AD7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiMarkdown", "MauiMarkdown\MauiMarkdown.csproj", "{8F68DCE3-2828-4158-95C0-B25FE0344AD7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

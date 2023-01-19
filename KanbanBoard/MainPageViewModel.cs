@@ -1,5 +1,6 @@
 ﻿namespace KanbanBoard;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -37,10 +38,17 @@ public partial class MainPageViewModel : ObservableObject
         {
             cardToUpdate.ColumnId = columnInfo.Column.Id;
             await cardsRepository.UpdateItem(cardToUpdate);
+            await UpdateCardsOrder(columnInfo.Column);
         }
 
         await Refresh();
         Position = columnInfo.Index;
+    }
+
+    [RelayCommand]
+    void ItemDragOver(Card card)
+    {
+		Debug.WriteLine($"ItemDraggedOver : {card.Name}");
     }
 
     [RelayCommand]
@@ -63,7 +71,7 @@ public partial class MainPageViewModel : ObservableObject
 
 			    break;
 	    }
-    }
+	}
 
 	[RelayCommand]
     void DragStarting(Card card)
@@ -94,7 +102,7 @@ public partial class MainPageViewModel : ObservableObject
             int.TryParse(wipString, out wip);
         } while (wip < 0);
 
-        var column = new Column { Name = columnName, Wip = wip, Order = columns.Count + 1 };
+        var column = new Column { Name = columnName, Wip = wip, Order = Columns.Count + 1 };
         await columnsRepository.SaveItem(column);
         await Refresh();
         await ToastAsync("Column is added");
@@ -177,7 +185,7 @@ public partial class MainPageViewModel : ObservableObject
 
     private static ColumnInfo OrderCards(Column c, int columnNumber)
     {
-        c.Cards = c.Cards.OrderBy(card => card.Order).ToList();
+        c.Cards = c.Cards.OrderBy(card => card.Order).ToObservableCollection();
         return new ColumnInfo(columnNumber, c);
     }
 
@@ -208,5 +216,15 @@ public partial class MainPageViewModel : ObservableObject
     private static Task WipReachedToastAsync(string title)
     {
         return Toast.Make(title, ToastDuration.Long, 26d).Show();
+    }
+
+    private async Task UpdateCardsOrder(Column column)
+    {
+	    var cards = column.Cards.OrderBy(x => x.Order).ToList();
+	    for (int i = 0; i < cards.Count; i++)
+	    {
+		    column.Cards[i].Order = i;
+		    await cardsRepository.UpdateItem(column.Cards[i]);
+	    }
     }
 }

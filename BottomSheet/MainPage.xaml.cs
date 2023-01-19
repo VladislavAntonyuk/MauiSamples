@@ -1,7 +1,18 @@
 ﻿namespace BottomSheet;
 
+#if ANDROID
+using BottomSheetView =  Google.Android.Material.BottomSheet.BottomSheetDialog;
+#elif IOS || MACCATALYST
+using BottomSheetView = UIKit.UIViewController;
+#elif WINDOWS
+using BottomSheetView = System.Object;
+#else
+using BottomSheetView = System.Object;//Tizen.UIExtensions.NUI.Popup;
+#endif
+
 public partial class MainPage : ContentPage
 {
+	BottomSheetView? bottomSheet;
 	public int Count { get; set; }
 	public MainPage()
 	{
@@ -17,7 +28,7 @@ public partial class MainPage : ContentPage
 
 	private void ShowBottomSheet(object sender, EventArgs e)
 	{
-		this.ShowBottomSheet(GetBottomSheetView(), true);
+		bottomSheet = this.ShowBottomSheet(GetBottomSheetView(), true);
 	}
 
 
@@ -30,7 +41,7 @@ public partial class MainPage : ContentPage
 
 	private void ShowBottomSheetWithLongContent(object sender, EventArgs e)
 	{
-		this.ShowBottomSheet(GetBottomSheetViewWithLongContent(), false);
+		bottomSheet = this.ShowBottomSheet(GetBottomSheetViewWithLongContent(), false);
 	}
 
 	private View GetBottomSheetViewWithLongContent()
@@ -38,5 +49,10 @@ public partial class MainPage : ContentPage
 		var view = (View)BottomSheetTemplateWithLongContent.CreateContent();
 		view.BindingContext = BindingContext;
 		return view;
+	}
+
+	private void OnCloseClicked(object? sender, EventArgs e)
+	{
+		bottomSheet?.CloseBottomSheet();
 	}
 }

@@ -5,7 +5,7 @@ using UIKit;
 
 public static partial class PageExtensions
 {
-	public static void ShowBottomSheet(this Page page, IView bottomSheetContent, bool dimDismiss)
+	public static UIViewController ShowBottomSheet(this Page page, IView bottomSheetContent, bool dimDismiss)
 	{
 		var mauiContext = page.Handler?.MauiContext ?? throw new Exception("MauiContext is null");
 		var viewController = page.ToUIViewController(mauiContext);
@@ -26,5 +26,11 @@ public static partial class PageExtensions
 		}
 
 		viewController.PresentViewController(viewControllerToPresent, animated: true, null);
+		return viewControllerToPresent;
+	}
+
+	public static void CloseBottomSheet(this UIViewController bottomSheet)
+	{
+		bottomSheet.DismissViewController(true, null);
 	}
 }

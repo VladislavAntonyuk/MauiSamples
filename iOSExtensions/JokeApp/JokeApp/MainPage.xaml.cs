@@ -43,13 +43,13 @@ public partial class MainPageViewModel : ObservableObject
 	[RelayCommand]
 	private async Task GetJokeByType()
 	{
-		if (string.IsNullOrEmpty(jokeType))
+		if (string.IsNullOrEmpty(JokeType))
 		{
 			Joke = await jokeApi.GetRandomJoke();
 			return;
 		}
 
-		var jokes = await jokeApi.GetJokeByType(jokeType);
+		var jokes = await jokeApi.GetJokeByType(JokeType);
 		Joke = jokes.FirstOrDefault();
 	}
 }
