@@ -5,9 +5,9 @@ using BottomSheetView =  Google.Android.Material.BottomSheet.BottomSheetDialog;
 #elif IOS || MACCATALYST
 using BottomSheetView = UIKit.UIViewController;
 #elif WINDOWS
-using BottomSheetView = System.Object;
+using BottomSheetView = Microsoft.UI.Xaml.Controls.Primitives.Popup;
 #else
-using BottomSheetView = System.Object;//Tizen.UIExtensions.NUI.Popup;
+using BottomSheetView = Tizen.UIExtensions.NUI.Popup;
 #endif
 
 public partial class MainPage : ContentPage
@@ -30,8 +30,7 @@ public partial class MainPage : ContentPage
 	{
 		bottomSheet = this.ShowBottomSheet(GetBottomSheetView(), true);
 	}
-
-
+	
 	private View GetBottomSheetView()
 	{
 		var view = (View)BottomSheetTemplate.CreateContent();

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BottomSheet.MainPage">
@@ -32,6 +32,9 @@
 					        SemanticProperties.Hint="Increments the number of times you click"
 					        Clicked="OnCounterClicked"/>
 
+					<Button Text="Close"
+					        SemanticProperties.Hint="Closes the bottom sheet"
+					        Clicked="OnCloseClicked"/>
 				</VerticalStackLayout>
 			</ScrollView>
 		</DataTemplate>

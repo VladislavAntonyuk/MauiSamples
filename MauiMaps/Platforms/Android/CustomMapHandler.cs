@@ -1,14 +1,11 @@
 ﻿namespace MauiMaps;
 
-using Android.App;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
-using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 using Microsoft.Maui.Maps.Handlers;
 using Microsoft.Maui.Maps;
 using Microsoft.Maui.Platform;
 using Android.Graphics.Drawables;
-using Microsoft.Maui.Controls.Maps;
 
 public class CustomMapHandler : MapHandler
 {
