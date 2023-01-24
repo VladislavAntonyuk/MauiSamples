@@ -152,6 +152,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiBells", "MauiBells\Maui
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiMarkdown", "MauiMarkdown\MauiMarkdown.csproj", "{8F68DCE3-2828-4158-95C0-B25FE0344AD7}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IPTVPlayer", "IPTVPlayer\IPTVPlayer.csproj", "{C40B96EB-AF5C-4158-A3DF-C1C77DF878E0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -403,6 +405,12 @@ Global
 		{8F68DCE3-2828-4158-95C0-B25FE0344AD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F68DCE3-2828-4158-95C0-B25FE0344AD7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8F68DCE3-2828-4158-95C0-B25FE0344AD7}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C40B96EB-AF5C-4158-A3DF-C1C77DF878E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C40B96EB-AF5C-4158-A3DF-C1C77DF878E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C40B96EB-AF5C-4158-A3DF-C1C77DF878E0}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C40B96EB-AF5C-4158-A3DF-C1C77DF878E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C40B96EB-AF5C-4158-A3DF-C1C77DF878E0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C40B96EB-AF5C-4158-A3DF-C1C77DF878E0}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

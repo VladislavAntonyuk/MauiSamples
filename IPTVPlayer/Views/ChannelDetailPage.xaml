@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:IPTVPlayer.ViewModels"
+             xmlns:views="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="IPTVPlayer.Views.ChannelDetailPage"
+             x:DataType="vm:ChannelDetailViewModel"
+             Title="{Binding Item.Name}">
+	<ScrollView>
+		<VerticalStackLayout Margin="12">
+			<Editor Text="{Binding Item.Url}" />
+			<views:MediaElement  x:Name="MediaPlayer"
+			                     ShouldAutoPlay="True"
+			                     Source="{Binding Item.Url}"
+								 MaximumHeightRequest="500" />
+		</VerticalStackLayout>
+	</ScrollView>
+</ContentPage>

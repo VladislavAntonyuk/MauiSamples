@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<RootNamespace>IPTVPlayer</RootNamespace>
+		
+		<!-- Display name -->
+		<ApplicationTitle>IPTVPlayer</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.vladislavantonyuk.IPTVPlayer</ApplicationId>
+		<ApplicationIdGuid>87370E0D-9C45-4731-9AE2-06F248D3691E</ApplicationIdGuid>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="CommunityToolkit.MVVM" Version="8.0.0" />
+	  <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+	  <PackageReference Include="CommunityToolkit.Maui" Version="4.0.0" />
+	  <PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="1.0.0" />
+	</ItemGroup>
+
+	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">
+		<PackageReference Include="Microsoft.WindowsAppSDK" Version="1.2.221209.1" />
+	</ItemGroup>
+	
+</Project>

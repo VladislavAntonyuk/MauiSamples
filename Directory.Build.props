@@ -3,7 +3,6 @@
 
 	<PropertyGroup Condition="'$(CI)' == 'true' and $([MSBuild]::IsOSPlatform('windows')) == 'true'">
 		<IncludeTizenTargetFrameworks>true</IncludeTizenTargetFrameworks>
-		<DefineConstants>$(DefineConstants);Tizen</DefineConstants>
 	</PropertyGroup>
 	
 	<PropertyGroup>

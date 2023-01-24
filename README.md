@@ -58,4 +58,6 @@ The development guide can be found at [SETUP.md](./SETUP.md).
 
 [MauiMarkdown](MauiMarkdown) - Create a Markdown control using .NET MAUI Graphics.
 
+[IPTVPlayer](IPTVPlayer) - Play IPTV streams with CommunityToolkit.Maui.MediaElement.
+
 [![Stand With Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd700.svg?labelColor=0057b7)](https://stand-with-ukraine.pp.ua)
