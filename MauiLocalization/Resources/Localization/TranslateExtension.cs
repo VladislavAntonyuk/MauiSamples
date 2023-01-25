@@ -4,16 +4,22 @@
 public class TranslateExtension : IMarkupExtension<BindingBase>
 {
 	public string? Name { get; set; }
+	public object? BindingContext { get; set; }
 	public IValueConverter? Converter { get; set; }
+	public object? ConverterParameter { get; set; }
 
 	public BindingBase ProvideValue(IServiceProvider serviceProvider)
 	{
+		var label = new Label { BindingContext = BindingContext };
+		label.SetBinding(Label.TextProperty, new Binding(Name));
+		var value = label.GetValue(Label.TextProperty) ?? Name;
 		return new Binding
 		{
 			Mode = BindingMode.OneWay,
-			Path = $"[{Name}]",
+			Path = $"[{value}]",
 			Source = LocalizationResourceManager.Instance,
-			Converter = Converter
+			Converter = Converter,
+			ConverterParameter = ConverterParameter
 		};
 	}
 

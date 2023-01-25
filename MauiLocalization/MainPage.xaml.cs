@@ -5,6 +5,8 @@ using Resources.Localization;
 
 public partial class MainPage : ContentPage
 {
+	public string NameStringKey { get; set; } = "Intro";
+	
 	public MainPage()
 	{
 		InitializeComponent();

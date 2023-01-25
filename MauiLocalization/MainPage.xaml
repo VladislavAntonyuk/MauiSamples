@@ -4,8 +4,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:localization="clr-namespace:MauiLocalization.Resources.Localization"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:mauiLocalization="using:MauiLocalization"
              x:Class="MauiLocalization.MainPage"
-             Title="{localization:Translate MainPageTitle}">
+             Title="{localization:Translate MainPageTitle}"
+             x:Name="MyPage"
+             x:DataType="mauiLocalization:MainPage">
 	<ContentPage.Resources>
 		<ResourceDictionary>
 			<toolkit:ByteArrayToImageSourceConverter x:Key="ByteArrayToImageSourceConverter" />
@@ -43,8 +46,10 @@
 			       Style="{StaticResource Description}"/>
 			<Label Text="{localization:Translate Intro}" />
 
+			
 			<Label x:Name="CodeBehindTranslator" />
 			<Label x:Name="CodeBehindTranslator2" />
+			<Label Text="{localization:Translate NameStringKey, BindingContext={x:Reference MyPage}}" />
 
 			<Picker x:Name="LanguagePicker"
 					SelectedIndexChanged="LanguageChanged"
