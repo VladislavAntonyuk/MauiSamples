@@ -3,12 +3,11 @@
     x:Class="IPTVPlayer.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:views="clr-namespace:IPTVPlayer.Views"
-    xmlns:local="clr-namespace:IPTVPlayer">
+    xmlns:views="clr-namespace:IPTVPlayer.Views">
     <ShellContent
         Shell.NavBarIsVisible="False"
-        Title="ListDetail"
+        Title="Channels"
         ContentTemplate="{DataTemplate views:ChannelsPage}"
-        Route="ListDetailPage" />
+        Route="ChannelsPage" />
 
 </Shell>

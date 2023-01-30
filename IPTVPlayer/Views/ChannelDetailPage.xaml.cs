@@ -10,9 +10,9 @@ public partial class ChannelDetailPage : ContentPage
         BindingContext = viewModel;
     }
 
-    protected override bool OnBackButtonPressed()
-    {
+	protected override void OnDisappearing()
+	{
 	    MediaPlayer.Stop();
-	    return base.OnBackButtonPressed();
-    }
+		base.OnDisappearing();
+	}
 }

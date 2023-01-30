@@ -7,12 +7,12 @@
              x:DataType="vm:ChannelDetailViewModel"
              Title="{Binding Item.Name}">
 	<ScrollView>
-		<VerticalStackLayout Margin="12">
+		<Grid RowDefinitions="Auto, *">
 			<Editor Text="{Binding Item.Url}" />
 			<views:MediaElement  x:Name="MediaPlayer"
+								 Grid.Row="1"
 			                     ShouldAutoPlay="True"
-			                     Source="{Binding Item.Url}"
-								 MaximumHeightRequest="500" />
-		</VerticalStackLayout>
+			                     Source="{Binding Item.Url}" />
+		</Grid>
 	</ScrollView>
 </ContentPage>
