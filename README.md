@@ -61,4 +61,6 @@ The development guide can be found at [SETUP.md](./SETUP.md).
 
 1. [IPTVPlayer](IPTVPlayer) - Play IPTV streams with CommunityToolkit.Maui.MediaElement.
 
+1. [MauiDynamicConfiguration](MauiDynamicConfiguration) - .NET MAUI integration with ConfigCat.
+
 [![Stand With Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd700.svg?labelColor=0057b7)](https://stand-with-ukraine.pp.ua)

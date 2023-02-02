@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mauiDynamicConfiguration="clr-namespace:MauiDynamicConfiguration"
+             x:Class="MauiDynamicConfiguration.LoginPage"
+             Shell.NavBarIsVisible="False"
+             Shell.PresentationMode="ModalAnimated"
+             x:DataType="mauiDynamicConfiguration:LoginViewModel">
+    <VerticalStackLayout>
+        <Label
+            Text="{Binding Title}"
+            VerticalOptions="Center"
+            HorizontalOptions="Center" />
+
+        <Entry Placeholder="Email: e.g. email@gmail.com"
+               Text="{Binding Email}"
+               HorizontalOptions="Center"/>
+
+        <Button Text="Login"
+                Command="{Binding LoginCommand}"
+                HorizontalOptions="Center"/>
+    </VerticalStackLayout>
+</ContentPage>

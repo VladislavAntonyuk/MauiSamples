@@ -29,7 +29,7 @@
 	
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="4.0.0" />
-		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="7.0.58" />
+		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="7.0.59" />
 	</ItemGroup>
 
 </Project>
