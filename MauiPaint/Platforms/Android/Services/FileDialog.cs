@@ -291,27 +291,27 @@ public class FileDialog
 			{
 				EditText input = new EditText(mContext);
 				new AlertDialog.Builder(mContext).SetTitle("New Folder Name")
-				                                 ?.SetView(input)
-				                                 ?.SetPositiveButton("OK", (_, _) =>
-				                                 {
-					                                 string? newDirName = input.Text;
-					                                 // Create new directory
-					                                 if (CreateSubDir(mDir + "/" + newDirName))
-					                                 {
-						                                 // Navigate into the new directory
-						                                 mDir += "/" + newDirName;
-						                                 UpdateDirectory();
-					                                 }
-					                                 else
-					                                 {
-						                                 Toast.MakeText(mContext,
-						                                                "Failed to create '" + newDirName + "' folder",
-						                                                ToastLength.Short)
-						                                      ?.Show();
-					                                 }
-				                                 })
-				                                 ?.SetNegativeButton("Cancel", (_, _) => { })
-				                                 ?.Show();
+												 ?.SetView(input)
+												 ?.SetPositiveButton("OK", (_, _) =>
+												 {
+													 string? newDirName = input.Text;
+													 // Create new directory
+													 if (CreateSubDir(mDir + "/" + newDirName))
+													 {
+														 // Navigate into the new directory
+														 mDir += "/" + newDirName;
+														 UpdateDirectory();
+													 }
+													 else
+													 {
+														 Toast.MakeText(mContext,
+																		"Failed to create '" + newDirName + "' folder",
+																		ToastLength.Short)
+															  ?.Show();
+													 }
+												 })
+												 ?.SetNegativeButton("Cancel", (_, _) => { })
+												 ?.Show();
 			};
 			titleLayout1.AddView(newDirButton);
 		}
@@ -390,7 +390,7 @@ public class FileDialog
 	private ArrayAdapter<string> CreateListAdapter(List<string>? items)
 	{
 		var adapter = new SimpleArrayAdapter(mContext ?? throw new InvalidOperationException(), Resource.Layout.SelectDialogItem,
-		                                     Resource.Id.Text1, items ?? Array.Empty<string>().ToList());
+											 Resource.Id.Text1, items ?? Array.Empty<string>().ToList());
 		return adapter;
 	}
 

@@ -7,7 +7,7 @@ using Microsoft.Maui.Maps;
 public partial class MainPage : ContentPage
 {
 	public ObservableCollection<Site> Sites { get; } = new();
-	
+
 	public MainPage()
 	{
 		InitializeComponent();

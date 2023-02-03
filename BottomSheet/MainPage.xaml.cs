@@ -30,7 +30,7 @@ public partial class MainPage : ContentPage
 	{
 		bottomSheet = this.ShowBottomSheet(GetBottomSheetView(), true);
 	}
-	
+
 	private View GetBottomSheetView()
 	{
 		var view = (View)BottomSheetTemplate.CreateContent();

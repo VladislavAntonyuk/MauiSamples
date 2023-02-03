@@ -1,4 +1,4 @@
-namespace RepositoryContributors
+﻿namespace RepositoryContributors
 {
 	using System;
 	using Microsoft.Maui;

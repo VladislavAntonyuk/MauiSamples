@@ -8,4 +8,3 @@ namespace JokeApp;
 public class MainActivity : MauiAppCompatActivity
 {
 }
-

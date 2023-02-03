@@ -1,9 +1,9 @@
 ﻿namespace MauiImageEffects.ChainBehavior;
 
-using Windows.Graphics.Effects;
 using Microsoft.Graphics.Canvas.Effects;
-using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Composition;
+using Microsoft.UI.Xaml.Hosting;
+using Windows.Graphics.Effects;
 
 public partial class ChainBehavior : PlatformBehavior<Image, Microsoft.UI.Xaml.Controls.Image>
 {

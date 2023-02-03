@@ -1,7 +1,7 @@
 ﻿namespace PizzaStore.Application.Tests;
 
-using PizzaStore.Application.Configuration;
 using AutoMapper;
+using PizzaStore.Application.Configuration;
 
 internal static class TestMapper
 {

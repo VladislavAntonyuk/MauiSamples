@@ -1,4 +1,4 @@
-namespace MauiSpeech;
+﻿namespace MauiSpeech;
 
 using System;
 using Microsoft.Maui;

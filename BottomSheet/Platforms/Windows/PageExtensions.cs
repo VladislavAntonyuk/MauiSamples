@@ -20,7 +20,7 @@ public static partial class PageExtensions
 			scrollViewer.Height = page.Window.Height;
 			scrollViewer.Width = page.Window.Width;
 		}
-		
+
 		var dialog = new Popup
 		{
 			XamlRoot = page.ToPlatform(mauiContext).XamlRoot,

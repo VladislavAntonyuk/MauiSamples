@@ -1,14 +1,14 @@
 ﻿namespace MauiBluetooth;
 
 using System.Collections.ObjectModel;
+using System.Linq;
+using System.Text;
+using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Plugin.BLE.Abstractions.Contracts;
 using Plugin.BLE.Abstractions.Exceptions;
-using CommunityToolkit.Maui.Alerts;
-using CommunityToolkit.Maui.Views;
-using System.Linq;
-using System.Text;
 
 public partial class MainPage : ContentPage
 {

@@ -12,4 +12,3 @@ public partial class MainPage : ContentPage
 		await Launcher.OpenAsync("https://vladislavantonyuk.azurewebsites.net/");
 	}
 }
-

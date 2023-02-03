@@ -42,7 +42,7 @@ public class DialogService : IDialogService
 		{
 			var dialog = new FileDialog(Platform.CurrentActivity, FileDialog.FileSelectionMode.FileOpen, ".json");
 			var path = await dialog.GetFileOrDirectoryAsync(GetExternalDirectory());
-			return File.Exists(path) ? new MemoryStream(await File.ReadAllBytesAsync(path, cancellationToken)): Stream.Null;
+			return File.Exists(path) ? new MemoryStream(await File.ReadAllBytesAsync(path, cancellationToken)) : Stream.Null;
 		}
 
 		await Toast.Make("Storage permission is not granted").Show(cancellationToken);
@@ -59,6 +59,6 @@ public class DialogService : IDialogService
 	static string GetExternalDirectory()
 	{
 		return Platform.CurrentActivity?.GetExternalFilesDir(null)
-		               ?.ParentFile?.ParentFile?.ParentFile?.ParentFile?.AbsolutePath ?? "/storage/emulated/0";
+					   ?.ParentFile?.ParentFile?.ParentFile?.ParentFile?.AbsolutePath ?? "/storage/emulated/0";
 	}
 }

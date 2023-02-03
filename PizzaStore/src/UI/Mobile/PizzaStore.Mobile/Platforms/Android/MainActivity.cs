@@ -4,7 +4,7 @@ using Android.App;
 using Android.Content.PM;
 
 [Activity(Theme = "@style/Maui.SplashTheme",
-          MainLauncher = true,
+		  MainLauncher = true,
 		  ConfigurationChanges = ConfigChanges.ScreenSize |
 								 ConfigChanges.Orientation |
 								 ConfigChanges.UiMode |

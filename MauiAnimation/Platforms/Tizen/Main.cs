@@ -1,4 +1,4 @@
-namespace MauiAnimation;
+﻿namespace MauiAnimation;
 using System;
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;

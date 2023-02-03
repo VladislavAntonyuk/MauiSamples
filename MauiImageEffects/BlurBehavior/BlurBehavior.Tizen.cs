@@ -18,6 +18,6 @@ public partial class BlurBehavior : PlatformBehavior<Image, ImageView>
 
 	void SetRendererEffect(ImageView imageView, float radius)
 	{
-		
+
 	}
 }

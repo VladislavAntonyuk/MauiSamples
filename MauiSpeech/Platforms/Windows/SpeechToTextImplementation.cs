@@ -71,7 +71,7 @@ public sealed class SpeechToTextImplementation : ISpeechToText
 	{
 		speechRecognitionEngine = new SpeechRecognitionEngine(culture);
 		speechRecognitionEngine.LoadGrammarAsync(new DictationGrammar());
-		speechRecognitionEngine.SpeechRecognized += (s,e)=>
+		speechRecognitionEngine.SpeechRecognized += (s, e) =>
 		{
 			recognitionResult?.Report(e.Result.Text);
 		};
@@ -79,10 +79,10 @@ public sealed class SpeechToTextImplementation : ISpeechToText
 		speechRecognitionEngine.RecognizeAsync(RecognizeMode.Multiple);
 		var taskResult = new TaskCompletionSource<string>();
 		await using (cancellationToken.Register(() =>
-		             {
-			             StopOfflineRecording();
-			             taskResult.TrySetCanceled();
-		             }))
+					 {
+						 StopOfflineRecording();
+						 taskResult.TrySetCanceled();
+					 }))
 		{
 			return await taskResult.Task;
 		}
@@ -99,7 +99,7 @@ public sealed class SpeechToTextImplementation : ISpeechToText
 			// ignored. Recording may be already stopped
 		}
 	}
-	
+
 	private void StopOfflineRecording()
 	{
 		speechRecognitionEngine?.RecognizeAsyncCancel();
@@ -113,4 +113,3 @@ public sealed class SpeechToTextImplementation : ISpeechToText
 		speechRecognizer?.Dispose();
 	}
 }
-

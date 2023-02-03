@@ -38,8 +38,8 @@ public class MarkdownDrawable : IDrawable
 		renderer.ObjectRenderers.Add(new MauiCodeBlockRenderer());
 		renderer.ObjectRenderers.Add(new MauiHeadingRenderer());
 		var builder = new MarkdownPipelineBuilder()
-		              .UseEmojiAndSmiley()
-		              .UseEmphasisExtras();
+					  .UseEmojiAndSmiley()
+					  .UseEmphasisExtras();
 		var pipeline = builder.Build();
 		Markdig.Markdown.Convert(text, renderer, pipeline);
 		return renderer.GetAttributedText();

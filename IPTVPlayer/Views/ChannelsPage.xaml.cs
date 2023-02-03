@@ -10,14 +10,14 @@ public partial class ChannelsPage : ContentPage
 	{
 		InitializeComponent();
 		this.viewModel = viewModel;
-        BindingContext = viewModel;
+		BindingContext = viewModel;
 	}
 
 
-    protected override async void OnNavigatedTo(NavigatedToEventArgs args)
-    {
-	    base.OnNavigatedTo(args);
+	protected override async void OnNavigatedTo(NavigatedToEventArgs args)
+	{
+		base.OnNavigatedTo(args);
 
-	    await viewModel.LoadDataAsync();
-    }
+		await viewModel.LoadDataAsync();
+	}
 }

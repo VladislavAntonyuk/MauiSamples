@@ -13,7 +13,7 @@ public class NotificationCounterImplementation : INotificationCounter
 			BadgeControl.Remove(appId);
 			return;
 		}
-		
+
 		var badge = BadgeControl.Find(appId);
 		if (badge is null)
 		{

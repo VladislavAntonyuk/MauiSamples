@@ -10,7 +10,7 @@ public class PlaneAnimation : CommunityToolkit.Maui.Animations.BaseAnimation
 		this.plane = plane;
 		this.gloryToUkraine = gloryToUkraine;
 	}
-	
+
 	public override Task Animate(VisualElement view)
 	{
 		plane.Animate("Plane", f =>
@@ -18,7 +18,7 @@ public class PlaneAnimation : CommunityToolkit.Maui.Animations.BaseAnimation
 			plane.TranslationX = f;
 			if (f > 500)
 			{
-				gloryToUkraine.Opacity = Math.Sin((f-1000) / 2000);
+				gloryToUkraine.Opacity = Math.Sin((f - 1000) / 2000);
 			}
 			else
 			{

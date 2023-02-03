@@ -7,11 +7,11 @@ using Services;
 
 public static class MauiProgram
 {
-    public static MauiApp CreateMauiApp()
-    {
-        var builder = MauiApp.CreateBuilder();
-        builder
-            .UseMauiApp<App>()
+	public static MauiApp CreateMauiApp()
+	{
+		var builder = MauiApp.CreateBuilder();
+		builder
+			.UseMauiApp<App>()
 			.UseMauiCommunityToolkit();
 
 		builder.Services.AddSingleton<ISerializerService, JsonSerializerService>();
@@ -19,6 +19,6 @@ public static class MauiProgram
 		builder.Services.AddSingleton<IDialogService, DialogService>();
 		builder.Services.AddSingleton<MainPageViewModel>();
 		builder.Services.AddSingleton<MainPage>();
-        return builder.Build();
-    }
+		return builder.Build();
+	}
 }

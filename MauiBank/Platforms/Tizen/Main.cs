@@ -1,4 +1,4 @@
-namespace MauiBank;
+﻿namespace MauiBank;
 using System;
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;

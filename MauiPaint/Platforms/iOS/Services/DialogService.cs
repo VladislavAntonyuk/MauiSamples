@@ -52,10 +52,10 @@ public class DialogService : IDialogService
 	private static UIViewController? GetCurrentUIController()
 	{
 		var viewController = UIApplication.SharedApplication.ConnectedScenes.ToArray()
-		                                  .Where(x => x.ActivationState == UISceneActivationState.ForegroundActive)
-		                                  .Select(x => x as UIWindowScene)
-		                                  .FirstOrDefault()?
-		                                  .Windows.FirstOrDefault(x => x.IsKeyWindow)?.RootViewController;
+										  .Where(x => x.ActivationState == UISceneActivationState.ForegroundActive)
+										  .Select(x => x as UIWindowScene)
+										  .FirstOrDefault()?
+										  .Windows.FirstOrDefault(x => x.IsKeyWindow)?.RootViewController;
 
 
 		while (viewController?.PresentedViewController != null)

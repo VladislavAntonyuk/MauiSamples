@@ -18,4 +18,3 @@ public partial class BasketPage : ContentPage
 
 	protected override bool OnBackButtonPressed() => false;
 }
-

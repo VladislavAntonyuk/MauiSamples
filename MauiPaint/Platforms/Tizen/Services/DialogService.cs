@@ -39,7 +39,7 @@ public class DialogService : IDialogService
 		if (status == PermissionStatus.Granted)
 		{
 			var path = "data.json";
-			return File.Exists(path) ? new MemoryStream(await File.ReadAllBytesAsync(path, cancellationToken)): Stream.Null;
+			return File.Exists(path) ? new MemoryStream(await File.ReadAllBytesAsync(path, cancellationToken)) : Stream.Null;
 		}
 
 		await Toast.Make("Storage permission is not granted").Show(cancellationToken);

@@ -1,4 +1,4 @@
-namespace MauiBluetooth;
+﻿namespace MauiBluetooth;
 using System;
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;

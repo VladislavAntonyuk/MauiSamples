@@ -7,7 +7,7 @@ public class NotificationCounterImplementation : INotificationCounter
 {
 	public void SetNotificationCount(int count)
 	{
-		var badgeUpdater =	BadgeUpdateManager.CreateBadgeUpdaterForApplication();
+		var badgeUpdater = BadgeUpdateManager.CreateBadgeUpdaterForApplication();
 		if (count <= 0)
 		{
 			badgeUpdater.Clear();

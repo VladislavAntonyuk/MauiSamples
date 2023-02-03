@@ -8,4 +8,3 @@ namespace MauiBells;
 public class MainActivity : MauiAppCompatActivity
 {
 }
-

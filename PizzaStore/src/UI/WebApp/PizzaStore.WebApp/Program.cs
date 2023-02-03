@@ -1,10 +1,10 @@
-﻿using PizzaStore.Application.Configuration;
+﻿using Microsoft.AspNetCore.Localization;
+using MudBlazor.Services;
+using PizzaStore.Application.Configuration;
 using PizzaStore.Infrastructure.WebApp.Business;
 using PizzaStore.Infrastructure.WebApp.Data.Configuration;
 using PizzaStore.WebApp.Extensions;
 using PizzaStore.WebApp.Models;
-using Microsoft.AspNetCore.Localization;
-using MudBlazor.Services;
 using Toolbelt.Blazor.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);

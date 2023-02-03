@@ -1,4 +1,4 @@
-namespace MauiPaint.Figures;
+﻿namespace MauiPaint.Figures;
 
 public static class FigureExtensions
 {

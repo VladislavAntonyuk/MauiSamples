@@ -20,7 +20,7 @@ public partial class MainPage : ContentPage
 
 		BindingContext = viewModel = mainPageViewModel;
 	}
-	
+
 	public void RotateSlideValueChanged(object sender, ValueChangedEventArgs args)
 	{
 		viewModel.RotateCommand.Execute(args.NewValue);
@@ -66,7 +66,7 @@ public partial class MainPage : ContentPage
 		viewModel.AboutCommand.Execute(this);
 	}
 
-	void AddToolbarItem( string text, ICommand command)
+	void AddToolbarItem(string text, ICommand command)
 	{
 		var toolbarItem = new ToolbarItem()
 		{

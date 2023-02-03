@@ -8,40 +8,40 @@ using Font = Microsoft.Maui.Font;
 
 public partial class MainPage : ContentPage
 {
-    private readonly IPath path;
+	private readonly IPath path;
 
-    public MainPage(MainPageViewModel viewModel, IPath path)
-    {
-        InitializeComponent();
-        On<iOS>().SetUseSafeArea(true);
-        BindingContext = viewModel;
-        this.path = path;
-    }
+	public MainPage(MainPageViewModel viewModel, IPath path)
+	{
+		InitializeComponent();
+		On<iOS>().SetUseSafeArea(true);
+		BindingContext = viewModel;
+		this.path = path;
+	}
 
-    private async void ResetButton_OnClicked(object sender, EventArgs e)
-    {
-        var options = new SnackbarOptions
-        {
-            BackgroundColor = Colors.Red,
-            TextColor = Colors.Green,
-            CharacterSpacing = 1,
-            ActionButtonFont = Font.SystemFontOfSize(14),
-            ActionButtonTextColor = Colors.Yellow,
-            CornerRadius = new CornerRadius(10),
-            Font = Font.SystemFontOfSize(14),
-        };
-        await ResetButton.DisplaySnackbar(
-            "All your data will be deleted. Application will be closed",
-            DeleteDbAndCloseApp,
-            "Confirm and delete",
-            TimeSpan.FromSeconds(5),
-            options);
-    }
+	private async void ResetButton_OnClicked(object sender, EventArgs e)
+	{
+		var options = new SnackbarOptions
+		{
+			BackgroundColor = Colors.Red,
+			TextColor = Colors.Green,
+			CharacterSpacing = 1,
+			ActionButtonFont = Font.SystemFontOfSize(14),
+			ActionButtonTextColor = Colors.Yellow,
+			CornerRadius = new CornerRadius(10),
+			Font = Font.SystemFontOfSize(14),
+		};
+		await ResetButton.DisplaySnackbar(
+			"All your data will be deleted. Application will be closed",
+			DeleteDbAndCloseApp,
+			"Confirm and delete",
+			TimeSpan.FromSeconds(5),
+			options);
+	}
 
-    private void DeleteDbAndCloseApp()
-    {
-        var dbPath = path.GetDatabasePath();
-        path.DeleteFile(dbPath);
+	private void DeleteDbAndCloseApp()
+	{
+		var dbPath = path.GetDatabasePath();
+		path.DeleteFile(dbPath);
 		Application.Current?.Quit();
-    }
+	}
 }

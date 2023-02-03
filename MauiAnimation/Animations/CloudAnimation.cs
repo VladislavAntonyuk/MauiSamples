@@ -8,7 +8,7 @@ public class CloudAnimation : CommunityToolkit.Maui.Animations.BaseAnimation<Clo
 	{
 		var animation = new Animation();
 
-		animation.WithConcurrent((f) => view.TranslationX = f, view.TranslationX-500, view.TranslationX + 1200, Microsoft.Maui.Easing.Linear);
+		animation.WithConcurrent((f) => view.TranslationX = f, view.TranslationX - 500, view.TranslationX + 1200, Microsoft.Maui.Easing.Linear);
 		animation.WithConcurrent((f) => view.TranslationY = f, view.TranslationY, view.TranslationY + 300, Microsoft.Maui.Easing.Linear);
 		animation.WithConcurrent((f) => view.Scale = f, 1, 1.5, Microsoft.Maui.Easing.Linear);
 

@@ -47,9 +47,9 @@ public partial class MainViewModel : ObservableObject
 	public void Initialize()
 	{
 		Title = this.configCatClient.GetValue("beta_gmailusers_mainpagetitle", "Main Page", new User(userContext.Email)
-        {
-        	Email = userContext.Email
-        });
+		{
+			Email = userContext.Email
+		});
 		Image = this.configCatClient.GetValue("beta", false) ? "botbeta.png" : "bot.png";
 	}
 
@@ -60,4 +60,3 @@ public partial class MainViewModel : ObservableObject
 		await ((AppShell)Application.Current!.MainPage!).GoToAsync("///LoginPage");
 	}
 }
-
