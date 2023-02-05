@@ -1,4 +1,4 @@
-namespace MauiAuth;
+﻿namespace MauiAuth;
 
 class Program : MauiApplication
 {

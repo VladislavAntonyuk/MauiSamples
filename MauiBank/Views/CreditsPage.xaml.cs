@@ -1,4 +1,4 @@
-namespace MauiBank.Views;
+﻿namespace MauiBank.Views;
 
 public partial class CreditsPage : BasePage
 {

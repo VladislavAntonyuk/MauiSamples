@@ -1,4 +1,4 @@
-namespace TutorialHelp;
+﻿namespace TutorialHelp;
 
 class Program : MauiApplication
 {

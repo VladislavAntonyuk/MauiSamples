@@ -3,10 +3,10 @@
 using Android.App;
 using Android.Bluetooth;
 using Android.Content;
+using Java.Lang;
 using Java.Util;
 using Plugin.BLE.Abstractions.Contracts;
 using Plugin.BLE.Android;
-using Java.Lang;
 
 public class BluetoothService : IBluetoothService
 {
@@ -103,7 +103,7 @@ public class BluetoothService : IBluetoothService
 		byte[] content = new byte[1024];
 		await socket.InputStream.ReadAsync(content, 0, content.Length);
 		return content;
-		
+
 	}
 
 	BluetoothAdapter PrepareAdapter()

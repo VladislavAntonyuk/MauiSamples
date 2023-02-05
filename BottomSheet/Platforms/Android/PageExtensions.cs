@@ -14,7 +14,7 @@ public static partial class PageExtensions
 		bottomSheetDialog.Show();
 		return bottomSheetDialog;
 	}
-	
+
 	public static void CloseBottomSheet(this BottomSheetDialog bottomSheet)
 	{
 		bottomSheet.Dismiss();

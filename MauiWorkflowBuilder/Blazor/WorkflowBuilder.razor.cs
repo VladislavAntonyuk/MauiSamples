@@ -27,8 +27,8 @@ public partial class WorkflowBuilder : ComponentBase, IDisposable
 		{
 			var xml = await JsRuntime.InvokeAsync<string>("getXml");
 			var workspace = new IronBlock.Parser()
-			                .AddStandardBlocks()
-			                .Parse(xml);
+							.AddStandardBlocks()
+							.Parse(xml);
 			var result = workspace.Evaluate();
 			WeakReferenceMessenger.Default.Send<ResultWorkflowMessage>(new ResultWorkflowMessage()
 			{
@@ -36,7 +36,7 @@ public partial class WorkflowBuilder : ComponentBase, IDisposable
 			});
 		});
 	}
-	
+
 	protected override async Task OnAfterRenderAsync(bool firstRender)
 	{
 		await base.OnAfterRenderAsync(firstRender);

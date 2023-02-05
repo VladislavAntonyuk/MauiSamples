@@ -1,4 +1,4 @@
-namespace MauiWorkflowBuilder;
+﻿namespace MauiWorkflowBuilder;
 
 using System;
 using Microsoft.Maui;

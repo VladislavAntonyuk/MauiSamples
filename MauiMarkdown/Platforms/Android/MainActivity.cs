@@ -8,4 +8,3 @@ namespace MauiMarkdown;
 public class MainActivity : MauiAppCompatActivity
 {
 }
-

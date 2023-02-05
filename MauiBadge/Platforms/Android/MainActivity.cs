@@ -8,4 +8,3 @@ namespace MauiBadge;
 public class MainActivity : MauiAppCompatActivity
 {
 }
-

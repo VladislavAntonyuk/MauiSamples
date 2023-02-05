@@ -1,4 +1,4 @@
-namespace DynamicFab;
+﻿namespace DynamicFab;
 
 using System;
 using Microsoft.Maui;

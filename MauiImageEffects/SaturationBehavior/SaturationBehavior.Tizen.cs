@@ -18,6 +18,6 @@ public partial class SaturationBehavior : PlatformBehavior<Image, ImageView>
 
 	void SetRendererEffect(ImageView imageView, float radius)
 	{
-		
+
 	}
 }

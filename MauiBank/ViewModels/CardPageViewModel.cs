@@ -39,12 +39,12 @@ public partial class CardPageViewModel : ObservableObject
 		}
 
 		transactions = transactionsList.OrderByDescending(x => x.DateTime)
-		                               .GroupBy(x => x.DateTime.Date)
-		                               .Select(tr => new TransactionGroup(tr.Key, tr.ToList()))
-		                               .ToList();
+									   .GroupBy(x => x.DateTime.Date)
+									   .Select(tr => new TransactionGroup(tr.Key, tr.ToList()))
+									   .ToList();
 	}
 
-	public ICommand SwitchCvvModeCommand => new Command(() =>IsCvvMode = !IsCvvMode);
+	public ICommand SwitchCvvModeCommand => new Command(() => IsCvvMode = !IsCvvMode);
 
 	[RelayCommand]
 	Task More()

@@ -18,55 +18,10 @@ public partial class MainPage : ContentPage
 			AddToolbarItem("About", mainPageViewModel.AboutCommand);
 		}
 
-		BindingContext = viewModel = mainPageViewModel;
-	}
-	
-	public void RotateSlideValueChanged(object sender, ValueChangedEventArgs args)
-	{
-		viewModel.RotateCommand.Execute(args.NewValue);
+		BindingContext = mainPageViewModel;
 	}
 
-	// https://github.com/dotnet/maui/issues/6303
-	readonly MainPageViewModel viewModel;
-
-	public void NewCommand(object sender, EventArgs args)
-	{
-		viewModel.NewCommand.Execute(this);
-	}
-	public void OpenCommand(object sender, EventArgs args)
-	{
-		viewModel.OpenCommand.Execute(this);
-	}
-	public void SaveCommand(object sender, EventArgs args)
-	{
-		viewModel.SaveCommand.Execute(this);
-	}
-	public void SaveImageCommand(object sender, EventArgs args)
-	{
-		viewModel.SaveImageCommand.Execute(this);
-	}
-	public void QuitCommand(object sender, EventArgs args)
-	{
-		viewModel.QuitCommand.Execute(this);
-	}
-	public void ToggleThemeCommand(object sender, EventArgs args)
-	{
-		viewModel.ToggleThemeCommand.Execute(this);
-	}
-	public void PasteFromClipboardCommand(object sender, EventArgs args)
-	{
-		viewModel.PasteFromClipboardCommand.Execute(this);
-	}
-	public void HelpCommand(object sender, EventArgs args)
-	{
-		viewModel.HelpCommand.Execute(this);
-	}
-	public void AboutCommand(object sender, EventArgs args)
-	{
-		viewModel.AboutCommand.Execute(this);
-	}
-
-	void AddToolbarItem( string text, ICommand command)
+	void AddToolbarItem(string text, ICommand command)
 	{
 		var toolbarItem = new ToolbarItem()
 		{

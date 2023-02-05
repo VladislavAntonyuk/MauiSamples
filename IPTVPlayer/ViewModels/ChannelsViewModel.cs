@@ -9,45 +9,45 @@ using Views;
 
 public partial class ChannelsViewModel : BaseViewModel
 {
-    readonly IPlaylistGenerator playlistGenerator;
+	readonly IPlaylistGenerator playlistGenerator;
 
-    [ObservableProperty]
-    bool isRefreshing;
+	[ObservableProperty]
+	bool isRefreshing;
 
-    [ObservableProperty]
-    ObservableCollection<Channel> items = new();
+	[ObservableProperty]
+	ObservableCollection<Channel> items = new();
 
-    public ChannelsViewModel(IPlaylistGenerator service)
-    {
-        playlistGenerator = service;
-    }
+	public ChannelsViewModel(IPlaylistGenerator service)
+	{
+		playlistGenerator = service;
+	}
 
-    [RelayCommand]
-    private async void OnRefreshing()
-    {
-        IsRefreshing = true;
+	[RelayCommand]
+	private async Task OnRefreshing()
+	{
+		IsRefreshing = true;
 
-        try
-        {
-            await LoadDataAsync();
-        }
-        finally
-        {
-            IsRefreshing = false;
-        }
-    }
+		try
+		{
+			await LoadDataAsync();
+		}
+		finally
+		{
+			IsRefreshing = false;
+		}
+	}
 
-    public async Task LoadDataAsync()
-    {
-        Items = new ObservableCollection<Channel>(await playlistGenerator.GetPlaylist());
-    }
+	public async Task LoadDataAsync()
+	{
+		Items = new ObservableCollection<Channel>(await playlistGenerator.GetPlaylist());
+	}
 
-    [RelayCommand]
-    private async void GoToDetails(Channel item)
-    {
-        await Shell.Current.GoToAsync(nameof(ChannelDetailPage), true, new Dictionary<string, object>
-        {
-            { "Item", item }
-        });
-    }
+	[RelayCommand]
+	private async Task GoToDetails(Channel item)
+	{
+		await Shell.Current.GoToAsync(nameof(ChannelDetailPage), true, new Dictionary<string, object>
+		{
+			{ "Item", item }
+		});
+	}
 }

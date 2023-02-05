@@ -14,7 +14,7 @@ public abstract class BaseAuthService : IAuthService
 	public Task<AuthenticationResult?> SignInInteractively(CancellationToken cancellationToken)
 	{
 		return authenticationClient
-		       .AcquireTokenInteractive(Constants.Scopes)
+			   .AcquireTokenInteractive(Constants.Scopes)
 #if WINDOWS
 				.WithUseEmbeddedWebView(false)				
 #endif
@@ -33,7 +33,7 @@ public abstract class BaseAuthService : IAuthService
 			}
 
 			return await authenticationClient.AcquireTokenSilent(Constants.Scopes, firstAccount)
-			                                 .ExecuteAsync(cancellationToken);
+											 .ExecuteAsync(cancellationToken);
 		}
 		catch (MsalUiRequiredException)
 		{

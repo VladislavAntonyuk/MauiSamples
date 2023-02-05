@@ -32,10 +32,10 @@ public sealed class SpeechToTextImplementation : ISpeechToText
 		speechRecognizer.SetRecognitionListener(listener);
 		speechRecognizer.StartListening(CreateSpeechIntent(culture));
 		await using (cancellationToken.Register(() =>
-		             {
-			             StopRecording();
-			             taskResult.TrySetCanceled();
-		             }))
+					 {
+						 StopRecording();
+						 taskResult.TrySetCanceled();
+					 }))
 		{
 			return await taskResult.Task;
 		}

@@ -60,7 +60,7 @@ Death to enemies!";
 		}, cancellationToken);
 	}
 
-	[RelayCommand(IncludeCancelCommand =true)]
+	[RelayCommand(IncludeCancelCommand = true)]
 	async Task Listen(CancellationToken cancellationToken)
 	{
 		var isAuthorized = await speechToText.RequestPermissions();

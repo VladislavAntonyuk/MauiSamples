@@ -1,4 +1,4 @@
-namespace BottomSheet;
+﻿namespace BottomSheet;
 
 using System;
 using Microsoft.Maui;

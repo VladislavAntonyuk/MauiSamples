@@ -1,4 +1,4 @@
-namespace MauiSqliteBlazor;
+﻿namespace MauiSqliteBlazor;
 
 class Program : MauiApplication
 {

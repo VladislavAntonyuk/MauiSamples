@@ -19,4 +19,3 @@ public sealed class SpeechToTextImplementation : ISpeechToText
 		return ValueTask.CompletedTask;
 	}
 }
-

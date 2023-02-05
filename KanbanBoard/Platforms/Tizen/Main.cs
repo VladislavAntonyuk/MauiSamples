@@ -1,4 +1,4 @@
-namespace KanbanBoard;
+﻿namespace KanbanBoard;
 
 class Program : MauiApplication
 {

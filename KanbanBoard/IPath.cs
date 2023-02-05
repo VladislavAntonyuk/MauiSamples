@@ -2,7 +2,7 @@
 
 public interface IPath
 {
-    string GetDatabasePath(string filename = "KanbanBoard.db");
+	string GetDatabasePath(string filename = "KanbanBoard.db");
 
-    void DeleteFile(string path);
+	void DeleteFile(string path);
 }

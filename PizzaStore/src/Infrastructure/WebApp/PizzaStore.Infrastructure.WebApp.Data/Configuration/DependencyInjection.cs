@@ -14,13 +14,13 @@ public static class DependencyInjection
 	{
 		services.AddCommonInfrastructureData();
 		services.AddPooledDbContextFactory<WebAppContext>(opt =>
-			                                                  opt.UseMySql(connectionString,
-			                                                               ServerVersion.AutoDetect(connectionString),
-			                                                               builder =>
-			                                                               {
-				                                                               builder.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);
-				                                                               builder.EnableRetryOnFailure(5);
-			                                                               }));
+															  opt.UseMySql(connectionString,
+																		   ServerVersion.AutoDetect(connectionString),
+																		   builder =>
+																		   {
+																			   builder.MigrationsAssembly(Assembly.GetExecutingAssembly().FullName);
+																			   builder.EnableRetryOnFailure(5);
+																		   }));
 
 		services.AddAutoMapper(typeof(DependencyInjection));
 

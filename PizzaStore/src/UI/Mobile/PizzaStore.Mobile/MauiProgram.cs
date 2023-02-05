@@ -1,4 +1,4 @@
-namespace PizzaStore.Mobile;
+﻿namespace PizzaStore.Mobile;
 
 using Application.Configuration;
 using CommunityToolkit.Maui;

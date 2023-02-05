@@ -17,7 +17,7 @@ public partial class ChainBehavior
 		{
 			return;
 		}
-		
+
 		behavior.SetRendererEffect(behavior.imageView, Convert.ToString(newValue));
 	}
 }

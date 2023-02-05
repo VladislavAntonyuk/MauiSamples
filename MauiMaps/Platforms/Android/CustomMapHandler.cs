@@ -2,10 +2,10 @@
 
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
-using Microsoft.Maui.Maps.Handlers;
-using Microsoft.Maui.Maps;
-using Microsoft.Maui.Platform;
 using Android.Graphics.Drawables;
+using Microsoft.Maui.Maps;
+using Microsoft.Maui.Maps.Handlers;
+using Microsoft.Maui.Platform;
 
 public class CustomMapHandler : MapHandler
 {
@@ -79,7 +79,7 @@ public class CustomMapHandler : MapHandler
 				}
 				else
 				{
-					AddMarker(Map, pin, Markers, markerOption);	
+					AddMarker(Map, pin, Markers, markerOption);
 				}
 			}
 		}

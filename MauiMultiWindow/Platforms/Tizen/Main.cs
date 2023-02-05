@@ -1,4 +1,4 @@
-namespace MauiMultiWindow;
+﻿namespace MauiMultiWindow;
 
 class Program : MauiApplication
 {

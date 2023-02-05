@@ -24,4 +24,3 @@ public partial class MainPage : ContentPage
 		this.ShowPopup(simplePopup);
 	}
 }
-

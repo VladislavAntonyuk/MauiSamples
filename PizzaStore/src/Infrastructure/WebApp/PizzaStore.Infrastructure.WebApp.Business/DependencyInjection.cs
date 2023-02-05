@@ -1,8 +1,8 @@
 ﻿namespace PizzaStore.Infrastructure.WebApp.Business;
 
-using PizzaStore.WebApp.Application;
 using Application.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
+using PizzaStore.WebApp.Application;
 
 public static class DependencyInjection
 {
