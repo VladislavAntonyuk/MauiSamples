@@ -183,7 +183,7 @@ public partial class MainPageViewModel : ObservableObject
 			await Toast.Make("File is not selected", ToastDuration.Long).Show(cancellationToken);
 			return;
 		}
-		
+
 		await using var stream = await fileResult.OpenReadAsync();
 
 		try
