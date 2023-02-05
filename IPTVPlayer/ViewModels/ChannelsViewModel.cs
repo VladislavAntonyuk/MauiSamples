@@ -23,7 +23,7 @@ public partial class ChannelsViewModel : BaseViewModel
 	}
 
 	[RelayCommand]
-	private async void OnRefreshing()
+	private async Task OnRefreshing()
 	{
 		IsRefreshing = true;
 
@@ -43,7 +43,7 @@ public partial class ChannelsViewModel : BaseViewModel
 	}
 
 	[RelayCommand]
-	private async void GoToDetails(Channel item)
+	private async Task GoToDetails(Channel item)
 	{
 		await Shell.Current.GoToAsync(nameof(ChannelDetailPage), true, new Dictionary<string, object>
 		{

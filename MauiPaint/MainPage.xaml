@@ -8,21 +8,21 @@
 
 	<ContentPage.MenuBarItems>
 		<MenuBarItem Text="File">
-			<MenuFlyoutItem Text="New" Clicked="NewCommand" Command="{Binding NewCommand}"/>
-			<MenuFlyoutItem Text="Open" Clicked="OpenCommand"  Command="{Binding OpenCommand}"/>
-			<MenuFlyoutItem Text="Save Project" Clicked="SaveCommand" Command="{Binding SaveCommand}"/>
-			<MenuFlyoutItem Text="Save Image" Clicked="SaveImageCommand" Command="{Binding SaveImageCommand}"/>
-			<MenuFlyoutItem Text="Quit" Clicked="QuitCommand" Command="{Binding QuitCommand}"/>
+			<MenuFlyoutItem Text="New" Command="{Binding NewCommand}"/>
+			<MenuFlyoutItem Text="Open"  Command="{Binding OpenCommand}"/>
+			<MenuFlyoutItem Text="Save Project" Command="{Binding SaveCommand}"/>
+			<MenuFlyoutItem Text="Save Image" Command="{Binding SaveImageCommand}"/>
+			<MenuFlyoutItem Text="Quit" Command="{Binding QuitCommand}"/>
 		</MenuBarItem>
 		<MenuBarItem Text="View">
-			<MenuFlyoutItem Text="Toggle Light/Dark Mode" Clicked="ToggleThemeCommand" Command="{Binding ToggleThemeCommand}"/>
+			<MenuFlyoutItem Text="Toggle Light/Dark Mode" Command="{Binding ToggleThemeCommand}"/>
 		</MenuBarItem>
 		<MenuBarItem Text="Tools">
-			<MenuFlyoutItem Text="Paste from Clipboard" Clicked="PasteFromClipboardCommand" Command="{Binding PasteFromClipboardCommand}"/>
+			<MenuFlyoutItem Text="Paste from Clipboard" Command="{Binding PasteFromClipboardCommand}"/>
 		</MenuBarItem>
 		<MenuBarItem Text="Help">
-			<MenuFlyoutItem Text="Help" Clicked="HelpCommand" Command="{Binding HelpCommand}"/>
-			<MenuFlyoutItem Text="About" Clicked="AboutCommand" Command="{Binding AboutCommand}"/>
+			<MenuFlyoutItem Text="Help" Command="{Binding HelpCommand}"/>
+			<MenuFlyoutItem Text="About" Command="{Binding AboutCommand}"/>
 		</MenuBarItem>
 	</ContentPage.MenuBarItems>
 
@@ -83,8 +83,13 @@
 					</mct:UniformItemsLayout>
 
 					<Label Text="Rotate"/>
-					<Slider Maximum="360"
-					        ValueChanged="RotateSlideValueChanged"/>
+					<Slider x:Name="RotateSlider" Maximum="360">
+						<Slider.Behaviors>
+							<mct:EventToCommandBehavior EventName="ValueChanged"
+							                            Command="{Binding RotateCommand}"
+							                            CommandParameter="{Binding Path=Value, Source={x:Reference RotateSlider}}"/>
+						</Slider.Behaviors>
+					</Slider>
 				</VerticalStackLayout>
 			</ScrollView>
 		</Border>

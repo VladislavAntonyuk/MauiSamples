@@ -2,13 +2,7 @@
 
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
-public class Pizza
-{
-	public string Name { get; set; } = string.Empty;
-	public string? Description { get; set; }
-	public string? Image { get; set; }
-	public decimal Price { get; set; }
-}
+
 public partial class MainPageViewModel : ObservableObject
 {
 
@@ -19,37 +13,37 @@ public partial class MainPageViewModel : ObservableObject
 	{
 		pizzas = new()
 		{
-			new Pizza()
+			new Pizza
 			{
 				Name = "Margherita",
 				Price = 5.99m,
 				Image = "https://romans-bnry.s3.eu-west-2.amazonaws.com/images/root/v2/pizza/grumbling/pizza-hotone-pan.png"
 			},
-			new Pizza()
+			new Pizza
 			{
 				Name = "Pepperoni",
 				Price = 6.99m,
 				Image = "https://romans-bnry.s3.eu-west-2.amazonaws.com/images/root/v2/pizza/pizza-halaal-hawaiian-thin.png"
 			},
-			new Pizza()
+			new Pizza
 			{
 				Name = "Hawaiian",
 				Price = 7.99m,
 				Image = "https://romans-bnry.s3.eu-west-2.amazonaws.com/images/root/v2/pizza/pizza-hawaiian-pan.png"
 			},
-			new Pizza()
+			new Pizza
 			{
 				Name = "Vegetarian",
 				Price = 8.99m,
 				Image = "https://romans-bnry.s3.eu-west-2.amazonaws.com/images/root/v2/pizza/pizza-vegetarian-pan.png"
 			},
-			new Pizza()
+			new Pizza
 			{
 				Name = "Meat Lovers",
 				Price = 9.99m,
 				Image = "https://romans-bnry.s3.eu-west-2.amazonaws.com/images/root/v2/pizza/grumbling/pizza-bolognaise-pan.png"
 			},
-			new Pizza()
+			new Pizza
 			{
 				Name = "Supreme",
 				Price = 10.99m,

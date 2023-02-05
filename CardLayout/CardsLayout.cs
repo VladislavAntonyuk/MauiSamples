@@ -106,22 +106,17 @@ public partial class CardsLayout : Layout, ILayoutManager
 	{
 		swipedDirection = null;
 		const int delta = 50;
-		if (eTotalX > delta)
+		swipedDirection = eTotalX switch
 		{
-			swipedDirection = SwipeDirection.Right;
-		}
-		else if (eTotalX < -delta)
-		{
-			swipedDirection = SwipeDirection.Left;
-		}
-		else if (eTotalY > delta)
-		{
-			swipedDirection = SwipeDirection.Down;
-		}
-		else if (eTotalY < -delta)
-		{
-			swipedDirection = SwipeDirection.Up;
-		}
+			> delta => SwipeDirection.Right,
+			< -delta => SwipeDirection.Left,
+			_ => eTotalY switch
+			{
+				> delta => SwipeDirection.Down,
+				< -delta => SwipeDirection.Up,
+				_ => swipedDirection
+			}
+		};
 	}
 
 	private void HandleTouchEnd(SwipeDirection? swiped)
