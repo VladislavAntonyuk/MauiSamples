@@ -186,6 +186,8 @@ public partial class MainPageViewModel : ObservableObject
 		
 		await using var stream = await fileResult.OpenReadAsync();
 
+		await using var stream = await fileResult.OpenReadAsync();
+
 		try
 		{
 			var projectState = await serializerService.Deserialize<ProjectState>(stream, cancellationToken);
