@@ -1,4 +1,4 @@
-namespace PizzaStore.Application.Configuration;
+﻿namespace PizzaStore.Application.Configuration;
 
 using System.Linq.Expressions;
 using AutoMapper;

@@ -14,4 +14,3 @@ class Program : MauiApplication
 		app.Run(args);
 	}
 }
-

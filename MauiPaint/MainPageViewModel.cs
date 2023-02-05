@@ -6,23 +6,25 @@ using System.Threading;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Core.Extensions;
+using CommunityToolkit.Maui.Storage;
 using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Figures;
 using Serializer;
-using Services;
 
 public partial class MainPageViewModel : ObservableObject
 {
 	private readonly ISerializerService serializerService;
-	private readonly IDialogService dialogService;
+	private readonly IFileSaver fileSaver;
+	private readonly IFilePicker filePicker;
 	private static List<IFigure> _figures = new();
 
-	public MainPageViewModel(ISerializerService serializerService, IDialogService dialogService)
+	public MainPageViewModel(ISerializerService serializerService, IFileSaver fileSaver, IFilePicker filePicker)
 	{
 		this.serializerService = serializerService;
-		this.dialogService = dialogService;
+		this.fileSaver = fileSaver;
+		this.filePicker = filePicker;
 	}
 
 	[ObservableProperty]
@@ -172,11 +174,19 @@ public partial class MainPageViewModel : ObservableObject
 	[RelayCommand]
 	async Task Open(CancellationToken cancellationToken)
 	{
-		await using var stream = await dialogService.OpenFileDialog(cancellationToken);
-		if (stream == Stream.Null)
+		var fileResult = await filePicker.PickAsync(new PickOptions()
 		{
+			PickerTitle = "Select project json"
+		});
+		if (fileResult is null)
+		{
+			await Toast.Make("File is not selected", ToastDuration.Long).Show(cancellationToken);
 			return;
 		}
+
+		await using var stream = await fileResult.OpenReadAsync();
+
+		await using var stream = await fileResult.OpenReadAsync();
 
 		try
 		{
@@ -211,7 +221,7 @@ public partial class MainPageViewModel : ObservableObject
 			Background = Background
 		};
 		await using var stream = await serializerService.Serialize(projectState, cancellationToken);
-		await SaveToFile(stream, ".json", cancellationToken);
+		await SaveToFile(stream, "image.json", cancellationToken);
 	}
 
 	[RelayCommand]
@@ -221,15 +231,19 @@ public partial class MainPageViewModel : ObservableObject
 			Lines,
 			new Size(1000, 1000),
 			Background);
-		await SaveToFile(stream, ".png", cancellationToken);
+		await SaveToFile(stream, "image.png", cancellationToken);
 	}
 
-	async Task SaveToFile(Stream stream, string fileExtension, CancellationToken cancellationToken)
+	async Task SaveToFile(Stream stream, string fileName, CancellationToken cancellationToken)
 	{
-		var isSaved = await dialogService.SaveFileDialog(stream, fileExtension, cancellationToken);
-		if (isSaved)
+		try
 		{
-			await Toast.Make("File is saved", ToastDuration.Long).Show(cancellationToken);
+			var savedLocation = await fileSaver.SaveAsync(fileName, stream, cancellationToken);
+			await Toast.Make($"File is saved to {savedLocation}", ToastDuration.Long).Show(cancellationToken);
+		}
+		catch (Exception e)
+		{
+			await Toast.Make($"File is not saved. Error:{e.Message}", ToastDuration.Long).Show(cancellationToken);
 		}
 	}
 }

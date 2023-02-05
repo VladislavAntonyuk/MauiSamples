@@ -1,14 +1,14 @@
 ﻿namespace PizzaStore.WebApp.Pages;
 
 using System.Windows.Input;
+using Microsoft.AspNetCore.Components;
+using MudBlazor;
 using PizzaStore.Application.Interfaces.CQRS;
 using PizzaStore.Application.UseCases.Pizza;
 using PizzaStore.Application.UseCases.Pizza.Commands.Create;
 using PizzaStore.Application.UseCases.Pizza.Commands.Delete;
 using PizzaStore.Application.UseCases.Pizza.Commands.Update;
 using PizzaStore.Application.UseCases.Pizza.Queries.GetPizza;
-using Microsoft.AspNetCore.Components;
-using MudBlazor;
 
 public partial class FetchData : PizzaStoreBaseComponent
 {

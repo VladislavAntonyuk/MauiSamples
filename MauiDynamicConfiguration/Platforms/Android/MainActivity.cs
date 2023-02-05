@@ -8,4 +8,3 @@ namespace MauiDynamicConfiguration;
 public class MainActivity : MauiAppCompatActivity
 {
 }
-

@@ -1,4 +1,4 @@
-namespace PizzaStore.Application.Configuration.Behaviors;
+﻿namespace PizzaStore.Application.Configuration.Behaviors;
 
 using FluentValidation;
 using MediatR;

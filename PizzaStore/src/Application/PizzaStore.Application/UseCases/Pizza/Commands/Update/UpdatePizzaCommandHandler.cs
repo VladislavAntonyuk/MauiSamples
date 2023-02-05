@@ -1,4 +1,4 @@
-namespace PizzaStore.Application.UseCases.Pizza.Commands.Update;
+﻿namespace PizzaStore.Application.UseCases.Pizza.Commands.Update;
 
 using AutoMapper;
 using Domain.Entities;

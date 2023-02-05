@@ -1,8 +1,8 @@
 ﻿namespace MauiImageEffects.BlurBehavior;
 
 using Microsoft.Graphics.Canvas.Effects;
-using Microsoft.UI.Xaml.Hosting;
 using Microsoft.UI.Composition;
+using Microsoft.UI.Xaml.Hosting;
 
 public partial class BlurBehavior : PlatformBehavior<Image, Microsoft.UI.Xaml.Controls.Image>
 {

@@ -97,10 +97,10 @@ public sealed class SpeechToTextImplementation : ISpeechToText
 		});
 
 		await using (cancellationToken.Register(() =>
-		             {
-			             StopRecording();
-			             taskResult.TrySetCanceled();
-		             }))
+					 {
+						 StopRecording();
+						 taskResult.TrySetCanceled();
+					 }))
 		{
 			return await taskResult.Task;
 		}
@@ -125,4 +125,3 @@ public sealed class SpeechToTextImplementation : ISpeechToText
 		return taskResult.Task;
 	}
 }
-

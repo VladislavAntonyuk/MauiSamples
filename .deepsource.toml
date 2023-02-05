@@ -1,10 +1,6 @@
 version = 1
 
-[[analyzers]]
-name = "docker"
-
-[[analyzers]]
-name = "test-coverage"
+exclude_patterns = ["Migrations/**"]
 
 [[analyzers]]
 name = "secrets"

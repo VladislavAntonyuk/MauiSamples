@@ -1,4 +1,4 @@
-namespace PizzaStore.Mobile;
+﻿namespace PizzaStore.Mobile;
 
 class Program : MauiApplication
 {

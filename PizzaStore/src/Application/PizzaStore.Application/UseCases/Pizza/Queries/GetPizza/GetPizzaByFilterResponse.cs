@@ -2,7 +2,7 @@
 
 public class GetPizzaByFilterResponse
 {
-	public List<PizzaDto> Items { get; set; } = new ();
+	public List<PizzaDto> Items { get; set; } = new();
 	public int PageIndex { get; }
 	public int TotalPages { get; }
 	public int TotalCount { get; }

@@ -1,4 +1,4 @@
-namespace MauiAuthBlazor;
+﻿namespace MauiAuthBlazor;
 
 class Program : MauiApplication
 {

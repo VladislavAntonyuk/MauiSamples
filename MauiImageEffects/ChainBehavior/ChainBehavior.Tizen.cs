@@ -19,6 +19,6 @@ public partial class ChainBehavior : PlatformBehavior<Image, ImageView>
 
 	void SetRendererEffect(ImageView imageView, string? effects)
 	{
-		
+
 	}
 }

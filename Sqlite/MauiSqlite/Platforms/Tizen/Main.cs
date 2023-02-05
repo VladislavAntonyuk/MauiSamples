@@ -1,4 +1,4 @@
-namespace MauiSqlite;
+﻿namespace MauiSqlite;
 
 class Program : MauiApplication
 {

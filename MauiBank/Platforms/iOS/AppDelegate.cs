@@ -48,8 +48,8 @@ public class AppDelegate : MauiUIApplicationDelegate
 	private static UIWindow? GetKeyWindow(UIApplication uiApplication)
 	{
 		return uiApplication.ConnectedScenes.ToArray()
-		                    .Select(x => x as UIWindowScene)
-		                    .FirstOrDefault()?
-		                    .Windows.FirstOrDefault(x => x.IsKeyWindow);
+							.Select(x => x as UIWindowScene)
+							.FirstOrDefault()?
+							.Windows.FirstOrDefault(x => x.IsKeyWindow);
 	}
 }

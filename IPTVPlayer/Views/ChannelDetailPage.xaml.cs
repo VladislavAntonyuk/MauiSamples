@@ -4,15 +4,15 @@ using ViewModels;
 
 public partial class ChannelDetailPage : ContentPage
 {
-    public ChannelDetailPage(ChannelDetailViewModel viewModel)
-    {
-        InitializeComponent();
-        BindingContext = viewModel;
-    }
+	public ChannelDetailPage(ChannelDetailViewModel viewModel)
+	{
+		InitializeComponent();
+		BindingContext = viewModel;
+	}
 
 	protected override void OnDisappearing()
 	{
-	    MediaPlayer.Stop();
+		MediaPlayer.Stop();
 		base.OnDisappearing();
 	}
 }

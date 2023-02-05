@@ -85,5 +85,3 @@ public sealed partial class MainPage : ContentPage, IDisposable
 		}
 	}
 }
-
-

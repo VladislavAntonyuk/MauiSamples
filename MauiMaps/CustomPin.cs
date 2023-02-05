@@ -6,7 +6,7 @@ public class CustomPin : Pin
 {
 	public static readonly BindableProperty ImageSourceProperty =
 		BindableProperty.Create(nameof(ImageSource), typeof(ImageSource), typeof(CustomPin),
-		                        propertyChanged: OnImageSourceChanged);
+								propertyChanged: OnImageSourceChanged);
 
 	public ImageSource? ImageSource
 	{

@@ -1,4 +1,4 @@
-namespace PizzaStore.Application.UseCases.Pizza.Queries.GetPizza;
+﻿namespace PizzaStore.Application.UseCases.Pizza.Queries.GetPizza;
 
 using AutoMapper;
 using Interfaces.CQRS;

@@ -10,7 +10,7 @@ public class FlipAnimation : CommunityToolkit.Maui.Animations.BaseAnimation
 
 	public static readonly BindableProperty DirectionProperty =
 		BindableProperty.Create(nameof(Direction), typeof(FlipDirection), typeof(FlipAnimation), FlipDirection.Right,
-		                        BindingMode.TwoWay);
+								BindingMode.TwoWay);
 
 	public FlipDirection Direction
 	{

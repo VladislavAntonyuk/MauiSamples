@@ -1,4 +1,4 @@
-namespace MauiLocalization;
+﻿namespace MauiLocalization;
 using System;
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
