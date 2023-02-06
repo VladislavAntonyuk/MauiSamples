@@ -6,6 +6,8 @@
 ## Thank You
 
 Special thanks to my friends and sponsors: @PeterFucci, Gerald Versluis (jfversluis), @renatolopes, Glen Herman, Olexii, Brady, Yury Michurin.
+
+This project is tested with BrowserStack. License: MIT.
 ## Setup
 
 The development guide can be found at [SETUP.md](./SETUP.md).
