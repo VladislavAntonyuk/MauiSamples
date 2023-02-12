@@ -6,6 +6,8 @@
 
 !INCLUDE "md/thankyou.mdpp"
 
+This project is tested with BrowserStack.
+
 ## Setup
 
 The development guide can be found at [SETUP.md](./SETUP.md).
