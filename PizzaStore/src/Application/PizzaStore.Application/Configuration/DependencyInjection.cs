@@ -10,7 +10,7 @@ public static class DependencyInjection
 {
 	public static void AddApplication(this IServiceCollection services)
 	{
-		services.AddMediatR(Assembly.GetExecutingAssembly());
+		services.AddMediatR(config => config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 		services.AddTransient(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
 		services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehaviour<,>));
 		services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));

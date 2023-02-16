@@ -6,7 +6,10 @@
 
 !INCLUDE "md/thankyou.mdpp"
 
+
 This project is tested with BrowserStack.
+
+License: MIT.
 
 ## Setup
 
