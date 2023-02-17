@@ -15,7 +15,6 @@ public class MauiCodeBlockRenderer : AttributedTextObjectRenderer<CodeBlock>
 		attributes.SetBackgroundColor("#f5f2f0");
 		var randomColor = new Color(Random.Shared.Next(100), Random.Shared.Next(100), Random.Shared.Next(100));
 		attributes.SetForegroundColor(randomColor.ToArgbHex());
-		bool writeEndOfLines = true;
 
 		if (codeBlock.Lines.Lines != null)
 		{
@@ -23,16 +22,8 @@ public class MauiCodeBlockRenderer : AttributedTextObjectRenderer<CodeBlock>
 			var slices = lines.Lines;
 			for (int i = 0; i < lines.Count; i++)
 			{
-				if (!writeEndOfLines && i > 0)
-				{
-					renderer.WriteLine();
-				}
-
 				renderer.Write(ref slices[i].Slice);
-				if (writeEndOfLines)
-				{
-					renderer.WriteLine();
-				}
+				renderer.WriteLine();
 			}
 		}
 

@@ -10,7 +10,7 @@ using BottomSheetView = Tizen.UIExtensions.NUI.Popup;
 using BottomSheetView = Microsoft.UI.Xaml.Controls.Primitives.Popup;
 #endif
 
-public partial class MainPage : ContentPage
+public partial class MainPage : ContentPage, IDisposable
 {
 	BottomSheetView? bottomSheet;
 	public int Count { get; set; }
@@ -53,5 +53,10 @@ public partial class MainPage : ContentPage
 	private void OnCloseClicked(object? sender, EventArgs e)
 	{
 		bottomSheet?.CloseBottomSheet();
+	}
+
+	public void Dispose()
+	{
+		bottomSheet?.Dispose();
 	}
 }

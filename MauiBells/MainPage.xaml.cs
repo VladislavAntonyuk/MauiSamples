@@ -69,6 +69,7 @@ public sealed partial class MainPage : ContentPage, IDisposable
 		Accelerometer.Default.ShakeDetected -= ShakeDetected;
 		Accelerometer.Default.ReadingChanged -= ReadingChanged;
 		Accelerometer.Default.Stop();
+		audioPlayer?.Dispose();
 	}
 
 	async Task Flip(Label label, int text)

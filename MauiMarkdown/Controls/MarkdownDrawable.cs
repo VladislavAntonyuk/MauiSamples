@@ -41,7 +41,7 @@ public class MarkdownDrawable : IDrawable
 					  .UseEmojiAndSmiley()
 					  .UseEmphasisExtras();
 		var pipeline = builder.Build();
-		Markdig.Markdown.Convert(text, renderer, pipeline);
+		Markdown.Convert(text, renderer, pipeline);
 		return renderer.GetAttributedText();
 	}
 }

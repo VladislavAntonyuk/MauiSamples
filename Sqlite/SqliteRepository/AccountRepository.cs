@@ -1,44 +1,49 @@
 ﻿namespace SqliteRepository;
 using SQLite;
 
-public class AccountRepository
+public class AccountRepository : IDisposable
 {
-	private readonly SQLiteConnection _database;
+	private readonly SQLiteConnection database;
 
 	public AccountRepository(string dbName)
 	{
 		var dbPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), dbName);
-		_database = new SQLiteConnection(dbPath);
-		_database.CreateTable<Account>();
+		database = new SQLiteConnection(dbPath);
+		database.CreateTable<Account>();
 	}
 
 	public List<Account> GetAccounts()
 	{
-		return _database.Table<Account>().ToList();
+		return database.Table<Account>().ToList();
 	}
 
 	public int CreateAccount(Account account)
 	{
-		return _database.Insert(account);
+		return database.Insert(account);
 	}
 
 	public int UpdateAccount(Account account)
 	{
-		return _database.Update(account);
+		return database.Update(account);
 	}
 
 	public int DeleteAccount(Account account)
 	{
-		return _database.Delete(account);
+		return database.Delete(account);
 	}
 
 	public List<Account> QueryAccountWithPositiveBalance()
 	{
-		return _database.Query<Account>("SELECT * FROM Account WHERE Balance > 0");
+		return database.Query<Account>("SELECT * FROM Account WHERE Balance > 0");
 	}
 
 	public List<Account> LinqZeroBalance()
 	{
-		return _database.Table<Account>().Where(a => a.Balance == 0).ToList();
+		return database.Table<Account>().Where(a => a.Balance == 0).ToList();
+	}
+
+	public void Dispose()
+	{
+		database.Dispose();
 	}
 }

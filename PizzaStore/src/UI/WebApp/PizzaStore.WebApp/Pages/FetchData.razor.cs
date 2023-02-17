@@ -10,7 +10,7 @@ using PizzaStore.Application.UseCases.Pizza.Commands.Delete;
 using PizzaStore.Application.UseCases.Pizza.Commands.Update;
 using PizzaStore.Application.UseCases.Pizza.Queries.GetPizza;
 
-public partial class FetchData : PizzaStoreBaseComponent
+public partial class FetchData : PizzaStoreBaseComponent, IDisposable
 {
 	private readonly ICommand deleteCommand;
 	private readonly ICommand updateCommand;
@@ -104,5 +104,10 @@ public partial class FetchData : PizzaStoreBaseComponent
 		{
 			Snackbar.Add(result.Errors.FirstOrDefault("Error has occurred"), Severity.Error);
 		}
+	}
+
+	public void Dispose()
+	{
+		Snackbar.Dispose();
 	}
 }
