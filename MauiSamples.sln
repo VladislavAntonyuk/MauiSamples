@@ -154,7 +154,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiMarkdown", "MauiMarkdow
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IPTVPlayer", "IPTVPlayer\IPTVPlayer.csproj", "{C40B96EB-AF5C-4158-A3DF-C1C77DF878E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiDynamicConfiguration", "MauiDynamicConfiguration\MauiDynamicConfiguration.csproj", "{0EEE7254-A098-41F6-B189-CE2F03D9CB75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiDynamicConfiguration", "MauiDynamicConfiguration\MauiDynamicConfiguration.csproj", "{0EEE7254-A098-41F6-B189-CE2F03D9CB75}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiCaptcha", "MauiCaptcha\MauiCaptcha.csproj", "{B9EF0C37-6230-40CC-9D8E-9AD5A5F81141}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -417,6 +419,12 @@ Global
 		{0EEE7254-A098-41F6-B189-CE2F03D9CB75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EEE7254-A098-41F6-B189-CE2F03D9CB75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EEE7254-A098-41F6-B189-CE2F03D9CB75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9EF0C37-6230-40CC-9D8E-9AD5A5F81141}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9EF0C37-6230-40CC-9D8E-9AD5A5F81141}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9EF0C37-6230-40CC-9D8E-9AD5A5F81141}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{B9EF0C37-6230-40CC-9D8E-9AD5A5F81141}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9EF0C37-6230-40CC-9D8E-9AD5A5F81141}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9EF0C37-6230-40CC-9D8E-9AD5A5F81141}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

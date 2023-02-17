@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MauiCaptcha"
+             x:Class="MauiCaptcha.MainPage"
+             BackgroundColor="{DynamicResource PageBackgroundColor}">
+
+
+	<Grid RowDefinitions="Auto,Auto,Auto,*">
+		<Label Text="Android Captcha implementation using SafetyNet" Grid.Row="0"/>
+		<Button Text="Run Android Captcha Verification" Clicked="OnAndroidCaptchaVerificationClicked" Grid.Row="1"/>
+		<Label Text="Captcha in WebView" Grid.Row="2" Margin="0,100,0,0"/>
+		<BlazorWebView HostPage="wwwroot/index.html"
+		               UrlLoading="BlazorWebView_OnUrlLoading" Grid.Row="3"/>
+	</Grid>
+
+</ContentPage>

@@ -1,0 +1,17 @@
+# .NET MAUI Captcha
+
+!INCLUDE "./md/header.mdpp"
+
+Article: https://vladislavantonyuk.azurewebsites.net/articles/Integrate-captcha-in-.NET-MAUI-application
+
+## Images
+
+### Android Captcha
+
+![Android SafetyNet](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/36/Android.gif)
+
+### Windows Captcha
+
+![Windows](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/36/Windows.gif)
+
+!INCLUDE "./md/footer.mdpp"
