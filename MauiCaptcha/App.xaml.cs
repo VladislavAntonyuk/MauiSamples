@@ -1,12 +1,11 @@
-﻿namespace MauiCaptcha
-{
-	public partial class App : Application
-	{
-		public App()
-		{
-			InitializeComponent();
+﻿namespace MauiCaptcha;
 
-			MainPage = new MainPage();
-		}
+public partial class App : Application
+{
+	public App()
+	{
+		InitializeComponent();
+
+		MainPage = new MainPage();
 	}
 }

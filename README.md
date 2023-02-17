@@ -67,4 +67,6 @@ The development guide can be found at [SETUP.md](./SETUP.md).
 
 1. [MauiDynamicConfiguration](MauiDynamicConfiguration) - .NET MAUI integration with ConfigCat.
 
+1. [MauiCaptcha](MauiCaptcha) - Integrating captcha into a .NET MAUI application.
+
 [![Stand With Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd700.svg?labelColor=0057b7)](https://stand-with-ukraine.pp.ua)

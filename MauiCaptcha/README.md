@@ -2,7 +2,7 @@
 
 [![Buy Me A Coffee](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/misc/bmc-button.png)](https://www.buymeacoffee.com/vlad.antonyuk)
 
-Article: https://vladislavantonyuk.azurewebsites.net/articles/Integrate-captcha-in-.NET-MAUI-application
+Article: https://vladislavantonyuk.azurewebsites.net/articles/Integrating-captcha-into-a-.NET-MAUI-application
 
 ## Images
 

@@ -28,7 +28,11 @@ public class MarkdownDrawable : IDrawable
 		canvas.FontSize = fontSize;
 		canvas.FontColor = fontColor;
 		var attributedText = Read(text);
+#if WINDOWS
+		canvas.DrawString(attributedText.Text, 0, 0, Math.Max(0, markdownWidth), Math.Max(0, markdownHeight), HorizontalAlignment.Left, VerticalAlignment.Top);
+#else
 		canvas.DrawText(attributedText, 0, 0, markdownWidth, markdownHeight);
+#endif
 	}
 
 	private static IAttributedText Read(string text)

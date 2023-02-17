@@ -1,10 +1,9 @@
-﻿namespace RepositoryContributors
-{
-	using Foundation;
+﻿namespace RepositoryContributors;
 
-	[Register("AppDelegate")]
-	public class AppDelegate : MauiUIApplicationDelegate
-	{
-		protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
-	}
+using Foundation;
+
+[Register("AppDelegate")]
+public class AppDelegate : MauiUIApplicationDelegate
+{
+	protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
 }

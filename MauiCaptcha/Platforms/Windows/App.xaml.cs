@@ -1,24 +1,24 @@
-﻿// To learn more about WinUI, the WinUI project structure,
+﻿using Microsoft.UI.Xaml;
+
+// To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
-namespace MauiCaptcha.WinUI
+namespace MauiCaptcha.WinUI;
+
+/// <summary>
+/// Provides application-specific behavior to supplement the default Application class.
+/// </summary>
+public partial class App : MauiWinUIApplication
 {
-	using Microsoft.UI.Xaml;
-
 	/// <summary>
-	/// Provides application-specific behavior to supplement the default Application class.
+	/// Initializes the singleton application object.  This is the first line of authored code
+	/// executed, and as such is the logical equivalent of main() or WinMain().
 	/// </summary>
-	public partial class App : MauiWinUIApplication
+	public App()
 	{
-		/// <summary>
-		/// Initializes the singleton application object.  This is the first line of authored code
-		/// executed, and as such is the logical equivalent of main() or WinMain().
-		/// </summary>
-		public App()
-		{
-			this.InitializeComponent();
-		}
-
-		protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+		this.InitializeComponent();
 	}
+
+	protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
 }
+
