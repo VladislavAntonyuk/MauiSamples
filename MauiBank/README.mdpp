@@ -8,7 +8,7 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Replicate-a-bank-a
 
 ### Secure window
 
-![iOS](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/23/dotnet-maui-bank-secure.gif)
+![iOS](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/24/dotnet-maui-bank-secure.gif)
 
 ### Login Pin
 

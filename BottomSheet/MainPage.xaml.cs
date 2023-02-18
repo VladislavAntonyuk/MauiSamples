@@ -57,6 +57,8 @@ public partial class MainPage : ContentPage, IDisposable
 
 	public void Dispose()
 	{
+#if !WINDOWS
 		bottomSheet?.Dispose();
+#endif
 	}
 }

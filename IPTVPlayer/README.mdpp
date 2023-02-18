@@ -2,12 +2,4 @@
 
 !INCLUDE "./md/header.mdpp"
 
-Article: https://vladislavantonyuk.azurewebsites.net/articles/Creating-a-bottom-sheet-using-.NET-MAUI
-
-## Images
-
-### IPTV Player on Windows
-
-![IPTV Player on Windows](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/36/logo.gif)
-
 !INCLUDE "./md/footer.mdpp"
