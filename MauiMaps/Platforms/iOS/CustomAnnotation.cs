@@ -6,7 +6,7 @@ using UIKit;
 
 public class CustomAnnotation : MKPointAnnotation
 {
-	public Guid Identifier { get; set; }
-	public UIImage? Image { get; set; }
-	public required IMapPin Pin { get; set; }
+	public Guid Identifier { get; init; }
+	public UIImage? Image { get; init; }
+	public required IMapPin Pin { get; init; }
 }
