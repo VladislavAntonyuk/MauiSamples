@@ -1,23 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:mauiMaps="clr-namespace:MauiMaps"
-             x:Class="MauiMaps.MainPage">
+<ContentPage
+    x:Class="MauiMaps.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:mauiMaps="clr-namespace:MauiMaps"
+    xmlns:models="clr-namespace:MauiMaps.Models"
+    x:DataType="mauiMaps:MainPageViewModel">
 
-	<Grid RowDefinitions="*,*">
-		<Map x:Name="MyMap" Grid.Row="0"/>
-		<Map x:Name="MyMap2" ItemsSource="{Binding Sites}" Grid.Row="1">
-			<Map.ItemTemplate>
-				<DataTemplate x:DataType="{x:Type mauiMaps:Site}">
+    <Grid>
+        <Map
+            x:Name="MyMap"
+            IsShowingUser="True"
+            ItemsSource="{Binding LocationPins}">
+            <Map.ItemTemplate>
+                <DataTemplate x:DataType="{x:Type models:LocationPin}">
 					<mauiMaps:CustomPin
-						Location="{Binding .Location}"
-						Address="{Binding Address}"
-						Label="{Binding Description}"
-						ImageSource="{Binding ImageSource}"
-						Type="Place"/>
+	                    Location="{Binding Location}"
+	                    Address="{Binding Address}"
+	                    Label="{Binding Description}"
+	                    ImageSource="{Binding ImageSource}"
+	                    Type="Place"/>
 				</DataTemplate>
-			</Map.ItemTemplate>
-		</Map>
-	</Grid>
+            </Map.ItemTemplate>
+        </Map>
+        <Button
+            Margin="0,0,0,10"
+            BackgroundColor="White"
+            Command="{Binding AddCommand}"
+            FontAttributes="Bold"
+            HeightRequest="40"
+            HorizontalOptions="Center"
+            Text="Add new pin"
+            TextColor="Red"
+            VerticalOptions="End" />
+    </Grid>
 
 </ContentPage>

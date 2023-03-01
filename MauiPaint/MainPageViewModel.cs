@@ -233,14 +233,14 @@ public partial class MainPageViewModel : ObservableObject
 
 	async Task SaveToFile(Stream stream, string fileName, CancellationToken cancellationToken)
 	{
-		try
+		var saveResult = await fileSaver.SaveAsync(fileName, stream, cancellationToken);
+		if (saveResult.IsSuccessful)
 		{
-			var savedLocation = await fileSaver.SaveAsync(fileName, stream, cancellationToken);
-			await Toast.Make($"File is saved to {savedLocation}", ToastDuration.Long).Show(cancellationToken);
+			await Toast.Make($"File is saved to {saveResult.FilePath}", ToastDuration.Long).Show(cancellationToken);
 		}
-		catch (Exception e)
+		else
 		{
-			await Toast.Make($"File is not saved. Error:{e.Message}", ToastDuration.Long).Show(cancellationToken);
+			await Toast.Make($"File is not saved. Error:{saveResult.Exception.Message}", ToastDuration.Long).Show(cancellationToken);
 		}
 	}
 }
