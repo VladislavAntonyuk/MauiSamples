@@ -12,8 +12,8 @@ public partial class ChannelsViewModel : BaseViewModel
 {
 	readonly IPlaylistGenerator playlistGenerator;
 	IEnumerable<Channel> allItems;
-	
-	public ObservableCollection<Channel> Items { get; }= new();
+
+	public ObservableCollection<Channel> Items { get; } = new();
 
 	[ObservableProperty]
 	private string? filter;
