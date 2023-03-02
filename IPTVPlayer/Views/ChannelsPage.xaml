@@ -3,23 +3,34 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:IPTVPlayer.ViewModels"
              xmlns:models="clr-namespace:IPTVPlayer.Models"
+             xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="IPTVPlayer.Views.ChannelsPage"
              x:DataType="vm:ChannelsViewModel">
-	<RefreshView IsRefreshing="{Binding IsRefreshing}" Command="{Binding RefreshingCommand}">
-		<CollectionView ItemsSource="{Binding Items}">
-			<CollectionView.ItemTemplate>
-				<DataTemplate x:DataType="models:Channel">
-					<HorizontalStackLayout Margin="4" Padding="12">
-						<HorizontalStackLayout.GestureRecognizers>
-							<TapGestureRecognizer
+	<Grid RowDefinitions="60, *">
+		<Entry Placeholder="Search" Grid.Row="0" ClearButtonVisibility="WhileEditing">
+			<Entry.Behaviors>
+				<behaviors:EventToCommandBehavior
+					x:TypeArguments="TextChangedEventArgs"
+					EventName="TextChanged"
+					Command="{Binding SearchCommand}" />
+			</Entry.Behaviors>
+		</Entry>
+		<RefreshView IsRefreshing="{Binding LoadDataCommand.IsRunning}" Command="{Binding LoadDataCommand}" Grid.Row="1">
+			<CollectionView ItemsSource="{Binding Items}">
+				<CollectionView.ItemTemplate>
+					<DataTemplate x:DataType="models:Channel">
+						<HorizontalStackLayout Margin="4" Padding="12">
+							<HorizontalStackLayout.GestureRecognizers>
+								<TapGestureRecognizer
 								Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ChannelsViewModel}}, Path=GoToDetailsCommand}"
 								CommandParameter="{Binding .}" />
-						</HorizontalStackLayout.GestureRecognizers>
-						<Image Source="{Binding Image}" />
-						<Label Text="{Binding Name}" />
-					</HorizontalStackLayout>
-				</DataTemplate>
-			</CollectionView.ItemTemplate>
-		</CollectionView>
-	</RefreshView>
+							</HorizontalStackLayout.GestureRecognizers>
+							<Image Source="{Binding Image}" />
+							<Label Text="{Binding Name}" />
+						</HorizontalStackLayout>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>
+		</RefreshView>
+	</Grid>
 </ContentPage>

@@ -29,6 +29,6 @@ internal class TvUaPlaylistGenerator : IPlaylistGenerator
 			});
 		}
 
-		return playlist;
+		return playlist.OrderBy(x => x.Name);
 	}
 }

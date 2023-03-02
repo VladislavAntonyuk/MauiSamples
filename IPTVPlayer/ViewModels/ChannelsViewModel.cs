@@ -1,5 +1,6 @@
 ﻿namespace IPTVPlayer.ViewModels;
 
+using System;
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -10,36 +11,41 @@ using Views;
 public partial class ChannelsViewModel : BaseViewModel
 {
 	readonly IPlaylistGenerator playlistGenerator;
+	IEnumerable<Channel> allItems;
+	
+	public ObservableCollection<Channel> Items { get; }= new();
 
 	[ObservableProperty]
-	bool isRefreshing;
-
-	[ObservableProperty]
-	ObservableCollection<Channel> items = new();
+	private string? filter;
 
 	public ChannelsViewModel(IPlaylistGenerator service)
 	{
 		playlistGenerator = service;
+		allItems = new List<Channel>();
 	}
 
 	[RelayCommand]
-	private async Task OnRefreshing()
+	private void Search(TextChangedEventArgs eventArgs)
 	{
-		IsRefreshing = true;
-
-		try
-		{
-			await LoadDataAsync();
-		}
-		finally
-		{
-			IsRefreshing = false;
-		}
+		Filter = eventArgs.NewTextValue;
+		FilterData(Filter);
 	}
 
+	[RelayCommand]
 	public async Task LoadDataAsync()
 	{
-		Items = new ObservableCollection<Channel>(await playlistGenerator.GetPlaylist());
+		allItems = await playlistGenerator.GetPlaylist();
+		FilterData(Filter);
+	}
+
+	void FilterData(string? channelName)
+	{
+		var filtered = allItems.Where(x => x.Name != null && x.Name.Contains(channelName ?? string.Empty, StringComparison.InvariantCultureIgnoreCase));
+		Items.Clear();
+		foreach (var item in filtered)
+		{
+			Items.Add(item);
+		}
 	}
 
 	[RelayCommand]
