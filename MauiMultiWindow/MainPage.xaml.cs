@@ -13,6 +13,12 @@ public partial class MainPage : ContentPage
 		Application.Current?.OpenWindow(newWindow);
 	}
 
+	private void OpenModalClicked(object sender, EventArgs e)
+	{
+		var newWindow = new Window(new SecondPage() { Title = "I am modal"});
+		GetParentWindow().OpenModalWindow(newWindow);
+	}
+
 	private void CloseAllClicked(object sender, EventArgs e)
 	{
 		var windows = Application.Current?.Windows.Skip(1).ToArray();

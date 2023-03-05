@@ -10,3 +10,11 @@ class Program : MauiApplication
 		app.Run(args);
 	}
 }
+
+public static class WindowExtensions
+{
+	public static void OpenModalWindow(this Window parentWindow, Window modalWindow)
+	{
+
+	}
+}

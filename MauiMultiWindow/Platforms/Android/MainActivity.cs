@@ -6,3 +6,11 @@ using Android.Content.PM;
 public class MainActivity : MauiAppCompatActivity
 {
 }
+
+public static class WindowExtensions
+{
+	public static void OpenModalWindow(this Window parentWindow, Window modalWindow)
+	{
+
+	}
+}
