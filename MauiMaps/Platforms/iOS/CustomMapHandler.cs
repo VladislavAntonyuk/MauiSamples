@@ -45,13 +45,22 @@ public class CustomMapHandler : MapHandler
 	private static MKAnnotationView GetViewForAnnotations(MKMapView mapView, IMKAnnotation annotation)
 	{
 		MKAnnotationView? annotationView = null;
-
 		if (annotation is CustomAnnotation customAnnotation)
 		{
 			annotationView = mapView.DequeueReusableAnnotation(customAnnotation.Identifier.ToString()) ??
 							 new MKAnnotationView(annotation, customAnnotation.Identifier.ToString());
 			annotationView.Image = customAnnotation.Image;
 			annotationView.CanShowCallout = true;
+		}
+		else if (annotation is MKPointAnnotation mkAnnotation)
+		{
+			annotationView = mapView.DequeueReusableAnnotation("defaultPin") ??
+							 new MKMarkerAnnotationView(annotation, "defaultPin");
+			annotationView.CanShowCallout = true;
+		}
+		else
+		{
+			annotationView = new MKUserLocationView(annotation, null);
 		}
 
 		var result = annotationView ?? new MKAnnotationView(annotation, null);
