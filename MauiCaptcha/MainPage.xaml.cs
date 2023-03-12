@@ -1,4 +1,4 @@
-﻿namespace MauiCaptcha;
+namespace MauiCaptcha;
 
 using System.Net.Http.Json;
 using CommunityToolkit.Maui.Alerts;
@@ -12,7 +12,7 @@ public partial class MainPage : ContentPage
 	private const string AndroidSiteKey = "";
 	private const string AndroidSecretKey = "";
 	private const string WebSiteKey = "6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI";
-	private const string WebSecretKey = "";
+	private const string WebSecretKey = "6LeIxAcTAAAAAGG-vFI1TnRWxMZNFuojJ4WifJWe";
 
 	public MainPage()
 	{
@@ -53,6 +53,7 @@ public partial class MainPage : ContentPage
 
 	private async void BlazorWebView_OnUrlLoading(object? sender, UrlLoadingEventArgs e)
 	{
+		e.UrlLoadingStrategy = UrlLoadingStrategy.OpenInWebView;
 		var query = System.Web.HttpUtility.ParseQueryString(e.Url.Query);
 		var token = query.Get("token");
 		if (!string.IsNullOrEmpty(token))
