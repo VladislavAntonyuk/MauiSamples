@@ -25,5 +25,20 @@ public partial class MainPageViewModel : ObservableObject
 		LocationPins.Add(newLocation);
 	}
 
+	[RelayCommand]
+	private void Remove()
+	{
+		if (LocationPins.Count > 0)
+		{
+			LocationPins.RemoveAt(LocationPins.Count - 1);
+		}
+	}
+
+	[RelayCommand]
+	private void RemoveAll()
+	{
+		LocationPins.Clear();
+	}
+
 	public ObservableCollection<LocationPin> LocationPins { get; } = new();
 }

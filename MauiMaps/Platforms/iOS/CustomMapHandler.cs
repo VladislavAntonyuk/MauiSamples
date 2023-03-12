@@ -26,7 +26,7 @@ public class CustomMapHandler : MapHandler
 	{
 	}
 
-	public List<IMKAnnotation>? Markers { get; private set; }
+	public List<IMKAnnotation> Markers { get; } = new();
 
 	protected override void ConnectHandler(MauiMKMapView platformView)
 	{
@@ -44,7 +44,7 @@ public class CustomMapHandler : MapHandler
 
 	private static MKAnnotationView GetViewForAnnotations(MKMapView mapView, IMKAnnotation annotation)
 	{
-		MKAnnotationView? annotationView = null;
+		MKAnnotationView annotationView;
 		if (annotation is CustomAnnotation customAnnotation)
 		{
 			annotationView = mapView.DequeueReusableAnnotation(customAnnotation.Identifier.ToString()) ??
@@ -52,7 +52,7 @@ public class CustomMapHandler : MapHandler
 			annotationView.Image = customAnnotation.Image;
 			annotationView.CanShowCallout = true;
 		}
-		else if (annotation is MKPointAnnotation mkAnnotation)
+		else if (annotation is MKPointAnnotation)
 		{
 			annotationView = mapView.DequeueReusableAnnotation("defaultPin") ??
 							 new MKMarkerAnnotationView(annotation, "defaultPin");
@@ -106,16 +106,12 @@ public class CustomMapHandler : MapHandler
 	{
 		if (handler is CustomMapHandler mapHandler)
 		{
-			if (mapHandler.Markers != null)
+			foreach (var marker in mapHandler.Markers)
 			{
-				foreach (var marker in mapHandler.Markers)
-				{
-					mapHandler.PlatformView.RemoveAnnotation(marker);
-				}
-
-				mapHandler.Markers = null;
+				mapHandler.PlatformView.RemoveAnnotation(marker);
 			}
 
+			mapHandler.Markers.Clear();
 			mapHandler.AddPins(map.Pins);
 		}
 	}
@@ -127,7 +123,6 @@ public class CustomMapHandler : MapHandler
 			return;
 		}
 
-		Markers ??= new List<IMKAnnotation>();
 		foreach (var pin in mapPins)
 		{
 			var pinHandler = pin.ToHandler(MauiContext);

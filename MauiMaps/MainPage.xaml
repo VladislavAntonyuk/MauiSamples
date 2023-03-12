@@ -23,16 +23,21 @@
 				</DataTemplate>
             </Map.ItemTemplate>
         </Map>
-        <Button
+        <HorizontalStackLayout
             Margin="0,0,0,10"
             BackgroundColor="White"
-            Command="{Binding AddCommand}"
-            FontAttributes="Bold"
-            HeightRequest="40"
             HorizontalOptions="Center"
-            Text="Add new pin"
-            TextColor="Red"
-            VerticalOptions="End" />
+            VerticalOptions="End">
+            <Button
+                Command="{Binding AddCommand}"
+                Text="Add new pin" />
+            <Button
+                Command="{Binding RemoveCommand}"
+                Text="Remove last pin" />
+            <Button
+                Command="{Binding RemoveAllCommand}"
+                Text="Clear all pins" />
+        </HorizontalStackLayout>
     </Grid>
 
 </ContentPage>

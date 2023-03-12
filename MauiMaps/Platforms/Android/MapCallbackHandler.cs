@@ -1,8 +1,6 @@
 ﻿namespace MauiMaps;
 
 using Android.Gms.Maps;
-using Android.Gms.Maps.Model;
-using Android.Graphics;
 using Microsoft.Maui.Maps;
 using Microsoft.Maui.Maps.Handlers;
 

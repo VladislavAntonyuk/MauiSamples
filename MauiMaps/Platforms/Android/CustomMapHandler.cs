@@ -24,7 +24,7 @@ public class CustomMapHandler : MapHandler
 	{
 	}
 
-	public List<Marker>? Markers { get; private set; }
+	public List<Marker> Markers { get; } = new();
 
 	protected override void ConnectHandler(MapView platformView)
 	{
@@ -37,16 +37,7 @@ public class CustomMapHandler : MapHandler
 	{
 		if (handler is CustomMapHandler mapHandler)
 		{
-			if (mapHandler.Markers != null)
-			{
-				foreach (var marker in mapHandler.Markers)
-				{
-					marker.Remove();
-				}
-
-				mapHandler.Markers = null;
-			}
-
+			mapHandler.Markers.Clear();
 			mapHandler.AddPins(map.Pins);
 		}
 	}
@@ -58,7 +49,6 @@ public class CustomMapHandler : MapHandler
 			return;
 		}
 
-		Markers ??= new List<Marker>();
 		foreach (var pin in mapPins)
 		{
 			var pinHandler = pin.ToHandler(MauiContext);
