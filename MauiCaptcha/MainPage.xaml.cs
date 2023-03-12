@@ -1,4 +1,4 @@
-namespace MauiCaptcha;
+﻿namespace MauiCaptcha;
 
 using System.Net.Http.Json;
 using CommunityToolkit.Maui.Alerts;
