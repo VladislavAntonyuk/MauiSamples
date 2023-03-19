@@ -185,6 +185,11 @@ public partial class MainPageViewModel : ObservableObject
 		}
 
 		await using var stream = await fileResult.OpenReadAsync();
+		await OpenFile(stream, cancellationToken);
+	}
+
+	public async Task OpenFile(Stream stream, CancellationToken cancellationToken)
+	{
 		try
 		{
 			var projectState = await serializerService.Deserialize<ProjectState>(stream, cancellationToken);
@@ -203,7 +208,6 @@ public partial class MainPageViewModel : ObservableObject
 		{
 			await Toast.Make("Invalid file").Show(cancellationToken);
 		}
-
 	}
 
 	[RelayCommand]

@@ -1,9 +1,12 @@
 ﻿namespace MauiPaint;
 
 using System.Windows.Input;
+using Microsoft.Maui.Platform;
 
 public partial class MainPage : ContentPage
 {
+	private readonly MainPageViewModel mainPageViewModel;
+
 	public MainPage(MainPageViewModel mainPageViewModel, IDeviceInfo deviceInfo)
 	{
 		InitializeComponent();
@@ -17,8 +20,24 @@ public partial class MainPage : ContentPage
 			AddToolbarItem("Help", mainPageViewModel.HelpCommand);
 			AddToolbarItem("About", mainPageViewModel.AboutCommand);
 		}
-
 		BindingContext = mainPageViewModel;
+#if MACCATALYST || WINDOWS
+
+		Loaded += MainPage_Loaded;
+		this.mainPageViewModel = mainPageViewModel;
+	}
+
+	private void MainPage_Loaded(object? sender, EventArgs e)
+	{
+		if (Handler?.MauiContext != null)
+		{
+			var uiElement = this.ToPlatform(Handler.MauiContext);
+			DragDropHelper.RegisterDragDrop(uiElement, async stream =>
+			{
+				await mainPageViewModel.OpenFile(stream, CancellationToken.None);
+			});
+		}
+#endif
 	}
 
 	void AddToolbarItem(string text, ICommand command)
