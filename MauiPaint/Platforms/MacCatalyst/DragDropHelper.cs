@@ -1,52 +1,55 @@
 ﻿namespace MauiPaint;
 
+using CoreFoundation;
 using Foundation;
 using MobileCoreServices;
 using UIKit;
 
-public class DragDropHelper
+public static class DragDropHelper
 {
-	public static void RegisterDragDrop(UIView view)
+	public static void RegisterDragDrop(UIView view, Func<Stream, Task>? content)
 	{
-		var dropInteraction = new UIDropInteraction(new DropInteractionDelegate());
+		var dropInteraction = new UIDropInteraction(new DropInteractionDelegate()
+		{
+			Content = content
+		});
 		view.AddInteraction(dropInteraction);
+	}
+
+	public static void UnRegisterDragDrop(UIView view)
+	{
+		var dropInteractions = view.Interactions.OfType<UIDropInteraction>();
+		foreach (var interaction in dropInteractions)
+		{
+			view.RemoveInteraction(interaction);
+		}
 	}
 }
 
 class DropInteractionDelegate : UIDropInteractionDelegate
 {
-	public override bool CanHandleSession(UIDropInteraction interaction, IUIDropSession session)
+	public Func<Stream, Task>? Content { get; init; }
+
+	public override UIDropProposal SessionDidUpdate(UIDropInteraction interaction, IUIDropSession session)
 	{
-		var csTypeIdentifier = UniformTypeIdentifiers.UTType.CreateFromExtension("cs")?.Identifier;
-		var acceptedTypeIdentifiers = new [] { csTypeIdentifier };
-		return session.HasConformingItems(acceptedTypeIdentifiers!);
-		//return session.HasConformingItems(new string[] { UniformTypeIdentifiers.UTTypes.Text.Identifier });
+		return new UIDropProposal(UIDropOperation.Copy);
 	}
 
 	public override void PerformDrop(UIDropInteraction interaction, IUIDropSession session)
 	{
-		if (session.HasConformingItems(new string[]
-		    {
-			    UniformTypeIdentifiers.UTTypes.Text.Identifier
-			}))
+		foreach (var item in session.Items)
 		{
-			session.LoadObjects<NSString>((items) => {
-				if (items.Length > 0 && items[0] is NSString text)
+			item.ItemProvider.LoadItem(UniformTypeIdentifiers.UTTypes.Json.Identifier, null, async (data, error) =>
+			{
+				if (data is NSUrl nsData && !string.IsNullOrEmpty(nsData.Path))
 				{
-					// Handle dropped text
-					Console.WriteLine(text.ToString());
+					if (Content is not null)
+					{
+						var bytes = await File.ReadAllBytesAsync(nsData.Path);
+						await Content.Invoke(new MemoryStream(bytes));
+					}
 				}
 			});
 		}
-
-		session.LoadObjects<NSUrl>((items) => {
-			if (items.Length > 0 && items[0] is NSUrl text)
-			{
-				// Handle dropped text
-				Console.WriteLine(text.ToString());
-			}
-		});
-
-
 	}
 }

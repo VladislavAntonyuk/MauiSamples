@@ -4,13 +4,15 @@ using Microsoft.UI.Xaml;
 using DataPackageOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation;
 using DragEventArgs = Microsoft.UI.Xaml.DragEventArgs;
 using Application = Microsoft.Maui.Controls.Application;
+using System;
+using System.IO;
 
 namespace MauiPaint;
 
 
-public class DragDropHelper
+public static class DragDropHelper
 {
-	public static void RegisterDragDrop(UIElement element)
+	public static void RegisterDragDrop(UIElement element, Func<Stream, Task>? content)
 	{
 		element.AllowDrop = true;
 		element.Drop += OnDrop;
@@ -29,7 +31,7 @@ public class DragDropHelper
 		if (e.DataView.Contains(StandardDataFormats.StorageItems))
 		{
 			var deferral = e.GetDeferral();
-			var extensions = new List<string> { ".cs" };
+			var extensions = new List<string> { ".json" };
 			var isAllowed = false;
 			var items = await e.DataView.GetStorageItemsAsync();
 			foreach (var item in items)
@@ -57,10 +59,11 @@ public class DragDropHelper
 			{
 				if (item is StorageFile file)
 				{
-					var text = await FileIO.ReadTextAsync(file);
-					if (Application.Current?.MainPage != null)
+					if (Content is not null)
 					{
-						await Application.Current.MainPage.DisplayAlert("MauiPaint", text, "OK");
+						var text = await FileIO.ReadTextAsync(file);
+						var bytes = await File.ReadAllBytesAsync(nsData.Path);
+						await Content.Invoke(new MemoryStream(bytes));
 					}
 				}
 			}
