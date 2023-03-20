@@ -3,26 +3,41 @@ using Windows.Storage;
 using Microsoft.UI.Xaml;
 using DataPackageOperation = Windows.ApplicationModel.DataTransfer.DataPackageOperation;
 using DragEventArgs = Microsoft.UI.Xaml.DragEventArgs;
-using Application = Microsoft.Maui.Controls.Application;
-using System;
-using System.IO;
 
 namespace MauiPaint;
 
+using System.Text;
 
 public static class DragDropHelper
 {
 	public static void RegisterDragDrop(UIElement element, Func<Stream, Task>? content)
 	{
 		element.AllowDrop = true;
-		element.Drop += OnDrop;
+		element.Drop += async (s, e) =>
+		{
+			if (e.DataView.Contains(StandardDataFormats.StorageItems))
+			{
+				var items = await e.DataView.GetStorageItemsAsync();
+				foreach (var item in items)
+				{
+					if (item is StorageFile file)
+					{
+						if (content is not null)
+						{
+							var text = await FileIO.ReadTextAsync(file);
+							var bytes = Encoding.Default.GetBytes(text);
+							await content.Invoke(new MemoryStream(bytes));
+						}
+					}
+				}
+			}
+		};
 		element.DragOver += OnDragOver;
 	}
 
 	public static void UnRegisterDragDrop(UIElement element)
 	{
 		element.AllowDrop = false;
-		element.Drop -= OnDrop;
 		element.DragOver -= OnDragOver;
 	}
 
@@ -48,25 +63,5 @@ public static class DragDropHelper
 		}
 
 		e.AcceptedOperation = DataPackageOperation.None;
-	}
-
-	private static async void OnDrop(object sender, DragEventArgs e)
-	{
-		if (e.DataView.Contains(StandardDataFormats.StorageItems))
-		{
-			var items = await e.DataView.GetStorageItemsAsync();
-			foreach (var item in items)
-			{
-				if (item is StorageFile file)
-				{
-					if (Content is not null)
-					{
-						var text = await FileIO.ReadTextAsync(file);
-						var bytes = await File.ReadAllBytesAsync(nsData.Path);
-						await Content.Invoke(new MemoryStream(bytes));
-					}
-				}
-			}
-		}
 	}
 }
