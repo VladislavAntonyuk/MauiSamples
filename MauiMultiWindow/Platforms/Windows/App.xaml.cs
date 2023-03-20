@@ -18,11 +18,3 @@ public partial class App : MauiWinUIApplication
 
 	protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
 }
-
-public static class WindowExtensions
-{
-	public static void OpenModalWindow(this Window parentWindow, Window modalWindow)
-	{
-
-	}
-}

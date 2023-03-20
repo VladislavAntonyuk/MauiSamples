@@ -11,10 +11,10 @@ class Program : MauiApplication
 	}
 }
 
-public static class WindowExtensions
-{
-	public static void OpenModalWindow(this Window parentWindow, Window modalWindow)
-	{
-
-	}
-}
+//public static class WindowExtensions
+//{
+//	public static Task OpenModalWindow(this Window parentWindow, Window modalWindow)
+//	{
+//		return Task.CompletedTask;
+//	}
+//}
