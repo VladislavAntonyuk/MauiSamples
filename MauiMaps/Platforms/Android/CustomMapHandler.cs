@@ -52,7 +52,7 @@ public class CustomMapHandler : MapHandler
 		{
 			return;
 		}
-		
+
 		foreach (var pin in mapPins)
 		{
 			var pinHandler = pin.ToHandler(MauiContext);
