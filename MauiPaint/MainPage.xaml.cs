@@ -5,7 +5,9 @@ using Microsoft.Maui.Platform;
 
 public partial class MainPage : ContentPage
 {
+#if MACCATALYST || WINDOWS
 	private readonly MainPageViewModel mainPageViewModel;
+#endif
 
 	public MainPage(MainPageViewModel mainPageViewModel, IDeviceInfo deviceInfo)
 	{
@@ -22,9 +24,8 @@ public partial class MainPage : ContentPage
 		}
 		BindingContext = mainPageViewModel;
 #if MACCATALYST || WINDOWS
-
-		Loaded += MainPage_Loaded;
 		this.mainPageViewModel = mainPageViewModel;
+		Loaded += MainPage_Loaded;
 	}
 
 	private void MainPage_Loaded(object? sender, EventArgs e)
