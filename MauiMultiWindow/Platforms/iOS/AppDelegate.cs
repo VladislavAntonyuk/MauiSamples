@@ -1,4 +1,5 @@
 ﻿namespace MauiMultiWindow;
+
 using Foundation;
 
 [Register(nameof(AppDelegate))]

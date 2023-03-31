@@ -1,5 +1,7 @@
 ﻿namespace MauiMultiWindow;
 
+using CommunityToolkit.Maui.Alerts;
+
 public partial class MainPage : ContentPage
 {
 	public MainPage()
@@ -11,6 +13,30 @@ public partial class MainPage : ContentPage
 	{
 		var newWindow = new Window(new SecondPage());
 		Application.Current?.OpenWindow(newWindow);
+	}
+
+	private async void OpenModalClicked(object sender, EventArgs e)
+	{
+		var view = new ModalWindow<string>
+		{
+			Content = new VerticalStackLayout
+			{
+				new Label
+				{
+					Text = "I am a modal window"
+				}
+			},
+			SubmitContentAction = async () =>
+			{
+				await Task.Delay(1000);
+				return "Done";
+			},
+			SubmitContent = "Submit",
+			CancelContent = "Close"
+		};
+		var result = await GetParentWindow().OpenModalWindow(view);
+		await Task.Delay(100);
+		await Toast.Make($"Modal window is closed with result: {result}").Show();
 	}
 
 	private void CloseAllClicked(object sender, EventArgs e)
