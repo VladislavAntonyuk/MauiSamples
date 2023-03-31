@@ -1,6 +1,5 @@
 ﻿namespace MauiMultiWindow;
 
-using Maui.BindableProperty.Generator.Core;
 using CommunityToolkit.Maui.Alerts;
 
 public partial class MainPage : ContentPage
@@ -18,27 +17,22 @@ public partial class MainPage : ContentPage
 
 	private async void OpenModalClicked(object sender, EventArgs e)
 	{
-		var view = new ModalWindow<string>()
+		var view = new ModalWindow<string>
 		{
-			Content = new VerticalStackLayout()
+			Content = new VerticalStackLayout
 			{
-				new Label()
+				new Label
 				{
 					Text = "I am a modal window"
-				}	
+				}
 			},
-			SubmitContentAction = async () => {
+			SubmitContentAction = async () =>
+			{
 				await Task.Delay(1000);
 				return "Done";
 			},
-			SubmitContent = new Label()
-			{
-				Text = "OK"
-			},
-			CancelContent = new Label()
-			{
-				Text = "Cancel"
-			}
+			SubmitContent = "Submit",
+			CancelContent = "Close"
 		};
 		var result = await GetParentWindow().OpenModalWindow(view);
 		await Task.Delay(100);
@@ -53,17 +47,4 @@ public partial class MainPage : ContentPage
 			Application.Current?.CloseWindow(window);
 		}
 	}
-}
-
-
-public partial class ModalWindow<T> : ContentView
-{
-	[AutoBindable]
-	private Func<Task<T?>> submitContentAction = new Func<Task<T?>>(() => Task.FromResult<T?>(default));
-
-	[AutoBindable]
-	private View submitContent = new Button() { Text = "OK"};
-
-	[AutoBindable]
-	private View cancelContent = new Button() { Text = "Cancel"};
 }

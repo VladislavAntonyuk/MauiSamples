@@ -1,4 +1,5 @@
 ﻿namespace MauiMultiWindow;
+
 using UIKit;
 
 public class Program

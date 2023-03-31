@@ -2,10 +2,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiMultiWindow.SecondPage">
 
-    <Button 
-        Text="Close current window"
-        FontAttributes="Bold"
-        SemanticProperties.Hint="Close current window"
-        Clicked="CloseClicked"
-        HorizontalOptions="Center" />
+	<Button
+		Text="Close current window"
+		FontAttributes="Bold"
+		SemanticProperties.Hint="Close current window"
+		Clicked="CloseClicked"
+		HorizontalOptions="Center" />
 </ContentPage>

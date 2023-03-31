@@ -1,30 +1,29 @@
 ﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiMultiWindow.MainPage"
-             >
+             x:Class="MauiMultiWindow.MainPage">
 
-    <HorizontalStackLayout>
-        <Button 
-            Text="Open new window"
-            FontAttributes="Bold"
-            SemanticProperties.Hint="Open new window"
-            Clicked="OpenClicked"
-            HorizontalOptions="Center" />
+	<HorizontalStackLayout>
+		<Button
+			Text="Open new window"
+			FontAttributes="Bold"
+			SemanticProperties.Hint="Open new window"
+			Clicked="OpenClicked"
+			HorizontalOptions="Center" />
 
-        <Button 
-            Text="Open modal window"
-            FontAttributes="Bold"
-            SemanticProperties.Hint="Open modal window"
-            Clicked="OpenModalClicked"
-            HorizontalOptions="Center" />
-    
-        <Button 
-            Text="Close all windows"
-            FontAttributes="Bold"
-            SemanticProperties.Hint="Close all windows"
-            Clicked="CloseAllClicked"
-            HorizontalOptions="Center" />
-    </HorizontalStackLayout>
-    
+		<Button
+			Text="Open modal window"
+			FontAttributes="Bold"
+			SemanticProperties.Hint="Open modal window"
+			Clicked="OpenModalClicked"
+			HorizontalOptions="Center" />
+
+		<Button
+			Text="Close all windows"
+			FontAttributes="Bold"
+			SemanticProperties.Hint="Close all windows"
+			Clicked="CloseAllClicked"
+			HorizontalOptions="Center" />
+	</HorizontalStackLayout>
+
 
 </ContentPage>

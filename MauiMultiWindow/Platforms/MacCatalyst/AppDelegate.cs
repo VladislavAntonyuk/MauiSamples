@@ -1,4 +1,5 @@
 ﻿namespace MauiMultiWindow;
+
 using Foundation;
 using Microsoft.Maui.LifecycleEvents;
 using SpriteKit;

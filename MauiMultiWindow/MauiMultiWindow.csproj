@@ -3,7 +3,7 @@
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
 		<RootNamespace>MauiMultiWindow</RootNamespace>
-    
+
 		<!-- Display name -->
 		<ApplicationTitle>MauiMultiWindow</ApplicationTitle>
 
@@ -25,7 +25,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="CommunityToolkit.Maui" Version="5.0.0" />
-	  <PackageReference Include="M.BindableProperty.Generator" Version="0.10.0" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="5.0.0" />
 	</ItemGroup>
 </Project>
