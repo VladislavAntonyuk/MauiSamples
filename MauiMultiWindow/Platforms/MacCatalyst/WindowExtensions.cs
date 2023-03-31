@@ -41,8 +41,8 @@ public static class WindowExtensions
 
 		var preferredContentSize = contentSize.Request.ToCGSize() + new CGSize(50, 50);
 		contentView.Frame = new CGRect((preferredContentSize.Width - contentSize.Request.Width) / 2,
-		                               (preferredContentSize.Height - contentSize.Request.Height) / 2,
-		                               contentSize.Request.Width, contentSize.Request.Height);
+									   (preferredContentSize.Height - contentSize.Request.Height) / 2,
+									   contentSize.Request.Width, contentSize.Request.Height);
 
 		return (contentView, preferredContentSize);
 	}
