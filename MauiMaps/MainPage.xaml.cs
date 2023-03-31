@@ -15,30 +15,30 @@ public partial class MainPage : ContentPage
 
 	void InitMap1()
 	{
-		var customPinFromUri = new CustomPin()
+		var pinKyiv = new CustomPin()
 		{
-			Label = "From Uri",
-			Location = new Location(10, 10),
-			Address = "Address",
-			ImageSource = ImageSource.FromUri(new Uri("https://picsum.photos/50"))
+			Label = "Kyiv",
+			Location = new Location(50.45466, 30.5238),
+			Address = "Ukraine",
+			ImageSource = ImageSource.FromUri(new Uri("https://www.gamesatlas.com/images/football/teams/ukraine/dynamo-kyiv.png"))
 		};
-		var customPinFromResource = new CustomPin()
+		var pinSimferopol = new CustomPin()
 		{
-			Label = "From Resource",
-			Location = new Location(12, 12),
-			Address = "Address3",
-			ImageSource = ImageSource.FromResource("MauiMaps.Resources.EmbeddedImages.icon.jpeg")
+			Label = "Simferopol",
+			Location = new Location(44.95719, 34.11079),
+			Address = "Crimea, Ukraine",
+			ImageSource = ImageSource.FromResource("MauiMaps.Resources.EmbeddedImages.Tavriya.png")
 		};
-		MyMap.Pins.Add(customPinFromUri);
-		MyMap.Pins.Add(customPinFromResource);
-		customPinFromUri.InfoWindowClicked += async delegate
+		MyMap.Pins.Add(pinKyiv);
+		MyMap.Pins.Add(pinSimferopol);
+		pinKyiv.InfoWindowClicked += async delegate
 		{
-			await Toast.Make("Info Window is clicked").Show();
+			await Toast.Make("The capital of Ukraine").Show();
 		};
-		customPinFromUri.MarkerClicked += async delegate
+		pinSimferopol.MarkerClicked += async delegate
 		{
-			await Toast.Make("Marker is clicked").Show();
+			await Toast.Make("Welcome to Crimea").Show();
 		};
-		MyMap.MoveToRegion(new MapSpan(new Location(10, 10), 10, 10));
+		MyMap.MoveToRegion(new MapSpan(new Location(47, 31), 10, 15));
 	}
 }

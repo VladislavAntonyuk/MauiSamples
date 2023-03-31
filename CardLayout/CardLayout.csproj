@@ -25,7 +25,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="M.BindableProperty.Generator" Version="0.9.3" />
+		<PackageReference Include="M.BindableProperty.Generator" Version="0.10.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
 	</ItemGroup>
 

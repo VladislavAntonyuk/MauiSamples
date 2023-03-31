@@ -20,7 +20,7 @@ public partial class MainPageViewModel : ObservableObject
 	{
 		var newLocation = fixture.Build<LocationPin>()
 								 .With(x => x.ImageSource, ImageSource.FromUri(new Uri($"https://picsum.photos/{Random.Shared.Next(40, 60)}")))
-								 .With(x => x.Location, new Location(Random.Shared.Next(5, 15), Random.Shared.Next(5, 15)))
+								 .With(x => x.Location, new Location(Random.Shared.Next(44, 51), Random.Shared.Next(23, 40)))
 								 .Create();
 		LocationPins.Add(newLocation);
 	}

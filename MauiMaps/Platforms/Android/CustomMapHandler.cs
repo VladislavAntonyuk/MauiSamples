@@ -37,7 +37,11 @@ public class CustomMapHandler : MapHandler
 	{
 		if (handler is CustomMapHandler mapHandler)
 		{
-			mapHandler.Markers.Clear();
+			foreach (var marker in mapHandler.Markers)
+			{
+				marker.Remove();
+			}
+
 			mapHandler.AddPins(map.Pins);
 		}
 	}
@@ -75,7 +79,7 @@ public class CustomMapHandler : MapHandler
 		}
 	}
 
-	private static void AddMarker(GoogleMap map, IMapPin pin, List<Marker> markers, MarkerOptions markerOption)
+	private static void AddMarker(GoogleMap map, IMapPin pin, ICollection<Marker> markers, MarkerOptions markerOption)
 	{
 		var marker = map.AddMarker(markerOption);
 		pin.MarkerId = marker.Id;
