@@ -1,11 +1,12 @@
 ﻿namespace MauiMultiWindow;
 
+using System.Threading.Tasks;
 using Microsoft.Maui.Platform;
 using Microsoft.UI.Xaml.Controls;
 
 public static class WindowExtensions
 {
-	public static async Task OpenModalWindow(this Window parentWindow, IView content)
+	public static Task<T?> OpenModalWindow<T>(this Window parentWindow, ModalWindow<T> content)
 	{
 		ArgumentNullException.ThrowIfNull(parentWindow.Page?.Handler?.MauiContext);
 		var xamlRoot = parentWindow.Page.ToPlatform(parentWindow.Page.Handler.MauiContext).XamlRoot;
@@ -16,5 +17,6 @@ public static class WindowExtensions
 		};
 
 		var result = await dialog.ShowAsync();
+		return result;
 	}
 }

@@ -1,47 +1,56 @@
 ﻿namespace MauiMultiWindow;
 
-using Foundation;
+using CoreGraphics;
 using Microsoft.Maui.Platform;
 using UIKit;
 
 public static class WindowExtensions
 {
-	public static Task OpenModalWindow(this Window parentWindow, IView content)
+	public static Task<T?> OpenModalWindow<T>(this Window parentWindow, ModalWindow<T> content)
 	{
+		ArgumentNullException.ThrowIfNull(parentWindow.Handler.MauiContext);
+		var taskCompletionSource = new TaskCompletionSource<T?>();
 		var parentUIWindow = parentWindow.Handler.PlatformView as UIWindow ?? throw new Exception();
-		var modalUIWindow = content.ToPlatform(parentWindow.Handler.MauiContext!) as UIWindow ?? throw new Exception();
-		//parentUIWindow.RootViewController?.PresentViewController(modalUIWindow.RootViewController ?? throw new Exception(), true, null) ;
-		var modalViewController = modalUIWindow.RootViewController ?? throw new Exception();
-#pragma warning disable CA1422 // Validate platform compatibility
-		//parentUIWindow.RootViewController?.PresentModalViewController(modalViewController, true);
-#pragma warning restore CA1422 // Validate platform compatibility
+		
+		var modalWindowViewController = new UIViewController();
+		var (contentView, size) = GetContentView(content.Content, parentWindow.Handler.MauiContext);
+		modalWindowViewController.PreferredContentSize = size;
+		modalWindowViewController.View?.AddSubview(contentView);
+		var navigationController = new UINavigationController(modalWindowViewController);
 
-		//	UIApplication.SharedApplication.RequestSceneSessionActivation(parentUIWindow.WindowScene!.Session, modalUIWindow.UserActivity, null, null);
+		modalWindowViewController.NavigationItem.LeftBarButtonItem = GetActionButton(content.CancelContent, () =>
+		{
+			parentUIWindow.RootViewController?.DismissViewController(true, taskCompletionSource.SetCanceled);
+		}, parentWindow.Handler.MauiContext);
+		modalWindowViewController.NavigationItem.RightBarButtonItem = GetActionButton(content.SubmitContent, async () =>
+		{
+			var result = await content.SubmitContentAction();
+			parentUIWindow.RootViewController?.DismissViewController(true, () => taskCompletionSource.SetResult(result));
+		}, parentWindow.Handler.MauiContext);
 
-		var window = CreatePlatformWindow(Application.Current!, modalUIWindow.WindowScene, null);
-		var scenes = UIApplication.SharedApplication.ConnectedScenes.ToArray().Select(x=>x.Delegate).ToList();
-		//.SetWindow(window!);
-		UIApplication.SharedApplication.Delegate.GetWindow()?.MakeKeyAndVisible();
-		return Task.CompletedTask;
+		parentUIWindow.RootViewController?.PresentViewController(navigationController, true, null);
+		return taskCompletionSource.Task;
 	}
 
-	static UIWindow? CreatePlatformWindow(IApplication application, UIWindowScene? windowScene, NSDictionary[]? states)
+	private static (UIView, CGSize) GetContentView(View content, IMauiContext mauiContext)
 	{
-		if (application.Handler?.MauiContext is not IMauiContext applicationContext)
-			return null;
+		var contentView = content.ToPlatform(mauiContext);
+		var contentSize = content.Measure(double.PositiveInfinity, double.PositiveInfinity, MeasureFlags.IncludeMargins);
+		
+		var preferredContentSize = contentSize.Request.ToCGSize() + new CGSize(50, 50);
+		contentView.Frame = new CGRect(
+			(preferredContentSize.Width - contentSize.Request.Width) / 2,
+			(preferredContentSize.Height - contentSize.Request.Height) / 2,
+			contentSize.Request.Width,
+			contentSize.Request.Height);
 
-		var uiWindow = windowScene is not null
-#pragma warning disable CA1416 // UIWindow(windowScene) is only supported on: ios 13.0 and later
-			? new UIWindow(windowScene)
-#pragma warning restore CA1416
-			: new UIWindow();
+		return (contentView, preferredContentSize);
+	}
 
-		var activationState = new ActivationState(applicationContext, states);
-
-		var mauiWindow = application.CreateWindow(activationState);
-
-		uiWindow.SetWindowHandler(mauiWindow, applicationContext);
-
-		return uiWindow;
+	private static UIBarButtonItem GetActionButton(View content, Action action, IMauiContext mauiContext)
+	{
+		var uiView = content.ToPlatform(mauiContext);
+		uiView.AddGestureRecognizer(new UITapGestureRecognizer(action));
+		return new UIBarButtonItem(uiView);
 	}
 }
