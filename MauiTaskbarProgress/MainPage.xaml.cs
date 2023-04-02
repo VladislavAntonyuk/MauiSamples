@@ -7,7 +7,7 @@ public partial class MainPage : ContentPage
 	{
 		InitializeComponent();
 	}
-	
+
 	private void Slider_OnValueChanged(object? sender, ValueChangedEventArgs e)
 	{
 #if MACCATALYST
