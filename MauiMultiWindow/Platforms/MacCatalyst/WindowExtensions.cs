@@ -6,7 +6,7 @@ using UIKit;
 
 public static class WindowExtensions
 {
-	public static Task<T?> OpenModalWindow<T>(this Window parentWindow, ModalWindow<T> content)
+	public static Task<T?> OpenModalWindowAsync<T>(this Window parentWindow, ModalWindow<T> content)
 	{
 		ArgumentNullException.ThrowIfNull(parentWindow.Handler.MauiContext);
 		var taskCompletionSource = new TaskCompletionSource<T?>();

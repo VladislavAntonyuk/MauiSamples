@@ -2,12 +2,14 @@
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<RootNamespace>MauiDynamicConfiguration</RootNamespace>
-		<ApplicationTitle>MauiDynamicConfiguration</ApplicationTitle>
+		<RootNamespace>MauiTaskbarProgress</RootNamespace>
+
+		<!-- Display name -->
+		<ApplicationTitle>MauiTaskbarProgress</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.vladislavantonyuk.mauidynamicconfiguration</ApplicationId>
-		<ApplicationIdGuid>a63d6b96-1502-4d5f-92fb-8274f389e879</ApplicationIdGuid>
+		<ApplicationId>com.vladislavantonyuk.mauitaskbarprogress</ApplicationId>
+		<ApplicationIdGuid>c6175817-ac84-4f34-bf81-ca8cbf797724</ApplicationIdGuid>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -20,12 +22,9 @@
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
-
-		<!-- Images -->
-		<MauiImage Include="Resources\Images\*.png" />
 	</ItemGroup>
-	<ItemGroup>
-	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
-	  <PackageReference Include="ConfigCat.Client" Version="7.2.0" />
+
+	<ItemGroup Condition="$(TargetFramework.Contains('-windows')) == true">
+	  <PackageReference Include="WindowsAPICodePack" Version="7.0.4" />
 	</ItemGroup>
 </Project>

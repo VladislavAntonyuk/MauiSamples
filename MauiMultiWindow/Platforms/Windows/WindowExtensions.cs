@@ -6,7 +6,7 @@ using Microsoft.UI.Xaml.Controls;
 
 public static class WindowExtensions
 {
-	public static async Task<T?> OpenModalWindow<T>(this Window parentWindow, ModalWindow<T> content)
+	public static async Task<T?> OpenModalWindowAsync<T>(this Window parentWindow, ModalWindow<T> content)
 	{
 		ArgumentNullException.ThrowIfNull(parentWindow.Page?.Handler?.MauiContext);
 		var xamlRoot = parentWindow.Page.ToPlatform(parentWindow.Page.Handler.MauiContext).XamlRoot;

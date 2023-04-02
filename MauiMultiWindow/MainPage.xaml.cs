@@ -34,7 +34,7 @@ public partial class MainPage : ContentPage
 			SubmitContent = "Submit",
 			CancelContent = "Close"
 		};
-		var result = await GetParentWindow().OpenModalWindow(view);
+		var result = await GetParentWindow().OpenModalWindowAsync(view);
 		await Task.Delay(100);
 		await Toast.Make($"Modal window is closed with result: {result}").Show();
 	}
