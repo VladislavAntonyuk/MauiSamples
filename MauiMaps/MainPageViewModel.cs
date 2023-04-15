@@ -9,6 +9,7 @@ using Models;
 public partial class MainPageViewModel : ObservableObject
 {
 	private readonly IFixture fixture;
+	private LocationPin? currentLocationPin;
 
 	public MainPageViewModel(IFixture fixture)
 	{
@@ -38,6 +39,31 @@ public partial class MainPageViewModel : ObservableObject
 	private void RemoveAll()
 	{
 		LocationPins.Clear();
+	}
+
+	[RelayCommand(IncludeCancelCommand = true, AllowConcurrentExecutions = false)]
+	private async Task RealTimeLocationTracker(CancellationToken cancellationToken)
+	{
+		var progress = new Progress<Location>(location =>
+		{
+			if (currentLocationPin is null)
+			{
+				currentLocationPin = new LocationPin
+				{
+					ImageSource = ImageSource.FromUri(new Uri($"https://picsum.photos/{Random.Shared.Next(40, 60)}")),
+					Location = location,
+					Description = "I am here!"
+				};
+			}
+			else
+			{
+				LocationPins.Remove(currentLocationPin);
+				currentLocationPin.Location = location;
+			}
+
+			LocationPins.Add(currentLocationPin);
+		});
+		await Geolocator.Default.StartListening(progress, cancellationToken);
 	}
 
 	public ObservableCollection<LocationPin> LocationPins { get; } = new();

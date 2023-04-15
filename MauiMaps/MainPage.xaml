@@ -7,37 +7,44 @@
     xmlns:models="clr-namespace:MauiMaps.Models"
     x:DataType="mauiMaps:MainPageViewModel">
 
-    <Grid>
-        <Map
+	<Grid>
+		<Map
             x:Name="MyMap"
-            IsShowingUser="True"
             ItemsSource="{Binding LocationPins}">
-            <Map.ItemTemplate>
-                <DataTemplate x:DataType="{x:Type models:LocationPin}">
+			<Map.ItemTemplate>
+				<DataTemplate x:DataType="{x:Type models:LocationPin}">
 					<mauiMaps:CustomPin
-	                    Location="{Binding Location}"
+						Location="{Binding Location}"
 	                    Address="{Binding Address}"
 	                    Label="{Binding Description}"
 	                    ImageSource="{Binding ImageSource}"
 	                    Type="Place"/>
 				</DataTemplate>
-            </Map.ItemTemplate>
-        </Map>
-        <HorizontalStackLayout
-            Margin="0,0,0,10"
-            BackgroundColor="White"
-            HorizontalOptions="Center"
-            VerticalOptions="End">
-            <Button
+			</Map.ItemTemplate>
+		</Map>
+		<ScrollView Orientation="Horizontal"
+		            Margin="0,0,0,10"
+		            BackgroundColor="White"
+		            HorizontalOptions="Center"
+		            VerticalOptions="End">
+			<HorizontalStackLayout>
+				<Button
                 Command="{Binding AddCommand}"
                 Text="Add new pin" />
-            <Button
+				<Button
                 Command="{Binding RemoveCommand}"
                 Text="Remove last pin" />
-            <Button
+				<Button
                 Command="{Binding RemoveAllCommand}"
                 Text="Clear all pins" />
-        </HorizontalStackLayout>
-    </Grid>
+				<Button
+                Command="{Binding RealTimeLocationTrackerCommand}"
+                Text="Start real time location tracking" />
+				<Button
+                Command="{Binding RealTimeLocationTrackerCancelCommand}"
+                Text="Stop real time location tracking" />
+			</HorizontalStackLayout>
+		</ScrollView>
+	</Grid>
 
 </ContentPage>

@@ -27,9 +27,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-        <PackageReference Include="CommunityToolkit.Maui" Version="5.0.0" />
+        <PackageReference Include="CommunityToolkit.Maui" Version="5.1.0" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.4" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="7.0.5" />
     </ItemGroup>
 
 	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' or $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) =='maccatalyst' ">
