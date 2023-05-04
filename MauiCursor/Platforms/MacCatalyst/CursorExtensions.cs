@@ -18,7 +18,7 @@ public static class CursorExtensions
 				view.RemoveGestureRecognizer(recognizer);
 			}
 		}
-		
+
 		view.AddGestureRecognizer(new PointerUIHoverGestureRecognizer(r =>
 		{
 			switch (r.State)
