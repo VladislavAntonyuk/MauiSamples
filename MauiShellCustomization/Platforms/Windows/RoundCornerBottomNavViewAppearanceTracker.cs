@@ -1,0 +1,6 @@
+﻿namespace MauiShellCustomization;
+
+class RoundCornerBottomNavViewAppearanceTracker
+{
+
+}

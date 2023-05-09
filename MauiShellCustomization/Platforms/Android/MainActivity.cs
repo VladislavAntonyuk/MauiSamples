@@ -2,7 +2,7 @@
 using Android.Content.PM;
 using Android.OS;
 
-namespace MauiCursor;
+namespace MauiShellCustomization;
 
 [Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true,
 		  ConfigurationChanges = ConfigChanges.ScreenSize |

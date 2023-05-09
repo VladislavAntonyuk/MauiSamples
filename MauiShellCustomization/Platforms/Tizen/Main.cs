@@ -2,7 +2,7 @@
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 
-namespace MauiCursor;
+namespace MauiShellCustomization;
 
 class Program : MauiApplication
 {
