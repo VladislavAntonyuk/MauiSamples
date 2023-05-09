@@ -366,3 +366,4 @@ FodyWeavers.xsd
 .DS_Store
 
 .idea/
+workload-install.ps1

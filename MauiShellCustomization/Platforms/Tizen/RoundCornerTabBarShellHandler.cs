@@ -3,10 +3,12 @@ using Microsoft.Maui.Controls.Platform.Compatibility;
 
 namespace MauiShellCustomization;
 
-class RoundCornerTabBarShellHandler : ShellRenderer
+class RoundCornerTabBarShellHandler : ShellHandler
 {
-	protected override IShellBottomNavViewAppearanceTracker CreateBottomNavViewAppearanceTracker(ShellItem shellItem)
+	protected override ShellView CreatePlatformView()
 	{
-		return new RoundCornerBottomNavViewAppearanceTracker();
+		var view = base.CreatePlatformView();
+		//view.Margin = new Microsoft.UI.Xaml.Thickness(20, 20, 20, 20);
+		return view;
 	}
 }

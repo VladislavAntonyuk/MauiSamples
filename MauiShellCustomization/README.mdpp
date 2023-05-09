@@ -1,0 +1,17 @@
+# .NET MAUI Shell Customization
+
+!INCLUDE "./md/header.mdpp"
+
+Article: https://vladislavantonyuk.azurewebsites.net/articles/Customizing-.NET-MAUI-Shell
+
+## Images
+
+### Android
+
+![Android](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/41/android.png)
+
+### iOS
+
+![iOS](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/41/ios.png)
+
+!INCLUDE "./md/footer.mdpp"

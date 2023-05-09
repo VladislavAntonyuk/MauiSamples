@@ -10,10 +10,10 @@ public static class CursorExtensions
 {
 	public static void SetCustomCursor(this VisualElement visualElement, CursorIcon cursor, IMauiContext? mauiContext)
 	{
-		ArgumentNullException.ThrowIfNull(mauiContext);
-		var view = visualElement.ToPlatform(mauiContext);
 		if (OperatingSystem.IsAndroidVersionAtLeast(24))
 		{
+			ArgumentNullException.ThrowIfNull(mauiContext);
+			var view = visualElement.ToPlatform(mauiContext);
 			view.PointerIcon = PointerIcon.GetSystemIcon(Application.Context, GetCursor(cursor));
 		}
 	}

@@ -49,7 +49,7 @@ The development guide can be found at [SETUP.md](./SETUP.md).
 
 1. [iOS Widgets](iOSExtensions/JokeApp) - Extend .NET MAUI application with iOS Widgets.
 
-1. [MauiMaps](MauiMaps) - Customize map pins in .NET MAUI.
+1. [MauiMaps](MauiMaps) - Customize map pins in .NET MAUI. Location lifetime tracking.
 
 1. [MauiBluetooth](MauiBluetooth) - Bluetooth + BLE.
 
@@ -68,5 +68,9 @@ The development guide can be found at [SETUP.md](./SETUP.md).
 1. [MauiDynamicConfiguration](MauiDynamicConfiguration) - .NET MAUI integration with ConfigCat.
 
 1. [MauiCaptcha](MauiCaptcha) - Integrating captcha into a .NET MAUI application.
+
+1. [MauiCursor](MauiCursor) - Setting a cursor for .NET MAUI VisualElement.
+
+1. [MauiShellCustomization](MauiShellCustomization) - Customizing .NET MAUI Shell.
 
 !INCLUDE "md/footer.mdpp"
