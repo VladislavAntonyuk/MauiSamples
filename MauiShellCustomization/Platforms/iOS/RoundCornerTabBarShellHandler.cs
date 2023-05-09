@@ -5,8 +5,8 @@ namespace MauiShellCustomization;
 
 class RoundCornerTabBarShellHandler : ShellRenderer
 {
-    protected override IShellTabBarAppearanceTracker CreateTabBarAppearanceTracker()
-    {
-        return new RoundCornerBottomNavViewAppearanceTracker();
-    }
+	protected override IShellTabBarAppearanceTracker CreateTabBarAppearanceTracker()
+	{
+		return new RoundCornerBottomNavViewAppearanceTracker();
+	}
 }

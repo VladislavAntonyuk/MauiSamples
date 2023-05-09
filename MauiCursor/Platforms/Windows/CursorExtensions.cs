@@ -1,12 +1,12 @@
 ﻿namespace MauiCursor;
 
 using System.Reflection;
-using Windows.UI.Core;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Platform;
 using Microsoft.UI.Input;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Input;
+using Windows.UI.Core;
 
 public static class CursorExtensions
 {
@@ -26,7 +26,7 @@ public static class CursorExtensions
 			view.ChangeCursor(InputCursor.CreateFromCoreCursor(new CoreCursor(GetCursor(cursor), 1)));
 		}
 	}
-	
+
 	static void ChangeCursor(this UIElement uiElement, InputCursor cursor)
 	{
 		Type type = typeof(UIElement);

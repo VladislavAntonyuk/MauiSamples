@@ -8,7 +8,7 @@ public static class MauiProgram
 	{
 		var builder = MauiApp.CreateBuilder();
 		builder.UseMauiApp<App>()
-		       .ConfigureMauiHandlers(h =>
+			   .ConfigureMauiHandlers(h =>
 				{
 					h.AddHandler(typeof(Shell), typeof(RoundCornerTabBarShellHandler));
 				}); ;
