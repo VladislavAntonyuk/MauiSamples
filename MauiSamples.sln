@@ -160,7 +160,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiCaptcha", "MauiCaptcha\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiTaskbarProgress", "MauiTaskbarProgress\MauiTaskbarProgress.csproj", "{360633E8-A8FD-4D19-8AD8-94859005AB2F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiCursor", "MauiCursor\MauiCursor.csproj", "{CC06F0E5-A7BC-42C0-B3FF-F2493A085726}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiCursor", "MauiCursor\MauiCursor.csproj", "{CC06F0E5-A7BC-42C0-B3FF-F2493A085726}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiShellCustomization", "MauiShellCustomization\MauiShellCustomization.csproj", "{D2615DB2-1868-4321-BEDF-D078A6381FFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -421,6 +423,7 @@ Global
 		{C40B96EB-AF5C-4158-A3DF-C1C77DF878E0}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{0EEE7254-A098-41F6-B189-CE2F03D9CB75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0EEE7254-A098-41F6-B189-CE2F03D9CB75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EEE7254-A098-41F6-B189-CE2F03D9CB75}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{0EEE7254-A098-41F6-B189-CE2F03D9CB75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EEE7254-A098-41F6-B189-CE2F03D9CB75}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B9EF0C37-6230-40CC-9D8E-9AD5A5F81141}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -437,8 +440,15 @@ Global
 		{360633E8-A8FD-4D19-8AD8-94859005AB2F}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{CC06F0E5-A7BC-42C0-B3FF-F2493A085726}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CC06F0E5-A7BC-42C0-B3FF-F2493A085726}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC06F0E5-A7BC-42C0-B3FF-F2493A085726}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{CC06F0E5-A7BC-42C0-B3FF-F2493A085726}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC06F0E5-A7BC-42C0-B3FF-F2493A085726}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2615DB2-1868-4321-BEDF-D078A6381FFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D2615DB2-1868-4321-BEDF-D078A6381FFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D2615DB2-1868-4321-BEDF-D078A6381FFC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{D2615DB2-1868-4321-BEDF-D078A6381FFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D2615DB2-1868-4321-BEDF-D078A6381FFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D2615DB2-1868-4321-BEDF-D078A6381FFC}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

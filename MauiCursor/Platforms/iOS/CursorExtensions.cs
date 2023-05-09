@@ -8,9 +8,9 @@ using UIKit;
 
 public static class CursorExtensions
 {
-	public static void SetCustomCursor(this VisualElement visualElement, CursorIcon cursor)
+	public static void SetCustomCursor(this VisualElement visualElement, CursorIcon cursor, IMauiContext? mauiContext)
 	{
-		var mauiContext = visualElement.Handler?.MauiContext ?? throw new NullReferenceException("MauiContext is null");
+		ArgumentNullException.ThrowIfNull(mauiContext);
 		var view = visualElement.ToPlatform(mauiContext);
 		view.UserInteractionEnabled = true;
 		foreach (var interaction in view.Interactions.OfType<UIPointerInteraction>())

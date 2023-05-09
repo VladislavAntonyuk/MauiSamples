@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="MauiShellCustomization.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:MauiShellCustomization"
+    Shell.FlyoutBehavior="Disabled">
+
+	<TabBar>
+		<Tab Title="Tab1" Icon="dotnet_bot.png">
+			<ShellContent
+				Title="Home"
+				ContentTemplate="{DataTemplate local:MainPage}"
+				Route="MainPage" />
+		</Tab>
+		<Tab Title="Tab2" Icon="dotnet_bot.png">
+			<ShellContent
+				Title="Home"
+				ContentTemplate="{DataTemplate local:MainPage}"
+				Route="MainPage" />
+		</Tab>
+	</TabBar>
+
+</Shell>
