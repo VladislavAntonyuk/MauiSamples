@@ -6,6 +6,12 @@
     xmlns:local="clr-namespace:MauiShellCustomization"
     Shell.FlyoutBehavior="Disabled">
 
+	<Shell.ToolbarItems>
+		<ToolbarItem Text="Toolbar 1"
+		             IconImageSource="dotnet_bot.png"/>
+		<ToolbarItem Text="Toolbar 2"
+		             IconImageSource="dotnet_bot.png"/>
+	</Shell.ToolbarItems>
 	<TabBar>
 		<Tab Title="Tab1" Icon="dotnet_bot.png">
 			<ShellContent

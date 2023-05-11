@@ -9,4 +9,9 @@ class RoundCornerTabBarShellHandler : ShellRenderer
 	{
 		return new RoundCornerBottomNavViewAppearanceTracker(this, shellItem.CurrentItem);
 	}
+
+	protected override IShellToolbarAppearanceTracker CreateToolbarAppearanceTracker()
+	{
+		return new RoundCornerShellToolbarAppearanceTracker(this);
+	}
 }
