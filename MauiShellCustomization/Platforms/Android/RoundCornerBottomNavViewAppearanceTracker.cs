@@ -1,9 +1,9 @@
 ﻿using Android.Graphics.Drawables;
 using Android.Views;
 using Google.Android.Material.BottomNavigation;
-using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 using Microsoft.Maui.Controls.Platform;
 using Microsoft.Maui.Controls.Platform.Compatibility;
+using Microsoft.Maui.Platform;
 
 namespace MauiShellCustomization;
 
@@ -22,15 +22,16 @@ class RoundCornerBottomNavViewAppearanceTracker : ShellBottomNavViewAppearanceTr
 		var backgroundDrawable = new GradientDrawable();
 		backgroundDrawable.SetShape(ShapeType.Rectangle);
 		backgroundDrawable.SetCornerRadius(30);
-		backgroundDrawable.SetColor(appearance.EffectiveTabBarBackgroundColor.ToAndroid());
+		backgroundDrawable.SetColor(appearance.EffectiveTabBarBackgroundColor.ToPlatform());
 		bottomView.SetBackground(backgroundDrawable);
 
 		var layoutParams = bottomView.LayoutParameters;
 		if (layoutParams is ViewGroup.MarginLayoutParams marginLayoutParams)
 		{
-			marginLayoutParams.BottomMargin = 30;
-			marginLayoutParams.LeftMargin = 30;
-			marginLayoutParams.RightMargin = 30;
+			var margin = 30;
+			marginLayoutParams.BottomMargin = margin;
+			marginLayoutParams.LeftMargin = margin;
+			marginLayoutParams.RightMargin = margin;
 			bottomView.LayoutParameters = layoutParams;
 		}
 	}
@@ -38,6 +39,6 @@ class RoundCornerBottomNavViewAppearanceTracker : ShellBottomNavViewAppearanceTr
 	protected override void SetBackgroundColor(BottomNavigationView bottomView, Color color)
 	{
 		base.SetBackgroundColor(bottomView, color);
-		bottomView.RootView?.SetBackgroundColor(shellContext.Shell.CurrentPage.BackgroundColor.ToAndroid());
+		bottomView.RootView?.SetBackgroundColor(shellContext.Shell.CurrentPage.BackgroundColor.ToPlatform());
 	}
 }

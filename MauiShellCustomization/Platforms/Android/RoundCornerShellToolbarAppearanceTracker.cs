@@ -3,9 +3,9 @@
 using Android.Graphics.Drawables;
 using Android.Views;
 using AndroidX.AppCompat.Widget;
-using Microsoft.Maui.Controls.Compatibility.Platform.Android;
 using Microsoft.Maui.Controls.Platform;
 using Microsoft.Maui.Controls.Platform.Compatibility;
+using Microsoft.Maui.Platform;
 
 class RoundCornerShellToolbarAppearanceTracker : ShellToolbarAppearanceTracker
 {
@@ -19,16 +19,17 @@ class RoundCornerShellToolbarAppearanceTracker : ShellToolbarAppearanceTracker
 		var backgroundDrawable = new GradientDrawable();
 		backgroundDrawable.SetShape(ShapeType.Rectangle);
 		backgroundDrawable.SetCornerRadius(30);
-		backgroundDrawable.SetColor(appearance.BackgroundColor.ToAndroid());
+		backgroundDrawable.SetColor(appearance.BackgroundColor.ToPlatform());
 		toolbar.SetBackground(backgroundDrawable);
 
 		var layoutParams = toolbar.LayoutParameters;
 		if (layoutParams is ViewGroup.MarginLayoutParams marginLayoutParams)
 		{
-			marginLayoutParams.TopMargin = 30;
-			marginLayoutParams.BottomMargin = 30;
-			marginLayoutParams.LeftMargin = 30;
-			marginLayoutParams.RightMargin = 30;
+			var margin = 30;
+			marginLayoutParams.TopMargin = margin;
+			marginLayoutParams.BottomMargin = margin;
+			marginLayoutParams.LeftMargin = margin;
+			marginLayoutParams.RightMargin = margin;
 			toolbar.LayoutParameters = layoutParams;
 		}
 	}

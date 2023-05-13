@@ -6,12 +6,30 @@ namespace MauiShellCustomization;
 
 class RoundCornerBottomNavViewAppearanceTracker : ShellTabBarAppearanceTracker
 {
-	public override void SetAppearance(UITabBarController controller, ShellAppearance appearance)
+	public override void UpdateLayout(UITabBarController controller)
 	{
-		var uIBezierPath = UIBezierPath.FromRoundedRect(controller.TabBar.Bounds, UIRectCorner.TopLeft | UIRectCorner.TopRight, new CoreGraphics.CGSize(30, 30));
-		var cAShapeLayer = new CAShapeLayer();
-		cAShapeLayer.Frame = controller.TabBar.Bounds;
-		cAShapeLayer.Path = uIBezierPath.CGPath;
+		base.UpdateLayout(controller);
+		const int bottomSpace = 50;
+		const int margin = 30;
+		controller.TabBar.Frame = new CoreGraphics.CGRect(
+			controller.TabBar.Frame.X + margin,
+			controller.TabBar.Frame.Y - bottomSpace,
+			controller.TabBar.Frame.Width - 2 * margin,
+			controller.TabBar.Frame.Height
+		);
+
+		const int cornerRadius = 30;
+		var uIBezierPath = UIBezierPath.FromRoundedRect(
+			controller.TabBar.Bounds,
+			UIRectCorner.AllCorners,
+			new CoreGraphics.CGSize(cornerRadius, cornerRadius)
+		);
+
+		var cAShapeLayer = new CAShapeLayer
+		{
+			Frame = controller.TabBar.Bounds,
+			Path = uIBezierPath.CGPath
+		};
 		controller.TabBar.Layer.Mask = cAShapeLayer;
 	}
 }

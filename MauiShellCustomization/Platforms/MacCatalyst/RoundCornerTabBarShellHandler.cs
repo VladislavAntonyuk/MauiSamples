@@ -12,6 +12,6 @@ class RoundCornerTabBarShellHandler : ShellRenderer
 
 	protected override IShellNavBarAppearanceTracker CreateNavBarAppearanceTracker()
 	{
-		return new RoundCornerShellToolbarAppearanceTracker(base.CreateNavBarAppearanceTracker());
+		return new RoundCornerShellToolbarAppearanceTracker(this, base.CreateNavBarAppearanceTracker());
 	}
 }
