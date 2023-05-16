@@ -7,9 +7,9 @@ using Microsoft.Maui.Controls.Platform;
 using Microsoft.Maui.Controls.Platform.Compatibility;
 using Microsoft.Maui.Platform;
 
-class RoundCornerShellToolbarAppearanceTracker : ShellToolbarAppearanceTracker
+class CustomShellToolbarAppearanceTracker : ShellToolbarAppearanceTracker
 {
-	public RoundCornerShellToolbarAppearanceTracker(IShellContext shellContext) : base(shellContext)
+	public CustomShellToolbarAppearanceTracker(IShellContext shellContext) : base(shellContext)
 	{
 	}
 

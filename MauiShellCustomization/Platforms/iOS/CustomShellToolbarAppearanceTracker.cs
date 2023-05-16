@@ -6,12 +6,12 @@ using Microsoft.Maui.Controls.Platform.Compatibility;
 using Microsoft.Maui.Platform;
 using UIKit;
 
-class RoundCornerShellToolbarAppearanceTracker : IShellNavBarAppearanceTracker
+class CustomShellToolbarAppearanceTracker : IShellNavBarAppearanceTracker
 {
 	private readonly IShellContext shellContext;
 	private readonly IShellNavBarAppearanceTracker baseTracker;
 
-	public RoundCornerShellToolbarAppearanceTracker(IShellContext shellContext, IShellNavBarAppearanceTracker baseTracker)
+	public CustomShellToolbarAppearanceTracker(IShellContext shellContext, IShellNavBarAppearanceTracker baseTracker)
 	{
 		this.shellContext = shellContext;
 		this.baseTracker = baseTracker;

@@ -4,7 +4,7 @@ using UIKit;
 
 namespace MauiShellCustomization;
 
-class RoundCornerBottomNavViewAppearanceTracker : ShellTabBarAppearanceTracker
+class CustomShellTabBarAppearanceTracker : ShellTabBarAppearanceTracker
 {
 	public override void UpdateLayout(UITabBarController controller)
 	{

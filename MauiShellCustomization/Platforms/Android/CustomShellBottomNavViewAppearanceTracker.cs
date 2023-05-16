@@ -7,11 +7,11 @@ using Microsoft.Maui.Platform;
 
 namespace MauiShellCustomization;
 
-class RoundCornerBottomNavViewAppearanceTracker : ShellBottomNavViewAppearanceTracker
+class CustomShellBottomNavViewAppearanceTracker : ShellBottomNavViewAppearanceTracker
 {
 	private readonly IShellContext shellContext;
 
-	public RoundCornerBottomNavViewAppearanceTracker(IShellContext shellContext, ShellItem shellItem) : base(shellContext, shellItem)
+	public CustomShellBottomNavViewAppearanceTracker(IShellContext shellContext, ShellItem shellItem) : base(shellContext, shellItem)
 	{
 		this.shellContext = shellContext;
 	}

@@ -86,6 +86,14 @@ public partial class CardsLayout : Layout, ILayoutManager
 		var panGesture = new PanGestureRecognizer();
 		panGesture.PanUpdated += PanGesture_PanUpdated;
 		GestureRecognizers.Add(panGesture);
+		//var swipeGesture = new SwipeGestureRecognizer();
+		//swipeGesture.Swiped += SwipeGesture_Swiped;
+		//GestureRecognizers.Add(swipeGesture);
+	}
+
+	private void SwipeGesture_Swiped(object? sender, SwipedEventArgs e)
+	{
+		HandleTouchEnd(e.Direction);
 	}
 
 	private SwipeDirection? swipedDirection;

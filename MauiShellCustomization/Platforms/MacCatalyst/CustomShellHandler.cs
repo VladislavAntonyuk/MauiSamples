@@ -3,15 +3,15 @@ using Microsoft.Maui.Controls.Platform.Compatibility;
 
 namespace MauiShellCustomization;
 
-class RoundCornerTabBarShellHandler : ShellRenderer
+class CustomShellHandler : ShellRenderer
 {
 	protected override IShellTabBarAppearanceTracker CreateTabBarAppearanceTracker()
 	{
-		return new RoundCornerBottomNavViewAppearanceTracker();
+		return new CustomShellTabBarAppearanceTracker();
 	}
 
 	protected override IShellNavBarAppearanceTracker CreateNavBarAppearanceTracker()
 	{
-		return new RoundCornerShellToolbarAppearanceTracker(this, base.CreateNavBarAppearanceTracker());
+		return new CustomShellToolbarAppearanceTracker(this, base.CreateNavBarAppearanceTracker());
 	}
 }

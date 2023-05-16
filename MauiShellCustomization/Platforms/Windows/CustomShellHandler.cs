@@ -3,12 +3,12 @@ using Microsoft.Maui.Controls.Platform;
 
 namespace MauiShellCustomization;
 
-class RoundCornerTabBarShellHandler : ShellHandler
+class CustomShellHandler : ShellHandler
 {
 	protected override ShellView CreatePlatformView()
 	{
 		var view = base.CreatePlatformView();
-		view.Margin = new Tizen.NUI.Extents(20, 20, 20, 20);
+		view.Background = new Microsoft.UI.Xaml.Media.SolidColorBrush(Microsoft.UI.Colors.Green);
 		return view;
 	}
 }
