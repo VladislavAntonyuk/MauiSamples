@@ -28,7 +28,13 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  	<PackageReference Include="Microsoft.Maui.Graphics.Text.Markdig" Version="7.0.86" />
 		<PackageReference Include="M.BindableProperty.Generator" Version="0.10.0" />
+	</ItemGroup>
+
+	<ItemGroup Condition="$(NetVersion) != 'net7.0'">
+		<PackageReference Include="Microsoft.Maui.Graphics.Text.Markdig" Version="8.0.0-preview.4.8333" />
+	</ItemGroup>
+	<ItemGroup Condition="$(NetVersion) == 'net7.0'">
+		<PackageReference Include="Microsoft.Maui.Graphics.Text.Markdig" Version="7.0.86" />
 	</ItemGroup>
 </Project>

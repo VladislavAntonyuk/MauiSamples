@@ -2,6 +2,7 @@
 
 <Project>
 	<PropertyGroup>
+		<NetVersion>net7.0</NetVersion>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
