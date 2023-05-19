@@ -41,7 +41,7 @@ public class CustomShellHandler : ShellHandler
 		{
 			return;
 		}
-		
+
 		if (PlatformView.Header is MauiToolbar header)
 		{
 			header.Margin = new Thickness(30);
@@ -65,15 +65,24 @@ public class CustomShellHandler : ShellHandler
 	public DataTemplate CreateNavigationViewItemDataTemplate()
 	{
 		var xaml = """
-	<DataTemplate xmlns='http://schemas.microsoft.com/winfx/2006/xaml/presentation'>
-		<NavigationViewItem BackgroundSizing="OuterBorderEdge"
-		            Content="{Binding Content}" 
-		            Foreground="{Binding Foreground}" 
-		            Background="{Binding Background}" 
-		            IsSelected="{Binding IsSelected, Mode=TwoWay}"
-		            MenuItemsSource="{Binding MenuItemsSource}"
-		            Icon="{Binding Icon}" />
-    </DataTemplate>
+	< DataTemplate xmlns = 'http://schemas.microsoft.com/winfx/2006/xaml/presentation' >
+
+
+		 < NavigationViewItem BackgroundSizing = "OuterBorderEdge"
+
+					Content = "{Binding Content}"
+
+					Foreground = "{Binding Foreground}"
+
+					Background = "{Binding Background}"
+
+					IsSelected = "{Binding IsSelected, Mode=TwoWay}"
+
+					MenuItemsSource = "{Binding MenuItemsSource}"
+
+					Icon = "{Binding Icon}" />
+
+	</ DataTemplate >
 """;
 
 		var dataTemplate = (DataTemplate)XamlReader.Load(xaml);
