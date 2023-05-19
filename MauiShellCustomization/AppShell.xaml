@@ -15,15 +15,15 @@
 	<TabBar>
 		<Tab Title="Tab1" Icon="dotnet_bot.png">
 			<ShellContent
-				Title="Home"
-				ContentTemplate="{DataTemplate local:MainPage}"
-				Route="MainPage" />
+				Title="Page1"
+				ContentTemplate="{DataTemplate local:Page1}"
+				Route="Page1" />
 		</Tab>
 		<Tab Title="Tab2" Icon="dotnet_bot.png">
 			<ShellContent
-				Title="Home"
-				ContentTemplate="{DataTemplate local:MainPage}"
-				Route="MainPage" />
+				Title="Page2"
+				ContentTemplate="{DataTemplate local:Page2}"
+				Route="Page2" />
 		</Tab>
 	</TabBar>
 

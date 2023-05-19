@@ -7,7 +7,7 @@ dotnet workload install maui
 ```
 3. Install Tizen
 
-> If you don't want to run sample on Tizen you need to comment the next line: `<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-tizen</TargetFrameworks>`. It exists in `Directory.Build.props` and `PizzaStore.Mobile.csproj`.
+> If you don't want to run sample on Tizen you need to comment the next line: `<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);$(NetVersion)-tizen</TargetFrameworks>`. It exists in `Directory.Build.props` and `PizzaStore.Mobile.csproj`.
 
 ```pwsh
 Invoke-WebRequest 'https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.ps1' -OutFile 'workload-install.ps1'

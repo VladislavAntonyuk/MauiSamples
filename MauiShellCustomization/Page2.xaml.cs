@@ -1,8 +1,8 @@
 ﻿namespace MauiShellCustomization;
 
-public partial class MainPage : ContentPage
+public partial class Page2 : ContentPage
 {
-	public MainPage()
+	public Page2()
 	{
 		InitializeComponent();
 	}

@@ -14,4 +14,8 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Customizing-.NET-M
 
 ![iOS](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/41/ios.png)
 
+### Windows
+
+![Windows](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/41/windows.png)
+
 [![Stand With Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd700.svg?labelColor=0057b7)](https://stand-with-ukraine.pp.ua)
