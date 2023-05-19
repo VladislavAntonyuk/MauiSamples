@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>$(NetVersion)-android;$(NetVersion)-ios;$(NetVersion)-maccatalyst</TargetFrameworks>
@@ -44,7 +44,7 @@
 		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.4" />
 		<PackageReference Include="SQLitePCLRaw.core" Version="2.1.4" />
 		<PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.4" />
-		<PackageReference Include="SQLitePCLRaw.provider.sqlite3" Version="2.1.4" />
+		<PackageReference Include="SQLitePCLRaw.provider.sqlite3" Version="2.1.5" />
 	</ItemGroup>
 
 	<ItemGroup>
