@@ -5,7 +5,7 @@
 [![Stand With Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd700.svg?labelColor=0057b7)](https://stand-with-ukraine.pp.ua)
 ## Thank You
 
-Special thanks to my friends and sponsors: @PeterFucci, Gerald Versluis (jfversluis), @renatolopes, Glen Herman, Olexii, Brady, Yury Michurin, VToegel, Aleksander Rokic.
+Special thanks to my friends and sponsors: @PeterFucci, Gerald Versluis (jfversluis), @renatolopes, Glen Herman, Olexii, Brady, Yury Michurin, VToegel, Aleksander Rokic, Jeffrey Williams.
 
 This project is tested with BrowserStack.
 
@@ -72,5 +72,7 @@ The development guide can be found at [SETUP.md](./SETUP.md).
 1. [MauiCursor](MauiCursor) - Setting a cursor for .NET MAUI VisualElement.
 
 1. [MauiShellCustomization](MauiShellCustomization) - Customizing .NET MAUI Shell.
+
+1. [MauiDraggableView](MauiDraggableView) - Drag and Drop View Container for .NET MAUI.
 
 [![Stand With Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd700.svg?labelColor=0057b7)](https://stand-with-ukraine.pp.ua)
