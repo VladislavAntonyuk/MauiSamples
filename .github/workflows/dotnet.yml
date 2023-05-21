@@ -12,8 +12,8 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [windows-latest]
-        #os: [windows-latest, macos-latest]
+        #os: [windows-latest]
+        os: [windows-latest, macos-latest]
 
     steps:
     - name: Prepare variables on Windows
@@ -30,7 +30,7 @@ jobs:
       run: |
          git clone https://github.com/${{ github.repository }}.git ${{ env.WORKING_DIRECTORY_PATH }}
          cd ${{ env.WORKING_DIRECTORY_PATH }}
-         git checkout ${{ github.head_ref || github.ref_name }}       
+         git checkout ${{ github.head_ref || github.ref_name }}
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
