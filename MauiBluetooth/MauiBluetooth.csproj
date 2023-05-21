@@ -27,7 +27,7 @@
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="5.1.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
-		<PackageReference Include="Plugin.BLE" Version="3.0.0-beta.3" />
+		<PackageReference Include="Plugin.BLE" Version="3.0.0-beta.4" />
 	</ItemGroup>
 
 	<ItemGroup>

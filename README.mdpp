@@ -73,4 +73,6 @@ The development guide can be found at [SETUP.md](./SETUP.md).
 
 1. [MauiShellCustomization](MauiShellCustomization) - Customizing .NET MAUI Shell.
 
+1. [MauiDraggableView](MauiDraggableView) - Drag and Drop View Container for .NET MAUI.
+
 !INCLUDE "md/footer.mdpp"

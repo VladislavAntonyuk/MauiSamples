@@ -4,6 +4,7 @@ using Microsoft.Maui;
 using Microsoft.Maui.Handlers;
 using Microsoft.Maui.Platform;
 using Tizen.NUI;
+using Tizen.NUI.BaseComponents;
 
 public class DraggableViewHandler : ViewHandler<DraggableView, View>
 {
@@ -21,12 +22,12 @@ public class DraggableViewHandler : ViewHandler<DraggableView, View>
 	protected override void ConnectHandler(View platformView)
 	{
 		base.ConnectHandler(platformView);
-		platformView.Touch += HandleTouch;
+		platformView.TouchEvent += HandleTouch;
 	}
 
 	protected override void DisconnectHandler(View platformView)
 	{
-		platformView.Touch -= HandleTouch;
+		platformView.TouchEvent -= HandleTouch;
 		base.DisconnectHandler(platformView);
 	}
 
@@ -36,29 +37,31 @@ public class DraggableViewHandler : ViewHandler<DraggableView, View>
 	}
 
 
-	private void HandleTouch(object? sender, View.TouchEventArgs args)
+	private bool HandleTouch(object? sender, View.TouchEventArgs args)
 	{
-		var e = args.Event;
+		var e = args.Touch;
 		if (e is null)
 		{
-			return;
+			return false;
 		}
 
-		float x = e.RawX;
-		float y = e.RawY;
-		switch (e.Action)
+		float x = e.GetScreenPosition(0).X;
+		float y = e.GetScreenPosition(0).Y;
+		switch (e.GetState(0))
 		{
-			case MotionEventActions.Down:
-				deltaX = x - PlatformView.GetX();
-				deltaY = y - PlatformView.GetY();
+			case PointStateType.Down:
+				deltaX = x - PlatformView.PositionX;
+				deltaY = y - PlatformView.PositionY;
 				break;
-			case MotionEventActions.Move:
+			case PointStateType.Motion:
 				var newX = x - deltaX;
 				var newY = y - deltaY;
-				PlatformView.SetX(newX);
-				PlatformView.SetY(newY);
+				PlatformView.PositionX = newX;
+				PlatformView.PositionY = newY;
 
 				break;
 		}
+
+		return true;
 	}
 }

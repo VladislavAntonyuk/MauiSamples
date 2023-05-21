@@ -1,11 +1,11 @@
 ﻿namespace MauiDraggableView;
 
-using Windows.Foundation;
 using Microsoft.Maui.Handlers;
 using Microsoft.Maui.Platform;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
+using Windows.Foundation;
 
 public class DraggableViewHandler : ViewHandler<DraggableView, FrameworkElement>
 {
