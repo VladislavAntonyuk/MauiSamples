@@ -26,10 +26,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="SQLitePCLRaw.core" Version="2.1.4" />
-		<PackageReference Include="SQLitePCLRaw.provider.sqlite3" Version="2.1.4" />
-		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.4" />
-		<PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.4" />
+		<PackageReference Include="SQLitePCLRaw.core" Version="2.1.5" />
+		<PackageReference Include="SQLitePCLRaw.provider.sqlite3" Version="2.1.5" />
+		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.5" />
+		<PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.5" />
 	</ItemGroup>
 
 	<ItemGroup>
