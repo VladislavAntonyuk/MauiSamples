@@ -32,6 +32,12 @@ jobs:
          cd ${{ env.WORKING_DIRECTORY_PATH }}
          git checkout ${{ github.head_ref || github.ref_name }}
 
+    - name: Setup Xcode
+      if: ${{ matrix.os == 'macos-latest' }}
+      uses: maxim-lobanov/setup-xcode@v1
+      with:
+        xcode-version: '16.4'
+
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
       with:
