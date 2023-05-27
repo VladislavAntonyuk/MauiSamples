@@ -56,7 +56,7 @@ public partial class MainViewModel : ObservableObject
 	[RelayCommand]
 	private async Task Logout()
 	{
-		userContext.Email = null;
+		userContext.Email = string.Empty;
 		await ((AppShell)Application.Current!.MainPage!).GoToAsync("///LoginPage");
 	}
 }

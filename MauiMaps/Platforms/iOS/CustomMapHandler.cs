@@ -10,7 +10,7 @@ using UIKit;
 
 public class CustomMapHandler : MapHandler
 {
-	private static UIView? lastTouchedView;
+	private static UIView? _lastTouchedView;
 	public static readonly IPropertyMapper<IMap, IMapHandler> CustomMapper =
 		new PropertyMapper<IMap, IMapHandler>(Mapper)
 		{
@@ -37,7 +37,7 @@ public class CustomMapHandler : MapHandler
 	private static void OnCalloutClicked(IMKAnnotation annotation)
 	{
 		var pin = GetPinForAnnotation(annotation);
-		if (lastTouchedView is MKAnnotationView)
+		if (_lastTouchedView is MKAnnotationView)
 			return;
 		pin?.SendInfoWindowClick();
 	}
@@ -63,9 +63,8 @@ public class CustomMapHandler : MapHandler
 			annotationView = new MKUserLocationView(annotation, null);
 		}
 
-		var result = annotationView ?? new MKAnnotationView(annotation, null);
-		AttachGestureToPin(result, annotation);
-		return result;
+		AttachGestureToPin(annotationView, annotation);
+		return annotationView;
 	}
 
 	static void AttachGestureToPin(MKAnnotationView mapPin, IMKAnnotation annotation)
@@ -84,7 +83,7 @@ public class CustomMapHandler : MapHandler
 		{
 			ShouldReceiveTouch = (gestureRecognizer, touch) =>
 			{
-				lastTouchedView = touch.View;
+				_lastTouchedView = touch.View;
 				return true;
 			}
 		};

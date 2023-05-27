@@ -74,8 +74,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		Directory.Build.props = Directory.Build.props
 		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
+		md\footer.mdpp = md\footer.mdpp
+		md\header.mdpp = md\header.mdpp
 		NuGet.config = NuGet.config
 		README.mdpp = README.mdpp
+		md\run.ps1 = md\run.ps1
+		md\thankyou.mdpp = md\thankyou.mdpp
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Auth", "Auth", "{14D979DA-85FE-41DC-9C59-A49EE52EC9A5}"
@@ -165,6 +169,14 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiShellCustomization", "MauiShellCustomization\MauiShellCustomization.csproj", "{D2615DB2-1868-4321-BEDF-D078A6381FFC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiDraggableView", "MauiDraggableView\MauiDraggableView.csproj", "{E31859C8-CAEF-473B-95C9-F0632B113ABB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "md", "md", "{4C3F6E69-0FB4-41D5-8D8F-2E48B033A3EF}"
+	ProjectSection(SolutionItems) = preProject
+		md\footer.mdpp = md\footer.mdpp
+		md\header.mdpp = md\header.mdpp
+		md\run.ps1 = md\run.ps1
+		md\thankyou.mdpp = md\thankyou.mdpp
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -504,6 +516,7 @@ Global
 		{8CE62F62-CE5D-48F4-8754-3F07FF72C3C2} = {D7258BEF-416D-4F3E-A359-87BD545A84A9}
 		{7429E8FC-195F-4628-B7E9-626C8837AD92} = {71285E56-24EA-49B5-A45B-F6813C88AA8A}
 		{21098A0C-CA6C-484B-8637-7A3BFAF4AABE} = {7429E8FC-195F-4628-B7E9-626C8837AD92}
+		{4C3F6E69-0FB4-41D5-8D8F-2E48B033A3EF} = {CE4ABC8D-3F54-49AA-BA5A-DD47E7CEB56B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
