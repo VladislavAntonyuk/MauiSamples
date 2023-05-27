@@ -62,7 +62,7 @@ public class CustomMapHandler : MapHandler
 		{
 			annotationView = new MKUserLocationView(annotation, null);
 		}
-
+		
 		AttachGestureToPin(annotationView, annotation);
 		return annotationView;
 	}
