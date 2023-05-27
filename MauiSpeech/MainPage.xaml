@@ -16,14 +16,7 @@
 
 			<Picker ItemsSource="{Binding Locales}"
 			        SelectedItem="{Binding Locale}"
-			        ItemDisplayBinding="{Binding ., Converter={StaticResource PickerDisplayConverter}}">
-				<!--<Picker.ItemDisplayBinding>
-					<MultiBinding StringFormat="{}{0} {1}">
-						<Binding Path="Language" />
-						<Binding Path="Name" />
-					</MultiBinding>
-				</Picker.ItemDisplayBinding>-->
-			</Picker>
+			        ItemDisplayBinding="{Binding ., Converter={StaticResource PickerDisplayConverter}}"/>
 
 			<Editor
                 Text="{Binding Text}"
@@ -34,6 +27,12 @@
                 Text="Play"
                 Command="{Binding PlayCommand}"
                 HorizontalOptions="Center" />
+
+			<Editor
+				Placeholder="Enter OpenAI API Key"
+				Text="{Binding ApiKey}"
+				FontSize="18"
+				HorizontalOptions="Center" />
 
 			<Label
                 Text="{Binding RecognitionText}"
