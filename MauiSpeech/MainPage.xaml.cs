@@ -1,9 +1,14 @@
 ﻿namespace MauiSpeech;
 
+using System.Diagnostics;
 using System.Globalization;
 using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Maui.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using OpenAI_API;
+using OpenAI_API.Completions;
+using OpenAI_API.Models;
 
 public partial class MainPage : ContentPage
 {
@@ -18,6 +23,7 @@ public partial class MainViewModel : ObservableObject
 {
 	private readonly ITextToSpeech textToSpeech;
 	private readonly ISpeechToText speechToText;
+
 	[ObservableProperty]
 	private List<Locale>? locales;
 
@@ -26,6 +32,9 @@ public partial class MainViewModel : ObservableObject
 
 	[ObservableProperty]
 	private string text;
+
+	[ObservableProperty]
+	private string? apiKey;
 
 	[ObservableProperty]
 	private string? recognitionText;
@@ -63,24 +72,47 @@ Death to enemies!";
 	[RelayCommand(IncludeCancelCommand = true)]
 	async Task Listen(CancellationToken cancellationToken)
 	{
-		var isAuthorized = await speechToText.RequestPermissions();
+		RecognitionText = string.Empty;
+		var isAuthorized = await speechToText.RequestPermissions(CancellationToken.None);
 		if (isAuthorized)
 		{
-			try
+			var recognitionResult = await speechToText.ListenAsync(CultureInfo.GetCultureInfo(Locale?.Language ?? "en-us"), new Progress<string>(async partialText =>
 			{
-				RecognitionText = await speechToText.Listen(CultureInfo.GetCultureInfo(Locale?.Language ?? "en-us"), new Progress<string>(partialText =>
-					{
-						RecognitionText += partialText + " ";
-					}), cancellationToken);
+				RecognitionText += partialText + " ";
+				await ProcessText(partialText);
+			}), CancellationToken.None);
+
+			if (recognitionResult.IsSuccessful)
+			{
+				RecognitionText = recognitionResult.Text;
 			}
-			catch (Exception ex)
+			else
 			{
-				await Toast.Make(ex.Message).Show(cancellationToken);
+				await Toast.Make(recognitionResult.Exception.Message).Show(CancellationToken.None);
 			}
 		}
 		else
 		{
-			await Toast.Make("Permission denied").Show(cancellationToken);
+			await Toast.Make("Permission denied").Show(CancellationToken.None);
+		}
+	}
+
+	async Task ProcessText(string prompt)
+	{
+		var generalPrompt = $"You should return an executable name of the program. example prompt: Execute Word. Expected output WinWord. Do not return extension. So my request: {prompt}";
+		var api = new OpenAIAPI(ApiKey);
+		// https://platform.openai.com/docs/models/model-endpoint-compatibility
+		var result = await api.Completions.CreateCompletionAsync(new CompletionRequest(generalPrompt)
+		{
+			Model = Model.DavinciText
+		});
+		try
+		{
+			Process.Start(result.Completions[0].Text);
+		}
+		catch (Exception e)
+		{
+			await Toast.Make(e.Message).Show(CancellationToken.None);
 		}
 	}
 }

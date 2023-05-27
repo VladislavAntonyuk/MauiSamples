@@ -1,6 +1,7 @@
 ﻿namespace MauiSpeech;
 
 using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Media;
 using Microsoft.Extensions.Logging;
 
 public static class MauiProgram
