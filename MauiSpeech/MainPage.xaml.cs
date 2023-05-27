@@ -6,8 +6,8 @@ using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using OpenAI_API.Completions;
 using OpenAI_API;
+using OpenAI_API.Completions;
 using OpenAI_API.Models;
 
 public partial class MainPage : ContentPage
