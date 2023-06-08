@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFrameworks>$(NetVersion)</TargetFrameworks>
@@ -6,7 +6,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Identity.Client" Version="4.54.1" />
-		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.30.1" />
+		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.31.0" />
 	</ItemGroup>
 
 </Project>
