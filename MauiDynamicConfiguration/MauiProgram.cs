@@ -19,7 +19,11 @@ public static class MauiProgram
 														options =>
 														{
 															options.PollingMode = PollingModes.AutoPoll(pollInterval: TimeSpan.FromSeconds(95));
-															options.Logger.LogLevel = ConfigCat.Client.LogLevel.Info;
+															if (options.Logger != null)
+															{
+																options.Logger.LogLevel =
+																	ConfigCat.Client.LogLevel.Info;
+															}
 														}));
 #if DEBUG
 		builder.Logging.AddDebug();

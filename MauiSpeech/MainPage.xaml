@@ -35,6 +35,18 @@
 				HorizontalOptions="Center" />
 
 			<Label
+				Text="Enter OpenAI API Key"
+				FontSize="18"
+				HorizontalOptions="Center" />
+
+			<Entry
+				Placeholder="Enter OpenAI API Key"
+				IsPassword="True"
+				Text="{Binding ApiKey}"
+				FontSize="18"
+				HorizontalOptions="Center" />
+
+			<Label
                 Text="{Binding RecognitionText}"
                 FontSize="18"
                 HorizontalOptions="Center" />

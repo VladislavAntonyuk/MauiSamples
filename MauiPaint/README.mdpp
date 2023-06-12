@@ -4,6 +4,8 @@
 
 Article: https://vladislavantonyuk.azurewebsites.net/articles/Drawing-View-in-Xamarin-Community-Toolkit
 
+Article: https://vladislavantonyuk.github.io/articles/Drag-and-Drop-any-content-to-a-.NET-MAUI-application/
+
 ## Images
 
 ### DrawingView
@@ -13,5 +15,11 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Drawing-View-in-Xa
 ### Save project
 
 ![.NET MAUI Paint Save dialog](https://user-images.githubusercontent.com/33021114/175909254-61b17272-0823-45d2-b602-e41fbb89117f.png)
+
+### Drag & Drop
+
+![macOS](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/38/logo.gif)
+
+![Windows](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/38/drag-drop-windows.gif)
 
 !INCLUDE "./md/footer.mdpp"

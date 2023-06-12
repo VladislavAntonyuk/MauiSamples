@@ -79,7 +79,11 @@ Death to enemies!";
 			var recognitionResult = await speechToText.ListenAsync(CultureInfo.GetCultureInfo(Locale?.Language ?? "en-us"), new Progress<string>(async partialText =>
 			{
 				RecognitionText += partialText + " ";
+#if WINDOWS
 				await ProcessText(partialText);
+#else
+				await Task.CompletedTask;
+#endif
 			}), CancellationToken.None);
 
 			if (recognitionResult.IsSuccessful)
@@ -97,6 +101,7 @@ Death to enemies!";
 		}
 	}
 
+#if WINDOWS
 	async Task ProcessText(string prompt)
 	{
 		var generalPrompt = $"You should return an executable name of the program. example prompt: Execute Word. Expected output WinWord. Do not return extension. So my request: {prompt}";
@@ -115,4 +120,5 @@ Death to enemies!";
 			await Toast.Make(e.Message).Show(CancellationToken.None);
 		}
 	}
+#endif
 }
