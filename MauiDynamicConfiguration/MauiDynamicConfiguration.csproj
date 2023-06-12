@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
@@ -26,6 +26,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
-	  <PackageReference Include="ConfigCat.Client" Version="8.0.0" />
+	  <PackageReference Include="ConfigCat.Client" Version="8.1.0" />
 	</ItemGroup>
 </Project>
