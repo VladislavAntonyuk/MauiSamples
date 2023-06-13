@@ -23,9 +23,12 @@ public class GeolocatorImplementation : IGeolocator
 		cancellationToken.Register(() =>
 		{
 			manager.LocationsUpdated -= PositionChanged;
+			manager.StopUpdatingLocation();
 			taskCompletionSource.TrySetResult();
 		});
 		manager.LocationsUpdated += PositionChanged;
+		manager.DistanceFilter = 100;
+		manager.StartUpdatingLocation();
 
 		void PositionChanged(object? sender, CLLocationsUpdatedEventArgs args)
 		{
