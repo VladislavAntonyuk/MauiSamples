@@ -39,8 +39,8 @@ class CustomShellItemRenderer : ShellItemRenderer
 				}
 
 				middleView.AutoresizingMask = UIViewAutoresizing.FlexibleRightMargin |
-				                              UIViewAutoresizing.FlexibleLeftMargin |
-				                              UIViewAutoresizing.FlexibleBottomMargin;
+											  UIViewAutoresizing.FlexibleLeftMargin |
+											  UIViewAutoresizing.FlexibleBottomMargin;
 				middleView.Layer.CornerRadius = middleView.Frame.Width / 2;
 				middleView.Layer.MasksToBounds = false;
 
