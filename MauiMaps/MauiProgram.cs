@@ -10,15 +10,14 @@ public static class MauiProgram
 	{
 		var builder = MauiApp.CreateBuilder();
 		builder.UseMauiApp<App>().UseMauiMaps()
-			   .UseMauiCommunityToolkit();
+			   .UseMauiCommunityToolkit()
+			   .UseMauiCommunityToolkitMaps("");
 		builder.RegisterAppServices()
 			.RegisterViewModels()
 			.RegisterViews();
 		builder.ConfigureMauiHandlers(handlers =>
 		{
-#if ANDROID || IOS || MACCATALYST
 			handlers.AddHandler<Microsoft.Maui.Controls.Maps.Map, CustomMapHandler>();
-#endif
 		});
 
 		return builder.Build();

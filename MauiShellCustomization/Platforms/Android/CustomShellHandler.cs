@@ -14,4 +14,9 @@ class CustomShellHandler : ShellRenderer
 	{
 		return new CustomShellToolbarAppearanceTracker(this);
 	}
+
+	protected override IShellItemRenderer CreateShellItemRenderer(ShellItem item)
+	{
+		return new CustomShellItemRenderer(this);
+	}
 }

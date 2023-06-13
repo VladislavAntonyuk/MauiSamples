@@ -4,7 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:MauiShellCustomization"
-    Shell.FlyoutBehavior="Disabled">
+    FlyoutBehavior="Disabled">
 
 	<Shell.ToolbarItems>
 		<ToolbarItem Text="Toolbar 1"
@@ -12,7 +12,13 @@
 		<ToolbarItem Text="Toolbar 2"
 		             IconImageSource="dotnet_bot.png"/>
 	</Shell.ToolbarItems>
-	<TabBar>
+	<local:CustomTabBar CenterViewText="+"
+	                    CenterViewVisible="True"
+	                    CenterViewBackgroundColor="Red"
+	                    CenterViewCommand="{Binding CenterViewCommand}">
+		<!-- <local:CustomTabBar.CenterViewImageSource> -->
+		<!-- 	<FileImageSource File="dotnet_bot.png"></FileImageSource> -->
+		<!-- </local:CustomTabBar.CenterViewImageSource> -->
 		<Tab Title="Tab1" Icon="dotnet_bot.png">
 			<ShellContent
 				Title="Page1"
@@ -25,6 +31,5 @@
 				ContentTemplate="{DataTemplate local:Page2}"
 				Route="Page2" />
 		</Tab>
-	</TabBar>
-
+	</local:CustomTabBar>
 </Shell>

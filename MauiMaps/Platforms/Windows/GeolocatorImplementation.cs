@@ -24,3 +24,7 @@ public class GeolocatorImplementation : IGeolocator
 		await taskCompletionSource.Task;
 	}
 }
+
+public class CustomMapHandler : Microsoft.Maui.Maps.Handlers.MapHandler
+{
+}

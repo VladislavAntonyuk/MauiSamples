@@ -71,6 +71,6 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="$(NetVersion) != 'net7.0'">
-		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.0-preview.4.8333" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.0-preview.5.8529" />
 	</ItemGroup>
 </Project>
