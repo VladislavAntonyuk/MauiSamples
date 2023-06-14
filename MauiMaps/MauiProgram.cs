@@ -2,7 +2,7 @@
 
 using AutoFixture;
 using CommunityToolkit.Maui;
-using Microsoft.Maui.Platform;
+using CommunityToolkit.Maui.Maps;
 
 public static class MauiProgram
 {
@@ -11,7 +11,7 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder.UseMauiApp<App>().UseMauiMaps()
 			   .UseMauiCommunityToolkit()
-			   .UseMauiCommunityToolkitMaps("");
+			   .UseMauiCommunityToolkitMaps("YOUR_KEY"); // https://learn.microsoft.com/en-us/bingmaps/getting-started/bing-maps-dev-center-help/getting-a-bing-maps-key
 		builder.RegisterAppServices()
 			.RegisterViewModels()
 			.RegisterViews();
