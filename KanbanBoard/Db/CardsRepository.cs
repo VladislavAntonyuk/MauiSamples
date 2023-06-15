@@ -1,6 +1,6 @@
 ﻿namespace KanbanBoard.Db;
-using Models;
 using Microsoft.EntityFrameworkCore;
+using Models;
 
 public class CardsRepository : ICardsRepository
 {
