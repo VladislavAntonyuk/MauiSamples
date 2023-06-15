@@ -1,5 +1,4 @@
-﻿using Foundation;
-using Social;
+﻿using Social;
 
 namespace AppContainerExtension;
 

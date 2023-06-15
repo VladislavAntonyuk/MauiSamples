@@ -1,9 +1,7 @@
 ﻿namespace MauiWorkflowBuilder.Blazor;
 
 using System.Xml.Serialization;
-using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.Messaging;
-using CommunityToolkit.Mvvm.Messaging.Messages;
 using IronBlock.Blocks;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;

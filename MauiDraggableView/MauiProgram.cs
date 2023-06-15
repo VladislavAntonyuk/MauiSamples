@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-
-namespace MauiDraggableView;
+﻿namespace MauiDraggableView;
 
 public static class MauiProgram
 {
@@ -12,10 +10,6 @@ public static class MauiProgram
 			   {
 				   h.AddHandler<DraggableView, DraggableViewHandler>();
 			   });
-
-#if DEBUG
-		builder.Logging.AddDebug();
-#endif
 
 		return builder.Build();
 	}

@@ -1,8 +1,5 @@
-﻿using Android.Graphics;
-using Android.OS;
+﻿using Android.OS;
 using Android.Views;
-using Android.Widget;
-using Google.Android.Material.BottomNavigation;
 using Microsoft.Maui.Controls.Platform.Compatibility;
 using View = Android.Views.View;
 

@@ -3,8 +3,6 @@
 
 namespace BottomSheet.WinUI;
 
-using Microsoft.UI.Xaml;
-
 /// <summary>
 /// Provides application-specific behavior to supplement the default Application class.
 /// </summary>

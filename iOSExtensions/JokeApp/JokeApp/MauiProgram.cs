@@ -1,7 +1,5 @@
 ﻿namespace JokeApp;
 
-using System.Text.Json;
-using System.Text.Json.Serialization;
 using Refit;
 
 public static class MauiProgram

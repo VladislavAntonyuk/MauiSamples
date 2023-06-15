@@ -1,8 +1,6 @@
 ﻿namespace MauiBluetooth;
 
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;

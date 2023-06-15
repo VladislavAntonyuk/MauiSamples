@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Maui;
-using Microsoft.Extensions.Logging;
 
 namespace MauiShellCustomization;
 
@@ -14,10 +13,6 @@ public static class MauiProgram
 				{
 					handlers.AddHandler<Shell, CustomShellHandler>();
 				}); ;
-
-#if DEBUG
-		builder.Logging.AddDebug();
-#endif
 
 		return builder.Build();
 	}

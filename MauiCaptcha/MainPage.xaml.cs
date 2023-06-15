@@ -4,8 +4,6 @@ using System.Net.Http.Json;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using Microsoft.AspNetCore.Components.WebView;
-using Microsoft.AspNetCore.Components.WebView.Maui;
-using Microsoft.Maui.Platform;
 
 public partial class MainPage : ContentPage
 {

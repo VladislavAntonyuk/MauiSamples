@@ -29,8 +29,6 @@ The development guide can be found at [SETUP.md](./SETUP.md).
 
 1. [TutorialHelp](TutorialHelp) - Interactive app tutorial in .NET MAUI using CommunityToolkit.Maui Popup.
 
-1. [PizzaStore](PizzaStore) - Overview of onion architecture. Creating an cross-platform application with the onion architecture.
-
 1. [MauiPaint](MauiPaint) - Replicate Paint application (drawing canvas, color palette, open/save dialogs).
 
 1. [MauiLocalization](MauiLocalization) - Demonstrates how to localize .NET MAUI application and switch the language without restarting the app.
