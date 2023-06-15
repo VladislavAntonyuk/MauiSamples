@@ -1,6 +1,5 @@
 ﻿namespace MauiTaskbarProgress;
 
-using ObjCRuntime;
 using UIKit;
 
 public class Program

@@ -1,6 +1,5 @@
 ﻿namespace MauiSpeech;
 
-using ObjCRuntime;
 using UIKit;
 
 public class Program

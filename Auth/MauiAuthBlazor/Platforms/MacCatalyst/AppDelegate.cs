@@ -1,6 +1,5 @@
 ﻿namespace MauiAuthBlazor;
 using Foundation;
-using Microsoft.Identity.Client;
 using UIKit;
 
 [Register(nameof(AppDelegate))]

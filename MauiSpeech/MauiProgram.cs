@@ -2,7 +2,6 @@
 
 using CommunityToolkit.Maui;
 using CommunityToolkit.Maui.Media;
-using Microsoft.Extensions.Logging;
 
 public static class MauiProgram
 {
@@ -16,10 +15,6 @@ public static class MauiProgram
 		builder.Services.AddSingleton(SpeechToText.Default);
 
 		builder.Services.AddSingleton<MainPage, MainViewModel>();
-
-#if DEBUG
-		builder.Logging.AddDebug();
-#endif
 
 		return builder.Build();
 	}

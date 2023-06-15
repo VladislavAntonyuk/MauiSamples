@@ -3,7 +3,6 @@
 using Blazor;
 using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.Messaging;
-using Microsoft.JSInterop;
 
 public partial class MainPage : ContentPage, IDisposable
 {

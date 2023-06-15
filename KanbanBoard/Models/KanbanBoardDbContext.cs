@@ -1,20 +1,21 @@
 ﻿namespace KanbanBoard.Models;
+
 using Microsoft.EntityFrameworkCore;
 
 public class KanbanBoardDbContext : DbContext
 {
-	private readonly IPath _path;
+	private readonly IPath path;
 
 	public KanbanBoardDbContext(IPath path, DbContextOptions<KanbanBoardDbContext> options)
 		: base(options)
 	{
-		_path = path;
+		this.path = path;
 	}
 
 	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 	{
 		base.OnConfiguring(optionsBuilder);
-		optionsBuilder.UseSqlite($"Filename={_path.GetDatabasePath()}");
+		optionsBuilder.UseSqlite($"Filename={path.GetDatabasePath()}");
 	}
 
 	public DbSet<Card> Cards { get; set; } = null!;

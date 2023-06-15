@@ -1,5 +1,4 @@
 ﻿using ConfigCat.Client;
-using Microsoft.Extensions.Logging;
 
 namespace MauiDynamicConfiguration;
 
@@ -25,9 +24,6 @@ public static class MauiProgram
 																	ConfigCat.Client.LogLevel.Info;
 															}
 														}));
-#if DEBUG
-		builder.Logging.AddDebug();
-#endif
 
 		return builder.Build();
 	}

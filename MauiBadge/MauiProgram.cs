@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-
-namespace MauiBadge;
+﻿namespace MauiBadge;
 
 public static class MauiProgram
 {
@@ -11,10 +9,6 @@ public static class MauiProgram
 
 		builder.Services.AddSingleton<MainPage>();
 		builder.Services.AddSingleton(NotificationCounter.Default);
-
-#if DEBUG
-		builder.Logging.AddDebug();
-#endif
 
 		return builder.Build();
 	}

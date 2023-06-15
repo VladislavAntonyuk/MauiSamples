@@ -31,7 +31,6 @@
 		<PackageReference Include="CommunityToolkit.Maui" Version="5.2.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
 		<PackageReference Include="OpenAI" Version="1.7.2" />
-		<PackageReference Include="System.Speech" Version="7.0.0" />
 	</ItemGroup>
 
 </Project>

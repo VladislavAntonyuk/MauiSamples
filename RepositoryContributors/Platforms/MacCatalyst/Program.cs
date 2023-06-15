@@ -1,6 +1,5 @@
 ﻿namespace RepositoryContributors;
 
-using ObjCRuntime;
 using UIKit;
 
 public class Program

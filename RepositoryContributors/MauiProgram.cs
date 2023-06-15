@@ -1,8 +1,5 @@
 ﻿namespace RepositoryContributors;
 
-using Microsoft.Extensions.Logging;
-using RepositoryContributors.Data;
-
 public static class MauiProgram
 {
 	public static MauiApp CreateMauiApp()
@@ -15,7 +12,6 @@ public static class MauiProgram
 
 #if DEBUG
 		builder.Services.AddBlazorWebViewDeveloperTools();
-		builder.Logging.AddDebug();
 #endif
 
 		builder.Services.AddSingleton(Connectivity.Current);

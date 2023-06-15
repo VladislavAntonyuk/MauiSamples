@@ -1,5 +1,5 @@
 ﻿namespace KanbanBoard.Db;
-using KanbanBoard.Models;
+using Models;
 
 public interface IColumnsRepository : IBaseRepository<Column>
 {

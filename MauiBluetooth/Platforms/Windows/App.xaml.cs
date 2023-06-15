@@ -2,7 +2,6 @@
 // and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace MauiBluetooth.WinUI;
-using Microsoft.UI.Xaml;
 
 /// <summary>
 /// Provides application-specific behavior to supplement the default Application class.

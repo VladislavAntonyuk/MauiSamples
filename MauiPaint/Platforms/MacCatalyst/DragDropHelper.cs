@@ -1,8 +1,6 @@
 ﻿namespace MauiPaint;
 
-using CoreFoundation;
 using Foundation;
-using MobileCoreServices;
 using UIKit;
 
 public static class DragDropHelper
