@@ -27,7 +27,7 @@
 
 	<ItemGroup Condition="'$(TargetFramework)' == '$(NetVersion)-android'">
 		<PackageReference Include="Xamarin.GooglePlayServices.SafetyNet">
-			<Version>118.0.1.4</Version>
+			<Version>118.0.1.3</Version>
 		</PackageReference>
 	</ItemGroup>
 
