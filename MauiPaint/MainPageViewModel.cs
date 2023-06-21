@@ -65,9 +65,11 @@ public partial class MainPageViewModel : ObservableObject
 	[RelayCommand]
 	void PreviewImage()
 	{
-		var preview = new PreviewImage(new StreamImageSource(){Stream = async (c) => await DrawingView.GetImageStream(
-			                               Lines, new Size(1000, 1000), Background)
-		                               });
+		var preview = new PreviewImage(new StreamImageSource()
+		{
+			Stream = async (c) => await DrawingView.GetImageStream(
+Lines, new Size(1000, 1000), Background)
+		});
 		Application.Current?.MainPage?.ShowPopup(preview);
 	}
 
