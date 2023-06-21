@@ -5,10 +5,6 @@ using Microsoft.Maui.Platform;
 
 public partial class MainPage : ContentPage
 {
-#if MACCATALYST || WINDOWS
-	private readonly MainPageViewModel mainPageViewModel;
-#endif
-
 	public MainPage(MainPageViewModel mainPageViewModel, IDeviceInfo deviceInfo)
 	{
 		InitializeComponent();
@@ -22,22 +18,29 @@ public partial class MainPage : ContentPage
 			AddToolbarItem("Help", mainPageViewModel.HelpCommand);
 			AddToolbarItem("About", mainPageViewModel.AboutCommand);
 		}
+
 		BindingContext = mainPageViewModel;
 #if MACCATALYST || WINDOWS
-		this.mainPageViewModel = mainPageViewModel;
-		Loaded += MainPage_Loaded;
-	}
-
-	private void MainPage_Loaded(object? sender, EventArgs e)
-	{
-		if (Handler?.MauiContext != null)
+		Loaded += (sender, args) =>
 		{
-			var uiElement = this.ToPlatform(Handler.MauiContext);
-			DragDropHelper.RegisterDragDrop(uiElement, async stream =>
+			if (Handler?.MauiContext != null)
 			{
-				await mainPageViewModel.OpenFile(stream, CancellationToken.None);
-			});
-		}
+				var uiElement = this.ToPlatform(Handler.MauiContext);
+				DragDropHelper.RegisterDrop(uiElement, async stream =>
+				{
+					await mainPageViewModel.OpenFile(stream, CancellationToken.None);
+				});
+			}
+		};
+
+		Unloaded += (sender, args) =>
+		{
+			if (Handler?.MauiContext != null)
+			{
+				var uiElement = this.ToPlatform(Handler.MauiContext);
+				DragDropHelper.UnRegisterDrop(uiElement);
+			}
+		};
 #endif
 	}
 

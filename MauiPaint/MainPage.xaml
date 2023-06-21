@@ -90,6 +90,9 @@
 							                            CommandParameter="{Binding Path=Value, Source={x:Reference RotateSlider}}"/>
 						</Slider.Behaviors>
 					</Slider>
+
+					<Label Text="Preview"/>
+					<Button Text="Preview image" Command="{Binding PreviewImageCommand}"></Button>
 				</VerticalStackLayout>
 			</ScrollView>
 		</Border>
