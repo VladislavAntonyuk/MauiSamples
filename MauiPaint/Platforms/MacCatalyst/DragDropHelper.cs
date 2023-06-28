@@ -56,7 +56,7 @@ class DragInteractionDelegate : UIDragInteractionDelegate
 		var streamContent = Content.Invoke(CancellationToken.None).GetAwaiter().GetResult();
 		var itemProvider = new NSItemProvider(NSData.FromStream(streamContent), UniformTypeIdentifiers.UTTypes.Image.Identifier);
 		var dragItem = new UIDragItem(itemProvider);
-		return new [] { dragItem };
+		return new[] { dragItem };
 	}
 }
 
