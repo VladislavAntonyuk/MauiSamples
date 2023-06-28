@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
@@ -28,7 +28,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="M.BindableProperty.Generator" Version="0.10.0" />
+		<PackageReference Include="M.BindableProperty.Generator" Version="0.11.1" />
 	</ItemGroup>
 
 	<ItemGroup Condition="$(NetVersion) != 'net7.0'">
