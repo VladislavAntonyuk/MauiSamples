@@ -9,29 +9,24 @@ public partial class PreviewImage : Popup
 
 	public PreviewImage(StreamImageSource imageSource)
 	{
+#if WINDOWS
+		var mainDisplayInfo = DeviceDisplay.Current.MainDisplayInfo;
+		Size = new Size(Math.Min(500, mainDisplayInfo.Width / mainDisplayInfo.Density), Math.Min(500, mainDisplayInfo.Height / mainDisplayInfo.Density));
+#endif
+
 		ImageSource = imageSource;
 		InitializeComponent();
 		BindingContext = this;
-		var mainDisplayInfo = DeviceDisplay.Current.MainDisplayInfo;
-		Size = new Size(Math.Min(500, mainDisplayInfo.Width / mainDisplayInfo.Density), Math.Min(500, mainDisplayInfo.Height / mainDisplayInfo.Density));
 
 #if MACCATALYST || WINDOWS
 		Opened += (sender, args) =>
 		{
-			if (Handler?.MauiContext != null)
-			{
-				var uiElement = Preview.ToPlatform(Handler.MauiContext);
-				DragDropHelper.RegisterDrag(uiElement, imageSource.Stream);
-			}
+			Preview.RegisterDrag(Handler.MauiContext, imageSource.Stream);
 		};
 
 		Closed += (sender, args) =>
 		{
-			if (Handler?.MauiContext != null)
-			{
-				var uiElement = Preview.ToPlatform(Handler.MauiContext);
-				DragDropHelper.UnRegisterDrag(uiElement);
-			}
+			Preview.UnRegisterDrag(Handler.MauiContext);
 		};
 #endif
 	}

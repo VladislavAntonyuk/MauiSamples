@@ -16,7 +16,7 @@ public static class DragDropHelper
 
 	public static void UnRegisterDrag(UIView view)
 	{
-		var dragInteractions = view.Interactions.OfType<UIDropInteraction>();
+		var dragInteractions = view.Interactions.OfType<UIDragInteraction>();
 		foreach (var interaction in dragInteractions)
 		{
 			view.RemoveInteraction(interaction);
@@ -54,7 +54,7 @@ class DragInteractionDelegate : UIDragInteractionDelegate
 		}
 
 		var streamContent = Content.Invoke(CancellationToken.None).GetAwaiter().GetResult();
-		var itemProvider = new NSItemProvider(NSData.FromStream(streamContent), UniformTypeIdentifiers.UTTypes.Image.Identifier);
+		var itemProvider = new NSItemProvider(NSData.FromStream(streamContent), UniformTypeIdentifiers.UTTypes.Png.Identifier);
 		var dragItem = new UIDragItem(itemProvider);
 		return new[] { dragItem };
 	}
