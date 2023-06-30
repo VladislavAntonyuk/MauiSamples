@@ -19,6 +19,7 @@
 		</MenuBarItem>
 		<MenuBarItem Text="Tools">
 			<MenuFlyoutItem Text="Paste from Clipboard" Command="{Binding PasteFromClipboardCommand}"/>
+			<MenuFlyoutItem Text="Preview image" Command="{Binding PreviewImageCommand}"/>
 		</MenuBarItem>
 		<MenuBarItem Text="Help">
 			<MenuFlyoutItem Text="Help" Command="{Binding HelpCommand}"/>
@@ -90,13 +91,11 @@
 							                            CommandParameter="{Binding Path=Value, Source={x:Reference RotateSlider}}"/>
 						</Slider.Behaviors>
 					</Slider>
-
-					<Label Text="Preview"/>
-					<Button Text="Preview image" Command="{Binding PreviewImageCommand}"></Button>
 				</VerticalStackLayout>
 			</ScrollView>
 		</Border>
-		<mct:DrawingView Grid.Column="1"
+		<mct:DrawingView x:Name="DrawingView"
+						 Grid.Column="1"
 						 Lines="{Binding Lines}"
 						 Background="{Binding Background}"
 						 LineColor="{Binding LineColor}"
