@@ -1,7 +1,6 @@
 ﻿namespace MauiPaint;
 
 using System.Windows.Input;
-using Microsoft.Maui.Platform;
 
 public partial class MainPage : ContentPage
 {
@@ -23,23 +22,15 @@ public partial class MainPage : ContentPage
 #if MACCATALYST || WINDOWS
 		Loaded += (sender, args) =>
 		{
-			if (Handler?.MauiContext != null)
+			DrawingView.RegisterDrop(Handler?.MauiContext, async stream =>
 			{
-				var uiElement = this.ToPlatform(Handler.MauiContext);
-				DragDropHelper.RegisterDrop(uiElement, async stream =>
-				{
-					await mainPageViewModel.OpenFile(stream, CancellationToken.None);
-				});
-			}
+				await mainPageViewModel.OpenFile(stream, CancellationToken.None);
+			});
 		};
 
 		Unloaded += (sender, args) =>
 		{
-			if (Handler?.MauiContext != null)
-			{
-				var uiElement = this.ToPlatform(Handler.MauiContext);
-				DragDropHelper.UnRegisterDrop(uiElement);
-			}
+			DrawingView.UnRegisterDrop(Handler?.MauiContext);
 		};
 #endif
 	}

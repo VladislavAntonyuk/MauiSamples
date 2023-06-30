@@ -13,8 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        #os: [windows-latest]
-        os: [windows-latest, macos-latest]
+        os: [windows-latest, macos-13]
 
     steps:
     - name: Prepare variables on Windows
@@ -23,7 +22,7 @@ jobs:
         echo "WORKING_DIRECTORY_PATH=C:/Projects/MauiSamples" >> $env:GITHUB_ENV
 
     - name: Prepare variables on macOS
-      if: ${{ matrix.os == 'macos-latest' }}
+      if: ${{ matrix.os == 'macos-13' }}
       run: |
         echo "WORKING_DIRECTORY_PATH=/Users/runner/Projects/MauiSamples" >> $GITHUB_ENV
 
@@ -32,12 +31,6 @@ jobs:
          git clone https://github.com/${{ github.repository }}.git ${{ env.WORKING_DIRECTORY_PATH }}
          cd ${{ env.WORKING_DIRECTORY_PATH }}
          git checkout ${{ github.head_ref || github.ref_name }}
-
-    - name: Setup Xcode
-      if: ${{ matrix.os == 'macos-latest' }}
-      uses: maxim-lobanov/setup-xcode@v1
-      with:
-        xcode-version: '14.3'
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v2
