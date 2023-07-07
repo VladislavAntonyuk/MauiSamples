@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
@@ -35,6 +35,6 @@
 		<PackageReference Include="Microsoft.Maui.Graphics.Text.Markdig" Version="8.0.0-preview.5.8529" />
 	</ItemGroup>
 	<ItemGroup Condition="$(NetVersion) == 'net7.0'">
-		<PackageReference Include="Microsoft.Maui.Graphics.Text.Markdig" Version="7.0.86" />
+		<PackageReference Include="Microsoft.Maui.Graphics.Text.Markdig" Version="8.0.0-preview.5.8529" />
 	</ItemGroup>
 </Project>
