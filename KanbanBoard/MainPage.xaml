@@ -47,7 +47,7 @@
 				<Rectangle.GestureRecognizers>
 					<DropGestureRecognizer AllowDrop="True"
 					                       DragOverCommand="{Binding DragOverCommand}"
-					                       DragOverCommandParameter="1" />
+					                       DragOverCommandParameter="Right" />
 				</Rectangle.GestureRecognizers>
 			</Rectangle>
 			<Rectangle WidthRequest="30"
@@ -57,7 +57,7 @@
 				<Rectangle.GestureRecognizers>
 					<DropGestureRecognizer AllowDrop="True"
 					                       DragOverCommand="{Binding DragOverCommand}"
-					                       DragOverCommandParameter="2" />
+					                       DragOverCommandParameter="Left" />
 				</Rectangle.GestureRecognizers>
 			</Rectangle>
 

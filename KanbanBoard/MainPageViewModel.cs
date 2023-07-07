@@ -54,7 +54,7 @@ public partial class MainPageViewModel : ObservableObject
 	[RelayCommand]
 	void DragOver(string direction)
 	{
-		switch ((SwipeDirection)Convert.ToInt32(direction))
+		switch (Enum.Parse<SwipeDirection>(direction))
 		{
 			case SwipeDirection.Left:
 				if (Position < Columns.Count - 1)
