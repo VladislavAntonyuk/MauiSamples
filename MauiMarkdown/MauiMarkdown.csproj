@@ -32,9 +32,9 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="$(NetVersion) != 'net7.0'">
-		<PackageReference Include="Microsoft.Maui.Graphics.Text.Markdig" Version="8.0.0-preview.5.8529" />
+		<PackageReference Include="Microsoft.Maui.Graphics.Text.Markdig" Version="8.0.0-preview.6.8686" />
 	</ItemGroup>
 	<ItemGroup Condition="$(NetVersion) == 'net7.0'">
-		<PackageReference Include="Microsoft.Maui.Graphics.Text.Markdig" Version="7.0.86" />
+		<PackageReference Include="Microsoft.Maui.Graphics.Text.Markdig" Version="7.0.92" />
 	</ItemGroup>
 </Project>

@@ -1,5 +1,6 @@
-﻿namespace AuthServices;
+﻿namespace MauiAuthBlazor;
 
+using AuthServices;
 using Microsoft.Identity.Client;
 
 public static class DependencyExtensions
