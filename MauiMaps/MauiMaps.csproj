@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
@@ -31,7 +31,7 @@
 		<PackageReference Include="AutoFixture" Version="4.18.0" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="5.2.0" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
-		<PackageReference Include="CommunityToolkit.Maui.Maps" Version="1.0.3" />
+		<PackageReference Include="CommunityToolkit.Maui.Maps" Version="1.0.4" />
 	</ItemGroup>
 
 </Project>
