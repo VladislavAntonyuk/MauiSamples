@@ -17,7 +17,7 @@ internal class CustomShellItemRenderer : ShellItemRenderer
 	public override async void ViewWillLayoutSubviews()
 	{
 		base.ViewWillLayoutSubviews();
-		if (View is not null && ShellItem is CustomTabBar {CenterViewVisible: true} tabbar)
+		if (View is not null && ShellItem is CustomTabBar { CenterViewVisible: true } tabbar)
 		{
 			if (middleView is not null)
 			{
@@ -39,8 +39,8 @@ internal class CustomShellItemRenderer : ShellItemRenderer
 				}
 
 				middleView.AutoresizingMask = UIViewAutoresizing.FlexibleRightMargin |
-				                              UIViewAutoresizing.FlexibleLeftMargin |
-				                              UIViewAutoresizing.FlexibleBottomMargin;
+											  UIViewAutoresizing.FlexibleLeftMargin |
+											  UIViewAutoresizing.FlexibleBottomMargin;
 				middleView.Layer.CornerRadius = middleView.Frame.Width / 2;
 				middleView.Layer.MasksToBounds = false;
 

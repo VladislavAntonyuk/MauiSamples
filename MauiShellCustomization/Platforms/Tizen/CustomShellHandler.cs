@@ -1,4 +1,4 @@
-
+﻿
 namespace MauiShellCustomization;
 using Microsoft.Maui.Controls.Handlers;
 using Microsoft.Maui.Controls.Platform;

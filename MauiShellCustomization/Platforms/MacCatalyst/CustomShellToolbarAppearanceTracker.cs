@@ -41,13 +41,13 @@ sealed class CustomShellToolbarAppearanceTracker : IShellNavBarAppearanceTracker
 		baseTracker.UpdateLayout(controller);
 		var topSpace = controller.NavigationBar.Bounds.Height / 2;
 		controller.NavigationBar.Frame = new CoreGraphics.CGRect(controller.NavigationBar.Frame.X + topSpace,
-		                                                         controller.NavigationBar.Frame.Y + topSpace,
-		                                                         controller.NavigationBar.Frame.Width - 2 * topSpace,
-		                                                         controller.NavigationBar.Frame.Height);
+																 controller.NavigationBar.Frame.Y + topSpace,
+																 controller.NavigationBar.Frame.Width - 2 * topSpace,
+																 controller.NavigationBar.Frame.Height);
 
 		const int cornerRadius = 30;
 		var uIBezierPath = UIBezierPath.FromRoundedRect(controller.NavigationBar.Bounds, UIRectCorner.AllCorners,
-		                                                new CoreGraphics.CGSize(cornerRadius, cornerRadius));
+														new CoreGraphics.CGSize(cornerRadius, cornerRadius));
 
 		var cAShapeLayer = new CAShapeLayer
 		{

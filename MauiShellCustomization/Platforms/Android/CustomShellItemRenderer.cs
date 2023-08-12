@@ -17,7 +17,7 @@ internal class CustomShellItemRenderer : ShellItemRenderer
 	public override View? OnCreateView(LayoutInflater inflater, ViewGroup? container, Bundle? savedInstanceState)
 	{
 		var view = base.OnCreateView(inflater, container, savedInstanceState);
-		if (Context is not null && ShellItem is CustomTabBar {CenterViewVisible: true} tabBar)
+		if (Context is not null && ShellItem is CustomTabBar { CenterViewVisible: true } tabBar)
 		{
 			var rootLayout = new FrameLayout(Context)
 			{
@@ -28,9 +28,9 @@ internal class CustomShellItemRenderer : ShellItemRenderer
 			rootLayout.AddView(view);
 			const int middleViewSize = 150;
 			var middleViewLayoutParams = new FrameLayout.LayoutParams(ViewGroup.LayoutParams.WrapContent,
-			                                                          ViewGroup.LayoutParams.WrapContent,
-			                                                          GravityFlags.CenterHorizontal |
-			                                                          GravityFlags.Bottom)
+																	  ViewGroup.LayoutParams.WrapContent,
+																	  GravityFlags.CenterHorizontal |
+																	  GravityFlags.Bottom)
 			{
 				BottomMargin = 100,
 				Width = middleViewSize,
