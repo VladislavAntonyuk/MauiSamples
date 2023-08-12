@@ -7,30 +7,36 @@ using Microsoft.Maui.Controls.Platform;
 using Microsoft.Maui.Controls.Platform.Compatibility;
 using Microsoft.Maui.Platform;
 
-class CustomShellToolbarAppearanceTracker : ShellToolbarAppearanceTracker
+internal class CustomShellToolbarAppearanceTracker : ShellToolbarAppearanceTracker
 {
+	private readonly IShellContext shellContext;
+
 	public CustomShellToolbarAppearanceTracker(IShellContext shellContext) : base(shellContext)
 	{
+		this.shellContext = shellContext;
 	}
 
 	public override void SetAppearance(Toolbar toolbar, IShellToolbarTracker toolbarTracker, ShellAppearance appearance)
 	{
 		base.SetAppearance(toolbar, toolbarTracker, appearance);
-		var backgroundDrawable = new GradientDrawable();
-		backgroundDrawable.SetShape(ShapeType.Rectangle);
-		backgroundDrawable.SetCornerRadius(30);
-		backgroundDrawable.SetColor(appearance.BackgroundColor.ToPlatform());
-		toolbar.SetBackground(backgroundDrawable);
-
-		var layoutParams = toolbar.LayoutParameters;
-		if (layoutParams is ViewGroup.MarginLayoutParams marginLayoutParams)
+		if (Shell.GetNavBarIsVisible(shellContext.Shell.CurrentPage))
 		{
-			var margin = 30;
-			marginLayoutParams.TopMargin = margin;
-			marginLayoutParams.BottomMargin = margin;
-			marginLayoutParams.LeftMargin = margin;
-			marginLayoutParams.RightMargin = margin;
-			toolbar.LayoutParameters = layoutParams;
+			var backgroundDrawable = new GradientDrawable();
+			backgroundDrawable.SetShape(ShapeType.Rectangle);
+			backgroundDrawable.SetCornerRadius(30);
+			backgroundDrawable.SetColor(appearance.BackgroundColor.ToPlatform());
+			toolbar.SetBackground(backgroundDrawable);
+
+			var layoutParams = toolbar.LayoutParameters;
+			if (layoutParams is ViewGroup.MarginLayoutParams marginLayoutParams)
+			{
+				var margin = 30;
+				marginLayoutParams.TopMargin = margin;
+				marginLayoutParams.BottomMargin = margin;
+				marginLayoutParams.LeftMargin = margin;
+				marginLayoutParams.RightMargin = margin;
+				toolbar.LayoutParameters = layoutParams;
+			}
 		}
 	}
 }

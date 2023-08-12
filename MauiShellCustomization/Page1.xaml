@@ -6,7 +6,8 @@
 
 	<Label
 		Text="Page1"
+		TextColor="White"
 		VerticalOptions="Center"
-		HorizontalOptions="Center" /> 
+		HorizontalOptions="Center" />
 
 </ContentPage>

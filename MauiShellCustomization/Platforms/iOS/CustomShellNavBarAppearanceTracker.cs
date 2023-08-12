@@ -1,17 +1,17 @@
 ﻿namespace MauiShellCustomization;
 
 using CoreAnimation;
-using Microsoft.Maui.Controls;
+using CoreGraphics;
 using Microsoft.Maui.Controls.Platform.Compatibility;
 using Microsoft.Maui.Platform;
 using UIKit;
 
-class CustomShellToolbarAppearanceTracker : IShellNavBarAppearanceTracker
+internal sealed class CustomShellNavBarAppearanceTracker : IShellNavBarAppearanceTracker
 {
-	private readonly IShellContext shellContext;
 	private readonly IShellNavBarAppearanceTracker baseTracker;
+	private readonly IShellContext shellContext;
 
-	public CustomShellToolbarAppearanceTracker(IShellContext shellContext, IShellNavBarAppearanceTracker baseTracker)
+	public CustomShellNavBarAppearanceTracker(IShellContext shellContext, IShellNavBarAppearanceTracker baseTracker)
 	{
 		this.shellContext = shellContext;
 		this.baseTracker = baseTracker;
@@ -40,19 +40,14 @@ class CustomShellToolbarAppearanceTracker : IShellNavBarAppearanceTracker
 	{
 		baseTracker.UpdateLayout(controller);
 		var topSpace = controller.NavigationBar.Bounds.Height / 2;
-		controller.NavigationBar.Frame = new CoreGraphics.CGRect(
-			controller.NavigationBar.Frame.X + topSpace,
-			controller.NavigationBar.Frame.Y + topSpace,
-			controller.NavigationBar.Frame.Width - 2 * topSpace,
-			controller.NavigationBar.Frame.Height
-		);
+		controller.NavigationBar.Frame = new CGRect(controller.NavigationBar.Frame.X + topSpace,
+		                                            controller.NavigationBar.Frame.Y + topSpace,
+		                                            controller.NavigationBar.Frame.Width - (2 * topSpace),
+		                                            controller.NavigationBar.Frame.Height);
 
 		const int cornerRadius = 30;
-		var uIBezierPath = UIBezierPath.FromRoundedRect(
-			controller.NavigationBar.Bounds,
-			UIRectCorner.AllCorners,
-			new CoreGraphics.CGSize(cornerRadius, cornerRadius)
-		);
+		var uIBezierPath = UIBezierPath.FromRoundedRect(controller.NavigationBar.Bounds, UIRectCorner.AllCorners,
+		                                                new CGSize(cornerRadius, cornerRadius));
 
 		var cAShapeLayer = new CAShapeLayer
 		{

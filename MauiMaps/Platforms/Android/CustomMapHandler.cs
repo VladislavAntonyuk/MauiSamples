@@ -2,6 +2,7 @@
 
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
+using Android.Graphics;
 using Android.Graphics.Drawables;
 using Microsoft.Maui.Maps;
 using Microsoft.Maui.Maps.Handlers;
@@ -12,7 +13,7 @@ public class CustomMapHandler : MapHandler
 	public static readonly IPropertyMapper<IMap, IMapHandler> CustomMapper =
 		new PropertyMapper<IMap, IMapHandler>(Mapper)
 		{
-			[nameof(IMap.Pins)] = MapPins,
+			[nameof(IMap.Pins)] = MapPins
 		};
 
 	public CustomMapHandler() : base(CustomMapper, CommandMapper)
@@ -24,7 +25,7 @@ public class CustomMapHandler : MapHandler
 	{
 	}
 
-	public List<Marker> Markers { get; } = new();
+	public Dictionary<IMapPin, Marker> Markers { get; } = new();
 
 	protected override void ConnectHandler(MapView platformView)
 	{
@@ -39,9 +40,10 @@ public class CustomMapHandler : MapHandler
 		{
 			foreach (var marker in mapHandler.Markers)
 			{
-				marker.Remove();
+				marker.Value.Remove();
 			}
 
+			mapHandler.Markers.Clear();
 			mapHandler.AddPins(map.Pins);
 		}
 	}
@@ -63,26 +65,37 @@ public class CustomMapHandler : MapHandler
 				{
 					cp.ImageSource.LoadImage(MauiContext, result =>
 					{
-						if (result?.Value is BitmapDrawable bitmapDrawable)
+						if (result?.Value is BitmapDrawable bitmapDrawable && bitmapDrawable.Bitmap is not null)
 						{
-							markerOption.SetIcon(BitmapDescriptorFactory.FromBitmap(bitmapDrawable.Bitmap));
+							markerOption.SetIcon(BitmapDescriptorFactory.FromBitmap(GetMaximumBitmap(bitmapDrawable.Bitmap, 100, 100)));
 						}
 
-						AddMarker(Map, pin, Markers, markerOption);
+						AddMarker(Map, pin, markerOption);
 					});
 				}
 				else
 				{
-					AddMarker(Map, pin, Markers, markerOption);
+					AddMarker(Map, pin, markerOption);
 				}
 			}
 		}
 	}
 
-	private static void AddMarker(GoogleMap map, IMapPin pin, ICollection<Marker> markers, MarkerOptions markerOption)
+	private void AddMarker(GoogleMap map, IMapPin pin, MarkerOptions markerOption)
 	{
 		var marker = map.AddMarker(markerOption);
 		pin.MarkerId = marker.Id;
-		markers.Add(marker);
+		Markers.Add(pin, marker);
+	}
+
+	private static Bitmap GetMaximumBitmap(in Bitmap sourceImage, in float maxWidth, in float maxHeight)
+	{
+		var sourceSize = new Size(sourceImage.Width, sourceImage.Height);
+		var maxResizeFactor = Math.Min(maxWidth / sourceSize.Width, maxHeight / sourceSize.Height);
+
+		var width = Math.Max(maxResizeFactor * sourceSize.Width, 1);
+		var height = Math.Max(maxResizeFactor * sourceSize.Height, 1);
+		return Bitmap.CreateScaledBitmap(sourceImage, (int)width, (int)height, false)
+				?? throw new InvalidOperationException("Failed to create Bitmap");
 	}
 }

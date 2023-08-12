@@ -13,9 +13,21 @@ public class CustomShellHandler : ShellHandler
 	protected override ShellView CreatePlatformView()
 	{
 		var shellView = base.CreatePlatformView();
-		shellView.Loaded += ShellViewOnLoaded;
-		shellView.LayoutUpdated += ShellView_LayoutUpdated;
 		return shellView;
+	}
+
+	protected override void ConnectHandler(ShellView platformView)
+	{
+		platformView.Loaded += ShellViewOnLoaded;
+		platformView.LayoutUpdated += ShellView_LayoutUpdated;
+		base.ConnectHandler(platformView);
+	}
+
+	protected override void DisconnectHandler(ShellView platformView)
+	{
+		platformView.Loaded -= ShellViewOnLoaded;
+		platformView.LayoutUpdated -= ShellView_LayoutUpdated;
+		base.DisconnectHandler(platformView);
 	}
 
 	private void ShellView_LayoutUpdated(object? sender, object e)
@@ -59,57 +71,50 @@ public class CustomShellHandler : ShellHandler
 				menuItemsGrid.Background = Colors.LightBlue.ToPlatform();
 			}
 		}
-
 	}
 
-	public DataTemplate CreateNavigationViewItemDataTemplate()
+	private static DataTemplate CreateNavigationViewItemDataTemplate()
 	{
 		var xaml = """
-	< DataTemplate xmlns = 'http://schemas.microsoft.com/winfx/2006/xaml/presentation' >
-
-
-		 < NavigationViewItem BackgroundSizing = "OuterBorderEdge"
-
-					Content = "{Binding Content}"
-
-					Foreground = "{Binding Foreground}"
-
-					Background = "{Binding Background}"
-
-					IsSelected = "{Binding IsSelected, Mode=TwoWay}"
-
-					MenuItemsSource = "{Binding MenuItemsSource}"
-
-					Icon = "{Binding Icon}" />
-
-	</ DataTemplate >
-""";
+		           <DataTemplate xmlns = 'http://schemas.microsoft.com/winfx/2006/xaml/presentation'>
+		             <NavigationViewItem BackgroundSizing = "OuterBorderEdge"
+		           				Content = "{Binding Content}"
+		           				Foreground = "{Binding Foreground}"
+		           				Background = "{Binding Background}"
+		           				IsSelected = "{Binding IsSelected, Mode=TwoWay}"
+		           				MenuItemsSource = "{Binding MenuItemsSource}"
+		           				Icon = "{Binding Icon}" />
+		           </DataTemplate>
+		           """;
 
 		var dataTemplate = (DataTemplate)XamlReader.Load(xaml);
 		return dataTemplate;
 	}
 
-	public Style CreateNavItemViewContainerStyle()
+	private static Style CreateNavItemViewContainerStyle()
 	{
 		var navViewItemContainerStyle = new Style(typeof(NavigationViewItem));
-
 		navViewItemContainerStyle.Setters.Add(new Setter(Control.FontSizeProperty, 24));
-
 		return navViewItemContainerStyle;
 	}
 
-	Grid? TopNavGrid(MauiNavigationView content)
+	private static Grid? TopNavGrid(MauiNavigationView content)
 	{
-		var topNavAreaProperty = content.GetType().GetProperty("TopNavMenuItemsHost", BindingFlags.NonPublic | BindingFlags.Instance);
-		return (((topNavAreaProperty?.GetValue(content) as ItemsRepeater)?.Parent as ScrollViewer)?.Parent as ItemsRepeaterScrollHost)?.Parent as Grid;
+		var topNavAreaProperty = content.GetType()
+		                                .GetProperty("TopNavMenuItemsHost",
+		                                             BindingFlags.NonPublic | BindingFlags.Instance);
+		return (((topNavAreaProperty?.GetValue(content) as ItemsRepeater)?.Parent as ScrollViewer)?.Parent as
+			ItemsRepeaterScrollHost)?.Parent as Grid;
 	}
-	StackPanel? TopNavArea(MauiNavigationView content)
+
+	private static StackPanel? TopNavArea(MauiNavigationView content)
 	{
-		var topNavAreaProperty = content.GetType().GetProperty("TopNavArea", BindingFlags.NonPublic | BindingFlags.Instance);
+		var topNavAreaProperty =
+			content.GetType().GetProperty("TopNavArea", BindingFlags.NonPublic | BindingFlags.Instance);
 		return topNavAreaProperty?.GetValue(content) as StackPanel;
 	}
 
-	Grid? MenuItemsGrid(MauiNavigationView content)
+	private static Grid? MenuItemsGrid(MauiNavigationView content)
 	{
 		var topNavArea = TopNavArea(content);
 		if (topNavArea is not null && topNavArea.Children.Count > 1)
@@ -120,9 +125,10 @@ public class CustomShellHandler : ShellHandler
 		return TopNavGrid(content);
 	}
 
-	Grid? ContentGrid(MauiNavigationView content)
+	private static Grid? ContentGrid(MauiNavigationView content)
 	{
-		var topNavAreaProperty = content.GetType().GetProperty("ContentGrid", BindingFlags.NonPublic | BindingFlags.Instance);
+		var topNavAreaProperty =
+			content.GetType().GetProperty("ContentGrid", BindingFlags.NonPublic | BindingFlags.Instance);
 		return topNavAreaProperty?.GetValue(content) as Grid;
 	}
 }

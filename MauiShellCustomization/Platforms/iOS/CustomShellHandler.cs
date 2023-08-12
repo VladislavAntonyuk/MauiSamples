@@ -3,7 +3,7 @@ using Microsoft.Maui.Controls.Platform.Compatibility;
 
 namespace MauiShellCustomization;
 
-class CustomShellHandler : ShellRenderer
+internal class CustomShellHandler : ShellRenderer
 {
 	protected override IShellTabBarAppearanceTracker CreateTabBarAppearanceTracker()
 	{
@@ -12,7 +12,7 @@ class CustomShellHandler : ShellRenderer
 
 	protected override IShellNavBarAppearanceTracker CreateNavBarAppearanceTracker()
 	{
-		return new CustomShellToolbarAppearanceTracker(this, base.CreateNavBarAppearanceTracker());
+		return new CustomShellNavBarAppearanceTracker(this, base.CreateNavBarAppearanceTracker());
 	}
 
 	protected override IShellItemRenderer CreateShellItemRenderer(ShellItem item)

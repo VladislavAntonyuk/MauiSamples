@@ -6,12 +6,12 @@ using Microsoft.Maui.Controls.Platform.Compatibility;
 using Microsoft.Maui.Platform;
 
 namespace MauiShellCustomization;
-
-class CustomShellBottomNavViewAppearanceTracker : ShellBottomNavViewAppearanceTracker
+internal class CustomShellBottomNavViewAppearanceTracker : ShellBottomNavViewAppearanceTracker
 {
 	private readonly IShellContext shellContext;
 
-	public CustomShellBottomNavViewAppearanceTracker(IShellContext shellContext, ShellItem shellItem) : base(shellContext, shellItem)
+	public CustomShellBottomNavViewAppearanceTracker(IShellContext shellContext, ShellItem shellItem) : base(
+		shellContext, shellItem)
 	{
 		this.shellContext = shellContext;
 	}
@@ -19,20 +19,23 @@ class CustomShellBottomNavViewAppearanceTracker : ShellBottomNavViewAppearanceTr
 	public override void SetAppearance(BottomNavigationView bottomView, IShellAppearanceElement appearance)
 	{
 		base.SetAppearance(bottomView, appearance);
-		var backgroundDrawable = new GradientDrawable();
-		backgroundDrawable.SetShape(ShapeType.Rectangle);
-		backgroundDrawable.SetCornerRadius(30);
-		backgroundDrawable.SetColor(appearance.EffectiveTabBarBackgroundColor.ToPlatform());
-		bottomView.SetBackground(backgroundDrawable);
-
-		var layoutParams = bottomView.LayoutParameters;
-		if (layoutParams is ViewGroup.MarginLayoutParams marginLayoutParams)
+		if (Shell.GetTabBarIsVisible(shellContext.Shell.CurrentPage))
 		{
-			var margin = 30;
-			marginLayoutParams.BottomMargin = margin;
-			marginLayoutParams.LeftMargin = margin;
-			marginLayoutParams.RightMargin = margin;
-			bottomView.LayoutParameters = layoutParams;
+			var backgroundDrawable = new GradientDrawable();
+			backgroundDrawable.SetShape(ShapeType.Rectangle);
+			backgroundDrawable.SetCornerRadius(30);
+			backgroundDrawable.SetColor(appearance.EffectiveTabBarBackgroundColor.ToPlatform());
+			bottomView.SetBackground(backgroundDrawable);
+
+			var layoutParams = bottomView.LayoutParameters;
+			if (layoutParams is ViewGroup.MarginLayoutParams marginLayoutParams)
+			{
+				const int margin = 30;
+				marginLayoutParams.BottomMargin = margin;
+				marginLayoutParams.LeftMargin = margin;
+				marginLayoutParams.RightMargin = margin;
+				bottomView.LayoutParameters = layoutParams;
+			}
 		}
 	}
 
