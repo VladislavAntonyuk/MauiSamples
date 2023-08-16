@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<NetVersion>net7.0</NetVersion>
@@ -48,7 +48,7 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="$(NetVersion) != 'net7.0'">
-		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.0-preview.6.8686" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.0-preview.7.8842" />
 	</ItemGroup>
 
 	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
