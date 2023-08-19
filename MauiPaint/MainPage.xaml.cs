@@ -2,8 +2,17 @@
 
 using System.Windows.Input;
 
+#if WINDOWS
+using CommunityToolkit.Mvvm.Messaging;
+public partial class MainPage : ContentPage, IRecipient<DropItemMessage>
+#else
 public partial class MainPage : ContentPage
+#endif
 {
+#if WINDOWS
+	private readonly MainPageViewModel mainPageViewModel;
+#endif
+
 	public MainPage(MainPageViewModel mainPageViewModel, IDeviceInfo deviceInfo)
 	{
 		InitializeComponent();
@@ -19,7 +28,23 @@ public partial class MainPage : ContentPage
 		}
 
 		BindingContext = mainPageViewModel;
-#if MACCATALYST || WINDOWS
+
+#if WINDOWS
+		this.mainPageViewModel = mainPageViewModel;
+		Loaded += (sender, args) =>
+		{
+			DrawingView.RegisterDrop(Handler?.MauiContext);
+			WeakReferenceMessenger.Default.Register<DropItemMessage>(this);
+		};
+
+		Unloaded += (sender, args) =>
+		{
+			DrawingView.UnRegisterDrop(Handler?.MauiContext);
+			WeakReferenceMessenger.Default.Unregister<DropItemMessage>(this);
+		};
+#endif
+
+#if MACCATALYST
 		Loaded += (sender, args) =>
 		{
 			DrawingView.RegisterDrop(Handler?.MauiContext, async stream =>
@@ -44,4 +69,11 @@ public partial class MainPage : ContentPage
 		};
 		ToolbarItems.Add(toolbarItem);
 	}
+
+#if WINDOWS
+	public async void Receive(DropItemMessage message)
+	{
+		await mainPageViewModel.OpenFile(message.Value, CancellationToken.None);
+	}
+#endif
 }

@@ -8,6 +8,7 @@ namespace MauiPaint;
 
 using System.Diagnostics;
 using System.Text;
+using CommunityToolkit.Mvvm.Messaging;
 using Windows.Foundation;
 using Windows.Storage.Streams;
 
@@ -27,28 +28,10 @@ public static class DragDropHelper
 		};
 	}
 
-	public static void RegisterDrop(UIElement element, Func<Stream, Task>? content)
+	public static void RegisterDrop(UIElement element)
 	{
 		element.AllowDrop = true;
-		element.Drop += async (s, e) =>
-		{
-			if (e.DataView.Contains(StandardDataFormats.StorageItems))
-			{
-				var items = await e.DataView.GetStorageItemsAsync();
-				foreach (var item in items)
-				{
-					if (item is StorageFile file)
-					{
-						if (content is not null)
-						{
-							var text = await FileIO.ReadTextAsync(file);
-							var bytes = Encoding.Default.GetBytes(text);
-							await content.Invoke(new MemoryStream(bytes));
-						}
-					}
-				}
-			}
-		};
+		element.Drop += OnDrop;
 		element.DragOver += OnDragOver;
 	}
 
@@ -60,7 +43,26 @@ public static class DragDropHelper
 	public static void UnRegisterDrop(UIElement element)
 	{
 		element.AllowDrop = false;
+		element.Drop -= OnDrop;
 		element.DragOver -= OnDragOver;
+	}
+
+	private static async void OnDrop(object sender, DragEventArgs e)
+	{
+		if (e.DataView.Contains(StandardDataFormats.StorageItems))
+		{
+			var items = await e.DataView.GetStorageItemsAsync();
+			foreach (var item in items)
+			{
+				if (item is StorageFile file)
+				{
+					var text = await FileIO.ReadTextAsync(file);
+					var bytes = Encoding.Default.GetBytes(text);
+
+					WeakReferenceMessenger.Default.Send(new DropItemMessage(new MemoryStream(bytes)));
+				}
+			}
+		}
 	}
 
 	private static async void OnDragOver(object sender, DragEventArgs e)

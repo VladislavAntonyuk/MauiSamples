@@ -19,12 +19,21 @@ public static class DragDropExtensions
 		DragDropHelper.UnRegisterDrag(view);
 	}
 
+#if MACCATALYST
 	public static void RegisterDrop(this IElement element, IMauiContext? mauiContext, Func<Stream, Task>? content)
 	{
 		ArgumentNullException.ThrowIfNull(mauiContext);
 		var view = element.ToPlatform(mauiContext);
 		DragDropHelper.RegisterDrop(view, content);
 	}
+#elif WINDOWS
+	public static void RegisterDrop(this IElement element, IMauiContext? mauiContext)
+	{
+		ArgumentNullException.ThrowIfNull(mauiContext);
+		var view = element.ToPlatform(mauiContext);
+		DragDropHelper.RegisterDrop(view);
+	}
+#endif
 
 	public static void UnRegisterDrop(this IElement element, IMauiContext? mauiContext)
 	{
