@@ -5,7 +5,7 @@
 [![Stand With Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd700.svg?labelColor=0057b7)](https://stand-with-ukraine.pp.ua)
 ## Thank You
 
-Special thanks to my friends and sponsors: @PeterFucci, Gerald Versluis (jfversluis), @renatolopes, Glen Herman, Olexii, Brady, Yury Michurin, VToegel, Aleksander Rokic, Jeffrey Williams, TimKyn.
+Special thanks to my friends and sponsors: @PeterFucci, Gerald Versluis (jfversluis), @renatolopes, Glen Herman, Olexii, Brady, Yury Michurin, VToegel, Aleksander Rokic, Jeffrey Williams, TimKyn, Standa Mikeš, Aaron Schaefer.
 
 This project is tested with BrowserStack.
 

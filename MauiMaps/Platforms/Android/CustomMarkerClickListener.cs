@@ -13,8 +13,8 @@ internal class CustomMarkerClickListener : Java.Lang.Object, GoogleMap.IOnMarker
 
 	public bool OnMarkerClick(Android.Gms.Maps.Model.Marker marker)
 	{
-		var pin = mapHandler.Markers.FirstOrDefault(x => x.Value.Id == marker.Id);
-		pin.Key?.SendMarkerClick();
+		var pin = mapHandler.Markers.FirstOrDefault(x => x.marker.Id == marker.Id);
+		pin.pin?.SendMarkerClick();
 		marker.ShowInfoWindow();
 		return true;
 	}
