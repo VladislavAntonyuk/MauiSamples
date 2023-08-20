@@ -1,5 +1,6 @@
 ﻿namespace MauiMaps;
 
+using System.Linq;
 using Android.Gms.Maps;
 using Android.Gms.Maps.Model;
 using Android.Graphics;
@@ -38,13 +39,15 @@ public class CustomMapHandler : MapHandler
 	{
 		if (handler is CustomMapHandler mapHandler)
 		{
-			foreach (var marker in mapHandler.Markers)
+			var pinsToAdd = map.Pins.Where(x => x.MarkerId == null).ToList();
+			var pinsToRemove = mapHandler.Markers.Where(x => !map.Pins.Contains(x.pin)).ToList();
+			foreach (var marker in pinsToRemove)
 			{
 				marker.marker.Remove();
+				mapHandler.Markers.Remove(marker);
 			}
 
-			mapHandler.Markers.Clear();
-			mapHandler.AddPins(map.Pins);
+			mapHandler.AddPins(pinsToAdd);
 		}
 	}
 
