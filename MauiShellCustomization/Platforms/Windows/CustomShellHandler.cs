@@ -101,8 +101,8 @@ public class CustomShellHandler : ShellHandler
 	private static Grid? TopNavGrid(MauiNavigationView content)
 	{
 		var topNavAreaProperty = content.GetType()
-		                                .GetProperty("TopNavMenuItemsHost",
-		                                             BindingFlags.NonPublic | BindingFlags.Instance);
+										.GetProperty("TopNavMenuItemsHost",
+													 BindingFlags.NonPublic | BindingFlags.Instance);
 		return (((topNavAreaProperty?.GetValue(content) as ItemsRepeater)?.Parent as ScrollViewer)?.Parent as
 			ItemsRepeaterScrollHost)?.Parent as Grid;
 	}

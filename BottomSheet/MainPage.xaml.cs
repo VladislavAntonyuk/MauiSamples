@@ -1,7 +1,7 @@
 ﻿namespace BottomSheet;
 
 #if ANDROID
-using BottomSheetView =  Google.Android.Material.BottomSheet.BottomSheetDialog;
+using BottomSheetView = Google.Android.Material.BottomSheet.BottomSheetDialog;
 #elif IOS || MACCATALYST
 using BottomSheetView = UIKit.UIViewController;
 #elif TIZEN

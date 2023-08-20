@@ -11,7 +11,7 @@ public static class MauiProgram
 		builder.Services.AddMauiBlazorWebView();
 		builder.Services.AddSingleton(new AccountRepository("accounts-blazor.db"));
 #if DEBUG
-        builder.Services.AddBlazorWebViewDeveloperTools();
+		builder.Services.AddBlazorWebViewDeveloperTools();
 #endif
 		return builder.Build();
 	}

@@ -80,7 +80,7 @@ public static class DragDropHelper
 			element.Drop -= dragEventHandler;
 			DragEventHandlers.Remove(element);
 		}
-		
+
 		element.DragOver -= OnDragOver;
 	}
 
