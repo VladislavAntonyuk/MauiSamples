@@ -25,7 +25,7 @@ public class CustomMapHandler : MapHandler
 	{
 	}
 
-	public Dictionary<IMapPin, Marker> Markers { get; } = new();
+	public List<(IMapPin pin, Marker marker)> Markers { get; } = new();
 
 	protected override void ConnectHandler(MapView platformView)
 	{
@@ -40,7 +40,7 @@ public class CustomMapHandler : MapHandler
 		{
 			foreach (var marker in mapHandler.Markers)
 			{
-				marker.Value.Remove();
+				marker.marker.Remove();
 			}
 
 			mapHandler.Markers.Clear();
@@ -65,7 +65,7 @@ public class CustomMapHandler : MapHandler
 				{
 					cp.ImageSource.LoadImage(MauiContext, result =>
 					{
-						if (result?.Value is BitmapDrawable bitmapDrawable && bitmapDrawable.Bitmap is not null)
+						if (result?.Value is BitmapDrawable { Bitmap: not null } bitmapDrawable)
 						{
 							markerOption.SetIcon(BitmapDescriptorFactory.FromBitmap(GetMaximumBitmap(bitmapDrawable.Bitmap, 100, 100)));
 						}
@@ -85,7 +85,7 @@ public class CustomMapHandler : MapHandler
 	{
 		var marker = map.AddMarker(markerOption);
 		pin.MarkerId = marker.Id;
-		Markers.Add(pin, marker);
+		Markers.Add((pin, marker));
 	}
 
 	private static Bitmap GetMaximumBitmap(in Bitmap sourceImage, in float maxWidth, in float maxHeight)

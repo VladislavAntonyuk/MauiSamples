@@ -9,14 +9,18 @@ namespace MauiPaint;
 using System.Diagnostics;
 using System.Text;
 using Windows.Foundation;
-using Windows.Storage.Streams;
+using DragStartingEventArgs = Microsoft.UI.Xaml.DragStartingEventArgs;
 
 public static class DragDropHelper
 {
+	private static readonly Dictionary<UIElement, TypedEventHandler<UIElement, DragStartingEventArgs>> DragStartingEventHandlers = new();
+	private static readonly Dictionary<UIElement, DragEventHandler> DragEventHandlers = new();
+
 	public static void RegisterDrag(UIElement element, Func<CancellationToken, Task<Stream>> content)
 	{
 		element.CanDrag = true;
-		element.DragStarting += async (s, e) =>
+
+		async void DragStartingHandler(UIElement s, DragStartingEventArgs e)
 		{
 			var stream = await content.Invoke(CancellationToken.None);
 			var storageFile = await CreateStorageFile(stream);
@@ -24,13 +28,16 @@ public static class DragDropHelper
 			{
 				storageFile
 			});
-		};
+		}
+
+		DragStartingEventHandlers[element] = DragStartingHandler;
+		element.DragStarting += DragStartingHandler;
 	}
 
 	public static void RegisterDrop(UIElement element, Func<Stream, Task>? content)
 	{
 		element.AllowDrop = true;
-		element.Drop += async (s, e) =>
+		async void DropHandler(object s, DragEventArgs e)
 		{
 			if (e.DataView.Contains(StandardDataFormats.StorageItems))
 			{
@@ -48,18 +55,32 @@ public static class DragDropHelper
 					}
 				}
 			}
-		};
+		}
+
+		element.Drop += DropHandler;
+		DragEventHandlers[element] = DropHandler;
 		element.DragOver += OnDragOver;
 	}
 
 	public static void UnRegisterDrag(UIElement element)
 	{
 		element.CanDrag = false;
+		if (DragStartingEventHandlers.TryGetValue(element, out var dragStartingEventHandler))
+		{
+			element.DragStarting -= dragStartingEventHandler;
+			DragStartingEventHandlers.Remove(element);
+		}
 	}
 
 	public static void UnRegisterDrop(UIElement element)
 	{
 		element.AllowDrop = false;
+		if (DragEventHandlers.TryGetValue(element, out var dragEventHandler))
+		{
+			element.Drop -= dragEventHandler;
+			DragEventHandlers.Remove(element);
+		}
+		
 		element.DragOver -= OnDragOver;
 	}
 

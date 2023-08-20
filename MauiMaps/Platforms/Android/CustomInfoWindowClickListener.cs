@@ -13,7 +13,7 @@ internal class CustomInfoWindowClickListener : Java.Lang.Object, GoogleMap.IOnIn
 
 	public void OnInfoWindowClick(Android.Gms.Maps.Model.Marker marker)
 	{
-		var pin = mapHandler.Markers.FirstOrDefault(x => x.Value.Id == marker.Id);
-		pin.Key?.SendInfoWindowClick();
+		var pin = mapHandler.Markers.FirstOrDefault(x => x.marker.Id == marker.Id);
+		pin.pin?.SendInfoWindowClick();
 	}
 }

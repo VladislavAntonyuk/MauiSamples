@@ -5,7 +5,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:mauiMaps="clr-namespace:MauiMaps"
     xmlns:models="clr-namespace:MauiMaps.Models"
-    x:DataType="mauiMaps:MainPageViewModel">
+    x:DataType="mauiMaps:MainPageViewModel"
+    Shell.NavBarIsVisible="False">
 
 	<Grid>
 		<Map
