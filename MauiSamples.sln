@@ -117,6 +117,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "md", "md", "{4C3F6E69-0FB4-
 		md\thankyou.mdpp = md\thankyou.mdpp
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiApplicationInsights", "MauiApplicationInsights\MauiApplicationInsights.csproj", "{0219964A-30DA-4F93-95CB-58F8661F210C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -345,6 +347,12 @@ Global
 		{E31859C8-CAEF-473B-95C9-F0632B113ABB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E31859C8-CAEF-473B-95C9-F0632B113ABB}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E31859C8-CAEF-473B-95C9-F0632B113ABB}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{0219964A-30DA-4F93-95CB-58F8661F210C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0219964A-30DA-4F93-95CB-58F8661F210C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0219964A-30DA-4F93-95CB-58F8661F210C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{0219964A-30DA-4F93-95CB-58F8661F210C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0219964A-30DA-4F93-95CB-58F8661F210C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0219964A-30DA-4F93-95CB-58F8661F210C}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

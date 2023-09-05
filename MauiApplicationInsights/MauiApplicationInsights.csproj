@@ -1,15 +1,14 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
-		<RootNamespace>MauiBells</RootNamespace>
-
+		<RootNamespace>MauiApplicationInsights</RootNamespace>
+		
 		<!-- Display name -->
-		<ApplicationTitle>MauiBells</ApplicationTitle>
+		<ApplicationTitle>MauiApplicationInsights</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.vladislavantonyuk.mauibells</ApplicationId>
-		<ApplicationIdGuid>3a9110df-72bc-485a-9d65-c1576c0fdb0e</ApplicationIdGuid>
+		<ApplicationId>com.vladislavantonyuk.mauiapplicationinsights</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
@@ -22,14 +21,10 @@
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
-
-		<!-- Images -->
-		<MauiImage Include="Resources\Images\bell.png" />
-		<MauiImage Include="Resources\Images\dotnet.png" />
-
-		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
+
 	<ItemGroup>
-	  <PackageReference Include="Plugin.Maui.Audio" Version="2.0.0-preview1" />
+	  <PackageReference Include="Microsoft.Extensions.Logging.ApplicationInsights" Version="2.22.0-beta3" />
 	</ItemGroup>
+
 </Project>

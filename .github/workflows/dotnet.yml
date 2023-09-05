@@ -43,10 +43,9 @@ jobs:
         xcode-version: '14.3'
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v2
+      uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 7.0.x
-        include-prerelease: true
+        dotnet-version: 8.x
 
     - name: Install dependencies
       run: dotnet workload install maui
