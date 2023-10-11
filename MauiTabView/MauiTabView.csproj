@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<RootNamespace>MauiTabView</RootNamespace>
+		<UseMaui>true</UseMaui>
+
+		<!-- Display name -->
+		<ApplicationTitle>MauiTabView</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.vladislavantonyuk.mauitabview</ApplicationId>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources\Images\*" />
+		<MauiImage Update="Resources\Images\dotnet_bot.svg" BaseSize="168,208" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="M.BindableProperty.Generator" Version="0.11.1" />
+	</ItemGroup>
+</Project>

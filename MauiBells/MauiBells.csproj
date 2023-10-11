@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
@@ -30,6 +30,6 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="Plugin.Maui.Audio" Version="2.0.0-preview1" />
+	  <PackageReference Include="Plugin.Maui.Audio" Version="2.0.0" />
 	</ItemGroup>
 </Project>

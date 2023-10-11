@@ -5,7 +5,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Identity.Client" Version="4.55.0" />
+		<PackageReference Include="Microsoft.Identity.Client" Version="4.56.0" />
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.1.0-preview" />
 	</ItemGroup>
 

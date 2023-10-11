@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mauiTabView="clr-namespace:MauiTabView"
+             x:Class="MauiTabView.MainPage"
+             x:DataType="mauiTabView:MainPage">
+
+	<ScrollView>
+		<VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+			<IndicatorView x:Name="Indicator"
+			               HorizontalOptions="Center">
+				<IndicatorView.IndicatorTemplate>
+					<DataTemplate x:DataType="Tab">
+						<VerticalStackLayout>
+							<Image Source="{Binding Icon}" />
+							<Label Text="1"  FontSize="14"/>
+							<Label Text="{Binding Title}"  FontSize="12" />
+						</VerticalStackLayout>
+					</DataTemplate>
+				</IndicatorView.IndicatorTemplate>
+			</IndicatorView>
+			<CarouselView ItemsSource="{Binding Tabs}"
+			              IndicatorView="{x:Reference Indicator}"
+			              HorizontalScrollBarVisibility="Never"
+			              Loop="False"
+			              Position="0">
+				<CarouselView.ItemTemplate>
+					<DataTemplate x:DataType="mauiTabView:Tab">
+						<ContentPresenter Content="{Binding Content}"/>
+					</DataTemplate>
+				</CarouselView.ItemTemplate>
+			</CarouselView>
+
+			<ScrollView Orientation="Horizontal">
+				<HorizontalStackLayout RadioButtonGroup.GroupName="tabs"
+				                       BindableLayout.ItemsSource="{Binding Tabs}"
+				                       RadioButtonGroup.SelectedValue="Tab1">
+					<BindableLayout.ItemTemplate>
+						<DataTemplate x:DataType="Tab">
+							<RadioButton Value="{Binding Title}"
+							             Content="{Binding Title}">
+							</RadioButton>
+						</DataTemplate>
+					</BindableLayout.ItemTemplate>
+				</HorizontalStackLayout>
+			</ScrollView>
+
+			<mauiTabView:TabView>
+				<mauiTabView:TabView.Tabs>
+					<mauiTabView:Tab Title="Tab1">
+						<mauiTabView:Tab.Content>
+							<Label Text="Tab1 Label"></Label>
+						</mauiTabView:Tab.Content>
+					</mauiTabView:Tab>
+					<mauiTabView:Tab Title="Tab2">
+						<mauiTabView:Tab.Content>
+							<Label Text="Tab2 Label"></Label>
+						</mauiTabView:Tab.Content>
+					</mauiTabView:Tab>
+				</mauiTabView:TabView.Tabs>
+			</mauiTabView:TabView>
+
+			<mauiTabView:TabView Tabs="{Binding Tabs2}"/>
+
+		</VerticalStackLayout>
+	</ScrollView>
+
+</ContentPage>
