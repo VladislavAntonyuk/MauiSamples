@@ -3,15 +3,20 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mauiTabView="clr-namespace:MauiTabView"
              x:Class="MauiTabView.MainPage"
-             x:DataType="mauiTabView:MainPage">
+             x:DataType="mauiTabView:MainViewModel"
+             x:Name="Page">
 
 	<ScrollView>
 		<VerticalStackLayout
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Center">
+
+			<Label Text="Carousel + Indicator"
+				   FontSize="20"
+			       HorizontalOptions="Center"/>
 			<IndicatorView x:Name="Indicator"
-			               HorizontalOptions="Center">
+						   HorizontalOptions="Center">
 				<IndicatorView.IndicatorTemplate>
 					<DataTemplate x:DataType="Tab">
 						<VerticalStackLayout>
@@ -23,30 +28,60 @@
 				</IndicatorView.IndicatorTemplate>
 			</IndicatorView>
 			<CarouselView ItemsSource="{Binding Tabs}"
-			              IndicatorView="{x:Reference Indicator}"
-			              HorizontalScrollBarVisibility="Never"
-			              Loop="False"
-			              Position="0">
+						  IndicatorView="{x:Reference Indicator}"
+						  HorizontalScrollBarVisibility="Never"
+						  Loop="False"
+						  Position="0">
 				<CarouselView.ItemTemplate>
 					<DataTemplate x:DataType="mauiTabView:Tab">
-						<ContentPresenter Content="{Binding Content}"/>
+						<ContentView Content="{Binding Content}"/>
 					</DataTemplate>
 				</CarouselView.ItemTemplate>
 			</CarouselView>
 
-			<ScrollView Orientation="Horizontal">
+			<Line X1="0"
+			      Y1="0"
+			      X2="{Binding Width, Source={x:Reference Page}}"
+			      Y2="0"
+			      Stroke="Red" />
+
+			<Label Text="RadioButton"
+			       FontSize="20"
+			       HorizontalOptions="Center"/>
+
+			<ScrollView Orientation="Horizontal"
+			            HorizontalOptions="Center">
 				<HorizontalStackLayout RadioButtonGroup.GroupName="tabs"
-				                       BindableLayout.ItemsSource="{Binding Tabs}"
-				                       RadioButtonGroup.SelectedValue="Tab1">
+				                       BindableLayout.ItemsSource="{Binding Tabs2}"
+				                       RadioButtonGroup.SelectedValue="{Binding SelectedTab}">
 					<BindableLayout.ItemTemplate>
 						<DataTemplate x:DataType="Tab">
-							<RadioButton Value="{Binding Title}"
+							<RadioButton Value="{Binding }"
 							             Content="{Binding Title}">
+								<!--<RadioButton.Content>
+									<VerticalStackLayout>
+										<Image Source="{Binding Icon}" />
+										<Label Text="1"  FontSize="14"/>
+										<Label Text="{Binding Title}"  FontSize="12" />
+									</VerticalStackLayout>
+								</RadioButton.Content>-->
 							</RadioButton>
 						</DataTemplate>
 					</BindableLayout.ItemTemplate>
 				</HorizontalStackLayout>
 			</ScrollView>
+
+			<ContentView Content="{Binding SelectedTab.Content}"/>
+
+			<Line X1="0"
+			      Y1="0"
+			      X2="{Binding Width, Source={x:Reference Page}}"
+			      Y2="0"
+			      Stroke="Red" />
+
+			<Label Text="TabView"
+			       FontSize="20"
+			       HorizontalOptions="Center"/>
 
 			<mauiTabView:TabView>
 				<mauiTabView:TabView.Tabs>
@@ -63,7 +98,17 @@
 				</mauiTabView:TabView.Tabs>
 			</mauiTabView:TabView>
 
-			<mauiTabView:TabView Tabs="{Binding Tabs2}"/>
+			<Line X1="0"
+			      Y1="0"
+			      X2="{Binding Width, Source={x:Reference Page}}"
+			      Y2="0"
+			      Stroke="Red" />
+
+			<Label Text="TabView Binding"
+			       FontSize="20"
+			       HorizontalOptions="Center"/>
+
+			<mauiTabView:TabView Tabs="{Binding Tabs3}"/>
 
 		</VerticalStackLayout>
 	</ScrollView>
