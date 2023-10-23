@@ -4,39 +4,39 @@ namespace task_list_app_maui.Views;
 
 public partial class EditarTarefaView : ContentPage
 {
-	private TarefasViewModel _tarefasViewModel;
+	private readonly TarefasViewModel tarefasViewModel;
 
 	public EditarTarefaView(TarefasViewModel tarefasViewModel)
 	{
 		InitializeComponent();
 
-		_tarefasViewModel = tarefasViewModel;
+		this.tarefasViewModel = tarefasViewModel;
 
-		BindingContext = _tarefasViewModel;
+		BindingContext = this.tarefasViewModel;
 
-		_tarefasViewModel.EditModeOn();
+		this.tarefasViewModel.EditModeOn();
 	}
 
 	private async void OnSaveTaskClicked(object sender, EventArgs e)
 	{
-		_tarefasViewModel.Edit();
+		tarefasViewModel.Edit();
 
-		if (!string.IsNullOrEmpty(_tarefasViewModel.HasErrorsCodeBehind))
-        {
-            await DisplayAlert(Title, _tarefasViewModel.HasErrorsCodeBehind, "OK");
-        }
-        else
-        {
-			_tarefasViewModel.GetAll();
+		if (!string.IsNullOrEmpty(tarefasViewModel.HasErrorsCodeBehind))
+		{
+			await DisplayAlert(Title, tarefasViewModel.HasErrorsCodeBehind, "OK");
+		}
+		else
+		{
+			tarefasViewModel.GetAll();
 
 			await Navigation.PopModalAsync();
-        }
-    }
+		}
+	}
 
 	private async void OnCloseEditTaskClicked(object sender, EventArgs e)
 	{
-		_tarefasViewModel.EditModeOff();
+		tarefasViewModel.EditModeOff();
 
-        await Navigation.PopModalAsync();
-    }
+		await Navigation.PopModalAsync();
+	}
 }
