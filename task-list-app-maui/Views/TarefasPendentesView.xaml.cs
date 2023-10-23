@@ -5,34 +5,34 @@ namespace task_list_app_maui.Views;
 
 public partial class TarefasPendentesView : ContentPage
 {
-	private TarefasViewModel _tarefasViewModel;
-	
+	private readonly TarefasViewModel tarefasViewModel;
+
 	public TarefasPendentesView(TarefasViewModel tarefasViewModel)
 	{
 		InitializeComponent();
 
-		_tarefasViewModel = tarefasViewModel;
-		_tarefasViewModel.GetAll();
+		this.tarefasViewModel = tarefasViewModel;
+		this.tarefasViewModel.GetAll();
 
-		BindingContext = _tarefasViewModel;
+		BindingContext = this.tarefasViewModel;
 	}
 
 	private async void OnEditClicked(object sender, EventArgs e)
 	{
 		var imageButton = (ImageButton)sender;
-    	var tarefa = (Tarefa)imageButton.BindingContext;
+		var tarefa = (Tarefa)imageButton.BindingContext;
 
 		CollectionViewTarefasPendentes.SelectedItem = tarefa;
 
 		if (CollectionViewTarefasPendentes.SelectedItem == null) return;
 
-		await Navigation.PushModalAsync(new EditarTarefaView(_tarefasViewModel));
+		await Navigation.PushModalAsync(new EditarTarefaView(tarefasViewModel));
 	}
 
 	private async void OnDeleteClicked(object sender, EventArgs e)
 	{
 		var imageButton = (ImageButton)sender;
-    	var tarefa = (Tarefa)imageButton.BindingContext;
+		var tarefa = (Tarefa)imageButton.BindingContext;
 
 		CollectionViewTarefasPendentes.SelectedItem = tarefa;
 
@@ -41,24 +41,24 @@ public partial class TarefasPendentesView : ContentPage
 		bool answer = await DisplayAlert(Title, "Do you confirm the exclusion of this task?", "Yes", "No");
 		if (!answer) return;
 
-		_tarefasViewModel.Delete();
-		
-		if (!string.IsNullOrEmpty(_tarefasViewModel.HasErrorsCodeBehind))
-        {
-            await DisplayAlert(Title, _tarefasViewModel.HasErrorsCodeBehind, "OK");
-        }
-        else
+		tarefasViewModel.Delete();
+
+		if (!string.IsNullOrEmpty(tarefasViewModel.HasErrorsCodeBehind))
 		{
-			_tarefasViewModel.GetAll();
+			await DisplayAlert(Title, tarefasViewModel.HasErrorsCodeBehind, "OK");
+		}
+		else
+		{
+			tarefasViewModel.GetAll();
 		}
 	}
 
 	private async void OnAddTaskClicked(object sender, EventArgs e)
 	{
-		_tarefasViewModel.New();
-		
-		await Navigation.PushModalAsync(new AdicionarTarefaView(_tarefasViewModel));
-		
-		_tarefasViewModel.GetAll();
+		tarefasViewModel.New();
+
+		await Navigation.PushModalAsync(new AdicionarTarefaView(tarefasViewModel));
+
+		tarefasViewModel.GetAll();
 	}
 }
