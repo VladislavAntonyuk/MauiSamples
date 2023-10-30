@@ -21,9 +21,9 @@ public static class MauiProgram
 			});
 
 		builder.Services.AddDbContext<AppDbContext>(options => { options.UseInMemoryDatabase("task-list-app-maui"); });
-		
+
 		builder.Services.AddSingleton<TarefasViewModel>();
-		
+
 		builder.Services.AddSingleton<TarefasPendentesView>();
 		builder.Services.AddSingleton<TarefasConcluidasView>();
 
