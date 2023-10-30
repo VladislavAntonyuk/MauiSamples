@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using task_list_app_maui.Models;
 
 namespace task_list_app_maui.Data;

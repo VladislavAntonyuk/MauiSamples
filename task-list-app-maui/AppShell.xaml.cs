@@ -15,5 +15,5 @@ public partial class AppShell : Shell
 	private void OnAboutClicked(object sender, EventArgs e)
 	{
 		DisplayAlert(Title, "Information about the Task List app", "OK");
-	}	
+	}
 }
