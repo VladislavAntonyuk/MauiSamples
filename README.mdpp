@@ -73,4 +73,6 @@ The development guide can be found at [SETUP.md](./SETUP.md).
 
 1. [MauiDraggableView](MauiDraggableView) - Drag and Drop View Container for .NET MAUI.
 
+1. [task-list-app-maui](task-list-app-maui) - Cross-platform .NET MAUI app using MVVM development architecture performing CRUD operations with EF Core InMemory.
+
 !INCLUDE "md/footer.mdpp"
