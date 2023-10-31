@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
@@ -29,7 +29,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="M.BindableProperty.Generator" Version="0.11.1" />
-		<PackageReference Include="Microsoft.Maui.Graphics.Text.Markdig" Version="8.0.0-rc.2.9373" />
+		<PackageReference Include="Microsoft.Maui.Graphics.Text.Markdig" Version="8.0.0-rc.2.9511" />
 	</ItemGroup>
 
 </Project>
