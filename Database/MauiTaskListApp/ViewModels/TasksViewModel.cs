@@ -10,99 +10,99 @@ public sealed partial class TasksViewModel(AppDbContext context) : ObservableObj
 {
 	public ObservableCollection<Task> ActiveTasks { get; } = new();
 
-	public ObservableCollection<Task> FinishedTasks { get; } = new();
+public ObservableCollection<Task> FinishedTasks { get; } = new();
 
-	[ObservableProperty]
-	private Task task = new();
+[ObservableProperty]
+private Task task = new();
 
-	public Task TaskEditMode { get; set; } = new();
+public Task TaskEditMode { get; set; } = new();
 
-	[ObservableProperty]
-	private string hasErrorsCodeBehind = string.Empty;
+[ObservableProperty]
+private string hasErrorsCodeBehind = string.Empty;
 
-	[RelayCommand]
-	private void New()
+[RelayCommand]
+private void New()
+{
+	Task = new()
 	{
-		Task = new()
-		{
-			Date = DateTime.Now
-		};
+		Date = DateTime.Now
+	};
+}
+
+[RelayCommand]
+private void EditModeOn()
+{
+	TaskEditMode.Id = Task.Id;
+	TaskEditMode.Description = Task.Description;
+	TaskEditMode.Date = Task.Date;
+	TaskEditMode.IsFinished = Task.IsFinished;
+}
+
+[RelayCommand]
+private void EditModeOff()
+{
+	Task.Id = TaskEditMode.Id;
+	Task.Description = TaskEditMode.Description;
+	Task.Date = TaskEditMode.Date;
+	Task.IsFinished = TaskEditMode.IsFinished;
+}
+
+[RelayCommand]
+private void Edit(Task task)
+{
+	try
+	{
+		HasErrorsCodeBehind = string.Empty;
+
+		context.Update(Task);
+		context.SaveChanges();
+
+		EditModeOn();
+	}
+	catch (Exception ex)
+	{
+		HasErrorsCodeBehind = ex.Message;
+	}
+}
+
+[RelayCommand]
+private void Delete(Task task)
+{
+	try
+	{
+		HasErrorsCodeBehind = string.Empty;
+
+		context.Remove(task);
+		context.SaveChanges();
+	}
+	catch (Exception ex)
+	{
+		HasErrorsCodeBehind = ex.Message;
+	}
+}
+
+[RelayCommand]
+private void GetAll()
+{
+	var tasks = context.Tasks.ToList();
+
+	ActiveTasks.Clear();
+	foreach (var activeTask in tasks.Where(x => !x.IsFinished).OrderBy(x => x.Date))
+	{
+		ActiveTasks.Add(activeTask);
 	}
 
-	[RelayCommand]
-	private void EditModeOn()
+	FinishedTasks.Clear();
+	foreach (var activeTask in tasks.Where(x => x.IsFinished).OrderByDescending(x => x.Date))
 	{
-		TaskEditMode.Id = Task.Id;
-		TaskEditMode.Description = Task.Description;
-		TaskEditMode.Date = Task.Date;
-		TaskEditMode.IsFinished = Task.IsFinished;
+		FinishedTasks.Add(activeTask);
 	}
+}
 
-	[RelayCommand]
-	private void EditModeOff()
-	{
-		Task.Id = TaskEditMode.Id;
-		Task.Description = TaskEditMode.Description;
-		Task.Date = TaskEditMode.Date;
-		Task.IsFinished = TaskEditMode.IsFinished;
-	}
+public void Initialize()
+{
+	GetAll();
+}
 
-	[RelayCommand]
-	private void Edit(Task task)
-	{
-		try
-		{
-			HasErrorsCodeBehind = string.Empty;
-
-			context.Update(Task);
-			context.SaveChanges();
-
-			EditModeOn();
-		}
-		catch (Exception ex)
-		{
-			HasErrorsCodeBehind = ex.Message;
-		}
-	}
-
-	[RelayCommand]
-	private void Delete(Task task)
-	{
-		try
-		{
-			HasErrorsCodeBehind = string.Empty;
-
-			context.Remove(task);
-			context.SaveChanges();
-		}
-		catch (Exception ex)
-		{
-			HasErrorsCodeBehind = ex.Message;
-		}
-	}
-
-	[RelayCommand]
-	private void GetAll()
-	{
-		var tasks = context.Tasks.ToList();
-
-		ActiveTasks.Clear();
-		foreach (var activeTask in tasks.Where(x => !x.IsFinished).OrderBy(x => x.Date))
-		{
-			ActiveTasks.Add(activeTask);
-		}
-
-		FinishedTasks.Clear();
-		foreach (var activeTask in tasks.Where(x => x.IsFinished).OrderByDescending(x => x.Date))
-		{
-			FinishedTasks.Add(activeTask);
-		}
-	}
-
-	public void Initialize()
-	{
-		GetAll();
-	}
-
-	public void Dispose() => context.Dispose();
+public void Dispose() => context.Dispose();
 }
