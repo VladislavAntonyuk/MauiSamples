@@ -1,4 +1,4 @@
-namespace MauiTabView
+﻿namespace MauiTabView
 {
 	using System;
 	using Microsoft.Maui;
