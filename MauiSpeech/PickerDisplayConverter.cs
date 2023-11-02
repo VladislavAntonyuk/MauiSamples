@@ -4,7 +4,7 @@ using System.Globalization;
 
 public class PickerDisplayConverter : IValueConverter
 {
-	public object? Convert(object value, Type targetType, object parameter, CultureInfo culture)
+	public object? Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
 	{
 		if (value is Locale locale)
 		{
@@ -14,7 +14,7 @@ public class PickerDisplayConverter : IValueConverter
 		return null;
 	}
 
-	public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+	public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
 	{
 		throw new NotImplementedException();
 	}

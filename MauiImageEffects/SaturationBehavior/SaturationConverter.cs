@@ -4,7 +4,7 @@ using System.Globalization;
 
 internal class SaturationConverter : IValueConverter
 {
-	public object Convert(object? value, Type targetType, object parameter, CultureInfo culture)
+	public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)
 	{
 		if (double.TryParse(value?.ToString(), out var doubleValue))
 		{
@@ -14,7 +14,7 @@ internal class SaturationConverter : IValueConverter
 		return 0;
 	}
 
-	public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+	public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
 	{
 		throw new NotImplementedException();
 	}

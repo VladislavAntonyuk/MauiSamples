@@ -21,7 +21,7 @@ The development guide can be found at [SETUP.md](./SETUP.md).
 
 1. [MauiBlazorPhotoGallery](MauiBlazorPhotoGallery) - Infinite scrolling gallery app using .NET MAUI Blazor. Replicate Google Photos and Instagram Gallery UI.
 
-1. [MauiSqlite/MauiSqliteBlazor](Sqlite) - Connect to SQLite from .NET MAUI application.
+1. [MauiSqlite/MauiSqliteBlazor](Database/Sqlite) - Connect to SQLite from .NET MAUI application.
 
 1. [MauiMultiWindow](MauiMultiWindow) - Work with .NET MAUI Windows.
 
@@ -72,5 +72,7 @@ The development guide can be found at [SETUP.md](./SETUP.md).
 1. [MauiShellCustomization](MauiShellCustomization) - Customizing .NET MAUI Shell.
 
 1. [MauiDraggableView](MauiDraggableView) - Drag and Drop View Container for .NET MAUI.
+
+1. [MauiTaskListApp](Database/MauiTaskListApp) - Cross-platform .NET MAUI app using MVVM development architecture performing CRUD operations with EF Core InMemory.
 
 [![Stand With Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd700.svg?labelColor=0057b7)](https://stand-with-ukraine.pp.ua)

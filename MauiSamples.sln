@@ -6,15 +6,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiAuth", "Auth\MauiAuth\M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiBlazorPhotoGallery", "MauiBlazorPhotoGallery\MauiBlazorPhotoGallery.csproj", "{C9A17F44-78CB-4EDC-86C9-E307C2F25FF0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiSqlite", "Sqlite\MauiSqlite\MauiSqlite.csproj", "{43BACDC9-2889-476E-AF08-727E1B31D0B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiSqlite", "Database\Sqlite\MauiSqlite\MauiSqlite.csproj", "{43BACDC9-2889-476E-AF08-727E1B31D0B8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiMultiWindow", "MauiMultiWindow\MauiMultiWindow.csproj", "{432B4EFB-447B-4FA8-8083-6A00B56D0F13}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sqlite", "Sqlite", "{671C019C-7DCC-4B9E-AD7D-B9F6F35D044E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiSqliteBlazor", "Sqlite\MauiSqliteBlazor\MauiSqliteBlazor.csproj", "{591E6CC5-EE07-423C-A6D1-48AD8AB3DC34}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiSqliteBlazor", "Database\Sqlite\MauiSqliteBlazor\MauiSqliteBlazor.csproj", "{591E6CC5-EE07-423C-A6D1-48AD8AB3DC34}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqliteRepository", "Sqlite\SqliteRepository\SqliteRepository.csproj", "{13DAE136-5BF2-460C-BFD7-7BDB0785C935}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqliteRepository", "Database\Sqlite\SqliteRepository\SqliteRepository.csproj", "{13DAE136-5BF2-460C-BFD7-7BDB0785C935}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KanbanBoard", "KanbanBoard\KanbanBoard.csproj", "{5E4780D5-8A16-44CE-975D-155E578351D0}"
 EndProject
@@ -123,7 +123,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiTabView", "MauiTabView\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{D3C704D0-FB95-42BA-BBF1-E7360491551F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "task-list-app-maui", "task-list-app-maui\task-list-app-maui.csproj", "{08096F4C-2BB3-4860-B0CA-9EC6A09EC377}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiTaskListApp", "Database\MauiTaskListApp\MauiTaskListApp.csproj", "{08096F4C-2BB3-4860-B0CA-9EC6A09EC377}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -367,8 +367,10 @@ Global
 		{BD0D8DA8-F153-4C43-B18D-F356CFF02F70}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{08096F4C-2BB3-4860-B0CA-9EC6A09EC377}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{08096F4C-2BB3-4860-B0CA-9EC6A09EC377}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08096F4C-2BB3-4860-B0CA-9EC6A09EC377}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{08096F4C-2BB3-4860-B0CA-9EC6A09EC377}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08096F4C-2BB3-4860-B0CA-9EC6A09EC377}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08096F4C-2BB3-4860-B0CA-9EC6A09EC377}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -388,6 +390,7 @@ Global
 		{D7258BEF-416D-4F3E-A359-87BD545A84A9} = {F215B6A7-4C79-4415-95D2-6F561143C9AC}
 		{8CE62F62-CE5D-48F4-8754-3F07FF72C3C2} = {D7258BEF-416D-4F3E-A359-87BD545A84A9}
 		{4C3F6E69-0FB4-41D5-8D8F-2E48B033A3EF} = {CE4ABC8D-3F54-49AA-BA5A-DD47E7CEB56B}
+		{08096F4C-2BB3-4860-B0CA-9EC6A09EC377} = {D3C704D0-FB95-42BA-BBF1-E7360491551F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}

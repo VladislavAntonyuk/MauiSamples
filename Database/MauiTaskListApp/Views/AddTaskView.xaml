@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewModels="clr-namespace:MauiTaskListApp.ViewModels"
+             x:Class="MauiTaskListApp.Views.AddTaskView"
+             x:DataType="viewModels:TasksViewModel"
+             Title="Add Task">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <toolkit:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <Grid Padding="20"
+          RowDefinitions="20, 40, Auto, 40, 40, 40, 40, 40, 40, Auto">
+
+        <Label Text="Description"
+               Margin="4,0,0,0"
+               Grid.Row="0" />
+
+        <Entry Text="{Binding Task.Description}"
+               Placeholder="Task"
+               Grid.Row="1">
+
+            <Entry.Behaviors>
+                <toolkit:MultiValidationBehavior x:Name="MultiValidationTarefa"
+                                                 Flags="ValidateOnValueChanged">
+
+                    <toolkit:TextValidationBehavior MinimumLength="1"
+                                                    toolkit:MultiValidationBehavior.Error="Please inform the task!" />
+
+                    <toolkit:TextValidationBehavior MaximumLength="60"
+                                                    toolkit:MultiValidationBehavior.Error="The task must be no longer than 60 characters!" />
+                </toolkit:MultiValidationBehavior>
+            </Entry.Behaviors>
+        </Entry>
+
+        <Label Text="{Binding Source={x:Reference MultiValidationTarefa}, Path=Errors[0]}"
+               FontSize="10"
+               IsVisible="{Binding Source={x:Reference MultiValidationTarefa}, Path=IsValid, Converter={StaticResource InvertedBoolConverter}}"
+               TextColor="Red"
+               Margin="4,0,0,0"
+               Grid.Row="2" />
+
+        <Label Text="Date"
+               Margin="4,20,0,0"
+               Grid.Row="3" />
+
+        <DatePicker Date="{Binding Task.Date}"
+                    Format="dd/MM/yyyy"
+                    Grid.Row="4" />
+
+        <Label Text="Time"
+               Margin="4,20,0,0"
+               Grid.Row="5" />
+
+        <TimePicker Time="{Binding Task.Date}"
+                    Grid.Row="6" />
+
+        <Label Text="Is finished"
+               Margin="4,20,0,0"
+               Grid.Row="7" />
+
+        <Switch IsToggled="{Binding Task.IsFinished}"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"
+                Margin="0,10,0,0"
+                Grid.Row="8" />
+
+        <HorizontalStackLayout HorizontalOptions="CenterAndExpand"
+                               Margin="0,20,0,0"
+                               Grid.Row="9">
+
+            <ImageButton Source="save.png"
+                         WidthRequest="60"
+                         HeightRequest="60"
+                         CornerRadius="30"
+                         BackgroundColor="DarkGreen"
+                         Margin="0,0,50,0"
+                         IsEnabled="{Binding Source={x:Reference MultiValidationTarefa}, Path=IsValid}"
+                         Clicked="OnSaveTaskClicked" />
+
+            <ImageButton Source="home.png"
+                         WidthRequest="60"
+                         HeightRequest="60"
+                         CornerRadius="30"
+                         BackgroundColor="DarkGreen"
+                         Clicked="OnCloseAddTaskClicked" />
+        </HorizontalStackLayout>
+    </Grid>
+</ContentPage>

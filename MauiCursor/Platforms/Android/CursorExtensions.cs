@@ -15,20 +15,21 @@ public static class CursorExtensions
 			ArgumentNullException.ThrowIfNull(mauiContext);
 			var view = visualElement.ToPlatform(mauiContext);
 			view.PointerIcon = PointerIcon.GetSystemIcon(Application.Context, GetCursor(cursor));
+
+			static PointerIconType GetCursor(CursorIcon cursor)
+			{
+				return cursor switch
+				{
+					CursorIcon.Hand => PointerIconType.Hand,
+					CursorIcon.IBeam => PointerIconType.AllScroll,
+					CursorIcon.Cross => PointerIconType.Crosshair,
+					CursorIcon.Arrow => PointerIconType.Arrow,
+					CursorIcon.SizeAll => PointerIconType.TopRightDiagonalDoubleArrow,
+					CursorIcon.Wait => PointerIconType.Wait,
+					_ => PointerIconType.Default,
+				};
+			}
 		}
 	}
 
-	static PointerIconType GetCursor(CursorIcon cursor)
-	{
-		return cursor switch
-		{
-			CursorIcon.Hand => PointerIconType.Hand,
-			CursorIcon.IBeam => PointerIconType.AllScroll,
-			CursorIcon.Cross => PointerIconType.Crosshair,
-			CursorIcon.Arrow => PointerIconType.Arrow,
-			CursorIcon.SizeAll => PointerIconType.TopRightDiagonalDoubleArrow,
-			CursorIcon.Wait => PointerIconType.Wait,
-			_ => PointerIconType.Default,
-		};
-	}
 }
