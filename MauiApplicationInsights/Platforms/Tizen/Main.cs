@@ -1,4 +1,4 @@
-namespace MauiApplicationInsights
+﻿namespace MauiApplicationInsights
 {
 	using System;
 	using Microsoft.Maui;
