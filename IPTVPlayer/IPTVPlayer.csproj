@@ -31,8 +31,8 @@
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 	  <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
-	  <PackageReference Include="CommunityToolkit.Maui" Version="6.0.0" />
-	  <PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="2.0.0" />
+	  <PackageReference Include="CommunityToolkit.Maui" Version="7.0.0" />
+	  <PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="3.0.0" />
 	</ItemGroup>
 
 </Project>
