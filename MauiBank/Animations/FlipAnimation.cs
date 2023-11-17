@@ -28,7 +28,7 @@ public class FlipAnimation : CommunityToolkit.Maui.Animations.BaseAnimation
 		return animation;
 	}
 
-	public override Task Animate(VisualElement view)
+	public override Task Animate(VisualElement view, CancellationToken cancellationToken = default)
 	{
 		view.Animate("Flip", Flip(view), 16, 500);
 		return Task.CompletedTask;

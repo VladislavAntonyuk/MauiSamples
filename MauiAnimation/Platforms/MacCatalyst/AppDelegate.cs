@@ -1,4 +1,5 @@
 ﻿namespace MauiAnimation;
+
 using Foundation;
 
 [Register(nameof(AppDelegate))]

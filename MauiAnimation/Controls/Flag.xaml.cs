@@ -9,11 +9,11 @@ public partial class Flag : ContentView
 		InitializeComponent();
 		var flag1 = new Animation(v =>
 		{
-			Blue1.Clip = Yellow1.Clip = new PathGeometry(new PathFigureCollection()
+			Blue1.Clip = Yellow1.Clip = new PathGeometry(new PathFigureCollection
 			{
 				new ()
 				{
-					Segments = new PathSegmentCollection()
+					Segments = new PathSegmentCollection
 					{
 						new QuadraticBezierSegment(
 							new Point(100,v*100),
@@ -26,11 +26,11 @@ public partial class Flag : ContentView
 			Blue2.Fill = v < 0.5 ? Brush.LightBlue : new SolidColorBrush(Color.FromArgb("#0057B8"));
 			Yellow1.Fill = v < 0.5 ? Brush.LightBlue : new SolidColorBrush(Color.FromArgb("#FFD700"));
 			Yellow2.Fill = v > 0.5 ? Brush.LightBlue : new SolidColorBrush(Color.FromArgb("#FFD700"));
-			Blue2.Clip = Yellow2.Clip = new PathGeometry(new PathFigureCollection()
+			Blue2.Clip = Yellow2.Clip = new PathGeometry(new PathFigureCollection
 			{
 				new ()
 				{
-					Segments = new PathSegmentCollection()
+					Segments = new PathSegmentCollection
 					{
 						new QuadraticBezierSegment(
 							new Point(300,-v*100+100),
@@ -42,11 +42,11 @@ public partial class Flag : ContentView
 		});
 		var flag2 = new Animation(v =>
 		{
-			Blue1.Clip = Yellow1.Clip = new PathGeometry(new PathFigureCollection()
+			Blue1.Clip = Yellow1.Clip = new PathGeometry(new PathFigureCollection
 			{
 				new ()
 				{
-					Segments = new PathSegmentCollection()
+					Segments = new PathSegmentCollection
 					{
 						new QuadraticBezierSegment(
 							new Point(100,v*100),
@@ -59,11 +59,11 @@ public partial class Flag : ContentView
 			Blue2.Fill = v < 0.5 ? Brush.LightBlue : new SolidColorBrush(Color.FromArgb("#0057B8"));
 			Yellow1.Fill = v < 0.5 ? Brush.LightBlue : new SolidColorBrush(Color.FromArgb("#FFD700"));
 			Yellow2.Fill = v > 0.5 ? Brush.LightBlue : new SolidColorBrush(Color.FromArgb("#FFD700"));
-			Blue2.Clip = Yellow2.Clip = new PathGeometry(new PathFigureCollection()
+			Blue2.Clip = Yellow2.Clip = new PathGeometry(new PathFigureCollection
 			{
 				new ()
 				{
-					Segments = new PathSegmentCollection()
+					Segments = new PathSegmentCollection
 					{
 						new QuadraticBezierSegment(
 							new Point(300,-v*100+100),

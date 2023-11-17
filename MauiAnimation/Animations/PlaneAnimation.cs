@@ -1,6 +1,8 @@
 ﻿namespace MauiAnimation.Animations;
 
-public class PlaneAnimation : CommunityToolkit.Maui.Animations.BaseAnimation
+using CommunityToolkit.Maui.Animations;
+
+public class PlaneAnimation : BaseAnimation
 {
 	private readonly VisualElement plane;
 	private readonly VisualElement gloryToUkraine;
@@ -11,7 +13,7 @@ public class PlaneAnimation : CommunityToolkit.Maui.Animations.BaseAnimation
 		this.gloryToUkraine = gloryToUkraine;
 	}
 
-	public override Task Animate(VisualElement view)
+	public override Task Animate(VisualElement view, CancellationToken cancellationToken = default)
 	{
 		plane.Animate("Plane", f =>
 		{

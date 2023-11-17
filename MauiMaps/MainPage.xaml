@@ -5,14 +5,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:mauiMaps="clr-namespace:MauiMaps"
     xmlns:models="clr-namespace:MauiMaps.Models"
+    xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
     x:DataType="mauiMaps:MainPageViewModel"
     Shell.NavBarIsVisible="False">
 
 	<Grid>
-		<Map
+		<maps:Map
             x:Name="MyMap"
             ItemsSource="{Binding LocationPins}">
-			<Map.ItemTemplate>
+			<maps:Map.ItemTemplate>
 				<DataTemplate x:DataType="{x:Type models:LocationPin}">
 					<mauiMaps:CustomPin
 						Location="{Binding Location}"
@@ -21,8 +22,8 @@
 	                    ImageSource="{Binding ImageSource}"
 	                    Type="Place"/>
 				</DataTemplate>
-			</Map.ItemTemplate>
-		</Map>
+			</maps:Map.ItemTemplate>
+		</maps:Map>
 		<ScrollView Orientation="Horizontal"
 		            Margin="0,0,0,10"
 		            BackgroundColor="White"

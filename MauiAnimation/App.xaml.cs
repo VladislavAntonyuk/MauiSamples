@@ -7,9 +7,9 @@ public partial class App : Application
 		InitializeComponent();
 		if (DeviceInfo.Idiom == DeviceIdiom.Phone)
 		{
-			MainPage = new ContentPage()
+			MainPage = new ContentPage
 			{
-				Content = new Label()
+				Content = new Label
 				{
 					Text = "This sample is not designed to be used on phones.",
 					VerticalOptions = LayoutOptions.Center,

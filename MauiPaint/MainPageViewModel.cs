@@ -171,7 +171,7 @@ Lines, new Size(1000, 1000), Background)
 		{
 			var imageFigure = new ImageFigure();
 			var stream = new MemoryStream();
-			image.AsPNG().AsStream().CopyTo(stream);
+			image.AsPNG()?.AsStream().CopyTo(stream);
 			imageFigure.ImageStream = stream;
 			imageFigure.Width = (int)image.Size.Width;
 			imageFigure.Height = (int)image.Size.Height;

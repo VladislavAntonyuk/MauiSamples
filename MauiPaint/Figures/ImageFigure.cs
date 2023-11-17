@@ -10,12 +10,10 @@ public class ImageFigure : IFigure
 
 	public void Draw(ICanvas canvas, RectF rectF)
 	{
-#if ANDROID || IOS || MACCATALYST
 		ImageStream.Position = 0;
 		var image = Microsoft.Maui.Graphics.Platform.PlatformImage.FromStream(ImageStream);
 		var newImage = image.Resize(Width, Height, ResizeMode.Stretch, true);
 		canvas.DrawImage(newImage, X, Y, newImage.Width, newImage.Height);
-#endif
 	}
 
 	public async Task Configure()
