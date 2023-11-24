@@ -81,7 +81,7 @@ public partial class TabView : VerticalStackLayout
 					}
 				}
 			};
-			tabHeader.Children.Add(new Image() { Source = tab.Icon, HorizontalOptions = LayoutOptions.Center });
+			tabHeader.Children.Add(new Image() { Source = tab.Icon, HorizontalOptions = LayoutOptions.Center, WidthRequest = 30, HeightRequest = 30});
 			tabHeader.Children.Add(new Label() { Text = tab.Title, HorizontalOptions = LayoutOptions.Center });
 			view.Children.Add(tabHeader);
 		}

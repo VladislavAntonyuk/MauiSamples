@@ -6,6 +6,30 @@
              x:DataType="mauiTabView:MainViewModel"
              x:Name="Page">
 
+	<ContentPage.Resources>
+		<ControlTemplate x:Key="TabControlTemplate">
+			<VerticalStackLayout BindingContext="{Binding Source={RelativeSource TemplatedParent}}">
+				<Image Source="{Binding Value.Icon}"
+				       WidthRequest="30"
+				       HeightRequest="30"
+				       HorizontalOptions="Center"/>
+				<Label Text="{Binding Value.Title}"  FontSize="12"
+				       HorizontalOptions="Center"/>
+			</VerticalStackLayout>
+		</ControlTemplate>
+
+		<DataTemplate x:Key="IndicatorDataTemplate">
+			<VerticalStackLayout>
+				<Image Source="{Binding Icon}"
+				       WidthRequest="30"
+				       HeightRequest="30"
+				       HorizontalOptions="Center"/>
+				<Label Text="{Binding Title}"  FontSize="12"
+				       HorizontalOptions="Center"/>
+			</VerticalStackLayout>
+		</DataTemplate>
+	</ContentPage.Resources>
+
 	<ScrollView>
 		<VerticalStackLayout
             Spacing="25"
@@ -27,6 +51,12 @@
 					</DataTemplate>
 				</IndicatorView.IndicatorTemplate>
 			</IndicatorView>
+			<Grid BackgroundColor="LightCoral">
+				<IndicatorView x:Name="Indicator"
+                     HorizontalOptions="Center"
+                     SelectedIndicatorColor="LightBlue"
+                     IndicatorTemplate="{StaticResource IndicatorDataTemplate}"/>
+			</Grid>
 			<CarouselView ItemsSource="{Binding Tabs}"
 						  IndicatorView="{x:Reference Indicator}"
 						  HorizontalScrollBarVisibility="Never"
@@ -57,14 +87,7 @@
 					<BindableLayout.ItemTemplate>
 						<DataTemplate x:DataType="Tab">
 							<RadioButton Value="{Binding }"
-							             Content="{Binding Title}">
-								<!--<RadioButton.Content>
-									<VerticalStackLayout>
-										<Image Source="{Binding Icon}" />
-										<Label Text="1"  FontSize="14"/>
-										<Label Text="{Binding Title}"  FontSize="12" />
-									</VerticalStackLayout>
-								</RadioButton.Content>-->
+							             ControlTemplate="{StaticResource TabControlTemplate}">
 							</RadioButton>
 						</DataTemplate>
 					</BindableLayout.ItemTemplate>
@@ -85,14 +108,14 @@
 
 			<mauiTabView:TabView>
 				<mauiTabView:TabView.Tabs>
-					<mauiTabView:Tab Title="Tab1">
+					<mauiTabView:Tab Title="Tab1" Icon="cat.png">
 						<mauiTabView:Tab.Content>
-							<Label Text="Tab1 Label"></Label>
+							<Label Text="Tab1 Label"/>
 						</mauiTabView:Tab.Content>
 					</mauiTabView:Tab>
-					<mauiTabView:Tab Title="Tab2">
+					<mauiTabView:Tab Title="Tab2" Icon="dog.png">
 						<mauiTabView:Tab.Content>
-							<Label Text="Tab2 Label"></Label>
+							<Label Text="Tab2 Label"/>
 						</mauiTabView:Tab.Content>
 					</mauiTabView:Tab>
 				</mauiTabView:TabView.Tabs>

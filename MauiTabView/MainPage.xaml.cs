@@ -27,32 +27,38 @@ public partial class MainViewModel : ObservableObject
 		Tabs.Add(new Tab()
 		{
 			Title = "Tab1",
-			Content = new Label() { Text = "Tab1 Label" }
+			Content = new Label() { Text = "Tab1 Label" },
+			Icon = "cat.png"
 		});
 		Tabs.Add(new Tab()
 		{
 			Title = "Tab2",
-			Content = new Label() { Text = "Tab2 Label" }
+			Content = new Label() { Text = "Tab2 Label" },
+			Icon = "dog.png"
 		});
 		Tabs2.Add(new Tab()
 		{
 			Title = "Tab1",
-			Content = new Label() { Text = "Tab1 Label" }
+			Content = new Label() { Text = "Tab1 Label" },
+			Icon = "cat.png"
 		});
 		Tabs2.Add(new Tab()
 		{
 			Title = "Tab2",
-			Content = new Label() { Text = "Tab2 Label" }
+			Content = new Label() { Text = "Tab2 Label" },
+			Icon = "dog.png"
 		});
 		Tabs3.Add(new Tab()
 		{
 			Title = "Tab1",
-			Content = new Label() { Text = "Tab1 Label" }
+			Content = new Label() { Text = "Tab1 Label" },
+			Icon = "cat.png"
 		});
 		Tabs3.Add(new Tab()
 		{
 			Title = "Tab2",
-			Content = new Label() { Text = "Tab2 Label" }
+			Content = new Label() { Text = "Tab2 Label" },
+			Icon = "dog.png"
 		});
 		SelectedTab = Tabs2[0];
 	}
