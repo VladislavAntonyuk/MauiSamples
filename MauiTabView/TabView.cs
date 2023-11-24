@@ -19,7 +19,7 @@ public partial class Tab : View
 public partial class TabView : VerticalStackLayout
 {
 	[AutoBindable(DefaultValue = "new System.Collections.ObjectModel.ObservableCollection<Tab>()", OnChanged = "OnTabsChanged")]
-	private ObservableCollection<Tab> tabs = new ();
+	private ObservableCollection<Tab> tabs = new();
 
 	[AutoBindable(DefaultValue = "-1", OnChanged = "OnActiveTabIndexChanged")]
 	private int activeTabIndex;
@@ -81,7 +81,7 @@ public partial class TabView : VerticalStackLayout
 					}
 				}
 			};
-			tabHeader.Children.Add(new Image() { Source = tab.Icon, HorizontalOptions = LayoutOptions.Center, WidthRequest = 30, HeightRequest = 30});
+			tabHeader.Children.Add(new Image() { Source = tab.Icon, HorizontalOptions = LayoutOptions.Center, WidthRequest = 30, HeightRequest = 30 });
 			tabHeader.Children.Add(new Label() { Text = tab.Title, HorizontalOptions = LayoutOptions.Center });
 			view.Children.Add(tabHeader);
 		}
