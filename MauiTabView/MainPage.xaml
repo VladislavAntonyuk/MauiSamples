@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mauiTabView="clr-namespace:MauiTabView"
@@ -37,20 +37,8 @@
             VerticalOptions="Center">
 
 			<Label Text="Carousel + Indicator"
-				   FontSize="20"
+				     FontSize="20"
 			       HorizontalOptions="Center"/>
-			<IndicatorView x:Name="Indicator"
-						   HorizontalOptions="Center">
-				<IndicatorView.IndicatorTemplate>
-					<DataTemplate x:DataType="Tab">
-						<VerticalStackLayout>
-							<Image Source="{Binding Icon}" />
-							<Label Text="1"  FontSize="14"/>
-							<Label Text="{Binding Title}"  FontSize="12" />
-						</VerticalStackLayout>
-					</DataTemplate>
-				</IndicatorView.IndicatorTemplate>
-			</IndicatorView>
 			<Grid BackgroundColor="LightCoral">
 				<IndicatorView x:Name="Indicator"
                      HorizontalOptions="Center"
