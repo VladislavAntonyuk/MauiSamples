@@ -1,13 +1,7 @@
 ﻿namespace IPTVPlayer.Models;
 
-public class ChannelProvider
+public class ChannelProvider(string name, string? userAgent = null)
 {
-	public ChannelProvider(string name, string? userAgent = null)
-	{
-		Name = name;
-		UserAgent = userAgent;
-	}
-
-	public string Name { get; }
-	public string? UserAgent { get; }
+	public string Name { get; } = name;
+	public string? UserAgent { get; } = userAgent;
 }

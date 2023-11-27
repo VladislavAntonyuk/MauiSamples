@@ -6,8 +6,20 @@
              xmlns:behaviors="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="IPTVPlayer.Views.ChannelsPage"
              x:DataType="vm:ChannelsViewModel">
-	<Grid RowDefinitions="60, *">
-		<Entry Placeholder="Search" Grid.Row="0" ClearButtonVisibility="WhileEditing">
+	<Grid RowDefinitions="60, 60, *">
+		<Picker Title="Playlist"
+		        Grid.Row="0"
+				ItemsSource="{Binding Sources}"
+		        SelectedIndex="{Binding SelectedIndex}">
+			<Picker.Behaviors>
+				<behaviors:EventToCommandBehavior
+					x:TypeArguments="TextChangedEventArgs"
+					EventName="SelectedIndexChanged"
+					Command="{Binding LoadDataCommand}" />
+			</Picker.Behaviors>
+		</Picker>
+		<Entry Placeholder="Search" Grid.Row="1"
+		       ClearButtonVisibility="WhileEditing">
 			<Entry.Behaviors>
 				<behaviors:EventToCommandBehavior
 					x:TypeArguments="TextChangedEventArgs"
@@ -15,18 +27,25 @@
 					Command="{Binding SearchCommand}" />
 			</Entry.Behaviors>
 		</Entry>
-		<RefreshView IsRefreshing="{Binding LoadDataCommand.IsRunning}" Command="{Binding LoadDataCommand}" Grid.Row="1">
-			<CollectionView ItemsSource="{Binding Items}">
+		<RefreshView IsRefreshing="{Binding LoadDataCommand.IsRunning}"
+		             Command="{Binding LoadDataCommand}"
+		             Grid.Row="2">
+			<CollectionView ItemsSource="{Binding Items}"
+			                ItemSizingStrategy="MeasureFirstItem">
 				<CollectionView.ItemTemplate>
 					<DataTemplate x:DataType="models:Channel">
 						<HorizontalStackLayout Margin="4" Padding="12">
 							<HorizontalStackLayout.GestureRecognizers>
 								<TapGestureRecognizer
-								Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ChannelsViewModel}}, Path=GoToDetailsCommand}"
-								CommandParameter="{Binding .}" />
+									Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ChannelsViewModel}}, Path=GoToDetailsCommand}"
+									CommandParameter="{Binding .}" />
 							</HorizontalStackLayout.GestureRecognizers>
-							<Image Source="{Binding Image}" />
-							<Label Text="{Binding Name}" />
+							<Image Source="{Binding Image}"
+								   HeightRequest="40"
+								   WidthRequest="40"
+							       VerticalOptions="Center"/>
+							<Label Text="{Binding Name}"
+							       VerticalOptions="Center"/>
 						</HorizontalStackLayout>
 					</DataTemplate>
 				</CollectionView.ItemTemplate>

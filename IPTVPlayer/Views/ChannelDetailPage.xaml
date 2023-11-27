@@ -8,9 +8,11 @@
              Title="{Binding Item.Name}">
 	<ScrollView>
 		<Grid RowDefinitions="Auto, *">
-			<Editor Text="{Binding Item.Url}" />
+			<Editor Text="{Binding Item.Url}"
+			        IsReadOnly="True" />
 			<views:MediaElement  x:Name="MediaPlayer"
 								 Grid.Row="1"
+								 ShouldKeepScreenOn="True"
 			                     ShouldAutoPlay="True"
 			                     Source="{Binding Item.Url}" />
 		</Grid>

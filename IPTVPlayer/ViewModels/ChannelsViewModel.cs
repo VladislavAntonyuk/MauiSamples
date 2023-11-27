@@ -8,21 +8,24 @@ using Models;
 using Services;
 using Views;
 
-public partial class ChannelsViewModel : BaseViewModel
+public partial class ChannelsViewModel(IPlaylistGenerator service) : BaseViewModel
 {
-	readonly IPlaylistGenerator playlistGenerator;
-	IEnumerable<Channel> allItems;
+	IEnumerable<Channel> allItems = new List<Channel>();
 
 	public ObservableCollection<Channel> Items { get; } = new();
+	public ObservableCollection<string> Sources { get; } = new()
+	{
+		"https://iptv.org.ua/iptv/ua.m3u",
+		"https://mater.com.ua/ip/ua.m3u",
+		"https://tva.org.ua/ip/u/iptv_ukr.m3u",
+		"https://tva.org.ua/ip/sam/avto-full.m3u"
+	};
 
 	[ObservableProperty]
 	private string? filter;
 
-	public ChannelsViewModel(IPlaylistGenerator service)
-	{
-		playlistGenerator = service;
-		allItems = new List<Channel>();
-	}
+	[ObservableProperty]
+	private int selectedIndex;
 
 	[RelayCommand]
 	private void Search(TextChangedEventArgs eventArgs)
@@ -32,9 +35,10 @@ public partial class ChannelsViewModel : BaseViewModel
 	}
 
 	[RelayCommand]
-	public async Task LoadDataAsync()
+	public async Task LoadData()
 	{
-		allItems = await playlistGenerator.GetPlaylist();
+		var source = Sources[SelectedIndex];
+		allItems = await service.GetPlaylist(source);
 		FilterData(Filter);
 	}
 

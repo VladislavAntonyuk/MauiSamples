@@ -18,6 +18,6 @@ public partial class ChannelsPage : ContentPage
 	{
 		base.OnNavigatedTo(args);
 
-		await viewModel.LoadDataAsync();
+		await viewModel.LoadData();
 	}
 }

@@ -6,5 +6,5 @@ using Models;
 
 public interface IPlaylistGenerator
 {
-	Task<IEnumerable<Channel>> GetPlaylist();
+	Task<IEnumerable<Channel>> GetPlaylist(string source);
 }
