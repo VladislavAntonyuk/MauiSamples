@@ -18,7 +18,7 @@ public partial class CalendarHandler : ViewHandler<ICalendarView, Calendar>
 	private void PlatformView_SelectedDatesChanged(object? sender, Calendar.DateChangeEventArgs e)
 	{
 		PlatformView.DateChange -= PlatformView_SelectedDatesChanged;
-		VirtualView.SelectedDate = new DateTime(e.Year, e.Month + 1, e.DayOfMonth, 0,0,0);
+		VirtualView.SelectedDate = new DateTime(e.Year, e.Month + 1, e.DayOfMonth, 0, 0, 0);
 		VirtualView.OnSelectedDateChanged(VirtualView.SelectedDate);
 		PlatformView.DateChange += PlatformView_SelectedDatesChanged;
 	}

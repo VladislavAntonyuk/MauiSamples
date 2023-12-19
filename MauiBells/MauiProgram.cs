@@ -8,10 +8,10 @@ public static class MauiProgram
 	{
 		var builder = MauiApp.CreateBuilder();
 		builder.UseMauiApp<App>()
-		       .ConfigureMauiHandlers(handlers =>
-		       {
-			       handlers.AddHandler<CalendarView, CalendarHandler>();
-		       });
+			   .ConfigureMauiHandlers(handlers =>
+			   {
+				   handlers.AddHandler<CalendarView, CalendarHandler>();
+			   });
 
 		return builder.Build();
 	}

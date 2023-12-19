@@ -11,11 +11,11 @@ public partial class CalendarHandler : ViewHandler<ICalendarView, CalendarView>
 
 	private static void MapFirstDayOfWeek(CalendarHandler handler, ICalendarView virtualView)
 	{
-		
+
 	}
 	private static void MapMinDate(CalendarHandler handler, ICalendarView virtualView)
 	{
-		
+
 	}
 
 	private static void MapMaxDate(CalendarHandler handler, ICalendarView virtualView)
@@ -25,6 +25,6 @@ public partial class CalendarHandler : ViewHandler<ICalendarView, CalendarView>
 
 	private static void MapSelectedDate(CalendarHandler handler, ICalendarView virtualView)
 	{
-		
+
 	}
 }
