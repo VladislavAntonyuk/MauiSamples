@@ -1,7 +1,7 @@
-﻿using Android.App;
-using Android.Runtime;
+﻿namespace MauiBells;
 
-namespace MauiBells;
+using Android.App;
+using Android.Runtime;
 
 [Application]
 public class MainApplication : MauiApplication

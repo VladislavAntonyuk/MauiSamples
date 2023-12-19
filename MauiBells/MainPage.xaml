@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:calendar="clr-namespace:MauiBells.Calendar"
              x:Class="MauiBells.MainPage">
 
 	<ContentPage.Resources>
@@ -16,6 +17,18 @@
 			Padding="30,0"
 			VerticalOptions="Center">
 
+			<calendar:CalendarView
+				x:Name="CalendarView"
+				HorizontalOptions="Center"
+				FirstDayOfWeek="Monday"
+				MinDate="1/1/2023"
+				MaxDate="12/31/2024"
+				SelectedDate="12/31/2023"
+				SelectedDateChanged="CalendarView_OnSelectedDateChanged">
+			</calendar:CalendarView>
+
+			<Label x:Name="SelectedDateLabel" />
+
 			<HorizontalStackLayout
 				HorizontalOptions="Center">
 				<Label x:Name="Year" Text="2022"/>
@@ -23,7 +36,7 @@
 				<Label x:Name="Month" Text="12"/>
 				<Label Text="/"/>
 				<Label x:Name="Day" Text="31"/>
-				<Label Text=" "/>
+				<Label Text="T"/>
 				<Label x:Name="Hour" Text="12"/>
 				<Label Text=":"/>
 				<Label x:Name="Minute" Text="12"/>
@@ -32,18 +45,19 @@
 			</HorizontalStackLayout>
 
 			<Image
+				x:Name="Bell"
+				Source="bell.png"
+				HeightRequest="200"
+				HorizontalOptions="Center" />
+
+			<Label Text="Shake me!" />
+
+			<Image
 		       Source="dotnet.png"
 		       WidthRequest="200"
 		       HeightRequest="200"
 		       HorizontalOptions="Center" />
 
-			<Label Text="Shake me!" />
-
-			<Image
-				x:Name="Bell"
-				Source="bell.png"
-				HeightRequest="200"
-				HorizontalOptions="Center" />
 		</VerticalStackLayout>
 
 	</ScrollView>

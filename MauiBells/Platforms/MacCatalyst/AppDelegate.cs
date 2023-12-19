@@ -1,6 +1,6 @@
-﻿using Foundation;
+﻿namespace MauiBells;
 
-namespace MauiBells;
+using Foundation;
 
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate

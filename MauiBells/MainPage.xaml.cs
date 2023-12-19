@@ -1,5 +1,6 @@
 ﻿namespace MauiBells;
 
+using Calendar;
 using Plugin.Maui.Audio;
 
 public sealed partial class MainPage : ContentPage, IDisposable
@@ -66,6 +67,7 @@ public sealed partial class MainPage : ContentPage, IDisposable
 
 	public void Dispose()
 	{
+		CalendarView.Handler?.DisconnectHandler();
 		Accelerometer.Default.ShakeDetected -= ShakeDetected;
 		Accelerometer.Default.ReadingChanged -= ReadingChanged;
 		Accelerometer.Default.Stop();
@@ -84,5 +86,10 @@ public sealed partial class MainPage : ContentPage, IDisposable
 			});
 			await label.RotateXTo(0, 500);
 		}
+	}
+
+	private void CalendarView_OnSelectedDateChanged(object? sender, SelectedDateChangedEventArgs e)
+	{
+		SelectedDateLabel.Text = $"Selected Date: {e.SelectedDate}";
 	}
 }

@@ -1,6 +1,6 @@
-﻿using UIKit;
+﻿namespace MauiBells;
 
-namespace MauiBells;
+using UIKit;
 
 public class Program
 {

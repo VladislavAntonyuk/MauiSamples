@@ -4,6 +4,12 @@
 
 Article:
 
+Features:
+
+- Calendar View (Handlers)
+- Animations
+- AudioPlayer
+
 ## Video
 
 [Video](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/34/jingle-bells.mp4)

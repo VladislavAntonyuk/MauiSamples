@@ -57,7 +57,7 @@ The development guide can be found at [SETUP.md](./SETUP.md).
 
 1. [MauiBadge](MauiBadge) - AppIcon Badge.
 
-1. [MauiBells](MauiBells) - Flip animation, Audio player, Accelerometer.
+1. [MauiBells](MauiBells) - Calendar View (Handlers), Flip animation, Audio player, Accelerometer.
 
 1. [MauiMarkdown](MauiMarkdown) - Create a Markdown control using .NET MAUI Graphics.
 

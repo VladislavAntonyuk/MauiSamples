@@ -30,19 +30,4 @@
 		<PackageReference Include="Plugin.BLE" Version="3.1.0-beta.1" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Compile Update="Platforms\iOS\BluetoothService.cs">
-	    <ExcludeFromCurrentConfiguration>false</ExcludeFromCurrentConfiguration>
-	  </Compile>
-	  <Compile Update="Platforms\MacCatalyst\BluetoothService.cs">
-	    <ExcludeFromCurrentConfiguration>true</ExcludeFromCurrentConfiguration>
-	  </Compile>
-	  <Compile Update="Platforms\Tizen\BluetoothService.cs">
-	    <ExcludeFromCurrentConfiguration>true</ExcludeFromCurrentConfiguration>
-	  </Compile>
-	  <Compile Update="Platforms\Windows\BluetoothService.cs">
-	    <ExcludeFromCurrentConfiguration>true</ExcludeFromCurrentConfiguration>
-	  </Compile>
-	</ItemGroup>
-
 </Project>
