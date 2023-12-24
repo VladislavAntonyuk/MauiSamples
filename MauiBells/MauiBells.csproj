@@ -29,7 +29,12 @@
 
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
+
 	<ItemGroup>
-	  <PackageReference Include="Plugin.Maui.Audio" Version="3.0.0-preview2" />
+		<PackageReference Include="Plugin.Maui.Audio" Version="3.0.0-preview2" />
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == '$(NetVersion)-android'">
+		<PackageReference Include="VladislavAntonyuk.MaterialCalendarView" Version="1.9.0" />
 	</ItemGroup>
 </Project>

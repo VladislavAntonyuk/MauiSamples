@@ -10,7 +10,11 @@ public static class MauiProgram
 		builder.UseMauiApp<App>()
 		       .ConfigureMauiHandlers(handlers =>
 		       {
-			       handlers.AddHandler<CalendarView, CalendarHandler>();
+#if ANDROID
+				   handlers.AddHandler<ICalendarView, CalendarMaterialHandler>();
+#else
+				   handlers.AddHandler<CalendarView, CalendarHandler>();
+#endif
 		       });
 
 		return builder.Build();
