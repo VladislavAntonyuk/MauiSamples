@@ -1,21 +1,22 @@
 ﻿namespace MauiBells.Calendar;
 
 using Microsoft.Maui.Handlers;
+using Tizen.NUI.BaseComponents.View;
 
-public partial class CalendarHandler : ViewHandler<ICalendarView, CalendarView>
+public partial class CalendarHandler : ViewHandler<ICalendarView, Calendar>
 {
-	protected override CalendarView CreatePlatformView()
+	protected override Calendar CreatePlatformView()
 	{
-		return new CalendarView();
+		return new Calendar();
 	}
 
 	private static void MapFirstDayOfWeek(CalendarHandler handler, ICalendarView virtualView)
 	{
-		
+
 	}
 	private static void MapMinDate(CalendarHandler handler, ICalendarView virtualView)
 	{
-		
+
 	}
 
 	private static void MapMaxDate(CalendarHandler handler, ICalendarView virtualView)
@@ -25,6 +26,6 @@ public partial class CalendarHandler : ViewHandler<ICalendarView, CalendarView>
 
 	private static void MapSelectedDate(CalendarHandler handler, ICalendarView virtualView)
 	{
-		
+
 	}
 }
