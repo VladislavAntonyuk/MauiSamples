@@ -1,8 +1,8 @@
 ﻿namespace MauiBells.Calendar;
 
-using Windows.Globalization;
 using Microsoft.Maui.Handlers;
 using Microsoft.UI.Xaml.Controls;
+using Windows.Globalization;
 using Calendar = Microsoft.UI.Xaml.Controls.CalendarView;
 
 public partial class CalendarHandler : ViewHandler<ICalendarView, Calendar>

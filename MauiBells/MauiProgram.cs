@@ -8,14 +8,14 @@ public static class MauiProgram
 	{
 		var builder = MauiApp.CreateBuilder();
 		builder.UseMauiApp<App>()
-		       .ConfigureMauiHandlers(handlers =>
-		       {
+			   .ConfigureMauiHandlers(handlers =>
+			   {
 #if ANDROID
 				   handlers.AddHandler<ICalendarView, CalendarMaterialHandler>();
 #else
 				   handlers.AddHandler<CalendarView, CalendarHandler>();
 #endif
-		       });
+			   });
 
 		return builder.Build();
 	}
