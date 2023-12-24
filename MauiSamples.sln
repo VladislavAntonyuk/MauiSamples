@@ -54,9 +54,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BottomSheet", "BottomSheet\BottomSheet.csproj", "{29FEFF3E-62BD-4156-993A-7264EC281AA9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "iOSExtensions", "iOSExtensions", "{F215B6A7-4C79-4415-95D2-6F561143C9AC}"
-	ProjectSection(SolutionItems) = preProject
-		iOSExtensions\Directory.Build.props = iOSExtensions\Directory.Build.props
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AppContainer", "iOSExtensions\ShareExtension\AppContainer\AppContainer.csproj", "{E3B8C927-987B-410C-9B8F-9C683B2F494A}"
 EndProject
@@ -125,6 +122,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{D3C704D0-FB95-42BA-BBF1-E7360491551F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiTaskListApp", "Database\MauiTaskListApp\MauiTaskListApp.csproj", "{08096F4C-2BB3-4860-B0CA-9EC6A09EC377}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AndroidBindableLibraries", "AndroidBindableLibraries", "{E08722A6-C1B6-4C83-983C-809BF721D6F1}"
+	ProjectSection(SolutionItems) = preProject
+		AndroidBindableLibraries\Directory.Build.props = AndroidBindableLibraries\Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaterialCalendarView", "AndroidBindableLibraries\MaterialCalendarView\MaterialCalendarView.csproj", "{42DD8662-FBD2-47B8-8740-17807E17EF5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -372,6 +376,10 @@ Global
 		{08096F4C-2BB3-4860-B0CA-9EC6A09EC377}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08096F4C-2BB3-4860-B0CA-9EC6A09EC377}.Release|Any CPU.Build.0 = Release|Any CPU
 		{08096F4C-2BB3-4860-B0CA-9EC6A09EC377}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{42DD8662-FBD2-47B8-8740-17807E17EF5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42DD8662-FBD2-47B8-8740-17807E17EF5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42DD8662-FBD2-47B8-8740-17807E17EF5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42DD8662-FBD2-47B8-8740-17807E17EF5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -392,6 +400,7 @@ Global
 		{8CE62F62-CE5D-48F4-8754-3F07FF72C3C2} = {D7258BEF-416D-4F3E-A359-87BD545A84A9}
 		{4C3F6E69-0FB4-41D5-8D8F-2E48B033A3EF} = {CE4ABC8D-3F54-49AA-BA5A-DD47E7CEB56B}
 		{08096F4C-2BB3-4860-B0CA-9EC6A09EC377} = {D3C704D0-FB95-42BA-BBF1-E7360491551F}
+		{42DD8662-FBD2-47B8-8740-17807E17EF5A} = {E08722A6-C1B6-4C83-983C-809BF721D6F1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}
