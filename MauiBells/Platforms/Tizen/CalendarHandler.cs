@@ -1,13 +1,14 @@
 ﻿namespace MauiBells.Calendar;
 
 using Microsoft.Maui.Handlers;
-using Tizen.NUI.BaseComponents.View;
+using Tizen.NUI.BaseComponents;
 
-public partial class CalendarHandler : ViewHandler<ICalendarView, Calendar>
+public partial class CalendarHandler : ViewHandler<ICalendarView, Tizen.NUI.BaseComponents.View>
 {
-	protected override Calendar CreatePlatformView()
+	protected override View CreatePlatformView()
 	{
-		return new Calendar();
+		// https://github.com/Samsung/Tizen-CSharp-Samples/blob/master/Mobile/Xamarin.Forms/CalendarComponent/src/CalendarComponent/CalendarComponent.Tizen.Mobile/Renderers/CalendarViewRenderer.cs
+		throw new NotSupportedException("Tizen.NUI.BaseComponents doesn't contain CalendarControl. Only ElmaSharp.Calendar exist");
 	}
 
 	private static void MapFirstDayOfWeek(CalendarHandler handler, ICalendarView virtualView)
