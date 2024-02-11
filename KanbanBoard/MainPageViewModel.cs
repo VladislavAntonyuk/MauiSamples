@@ -6,8 +6,8 @@ using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Models;
 using Microsoft.EntityFrameworkCore;
+using Models;
 
 public partial class MainPageViewModel : ObservableObject
 {
@@ -53,7 +53,7 @@ public partial class MainPageViewModel : ObservableObject
 		if (columnInfo is null) return;
 		await Drop(columnInfo);
 	}
-	
+
 	[RelayCommand]
 	void ItemDragOver(CardInfo card)
 	{
@@ -189,7 +189,7 @@ public partial class MainPageViewModel : ObservableObject
 			await Refresh();
 		});
 
-		await dbContext.Columns.Where(x=> x.Id == columnInfo.Column.Id).ExecuteDeleteAsync();
+		await dbContext.Columns.Where(x => x.Id == columnInfo.Column.Id).ExecuteDeleteAsync();
 		await Refresh();
 	}
 
