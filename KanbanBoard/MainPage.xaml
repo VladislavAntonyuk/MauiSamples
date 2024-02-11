@@ -18,6 +18,7 @@
 		<converters:BoolToObjectConverter x:Key="BoolToObjectConverter"
 		                                  TrueObject="{StaticResource SwipeVisibleBackgroundColor}"
 		                                  FalseObject="{StaticResource SwipeInvisibleBackgroundColor}" />
+		<kanbanBoard:BoolToColorConverter x:Key="BoolToColor" />
 	</ContentPage.Resources>
 
 	<VerticalStackLayout>
@@ -131,6 +132,7 @@
 										VerticalOptions="Center">
 										<ImageButton.Source>
 											<FontImageSource
+												Color="{StaticResource Primary}"
 												FontFamily="FASolid"
 												Glyph="&#xf2ed;"
 												Size="{StaticResource ColumnTitleSize}" />
@@ -140,40 +142,46 @@
 
 								<CollectionView
 									EmptyView="No cards to display"
-									ItemsSource="{Binding Column.Cards}"
-									CanReorderItems="True">
+									ItemsSource="{Binding Cards}">
 									<CollectionView.ItemsLayout>
 										<LinearItemsLayout ItemSpacing="5" Orientation="Vertical" />
 									</CollectionView.ItemsLayout>
 									<CollectionView.ItemTemplate>
-										<DataTemplate x:DataType="models:Card">
-											<Border>
+										<DataTemplate x:DataType="models:CardInfo">
+											<Border IsVisible="{Binding IsDragOver, Converter={converters:InvertedBoolConverter}}">
 												<Border.StrokeShape>
 													<RoundRectangle CornerRadius="10" />
 												</Border.StrokeShape>
 												<Border.GestureRecognizers>
-													<DragGestureRecognizer CanDrag="True"
-													                       DragStartingCommand="{Binding BindingContext.DragStartingCommand, Source={x:Reference Board}}"
-													                       DragStartingCommandParameter="{Binding .}"
-													                       DropCompletedCommand="{Binding BindingContext.DropCompletedCommand, Source={x:Reference Board}}" />
+													<DragGestureRecognizer
+														CanDrag="True"
+														DragStartingCommand="{Binding BindingContext.DragStartingCommand, Source={x:Reference Board}}"
+														DragStartingCommandParameter="{Binding .}"
+														DropCompletedCommand="{Binding BindingContext.DropCompletedCommand, Source={x:Reference Board}}" />
+
 													<DropGestureRecognizer
 														AllowDrop="True"
 														DragOverCommand="{Binding BindingContext.ItemDragOverCommand, Source={x:Reference Board}}"
-														DragOverCommandParameter="{Binding .}" />
+														DragOverCommandParameter="{Binding .}"
+														DragLeaveCommand="{Binding BindingContext.ItemDragLeaveCommand, Source={x:Reference Board}}"
+														DragLeaveCommandParameter="{Binding .}"
+														DropCommand="{Binding BindingContext.DropOnCardCommand, Source={x:Reference Board}}"
+														DropCommandParameter="{Binding .}"/>
 												</Border.GestureRecognizers>
 
 												<Grid Margin="10" Padding="10" RowDefinitions="Auto, Auto" ColumnDefinitions="*, Auto">
+
 													<Label
 														Grid.Column="0"
 														FontAttributes="Bold"
 														FontSize="{StaticResource CardTitleSize}"
-														Text="{Binding Name}" />
+														Text="{Binding Card.Name}" />
 
 													<Label
 														Grid.Row="1"
 														Grid.Column="0"
 														FontSize="{StaticResource CardDescriptionSize}"
-														Text="{Binding Description}"
+														Text="{Binding Card.Description}"
 														VerticalOptions="End" />
 
 													<ImageButton
@@ -187,6 +195,7 @@
 														HorizontalOptions="EndAndExpand">
 														<ImageButton.Source>
 															<FontImageSource
+																Color="{StaticResource Primary}"
 																FontFamily="FASolid"
 																Glyph="&#xf2ed;"
 																Size="{StaticResource CardTitleSize}" />

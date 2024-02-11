@@ -1,4 +1,5 @@
 ﻿namespace KanbanBoard;
+
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using Microsoft.Maui.Controls.PlatformConfiguration;

@@ -1,7 +1,6 @@
 ﻿@page "/"
 @using Microsoft.Identity.Client
 @using CommunityToolkit.Maui.Alerts
-@using System.IdentityModel.Tokens.Jwt
 @using System.Text
 @using AuthServices
 @inject AuthService authService
@@ -12,46 +11,41 @@
 <p>@resultMessage</p>
 @code
 {
-    string resultMessage = string.Empty;
+	string resultMessage = string.Empty;
 
-    async Task LoginAsync()
-    {
-        try
-        {
-            var result = await authService.SignInInteractively(CancellationToken.None);
-            GetResult(result);
-        }
-        catch (MsalClientException ex)
-        {
-            await Toast.Make(ex.Message).Show();
-        }
-    }
-    async Task LoginB2CAsync()
-    {
-        try
-        {
-            var result = await authServiceB2C.SignInInteractively(CancellationToken.None);
-            GetResult(result);
-        }
-        catch (MsalClientException ex)
-        {
-            await Toast.Make(ex.Message).Show();
-        }
-    }
+	async Task LoginAsync()
+	{
+		try
+		{
+			var result = await authService.SignInInteractively(CancellationToken.None);
+			GetResult(result);
+		}
+		catch (MsalClientException ex)
+		{
+			await Toast.Make(ex.Message).Show();
+		}
+	}
+	async Task LoginB2CAsync()
+	{
+		try
+		{
+			var result = await authServiceB2C.SignInInteractively(CancellationToken.None);
+			GetResult(result);
+		}
+		catch (MsalClientException ex)
+		{
+			await Toast.Make(ex.Message).Show();
+		}
+	}
 
-    void GetResult(AuthenticationResult? result)
-    {
-        var token = result?.IdToken;
-        if (token != null)
-        {
-            var handler = new JwtSecurityTokenHandler();
-            var data = handler.ReadJwtToken(token);
-            if (data != null)
-            {
-                var stringBuilder = new StringBuilder();
-                stringBuilder.AppendLine($"Name: {data.Claims.FirstOrDefault(x => x.Type.Equals("name"))?.Value}");
-                resultMessage = stringBuilder.ToString();
-            }
-        }
-    }
+	void GetResult(AuthenticationResult? result)
+	{
+		var claims = result?.ClaimsPrincipal.Claims;
+		if (claims != null)
+		{
+			var stringBuilder = new StringBuilder();
+			stringBuilder.AppendLine($"Name: {claims.FirstOrDefault(x => x.Type.Equals("name"))?.Value}");
+			resultMessage = stringBuilder.ToString();
+		}
+	}
 }

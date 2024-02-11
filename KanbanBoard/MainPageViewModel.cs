@@ -1,30 +1,30 @@
 ﻿namespace KanbanBoard;
+
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using KanbanBoard.Db;
-using KanbanBoard.Models;
+using Models;
+using Microsoft.EntityFrameworkCore;
 
 public partial class MainPageViewModel : ObservableObject
 {
+	private readonly KanbanBoardDbContext dbContext;
+
 	[ObservableProperty]
 	private ObservableCollection<ColumnInfo> columns = new();
 	[ObservableProperty]
 	private int position;
 
-	private Card? dragCard;
-	private readonly ICardsRepository cardsRepository;
-	private readonly IColumnsRepository columnsRepository;
+	private CardInfo? dragCard;
 
 	public bool IsDragging => dragCard != null;
 
-	public MainPageViewModel(ICardsRepository cardsRepository, IColumnsRepository columnsRepository)
+	public MainPageViewModel(KanbanBoardDbContext dbContext)
 	{
-		this.cardsRepository = cardsRepository;
-		this.columnsRepository = columnsRepository;
+		this.dbContext = dbContext;
 		RefreshCommand.Execute(null);
 	}
 
@@ -33,12 +33,12 @@ public partial class MainPageViewModel : ObservableObject
 	{
 		if (dragCard is null || columnInfo is null || columnInfo.Column.Cards.Count >= columnInfo.Column.Wip) return;
 
-		var cardToUpdate = await cardsRepository.GetItem(dragCard.Id);
+		var cardToUpdate = await dbContext.Cards.FirstOrDefaultAsync(x => x.Id == dragCard.Card.Id);
 		if (cardToUpdate is not null)
 		{
 			cardToUpdate.ColumnId = columnInfo.Column.Id;
-			await cardsRepository.UpdateItem(cardToUpdate);
-			await UpdateCardsOrder(columnInfo.Column);
+			UpdateCardsOrder(columnInfo.Column);
+			await dbContext.SaveChangesAsync();
 		}
 
 		await Refresh();
@@ -46,9 +46,26 @@ public partial class MainPageViewModel : ObservableObject
 	}
 
 	[RelayCommand]
-	void ItemDragOver(Card card)
+	async Task DropOnCard(CardInfo? card)
 	{
-		Debug.WriteLine($"ItemDraggedOver : {card.Name}");
+		if (card is null) return;
+		var columnInfo = Columns.FirstOrDefault(x => x.Column.Cards.Contains(card.Card));
+		if (columnInfo is null) return;
+		await Drop(columnInfo);
+	}
+	
+	[RelayCommand]
+	void ItemDragOver(CardInfo card)
+	{
+		card.IsDragOver = true;
+		Debug.WriteLine($"ItemDraggedOver : {card.Card.Name}");
+	}
+
+	[RelayCommand]
+	void ItemDragLeave(CardInfo card)
+	{
+		card.IsDragOver = false;
+		Debug.WriteLine($"ItemDraggedLeave : {card.Card.Name}");
 	}
 
 	[RelayCommand]
@@ -74,7 +91,7 @@ public partial class MainPageViewModel : ObservableObject
 	}
 
 	[RelayCommand]
-	void DragStarting(Card card)
+	void DragStarting(CardInfo card)
 	{
 		dragCard = card;
 		OnPropertyChanged(nameof(IsDragging));
@@ -103,7 +120,8 @@ public partial class MainPageViewModel : ObservableObject
 		} while (wip < 0);
 
 		var column = new Column { Name = columnName, Wip = wip, Order = Columns.Count + 1 };
-		await columnsRepository.SaveItem(column);
+		await dbContext.Columns.AddAsync(column);
+		await dbContext.SaveChangesAsync();
 		await Refresh();
 		await ToastAsync("Column is added");
 	}
@@ -111,7 +129,7 @@ public partial class MainPageViewModel : ObservableObject
 	[RelayCommand]
 	async Task AddCard(int columnId)
 	{
-		var column = await columnsRepository.GetItem(columnId);
+		var column = await dbContext.Columns.Include(column => column.Cards).FirstOrDefaultAsync(x => x.Id == columnId);
 		if (column is null) return;
 		var columnInfo = new ColumnInfo(0, column);
 		if (columnInfo.IsWipReached)
@@ -124,32 +142,35 @@ public partial class MainPageViewModel : ObservableObject
 		if (string.IsNullOrWhiteSpace(cardName)) return;
 
 		var cardDescription = await UserPromptAsync("New card", "Enter card description", Keyboard.Default);
-		await cardsRepository.SaveItem(new Card
+		await dbContext.Cards.AddAsync(new Card
 		{
 			Name = cardName,
 			Description = cardDescription,
 			ColumnId = columnId,
 			Order = column.Cards.Count + 1
 		});
+		await dbContext.SaveChangesAsync();
 
 		await Refresh();
 		await ToastAsync("Card is added");
 	}
 
 	[RelayCommand]
-	async Task DeleteCard(Card? card)
+	async Task DeleteCard(CardInfo? card)
 	{
 		if (card is null) return;
-		var result = await AlertAsync("Delete card", $"Do you want to delete card \"{card.Name}\"?");
+		var result = await AlertAsync("Delete card", $"Do you want to delete card \"{card.Card.Name}\"?");
 		if (!result) return;
 
 		await SnackbarAsync("The card is removed", "Cancel", async () =>
 		{
 			await ToastAsync("Task is cancelled");
-			await cardsRepository.SaveItem(card);
+			await dbContext.Cards.AddAsync(card.Card);
+			await dbContext.SaveChangesAsync();
 			await Refresh();
 		});
-		await cardsRepository.DeleteItem(card.Id);
+		dbContext.Cards.Remove(card.Card);
+		await dbContext.SaveChangesAsync();
 		await Refresh();
 	}
 
@@ -163,21 +184,23 @@ public partial class MainPageViewModel : ObservableObject
 
 		await SnackbarAsync("The column is removed", "Cancel", async () =>
 		{
-			await columnsRepository.SaveItem(columnInfo.Column);
+			await dbContext.Columns.AddAsync(columnInfo.Column);
+			await dbContext.SaveChangesAsync();
 			await Refresh();
 		});
 
-		await columnsRepository.DeleteItem(columnInfo.Column.Id);
+		await dbContext.Columns.Where(x=> x.Id == columnInfo.Column.Id).ExecuteDeleteAsync();
 		await Refresh();
 	}
 
 	[RelayCommand]
 	private async Task Refresh()
 	{
-		var items = await columnsRepository.GetItems();
+		var items = await dbContext.Columns
+								   .Include(x => x.Cards)
+								   .OrderBy(x => x.Order)
+								   .ToArrayAsync();
 		Columns = items
-			.OrderBy(c => c.Order)
-			.ToList()
 			.Select(OrderCards)
 			.ToObservableCollection();
 		Position = 0;
@@ -218,13 +241,12 @@ public partial class MainPageViewModel : ObservableObject
 		return Toast.Make(title, ToastDuration.Long, 26d).Show();
 	}
 
-	private async Task UpdateCardsOrder(Column column)
+	private void UpdateCardsOrder(Column column)
 	{
 		var cards = column.Cards.OrderBy(x => x.Order).ToList();
 		for (int i = 0; i < cards.Count; i++)
 		{
 			column.Cards[i].Order = i;
-			await cardsRepository.UpdateItem(column.Cards[i]);
 		}
 	}
 }

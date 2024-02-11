@@ -37,7 +37,7 @@
 		<PackageReference Include="Xamarin.AndroidX.Collection.Jvm" Version="1.3.0.2" />
 		<PackageReference Include="Xamarin.AndroidX.Collection.Ktx" Version="1.3.0.2" />
 
-		<PackageReference Include="Xamarin.AndroidX.Fragment.Ktx ">
+		<PackageReference Include="Xamarin.AndroidX.Fragment.Ktx">
 			<Version>1.6.2.1</Version>
 		</PackageReference>
 	</ItemGroup>

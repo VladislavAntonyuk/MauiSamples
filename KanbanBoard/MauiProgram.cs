@@ -1,5 +1,4 @@
 ﻿using CommunityToolkit.Maui;
-using KanbanBoard.Db;
 using KanbanBoard.Models;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
@@ -21,8 +20,6 @@ public static class MauiProgram
 
 		builder.Services.AddSingleton<IPath, DbPath>();
 		builder.Services.AddDbContext<KanbanBoardDbContext>();
-		builder.Services.AddSingleton<IColumnsRepository, ColumnsRepository>();
-		builder.Services.AddSingleton<ICardsRepository, CardsRepository>();
 		builder.Services.AddSingleton<MainPageViewModel>();
 		builder.Services.AddSingleton<MainPage>();
 		return builder.Build();

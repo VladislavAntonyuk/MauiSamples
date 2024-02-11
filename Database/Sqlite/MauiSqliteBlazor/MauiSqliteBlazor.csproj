@@ -26,14 +26,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="SQLitePCLRaw.core" Version="2.1.7" />
-		<PackageReference Include="SQLitePCLRaw.provider.sqlite3" Version="2.1.7" />
-		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.7" />
-		<PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.7" />
+		<PackageReference Include="SQLitePCLRaw.core" Version="2.1.8" />
+		<PackageReference Include="SQLitePCLRaw.provider.sqlite3" Version="2.1.8" />
+		<PackageReference Include="SQLitePCLRaw.bundle_green" Version="2.1.8" />
+		<PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.8" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\SqliteRepository\SqliteRepository.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Update="Microsoft.AspNetCore.Components.WebView.Maui" Version="8.0.6" />
 	</ItemGroup>
 
 </Project>

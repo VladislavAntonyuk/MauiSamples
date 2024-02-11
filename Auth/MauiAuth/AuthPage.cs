@@ -1,5 +1,5 @@
 ﻿namespace MauiAuth;
-using System.IdentityModel.Tokens.Jwt;
+
 using System.Text;
 using AuthServices;
 using CommunityToolkit.Maui.Alerts;
@@ -46,19 +46,14 @@ public abstract class AuthPage : ContentPage
 
 	private async Task GetResult(AuthenticationResult? result)
 	{
-		var token = result?.IdToken;
-		if (token != null)
+		var claims = result?.ClaimsPrincipal.Claims;
+		if (claims != null)
 		{
-			var handler = new JwtSecurityTokenHandler();
-			var data = handler.ReadJwtToken(token);
-			if (data != null)
-			{
-				var stringBuilder = new StringBuilder();
-				stringBuilder.AppendLine($"Name: {data.Claims.FirstOrDefault(x => x.Type.Equals("name"))?.Value}");
-				await Toast.Make(stringBuilder.ToString()).Show();
-				loginButton.IsVisible = false;
-				logoutButton.IsVisible = true;
-			}
+			var stringBuilder = new StringBuilder();
+			stringBuilder.AppendLine($"Name: {claims.FirstOrDefault(x => x.Type.Equals("name"))?.Value}");
+			await Toast.Make(stringBuilder.ToString()).Show();
+			loginButton.IsVisible = false;
+			logoutButton.IsVisible = true;
 		}
 	}
 
