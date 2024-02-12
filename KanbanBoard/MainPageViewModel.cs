@@ -53,7 +53,7 @@ public partial class MainPageViewModel : ObservableObject
 		if (columnInfo is null) return;
 		await Drop(columnInfo);
 	}
-	
+
 	[RelayCommand]
 	void ItemDragOver(CardInfo card)
 	{
@@ -189,7 +189,7 @@ public partial class MainPageViewModel : ObservableObject
 			await Refresh();
 		});
 
-		await dbContext.Columns.Where(x=> x.Id == columnInfo.Column.Id).ExecuteDeleteAsync();
+		await dbContext.Columns.Where(x => x.Id == columnInfo.Column.Id).ExecuteDeleteAsync();
 		await Refresh();
 	}
 

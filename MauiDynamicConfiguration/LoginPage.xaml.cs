@@ -22,26 +22,17 @@ public partial class LoginPage : ContentPage
 	}
 }
 
-public partial class LoginViewModel : ObservableObject
+public partial class LoginViewModel(IConfigCatClient configCatClient, UserContext userContext) : ObservableObject
 {
-	private readonly UserContext userContext;
-	private readonly IConfigCatClient configCatClient;
-
 	[ObservableProperty]
 	string? email;
 
 	[ObservableProperty]
 	string title = "Login";
 
-	public LoginViewModel(IConfigCatClient configCatClient, UserContext userContext)
-	{
-		this.userContext = userContext;
-		this.configCatClient = configCatClient;
-	}
-
 	public void Initialize()
 	{
-		Title = this.configCatClient.GetValue("beta", false) ? "Beta Login" : "Login";
+		Title = configCatClient.GetValue("beta", false) ? "Beta Login" : "Login";
 	}
 
 	[RelayCommand]

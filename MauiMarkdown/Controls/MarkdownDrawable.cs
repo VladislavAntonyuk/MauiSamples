@@ -7,35 +7,20 @@ using Font = Microsoft.Maui.Graphics.Font;
 
 public class MarkdownDrawable : IDrawable
 {
-	private readonly string text;
-	private readonly Color fontColor;
-	private readonly float fontSize;
-	private readonly int markdownWidth;
-	private readonly int markdownHeight;
-
-	public MarkdownDrawable(string text, Color fontColor, double fontSize, double markdownWidth, double markdownHeight)
-	{
-		this.text = text;
-		this.fontColor = fontColor;
-		this.fontSize = (float)fontSize;
-		this.markdownWidth = (int)markdownWidth;
-		this.markdownHeight = (int)markdownHeight;
-	}
-
 	public void Draw(ICanvas canvas, RectF dirtyRect)
 	{
 		canvas.Font = Font.Default;
-		canvas.FontSize = fontSize;
-		canvas.FontColor = fontColor;
-		var attributedText = Read(text);
+		canvas.FontSize = FontSize;
+		canvas.FontColor = FontColor;
+		var attributedText = Read(Text);
 #if WINDOWS
-		canvas.DrawString(attributedText.Text, 0, 0, Math.Max(0, markdownWidth), Math.Max(0, markdownHeight), HorizontalAlignment.Left, VerticalAlignment.Top);
+		canvas.DrawString(attributedText.Text, 0, Offset.Height, Math.Max(0, Size.Width), Math.Max(0, Size.Height), HorizontalAlignment.Left, VerticalAlignment.Top);
 #else
-		canvas.DrawText(attributedText, 0, 0, markdownWidth, markdownHeight);
+		canvas.DrawText(attributedText, 0, Offset.Height, Size.Width, Size.Height);
 #endif
 	}
 
-	private static IAttributedText Read(string text)
+	private static IAttributedText Read(string? text)
 	{
 		var renderer = new AttributedTextRenderer();
 		renderer.ObjectRenderers.Add(new MauiCodeInlineRenderer());
@@ -45,7 +30,13 @@ public class MarkdownDrawable : IDrawable
 					  .UseEmojiAndSmiley()
 					  .UseEmphasisExtras();
 		var pipeline = builder.Build();
-		Markdown.Convert(text, renderer, pipeline);
+		Markdown.Convert(text ?? string.Empty, renderer, pipeline);
 		return renderer.GetAttributedText();
 	}
+
+	public SizeF Offset { get; set; }
+	public string? Text { get; set; }
+	public SizeF Size { get; set; }
+	public float FontSize { get; set; }
+	public Color FontColor { get; set; } = Colors.Black;
 }

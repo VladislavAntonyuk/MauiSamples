@@ -17,19 +17,10 @@ public partial class MainPage : ContentPage
 	}
 }
 
-public partial class MainPageViewModel : ObservableObject
+public partial class MainPageViewModel(IAdapter adapter, IBluetoothService bluetoothService) : ObservableObject
 {
-	private readonly IAdapter adapter;
-	private readonly IBluetoothService bluetoothService;
-
 	[ObservableProperty]
 	private ObservableCollection<IDevice> devices = new();
-
-	public MainPageViewModel(IAdapter adapter, IBluetoothService bluetoothService)
-	{
-		this.adapter = adapter;
-		this.bluetoothService = bluetoothService;
-	}
 
 	[RelayCommand]
 	async Task ScanDevices(CancellationToken cancellationToken)

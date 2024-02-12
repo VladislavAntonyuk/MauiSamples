@@ -7,14 +7,11 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Windows.Foundation;
 
-public class DraggableViewHandler : ViewHandler<DraggableView, FrameworkElement>
+public class DraggableViewHandler(IPropertyMapper mapper, CommandMapper? commandMapper = null)
+	: ViewHandler<DraggableView, FrameworkElement>(mapper, commandMapper)
 {
 	private bool isPointerPressed;
 	private Point previousPoint;
-
-	public DraggableViewHandler(IPropertyMapper mapper, CommandMapper? commandMapper = null) : base(mapper, commandMapper)
-	{
-	}
 
 	public DraggableViewHandler() : this(ViewMapper, ViewCommandMapper)
 	{

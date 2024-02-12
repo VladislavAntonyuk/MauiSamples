@@ -47,10 +47,5 @@ public static class CursorExtensions
 		};
 	}
 
-	class PointerUIHoverGestureRecognizer : UIHoverGestureRecognizer
-	{
-		public PointerUIHoverGestureRecognizer(Action<UIHoverGestureRecognizer> action) : base(action)
-		{
-		}
-	}
+	class PointerUIHoverGestureRecognizer(Action<UIHoverGestureRecognizer> action) : UIHoverGestureRecognizer(action);
 }

@@ -2,15 +2,8 @@
 
 using Plugin.BLE.Abstractions.Contracts;
 
-public class BluetoothService : IBluetoothService
+public class BluetoothService(IAdapter adapter) : IBluetoothService
 {
-	private readonly IAdapter adapter;
-
-	public BluetoothService(IAdapter adapter)
-	{
-		this.adapter = adapter;
-	}
-
 	/// <inheritdoc />
 	public IDevice[] GetConnectedDevices()
 	{

@@ -6,15 +6,9 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Models;
 
-public partial class MainPageViewModel : ObservableObject
+public partial class MainPageViewModel(IFixture fixture) : ObservableObject
 {
-	private readonly IFixture fixture;
 	private LocationPin? currentLocationPin;
-
-	public MainPageViewModel(IFixture fixture)
-	{
-		this.fixture = fixture;
-	}
 
 	[RelayCommand]
 	private void Add()

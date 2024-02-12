@@ -2,9 +2,4 @@
 
 using Microsoft.Identity.Client;
 
-public class AuthService : BaseAuthService
-{
-	public AuthService(IPublicClientApplication publicClientApplication) : base(publicClientApplication)
-	{
-	}
-}
+public class AuthService(IPublicClientApplication publicClientApplication) : BaseAuthService(publicClientApplication);

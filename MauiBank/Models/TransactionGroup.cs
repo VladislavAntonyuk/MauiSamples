@@ -1,11 +1,6 @@
 ﻿namespace MauiBank.Models;
 
-public class TransactionGroup : List<Transaction>
+public class TransactionGroup(DateTime dateTime, List<Transaction> transactions) : List<Transaction>(transactions)
 {
-	public DateOnly Date { get; }
-
-	public TransactionGroup(DateTime dateTime, List<Transaction> transactions) : base(transactions)
-	{
-		Date = new DateOnly(dateTime.Year, dateTime.Month, dateTime.Day);
-	}
+	public DateOnly Date { get; } = new(dateTime.Year, dateTime.Month, dateTime.Day);
 }

@@ -2,15 +2,8 @@
 
 using Microsoft.Identity.Client;
 
-public abstract class BaseAuthService : IAuthService
+public abstract class BaseAuthService(IPublicClientApplication authenticationClient) : IAuthService
 {
-	private readonly IPublicClientApplication authenticationClient;
-
-	protected BaseAuthService(IPublicClientApplication authenticationClient)
-	{
-		this.authenticationClient = authenticationClient;
-	}
-
 	public Task<AuthenticationResult?> SignInInteractively(CancellationToken cancellationToken)
 	{
 		return authenticationClient

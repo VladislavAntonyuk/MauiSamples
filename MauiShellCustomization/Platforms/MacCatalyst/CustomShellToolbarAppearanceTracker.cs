@@ -6,17 +6,9 @@ using Microsoft.Maui.Controls.Platform.Compatibility;
 using Microsoft.Maui.Platform;
 using UIKit;
 
-sealed class CustomShellToolbarAppearanceTracker : IShellNavBarAppearanceTracker
+sealed class CustomShellToolbarAppearanceTracker(IShellContext shellContext, IShellNavBarAppearanceTracker baseTracker)
+	: IShellNavBarAppearanceTracker
 {
-	private readonly IShellNavBarAppearanceTracker baseTracker;
-	private readonly IShellContext shellContext;
-
-	public CustomShellToolbarAppearanceTracker(IShellContext shellContext, IShellNavBarAppearanceTracker baseTracker)
-	{
-		this.shellContext = shellContext;
-		this.baseTracker = baseTracker;
-	}
-
 	public void Dispose()
 	{
 		baseTracker.Dispose();

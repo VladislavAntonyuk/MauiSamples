@@ -6,13 +6,9 @@ namespace MauiShellCustomization;
 
 using Microsoft.Maui.Platform;
 
-internal class CustomShellItemRenderer : ShellItemRenderer
+internal class CustomShellItemRenderer(IShellContext context) : ShellItemRenderer(context)
 {
 	private UIButton? middleView;
-
-	public CustomShellItemRenderer(IShellContext context) : base(context)
-	{
-	}
 
 	public override async void ViewWillLayoutSubviews()
 	{

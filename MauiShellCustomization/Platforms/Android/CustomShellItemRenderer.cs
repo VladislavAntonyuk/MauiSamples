@@ -8,12 +8,8 @@ using Microsoft.Maui.Controls.Platform;
 using Microsoft.Maui.Controls.Platform.Compatibility;
 using Microsoft.Maui.Platform;
 
-internal class CustomShellItemRenderer : ShellItemRenderer
+internal class CustomShellItemRenderer(IShellContext context) : ShellItemRenderer(context)
 {
-	public CustomShellItemRenderer(IShellContext context) : base(context)
-	{
-	}
-
 	public override View? OnCreateView(LayoutInflater inflater, ViewGroup? container, Bundle? savedInstanceState)
 	{
 		var view = base.OnCreateView(inflater, container, savedInstanceState);

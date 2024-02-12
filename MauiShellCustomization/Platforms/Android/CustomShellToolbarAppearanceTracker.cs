@@ -7,14 +7,10 @@ using Microsoft.Maui.Controls.Platform;
 using Microsoft.Maui.Controls.Platform.Compatibility;
 using Microsoft.Maui.Platform;
 
-internal class CustomShellToolbarAppearanceTracker : ShellToolbarAppearanceTracker
+internal class CustomShellToolbarAppearanceTracker(IShellContext shellContext)
+	: ShellToolbarAppearanceTracker(shellContext)
 {
-	private readonly IShellContext shellContext;
-
-	public CustomShellToolbarAppearanceTracker(IShellContext shellContext) : base(shellContext)
-	{
-		this.shellContext = shellContext;
-	}
+	private readonly IShellContext shellContext = shellContext;
 
 	public override void SetAppearance(Toolbar toolbar, IShellToolbarTracker toolbarTracker, ShellAppearance appearance)
 	{

@@ -5,14 +5,11 @@ using Microsoft.Maui;
 using Microsoft.Maui.Handlers;
 using Microsoft.Maui.Platform;
 
-public class DraggableViewHandler : ViewHandler<DraggableView, View>
+public class DraggableViewHandler(IPropertyMapper mapper, CommandMapper? commandMapper = null)
+	: ViewHandler<DraggableView, View>(mapper, commandMapper)
 {
 	private float deltaX;
 	private float deltaY;
-
-	public DraggableViewHandler(IPropertyMapper mapper, CommandMapper? commandMapper = null) : base(mapper, commandMapper)
-	{
-	}
 
 	public DraggableViewHandler() : this(ViewMapper, ViewCommandMapper)
 	{

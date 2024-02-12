@@ -13,19 +13,12 @@ using CommunityToolkit.Mvvm.Input;
 using Figures;
 using Serializer;
 
-public partial class MainPageViewModel : ObservableObject
+public partial class MainPageViewModel(
+	ISerializerService serializerService,
+	IFileSaver fileSaver,
+	IFilePicker filePicker) : ObservableObject
 {
-	private readonly ISerializerService serializerService;
-	private readonly IFileSaver fileSaver;
-	private readonly IFilePicker filePicker;
 	private static List<IFigure> _figures = new();
-
-	public MainPageViewModel(ISerializerService serializerService, IFileSaver fileSaver, IFilePicker filePicker)
-	{
-		this.serializerService = serializerService;
-		this.fileSaver = fileSaver;
-		this.filePicker = filePicker;
-	}
 
 	[ObservableProperty]
 	private ObservableCollection<IDrawingLine> lines = new();

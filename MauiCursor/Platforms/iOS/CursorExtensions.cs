@@ -21,14 +21,9 @@ public static class CursorExtensions
 		view.AddInteraction(new UIPointerInteraction(new PointerInteractionDelegate(cursor)));
 	}
 
-	class PointerInteractionDelegate : UIPointerInteractionDelegate
+	class PointerInteractionDelegate(CursorIcon icon) : UIPointerInteractionDelegate
 	{
-		private readonly CursorIcon icon;
-
-		public PointerInteractionDelegate(CursorIcon icon)
-		{
-			this.icon = icon;
-		}
+		private readonly CursorIcon icon = icon;
 
 		public override UIPointerStyle? GetStyleForRegion(UIPointerInteraction interaction, UIPointerRegion region)
 		{

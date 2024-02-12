@@ -6,15 +6,10 @@ using Microsoft.Maui.Controls.Platform.Compatibility;
 using Microsoft.Maui.Platform;
 
 namespace MauiShellCustomization;
-internal class CustomShellBottomNavViewAppearanceTracker : ShellBottomNavViewAppearanceTracker
+internal class CustomShellBottomNavViewAppearanceTracker(IShellContext shellContext, ShellItem shellItem)
+	: ShellBottomNavViewAppearanceTracker(shellContext, shellItem)
 {
-	private readonly IShellContext shellContext;
-
-	public CustomShellBottomNavViewAppearanceTracker(IShellContext shellContext, ShellItem shellItem) : base(
-		shellContext, shellItem)
-	{
-		this.shellContext = shellContext;
-	}
+	private readonly IShellContext shellContext = shellContext;
 
 	public override void SetAppearance(BottomNavigationView bottomView, IShellAppearanceElement appearance)
 	{

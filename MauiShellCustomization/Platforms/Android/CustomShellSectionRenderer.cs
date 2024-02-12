@@ -6,12 +6,8 @@ using Android.Widget;
 using AndroidX.CoordinatorLayout.Widget;
 using Microsoft.Maui.Controls.Platform.Compatibility;
 
-internal class CustomShellSectionRenderer : ShellSectionRenderer
+internal class CustomShellSectionRenderer(IShellContext shellContext) : ShellSectionRenderer(shellContext)
 {
-	public CustomShellSectionRenderer(IShellContext shellContext) : base(shellContext)
-	{
-	}
-
 	public override View? OnCreateView(LayoutInflater inflater, ViewGroup? container, Bundle? savedInstanceState)
 	{
 		var relativeLayout = new RelativeLayout(Context);

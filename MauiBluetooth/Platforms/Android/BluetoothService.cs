@@ -8,19 +8,11 @@ using Java.Util;
 using Plugin.BLE.Abstractions.Contracts;
 using Plugin.BLE.Android;
 
-public class BluetoothService : IBluetoothService
+public class BluetoothService(IAdapter adapter) : IBluetoothService
 {
-	private readonly IAdapter adapter;
-
 	static UUID? _myUuidSecure = UUID.FromString("fa87c0d0-afac-11de-8a39-0800200c9a66");
-	private readonly BluetoothManager manager;
+	private readonly BluetoothManager manager = (BluetoothManager)Application.Context.GetSystemService(Context.BluetoothService)!;
 	BluetoothSocket? socket;
-
-	public BluetoothService(IAdapter adapter)
-	{
-		this.adapter = adapter;
-		manager = (BluetoothManager)Application.Context.GetSystemService(Context.BluetoothService)!;
-	}
 
 	/// <inheritdoc />
 	public IDevice[] GetConnectedDevices()

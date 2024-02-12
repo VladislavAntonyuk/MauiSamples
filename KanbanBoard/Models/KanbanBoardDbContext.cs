@@ -2,16 +2,8 @@
 
 using Microsoft.EntityFrameworkCore;
 
-public class KanbanBoardDbContext : DbContext
+public class KanbanBoardDbContext(IPath path, DbContextOptions<KanbanBoardDbContext> options) : DbContext(options)
 {
-	private readonly IPath path;
-
-	public KanbanBoardDbContext(IPath path, DbContextOptions<KanbanBoardDbContext> options)
-		: base(options)
-	{
-		this.path = path;
-	}
-
 	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 	{
 		base.OnConfiguring(optionsBuilder);
