@@ -108,7 +108,7 @@ Death to enemies!";
 		// https://platform.openai.com/docs/models/model-endpoint-compatibility
 		var result = await api.Completions.CreateCompletionAsync(new CompletionRequest(generalPrompt)
 		{
-			Model = Model.DavinciText
+			Model = Model.ChatGPTTurbo
 		});
 		try
 		{
