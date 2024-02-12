@@ -5,38 +5,38 @@ using Microsoft.Identity.Client;
 public abstract class BaseAuthService(IPublicClientApplication authenticationClient) : IAuthService
 {
 	public Task<AuthenticationResult?> SignInInteractively(CancellationToken cancellationToken)
-	{
-		return authenticationClient
-			   .AcquireTokenInteractive(Constants.Scopes)
-			   .ExecuteAsync(cancellationToken);
-	}
+{
+	return authenticationClient
+		   .AcquireTokenInteractive(Constants.Scopes)
+		   .ExecuteAsync(cancellationToken);
+}
 
-	public async Task<AuthenticationResult?> AcquireTokenSilent(CancellationToken cancellationToken)
+public async Task<AuthenticationResult?> AcquireTokenSilent(CancellationToken cancellationToken)
+{
+	try
 	{
-		try
-		{
-			var accounts = await authenticationClient.GetAccountsAsync(Constants.SignInPolicy);
-			var firstAccount = accounts.FirstOrDefault();
-			if (firstAccount is null)
-			{
-				return null;
-			}
-
-			return await authenticationClient.AcquireTokenSilent(Constants.Scopes, firstAccount)
-											 .ExecuteAsync(cancellationToken);
-		}
-		catch (MsalUiRequiredException)
+		var accounts = await authenticationClient.GetAccountsAsync(Constants.SignInPolicy);
+		var firstAccount = accounts.FirstOrDefault();
+		if (firstAccount is null)
 		{
 			return null;
 		}
-	}
 
-	public async Task LogoutAsync(CancellationToken cancellationToken)
-	{
-		var accounts = await authenticationClient.GetAccountsAsync();
-		foreach (var account in accounts)
-		{
-			await authenticationClient.RemoveAsync(account);
-		}
+		return await authenticationClient.AcquireTokenSilent(Constants.Scopes, firstAccount)
+										 .ExecuteAsync(cancellationToken);
 	}
+	catch (MsalUiRequiredException)
+	{
+		return null;
+	}
+}
+
+public async Task LogoutAsync(CancellationToken cancellationToken)
+{
+	var accounts = await authenticationClient.GetAccountsAsync();
+	foreach (var account in accounts)
+	{
+		await authenticationClient.RemoveAsync(account);
+	}
+}
 }

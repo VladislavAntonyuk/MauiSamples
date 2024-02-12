@@ -5,7 +5,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 public partial class CardInfo(Card card) : ObservableObject
 {
 	[ObservableProperty]
-	private bool isDragOver;
+private bool isDragOver;
 
-	public Card Card { get; } = card;
+public Card Card { get; } = card;
 }

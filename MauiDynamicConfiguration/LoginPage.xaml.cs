@@ -25,25 +25,25 @@ public partial class LoginPage : ContentPage
 public partial class LoginViewModel(IConfigCatClient configCatClient, UserContext userContext) : ObservableObject
 {
 	[ObservableProperty]
-	string? email;
+string? email;
 
-	[ObservableProperty]
-	string title = "Login";
+[ObservableProperty]
+string title = "Login";
 
-	public void Initialize()
+public void Initialize()
+{
+	Title = configCatClient.GetValue("beta", false) ? "Beta Login" : "Login";
+}
+
+[RelayCommand]
+private async Task Login()
+{
+	if (string.IsNullOrEmpty(Email))
 	{
-		Title = configCatClient.GetValue("beta", false) ? "Beta Login" : "Login";
+		return;
 	}
 
-	[RelayCommand]
-	private async Task Login()
-	{
-		if (string.IsNullOrEmpty(Email))
-		{
-			return;
-		}
-
-		userContext.Email = Email;
-		await ((AppShell)Application.Current!.MainPage!).GoToAsync("///MainPage");
-	}
+	userContext.Email = Email;
+	await ((AppShell)Application.Current!.MainPage!).GoToAsync("///MainPage");
+}
 }
