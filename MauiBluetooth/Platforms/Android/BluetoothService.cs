@@ -11,107 +11,107 @@ using Plugin.BLE.Android;
 public class BluetoothService(IAdapter adapter) : IBluetoothService
 {
 	static UUID? _myUuidSecure = UUID.FromString("fa87c0d0-afac-11de-8a39-0800200c9a66");
-	private readonly BluetoothManager manager = (BluetoothManager)Application.Context.GetSystemService(Context.BluetoothService)!;
-	BluetoothSocket? socket;
+private readonly BluetoothManager manager = (BluetoothManager)Application.Context.GetSystemService(Context.BluetoothService)!;
+BluetoothSocket? socket;
 
-	/// <inheritdoc />
-	public IDevice[] GetConnectedDevices()
+/// <inheritdoc />
+public IDevice[] GetConnectedDevices()
+{
+	var bluetoothAdapter = PrepareAdapter();
+
+	if (bluetoothAdapter.BondedDevices?.Count > 0)
 	{
-		var bluetoothAdapter = PrepareAdapter();
-
-		if (bluetoothAdapter.BondedDevices?.Count > 0)
-		{
-			return bluetoothAdapter.BondedDevices.Select(d => new Device((Adapter)adapter, d, null, 0)).ToArray();
-		}
-
-		return Array.Empty<IDevice>();
+		return bluetoothAdapter.BondedDevices.Select(d => new Device((Adapter)adapter, d, null, 0)).ToArray();
 	}
 
-	/// <inheritdoc />
-	public Task Connect(string deviceName)
+	return Array.Empty<IDevice>();
+}
+
+/// <inheritdoc />
+public Task Connect(string deviceName)
+{
+	var bluetoothAdapter = PrepareAdapter();
+	bluetoothAdapter.CancelDiscovery();
+	var device = bluetoothAdapter.BondedDevices?.FirstOrDefault(d => d.Name == deviceName);
+
+	socket = device?.CreateRfcommSocketToServiceRecord(_myUuidSecure);
+	if (socket is null)
 	{
-		var bluetoothAdapter = PrepareAdapter();
-		bluetoothAdapter.CancelDiscovery();
-		var device = bluetoothAdapter.BondedDevices?.FirstOrDefault(d => d.Name == deviceName);
-
-		socket = device?.CreateRfcommSocketToServiceRecord(_myUuidSecure);
-		if (socket is null)
-		{
-			return Task.CompletedTask;
-		}
-
-		//var thread = new ConnectThread(socket);
-		//thread.Start();
-		try
-		{
-			socket.Connect();
-		}
-		catch (Exception)
-		{
-		}
 		return Task.CompletedTask;
 	}
 
-	/// <inheritdoc />
-	public Task Disconnect()
+	//var thread = new ConnectThread(socket);
+	//thread.Start();
+	try
 	{
-		if (socket is not null && socket.IsConnected)
-		{
-			socket?.Close();
-			socket?.Dispose();
-			socket = null;
-		}
+		socket.Connect();
+	}
+	catch (Exception)
+	{
+	}
+	return Task.CompletedTask;
+}
 
-		return Task.CompletedTask;
+/// <inheritdoc />
+public Task Disconnect()
+{
+	if (socket is not null && socket.IsConnected)
+	{
+		socket?.Close();
+		socket?.Dispose();
+		socket = null;
 	}
 
-	public async Task Send(string deviceName, byte[] content)
+	return Task.CompletedTask;
+}
+
+public async Task Send(string deviceName, byte[] content)
+{
+	if (socket is null || !socket.IsConnected)
 	{
-		if (socket is null || !socket.IsConnected)
-		{
-			await Connect(deviceName);
-		}
-
-		if (socket?.OutputStream is null)
-		{
-			return;
-		}
-
-		await socket.OutputStream.WriteAsync(content, 0, content.Length);
+		await Connect(deviceName);
 	}
 
-	public async Task<byte[]> Receive(string deviceName)
+	if (socket?.OutputStream is null)
 	{
-		if (socket is null || !socket.IsConnected)
-		{
-			await Connect(deviceName);
-		}
-
-		if (socket?.InputStream is null)
-		{
-			return Array.Empty<byte>();
-		}
-
-		byte[] content = new byte[1024];
-		await socket.InputStream.ReadAsync(content, 0, content.Length);
-		return content;
-
+		return;
 	}
 
-	BluetoothAdapter PrepareAdapter()
+	await socket.OutputStream.WriteAsync(content, 0, content.Length);
+}
+
+public async Task<byte[]> Receive(string deviceName)
+{
+	if (socket is null || !socket.IsConnected)
 	{
-		var adapter = manager.Adapter;
-		if (adapter is null)
-		{
-			throw new Exception("No Bluetooth adapter found.");
-		}
-
-		if (!adapter.IsEnabled)
-		{
-			Intent enableBtIntent = new Intent(BluetoothAdapter.ActionRequestEnable);
-			Application.Context.StartActivity(enableBtIntent);
-		}
-
-		return adapter;
+		await Connect(deviceName);
 	}
+
+	if (socket?.InputStream is null)
+	{
+		return Array.Empty<byte>();
+	}
+
+	byte[] content = new byte[1024];
+	await socket.InputStream.ReadAsync(content, 0, content.Length);
+	return content;
+
+}
+
+BluetoothAdapter PrepareAdapter()
+{
+	var adapter = manager.Adapter;
+	if (adapter is null)
+	{
+		throw new Exception("No Bluetooth adapter found.");
+	}
+
+	if (!adapter.IsEnabled)
+	{
+		Intent enableBtIntent = new Intent(BluetoothAdapter.ActionRequestEnable);
+		Application.Context.StartActivity(enableBtIntent);
+	}
+
+	return adapter;
+}
 }

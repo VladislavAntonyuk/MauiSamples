@@ -10,17 +10,17 @@ public sealed class CalendarSelectionSingleDateDelegate(ICalendarView calendarVi
 	: IUICalendarSelectionSingleDateDelegate
 {
 	public void DidSelectDate(UICalendarSelectionSingleDate calendarSelection, NSDateComponents? date)
-	{
-		calendarSelection.SelectedDate = date;
-		calendarView.SelectedDate = date?.Date.ToDateTime();
-		calendarView.OnSelectedDateChanged(date?.Date.ToDateTime());
-	}
+{
+	calendarSelection.SelectedDate = date;
+	calendarView.SelectedDate = date?.Date.ToDateTime();
+	calendarView.OnSelectedDateChanged(date?.Date.ToDateTime());
+}
 
-	public void Dispose()
-	{
-	}
+public void Dispose()
+{
+}
 
-	public NativeHandle Handle { get; }
+public NativeHandle Handle { get; }
 }
 
 public partial class CalendarHandler : ViewHandler<ICalendarView, UICalendarView>

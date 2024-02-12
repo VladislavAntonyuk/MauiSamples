@@ -12,52 +12,52 @@ public partial class ChannelsViewModel(IPlaylistGenerator service) : BaseViewMod
 {
 	IEnumerable<Channel> allItems = new List<Channel>();
 
-	public ObservableCollection<Channel> Items { get; } = new();
-	public ObservableCollection<string> Sources { get; } = new()
+public ObservableCollection<Channel> Items { get; } = new();
+public ObservableCollection<string> Sources { get; } = new()
+{
+	"https://iptv.org.ua/iptv/ua.m3u",
+	"https://mater.com.ua/ip/ua.m3u",
+	"https://tva.org.ua/ip/u/iptv_ukr.m3u",
+	"https://tva.org.ua/ip/sam/avto-full.m3u"
+};
+
+[ObservableProperty]
+private string? filter;
+
+[ObservableProperty]
+private int selectedIndex;
+
+[RelayCommand]
+private void Search(TextChangedEventArgs eventArgs)
+{
+	Filter = eventArgs.NewTextValue;
+	FilterData(Filter);
+}
+
+[RelayCommand]
+public async Task LoadData()
+{
+	var source = Sources[SelectedIndex];
+	allItems = await service.GetPlaylist(source);
+	FilterData(Filter);
+}
+
+void FilterData(string? channelName)
+{
+	var filtered = allItems.Where(x => x.Name != null && x.Name.Contains(channelName ?? string.Empty, StringComparison.InvariantCultureIgnoreCase));
+	Items.Clear();
+	foreach (var item in filtered)
 	{
-		"https://iptv.org.ua/iptv/ua.m3u",
-		"https://mater.com.ua/ip/ua.m3u",
-		"https://tva.org.ua/ip/u/iptv_ukr.m3u",
-		"https://tva.org.ua/ip/sam/avto-full.m3u"
-	};
-
-	[ObservableProperty]
-	private string? filter;
-
-	[ObservableProperty]
-	private int selectedIndex;
-
-	[RelayCommand]
-	private void Search(TextChangedEventArgs eventArgs)
-	{
-		Filter = eventArgs.NewTextValue;
-		FilterData(Filter);
+		Items.Add(item);
 	}
+}
 
-	[RelayCommand]
-	public async Task LoadData()
-	{
-		var source = Sources[SelectedIndex];
-		allItems = await service.GetPlaylist(source);
-		FilterData(Filter);
-	}
-
-	void FilterData(string? channelName)
-	{
-		var filtered = allItems.Where(x => x.Name != null && x.Name.Contains(channelName ?? string.Empty, StringComparison.InvariantCultureIgnoreCase));
-		Items.Clear();
-		foreach (var item in filtered)
-		{
-			Items.Add(item);
-		}
-	}
-
-	[RelayCommand]
-	private async Task GoToDetails(Channel item)
-	{
-		await Shell.Current.GoToAsync(nameof(ChannelDetailPage), true, new Dictionary<string, object>
+[RelayCommand]
+private async Task GoToDetails(Channel item)
+{
+	await Shell.Current.GoToAsync(nameof(ChannelDetailPage), true, new Dictionary<string, object>
 		{
 			{ "Item", item }
 		});
-	}
+}
 }

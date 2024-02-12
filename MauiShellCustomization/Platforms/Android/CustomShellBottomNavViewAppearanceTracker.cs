@@ -11,32 +11,32 @@ internal class CustomShellBottomNavViewAppearanceTracker(IShellContext shellCont
 {
 	private readonly IShellContext shellContext = shellContext;
 
-	public override void SetAppearance(BottomNavigationView bottomView, IShellAppearanceElement appearance)
+public override void SetAppearance(BottomNavigationView bottomView, IShellAppearanceElement appearance)
+{
+	base.SetAppearance(bottomView, appearance);
+	if (Shell.GetTabBarIsVisible(shellContext.Shell.CurrentPage))
 	{
-		base.SetAppearance(bottomView, appearance);
-		if (Shell.GetTabBarIsVisible(shellContext.Shell.CurrentPage))
-		{
-			var backgroundDrawable = new GradientDrawable();
-			backgroundDrawable.SetShape(ShapeType.Rectangle);
-			backgroundDrawable.SetCornerRadius(30);
-			backgroundDrawable.SetColor(appearance.EffectiveTabBarBackgroundColor.ToPlatform());
-			bottomView.SetBackground(backgroundDrawable);
+		var backgroundDrawable = new GradientDrawable();
+		backgroundDrawable.SetShape(ShapeType.Rectangle);
+		backgroundDrawable.SetCornerRadius(30);
+		backgroundDrawable.SetColor(appearance.EffectiveTabBarBackgroundColor.ToPlatform());
+		bottomView.SetBackground(backgroundDrawable);
 
-			var layoutParams = bottomView.LayoutParameters;
-			if (layoutParams is ViewGroup.MarginLayoutParams marginLayoutParams)
-			{
-				const int margin = 30;
-				marginLayoutParams.BottomMargin = margin;
-				marginLayoutParams.LeftMargin = margin;
-				marginLayoutParams.RightMargin = margin;
-				bottomView.LayoutParameters = layoutParams;
-			}
+		var layoutParams = bottomView.LayoutParameters;
+		if (layoutParams is ViewGroup.MarginLayoutParams marginLayoutParams)
+		{
+			const int margin = 30;
+			marginLayoutParams.BottomMargin = margin;
+			marginLayoutParams.LeftMargin = margin;
+			marginLayoutParams.RightMargin = margin;
+			bottomView.LayoutParameters = layoutParams;
 		}
 	}
+}
 
-	protected override void SetBackgroundColor(BottomNavigationView bottomView, Color color)
-	{
-		base.SetBackgroundColor(bottomView, color);
-		bottomView.RootView?.SetBackgroundColor(shellContext.Shell.CurrentPage.BackgroundColor.ToPlatform());
-	}
+protected override void SetBackgroundColor(BottomNavigationView bottomView, Color color)
+{
+	base.SetBackgroundColor(bottomView, color);
+	bottomView.RootView?.SetBackgroundColor(shellContext.Shell.CurrentPage.BackgroundColor.ToPlatform());
+}
 }

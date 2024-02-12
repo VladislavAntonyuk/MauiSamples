@@ -20,44 +20,44 @@ public partial class MainPage : ContentPage
 public partial class MainPageViewModel(IAdapter adapter, IBluetoothService bluetoothService) : ObservableObject
 {
 	[ObservableProperty]
-	private ObservableCollection<IDevice> devices = new();
+private ObservableCollection<IDevice> devices = new();
 
-	[RelayCommand]
-	async Task ScanDevices(CancellationToken cancellationToken)
+[RelayCommand]
+async Task ScanDevices(CancellationToken cancellationToken)
+{
+	Devices.Clear();
+	adapter.DeviceDiscovered += (sender, args) =>
 	{
-		Devices.Clear();
-		adapter.DeviceDiscovered += (sender, args) =>
+		if (!Devices.Contains(args.Device))
 		{
-			if (!Devices.Contains(args.Device))
-			{
-				Devices.Add(args.Device);
-			}
-		};
-		await adapter.StartScanningForDevicesAsync(cancellationToken: cancellationToken);
-		foreach (var device in bluetoothService.GetConnectedDevices())
+			Devices.Add(args.Device);
+		}
+	};
+	await adapter.StartScanningForDevicesAsync(cancellationToken: cancellationToken);
+	foreach (var device in bluetoothService.GetConnectedDevices())
+	{
+		Devices.Add(device);
+	}
+}
+
+[RelayCommand]
+async Task Connect(IDevice device, CancellationToken cancellationToken)
+{
+	try
+	{
+		await adapter.ConnectToDeviceAsync(device, cancellationToken: cancellationToken);
+		if (Application.Current?.MainPage != null)
 		{
-			Devices.Add(device);
+			await Application.Current.MainPage.ShowPopupAsync(new DetailsPage(device, bluetoothService));
 		}
 	}
-
-	[RelayCommand]
-	async Task Connect(IDevice device, CancellationToken cancellationToken)
+	catch (DeviceConnectionException e)
 	{
-		try
-		{
-			await adapter.ConnectToDeviceAsync(device, cancellationToken: cancellationToken);
-			if (Application.Current?.MainPage != null)
-			{
-				await Application.Current.MainPage.ShowPopupAsync(new DetailsPage(device, bluetoothService));
-			}
-		}
-		catch (DeviceConnectionException e)
-		{
-			await Toast.Make(e.Message).Show(cancellationToken);
-		}
-		catch (Exception e)
-		{
-			await Toast.Make(e.Message).Show(cancellationToken);
-		}
+		await Toast.Make(e.Message).Show(cancellationToken);
 	}
+	catch (Exception e)
+	{
+		await Toast.Make(e.Message).Show(cancellationToken);
+	}
+}
 }

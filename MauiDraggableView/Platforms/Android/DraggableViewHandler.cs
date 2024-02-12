@@ -9,53 +9,53 @@ public class DraggableViewHandler(IPropertyMapper mapper, CommandMapper? command
 	: ViewHandler<DraggableView, View>(mapper, commandMapper)
 {
 	private float deltaX;
-	private float deltaY;
+private float deltaY;
 
-	public DraggableViewHandler() : this(ViewMapper, ViewCommandMapper)
+public DraggableViewHandler() : this(ViewMapper, ViewCommandMapper)
+{
+}
+
+protected override void ConnectHandler(View platformView)
+{
+	base.ConnectHandler(platformView);
+	platformView.Touch += HandleTouch;
+}
+
+protected override void DisconnectHandler(View platformView)
+{
+	platformView.Touch -= HandleTouch;
+	base.DisconnectHandler(platformView);
+}
+
+protected override View CreatePlatformView()
+{
+	return VirtualView.Content.ToPlatform(MauiContext ?? throw new NullReferenceException());
+}
+
+
+private void HandleTouch(object? sender, View.TouchEventArgs args)
+{
+	var e = args.Event;
+	if (e is null)
 	{
+		return;
 	}
 
-	protected override void ConnectHandler(View platformView)
+	float x = e.RawX;
+	float y = e.RawY;
+	switch (e.Action)
 	{
-		base.ConnectHandler(platformView);
-		platformView.Touch += HandleTouch;
+		case MotionEventActions.Down:
+			deltaX = x - PlatformView.GetX();
+			deltaY = y - PlatformView.GetY();
+			break;
+		case MotionEventActions.Move:
+			var newX = x - deltaX;
+			var newY = y - deltaY;
+			PlatformView.SetX(newX);
+			PlatformView.SetY(newY);
+
+			break;
 	}
-
-	protected override void DisconnectHandler(View platformView)
-	{
-		platformView.Touch -= HandleTouch;
-		base.DisconnectHandler(platformView);
-	}
-
-	protected override View CreatePlatformView()
-	{
-		return VirtualView.Content.ToPlatform(MauiContext ?? throw new NullReferenceException());
-	}
-
-
-	private void HandleTouch(object? sender, View.TouchEventArgs args)
-	{
-		var e = args.Event;
-		if (e is null)
-		{
-			return;
-		}
-
-		float x = e.RawX;
-		float y = e.RawY;
-		switch (e.Action)
-		{
-			case MotionEventActions.Down:
-				deltaX = x - PlatformView.GetX();
-				deltaY = y - PlatformView.GetY();
-				break;
-			case MotionEventActions.Move:
-				var newX = x - deltaX;
-				var newY = y - deltaY;
-				PlatformView.SetX(newX);
-				PlatformView.SetY(newY);
-
-				break;
-		}
-	}
+}
 }

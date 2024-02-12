@@ -20,140 +20,140 @@ public partial class MainPageViewModel(
 {
 	private static List<IFigure> _figures = new();
 
-	[ObservableProperty]
-	private ObservableCollection<IDrawingLine> lines = new();
-	[ObservableProperty]
-	private Brush background = Brush.White;
-	[ObservableProperty]
-	private Color lineColor = Colors.Black;
-	[ObservableProperty]
-	private float lineWidth = 5;
-	[ObservableProperty]
-	private float canvasWidth;
-	[ObservableProperty]
-	private float canvasHeight;
+[ObservableProperty]
+private ObservableCollection<IDrawingLine> lines = new();
+[ObservableProperty]
+private Brush background = Brush.White;
+[ObservableProperty]
+private Color lineColor = Colors.Black;
+[ObservableProperty]
+private float lineWidth = 5;
+[ObservableProperty]
+private float canvasWidth;
+[ObservableProperty]
+private float canvasHeight;
 
-	[ObservableProperty]
-	private Action<ICanvas, RectF>? drawAction = (canvas, rect) =>
+[ObservableProperty]
+private Action<ICanvas, RectF>? drawAction = (canvas, rect) =>
+{
+	foreach (var figure in _figures)
 	{
-		foreach (var figure in _figures)
-		{
-			figure.Draw(canvas, rect);
-		}
-	};
-
-	[RelayCommand]
-	void Quit()
-	{
-		Application.Current?.Quit();
+		figure.Draw(canvas, rect);
 	}
+};
 
-	[RelayCommand]
-	void Help()
-	{
-		var help = new Help();
-		Application.Current?.MainPage?.ShowPopup(help);
-	}
+[RelayCommand]
+void Quit()
+{
+	Application.Current?.Quit();
+}
 
-	[RelayCommand]
-	void PreviewImage()
+[RelayCommand]
+void Help()
+{
+	var help = new Help();
+	Application.Current?.MainPage?.ShowPopup(help);
+}
+
+[RelayCommand]
+void PreviewImage()
+{
+	var preview = new PreviewImage(new StreamImageSource()
 	{
-		var preview = new PreviewImage(new StreamImageSource()
-		{
-			Stream = async (c) => await DrawingView.GetImageStream(
+		Stream = async (c) => await DrawingView.GetImageStream(
 Lines, new Size(1000, 1000), Background)
-		});
-		Application.Current?.MainPage?.ShowPopup(preview);
-	}
+	});
+	Application.Current?.MainPage?.ShowPopup(preview);
+}
 
-	[RelayCommand]
-	Task About()
-	{
-		return Launcher.OpenAsync("https://vladislavantonyuk.azurewebsites.net");
-	}
+[RelayCommand]
+Task About()
+{
+	return Launcher.OpenAsync("https://vladislavantonyuk.azurewebsites.net");
+}
 
-	[RelayCommand]
-	void ToggleTheme()
+[RelayCommand]
+void ToggleTheme()
+{
+	if (Application.Current is not null)
 	{
-		if (Application.Current is not null)
+		Application.Current.UserAppTheme = Application.Current.UserAppTheme == AppTheme.Light ? AppTheme.Dark : AppTheme.Light;
+	}
+}
+
+[RelayCommand]
+void New()
+{
+	Lines.Clear();
+	_figures.Clear();
+	Background = Brush.White;
+	LineColor = Colors.Black;
+	LineWidth = 5;
+}
+
+[RelayCommand]
+void SetLineColor(Color color)
+{
+	LineColor = color;
+}
+
+[RelayCommand]
+void SetEraser()
+{
+	LineColor = Background is SolidColorBrush solidColorBrush ? solidColorBrush.Color : Colors.White;
+}
+
+[RelayCommand]
+async Task AddFigure(string figureName)
+{
+	var figure = await FigureFactory.CreateFigure(figureName);
+	_figures.Add(figure);
+}
+
+[RelayCommand]
+void SetBackground(Color color)
+{
+	Background = color;
+}
+
+[RelayCommand]
+void Rotate(double angle)
+{
+	var oldLines = Lines.ToImmutableList();
+	foreach (var line in oldLines)
+	{
+		var points = line.Points.ToImmutableList();
+		line.Points.Clear();
+		foreach (var point in points)
 		{
-			Application.Current.UserAppTheme = Application.Current.UserAppTheme == AppTheme.Light ? AppTheme.Dark : AppTheme.Light;
+			line.Points.Add(RotatePoint(point, new PointF(CanvasWidth / 2, CanvasHeight / 2), angle));
 		}
 	}
 
-	[RelayCommand]
-	void New()
-	{
-		Lines.Clear();
-		_figures.Clear();
-		Background = Brush.White;
-		LineColor = Colors.Black;
-		LineWidth = 5;
-	}
+	Lines = oldLines.ToObservableCollection();
 
-	[RelayCommand]
-	void SetLineColor(Color color)
+	static PointF RotatePoint(PointF pointToRotate, PointF centerPoint, double angleInDegrees)
 	{
-		LineColor = color;
-	}
-
-	[RelayCommand]
-	void SetEraser()
-	{
-		LineColor = Background is SolidColorBrush solidColorBrush ? solidColorBrush.Color : Colors.White;
-	}
-
-	[RelayCommand]
-	async Task AddFigure(string figureName)
-	{
-		var figure = await FigureFactory.CreateFigure(figureName);
-		_figures.Add(figure);
-	}
-
-	[RelayCommand]
-	void SetBackground(Color color)
-	{
-		Background = color;
-	}
-
-	[RelayCommand]
-	void Rotate(double angle)
-	{
-		var oldLines = Lines.ToImmutableList();
-		foreach (var line in oldLines)
+		double angleInRadians = angleInDegrees * (Math.PI / 180);
+		double cosTheta = Math.Cos(angleInRadians);
+		double sinTheta = Math.Sin(angleInRadians);
+		return new PointF
 		{
-			var points = line.Points.ToImmutableList();
-			line.Points.Clear();
-			foreach (var point in points)
-			{
-				line.Points.Add(RotatePoint(point, new PointF(CanvasWidth / 2, CanvasHeight / 2), angle));
-			}
-		}
-
-		Lines = oldLines.ToObservableCollection();
-
-		static PointF RotatePoint(PointF pointToRotate, PointF centerPoint, double angleInDegrees)
-		{
-			double angleInRadians = angleInDegrees * (Math.PI / 180);
-			double cosTheta = Math.Cos(angleInRadians);
-			double sinTheta = Math.Sin(angleInRadians);
-			return new PointF
-			{
-				X =
-					(float)
-					(cosTheta * (pointToRotate.X - centerPoint.X) -
-						sinTheta * (pointToRotate.Y - centerPoint.Y) + centerPoint.X),
-				Y =
-					(float)
-					(sinTheta * (pointToRotate.X - centerPoint.X) +
-					 cosTheta * (pointToRotate.Y - centerPoint.Y) + centerPoint.Y)
-			};
-		}
+			X =
+				(float)
+				(cosTheta * (pointToRotate.X - centerPoint.X) -
+					sinTheta * (pointToRotate.Y - centerPoint.Y) + centerPoint.X),
+			Y =
+				(float)
+				(sinTheta * (pointToRotate.X - centerPoint.X) +
+				 cosTheta * (pointToRotate.Y - centerPoint.Y) + centerPoint.Y)
+		};
 	}
+}
 
-	[RelayCommand]
-	async Task PasteFromClipboard(CancellationToken cancellationToken)
-	{
+[RelayCommand]
+async Task PasteFromClipboard(CancellationToken cancellationToken)
+{
 #if IOS || MACCATALYST
 		var image = UIKit.UIPasteboard.General.Image;
 		if (image is null)
@@ -171,84 +171,84 @@ Lines, new Size(1000, 1000), Background)
 			_figures.Add(imageFigure);
 		}
 #else
-		await Toast.Make("Not supported").Show(cancellationToken);
+	await Toast.Make("Not supported").Show(cancellationToken);
 #endif
+}
+
+[RelayCommand]
+async Task Open(CancellationToken cancellationToken)
+{
+	var fileResult = await filePicker.PickAsync(new PickOptions()
+	{
+		PickerTitle = "Select project json"
+	});
+	if (fileResult is null)
+	{
+		await Toast.Make("File is not selected", ToastDuration.Long).Show(cancellationToken);
+		return;
 	}
 
-	[RelayCommand]
-	async Task Open(CancellationToken cancellationToken)
+	await using var stream = await fileResult.OpenReadAsync();
+	await OpenFile(stream, cancellationToken);
+}
+
+public async Task OpenFile(Stream stream, CancellationToken cancellationToken)
+{
+	try
 	{
-		var fileResult = await filePicker.PickAsync(new PickOptions()
+		var projectState = await serializerService.Deserialize<ProjectState>(stream, cancellationToken);
+		if (projectState is null)
 		{
-			PickerTitle = "Select project json"
-		});
-		if (fileResult is null)
-		{
-			await Toast.Make("File is not selected", ToastDuration.Long).Show(cancellationToken);
 			return;
 		}
 
-		await using var stream = await fileResult.OpenReadAsync();
-		await OpenFile(stream, cancellationToken);
+		Background = projectState.Background;
+		Lines = projectState.Lines.ToObservableCollection();
+		_figures = projectState.Figures.ToList();
+		LineWidth = projectState.LineWidth;
+		LineColor = projectState.LineColor;
 	}
-
-	public async Task OpenFile(Stream stream, CancellationToken cancellationToken)
+	catch
 	{
-		try
-		{
-			var projectState = await serializerService.Deserialize<ProjectState>(stream, cancellationToken);
-			if (projectState is null)
-			{
-				return;
-			}
-
-			Background = projectState.Background;
-			Lines = projectState.Lines.ToObservableCollection();
-			_figures = projectState.Figures.ToList();
-			LineWidth = projectState.LineWidth;
-			LineColor = projectState.LineColor;
-		}
-		catch
-		{
-			await Toast.Make("Invalid file").Show(cancellationToken);
-		}
+		await Toast.Make("Invalid file").Show(cancellationToken);
 	}
+}
 
-	[RelayCommand]
-	async Task Save(CancellationToken cancellationToken)
+[RelayCommand]
+async Task Save(CancellationToken cancellationToken)
+{
+	var projectState = new ProjectState
 	{
-		var projectState = new ProjectState
-		{
-			Figures = _figures.ToArray(),
-			Lines = Lines.ToArray(),
-			LineColor = LineColor,
-			LineWidth = LineWidth,
-			Background = Background
-		};
-		await using var stream = await serializerService.Serialize(projectState, cancellationToken);
-		await SaveToFile(stream, "image.json", cancellationToken);
-	}
+		Figures = _figures.ToArray(),
+		Lines = Lines.ToArray(),
+		LineColor = LineColor,
+		LineWidth = LineWidth,
+		Background = Background
+	};
+	await using var stream = await serializerService.Serialize(projectState, cancellationToken);
+	await SaveToFile(stream, "image.json", cancellationToken);
+}
 
-	[RelayCommand]
-	async Task SaveImage(CancellationToken cancellationToken)
-	{
-		await using var stream = await DrawingView.GetImageStream(
-			Lines,
-			new Size(1000, 1000),
-			Background);
-		await SaveToFile(stream, "image.png", cancellationToken);
-	}
+[RelayCommand]
+async Task SaveImage(CancellationToken cancellationToken)
+{
+	await using var stream = await DrawingView.GetImageStream(
+		Lines,
+		new Size(1000, 1000),
+		Background);
+	await SaveToFile(stream, "image.png", cancellationToken);
+}
 
-	async Task SaveToFile(Stream stream, string fileName, CancellationToken cancellationToken)
+async Task SaveToFile(Stream stream, string fileName, CancellationToken cancellationToken)
+{
+	var saveResult = await fileSaver.SaveAsync(fileName, stream, cancellationToken);
+	if (saveResult.IsSuccessful)
 	{
-		var saveResult = await fileSaver.SaveAsync(fileName, stream, cancellationToken);
-		if (saveResult.IsSuccessful)
-		{
-			await Toast.Make($"File is saved to {saveResult.FilePath}", ToastDuration.Long).Show(cancellationToken);
-		}
-		else
-		{
-			await Toast.Make($"File is not saved. Error:{saveResult.Exception.Message}", ToastDuration.Long).Show(cancellationToken);
-		}
+		await Toast.Make($"File is saved to {saveResult.FilePath}", ToastDuration.Long).Show(cancellationToken);
 	}
+	else
+	{
+		await Toast.Make($"File is not saved. Error:{saveResult.Exception.Message}", ToastDuration.Long).Show(cancellationToken);
+	}
+}
 }

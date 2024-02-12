@@ -7,7 +7,7 @@ using Android.Runtime;
 public class MainApplication(IntPtr handle, JniHandleOwnership ownership) : MauiApplication(handle, ownership)
 {
 	protected override MauiApp CreateMauiApp()
-	{
-		return MauiProgram.CreateMauiApp();
-	}
+{
+	return MauiProgram.CreateMauiApp();
+}
 }
