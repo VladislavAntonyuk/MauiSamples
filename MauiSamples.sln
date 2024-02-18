@@ -20,6 +20,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KanbanBoard", "KanbanBoard\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CE4ABC8D-3F54-49AA-BA5A-DD47E7CEB56B}"
 	ProjectSection(SolutionItems) = preProject
+		..deepsource.toml = .deepsource.toml
 		.github\dependabot.yml = .github\dependabot.yml
 		Directory.Build.props = Directory.Build.props
 		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml

@@ -7,6 +7,3 @@ name = "secrets"
 
 [[analyzers]]
 name = "csharp"
-
-[[transformers]]
-name = "dotnet-format"
