@@ -19,7 +19,8 @@
 		</ControlTemplate>
 
 		<DataTemplate x:Key="IndicatorDataTemplate">
-			<VerticalStackLayout>
+			<VerticalStackLayout
+				x:DataType="mauiTabView:Tab">
 				<Image Source="{Binding Icon}"
 				       WidthRequest="30"
 				       HeightRequest="30"

@@ -2,8 +2,10 @@
 <views:BasePage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:views="clr-namespace:MauiBank.Views"
+             xmlns:viewModels="clr-namespace:MauiBank.ViewModels"
              x:Class="MauiBank.Views.ProfilePage"
 			 Shell.PresentationMode="ModalAnimated"
+			 x:DataType="viewModels:ProfilePageViewModel"
              Title="ProfilePage">
     <VerticalStackLayout>
         <Label
@@ -11,6 +13,6 @@
             VerticalOptions="Center"
             HorizontalOptions="Center" />
 
-		<Button Text="back"  Command="{Binding BackCommand}"/>
+		<Button Text="Back" Command="{Binding BackCommand}"/>
     </VerticalStackLayout>
 </views:BasePage>

@@ -12,10 +12,12 @@
 		<ToolbarItem Text="Toolbar 2"
 		             IconImageSource="dotnet_bot.png"/>
 	</Shell.ToolbarItems>
-	<local:CustomTabBar CenterViewText="+"
-	                    CenterViewVisible="True"
-	                    CenterViewBackgroundColor="Red"
-	                    CenterViewCommand="{Binding CenterViewCommand}">
+	<local:CustomTabBar
+		x:DataType="local:AppShell"
+		CenterViewText="+"
+		CenterViewVisible="True"
+		CenterViewBackgroundColor="Red"
+		CenterViewCommand="{Binding CenterViewCommand}">
 		<!-- <local:CustomTabBar.CenterViewImageSource> -->
 		<!-- 	<FileImageSource File="dotnet_bot.png"></FileImageSource> -->
 		<!-- </local:CustomTabBar.CenterViewImageSource> -->

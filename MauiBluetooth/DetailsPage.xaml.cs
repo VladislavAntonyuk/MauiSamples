@@ -7,12 +7,12 @@ using Plugin.BLE.Abstractions.Contracts;
 
 public partial class DetailsPage : Popup
 {
-	private readonly IDevice device;
+	public IDevice Device { get; }
 	private readonly IBluetoothService bluetoothService;
 
 	public DetailsPage(IDevice device, IBluetoothService bluetoothService)
 	{
-		this.device = device;
+		Device = device;
 		this.bluetoothService = bluetoothService;
 		InitializeComponent();
 		BindingContext = this;
@@ -21,7 +21,7 @@ public partial class DetailsPage : Popup
 
 	private async void GetServices(object sender, EventArgs e)
 	{
-		var services = await device.GetServicesAsync();
+		var services = await Device.GetServicesAsync();
 		var service = services.First();
 		var characteristics = await service.GetCharacteristicsAsync();
 		var characteristic = characteristics.First();
@@ -40,10 +40,10 @@ public partial class DetailsPage : Popup
 
 	private async void SendMessage(object sender, EventArgs e)
 	{
-		await bluetoothService.Connect(device.Name);
-		await bluetoothService.Send(device.Name, Encoding.Default.GetBytes("test"));
+		await bluetoothService.Connect(Device.Name);
+		await bluetoothService.Send(Device.Name, Encoding.Default.GetBytes("test"));
 
-		var data = await bluetoothService.Receive(device.Name);
+		var data = await bluetoothService.Receive(Device.Name);
 		await Toast.Make(Encoding.Default.GetString(data)).Show();
 		await bluetoothService.Disconnect();
 	}

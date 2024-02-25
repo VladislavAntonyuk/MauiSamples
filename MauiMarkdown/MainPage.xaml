@@ -15,6 +15,7 @@
 	            HeightRequest="10"/>
 
             <mauiMarkdown:MarkdownGraphicsView
+				x:DataType="Editor"
                 Grid.Row="2"
                 BindingContext="{Binding Source={x:Reference Editor}}"
                 Text="{Binding Text}"

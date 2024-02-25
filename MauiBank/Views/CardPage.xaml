@@ -202,7 +202,7 @@
 							</CollectionView.Header>
 
 							<CollectionView.GroupHeaderTemplate>
-								<DataTemplate>
+								<DataTemplate x:DataType="models:TransactionGroup">
 									<Grid>
 										<Label Text="{Binding Date, StringFormat='{0:dd MMMM yyyy}'}"
 										       HorizontalOptions="Center" />
@@ -211,7 +211,7 @@
 							</CollectionView.GroupHeaderTemplate>
 
 							<CollectionView.ItemTemplate>
-								<DataTemplate>
+								<DataTemplate x:DataType="models:Transaction">
 									<Grid ColumnDefinitions="50,*,0.2*" RowDefinitions="*,*" Margin="30,10">
 										<Label Grid.Row="0" Grid.Column="0" Grid.RowSpan="2"
 										       Text="{x:Static fonts:FontAwesomeIcons.PaperPlane}"

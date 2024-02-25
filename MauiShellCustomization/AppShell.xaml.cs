@@ -12,5 +12,4 @@ public partial class AppShell : Shell
 	}
 
 	public ICommand CenterViewCommand { get; } = new Command(async () => await Toast.Make("CenterViewCommand invoked!").Show());
-
 }
