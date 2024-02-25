@@ -6,6 +6,7 @@ Article: https://vladislavantonyuk.azurewebsites.net/articles/Creating-Kanban-Bo
 
 ## Build
 ```pwsh
+dotnet ef dbcontext optimize -o Models\Optimized -c KanbanBoardDbContext -n KanbanBoard
 dotnet build KanbanBoard.csproj -t:Run -f net8.0-android
 
 xcrun simctl list devices

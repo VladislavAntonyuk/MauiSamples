@@ -2,17 +2,11 @@
 
 public sealed class Card
 {
-	public Card()
-	{
-		Name = string.Empty;
-		Description = string.Empty;
-	}
-
 	public int Id { get; set; }
 
-	public string Name { get; set; }
+	public string Name { get; set; } = string.Empty;
 
-	public string Description { get; set; }
+	public string Description { get; set; } = string.Empty;
 
 	public int Order { get; set; }
 

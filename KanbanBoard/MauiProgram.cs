@@ -9,6 +9,7 @@ public static class MauiProgram
 {
 	public static MauiApp CreateMauiApp()
 	{
+		AppContext.SetSwitch("Microsoft.EntityFrameworkCore.Issue31751", true);
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
@@ -18,7 +19,6 @@ public static class MauiProgram
 			});
 		builder.UseMauiCommunityToolkit();
 
-		builder.Services.AddSingleton<IPath, DbPath>();
 		builder.Services.AddDbContext<KanbanBoardDbContext>();
 		builder.Services.AddSingleton<MainPageViewModel>();
 		builder.Services.AddSingleton<MainPage>();

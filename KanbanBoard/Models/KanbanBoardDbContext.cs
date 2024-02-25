@@ -2,16 +2,16 @@
 
 using Microsoft.EntityFrameworkCore;
 
-public class KanbanBoardDbContext(IPath path, DbContextOptions<KanbanBoardDbContext> options) : DbContext(options)
+public class KanbanBoardDbContext : DbContext
 {
 	protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 	{
-		base.OnConfiguring(optionsBuilder);
-		optionsBuilder.UseSqlite($"Filename={path.GetDatabasePath()}");
+		optionsBuilder.UseModel(KanbanBoardDbContextModel.Instance);
+		optionsBuilder.UseSqlite($"Filename={Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "KanbanBoard.db")}");
 	}
 
-	public DbSet<Card> Cards { get; set; } = null!;
-	public DbSet<Column> Columns { get; set; } = null!;
+	public DbSet<Card> Cards => Set<Card>();
+	public DbSet<Column> Columns => Set<Column>();
 
 	protected override void OnModelCreating(ModelBuilder builder)
 	{

@@ -4,19 +4,20 @@ using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
+using Models;
 using Application = Application;
 using Font = Microsoft.Maui.Font;
 
 public partial class MainPage : ContentPage
 {
-	private readonly IPath path;
+	private readonly IServiceProvider serviceProvider;
 
-	public MainPage(MainPageViewModel viewModel, IPath path)
+	public MainPage(MainPageViewModel viewModel, IServiceProvider serviceProvider)
 	{
+		this.serviceProvider = serviceProvider;
+		BindingContext = viewModel;
 		InitializeComponent();
 		On<iOS>().SetUseSafeArea(true);
-		BindingContext = viewModel;
-		this.path = path;
 	}
 
 	private async void ResetButton_OnClicked(object sender, EventArgs e)
@@ -41,8 +42,9 @@ public partial class MainPage : ContentPage
 
 	private void DeleteDbAndCloseApp()
 	{
-		var dbPath = path.GetDatabasePath();
-		path.DeleteFile(dbPath);
+		using var scope = serviceProvider.CreateScope();
+		using var dbContext = scope.ServiceProvider.GetRequiredService<KanbanBoardDbContext>();
+		dbContext.Database.EnsureDeleted();
 		Application.Current?.Quit();
 	}
 }
