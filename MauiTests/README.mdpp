@@ -1,0 +1,7 @@
+# MauiTests
+
+!INCLUDE "./md/header.mdpp"
+
+Article: https://vladislavantonyuk.github.io/articles/Testing-.NET-MAUI-Application-using-Appium-and-xUnit
+
+!INCLUDE "./md/footer.mdpp"

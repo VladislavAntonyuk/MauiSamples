@@ -19,18 +19,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KanbanBoard", "KanbanBoard\KanbanBoard.csproj", "{5E4780D5-8A16-44CE-975D-155E578351D0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CE4ABC8D-3F54-49AA-BA5A-DD47E7CEB56B}"
-	ProjectSection(SolutionItems) = preProject
-		..deepsource.toml = .deepsource.toml
-		.github\dependabot.yml = .github\dependabot.yml
-		Directory.Build.props = Directory.Build.props
-		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
-		md\footer.mdpp = md\footer.mdpp
-		md\header.mdpp = md\header.mdpp
-		NuGet.config = NuGet.config
-		README.mdpp = README.mdpp
-		md\run.ps1 = md\run.ps1
-		md\thankyou.mdpp = md\thankyou.mdpp
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Auth", "Auth", "{14D979DA-85FE-41DC-9C59-A49EE52EC9A5}"
 EndProject
@@ -129,7 +117,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AndroidBindableLibraries", 
 		AndroidBindableLibraries\Directory.Build.props = AndroidBindableLibraries\Directory.Build.props
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaterialCalendarView", "AndroidBindableLibraries\MaterialCalendarView\MaterialCalendarView.csproj", "{42DD8662-FBD2-47B8-8740-17807E17EF5A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaterialCalendarView", "AndroidBindableLibraries\MaterialCalendarView\MaterialCalendarView.csproj", "{42DD8662-FBD2-47B8-8740-17807E17EF5A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MauiTests", "MauiTests", "{A4982784-AAC5-4C47-A1F8-A0A9DB51D531}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client.Windows.UITests", "MauiTests\Client.Windows.UITests\Client.Windows.UITests.csproj", "{8F95DE06-0CC9-4F9B-9D42-31571E509E12}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client.Tizen.UITests", "MauiTests\Client.Tizen.UITests\Client.Tizen.UITests.csproj", "{8702A283-E06C-414F-A27E-64189A5E2DC8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client.MacCatalyst.UITests", "MauiTests\Client.MacCatalyst.UITests\Client.MacCatalyst.UITests.csproj", "{DA114E5E-E826-43D5-9961-63CD00C3586F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client.iOS.UITests", "MauiTests\Client.iOS.UITests\Client.iOS.UITests.csproj", "{8C5E6060-1051-43D5-8FDF-5B9447756BD1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client.Android.UITests", "MauiTests\Client.Android.UITests\Client.Android.UITests.csproj", "{3459E2A7-DEB6-46B8-AE8E-435908A3F2DE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "MauiTests\Client\Client.csproj", "{5411B28C-9E39-4FAF-BC6E-448C0DC9F0BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -381,6 +383,32 @@ Global
 		{42DD8662-FBD2-47B8-8740-17807E17EF5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42DD8662-FBD2-47B8-8740-17807E17EF5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42DD8662-FBD2-47B8-8740-17807E17EF5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F95DE06-0CC9-4F9B-9D42-31571E509E12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F95DE06-0CC9-4F9B-9D42-31571E509E12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F95DE06-0CC9-4F9B-9D42-31571E509E12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F95DE06-0CC9-4F9B-9D42-31571E509E12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8702A283-E06C-414F-A27E-64189A5E2DC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8702A283-E06C-414F-A27E-64189A5E2DC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8702A283-E06C-414F-A27E-64189A5E2DC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8702A283-E06C-414F-A27E-64189A5E2DC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA114E5E-E826-43D5-9961-63CD00C3586F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA114E5E-E826-43D5-9961-63CD00C3586F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA114E5E-E826-43D5-9961-63CD00C3586F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA114E5E-E826-43D5-9961-63CD00C3586F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C5E6060-1051-43D5-8FDF-5B9447756BD1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C5E6060-1051-43D5-8FDF-5B9447756BD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C5E6060-1051-43D5-8FDF-5B9447756BD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C5E6060-1051-43D5-8FDF-5B9447756BD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3459E2A7-DEB6-46B8-AE8E-435908A3F2DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3459E2A7-DEB6-46B8-AE8E-435908A3F2DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3459E2A7-DEB6-46B8-AE8E-435908A3F2DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3459E2A7-DEB6-46B8-AE8E-435908A3F2DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5411B28C-9E39-4FAF-BC6E-448C0DC9F0BC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5411B28C-9E39-4FAF-BC6E-448C0DC9F0BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5411B28C-9E39-4FAF-BC6E-448C0DC9F0BC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{5411B28C-9E39-4FAF-BC6E-448C0DC9F0BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5411B28C-9E39-4FAF-BC6E-448C0DC9F0BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5411B28C-9E39-4FAF-BC6E-448C0DC9F0BC}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -402,6 +430,12 @@ Global
 		{4C3F6E69-0FB4-41D5-8D8F-2E48B033A3EF} = {CE4ABC8D-3F54-49AA-BA5A-DD47E7CEB56B}
 		{08096F4C-2BB3-4860-B0CA-9EC6A09EC377} = {D3C704D0-FB95-42BA-BBF1-E7360491551F}
 		{42DD8662-FBD2-47B8-8740-17807E17EF5A} = {E08722A6-C1B6-4C83-983C-809BF721D6F1}
+		{8F95DE06-0CC9-4F9B-9D42-31571E509E12} = {A4982784-AAC5-4C47-A1F8-A0A9DB51D531}
+		{8702A283-E06C-414F-A27E-64189A5E2DC8} = {A4982784-AAC5-4C47-A1F8-A0A9DB51D531}
+		{DA114E5E-E826-43D5-9961-63CD00C3586F} = {A4982784-AAC5-4C47-A1F8-A0A9DB51D531}
+		{8C5E6060-1051-43D5-8FDF-5B9447756BD1} = {A4982784-AAC5-4C47-A1F8-A0A9DB51D531}
+		{3459E2A7-DEB6-46B8-AE8E-435908A3F2DE} = {A4982784-AAC5-4C47-A1F8-A0A9DB51D531}
+		{5411B28C-9E39-4FAF-BC6E-448C0DC9F0BC} = {A4982784-AAC5-4C47-A1F8-A0A9DB51D531}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}

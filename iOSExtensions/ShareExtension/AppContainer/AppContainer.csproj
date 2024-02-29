@@ -35,5 +35,10 @@
 			<IsWatchApp>false</IsWatchApp>
 		</ProjectReference>
 	</ItemGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.7" />
+		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.7" />
+	</ItemGroup>
 
 </Project>

@@ -30,7 +30,7 @@
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="7.0.1" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-		<PackageReference Include="IronBlock" Version="1.0.17" />
+		<PackageReference Include="IronBlock" Version="1.0.18" />
 	</ItemGroup>
 
 	<ItemGroup>
