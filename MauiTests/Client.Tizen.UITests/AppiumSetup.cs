@@ -41,7 +41,7 @@ public sealed class AppiumSetup : IDisposable
 #endif
 		const string testsPath = $@"Client.Tizen.UITests\bin\{configuration}\net8.0";
 		var solutionPath = Environment.CurrentDirectory.Replace(testsPath, string.Empty);
-		var path = $@"{solutionPath}MauiTests\Client\bin\{configuration}\\net8.0-tizen\tizen-x86\com.vladislavantonyuk.client-1.0.0.tpk";
+		var path = $@"{solutionPath}Client\bin\{configuration}\\net8.0-tizen\tizen-x86\com.vladislavantonyuk.client-1.0.0.tpk";
 		testOutputHelper.WriteLine(path);
 		return path;
 	}

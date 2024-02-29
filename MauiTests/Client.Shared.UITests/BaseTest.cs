@@ -38,14 +38,15 @@ public abstract class BaseTest(ITestOutputHelper testOutputHelper) : IAsyncLifet
 		return Task.CompletedTask;
 	}
 
-	protected void VerifyScreenshot(string name)
+	protected async Task VerifyScreenshot(string name)
 	{
 		if (App.PlatformName == "Windows")
 		{
 			var handle = App.CurrentWindowHandle;
 			MoveWindow(IntPtr.Parse(handle[2..], NumberStyles.HexNumber), 0, 0, 800, 600, true);
+			await Task.Delay(1000);
 		}
-		
+
 		var screenshotPngBytes = App.GetScreenshot().AsByteArray;
 
 		var actualImage = new ImageSnapshot(screenshotPngBytes, ImageSnapshotFormat.PNG);

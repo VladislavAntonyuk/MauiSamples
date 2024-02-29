@@ -61,7 +61,7 @@ public sealed class AppiumSetup : IDisposable
 		{
 			sdk.AvdManager.Create(AvdName, avdSdkId, "pixel", force: true);
 		}
-		
+
 		return sdk;
 	}
 
@@ -74,7 +74,7 @@ public sealed class AppiumSetup : IDisposable
 #endif
 		const string testsPath = $@"Client.Android.UITests\bin\{configuration}\net8.0";
 		var solutionPath = Environment.CurrentDirectory.Replace(testsPath, string.Empty);
-		var path = $@"{solutionPath}MauiTests\Client\bin\{configuration}\net8.0-android\{PackageName}-Signed.apk";
+		var path = $@"{solutionPath}Client\bin\{configuration}\net8.0-android\{PackageName}-Signed.apk";
 		testOutputHelper.WriteLine(path);
 		return path;
 	}

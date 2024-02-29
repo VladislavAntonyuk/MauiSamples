@@ -75,4 +75,6 @@ The development guide can be found at [SETUP.md](./SETUP.md).
 
 1. [MauiTaskListApp](Database/MauiTaskListApp) - Cross-platform .NET MAUI app using MVVM development architecture performing CRUD operations with EF Core InMemory.
 
+1. [MauiTests](MauiTests) - Testing .NET MAUI application using Appium and xUnit.
+
 [![Stand With Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd700.svg?labelColor=0057b7)](https://stand-with-ukraine.pp.ua)

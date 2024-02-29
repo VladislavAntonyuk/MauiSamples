@@ -1,6 +1,6 @@
 ﻿namespace Client.UITests;
 
-public class LoginPageTests(ITestOutputHelper testOutputHelper) : BaseTest(testOutputHelper)
+public class MainPageTests(ITestOutputHelper testOutputHelper) : BaseTest(testOutputHelper)
 {
 	[AllowOnPlatformFact(
 		RuntimePlatform.WindowsAndroid,
@@ -13,7 +13,7 @@ public class LoginPageTests(ITestOutputHelper testOutputHelper) : BaseTest(testO
 	public async Task AppLaunches()
 	{
 		await Task.Delay(2000);
-		VerifyScreenshot($"{nameof(AppLaunches)}");
+		await VerifyScreenshot($"{nameof(AppLaunches)}");
 	}
 
 	[AllowOnPlatformFact(
@@ -24,7 +24,7 @@ public class LoginPageTests(ITestOutputHelper testOutputHelper) : BaseTest(testO
 		RuntimePlatform.WindowsWindows,
 		RuntimePlatform.OsxTizen
 	)]
-	public async Task LoginBtnTest()
+	public async Task CounterBtnTest()
 	{
 		// Arrange
 		var element = FindUiElement("CounterBtn");
