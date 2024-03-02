@@ -42,8 +42,46 @@ public partial class CardsLayout : Layout, ILayoutManager
 
 		foreach (var item in Items)
 		{
-			Children.Add(ViewFor(item));
+			var swipeView = new SwipeView()
+			{
+				Threshold = 150,
+				Content = ViewFor(item)
+			};
+			switch (Direction)
+			{
+				case CardLayoutDirection.RightToLeft :
+				case CardLayoutDirection.LeftToRight:
+					swipeView.RightItems = new SwipeItems([new SwipeItemView()])
+					{
+						Mode = SwipeMode.Execute
+					};
+					swipeView.LeftItems = new SwipeItems([new SwipeItemView()])
+					{
+						Mode = SwipeMode.Execute
+					};
+					break;
+				case CardLayoutDirection.UpToDown:
+				case CardLayoutDirection.DownToUp:
+					swipeView.TopItems = new SwipeItems([new SwipeItemView()])
+					{
+						Mode = SwipeMode.Execute
+					};
+					swipeView.BottomItems = new SwipeItems([new SwipeItemView()])
+					{
+						Mode = SwipeMode.Execute
+					};
+					break;
+				default:
+					throw new ArgumentOutOfRangeException();
+			}
+			swipeView.SwipeEnded += SwipeView_SwipeEnded;
+			Children.Add(swipeView);
 		}
+	}
+
+	private void SwipeView_SwipeEnded(object? sender, SwipeEndedEventArgs e)
+	{
+		HandleTouchEnd(e.SwipeDirection);
 	}
 
 	protected override void OnChildAdded(Element child)
@@ -55,6 +93,13 @@ public partial class CardsLayout : Layout, ILayoutManager
 		else
 		{
 			base.OnChildAdded(child);
+			for (var index = 0; index < Children.Count - 1; index++)
+			{
+				var childView = (View)Children[index];
+				childView.IsEnabled = false;
+			}
+
+			((View)child).IsEnabled = true;
 		}
 	}
 
@@ -66,6 +111,13 @@ public partial class CardsLayout : Layout, ILayoutManager
 		}
 
 		base.OnChildRemoved(child, oldLogicalIndex);
+		for (var index = 0; index < Children.Count - 1; index++)
+		{
+			var childView = (View)Children[index];
+			childView.IsEnabled = false;
+		}
+
+		((View)Children[^1]).IsEnabled = true;
 	}
 
 	protected virtual View? ViewFor(object item)
@@ -86,14 +138,6 @@ public partial class CardsLayout : Layout, ILayoutManager
 		var panGesture = new PanGestureRecognizer();
 		panGesture.PanUpdated += PanGesture_PanUpdated;
 		GestureRecognizers.Add(panGesture);
-		//var swipeGesture = new SwipeGestureRecognizer();
-		//swipeGesture.Swiped += SwipeGesture_Swiped;
-		//GestureRecognizers.Add(swipeGesture);
-	}
-
-	private void SwipeGesture_Swiped(object? sender, SwipedEventArgs e)
-	{
-		HandleTouchEnd(e.Direction);
 	}
 
 	private SwipeDirection? swipedDirection;
@@ -126,7 +170,7 @@ public partial class CardsLayout : Layout, ILayoutManager
 			}
 		};
 	}
-
+	
 	private void HandleTouchEnd(SwipeDirection? swiped)
 	{
 		if (swiped == null)
