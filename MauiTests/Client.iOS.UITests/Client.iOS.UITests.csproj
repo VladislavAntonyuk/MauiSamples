@@ -23,7 +23,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Appium.WebDriver" Version="5.0.0-rc.5" />
+		<PackageReference Include="Appium.WebDriver" Version="5.0.0-rc.6" />
 		<PackageReference Include="VisualTestUtils.MagickNet" Version="0.9.46-beta" />
 	</ItemGroup>
 
