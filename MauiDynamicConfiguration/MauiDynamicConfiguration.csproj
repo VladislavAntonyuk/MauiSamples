@@ -26,6 +26,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-	  <PackageReference Include="ConfigCat.Client" Version="9.0.1" />
+	  <PackageReference Include="ConfigCat.Client" Version="9.1.0" />
 	</ItemGroup>
 </Project>

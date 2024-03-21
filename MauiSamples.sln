@@ -19,6 +19,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KanbanBoard", "KanbanBoard\KanbanBoard.csproj", "{5E4780D5-8A16-44CE-975D-155E578351D0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CE4ABC8D-3F54-49AA-BA5A-DD47E7CEB56B}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+		NuGet.config = NuGet.config
+		README.mdpp = README.mdpp
+		SETUP.md = SETUP.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Auth", "Auth", "{14D979DA-85FE-41DC-9C59-A49EE52EC9A5}"
 EndProject
@@ -131,7 +137,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client.iOS.UITests", "MauiT
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client.Android.UITests", "MauiTests\Client.Android.UITests\Client.Android.UITests.csproj", "{3459E2A7-DEB6-46B8-AE8E-435908A3F2DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "MauiTests\Client\Client.csproj", "{5411B28C-9E39-4FAF-BC6E-448C0DC9F0BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client", "MauiTests\Client\Client.csproj", "{5411B28C-9E39-4FAF-BC6E-448C0DC9F0BC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
