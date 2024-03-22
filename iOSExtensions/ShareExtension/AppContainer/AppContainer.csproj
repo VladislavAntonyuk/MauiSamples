@@ -35,6 +35,18 @@
 			<IsWatchApp>false</IsWatchApp>
 		</ProjectReference>
 	</ItemGroup>
+
+	<PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows')) == 'true' and $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' and $(Configuration) == 'Debug'">
+		<RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
+		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
+		<CreatePackage>false</CreatePackage>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows')) == 'false' and $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' and $(Configuration) == 'Debug'">
+		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
+		<RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
+		<CreatePackage>false</CreatePackage>
+	</PropertyGroup>
 	
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.14" />

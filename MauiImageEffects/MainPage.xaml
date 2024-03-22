@@ -36,12 +36,14 @@
 
 			<Label Text="Blur"/>
 			<Label BindingContext="{x:Reference blurSlider}"
+				   x:DataType="Slider"
 			       Text="{Binding Value}" />
 			<Slider x:Name="blurSlider"/>
 			<Grid>
 				<Image>
 					<Image.Behaviors>
 						<blur:BlurBehavior BindingContext="{x:Reference Name=blurSlider}"
+						                   x:DataType="Slider"
 						                   Radius="{Binding Value}"/>
 					</Image.Behaviors>
 				</Image>
@@ -50,12 +52,14 @@
 
 			<Label Text="Saturation"/>
 			<Label BindingContext="{x:Reference saturationSlider}"
+			       x:DataType="Slider"
 			       Text="{Binding Value}" />
 			<Slider x:Name="saturationSlider"/>
 			<Grid>
 				<Image>
 					<Image.Behaviors>
 						<saturation:SaturationBehavior BindingContext="{x:Reference Name=saturationSlider}"
+						                               x:DataType="Slider"
 						                               Saturation="{Binding Value, Converter={StaticResource SaturationConverter}}"/>
 					</Image.Behaviors>
 				</Image>

@@ -2,11 +2,8 @@
 
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:mauiBluetooth="clr-namespace:MauiBluetooth"
-             xmlns:contracts="clr-namespace:Plugin.BLE.Abstractions.Contracts;assembly=Plugin.BLE"
              x:Class="MauiBluetooth.MainPage"
 			 Shell.NavBarIsVisible="False"
-			 x:DataType="mauiBluetooth:MainPageViewModel"
              x:Name="Main">
 	<CollectionView ItemsSource="{Binding Devices}">
 		<CollectionView.Header>
@@ -14,11 +11,11 @@
 			        Text="Scan devices" />
 		</CollectionView.Header>
 		<CollectionView.ItemTemplate>
-			<DataTemplate x:DataType="contracts:IDevice">
+			<DataTemplate>
 				<Grid ColumnDefinitions="*, Auto" RowDefinitions="*,*">
 					<Label Grid.Column="0" Text="{Binding NativeDevice.Name}"/>
 					<Label Grid.Column="0" Grid.Row="1" Text="{Binding NativeDevice.Address}" />
-					<Button Grid.Column="1" Grid.RowSpan="2" x:DataType="mauiBluetooth:MainPageViewModel"
+					<Button Grid.Column="1" Grid.RowSpan="2"
 							Text="Connect"
 					        Command="{Binding Source={x:Reference Name=Main},Path=BindingContext.ConnectCommand}"
 					        CommandParameter="{Binding .}"/>

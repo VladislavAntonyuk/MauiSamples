@@ -3,11 +3,11 @@ using SqliteRepository;
 
 public partial class MainPage : ContentPage
 {
-	private readonly AccountRepository _accountRepository;
+	private readonly AccountRepository accountRepository;
 
 	public MainPage(AccountRepository accountRepository)
 	{
-		_accountRepository = accountRepository;
+		this.accountRepository = accountRepository;
 		InitializeComponent();
 	}
 
@@ -24,7 +24,7 @@ public partial class MainPage : ContentPage
 			Balance = Random.Shared.Next(0, 10),
 			Email = "test@email.com"
 		};
-		_accountRepository.CreateAccount(account);
+		accountRepository.CreateAccount(account);
 		GetAccounts();
 	}
 
@@ -38,7 +38,7 @@ public partial class MainPage : ContentPage
 			return;
 
 		account.Balance = 0;
-		_accountRepository.UpdateAccount(account);
+		accountRepository.UpdateAccount(account);
 		GetAccounts();
 	}
 
@@ -51,22 +51,22 @@ public partial class MainPage : ContentPage
 		if (account is null)
 			return;
 
-		_accountRepository.DeleteAccount(account);
+		accountRepository.DeleteAccount(account);
 		GetAccounts();
 	}
 
 	private void Filter1AccountClicked(object sender, EventArgs e)
 	{
-		collectionView.ItemsSource = _accountRepository.QueryAccountWithPositiveBalance();
+		collectionView.ItemsSource = accountRepository.QueryAccountWithPositiveBalance();
 	}
 
 	private void Filter2AccountClicked(object sender, EventArgs e)
 	{
-		collectionView.ItemsSource = _accountRepository.LinqZeroBalance();
+		collectionView.ItemsSource = accountRepository.LinqZeroBalance();
 	}
 
 	private void GetAccounts()
 	{
-		collectionView.ItemsSource = _accountRepository.GetAccounts();
+		collectionView.ItemsSource = accountRepository.GetAccounts();
 	}
 }

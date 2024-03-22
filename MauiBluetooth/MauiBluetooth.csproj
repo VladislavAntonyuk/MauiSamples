@@ -14,6 +14,7 @@
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
+		<NoWarn>$(NoWarn);XC0022;XC0023</NoWarn>
 	</PropertyGroup>
 
 	<ItemGroup>

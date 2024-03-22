@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mauiTabView="clr-namespace:MauiTabView"
              x:Class="MauiTabView.MainPage"
-             x:DataType="mauiTabView:MainViewModel"
              x:Name="Page">
 
 	<ContentPage.Resources>
