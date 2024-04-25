@@ -17,7 +17,10 @@ public static class MauiProgram
 			{
 				fonts.AddFont("Font Awesome 6 Free-Solid-900.otf", "FASolid");
 			});
-		builder.UseMauiCommunityToolkit();
+		builder.UseMauiCommunityToolkit(x =>
+		{
+			x.SetShouldEnableSnackbarOnWindows(true);
+		});
 
 		builder.Services.AddDbContext<KanbanBoardDbContext>();
 		builder.Services.AddSingleton<MainPageViewModel>();

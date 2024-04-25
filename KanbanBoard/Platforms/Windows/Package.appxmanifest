@@ -3,7 +3,9 @@
 	xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
 	xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
 	xmlns:rescap="http://schemas.microsoft.com/appx/manifest/foundation/windows10/restrictedcapabilities"
-	IgnorableNamespaces="uap rescap">
+	xmlns:com="http://schemas.microsoft.com/appx/manifest/com/windows10"
+	xmlns:desktop="http://schemas.microsoft.com/appx/manifest/desktop/windows10"
+	IgnorableNamespaces="uap rescap com desktop">
 
 	<Identity Name="maui-package-name-placeholder" Publisher="CN=Vladislav Antonyuk" Version="0.0.0.0" />
 
@@ -33,6 +35,26 @@
 				<uap:DefaultTile Square71x71Logo="$placeholder$.png" Wide310x150Logo="$placeholder$.png" Square310x310Logo="$placeholder$.png" />
 				<uap:SplashScreen Image="$placeholder$.png" />
 			</uap:VisualElements>
+			<Extensions>
+				<uap:Extension Category="windows.protocol">
+					<uap:Protocol Name="kanbanboard"/>
+				</uap:Extension>
+				
+				<!-- Specify which CLSID to activate when notification is clicked -->
+				<desktop:Extension Category="windows.toastNotificationActivation">
+					<desktop:ToastNotificationActivation ToastActivatorCLSID="efe6ab2c-b91d-459a-b8a7-5035d22a8e09" />
+				</desktop:Extension>
+
+				<!-- Register COM CLSID -->
+				<com:Extension Category="windows.comServer">
+					<com:ComServer>
+						<com:ExeServer Executable="KanbanBoard\KanbanBoard.exe" DisplayName="$targetnametoken$" Arguments="----AppNotificationActivated:">
+							<com:Class Id="efe6ab2c-b91d-459a-b8a7-5035d22a8e09" />
+						</com:ExeServer>
+					</com:ComServer>
+				</com:Extension>
+			
+			</Extensions>
 		</Application>
 	</Applications>
 

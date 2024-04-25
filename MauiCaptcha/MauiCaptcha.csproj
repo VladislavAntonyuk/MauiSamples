@@ -32,11 +32,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="CommunityToolkit.Maui" Version="7.0.1" />
+	  <PackageReference Include="CommunityToolkit.Maui" Version="8.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="8.0.14" />
+	  <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="8.0.21" />
 	</ItemGroup>
 
 </Project>

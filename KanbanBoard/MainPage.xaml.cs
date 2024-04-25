@@ -45,6 +45,9 @@ public partial class MainPage : ContentPage
 		using var scope = serviceProvider.CreateScope();
 		using var dbContext = scope.ServiceProvider.GetRequiredService<KanbanBoardDbContext>();
 		dbContext.Database.EnsureDeleted();
+#if WINDOWS
+		System.Diagnostics.Process.Start("explorer","kanbanboard://");
+#endif
 		Application.Current?.Quit();
 	}
 }

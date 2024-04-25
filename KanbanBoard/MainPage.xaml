@@ -18,7 +18,6 @@
 		<converters:BoolToObjectConverter x:Key="BoolToObjectConverter"
 		                                  TrueObject="{StaticResource SwipeVisibleBackgroundColor}"
 		                                  FalseObject="{StaticResource SwipeInvisibleBackgroundColor}" />
-		<kanbanBoard:BoolToColorConverter x:Key="BoolToColor" />
 	</ContentPage.Resources>
 
 	<VerticalStackLayout>
@@ -65,7 +64,7 @@
 			<CarouselView
 				ZIndex="0"
 				x:Name="Board"
-				IndicatorView="Indicator"
+				IndicatorView="{x:Reference Indicator}"
 				EmptyView="No columns to display"
 				ItemsSource="{Binding Columns}"
 				Position="{Binding Position}"
