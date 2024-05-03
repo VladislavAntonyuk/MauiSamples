@@ -11,16 +11,16 @@ public partial class MainPage : ContentPage
 		InitializeComponent();
 		MyCollectionView.ItemsSource = new ObservableCollection<Card>()
 		{
-			new("Image 1","https://picsum.photos/200/200"),
-			new("Image 2", "https://picsum.photos/100/50"),
-			new("Image 3", "https://picsum.photos/100/200"),
-			new("Image 4", "https://picsum.photos/200/100"),
-			new("Image 5", "https://picsum.photos/150/100"),
-			new("Image 6", "https://picsum.photos/120/150"),
-			new("Image 7", "https://picsum.photos/180/140"),
-			new("Image 8", "https://picsum.photos/200/50"),
-			new("Image 9", "https://picsum.photos/50/150"),
-			new("Image 10", "https://picsum.photos/50/100"),
+			new("Image 1","https://th.bing.com/th/id/OIP.wGvRsIjycKa3Asr03KO4KgHaDH?rs=1&pid=ImgDetMain"),
+			new("Image 2", "https://th.bing.com/th/id/R.537268dc2d773fd8651824c36f1c78d3?rik=bCh1W7hrS5ljfQ&pid=ImgRaw&r=0"),
+			new("Image 3", "https://th.bing.com/th/id/OIP.kWZbyYQqqFaowDIJVCoRSgHaEK?rs=1&pid=ImgDetMain"),
+			new("Image 4", "https://learn.microsoft.com/en-us/dotnet/maui/media/what-is-maui/architecture-diagram.png"),
+			new("Image 5", "https://th.bing.com/th/id/R.88d727f77173a5338fb70fed37b4131d?rik=tcl4LhWD6an5%2fg&pid=ImgRaw&r=0"),
+			new("Image 6", "https://learn.microsoft.com/en-us/dotnet/maui/media/what-is-maui/maui.png"),
+			new("Image 7", "https://th.bing.com/th/id/OIP.TTeAND36n5837q14OO5qqAHaGq?w=768&h=691&rs=1&pid=ImgDetMain"),
+			new("Image 8", "https://th.bing.com/th/id/OIP.yvpmJbIaGIyatyAiTzbSTgHaHk?rs=1&pid=ImgDetMain"),
+			new("Image 9", "https://th.bing.com/th/id/OIP.PsAQ5A0DMjL5866MIpa24QAAAA?w=383&h=811&rs=1&pid=ImgDetMain"),
+			new("Image 10", "https://user-images.githubusercontent.com/271950/164788792-a96610d5-3910-45fe-b003-4db797eb2188.png"),
 		};
 	}
 }
