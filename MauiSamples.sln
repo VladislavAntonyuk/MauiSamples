@@ -139,12 +139,20 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client.Android.UITests", "M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client", "MauiTests\Client\Client.csproj", "{5411B28C-9E39-4FAF-BC6E-448C0DC9F0BC}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiStaggeredCollectionView", "MauiStaggeredCollectionView\MauiStaggeredCollectionView.csproj", "{7139BF92-182F-4CA9-B2A0-DAF4110A8C12}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7139BF92-182F-4CA9-B2A0-DAF4110A8C12}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7139BF92-182F-4CA9-B2A0-DAF4110A8C12}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7139BF92-182F-4CA9-B2A0-DAF4110A8C12}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7139BF92-182F-4CA9-B2A0-DAF4110A8C12}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7139BF92-182F-4CA9-B2A0-DAF4110A8C12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7139BF92-182F-4CA9-B2A0-DAF4110A8C12}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{B91198E0-08DE-41B6-9056-95F90C3E0AD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B91198E0-08DE-41B6-9056-95F90C3E0AD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B91198E0-08DE-41B6-9056-95F90C3E0AD8}.Debug|Any CPU.Deploy.0 = Debug|Any CPU

@@ -77,4 +77,6 @@ The development guide can be found at [SETUP.md](./SETUP.md).
 
 1. [MauiTests](MauiTests) - Testing .NET MAUI application using Appium and xUnit.
 
+1. [MauiStaggeredCollectionView](MauiStaggeredCollectionView) - Create a Staggered Layout for CollectionView in .NET MAUI.
+
 !INCLUDE "md/footer.mdpp"

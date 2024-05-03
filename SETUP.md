@@ -1,6 +1,6 @@
 ## Build solution
 
-1. Install .NET 7
+1. Install .NET 8
 2. Install .NET MAUI Workloads
 ```pwsh
 dotnet workload install maui
