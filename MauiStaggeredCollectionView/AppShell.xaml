@@ -8,7 +8,7 @@
     Title="MauiStaggeredCollectionView">
 
     <ShellContent
-        Title=".NET MAUI Staggeled CollectionView"
+        Title=".NET MAUI Staggered CollectionView"
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 

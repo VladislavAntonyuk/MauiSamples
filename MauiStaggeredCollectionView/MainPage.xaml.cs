@@ -51,7 +51,7 @@ public class StaggeredStructuredItemsViewHandler : StructuredItemsViewHandler<Co
 					platformView?.UpdateAdapter();
 					platformView?.SetLayoutManager(
 						new AndroidX.RecyclerView.Widget.StaggeredGridLayoutManager(
-							staggeredItemsLayout.Span, 
+							staggeredItemsLayout.Span,
 							staggeredItemsLayout.Orientation == ItemsLayoutOrientation.Horizontal ? AndroidX.RecyclerView.Widget.StaggeredGridLayoutManager.Horizontal : AndroidX.RecyclerView.Widget.StaggeredGridLayoutManager.Vertical));
 					break;
 				default:
@@ -68,7 +68,7 @@ public class StaggeredStructuredItemsViewHandler : StructuredItemsViewHandler<Co
 
 			if (itemsLayout is StaggeredItemsLayout staggeredItemsLayout)
 			{
-				return new StagLayout([(1d, 1d), (1d, 1d)], 0, staggeredItemsLayout, ItemSizingStrategy.MeasureAllItems);
+				return new StagerredItemsViewLayout(staggeredItemsLayout, ItemsView.ItemSizingStrategy);
 			}
 
 			return base.SelectLayout();
@@ -90,10 +90,10 @@ public class StaggeredStructuredItemsViewHandler : StructuredItemsViewHandler<Co
 public class StaggeredItemsLayout(ItemsLayoutOrientation orientation) : ItemsLayout(orientation)
 {
 	public static readonly BindableProperty SpanProperty = BindableProperty.Create(nameof(Span), typeof(int), typeof(StaggeredItemsLayout), default(int));
-		
+
 	public StaggeredItemsLayout() : this(ItemsLayoutOrientation.Vertical)
 	{
-			
+
 	}
 
 	public int Span

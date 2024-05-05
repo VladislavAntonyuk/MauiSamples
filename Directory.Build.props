@@ -53,7 +53,7 @@
 
 	<PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows')) == 'false' and $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' and $(Configuration) == 'Debug'">
 		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
-		<RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
+		<RuntimeIdentifier>iossimulator-arm64</RuntimeIdentifier>
 		<CreatePackage>false</CreatePackage>
 	</PropertyGroup>
 
