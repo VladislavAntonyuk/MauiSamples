@@ -5,7 +5,7 @@
 [![Stand With Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd700.svg?labelColor=0057b7)](https://stand-with-ukraine.pp.ua)
 ## Thank You
 
-Special thanks to my friends and sponsors: @PeterFucci, Gerald Versluis (jfversluis), @renatolopes, Glen Herman, Olexii, Brady, Yury Michurin, VToegel, Aleksander Rokic, Jeffrey Williams, TimKyn, Standa Mikes, Aaron Schaefer, AIvanHeerden, 7 M O X D, gbrewer, Ryan, @janhjordie, erossiniuk, David.
+Special thanks to my friends and sponsors: @PeterFucci, Gerald Versluis (jfversluis), @renatolopes, Glen Herman, Olexii, Brady, Yury Michurin, VToegel, Aleksander Rokic, Jeffrey Williams, TimKyn, Standa Mikes, Aaron Schaefer, AIvanHeerden, 7 M O X D, gbrewer, Ryan, @janhjordie, erossiniuk, David, Sab, Andreas.
 
 This project is tested with BrowserStack.
 
@@ -76,5 +76,7 @@ The development guide can be found at [SETUP.md](./SETUP.md).
 1. [MauiTaskListApp](Database/MauiTaskListApp) - Cross-platform .NET MAUI app using MVVM development architecture performing CRUD operations with EF Core InMemory.
 
 1. [MauiTests](MauiTests) - Testing .NET MAUI application using Appium and xUnit.
+
+1. [MauiStaggeredCollectionView](MauiStaggeredCollectionView) - Create a Staggered Layout for CollectionView in .NET MAUI.
 
 [![Stand With Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd700.svg?labelColor=0057b7)](https://stand-with-ukraine.pp.ua)
