@@ -12,7 +12,7 @@
 
 			<Label
                 x:Name="Hover"
-                Text="hover over me"
+                Text="Hover over me"
                 IsVisible="false"
                 SemanticProperties.HeadingLevel="Level1"
                 FontSize="32"
