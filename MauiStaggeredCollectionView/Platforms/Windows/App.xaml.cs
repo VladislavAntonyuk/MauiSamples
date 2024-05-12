@@ -23,7 +23,3 @@ namespace MauiStaggeredCollectionView.WinUI
 	}
 
 }
-
-namespace CommunityToolkit.WinUI.UI.Controls
-{
-}

@@ -68,7 +68,7 @@ public class StaggeredStructuredItemsViewHandler : StructuredItemsViewHandler<Co
 
 			if (itemsLayout is StaggeredItemsLayout staggeredItemsLayout)
 			{
-				return new StagerredItemsViewLayout(staggeredItemsLayout, ItemsView.ItemSizingStrategy);
+				return new StaggeredItemsViewLayout(staggeredItemsLayout, ItemsView.ItemSizingStrategy);
 			}
 
 			return base.SelectLayout();
@@ -78,9 +78,12 @@ public class StaggeredStructuredItemsViewHandler : StructuredItemsViewHandler<Co
 #if WINDOWS
 		protected override Microsoft.UI.Xaml.Controls.ListViewBase SelectListViewBase()
 		{
-			return this.VirtualView.ItemsLayout switch
+			return VirtualView.ItemsLayout switch
 			{
-				StaggeredItemsLayout staggeredItemsLayout => new Microsoft.UI.Xaml.Controls.GridView() { },
+				StaggeredItemsLayout staggeredItemsLayout => new Microsoft.UI.Xaml.Controls.GridView()
+				{
+					ItemsPanel = (Microsoft.UI.Xaml.Controls.ItemsPanelTemplate)Microsoft.UI.Xaml.Application.Current.Resources["StaggeredItemsPanel"]
+				},
 				_ => base.SelectListViewBase()
 			};
 		}

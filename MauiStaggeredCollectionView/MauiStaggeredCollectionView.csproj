@@ -25,7 +25,12 @@
 		<!-- Images -->
 		<MauiImage Include="Resources\Images\*" />
 		<MauiImage Update="Resources\Images\dotnet_bot.png" Resize="True" BaseSize="300,185" />
+	</ItemGroup>
 
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-windows10.0.19041.0'">
+	  <PackageReference Include="CommunityToolkit.WinUI.UI.Controls.Primitives">
+	    <Version>7.1.2</Version>
+	  </PackageReference>
 	</ItemGroup>
 
 </Project>

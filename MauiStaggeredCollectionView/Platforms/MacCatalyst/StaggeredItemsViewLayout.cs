@@ -5,7 +5,7 @@ using Foundation;
 using Microsoft.Maui.Controls.Handlers.Items;
 using UIKit;
 
-public class StagerredItemsViewLayout(StaggeredItemsLayout itemsLayout, ItemSizingStrategy sizingStrategy)
+public class StaggeredItemsViewLayout(StaggeredItemsLayout itemsLayout, ItemSizingStrategy sizingStrategy)
 	: ItemsViewLayout(itemsLayout, sizingStrategy)
 {
 	private readonly List<UICollectionViewLayoutAttributes> cache = new();
