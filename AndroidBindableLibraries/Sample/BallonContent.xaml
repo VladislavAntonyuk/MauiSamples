@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:calendar="clr-namespace:Sample.Calendar"
+             x:Class="Sample.BallonContent">
+	<ScrollView>
+		<VerticalStackLayout>
+			<Grid ColumnDefinitions="20, *"
+		      RowDefinitions="Auto, Auto">
+
+				<Label Grid.Column="0" Grid.Row="0" Text="&#x2022;"/>
+				<Label Grid.Column="1" Grid.Row="0" Text="Long text long text long text long text long text long text long text"/>
+
+				<Label Grid.Column="0" Grid.Row="1" Text="&#x2022;"/>
+				<Label Grid.Column="1" Grid.Row="1" Text="Some text"/>
+			</Grid>
+			<Button Text="Show Toast" Clicked="Button_OnClicked"/>
+			<calendar:CalendarView MinimumHeightRequest="200"/>
+		</VerticalStackLayout>
+	</ScrollView>
+
+</ContentView>
