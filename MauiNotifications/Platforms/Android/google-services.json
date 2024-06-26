@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "101175590579",
+    "project_id": "maui-notifications",
+    "storage_bucket": "maui-notifications.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:101175590579:android:98d9b7697016bd4e10fac6",
+        "android_client_info": {
+          "package_name": "com.vladislavantonyuk.mauinotifications"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "101175590579-5032un3bdrvh4b4qa3md6s4o6src7eis.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAEuFZetrKwzwszXXpda9RzdRuVIWn4pP0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "101175590579-5032un3bdrvh4b4qa3md6s4o6src7eis.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

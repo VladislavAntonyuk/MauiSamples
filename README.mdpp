@@ -79,4 +79,6 @@ The development guide can be found at [SETUP.md](./SETUP.md).
 
 1. [MauiStaggeredCollectionView](MauiStaggeredCollectionView) - Create a Staggered Layout for CollectionView in .NET MAUI.
 
+1. [MauiNotifications](MauiNotifications) - .NET MAUI Push Notifications using Azure Notification Hub.
+
 !INCLUDE "md/footer.mdpp"

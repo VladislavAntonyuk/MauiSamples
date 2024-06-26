@@ -32,8 +32,8 @@
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
 	  <PackageReference Include="m3uParser.NET" Version="1.0.17" />
 	  <PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
-	  <PackageReference Include="CommunityToolkit.Maui" Version="8.0.1" />
-	  <PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="3.1.0" />
+	  <PackageReference Include="CommunityToolkit.Maui" Version="9.0.1" />
+	  <PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="4.0.0" />
 	</ItemGroup>
 
 </Project>
