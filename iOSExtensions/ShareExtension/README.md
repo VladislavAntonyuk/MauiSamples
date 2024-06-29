@@ -2,7 +2,7 @@
 
 [![Buy Me A Coffee](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/misc/bmc-button.png)](https://www.buymeacoffee.com/vlad.antonyuk)
 
-Article: https://vladislavantonyuk.azurewebsites.net/articles/Extend-.NET-MAUI-application-with-iOS-Extensions
+Article: https://vladislavantonyuk.github.io/articles/Extend-.NET-MAUI-application-with-iOS-Extensions
 
 ## Images
 

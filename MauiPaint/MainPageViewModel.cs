@@ -69,7 +69,7 @@ Lines, new Size(1000, 1000), Background)
 	[RelayCommand]
 	Task About()
 	{
-		return Launcher.OpenAsync("https://vladislavantonyuk.azurewebsites.net");
+		return Launcher.OpenAsync("https://vladislavantonyuk.github.io");
 	}
 
 	[RelayCommand]

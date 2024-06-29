@@ -2,7 +2,7 @@
 
 [![Buy Me A Coffee](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/misc/bmc-button.png)](https://www.buymeacoffee.com/vlad.antonyuk)
 
-Article: https://vladislavantonyuk.azurewebsites.net/articles/Customize-map-pins-in-.NET-MAUI
+Article: https://vladislavantonyuk.github.io/articles/Customize-map-pins-in-.NET-MAUI
 
 ## Images
 

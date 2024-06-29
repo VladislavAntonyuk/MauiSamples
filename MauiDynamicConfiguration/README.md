@@ -2,7 +2,7 @@
 
 [![Buy Me A Coffee](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/misc/bmc-button.png)](https://www.buymeacoffee.com/vlad.antonyuk)
 
-Article: https://vladislavantonyuk.azurewebsites.net/articles/Dynamic-configuration-in-.NET-MAUI-application
+Article: https://vladislavantonyuk.github.io/articles/Dynamic-configuration-in-.NET-MAUI-application
 
 ## Images
 

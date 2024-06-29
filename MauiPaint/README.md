@@ -2,7 +2,7 @@
 
 [![Buy Me A Coffee](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/misc/bmc-button.png)](https://www.buymeacoffee.com/vlad.antonyuk)
 
-Article: https://vladislavantonyuk.azurewebsites.net/articles/Drawing-View-in-Xamarin-Community-Toolkit
+Article: https://vladislavantonyuk.github.io/articles/Drawing-View-in-Xamarin-Community-Toolkit
 
 Article: https://vladislavantonyuk.github.io/articles/Drag-and-Drop-any-content-to-a-.NET-MAUI-application/
 

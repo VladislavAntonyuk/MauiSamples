@@ -2,7 +2,7 @@
 
 [![Buy Me A Coffee](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/misc/bmc-button.png)](https://www.buymeacoffee.com/vlad.antonyuk)
 
-Article: https://vladislavantonyuk.azurewebsites.net/articles/Create-custom-animations-using-.NET-MAUI-CommunityToolkit
+Article: https://vladislavantonyuk.github.io/articles/Create-custom-animations-using-.NET-MAUI-CommunityToolkit
 
 ## Images
 

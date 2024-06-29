@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<RootNamespace>MauiBarcode</RootNamespace>
+
+		<!-- Display name -->
+		<ApplicationTitle>MauiBarcode</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.vladislavantonyuk.mauibarcode</ApplicationId>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+
+	</ItemGroup>
+
+	<ItemGroup Condition="'$(TargetFramework)' == '$(NetVersion)-android'">
+		<PackageReference Include="Xamarin.AndroidX.Collection.Ktx" Version="1.4.0.1" />
+		<PackageReference Include="Xamarin.GooglePlayServices.Code.Scanner" Version="116.1.0.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Camera.MAUI.ZXing" Version="1.0.0" />
+	  <PackageReference Include="CommunityToolkit.Maui.Camera" Version="1.0.2" />
+	  <PackageReference Include="CommunityToolkit.Maui" Version="9.0.1" />
+	</ItemGroup>
+
+</Project>

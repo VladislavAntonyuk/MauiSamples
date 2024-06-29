@@ -9,6 +9,6 @@ public partial class MainPage : ContentPage
 
 	private async void OnClicked(object sender, EventArgs e)
 	{
-		await Launcher.OpenAsync("https://vladislavantonyuk.azurewebsites.net/");
+		await Launcher.OpenAsync("https://vladislavantonyuk.github.io/");
 	}
 }
