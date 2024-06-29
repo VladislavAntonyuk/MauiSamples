@@ -17,7 +17,7 @@ public static class MauiProgram
 		builder.Services.AddSingleton<DeviceInstallationService>();
 
 		builder.Services.AddSingleton<INotificationHubClient, NotificationHubClient>(
-			_ => NotificationHubClient.CreateClientFromConnectionString("YOUR CONNECTION STRING", "MauiNotifications", true));
+			_ => NotificationHubClient.CreateClientFromConnectionString("YOUR CONNECTION STRING", "YOUR HUB NAME", true));
 
 		return builder.Build();
 	}
