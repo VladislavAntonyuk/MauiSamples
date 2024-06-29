@@ -8,7 +8,7 @@
 		<ApplicationTitle>MauiNotifications</ApplicationTitle>
 
 		<!-- App Identifier -->
-		<ApplicationId>com.companyname.mauinotifications</ApplicationId>
+		<ApplicationId>com.vladislavantonyuk.mauinotifications</ApplicationId>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
