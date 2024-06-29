@@ -61,11 +61,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ShareExtension", "ShareExtension", "{937CCB6F-427B-415E-813E-025AF73741CC}"
 	ProjectSection(SolutionItems) = preProject
 		iOSExtensions\ShareExtension\README.md = iOSExtensions\ShareExtension\README.md
+		iOSExtensions\ShareExtension\README.mdpp = iOSExtensions\ShareExtension\README.mdpp
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JokeApp", "JokeApp", "{D7258BEF-416D-4F3E-A359-87BD545A84A9}"
 	ProjectSection(SolutionItems) = preProject
 		iOSExtensions\JokeApp\README.md = iOSExtensions\JokeApp\README.md
+		iOSExtensions\JokeApp\README.mdpp = iOSExtensions\JokeApp\README.mdpp
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JokeAppWidget", "iOSExtensions\JokeApp\JokeAppWidget\JokeAppWidget.csproj", "{8CE62F62-CE5D-48F4-8754-3F07FF72C3C2}"
@@ -145,7 +147,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Balloon", "AndroidBindableL
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sample", "AndroidBindableLibraries\Sample\Sample.csproj", "{8782844B-0C34-42AE-8BF9-E2DB2CC95495}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiNotifications", "MauiNotifications\MauiNotifications.csproj", "{D10497DF-0FDA-4F52-9C30-8F73C5FCC459}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiNotifications", "MauiNotifications\MauiNotifications.csproj", "{D10497DF-0FDA-4F52-9C30-8F73C5FCC459}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiBarcode", "MauiBarcode\MauiBarcode.csproj", "{584461EF-67BC-4D25-9438-0EE988136D97}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -445,6 +449,12 @@ Global
 		{D10497DF-0FDA-4F52-9C30-8F73C5FCC459}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D10497DF-0FDA-4F52-9C30-8F73C5FCC459}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D10497DF-0FDA-4F52-9C30-8F73C5FCC459}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{584461EF-67BC-4D25-9438-0EE988136D97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{584461EF-67BC-4D25-9438-0EE988136D97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{584461EF-67BC-4D25-9438-0EE988136D97}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{584461EF-67BC-4D25-9438-0EE988136D97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{584461EF-67BC-4D25-9438-0EE988136D97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{584461EF-67BC-4D25-9438-0EE988136D97}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

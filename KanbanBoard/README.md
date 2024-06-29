@@ -2,7 +2,7 @@
 
 [![Buy Me A Coffee](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/misc/bmc-button.png)](https://www.buymeacoffee.com/vlad.antonyuk)
 
-Article: https://vladislavantonyuk.azurewebsites.net/articles/Creating-Kanban-Board-using-Xamarin-Forms-5
+Article: https://vladislavantonyuk.github.io/articles/Creating-Kanban-Board-using-Xamarin-Forms-5
 
 ## Build
 ```pwsh

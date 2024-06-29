@@ -2,7 +2,7 @@
 
 [![Buy Me A Coffee](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/misc/bmc-button.png)](https://www.buymeacoffee.com/vlad.antonyuk)
 
-Article: https://vladislavantonyuk.azurewebsites.net/articles/Creating-a-bottom-sheet-using-.NET-MAUI
+Article: https://vladislavantonyuk.github.io/articles/Creating-a-bottom-sheet-using-.NET-MAUI
 
 ## Images
 

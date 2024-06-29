@@ -2,7 +2,7 @@
 
 [![Buy Me A Coffee](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/misc/bmc-button.png)](https://www.buymeacoffee.com/vlad.antonyuk)
 
-Article: https://vladislavantonyuk.azurewebsites.net/articles/Create-a-gallery-app-using-.NET-MAUI-Blazor
+Article: https://vladislavantonyuk.github.io/articles/Create-a-gallery-app-using-.NET-MAUI-Blazor
 
 ## Images
 

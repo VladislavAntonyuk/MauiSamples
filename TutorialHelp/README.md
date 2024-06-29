@@ -2,7 +2,7 @@
 
 [![Buy Me A Coffee](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/misc/bmc-button.png)](https://www.buymeacoffee.com/vlad.antonyuk)
 
-Article: https://vladislavantonyuk.azurewebsites.net/articles/Interactive-app-tutorial-in-.NET-MAUI
+Article: https://vladislavantonyuk.github.io/articles/Interactive-app-tutorial-in-.NET-MAUI
 
 ![.NET MAUI Popup](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/19/simple-popup.png)
 
