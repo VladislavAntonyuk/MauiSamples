@@ -19,9 +19,18 @@ public partial class ZxingCameraPage : ContentPage
 		ZxingCameraView.BarCodeDecoder = new ZXingBarcodeDecoder();
 	}
 
-	private async void ZxingCameraView_CamerasLoaded(object? sender, EventArgs e)
+	private void ZxingCameraView_CamerasLoaded(object? sender, EventArgs e)
 	{
-		await StartCamera();
+		if (ZxingCameraView.NumCamerasDetected == 0)
+		{
+			return;
+		}
+
+#if WINDOWS
+		ZxingCameraView.Camera = ZxingCameraView.Cameras.FirstOrDefault();
+#else
+		ZxingCameraView.Camera = ZxingCameraView.Cameras.FirstOrDefault(x => x.Position != CameraPosition.Front);
+#endif
 	}
 
 	private async void ZxingCameraViewOnBarcodeDetected(object sender, BarcodeEventArgs args)
@@ -35,15 +44,11 @@ public partial class ZxingCameraPage : ContentPage
 		}
 	}
 
-	protected override async void OnAppearing()
+	protected override void OnAppearing()
 	{
 		base.OnAppearing();
 		ZxingCameraView.BarcodeDetected += ZxingCameraViewOnBarcodeDetected;
 		ZxingCameraView.CamerasLoaded += ZxingCameraView_CamerasLoaded;
-		if (ZxingCameraView.NumCamerasDetected > 0)
-		{
-			await StartCamera();
-		}
 	}
 
 	protected override void OnDisappearing()
@@ -54,16 +59,19 @@ public partial class ZxingCameraPage : ContentPage
 		base.OnDisappearing();
 	}
 
-	async Task StartCamera()
+	private async void StartButton_OnClicked(object? sender, EventArgs e)
 	{
-#if WINDOWS
-		ZxingCameraView.Camera = ZxingCameraView.Cameras.FirstOrDefault();
-#else
-		ZxingCameraView.Camera = ZxingCameraView.Cameras.FirstOrDefault(x => x.Position != CameraPosition.Front);
-#endif
 		await MainThread.InvokeOnMainThreadAsync(async () =>
 		{
 			await ZxingCameraView.StartCameraAsync();
+		});
+	}
+
+	private async void StopButton_OnClicked(object? sender, EventArgs e)
+	{
+		await MainThread.InvokeOnMainThreadAsync(async () =>
+		{
+			await ZxingCameraView.StopCameraAsync();
 		});
 	}
 }

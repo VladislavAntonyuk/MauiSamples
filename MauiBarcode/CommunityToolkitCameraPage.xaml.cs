@@ -1,18 +1,26 @@
 ﻿namespace MauiBarcode;
 
-#if WINDOWS
-using Windows.Graphics.Imaging;
-using System.Runtime.InteropServices.WindowsRuntime;
-#endif
-using Camera.MAUI.ZXing;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Views;
 using Microsoft.Maui.Graphics.Platform;
+using ZXing;
+using ZXing.Common;
 
 public partial class CommunityToolkitCameraPage : ContentPage
 {
-	private readonly ZXingBarcodeDecoder barcodeReader = new ();
+	private readonly IBarcodeReaderGeneric barcodeReader = new BarcodeReaderGeneric()
+	{
+		AutoRotate = true,
+		Options = new DecodingOptions()
+		{
+			PossibleFormats = [BarcodeFormat.QR_CODE],
+			TryHarder = true,
+			TryInverted = true,
+			PureBarcode = false
+		}
+	};
+	PeriodicTimer timer = new(TimeSpan.FromMilliseconds(3000));
 
 	public CommunityToolkitCameraPage()
 	{
@@ -26,15 +34,6 @@ public partial class CommunityToolkitCameraPage : ContentPage
 
 		var cameras = await ToolkitCameraView.GetAvailableCameras(CancellationToken.None);
 		ToolkitCameraView.SelectedCamera = cameras.FirstOrDefault(x => x.Position != CommunityToolkit.Maui.Core.Primitives.CameraPosition.Front);
-
-		await Task.Delay(1000);
-		await ToolkitCameraView.StartCameraPreview(CancellationToken.None);
-
-		PeriodicTimer timer = new(TimeSpan.FromMilliseconds(3000));
-		while (await timer.WaitForNextTickAsync())
-		{
-			await ToolkitCameraView.CaptureImage(CancellationToken.None);
-		}
 	}
 
 	protected override void OnDisappearing()
@@ -45,34 +44,32 @@ public partial class CommunityToolkitCameraPage : ContentPage
 
 	private async void OnMediaCaptured(object? sender, MediaCapturedEventArgs e)
 	{
-		try
+		var image = (PlatformImage)PlatformImage.FromStream(e.Media);
+		var result = barcodeReader.Decode(new ImageLuminanceSource(image));
+		if (result is null)
 		{
-			var image = PlatformImage.FromStream(e.Media);
-#if ANDROID
-			var results = barcodeReader.Decode(image.AsBitmap());
-#elif IOS || MACCATALYST
-			var results = barcodeReader.Decode(image.AsUIImage());
-#elif WINDOWS
-			var softwareBitmap = SoftwareBitmap.CreateCopyFromBuffer(
-				image.AsBytes().AsBuffer(),
-				BitmapPixelFormat.Rgba16,
-				(int)image.Width,
-				(int)image.Height);
-			var results = barcodeReader.Decode(softwareBitmap);
-#else
-			var results = new List<BarcodeResult>();
-#endif
-			foreach (var result in results ?? [])
-			{
-				await MainThread.InvokeOnMainThreadAsync(async () =>
-				{
-					await Toast.Make(result.Text, ToastDuration.Long).Show();
-				});
-			}
+			return;
 		}
-		catch (Exception exception)
+
+		await MainThread.InvokeOnMainThreadAsync(async () =>
 		{
-			Console.WriteLine(exception);
+			await Toast.Make(result.Text, ToastDuration.Long).Show();
+		});
+	}
+
+	private async void StartButton_OnClicked(object? sender, EventArgs e)
+	{
+		await ToolkitCameraView.StartCameraPreview(CancellationToken.None);
+		timer = new(TimeSpan.FromMilliseconds(3000));
+		while (await timer.WaitForNextTickAsync())
+		{
+			await ToolkitCameraView.CaptureImage(CancellationToken.None);
 		}
+	}
+
+	private void StopButton_OnClicked(object? sender, EventArgs e)
+	{
+		timer.Dispose();
+		ToolkitCameraView.StopCameraPreview();
 	}
 }

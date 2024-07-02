@@ -5,12 +5,16 @@
              x:Class="MauiBarcode.ZxingCameraPage">
 
 
-	<maui:CameraView
-             x:Name="ZxingCameraView"
-             AutoStartPreview="True"
-             HeightRequest="300"
-             WidthRequest="300"
-             BarCodeDetectionEnabled="True"
-             ControlBarcodeResultDuplicate="True"/>
+	<VerticalStackLayout>
+		<maui:CameraView
+	             x:Name="ZxingCameraView"
+	             AutoStartPreview="True"
+	             HeightRequest="300"
+	             WidthRequest="300"
+	             BarCodeDetectionEnabled="True"
+	             ControlBarcodeResultDuplicate="True"/>
+		<Button Text ="Start" Clicked="StartButton_OnClicked"></Button>
+		<Button Text ="Stop" Clicked="StopButton_OnClicked"></Button>
+	</VerticalStackLayout>
 
 </ContentPage>

@@ -4,8 +4,10 @@
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="MauiBarcode.CommunityToolkitCameraPage">
 
-	<Grid>
+	<Grid RowDefinitions="*, auto, auto">
 		<toolkit:CameraView x:Name="ToolkitCameraView" />
+		<Button Grid.Row="1" Text ="Start" Clicked="StartButton_OnClicked"></Button>
+		<Button Grid.Row="2" Text ="Stop" Clicked="StopButton_OnClicked"></Button>
 	</Grid>
 
 </ContentPage>
