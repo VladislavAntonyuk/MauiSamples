@@ -3,10 +3,16 @@ using Application = Microsoft.Maui.Controls.Application;
 
 public partial class App : Application
 {
-	public App(IServiceProvider serviceProvider)
-	{
-		InitializeComponent();
+	private readonly MainPage mainPage;
 
-		MainPage = serviceProvider.GetRequiredService<MainPage>();
+	public App(MainPage mainPage)
+	{
+		this.mainPage = mainPage;
+		InitializeComponent();
+	}
+
+	protected override Window CreateWindow(IActivationState? activationState)
+	{
+		return new Window(mainPage);
 	}
 }

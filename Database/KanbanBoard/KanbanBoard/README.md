@@ -1,19 +1,19 @@
 # KanbanBoard
 
-!INCLUDE "./md/header.mdpp"
+[![Buy Me A Coffee](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/misc/bmc-button.png)](https://www.buymeacoffee.com/vlad.antonyuk)
 
 Article: https://vladislavantonyuk.github.io/articles/Creating-Kanban-Board-using-Xamarin-Forms-5
 
 ## Build
 ```pwsh
 dotnet ef dbcontext optimize -o Models\Optimized -c KanbanBoardDbContext -n KanbanBoard
-dotnet build KanbanBoard.csproj -t:Run -f net8.0-android
+dotnet build KanbanBoard.csproj -t:Run -f net9.0-android
 
 xcrun simctl list devices
-dotnet build KanbanBoard.csproj -t:Run -f net8.0-ios -p:_DeviceName=:v2:udid=XXX
-dotnet build KanbanBoard.csproj -t:Run -f net8.0-maccatalyst
-dotnet build KanbanBoard.csproj -t:Run -f net8.0-windows10.0.19041.0
-dotnet build KanbanBoard.csproj -t:Run -f net8.0-tizen
+dotnet build KanbanBoard.csproj -t:Run -f net9.0-ios -p:_DeviceName=:v2:udid=XXX
+dotnet build KanbanBoard.csproj -t:Run -f net9.0-maccatalyst
+dotnet build KanbanBoard.csproj -t:Run -f net9.0-windows10.0.19041.0
+dotnet build KanbanBoard.csproj -t:Run -f net9.0-tizen
 ```
 
 ## Images
@@ -38,4 +38,4 @@ dotnet build KanbanBoard.csproj -t:Run -f net8.0-tizen
 
 ![Delete column](https://user-images.githubusercontent.com/33021114/109400007-ddc4bc00-794e-11eb-94a4-ebf858198c6d.png)
 
-!INCLUDE "./md/footer.mdpp"
+[![Stand With Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd700.svg?labelColor=0057b7)](https://stand-with-ukraine.pp.ua)

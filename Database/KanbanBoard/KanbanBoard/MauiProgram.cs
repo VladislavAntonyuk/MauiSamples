@@ -5,6 +5,8 @@ using KanbanBoard.Models;
 
 namespace KanbanBoard;
 
+using KanbanBoardDb;
+
 public static class MauiProgram
 {
 	public static MauiApp CreateMauiApp()

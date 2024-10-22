@@ -15,10 +15,10 @@ public partial class LoginPage : ContentPage
 		BindingContext = this.loginViewModel;
 	}
 
-	protected override void OnNavigatedTo(NavigatedToEventArgs args)
+	protected override async void OnNavigatedTo(NavigatedToEventArgs args)
 	{
 		base.OnNavigatedTo(args);
-		loginViewModel.Initialize();
+		await loginViewModel.Initialize();
 	}
 }
 
@@ -30,9 +30,9 @@ public partial class LoginViewModel(IConfigCatClient configCatClient, UserContex
 	[ObservableProperty]
 	string title = "Login";
 
-	public void Initialize()
+	public async Task Initialize()
 	{
-		Title = configCatClient.GetValue("beta", false) ? "Beta Login" : "Login";
+		Title = await configCatClient.GetValueAsync("beta", false) ? "Beta Login" : "Login";
 	}
 
 	[RelayCommand]
@@ -44,6 +44,12 @@ public partial class LoginViewModel(IConfigCatClient configCatClient, UserContex
 		}
 
 		userContext.Email = Email;
-		await ((AppShell)Application.Current!.MainPage!).GoToAsync("///MainPage");
+		var page = Application.Current?.Windows.LastOrDefault()?.Page as AppShell;
+		if (page is null)
+		{
+			ArgumentNullException.ThrowIfNull(page);
+		}
+
+		await page.GoToAsync("///MainPage");
 	}
 }

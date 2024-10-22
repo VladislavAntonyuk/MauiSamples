@@ -52,7 +52,8 @@ public partial class MainPageViewModel(
 	void Help()
 	{
 		var help = new Help();
-		Application.Current?.MainPage?.ShowPopup(help);
+		var page = Application.Current?.Windows.LastOrDefault()?.Page;
+		page?.ShowPopup(help);
 	}
 
 	[RelayCommand]
@@ -63,7 +64,8 @@ public partial class MainPageViewModel(
 			Stream = async (c) => await DrawingView.GetImageStream(
 Lines, new Size(1000, 1000), Background)
 		});
-		Application.Current?.MainPage?.ShowPopup(preview);
+		var page = Application.Current?.Windows.LastOrDefault()?.Page;
+		page?.ShowPopup(preview);
 	}
 
 	[RelayCommand]

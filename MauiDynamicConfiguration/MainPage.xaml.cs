@@ -15,10 +15,10 @@ public partial class MainPage : ContentPage
 		BindingContext = mainViewModel;
 	}
 
-	protected override void OnNavigatedTo(NavigatedToEventArgs args)
+	protected override async void OnNavigatedTo(NavigatedToEventArgs args)
 	{
 		base.OnNavigatedTo(args);
-		mainViewModel.Initialize();
+		await mainViewModel.Initialize();
 	}
 }
 
@@ -37,26 +37,32 @@ public partial class MainViewModel : ObservableObject
 	public MainViewModel(IConfigCatClient configCatClient, UserContext userContext)
 	{
 		this.configCatClient = configCatClient;
-		configCatClient.ConfigChanged += (_, _) =>
+		configCatClient.ConfigChanged += async (_, _) =>
 		{
-			Initialize();
+			await Initialize();
 		};
 		this.userContext = userContext;
 	}
 
-	public void Initialize()
+	public async Task Initialize()
 	{
-		Title = this.configCatClient.GetValue("beta_gmailusers_mainpagetitle", "Main Page", new User(userContext.Email)
+		Title = await configCatClient.GetValueAsync("beta_gmailusers_mainpagetitle", "Main Page", new User(userContext.Email)
 		{
 			Email = userContext.Email
 		});
-		Image = this.configCatClient.GetValue("beta", false) ? "botbeta.png" : "bot.png";
+		Image = await configCatClient.GetValueAsync("beta", false) ? "botbeta.png" : "bot.png";
 	}
 
 	[RelayCommand]
 	private async Task Logout()
 	{
 		userContext.Email = string.Empty;
-		await ((AppShell)Application.Current!.MainPage!).GoToAsync("///LoginPage");
+		var page = Application.Current?.Windows.LastOrDefault()?.Page as AppShell;
+		if (page is null)
+		{
+			ArgumentNullException.ThrowIfNull(page);
+		}
+
+		await page.GoToAsync("///LoginPage");
 	}
 }

@@ -1,5 +1,6 @@
 ﻿namespace KanbanBoard;
 using KanbanBoard.Models;
+using KanbanBoardDb;
 using Microsoft.EntityFrameworkCore;
 using Application = Microsoft.Maui.Controls.Application;
 
@@ -11,8 +12,17 @@ public partial class App : Application
 	{
 		InitializeComponent();
 		this.serviceProvider = serviceProvider;
+	}
+
+	protected override void OnStart()
+	{
+		base.OnStart();
 		AddTestData().Wait();
-		MainPage = serviceProvider.GetRequiredService<MainPage>();
+	}
+
+	protected override Window CreateWindow(IActivationState? activationState)
+	{
+		return new Window(serviceProvider.GetRequiredService<MainPage>());
 	}
 
 	private async Task AddTestData()
@@ -24,12 +34,12 @@ public partial class App : Application
 		var items = await appContext.Columns.Include(x => x.Cards).ToArrayAsync();
 		if (items.Length == 0)
 		{
-			var todoColumn = new Column
+			var todoColumn = new KanbanColumn
 			{
 				Name = "ToDo",
 				Order = 0
 			};
-			var inProgressColumn = new Column
+			var inProgressColumn = new KanbanColumn
 			{
 				Name = "In Progress",
 				Order = 1,
@@ -37,27 +47,27 @@ public partial class App : Application
 			};
 			await appContext.AddAsync(todoColumn);
 			await appContext.AddAsync(inProgressColumn);
-			await appContext.AddAsync(new Column
+			await appContext.AddAsync(new KanbanColumn
 			{
 				Name = "Done",
 				Order = 2
 			});
 
-			await appContext.AddAsync(new Card
+			await appContext.AddAsync(new KanbanCard
 			{
 				Name = "Card 1",
 				Description = "Description for card 1",
 				Order = 0,
 				Column = todoColumn
 			});
-			await appContext.AddAsync(new Card
+			await appContext.AddAsync(new KanbanCard
 			{
 				Name = "Card 2",
 				Description = "Description for card 2",
 				Order = 1,
 				Column = todoColumn
 			});
-			await appContext.AddAsync(new Card
+			await appContext.AddAsync(new KanbanCard
 			{
 				Name = "Card 3",
 				Description = "Description for card 3",

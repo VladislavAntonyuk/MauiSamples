@@ -67,7 +67,6 @@ public sealed partial class MainPage : ContentPage, IDisposable
 
 	public void Dispose()
 	{
-		CalendarView.Handler?.DisconnectHandler();
 		Accelerometer.Default.ShakeDetected -= ShakeDetected;
 		Accelerometer.Default.ReadingChanged -= ReadingChanged;
 		Accelerometer.Default.Stop();

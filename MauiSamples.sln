@@ -16,11 +16,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiSqliteBlazor", "Databas
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqliteRepository", "Database\Sqlite\SqliteRepository\SqliteRepository.csproj", "{13DAE136-5BF2-460C-BFD7-7BDB0785C935}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KanbanBoard", "KanbanBoard\KanbanBoard.csproj", "{5E4780D5-8A16-44CE-975D-155E578351D0}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CE4ABC8D-3F54-49AA-BA5A-DD47E7CEB56B}"
 	ProjectSection(SolutionItems) = preProject
 		Directory.Build.props = Directory.Build.props
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 		NuGet.config = NuGet.config
 		README.mdpp = README.mdpp
 		SETUP.md = SETUP.md
@@ -151,6 +150,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiNotifications", "MauiNo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MauiBarcode", "MauiBarcode\MauiBarcode.csproj", "{584461EF-67BC-4D25-9438-0EE988136D97}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "KanbanBoard", "KanbanBoard", "{67B66400-3DDB-4BC2-8468-D265CDE7381B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KanbanBoardDb", "Database\KanbanBoard\KanbanBoardDb\KanbanBoardDb.csproj", "{DF18E324-7098-44A5-A56C-84C728D1AAE2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KanbanBoard", "Database\KanbanBoard\KanbanBoard\KanbanBoard.csproj", "{A3722C8A-F863-4B36-9891-DF3480D64F2C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -191,12 +196,6 @@ Global
 		{13DAE136-5BF2-460C-BFD7-7BDB0785C935}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13DAE136-5BF2-460C-BFD7-7BDB0785C935}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13DAE136-5BF2-460C-BFD7-7BDB0785C935}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5E4780D5-8A16-44CE-975D-155E578351D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5E4780D5-8A16-44CE-975D-155E578351D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5E4780D5-8A16-44CE-975D-155E578351D0}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{5E4780D5-8A16-44CE-975D-155E578351D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5E4780D5-8A16-44CE-975D-155E578351D0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5E4780D5-8A16-44CE-975D-155E578351D0}.Release|Any CPU.Deploy.0 = Release|Any CPU
 		{6BF7A52A-311B-41C0-A112-3D8A06DA12FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6BF7A52A-311B-41C0-A112-3D8A06DA12FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BF7A52A-311B-41C0-A112-3D8A06DA12FF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
@@ -455,6 +454,14 @@ Global
 		{584461EF-67BC-4D25-9438-0EE988136D97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{584461EF-67BC-4D25-9438-0EE988136D97}.Release|Any CPU.Build.0 = Release|Any CPU
 		{584461EF-67BC-4D25-9438-0EE988136D97}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{DF18E324-7098-44A5-A56C-84C728D1AAE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF18E324-7098-44A5-A56C-84C728D1AAE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF18E324-7098-44A5-A56C-84C728D1AAE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF18E324-7098-44A5-A56C-84C728D1AAE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3722C8A-F863-4B36-9891-DF3480D64F2C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3722C8A-F863-4B36-9891-DF3480D64F2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3722C8A-F863-4B36-9891-DF3480D64F2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3722C8A-F863-4B36-9891-DF3480D64F2C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -484,6 +491,9 @@ Global
 		{5411B28C-9E39-4FAF-BC6E-448C0DC9F0BC} = {A4982784-AAC5-4C47-A1F8-A0A9DB51D531}
 		{80BC6E88-5A41-426D-B625-B8EEE1453FF0} = {E08722A6-C1B6-4C83-983C-809BF721D6F1}
 		{8782844B-0C34-42AE-8BF9-E2DB2CC95495} = {E08722A6-C1B6-4C83-983C-809BF721D6F1}
+		{67B66400-3DDB-4BC2-8468-D265CDE7381B} = {D3C704D0-FB95-42BA-BBF1-E7360491551F}
+		{DF18E324-7098-44A5-A56C-84C728D1AAE2} = {67B66400-3DDB-4BC2-8468-D265CDE7381B}
+		{A3722C8A-F863-4B36-9891-DF3480D64F2C} = {67B66400-3DDB-4BC2-8468-D265CDE7381B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61F7FB11-1E47-470C-91E2-47F8143E1572}

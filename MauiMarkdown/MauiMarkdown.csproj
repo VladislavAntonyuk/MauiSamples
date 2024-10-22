@@ -29,7 +29,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="M.BindableProperty.Generator" Version="0.11.1" />
-		<PackageReference Include="Microsoft.Maui.Graphics.Text.Markdig" Version="8.0.21" />
+		<PackageReference Include="Microsoft.Maui.Graphics.Text.Markdig" Version="9.0.0-rc.2.24503.2" />
 	</ItemGroup>
 
 </Project>

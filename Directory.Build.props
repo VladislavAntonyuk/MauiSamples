@@ -2,12 +2,12 @@
 <Project>
 
 	<PropertyGroup Condition="'$(CI)' == 'true' and $([MSBuild]::IsOSPlatform('windows')) == 'true'">
-		<IncludeTizenTargetFrameworks>true</IncludeTizenTargetFrameworks>
+		<IncludeTizenTargetFrameworks>false</IncludeTizenTargetFrameworks>
 	</PropertyGroup>
 
 	<PropertyGroup>
 		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
-		<NetVersion>net8.0</NetVersion>
+		<NetVersion>net9.0</NetVersion>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -18,8 +18,10 @@
 		<SingleProject>true</SingleProject>
 		<Nullable>enable</Nullable>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-		<NoWarn>$(NoWarn);NU1603</NoWarn>
+		<NoWarn>$(NoWarn);NU1603;NU1902;NU1903</NoWarn>
 		<ImplicitUsings>enable</ImplicitUsings>
+
+		<MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">16.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">16.0</SupportedOSPlatformVersion>
@@ -67,7 +69,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.21" />
-		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.21" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.0-rc.2.24503.2" />
 	</ItemGroup>
 </Project>

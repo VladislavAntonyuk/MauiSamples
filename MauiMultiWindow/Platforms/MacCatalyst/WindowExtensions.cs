@@ -8,7 +8,7 @@ public static class WindowExtensions
 {
 	public static Task<T?> OpenModalWindowAsync<T>(this Window parentWindow, ModalWindow<T> content)
 	{
-		ArgumentNullException.ThrowIfNull(parentWindow.Handler.MauiContext);
+		ArgumentNullException.ThrowIfNull(parentWindow.Handler?.MauiContext);
 		var taskCompletionSource = new TaskCompletionSource<T?>();
 		var parentUIWindow = parentWindow.Handler.PlatformView as UIWindow ?? throw new Exception();
 
@@ -36,13 +36,12 @@ public static class WindowExtensions
 	private static (UIView, CGSize) GetContentView(VisualElement content, IMauiContext mauiContext)
 	{
 		var contentView = content.ToPlatform(mauiContext);
-		var contentSize =
-			content.Measure(double.PositiveInfinity, double.PositiveInfinity, MeasureFlags.IncludeMargins);
+		var contentSize = content.Measure(double.PositiveInfinity, double.PositiveInfinity);
 
-		var preferredContentSize = contentSize.Request.ToCGSize() + new CGSize(50, 50);
-		contentView.Frame = new CGRect((preferredContentSize.Width - contentSize.Request.Width) / 2,
-									   (preferredContentSize.Height - contentSize.Request.Height) / 2,
-									   contentSize.Request.Width, contentSize.Request.Height);
+		var preferredContentSize = contentSize.ToCGSize() + new CGSize(50, 50);
+		contentView.Frame = new CGRect((preferredContentSize.Width - contentSize.Width) / 2,
+									   (preferredContentSize.Height - contentSize.Height) / 2,
+									   contentSize.Width, contentSize.Height);
 
 		return (contentView, preferredContentSize);
 	}

@@ -6,6 +6,7 @@ using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using KanbanBoardDb;
 using Microsoft.EntityFrameworkCore;
 using Models;
 
@@ -31,13 +32,13 @@ public partial class MainPageViewModel : ObservableObject
 	[RelayCommand]
 	async Task Drop(ColumnInfo? columnInfo)
 	{
-		if (dragCard is null || columnInfo is null || columnInfo.Column.Cards.Count >= columnInfo.Column.Wip) return;
+		if (dragCard is null || columnInfo is null || columnInfo.KanbanColumn.Cards.Count >= columnInfo.KanbanColumn.Wip) return;
 
-		var cardToUpdate = await dbContext.Cards.FirstOrDefaultAsync(x => x.Id == dragCard.Card.Id);
+		var cardToUpdate = await dbContext.Cards.FirstOrDefaultAsync(x => x.Id == dragCard.KanbanCard.Id);
 		if (cardToUpdate is not null)
 		{
-			cardToUpdate.ColumnId = columnInfo.Column.Id;
-			UpdateCardsOrder(columnInfo.Column);
+			cardToUpdate.ColumnId = columnInfo.KanbanColumn.Id;
+			UpdateCardsOrder(columnInfo.KanbanColumn);
 			await dbContext.SaveChangesAsync();
 		}
 
@@ -49,7 +50,7 @@ public partial class MainPageViewModel : ObservableObject
 	async Task DropOnCard(CardInfo? card)
 	{
 		if (card is null) return;
-		var columnInfo = Columns.FirstOrDefault(x => x.Column.Cards.Contains(card.Card));
+		var columnInfo = Columns.FirstOrDefault(x => x.KanbanColumn.Cards.Contains(card.KanbanCard));
 		if (columnInfo is null) return;
 		await Drop(columnInfo);
 	}
@@ -58,14 +59,14 @@ public partial class MainPageViewModel : ObservableObject
 	void ItemDragOver(CardInfo card)
 	{
 		card.IsDragOver = true;
-		Debug.WriteLine($"ItemDraggedOver : {card.Card.Name}");
+		Debug.WriteLine($"ItemDraggedOver : {card.KanbanCard.Name}");
 	}
 
 	[RelayCommand]
 	void ItemDragLeave(CardInfo card)
 	{
 		card.IsDragOver = false;
-		Debug.WriteLine($"ItemDraggedLeave : {card.Card.Name}");
+		Debug.WriteLine($"ItemDraggedLeave : {card.KanbanCard.Name}");
 	}
 
 	[RelayCommand]
@@ -119,7 +120,7 @@ public partial class MainPageViewModel : ObservableObject
 			int.TryParse(wipString, out wip);
 		} while (wip < 0);
 
-		var column = new Column { Name = columnName, Wip = wip, Order = Columns.Count + 1 };
+		var column = new KanbanColumn { Name = columnName, Wip = wip, Order = Columns.Count + 1 };
 		await dbContext.Columns.AddAsync(column);
 		await dbContext.SaveChangesAsync();
 		await Refresh();
@@ -142,7 +143,7 @@ public partial class MainPageViewModel : ObservableObject
 		if (string.IsNullOrWhiteSpace(cardName)) return;
 
 		var cardDescription = await UserPromptAsync("New card", "Enter card description", Keyboard.Default);
-		await dbContext.Cards.AddAsync(new Card
+		await dbContext.Cards.AddAsync(new KanbanCard
 		{
 			Name = cardName,
 			Description = cardDescription,
@@ -159,17 +160,17 @@ public partial class MainPageViewModel : ObservableObject
 	async Task DeleteCard(CardInfo? card)
 	{
 		if (card is null) return;
-		var result = await AlertAsync("Delete card", $"Do you want to delete card \"{card.Card.Name}\"?");
+		var result = await AlertAsync("Delete card", $"Do you want to delete card \"{card.KanbanCard.Name}\"?");
 		if (!result) return;
 
 		await SnackbarAsync("The card is removed", "Cancel", async () =>
 		{
 			await ToastAsync("Task is cancelled");
-			await dbContext.Cards.AddAsync(card.Card);
+			await dbContext.Cards.AddAsync(card.KanbanCard);
 			await dbContext.SaveChangesAsync();
 			await Refresh();
 		});
-		dbContext.Cards.Remove(card.Card);
+		dbContext.Cards.Remove(card.KanbanCard);
 		await dbContext.SaveChangesAsync();
 		await Refresh();
 	}
@@ -179,17 +180,17 @@ public partial class MainPageViewModel : ObservableObject
 	{
 		if (columnInfo is null) return;
 		var result = await AlertAsync("Delete column",
-			$"Do you want to delete column \"{columnInfo.Column.Name}\" and all its cards?");
+			$"Do you want to delete column \"{columnInfo.KanbanColumn.Name}\" and all its cards?");
 		if (!result) return;
 
 		await SnackbarAsync("The column is removed", "Cancel", async () =>
 		{
-			await dbContext.Columns.AddAsync(columnInfo.Column);
+			await dbContext.Columns.AddAsync(columnInfo.KanbanColumn);
 			await dbContext.SaveChangesAsync();
 			await Refresh();
 		});
 
-		await dbContext.Columns.Where(x => x.Id == columnInfo.Column.Id).ExecuteDeleteAsync();
+		await dbContext.Columns.Where(x => x.Id == columnInfo.KanbanColumn.Id).ExecuteDeleteAsync();
 		await Refresh();
 	}
 
@@ -206,7 +207,7 @@ public partial class MainPageViewModel : ObservableObject
 		Position = 0;
 	}
 
-	private static ColumnInfo OrderCards(Column c, int columnNumber)
+	private static ColumnInfo OrderCards(KanbanColumn c, int columnNumber)
 	{
 		c.Cards = c.Cards.OrderBy(card => card.Order).ToObservableCollection();
 		return new ColumnInfo(columnNumber, c);
@@ -214,16 +215,18 @@ public partial class MainPageViewModel : ObservableObject
 
 	private static Task<bool> AlertAsync(string title, string message)
 	{
-		return Application.Current?.MainPage is null ?
+		var currentPage = Application.Current?.Windows.LastOrDefault()?.Page;
+		return currentPage is null ?
 			Task.FromResult(false) :
-			Application.Current.MainPage.DisplayAlert(title, message, "Yes", "No");
+			currentPage.DisplayAlert(title, message, "Yes", "No");
 	}
 
 	private static Task<string> UserPromptAsync(string title, string message, Keyboard keyboard)
 	{
-		return Application.Current?.MainPage is null ?
+		var currentPage = Application.Current?.Windows.LastOrDefault()?.Page;
+		return currentPage is null ?
 			Task.FromResult(string.Empty) :
-			Application.Current.MainPage.DisplayPromptAsync(title, message, keyboard: keyboard);
+			currentPage.DisplayPromptAsync(title, message, keyboard: keyboard);
 	}
 
 	private static Task SnackbarAsync(string title, string buttonText, Action action)
@@ -241,12 +244,12 @@ public partial class MainPageViewModel : ObservableObject
 		return Toast.Make(title, ToastDuration.Long, 26d).Show();
 	}
 
-	private void UpdateCardsOrder(Column column)
+	private void UpdateCardsOrder(KanbanColumn kanbanColumn)
 	{
-		var cards = column.Cards.OrderBy(x => x.Order).ToList();
+		var cards = kanbanColumn.Cards.OrderBy(x => x.Order).ToList();
 		for (int i = 0; i < cards.Count; i++)
 		{
-			column.Cards[i].Order = i;
+			kanbanColumn.Cards[i].Order = i;
 		}
 	}
 }

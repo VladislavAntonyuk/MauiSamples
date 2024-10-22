@@ -39,9 +39,8 @@ public class CalendarMaterialHandler(IPropertyMapper mapper, CommandMapper? comm
 	private void PlatformView_SelectedDatesChanged(object? sender, CalendarDayClickEventArgs e)
 	{
 		var calendar = e.CalendarDay.Calendar;
-		var time = TimeSpan.FromMilliseconds(calendar.TimeInMillis);
-		var result = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-		VirtualView.SelectedDate = new DateTimeOffset(result.Add(time).Add(TimeSpan.FromMilliseconds(calendar.TimeZone.RawOffset)));
+		var result = new DateTimeOffset(new DateTime(1970, 1, 1, 0, 0, 0));
+		VirtualView.SelectedDate = result.AddMilliseconds(calendar.TimeInMillis).Add(result.Offset);
 		VirtualView.OnSelectedDateChanged(VirtualView.SelectedDate);
 	}
 

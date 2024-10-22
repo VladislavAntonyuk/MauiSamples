@@ -25,7 +25,7 @@ The development guide can be found at [SETUP.md](./SETUP.md).
 
 1. [MauiMultiWindow](MauiMultiWindow) - Work with .NET MAUI Windows.
 
-1. [KanbanBoard](KanbanBoard) - Replicate Kanban board. Drag & Drop Cards, Set Column WIP, Store data in Local Db
+1. [KanbanBoard](Database/KanbanBoard) - Replicate Kanban board. Drag & Drop Cards, Set Column WIP, Store data in Local Db
 
 1. [TutorialHelp](TutorialHelp) - Interactive app tutorial in .NET MAUI using CommunityToolkit.Maui Popup.
 

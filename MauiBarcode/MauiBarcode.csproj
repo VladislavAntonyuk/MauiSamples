@@ -25,14 +25,14 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == '$(NetVersion)-android'">
-		<PackageReference Include="Xamarin.AndroidX.Collection.Ktx" Version="1.4.0.1" />
+		<PackageReference Include="Xamarin.AndroidX.Collection.Ktx" Version="1.4.3.1" />
 		<PackageReference Include="Xamarin.GooglePlayServices.Code.Scanner" Version="116.1.0.4" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <PackageReference Include="Camera.MAUI.ZXing" Version="1.0.0" />
-	  <PackageReference Include="CommunityToolkit.Maui.Camera" Version="1.0.3" />
-	  <PackageReference Include="CommunityToolkit.Maui" Version="9.0.2" />
+	  <PackageReference Include="CommunityToolkit.Maui.Camera" Version="1.0.5" />
+	  <PackageReference Include="CommunityToolkit.Maui" Version="9.1.0" />
 	</ItemGroup>
 
 </Project>

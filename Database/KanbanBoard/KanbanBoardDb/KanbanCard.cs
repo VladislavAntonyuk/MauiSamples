@@ -1,6 +1,6 @@
-﻿namespace KanbanBoard.Models;
+﻿namespace KanbanBoardDb;
 
-public sealed class Card
+public sealed class KanbanCard
 {
 	public int Id { get; set; }
 
@@ -12,5 +12,5 @@ public sealed class Card
 
 	public int ColumnId { get; set; }
 
-	public Column? Column { get; set; }
+	public KanbanColumn? Column { get; set; }
 }

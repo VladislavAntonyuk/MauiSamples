@@ -4,7 +4,8 @@ public static class FigureExtensions
 {
 	public static async Task<T?> SetParameter<T>(string parameterName)
 	{
-		if (Application.Current?.MainPage is null)
+		var page = Application.Current?.Windows.LastOrDefault()?.Page;
+		if (page is null)
 		{
 			return default;
 		}
@@ -13,7 +14,7 @@ public static class FigureExtensions
 		bool isValid;
 		do
 		{
-			var value = await Application.Current.MainPage.DisplayPromptAsync("Set parameter", parameterName);
+			var value = await page.DisplayPromptAsync("Set parameter", parameterName);
 			try
 			{
 				result = (T)Convert.ChangeType(value, typeof(T));

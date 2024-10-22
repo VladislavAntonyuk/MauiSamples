@@ -49,12 +49,12 @@ public partial class CardPageViewModel : ObservableObject
 	[RelayCommand]
 	Task More()
 	{
-		return GetMainPage().GoToAsync("//home/profile", true);
-	}
+		var page = Application.Current?.Windows.LastOrDefault()?.Page as AppShell;
+		if (page is null)
+		{
+			return Task.CompletedTask;
+		}
 
-	AppShell GetMainPage()
-	{
-		ArgumentNullException.ThrowIfNull(Application.Current?.MainPage);
-		return (AppShell)Application.Current.MainPage;
+		return page.GoToAsync("//home/profile", true);
 	}
 }

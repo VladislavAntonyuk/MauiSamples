@@ -1,7 +1,8 @@
-﻿namespace KanbanBoard.Models;
+﻿namespace KanbanBoardDb;
+
 using System.Collections.ObjectModel;
 
-public sealed class Column
+public sealed class KanbanColumn
 {
 	public int Id { get; set; }
 
@@ -9,7 +10,7 @@ public sealed class Column
 
 	public int Wip { get; set; } = int.MaxValue;
 
-	public ObservableCollection<Card> Cards { get; set; } = new();
+	public ObservableCollection<KanbanCard> Cards { get; set; } = new();
 
 	public int Order { get; set; }
 }

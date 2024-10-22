@@ -8,8 +8,11 @@ public partial class App
 	{
 		this.deviceInstallationService = deviceInstallationService;
 		InitializeComponent();
+	}
 
-		MainPage = new AppShell();
+	protected override Window CreateWindow(IActivationState? activationState)
+	{
+		return new Window(new AppShell());
 	}
 
 	protected override async void OnStart()

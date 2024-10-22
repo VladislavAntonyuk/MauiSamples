@@ -5,9 +5,13 @@ public partial class App : Application
 	public App()
 	{
 		InitializeComponent();
+	}
+
+	protected override Window CreateWindow(IActivationState? activationState)
+	{
 		if (DeviceInfo.Idiom == DeviceIdiom.Phone)
 		{
-			MainPage = new ContentPage
+			return new Window(new ContentPage
 			{
 				Content = new Label
 				{
@@ -15,11 +19,9 @@ public partial class App : Application
 					VerticalOptions = LayoutOptions.Center,
 					HorizontalOptions = LayoutOptions.Center
 				}
-			};
+			});
 		}
-		else
-		{
-			MainPage = new AppShell();
-		}
+
+		return new Window(new AppShell());
 	}
 }

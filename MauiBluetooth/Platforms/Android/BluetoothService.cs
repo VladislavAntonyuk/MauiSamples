@@ -93,7 +93,7 @@ public class BluetoothService(IAdapter adapter) : IBluetoothService
 		}
 
 		byte[] content = new byte[1024];
-		await socket.InputStream.ReadAsync(content, 0, content.Length);
+		await socket.InputStream.ReadExactlyAsync(content, 0, content.Length);
 		return content;
 
 	}

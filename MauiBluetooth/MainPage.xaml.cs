@@ -46,10 +46,14 @@ public partial class MainPageViewModel(IAdapter adapter, IBluetoothService bluet
 		try
 		{
 			await adapter.ConnectToDeviceAsync(device, cancellationToken: cancellationToken);
-			if (Application.Current?.MainPage != null)
+			var page = Application.Current?.Windows.LastOrDefault()?.Page;
+			if (page is null)
 			{
-				await Application.Current.MainPage.ShowPopupAsync(new DetailsPage(device, bluetoothService));
+				ArgumentNullException.ThrowIfNull(page);
 			}
+
+			await page.ShowPopupAsync(new DetailsPage(device, bluetoothService), token: cancellationToken);
+
 		}
 		catch (DeviceConnectionException e)
 		{

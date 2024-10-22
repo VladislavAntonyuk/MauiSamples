@@ -13,7 +13,12 @@ public partial class ProfilePageViewModel : ObservableObject
 
 	AppShell GetMainPage()
 	{
-		ArgumentNullException.ThrowIfNull(Application.Current?.MainPage);
-		return (AppShell)Application.Current.MainPage;
+		var page = Application.Current?.Windows.LastOrDefault()?.Page as AppShell;
+		if (page is null)
+		{
+			ArgumentNullException.ThrowIfNull(page);
+		}
+
+		return page;
 	}
 }

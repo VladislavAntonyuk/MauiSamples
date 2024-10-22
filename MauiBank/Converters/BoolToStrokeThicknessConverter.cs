@@ -2,6 +2,7 @@
 
 using System.Globalization;
 
+[AcceptEmptyServiceProvider]
 public class BoolToStrokeThicknessConverter : IValueConverter
 {
 	public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture)

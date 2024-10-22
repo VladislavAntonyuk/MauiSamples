@@ -4,6 +4,7 @@ using UIKit;
 
 namespace MauiShellCustomization;
 
+using Microsoft.Maui.Controls;
 using Microsoft.Maui.Platform;
 
 class CustomShellItemRenderer(IShellContext context) : ShellItemRenderer(context)
@@ -22,8 +23,8 @@ class CustomShellItemRenderer(IShellContext context) : ShellItemRenderer(context
 
 			if (middleView is null)
 			{
-				var image = await tabbar.CenterViewImageSource.GetPlatformImageAsync(
-					Application.Current!.MainPage!.Handler!.MauiContext!);
+				var context = tabbar.Window?.Page?.Handler?.MauiContext ?? Application.Current?.Windows.LastOrDefault()?.Page?.Handler?.MauiContext;
+				var image = await tabbar.CenterViewImageSource.GetPlatformImageAsync(context!);
 
 				middleView = new UIButton(UIButtonType.Custom);
 				middleView.BackgroundColor = tabbar.CenterViewBackgroundColor?.ToPlatform();

@@ -8,7 +8,7 @@ public class CursorBehavior
 	{
 		if (bindable is VisualElement visualElement)
 		{
-			visualElement.SetCustomCursor((CursorIcon)newvalue, Application.Current?.MainPage?.Handler?.MauiContext);
+			visualElement.SetCustomCursor((CursorIcon)newvalue, visualElement.Handler?.MauiContext ?? Application.Current?.Windows.LastOrDefault()?.Page?.Handler?.MauiContext);
 		}
 	}
 

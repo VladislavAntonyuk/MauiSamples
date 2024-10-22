@@ -32,11 +32,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="CommunityToolkit.Maui" Version="9.0.1" />
+	  <PackageReference Include="CommunityToolkit.Maui" Version="9.1.0" />
 	  <PackageReference Include="Microsoft.Azure.NotificationHubs" Version="4.2.0" />
 	</ItemGroup>
 
-	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0-android'">
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
 		<GoogleServicesJson Include="Platforms\Android\google-services.json" />
 		<PackageReference Include="Xamarin.Firebase.Messaging" Version="123.1.2.2" />
 		<PackageReference Include="Xamarin.Google.Dagger" Version="2.39.1" />

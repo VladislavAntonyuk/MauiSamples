@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
      <PropertyGroup>
-        <TargetFrameworks>net8.0-ios</TargetFrameworks>
+        <TargetFrameworks>net9.0-ios</TargetFrameworks>
         <OutputType>Library</OutputType>
 
         <ApplicationId>com.vladislavantonyuk.container.container-ShareExtension</ApplicationId>

@@ -41,9 +41,9 @@ public sealed class AppiumSetup : IDisposable
 #else
 		const string configuration = "Release";
 #endif
-		const string testsPath = $@"Client.iOS.UITests\bin\{configuration}\net8.0";
+		const string testsPath = $@"Client.iOS.UITests\bin\{configuration}\net9.0";
 		var solutionPath = Environment.CurrentDirectory.Replace(testsPath, string.Empty);
-		var path = $@"{solutionPath}Client\bin\{configuration}\net8.0-ios\iossimulator-x64\Client.app";
+		var path = $@"{solutionPath}Client\bin\{configuration}\net9.0-ios\iossimulator-x64\Client.app";
 		testOutputHelper.WriteLine(path);
 		return path;
 	}

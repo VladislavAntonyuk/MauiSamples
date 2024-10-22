@@ -107,7 +107,7 @@
 										Grid.Column="0"
 										FontAttributes="Bold"
 										FontSize="{StaticResource ColumnTitleSize}"
-										Text="{Binding Column.Name}" />
+										Text="{Binding KanbanColumn.Name}" />
 
 									<Label
 										Grid.Column="1"
@@ -116,9 +116,9 @@
 										VerticalOptions="Center">
 										<Label.FormattedText>
 											<FormattedString>
-												<Span Text="{Binding Column.Cards.Count}" />
+												<Span Text="{Binding KanbanColumn.Cards.Count}" />
 												<Span>/</Span>
-												<Span Text="{Binding Column.Wip}" />
+												<Span Text="{Binding KanbanColumn.Wip}" />
 											</FormattedString>
 										</Label.FormattedText>
 									</Label>
@@ -174,13 +174,13 @@
 														Grid.Column="0"
 														FontAttributes="Bold"
 														FontSize="{StaticResource CardTitleSize}"
-														Text="{Binding Card.Name}" />
+														Text="{Binding KanbanCard.Name}" />
 
 													<Label
 														Grid.Row="1"
 														Grid.Column="0"
 														FontSize="{StaticResource CardDescriptionSize}"
-														Text="{Binding Card.Description}"
+														Text="{Binding KanbanCard.Description}"
 														VerticalOptions="End" />
 
 													<ImageButton
@@ -208,7 +208,7 @@
 
 								<Button
 									Command="{Binding BindingContext.AddCardCommand, Source={x:Reference Board}}"
-									CommandParameter="{Binding Column.Id}"
+									CommandParameter="{Binding KanbanColumn.Id}"
 									Text="Add new card" />
 							</VerticalStackLayout>
 						</Border>

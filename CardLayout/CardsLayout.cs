@@ -310,7 +310,7 @@ public partial class CardsLayout : Layout, ILayoutManager
 						totalHeight + Padding.VerticalThickness);
 	}
 
-	public Size Measure(double widthConstraint, double heightConstraint)
+	public new Size Measure(double widthConstraint, double heightConstraint)
 	{
 		widthConstraint -= Padding.HorizontalThickness;
 		heightConstraint -= Padding.VerticalThickness;
