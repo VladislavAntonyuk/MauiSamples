@@ -1,27 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Project>
 
-	<PropertyGroup Condition="'$(CI)' == 'true' and $([MSBuild]::IsOSPlatform('windows')) == 'true'">
-		<IncludeTizenTargetFrameworks>false</IncludeTizenTargetFrameworks>
-	</PropertyGroup>
-
 	<PropertyGroup>
-		<AccelerateBuildsInVisualStudio>true</AccelerateBuildsInVisualStudio>
 		<NetVersion>net9.0</NetVersion>
 	</PropertyGroup>
 
 	<PropertyGroup>
 		<TargetFrameworks>$(NetVersion)-android;$(NetVersion)-ios;$(NetVersion)-maccatalyst</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);$(NetVersion)-windows10.0.19041.0</TargetFrameworks>
-		<TargetFrameworks Condition="'$(IncludeTizenTargetFrameworks)' == 'true'">$(TargetFrameworks);$(NetVersion)-tizen</TargetFrameworks>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<Nullable>enable</Nullable>
-		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
 		<NoWarn>$(NoWarn);NU1603;NU1902;NU1903</NoWarn>
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>
+		<WindowsPackageType>None</WindowsPackageType>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">16.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">16.0</SupportedOSPlatformVersion>
@@ -31,44 +26,7 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
-	<!-- Build Properties must be defined within these property groups to ensure successful publishing
-       to the Mac App Store. See: https://aka.ms/maui-publish-app-store#define-build-properties-in-your-project-file -->
-	<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst' and '$(Configuration)' == 'Debug'">
-		<CodesignEntitlements>Platforms/MacCatalyst/Entitlements.Debug.plist</CodesignEntitlements>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst' and '$(Configuration)' == 'Release'">
-		<CodesignEntitlements>Platforms/MacCatalyst/Entitlements.Release.plist</CodesignEntitlements>
-		<UseHardenedRuntime>true</UseHardenedRuntime>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android' and '$(Configuration)' == 'Debug'">
-		<RuntimeIdentifiers>android-arm;android-arm64;android-x86;android-x64</RuntimeIdentifiers>
-		<EmbedAssembliesIntoApk>true</EmbedAssembliesIntoApk>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows')) == 'false' and $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' and $(Configuration) == 'Release'">
-		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
-		<CodesignEntitlement>Entitlements.plist</CodesignEntitlement>
-		<ArchiveOnBuild>true</ArchiveOnBuild>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows')) == 'false' and $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' and $(Configuration) == 'Debug'">
-		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
-		<RuntimeIdentifier>iossimulator-arm64</RuntimeIdentifier>
-		<CreatePackage>false</CreatePackage>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows')) == 'false' and $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)'))=='maccatalyst'">
-		<RuntimeIdentifiers>maccatalyst-arm64;maccatalyst-x64</RuntimeIdentifiers>
-	</PropertyGroup>
-
-	<PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows' and '$(Configuration)' == 'Release'">
-		<GenerateAppxPackageOnBuild>true</GenerateAppxPackageOnBuild>
-		<AppxPackageSigningEnabled>False</AppxPackageSigningEnabled>
-	</PropertyGroup>
-
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.0-rc.2.24503.2" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.0" />
 	</ItemGroup>
 </Project>

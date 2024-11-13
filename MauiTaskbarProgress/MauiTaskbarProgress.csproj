@@ -24,7 +24,7 @@
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
 	</ItemGroup>
 
-	<ItemGroup Condition="$(TargetFramework.Contains('-windows')) == true">
-	  <PackageReference Include="WindowsAPICodePack" Version="8.0.4" />
+	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-windows10.0.19041.0'">
+	  <PackageReference Include="WindowsAPICodePack" Version="8.0.6" />
 	</ItemGroup>
 </Project>
