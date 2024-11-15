@@ -6,9 +6,7 @@ using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Media;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using OpenAI_API;
-using OpenAI_API.Completions;
-using OpenAI_API.Models;
+using OpenAI.Chat;
 
 public partial class MainPage : ContentPage
 {
@@ -104,15 +102,12 @@ Death to enemies!";
 	async Task ProcessText(string prompt)
 	{
 		var generalPrompt = $"You should return an executable name of the program. example prompt: Execute Word. Expected output WinWord. Do not return extension. So my request: {prompt}";
-		var api = new OpenAIAPI(ApiKey);
-		// https://platform.openai.com/docs/models/model-endpoint-compatibility
-		var result = await api.Completions.CreateCompletionAsync(new CompletionRequest(generalPrompt)
-		{
-			Model = Model.ChatGPTTurbo
-		});
+		https://platform.openai.com/docs/models/model-endpoint-compatibility
 		try
 		{
-			Process.Start(result.Completions[0].Text);
+			var chatClient = new ChatClient("gpt-4o-mini", ApiKey);
+			var result = await chatClient.CompleteChatAsync(generalPrompt);
+			Process.Start(result.Value.Content.ToString());
 		}
 		catch (Exception e)
 		{

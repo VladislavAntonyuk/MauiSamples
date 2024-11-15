@@ -1,0 +1,176 @@
+<Solution>
+  <Folder Name="/AndroidBindableLibraries/">
+    <File Path="AndroidBindableLibraries/Directory.Build.props" />
+    <Project Path="AndroidBindableLibraries/Balloon/Balloon.csproj" />
+    <Project Path="AndroidBindableLibraries/MaterialCalendarView/MaterialCalendarView.csproj" />
+    <Project Path="AndroidBindableLibraries/Sample/Sample.csproj">
+      <Deploy />
+    </Project>
+  </Folder>
+  <Folder Name="/Auth/">
+    <Project Path="Auth/AuthServices/AuthServices.csproj" />
+    <Project Path="Auth/MauiAuth/MauiAuth.csproj">
+      <Deploy />
+    </Project>
+    <Project Path="Auth/MauiAuthBlazor/MauiAuthBlazor.csproj">
+      <Deploy />
+    </Project>
+  </Folder>
+  <Folder Name="/Database/">
+    <Project Path="Database/MauiTaskListApp/MauiTaskListApp.csproj">
+      <Deploy />
+    </Project>
+  </Folder>
+  <Folder Name="/Database/KanbanBoard/">
+    <Project Path="Database/KanbanBoard/KanbanBoard/KanbanBoard.csproj">
+      <Deploy Solution="Debug|*" />
+    </Project>
+    <Project Path="Database/KanbanBoard/KanbanBoardDb/KanbanBoardDb.csproj" />
+  </Folder>
+  <Folder Name="/Database/Sqlite/">
+    <Project Path="Database/Sqlite/MauiSqlite/MauiSqlite.csproj">
+      <Deploy />
+    </Project>
+    <Project Path="Database/Sqlite/MauiSqliteBlazor/MauiSqliteBlazor.csproj">
+      <Deploy />
+    </Project>
+    <Project Path="Database/Sqlite/SqliteRepository/SqliteRepository.csproj" />
+  </Folder>
+  <Folder Name="/iOSExtensions/" />
+  <Folder Name="/iOSExtensions/JokeApp/">
+    <File Path="iOSExtensions/JokeApp/README.md" />
+    <File Path="iOSExtensions/JokeApp/README.mdpp" />
+    <Project Path="iOSExtensions/JokeApp/JokeApp/JokeApp.csproj">
+      <Deploy />
+    </Project>
+    <Project Path="iOSExtensions/JokeApp/JokeAppWidget/JokeAppWidget.csproj">
+      <Deploy />
+    </Project>
+  </Folder>
+  <Folder Name="/iOSExtensions/ShareExtension/">
+    <File Path="iOSExtensions/ShareExtension/README.md" />
+    <File Path="iOSExtensions/ShareExtension/README.mdpp" />
+    <Project Path="iOSExtensions/ShareExtension/AppContainer/AppContainer.csproj">
+      <Deploy />
+    </Project>
+    <Project Path="iOSExtensions/ShareExtension/AppContainerExtension/AppContainerExtension.csproj">
+      <Deploy />
+    </Project>
+  </Folder>
+  <Folder Name="/MauiTests/">
+    <Project Path="MauiTests/Client.Android.UITests/Client.Android.UITests.csproj" />
+    <Project Path="MauiTests/Client.iOS.UITests/Client.iOS.UITests.csproj" />
+    <Project Path="MauiTests/Client.MacCatalyst.UITests/Client.MacCatalyst.UITests.csproj" />
+    <Project Path="MauiTests/Client.Windows.UITests/Client.Windows.UITests.csproj" />
+    <Project Path="MauiTests/Client/Client.csproj">
+      <Deploy />
+    </Project>
+  </Folder>
+  <Folder Name="/Solution Items/">
+    <File Path=".github/workflows/dotnet.yml" />
+    <File Path="Directory.Build.props" />
+    <File Path="NuGet.config" />
+    <File Path="README.mdpp" />
+    <File Path="SETUP.md" />
+  </Folder>
+  <Folder Name="/Solution Items/md/">
+    <File Path="md/footer.mdpp" />
+    <File Path="md/header.mdpp" />
+    <File Path="md/run.ps1" />
+    <File Path="md/thankyou.mdpp" />
+  </Folder>
+  <Project Path="BottomSheet/BottomSheet.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="CardLayout/CardLayout.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="DynamicFab/DynamicFab.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="GitConfiguration/GitConfiguration.csproj" />
+  <Project Path="IPTVPlayer/IPTVPlayer.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MauiAnimation/MauiAnimation.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MauiApplicationInsights/MauiApplicationInsights.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MauiBadge/MauiBadge.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MauiBank/MauiBank.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MauiBarcode/MauiBarcode.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MauiBells/MauiBells.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MauiBlazorPhotoGallery/MauiBlazorPhotoGallery.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MauiBluetooth/MauiBluetooth.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MauiCaptcha/MauiCaptcha.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MauiCursor/MauiCursor.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MauiDraggableView/MauiDraggableView.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MauiDynamicConfiguration/MauiDynamicConfiguration.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MauiImageEffects/MauiImageEffects.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MauiLocalization/MauiLocalization.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MauiMaps/MauiMaps.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MauiMarkdown/MauiMarkdown.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MauiMultiWindow/MauiMultiWindow.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MauiNotifications/MauiNotifications.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MauiPaint/MauiPaint.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MauiShellCustomization/MauiShellCustomization.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MauiSpeech/MauiSpeech.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MauiStaggeredCollectionView/MauiStaggeredCollectionView.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MauiTabView/MauiTabView.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MauiTaskbarProgress/MauiTaskbarProgress.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="MauiWorkflowBuilder/MauiWorkflowBuilder.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="RepositoryContributors/RepositoryContributors.csproj">
+    <Deploy />
+  </Project>
+  <Project Path="TutorialHelp/TutorialHelp.csproj">
+    <Deploy />
+  </Project>
+</Solution>

@@ -30,7 +30,7 @@
 	<ItemGroup>
 		<PackageReference Include="AutoFixture" Version="5.0.0-preview0011" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="9.1.1" />
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0-preview1" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0-preview2" />
 		<PackageReference Include="CommunityToolkit.Maui.Maps" Version="2.0.4" />
 	</ItemGroup>
 
