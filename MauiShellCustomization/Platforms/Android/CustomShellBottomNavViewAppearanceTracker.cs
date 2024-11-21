@@ -14,7 +14,7 @@ internal class CustomShellBottomNavViewAppearanceTracker(IShellContext shellCont
 	public override void SetAppearance(BottomNavigationView bottomView, IShellAppearanceElement appearance)
 	{
 		base.SetAppearance(bottomView, appearance);
-		if (Shell.GetTabBarIsVisible(shellContext.Shell.CurrentPage))
+		if (Shell.GetTabBarIsVisible(shellContext.Shell.CurrentItem))
 		{
 			var backgroundDrawable = new GradientDrawable();
 			backgroundDrawable.SetShape(ShapeType.Rectangle);
@@ -37,6 +37,6 @@ internal class CustomShellBottomNavViewAppearanceTracker(IShellContext shellCont
 	protected override void SetBackgroundColor(BottomNavigationView bottomView, Color color)
 	{
 		base.SetBackgroundColor(bottomView, color);
-		bottomView.RootView?.SetBackgroundColor(shellContext.Shell.CurrentPage.BackgroundColor.ToPlatform());
+		bottomView.RootView?.SetBackgroundColor(shellContext.Shell.CurrentItem.BackgroundColor.ToPlatform());
 	}
 }

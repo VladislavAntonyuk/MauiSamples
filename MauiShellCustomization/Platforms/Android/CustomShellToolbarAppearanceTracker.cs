@@ -15,7 +15,7 @@ internal class CustomShellToolbarAppearanceTracker(IShellContext shellContext)
 	public override void SetAppearance(Toolbar toolbar, IShellToolbarTracker toolbarTracker, ShellAppearance appearance)
 	{
 		base.SetAppearance(toolbar, toolbarTracker, appearance);
-		if (Shell.GetNavBarIsVisible(shellContext.Shell.CurrentPage))
+		if (Shell.GetNavBarIsVisible(shellContext.Shell.CurrentItem))
 		{
 			var backgroundDrawable = new GradientDrawable();
 			backgroundDrawable.SetShape(ShapeType.Rectangle);

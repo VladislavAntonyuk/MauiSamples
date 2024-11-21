@@ -22,9 +22,9 @@ sealed class CustomShellToolbarAppearanceTracker(IShellContext shellContext, ISh
 	public void SetAppearance(UINavigationController controller, ShellAppearance appearance)
 	{
 		baseTracker.SetAppearance(controller, appearance);
-		if (controller.View is not null && shellContext.Shell.CurrentPage is not null)
+		if (controller.View is not null && shellContext.Shell.CurrentItem is not null)
 		{
-			controller.View.BackgroundColor = shellContext.Shell.CurrentPage.BackgroundColor.ToPlatform();
+			controller.View.BackgroundColor = shellContext.Shell.CurrentItem.BackgroundColor.ToPlatform();
 		}
 	}
 
