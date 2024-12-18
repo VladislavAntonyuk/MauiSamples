@@ -28,11 +28,10 @@ public partial class MainViewModel : ObservableObject
 	private readonly UserContext userContext;
 
 	[ObservableProperty]
-	string title = "Main Page";
-
+	public partial string Title { get; set; }
 
 	[ObservableProperty]
-	string image = "bot.png";
+	public partial string Image { get; set; }
 
 	public MainViewModel(IConfigCatClient configCatClient, UserContext userContext)
 	{
@@ -42,6 +41,8 @@ public partial class MainViewModel : ObservableObject
 			await Initialize();
 		};
 		this.userContext = userContext;
+		Image = "bot.png";
+		Title = "Main Page";
 	}
 
 	public async Task Initialize()

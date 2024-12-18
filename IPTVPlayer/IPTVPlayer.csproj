@@ -29,11 +29,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0-preview2" />
+	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
 	  <PackageReference Include="m3uParser.NET" Version="1.0.17" />
 	  <PackageReference Include="Microsoft.Extensions.Http" Version="9.0.0" />
-	  <PackageReference Include="CommunityToolkit.Maui" Version="9.1.0" />
-	  <PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="4.1.2" />
+	  <PackageReference Include="CommunityToolkit.Maui" Version="10.0.0" />
+	  <PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="5.0.0" />
 	</ItemGroup>
 
 </Project>

@@ -34,6 +34,12 @@ public class CustomMapHandler : MapHandler
 		platformView.GetViewForAnnotation += GetViewForAnnotations;
 	}
 
+	protected override void DisconnectHandler(MauiMKMapView platformView)
+	{
+		platformView.GetViewForAnnotation -= GetViewForAnnotations;
+		base.DisconnectHandler(platformView);
+	}
+
 	private static void OnCalloutClicked(IMKAnnotation annotation)
 	{
 		var pin = GetPinForAnnotation(annotation);

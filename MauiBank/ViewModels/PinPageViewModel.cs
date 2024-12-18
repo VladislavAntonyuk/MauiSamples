@@ -9,10 +9,11 @@ using Plugin.Fingerprint.Abstractions;
 public partial class PinPageViewModel : ObservableObject
 {
 	[ObservableProperty]
-	private string pin = string.Empty;
+	public partial string Pin { get; set; }
 
 	public PinPageViewModel()
 	{
+		Pin = string.Empty;
 		BiometryAuthCommand.Execute(null);
 	}
 

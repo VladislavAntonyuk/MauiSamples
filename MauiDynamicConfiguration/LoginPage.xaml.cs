@@ -25,10 +25,10 @@ public partial class LoginPage : ContentPage
 public partial class LoginViewModel(IConfigCatClient configCatClient, UserContext userContext) : ObservableObject
 {
 	[ObservableProperty]
-	string? email;
+	public partial string? Email { get; set; }
 
 	[ObservableProperty]
-	string title = "Login";
+	public partial string? Title { get; set; }
 
 	public async Task Initialize()
 	{

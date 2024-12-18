@@ -6,7 +6,7 @@ using KanbanBoardDb;
 public partial class CardInfo(KanbanCard kanbanCard) : ObservableObject
 {
 	[ObservableProperty]
-	private bool isDragOver;
+	public partial bool IsDragOver { get; set; }
 
 	public KanbanCard KanbanCard { get; } = kanbanCard;
 }

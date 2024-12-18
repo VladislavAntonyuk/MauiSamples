@@ -25,7 +25,7 @@
 		<MauiImage Include="Resources\Images\*.png" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0-preview2" />
+	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
 	  <PackageReference Include="ConfigCat.Client" Version="9.3.2" />
 	</ItemGroup>
 </Project>

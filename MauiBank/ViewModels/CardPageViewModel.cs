@@ -8,22 +8,25 @@ using Models;
 public partial class CardPageViewModel : ObservableObject
 {
 	[ObservableProperty]
-	private string[] pages = { "1", "2", "3" };
+	public partial string[] Pages { get; set; }
 	[ObservableProperty]
-	private string currentPage = "2";
+	public partial string CurrentPage { get; set; }
 	[ObservableProperty]
-	private List<Reward> rewards = new();
+	public partial List<Reward> Rewards { get; set; }
 	[ObservableProperty]
-	private List<TransactionGroup> transactions;
+	public partial List<TransactionGroup> Transactions { get; set; }
 	[ObservableProperty]
-	private bool isCvvMode;
+	public partial bool IsCvvMode { get; set; }
 
 	public CardPageViewModel()
 	{
+		Pages = ["1", "2", "3"];
+		CurrentPage = "2";
+		Rewards = new();
 		var transactionsList = new List<Transaction>();
 		for (int i = 0; i < 60; i++)
 		{
-			rewards.Add(new Reward()
+			Rewards.Add(new Reward()
 			{
 				IsAchieved = Random.Shared.Next(0, 10) > 5,
 				Image = "https://picsum.photos/50",
@@ -38,7 +41,7 @@ public partial class CardPageViewModel : ObservableObject
 			});
 		}
 
-		transactions = transactionsList.OrderByDescending(x => x.DateTime)
+		Transactions = transactionsList.OrderByDescending(x => x.DateTime)
 									   .GroupBy(x => x.DateTime.Date)
 									   .Select(tr => new TransactionGroup(tr.Key, tr.ToList()))
 									   .ToList();

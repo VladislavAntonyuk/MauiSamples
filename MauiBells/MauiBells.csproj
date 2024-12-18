@@ -35,6 +35,6 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == '$(NetVersion)-android'">
-		<PackageReference Include="VladislavAntonyuk.MaterialCalendarView" Version="1.9.0" />
+		<PackageReference Include="VladislavAntonyuk.MaterialCalendarView" Version="1.9.0.1" />
 	</ItemGroup>
 </Project>

@@ -79,7 +79,7 @@
 					                 VerticalItemSpacing="20" />
 				</CollectionView.ItemsLayout>
 				<CollectionView.ItemTemplate>
-					<DataTemplate>
+					<DataTemplate x:DataType="models:Reward">
 						<VerticalStackLayout Spacing="10">
 							<Border Style="{StaticResource RewardStyle}"
 							        Stroke="{Binding IsAchieved, Converter={StaticResource BoolToColorConverter}}"

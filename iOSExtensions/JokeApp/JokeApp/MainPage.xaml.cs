@@ -18,17 +18,18 @@ public partial class MainPageViewModel : ObservableObject
 	private readonly IJokeApi jokeApi;
 
 	[ObservableProperty]
-	private Joke? joke;
+	public partial Joke? Joke { get; set; }
 
 	[ObservableProperty]
-	private string? jokeType;
+	public partial string? JokeType { get; set; }
 
 	[ObservableProperty]
-	private string[] jokeTypes = Array.Empty<string>();
+	public partial string[] JokeTypes { get; set; }
 
 	public MainPageViewModel(IJokeApi jokeApi)
 	{
 		this.jokeApi = jokeApi;
+		JokeTypes = [];
 		GetJokeTypesCommand.Execute(null);
 	}
 

@@ -22,10 +22,10 @@ public partial class ChannelsViewModel(IPlaylistGenerator service) : BaseViewMod
 	};
 
 	[ObservableProperty]
-	private string? filter;
+	public partial string? Filter { get; set; }
 
 	[ObservableProperty]
-	private int selectedIndex;
+	public partial int SelectedIndex { get; set; }
 
 	[RelayCommand]
 	private void Search(TextChangedEventArgs eventArgs)

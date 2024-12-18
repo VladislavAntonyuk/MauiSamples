@@ -27,8 +27,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-        <PackageReference Include="CommunityToolkit.Maui" Version="9.1.0" />
-        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0-preview2" />
+        <PackageReference Include="CommunityToolkit.Maui" Version="10.0.0" />
+        <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
     </ItemGroup>
 
 	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' or $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) =='maccatalyst' ">

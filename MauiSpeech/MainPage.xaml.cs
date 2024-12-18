@@ -23,26 +23,26 @@ public partial class MainViewModel : ObservableObject
 	private readonly ISpeechToText speechToText;
 
 	[ObservableProperty]
-	private List<Locale>? locales;
+	public partial List<Locale>? Locales { get; set; }
 
 	[ObservableProperty]
-	private Locale? locale;
+	public partial Locale? Locale { get; set; }
 
 	[ObservableProperty]
-	private string text;
+	public partial string Text { get; set; }
 
 	[ObservableProperty]
-	private string? apiKey;
+	public partial string? ApiKey { get; set; }
 
 	[ObservableProperty]
-	private string? recognitionText;
+	public partial string? RecognitionText { get; set; }
 
 	public MainViewModel(ITextToSpeech textToSpeech, ISpeechToText speechToText)
 	{
 		this.textToSpeech = textToSpeech;
 		this.speechToText = speechToText;
 		Locales = new();
-		text = @"Glory to Ukraine!
+		Text = @"Glory to Ukraine!
 Glory to heroes!
 Glory to the Nation!
 Death to enemies!";
@@ -102,9 +102,9 @@ Death to enemies!";
 	async Task ProcessText(string prompt)
 	{
 		var generalPrompt = $"You should return an executable name of the program. example prompt: Execute Word. Expected output WinWord. Do not return extension. So my request: {prompt}";
-		https://platform.openai.com/docs/models/model-endpoint-compatibility
 		try
 		{
+			// https://platform.openai.com/docs/models/model-endpoint-compatibility
 			var chatClient = new ChatClient("gpt-4o-mini", ApiKey);
 			var result = await chatClient.CompleteChatAsync(generalPrompt);
 			Process.Start(result.Value.Content.ToString());

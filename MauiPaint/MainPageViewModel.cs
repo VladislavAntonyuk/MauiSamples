@@ -21,20 +21,20 @@ public partial class MainPageViewModel(
 	private static List<IFigure> _figures = new();
 
 	[ObservableProperty]
-	private ObservableCollection<IDrawingLine> lines = new();
-	[ObservableProperty]
-	private Brush background = Brush.White;
-	[ObservableProperty]
-	private Color lineColor = Colors.Black;
-	[ObservableProperty]
-	private float lineWidth = 5;
-	[ObservableProperty]
-	private float canvasWidth;
-	[ObservableProperty]
-	private float canvasHeight;
+	public partial ObservableCollection<IDrawingLine> Lines { get; set; } = new();
 
 	[ObservableProperty]
-	private Action<ICanvas, RectF>? drawAction = (canvas, rect) =>
+	public partial Brush Background { get; set; } = Brush.White;
+	[ObservableProperty]
+	public partial Color LineColor { get; set; } = Colors.Black;
+	[ObservableProperty]
+	public partial float LineWidth { get; set; } = 5;
+	[ObservableProperty]
+	public partial float CanvasWidth { get; set; }
+	[ObservableProperty]
+	public partial float CanvasHeight { get; set; }
+
+	public Action<ICanvas, RectF>? DrawAction = (canvas, rect) =>
 	{
 		foreach (var figure in _figures)
 		{

@@ -28,12 +28,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="9.1.1" />
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0-preview2" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="10.0.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
 		<PackageReference Include="IronBlock" Version="1.0.18" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="9.0.10" />
+	  <PackageReference Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="9.0.21" />
 	</ItemGroup>
 </Project>

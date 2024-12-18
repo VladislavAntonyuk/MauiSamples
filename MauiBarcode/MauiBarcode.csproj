@@ -31,8 +31,8 @@
 
 	<ItemGroup>
 	  <PackageReference Include="Camera.MAUI.ZXing" Version="1.0.0" />
-	  <PackageReference Include="CommunityToolkit.Maui.Camera" Version="1.0.5" />
-	  <PackageReference Include="CommunityToolkit.Maui" Version="9.1.0" />
+	  <PackageReference Include="CommunityToolkit.Maui.Camera" Version="2.0.0" />
+	  <PackageReference Include="CommunityToolkit.Maui" Version="10.0.0" />
 	</ItemGroup>
 
 </Project>

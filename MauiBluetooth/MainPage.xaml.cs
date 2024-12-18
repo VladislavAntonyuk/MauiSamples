@@ -20,7 +20,7 @@ public partial class MainPage : ContentPage
 public partial class MainPageViewModel(IAdapter adapter, IBluetoothService bluetoothService) : ObservableObject
 {
 	[ObservableProperty]
-	private ObservableCollection<IDevice> devices = new();
+	public partial ObservableCollection<IDevice> Devices { get; set; } = new();
 
 	[RelayCommand]
 	async Task ScanDevices(CancellationToken cancellationToken)

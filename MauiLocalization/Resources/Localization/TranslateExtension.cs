@@ -1,5 +1,6 @@
 ﻿namespace MauiLocalization.Resources.Localization;
 
+[AcceptEmptyServiceProvider]
 [ContentProperty(nameof(Name))]
 public class TranslateExtension : IMarkupExtension<BindingBase>
 {

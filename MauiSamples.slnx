@@ -21,13 +21,13 @@
       <Deploy />
     </Project>
   </Folder>
-  <Folder Name="/Database/KanbanBoard/">
+  <Folder Name="/Database/KanbanBoard/" Id="590a8336-dd1d-92bf-d9d0-67fb25d8536b">
     <Project Path="Database/KanbanBoard/KanbanBoard/KanbanBoard.csproj">
       <Deploy Solution="Debug|*" />
     </Project>
     <Project Path="Database/KanbanBoard/KanbanBoardDb/KanbanBoardDb.csproj" />
   </Folder>
-  <Folder Name="/Database/Sqlite/">
+  <Folder Name="/Database/Sqlite/" Id="b2bb41b9-86f6-c877-ebac-94a879c6f10f">
     <Project Path="Database/Sqlite/MauiSqlite/MauiSqlite.csproj">
       <Deploy />
     </Project>
@@ -36,8 +36,10 @@
     </Project>
     <Project Path="Database/Sqlite/SqliteRepository/SqliteRepository.csproj" />
   </Folder>
-  <Folder Name="/iOSExtensions/" />
-  <Folder Name="/iOSExtensions/JokeApp/">
+  <Folder Name="/iOSExtensions/">
+    <File Path="iOSExtensions/Directory.Build.props" />
+  </Folder>
+  <Folder Name="/iOSExtensions/JokeApp/" Id="8d22f23f-89a4-d9d2-f19b-22af86e784bb">
     <File Path="iOSExtensions/JokeApp/README.md" />
     <File Path="iOSExtensions/JokeApp/README.mdpp" />
     <Project Path="iOSExtensions/JokeApp/JokeApp/JokeApp.csproj">
@@ -47,7 +49,7 @@
       <Deploy />
     </Project>
   </Folder>
-  <Folder Name="/iOSExtensions/ShareExtension/">
+  <Folder Name="/iOSExtensions/ShareExtension/" Id="5ed4c664-a038-8a56-2a36-d6bf0b5e37a0">
     <File Path="iOSExtensions/ShareExtension/README.md" />
     <File Path="iOSExtensions/ShareExtension/README.mdpp" />
     <Project Path="iOSExtensions/ShareExtension/AppContainer/AppContainer.csproj">
@@ -73,7 +75,7 @@
     <File Path="README.mdpp" />
     <File Path="SETUP.md" />
   </Folder>
-  <Folder Name="/Solution Items/md/">
+  <Folder Name="/Solution Items/md/" Id="b19059a3-056f-5683-33f9-33079b3e2203">
     <File Path="md/footer.mdpp" />
     <File Path="md/header.mdpp" />
     <File Path="md/run.ps1" />

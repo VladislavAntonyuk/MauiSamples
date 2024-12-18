@@ -30,6 +30,6 @@
 
     <ItemGroup>
       <PackageReference Include="M.BindableProperty.Generator" Version="0.11.1" />
-      <PackageReference Include="CommunityToolkit.Maui" Version="9.1.1" />
+      <PackageReference Include="CommunityToolkit.Maui" Version="10.0.0" />
     </ItemGroup>
 </Project>

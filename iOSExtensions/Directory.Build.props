@@ -6,5 +6,7 @@
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<SupportedOSPlatformVersion>15.4</SupportedOSPlatformVersion>
+
+		<LangVersion>preview</LangVersion>
 	</PropertyGroup>
 </Project>

@@ -15,9 +15,10 @@ public partial class MainPageViewModel : ObservableObject
 	private readonly KanbanBoardDbContext dbContext;
 
 	[ObservableProperty]
-	private ObservableCollection<ColumnInfo> columns = new();
+	public partial ObservableCollection<ColumnInfo> Columns { get; set; }
+
 	[ObservableProperty]
-	private int position;
+	public partial int Position { get; set; }
 
 	private CardInfo? dragCard;
 
@@ -26,6 +27,7 @@ public partial class MainPageViewModel : ObservableObject
 	public MainPageViewModel(KanbanBoardDbContext dbContext)
 	{
 		this.dbContext = dbContext;
+		Columns = new();
 		RefreshCommand.Execute(null);
 	}
 

@@ -16,7 +16,7 @@ public partial class MainPage : ContentPage
 public partial class MainViewModel : ObservableObject
 {
 	[ObservableProperty]
-	private Tab selectedTab;
+	public partial Tab SelectedTab { get; set; }
 
 	public ObservableCollection<Tab> Tabs { get; set; } = new();
 	public ObservableCollection<Tab> Tabs2 { get; set; } = new();

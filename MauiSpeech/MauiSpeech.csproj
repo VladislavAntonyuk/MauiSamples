@@ -28,10 +28,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Maui" Version="9.1.1" />
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0-preview2" />
-		<PackageReference Include="Microsoft.Extensions.AI.Abstractions" Version="9.0.0-preview.9.24556.5" />
-		<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="9.0.0-preview.9.24556.5" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="10.0.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+		<PackageReference Include="Microsoft.Extensions.AI.Abstractions" Version="9.0.1-preview.1.24570.5" />
+		<PackageReference Include="Microsoft.Extensions.AI.OpenAI" Version="9.0.1-preview.1.24570.5" />
 	</ItemGroup>
 
 </Project>

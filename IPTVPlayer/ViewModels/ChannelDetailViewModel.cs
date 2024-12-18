@@ -3,9 +3,18 @@
 using CommunityToolkit.Mvvm.ComponentModel;
 using Models;
 
-[QueryProperty(nameof(Item), "Item")]
-public partial class ChannelDetailViewModel : BaseViewModel
+public partial class ChannelDetailViewModel : BaseViewModel, IQueryAttributable
 {
 	[ObservableProperty]
-	Channel item = new();
+	public partial Channel Item { get; set; }
+
+	public ChannelDetailViewModel()
+	{
+		Item = new();
+	}
+
+	public void ApplyQueryAttributes(IDictionary<string, object> query)
+	{
+		Item = (Channel)query["Item"];
+	}
 }
