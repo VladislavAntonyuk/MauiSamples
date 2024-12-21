@@ -86,9 +86,11 @@
 					<Label Text="Rotate"/>
 					<Slider x:Name="RotateSlider" Maximum="360">
 						<Slider.Behaviors>
-							<mct:EventToCommandBehavior EventName="ValueChanged"
-							                            Command="{Binding RotateCommand}"
-							                            CommandParameter="{Binding Path=Value, Source={x:Reference RotateSlider}}"/>
+							<mct:EventToCommandBehavior
+								BindingContext="{Binding Path=BindingContext, Source={x:Reference RotateSlider}, x:DataType=Slider}"
+								EventName="ValueChanged"
+								Command="{Binding RotateCommand}"
+								CommandParameter="{Binding Path=Value, Source={x:Reference RotateSlider}}"/>
 						</Slider.Behaviors>
 					</Slider>
 				</VerticalStackLayout>

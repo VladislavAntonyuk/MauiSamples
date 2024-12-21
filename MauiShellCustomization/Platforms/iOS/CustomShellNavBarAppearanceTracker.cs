@@ -25,7 +25,7 @@ internal sealed class CustomShellNavBarAppearanceTracker(
 		baseTracker.SetAppearance(controller, appearance);
 		if (controller.View is not null && shellContext.Shell.CurrentItem is not null)
 		{
-			controller.View.BackgroundColor = shellContext.Shell.CurrentItem.BackgroundColor.ToPlatform();
+			controller.View.BackgroundColor = shellContext.Shell.CurrentItem.Window.Page?.BackgroundColor.ToPlatform();
 		}
 	}
 

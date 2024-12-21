@@ -13,7 +13,6 @@ public partial class ChannelsPage : ContentPage
 		BindingContext = viewModel;
 	}
 
-
 	protected override async void OnNavigatedTo(NavigatedToEventArgs args)
 	{
 		base.OnNavigatedTo(args);

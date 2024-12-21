@@ -37,6 +37,10 @@ internal class CustomShellBottomNavViewAppearanceTracker(IShellContext shellCont
 	protected override void SetBackgroundColor(BottomNavigationView bottomView, Color color)
 	{
 		base.SetBackgroundColor(bottomView, color);
-		bottomView.RootView?.SetBackgroundColor(shellContext.Shell.CurrentItem.BackgroundColor.ToPlatform());
+		var page = shellContext.Shell.CurrentItem.Window.Page;
+		if (page is not null)
+		{
+			bottomView.RootView?.SetBackgroundColor(page.BackgroundColor.ToPlatform());
+		}
 	}
 }

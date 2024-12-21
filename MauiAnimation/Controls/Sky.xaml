@@ -22,9 +22,11 @@
 		<Grid WidthRequest="200" HeightRequest="200"
 		      HorizontalOptions="End"
 		      VerticalOptions="Start"
-		      Margin="10">
+		      Margin="10"
+		      x:Name="Grid">
 			<Grid.Behaviors>
-				<toolkit:AnimationBehavior>
+				<toolkit:AnimationBehavior
+					BindingContext="{Binding Path=BindingContext, Source={x:Reference Grid}, x:DataType=Grid}">
 					<toolkit:AnimationBehavior.AnimationType>
 						<animations:SunAnimation />
 					</toolkit:AnimationBehavior.AnimationType>

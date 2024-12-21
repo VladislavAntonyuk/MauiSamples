@@ -9,20 +9,25 @@
 	<Grid RowDefinitions="60, 60, *">
 		<Picker Title="Playlist"
 		        Grid.Row="0"
+		        x:Name="Playlist"
 				ItemsSource="{Binding Sources}"
 		        SelectedIndex="{Binding SelectedIndex}">
 			<Picker.Behaviors>
 				<behaviors:EventToCommandBehavior
 					x:TypeArguments="TextChangedEventArgs"
+					BindingContext="{Binding Path=BindingContext, Source={x:Reference Playlist}, x:DataType=Picker}"
 					EventName="SelectedIndexChanged"
 					Command="{Binding LoadDataCommand}" />
 			</Picker.Behaviors>
 		</Picker>
-		<Entry Placeholder="Search" Grid.Row="1"
+		<Entry Placeholder="Search"
+		       Grid.Row="1"
+		       x:Name="Search"
 		       ClearButtonVisibility="WhileEditing">
 			<Entry.Behaviors>
 				<behaviors:EventToCommandBehavior
 					x:TypeArguments="TextChangedEventArgs"
+					BindingContext="{Binding Path=BindingContext, Source={x:Reference Search}, x:DataType=Entry}"
 					EventName="TextChanged"
 					Command="{Binding SearchCommand}" />
 			</Entry.Behaviors>

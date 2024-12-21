@@ -238,7 +238,8 @@
 			<ScrollView>
 				<VerticalStackLayout Margin="0,30,0,0">
 					<Border Margin="30"
-					        Background="#1e1e1e">
+					        Background="#1e1e1e"
+					        x:Name="Border">
 						<Border.StrokeShape>
 							<RoundRectangle CornerRadius="40" />
 						</Border.StrokeShape>
@@ -275,6 +276,7 @@
 						</Grid>
 						<Border.Behaviors>
 							<toolkit:AnimationBehavior
+								BindingContext="{Binding Path=BindingContext, Source={x:Reference Border}, x:DataType=Border}"
 								Command="{Binding Source={x:Reference Name=CardsPage},Path=BindingContext.SwitchCvvModeCommand}">
 								<toolkit:AnimationBehavior.AnimationType>
 									<animations:FlipAnimation />

@@ -32,10 +32,12 @@
 
         <Entry Text="{Binding Task.Description}"
                Placeholder="Task description"
+               x:Name="TaskEntry"
                Grid.Row="3">
 
             <Entry.Behaviors>
                 <toolkit:MultiValidationBehavior x:Name="MultiValidationTarefa"
+                                                 BindingContext="{Binding Path=BindingContext, Source={x:Reference TaskEntry}, x:DataType=Entry}"
                                                  Flags="ValidateOnValueChanged">
 
                     <toolkit:TextValidationBehavior MinimumLength="1"
