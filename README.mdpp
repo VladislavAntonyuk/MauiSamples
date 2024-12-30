@@ -83,4 +83,6 @@ The development guide can be found at [SETUP.md](./SETUP.md).
 
 1. [MauiBarcode](MauiBarcode) - .NET MAUI Barcode Scanner.
 
+1. [MauiExcel](MauiExcel) - Export data to Excel.
+
 !INCLUDE "md/footer.mdpp"
