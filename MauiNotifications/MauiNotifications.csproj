@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
@@ -32,14 +32,14 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="CommunityToolkit.Maui" Version="11.0.0" />
-	  <PackageReference Include="Microsoft.Azure.NotificationHubs" Version="4.2.0" />
+	  <PackageReference Include="CommunityToolkit.Maui" />
+	  <PackageReference Include="Microsoft.Azure.NotificationHubs" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == 'net9.0-android'">
 		<GoogleServicesJson Include="Platforms\Android\google-services.json" />
-		<PackageReference Include="Xamarin.Firebase.Messaging" Version="123.1.2.2" />
-		<PackageReference Include="Xamarin.Google.Dagger" Version="2.39.1" />
+		<PackageReference Include="Xamarin.Firebase.Messaging" />
+		<PackageReference Include="Xamarin.Google.Dagger" />
 	</ItemGroup>
 
 </Project>

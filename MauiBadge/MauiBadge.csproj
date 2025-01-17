@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
@@ -25,6 +25,6 @@
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == '$(NetVersion)-android'">
-	  <PackageReference Include="Xamarin.Android.ShortcutBadger" Version="1.2.0" />
+	  <PackageReference Include="Xamarin.Android.ShortcutBadger" />
 	</ItemGroup>
 </Project>

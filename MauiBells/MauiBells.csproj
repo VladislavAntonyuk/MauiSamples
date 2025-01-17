@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
@@ -31,10 +31,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Plugin.Maui.Audio" Version="3.0.1" />
+		<PackageReference Include="Plugin.Maui.Audio" />
 	</ItemGroup>
 
 	<ItemGroup Condition="'$(TargetFramework)' == '$(NetVersion)-android'">
-		<PackageReference Include="VladislavAntonyuk.MaterialCalendarView" Version="1.9.0.1" />
+		<PackageReference Include="VladislavAntonyuk.MaterialCalendarView" />
 	</ItemGroup>
 </Project>
