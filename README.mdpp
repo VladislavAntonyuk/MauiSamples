@@ -85,4 +85,6 @@ The development guide can be found at [SETUP.md](./SETUP.md).
 
 1. [MauiExcel](MauiExcel) - Export data to Excel.
 
+1. [MauiConditionView](MauiConditionView) - .NET MAUI ConditionView control.
+
 !INCLUDE "md/footer.mdpp"
