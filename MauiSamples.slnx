@@ -121,6 +121,7 @@
   <Project Path="MauiCaptcha/MauiCaptcha.csproj">
     <Deploy />
   </Project>
+  <Project Path="MauiConditionView/MauiConditionView.csproj" Id="2c933725-f4f1-4626-a4f1-0ab2d570f9de" />
   <Project Path="MauiCursor/MauiCursor.csproj">
     <Deploy />
   </Project>

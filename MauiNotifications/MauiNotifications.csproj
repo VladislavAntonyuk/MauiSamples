@@ -32,7 +32,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="CommunityToolkit.Maui" Version="10.0.0" />
+	  <PackageReference Include="CommunityToolkit.Maui" Version="11.0.0" />
 	  <PackageReference Include="Microsoft.Azure.NotificationHubs" Version="4.2.0" />
 	</ItemGroup>
 

@@ -16,8 +16,14 @@
 		<NoWarn>$(NoWarn);NU1603;NU1902;NU1903</NoWarn>
 		<ImplicitUsings>enable</ImplicitUsings>
 
+		<ApplicationTitle>$(RootNamespace)</ApplicationTitle>
+		<ApplicationId>com.vladislavantonyuk.$(RootNamespace)</ApplicationId>
+
 		<MauiEnableXamlCBindingWithSourceCompilation>true</MauiEnableXamlCBindingWithSourceCompilation>
 		<WindowsPackageType>None</WindowsPackageType>
+
+		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
 
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">16.0</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">16.0</SupportedOSPlatformVersion>
@@ -28,6 +34,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.21" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.30" />
 	</ItemGroup>
 </Project>
