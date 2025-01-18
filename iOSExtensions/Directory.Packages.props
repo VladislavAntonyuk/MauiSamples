@@ -1,0 +1,12 @@
+<Project>
+	<PropertyGroup>
+		<ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+		<CentralPackageTransitivePinningEnabled>false</CentralPackageTransitivePinningEnabled>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+		<PackageVersion Include="Microsoft.Maui.Controls" Version="9.0.30" />
+		<PackageVersion Include="Refit" Version="8.0.0" />
+		<PackageVersion Include="Refit.HttpClientFactory" Version="8.0.0" />
+	</ItemGroup>
+</Project>

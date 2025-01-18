@@ -14,20 +14,13 @@
 	<ItemGroup>
 		<!-- Include format is {GroupId}:{ArtifactId} -->
 		<AndroidMavenLibrary Include="com.github.skydoves:balloon" Version="1.6.4" />
-		<PackageReference Include="Xamarin.AndroidX.DataBinding.ViewBinding">
-		</PackageReference>
-		<PackageReference Include="Xamarin.AndroidX.Lifecycle.Runtime.Ktx">
-		</PackageReference>
-		<PackageReference Include="Xamarin.AndroidX.Annotation">
-		</PackageReference>
-		<PackageReference Include="Xamarin.Kotlin.StdLib">
-		</PackageReference>
-		<PackageReference Include="Xamarin.AndroidX.AppCompat">
-		</PackageReference>
-		<PackageReference Include="Xamarin.AndroidX.Core.Core.Ktx">
-		</PackageReference>
-		<PackageReference Include="Xamarin.AndroidX.Fragment.Ktx">
-		</PackageReference>
+		<PackageReference Include="Xamarin.AndroidX.DataBinding.ViewBinding"/>
+		<PackageReference Include="Xamarin.AndroidX.Lifecycle.Runtime.Ktx"/>
+		<PackageReference Include="Xamarin.AndroidX.Annotation"/>
+		<PackageReference Include="Xamarin.Kotlin.StdLib"/>
+		<PackageReference Include="Xamarin.AndroidX.AppCompat"/>
+		<PackageReference Include="Xamarin.AndroidX.Core.Core.Ktx"/>
+		<PackageReference Include="Xamarin.AndroidX.Fragment.Ktx"/>
 	</ItemGroup>
 	<ItemGroup>
 	  <None Update="ReadMe.md">

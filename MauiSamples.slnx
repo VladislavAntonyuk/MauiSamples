@@ -1,6 +1,7 @@
 <Solution>
 	<Folder Name="/AndroidBindableLibraries/">
 		<File Path="AndroidBindableLibraries/Directory.Build.props" />
+		<File Path="AndroidBindableLibraries/Directory.Packages.props" />
 		<Project Path="AndroidBindableLibraries/Balloon/Balloon.csproj" />
 		<Project Path="AndroidBindableLibraries/MaterialCalendarView/MaterialCalendarView.csproj" />
 		<Project Path="AndroidBindableLibraries/Sample/Sample.csproj">
@@ -38,6 +39,7 @@
 	</Folder>
 	<Folder Name="/iOSExtensions/">
 		<File Path="iOSExtensions/Directory.Build.props" />
+		<File Path="iOSExtensions/Directory.Packages.props" />
 	</Folder>
 	<Folder Name="/iOSExtensions/JokeApp/" Id="8d22f23f-89a4-d9d2-f19b-22af86e784bb">
 		<File Path="iOSExtensions/JokeApp/README.md" />
