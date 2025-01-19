@@ -3,6 +3,9 @@
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
 		<RootNamespace>MauiConditionView</RootNamespace>
+
+		<ApplicationTitle>$(RootNamespace)</ApplicationTitle>
+		<ApplicationId>com.vladislavantonyuk.$(RootNamespace)</ApplicationId>
 	</PropertyGroup>
 
 	<ItemGroup>

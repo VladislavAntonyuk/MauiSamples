@@ -6,7 +6,8 @@
              xmlns:models="clr-namespace:KanbanBoard.Models"
              xmlns:converters="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="KanbanBoard.MainPage"
-             x:DataType="kanbanBoard:MainPageViewModel">
+             x:DataType="kanbanBoard:MainPageViewModel"
+             x:Name="MainContentPage">
 	<ContentPage.Resources>
 		<Color x:Key="ColumnWipReachedBackgroundColor">IndianRed</Color>
 		<Color x:Key="SwipeVisibleBackgroundColor">Red</Color>
@@ -82,7 +83,7 @@
 							</Border.StrokeShape>
 							<Border.GestureRecognizers>
 								<DropGestureRecognizer AllowDrop="True"
-								                       DropCommand="{Binding BindingContext.DropCommand, Source={x:Reference Board}}"
+								                       DropCommand="{Binding ViewModel.DropCommand, Source={x:Reference MainContentPage}, x:DataType={x:Type kanbanBoard:MainPage}}"
 								                       DropCommandParameter="{Binding .}" />
 							</Border.GestureRecognizers>
 							<Border.Triggers>
@@ -125,7 +126,7 @@
 
 									<ImageButton
 										Grid.Column="2"
-										Command="{Binding BindingContext.DeleteColumnCommand, Source={x:Reference Board}}"
+										Command="{Binding ViewModel.DeleteColumnCommand, Source={x:Reference MainContentPage}, x:DataType={x:Type kanbanBoard:MainPage}}"
 										CommandParameter="{Binding .}"
 										HorizontalOptions="EndAndExpand"
 										VerticalOptions="Center">
@@ -154,17 +155,17 @@
 												<Border.GestureRecognizers>
 													<DragGestureRecognizer
 														CanDrag="True"
-														DragStartingCommand="{Binding BindingContext.DragStartingCommand, Source={x:Reference Board}}"
+														DragStartingCommand="{Binding ViewModel.DragStartingCommand, Source={x:Reference MainContentPage}, x:DataType={x:Type kanbanBoard:MainPage}}"
 														DragStartingCommandParameter="{Binding .}"
-														DropCompletedCommand="{Binding BindingContext.DropCompletedCommand, Source={x:Reference Board}}" />
+														DropCompletedCommand="{Binding ViewModel.DropCompletedCommand, Source={x:Reference MainContentPage}, x:DataType={x:Type kanbanBoard:MainPage}}" />
 
 													<DropGestureRecognizer
 														AllowDrop="True"
-														DragOverCommand="{Binding BindingContext.ItemDragOverCommand, Source={x:Reference Board}}"
+														DragOverCommand="{Binding ViewModel.ItemDragOverCommand, Source={x:Reference MainContentPage}, x:DataType={x:Type kanbanBoard:MainPage}}"
 														DragOverCommandParameter="{Binding .}"
-														DragLeaveCommand="{Binding BindingContext.ItemDragLeaveCommand, Source={x:Reference Board}}"
+														DragLeaveCommand="{Binding ViewModel.ItemDragLeaveCommand, Source={x:Reference MainContentPage}, x:DataType={x:Type kanbanBoard:MainPage}}"
 														DragLeaveCommandParameter="{Binding .}"
-														DropCommand="{Binding BindingContext.DropOnCardCommand, Source={x:Reference Board}}"
+														DropCommand="{Binding ViewModel.DropOnCardCommand, Source={x:Reference MainContentPage}, x:DataType={x:Type kanbanBoard:MainPage}}"
 														DropCommandParameter="{Binding .}"/>
 												</Border.GestureRecognizers>
 
@@ -187,7 +188,7 @@
 														Grid.Row="0"
 														Grid.RowSpan="2"
 														Grid.Column="1"
-														Command="{Binding BindingContext.DeleteCardCommand, Source={x:Reference Board}}"
+														Command="{Binding ViewModel.DeleteCardCommand, Source={x:Reference MainContentPage}, x:DataType={x:Type kanbanBoard:MainPage}}"
 														CommandParameter="{Binding .}"
 														WidthRequest="{StaticResource CardTitleSize}"
 														HeightRequest="{StaticResource CardTitleSize}"
@@ -207,7 +208,7 @@
 								</CollectionView>
 
 								<Button
-									Command="{Binding BindingContext.AddCardCommand, Source={x:Reference Board}}"
+									Command="{Binding ViewModel.AddCardCommand, Source={x:Reference MainContentPage}, x:DataType={x:Type kanbanBoard:MainPage}}"
 									CommandParameter="{Binding KanbanColumn.Id}"
 									Text="Add new card" />
 							</VerticalStackLayout>

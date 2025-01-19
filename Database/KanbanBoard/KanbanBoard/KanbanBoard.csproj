@@ -4,16 +4,8 @@
 		<OutputType>Exe</OutputType>
 		<RootNamespace>KanbanBoard</RootNamespace>
 
-		<!-- Display name -->
-		<ApplicationTitle>KanbanBoard</ApplicationTitle>
-
-		<!-- App Identifier -->
-		<ApplicationId>com.vladislavantonyuk.kanbanboard</ApplicationId>
-		<ApplicationIdGuid>F46BB7C8-E6A5-4D9E-AAFE-8173B0819787</ApplicationIdGuid>
-
-		<!-- Versions -->
-		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
-		<ApplicationVersion>1</ApplicationVersion>
+		<ApplicationTitle>$(RootNamespace)</ApplicationTitle>
+		<ApplicationId>com.vladislavantonyuk.$(RootNamespace)</ApplicationId>
 	</PropertyGroup>
 
 	<ItemGroup>

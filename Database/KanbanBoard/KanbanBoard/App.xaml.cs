@@ -16,8 +16,8 @@ public partial class App : Application
 
 	protected override void OnStart()
 	{
-		base.OnStart();
 		AddTestData().Wait();
+		base.OnStart();
 	}
 
 	protected override Window CreateWindow(IActivationState? activationState)
@@ -29,6 +29,7 @@ public partial class App : Application
 	{
 		using var scope = serviceProvider.CreateScope();
 		await using var appContext = scope.ServiceProvider.GetRequiredService<KanbanBoardDbContext>();
+		// await appContext.Database.EnsureDeletedAsync();
 		await appContext.Database.EnsureCreatedAsync();
 
 		var items = await appContext.Columns.Include(x => x.Cards).ToArrayAsync();

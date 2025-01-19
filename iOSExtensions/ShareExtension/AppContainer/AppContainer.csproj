@@ -12,7 +12,7 @@
 
 		<!-- App Identifier -->
 		<ApplicationId>com.vladislavantonyuk.container</ApplicationId>
-		
+
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
 		<ApplicationVersion>1</ApplicationVersion>
@@ -43,11 +43,11 @@
 	</PropertyGroup>
 
 	<PropertyGroup Condition="$([MSBuild]::IsOSPlatform('windows')) == 'false' and $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' and $(Configuration) == 'Debug'">
-		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
 		<RuntimeIdentifier>iossimulator-x64</RuntimeIdentifier>
+		<RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
 		<CreatePackage>false</CreatePackage>
 	</PropertyGroup>
-	
+
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" />
 	</ItemGroup>

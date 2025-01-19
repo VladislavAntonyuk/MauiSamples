@@ -5,18 +5,18 @@ using CommunityToolkit.Maui.Core;
 using KanbanBoardDb;
 using Microsoft.Maui.Controls.PlatformConfiguration;
 using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
-using Models;
 using Application = Application;
 using Font = Microsoft.Maui.Font;
 
 public partial class MainPage : ContentPage
 {
 	private readonly IServiceProvider serviceProvider;
+	public MainPageViewModel ViewModel { get; }
 
 	public MainPage(MainPageViewModel viewModel, IServiceProvider serviceProvider)
 	{
 		this.serviceProvider = serviceProvider;
-		BindingContext = viewModel;
+		BindingContext = ViewModel = viewModel;
 		InitializeComponent();
 		On<iOS>().SetUseSafeArea(true);
 	}
