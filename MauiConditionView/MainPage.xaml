@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mauiConditionView="using:MauiConditionView"
-             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
              x:Class="MauiConditionView.MainPage"
              x:DataType="mauiConditionView:MainPage">
 

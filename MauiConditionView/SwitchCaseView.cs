@@ -3,9 +3,9 @@
 public class SwitchCaseView<T> : ContentView
 	where T : notnull
 {
-	public static readonly BindableProperty ConditionsProperty = BindableProperty.Create(nameof(Conditions), typeof(ICollection<CaseView<T>>), typeof(ConditionView), new List<CaseView<T>>(), propertyChanged:SwitchChanged);
-	public static readonly BindableProperty DefaultProperty = BindableProperty.Create(nameof(Default), typeof(View), typeof(ConditionView), propertyChanged: SwitchChanged);
-	public static readonly BindableProperty SwitchProperty = BindableProperty.Create(nameof(Switch), typeof(T), typeof(ConditionView), propertyChanged: SwitchChanged);
+	public static readonly BindableProperty ConditionsProperty = BindableProperty.Create(nameof(Conditions), typeof(ICollection<CaseView<T>>), typeof(SwitchCaseView<T>), new List<CaseView<T>>(), propertyChanged: SwitchChanged);
+	public static readonly BindableProperty DefaultProperty = BindableProperty.Create(nameof(Default), typeof(View), typeof(SwitchCaseView<T>), propertyChanged: SwitchChanged);
+	public static readonly BindableProperty SwitchProperty = BindableProperty.Create(nameof(Switch), typeof(T), typeof(SwitchCaseView<T>), propertyChanged: SwitchChanged);
 
 	private static void SwitchChanged(BindableObject bindable, object oldvalue, object newvalue)
 	{

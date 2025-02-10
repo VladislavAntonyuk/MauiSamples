@@ -2,9 +2,9 @@
 
 public class ConditionView : ContentView
 {
-	public static readonly BindableProperty FalseProperty = BindableProperty.Create(nameof(False), typeof(View), typeof(ConditionView), default(View));
-	public static readonly BindableProperty TrueProperty = BindableProperty.Create(nameof(True), typeof(View), typeof(ConditionView), default(View));
-	public static readonly BindableProperty IfProperty = BindableProperty.Create(nameof(If), typeof(bool), typeof(ConditionView), default(bool), propertyChanged: ConditionChanged);
+	public static readonly BindableProperty FalseProperty = BindableProperty.Create(nameof(False), typeof(View), typeof(ConditionView));
+	public static readonly BindableProperty TrueProperty = BindableProperty.Create(nameof(True), typeof(View), typeof(ConditionView));
+	public static readonly BindableProperty IfProperty = BindableProperty.Create(nameof(If), typeof(bool), typeof(ConditionView), false, propertyChanged: ConditionChanged);
 
 	private static void ConditionChanged(BindableObject bindable, object oldvalue, object newvalue)
 	{
