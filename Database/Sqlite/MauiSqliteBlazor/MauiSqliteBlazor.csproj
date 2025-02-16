@@ -25,7 +25,7 @@
 		<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
 	</ItemGroup>
 
-	<ItemGroup>
+	<ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios' or $([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) =='maccatalyst' ">
 		<PackageReference Include="SQLitePCLRaw.core" />
 		<PackageReference Include="SQLitePCLRaw.provider.sqlite3" />
 		<PackageReference Include="SQLitePCLRaw.bundle_green" />

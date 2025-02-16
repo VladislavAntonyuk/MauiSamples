@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<SupportedOSPlatformVersion>23</SupportedOSPlatformVersion>
 		<PackageId>VladislavAntonyuk.$(AssemblyName)</PackageId>

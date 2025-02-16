@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, macos-16]
+        os: [windows-latest, macos-15]
 
     steps:
     - name: Prepare variables on Windows
@@ -26,7 +26,7 @@ jobs:
         echo "WORKING_DIRECTORY_PATH=C:/Projects/MauiSamples" >> $env:GITHUB_ENV
 
     - name: Prepare variables on macOS
-      if: ${{ matrix.os == 'macos-16' }}
+      if: ${{ matrix.os == 'macos-15' }}
       run: |
         echo "WORKING_DIRECTORY_PATH=/Users/runner/Projects/MauiSamples" >> $GITHUB_ENV
 
@@ -37,16 +37,15 @@ jobs:
          git checkout ${{ github.head_ref || github.ref_name }}
 
     - name: Setup Xcode
-      if: ${{ matrix.os == 'macos-16' }}
+      if: ${{ matrix.os == 'macos-15' }}
       uses: maxim-lobanov/setup-xcode@v1
       with:
-        xcode-version: '16.0'
+        xcode-version: '16.2'
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@main
       with:
         dotnet-version: 9.x
-        dotnet-quality: 'preview'
 
     - name: Install dependencies
       run: dotnet workload install maui
@@ -55,4 +54,4 @@ jobs:
       run: |
         cd ${{ env.WORKING_DIRECTORY_PATH }}
         dotnet restore --configfile NuGet.config
-        dotnet build -с Release
+        dotnet build --configuration Release
