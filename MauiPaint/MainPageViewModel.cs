@@ -6,6 +6,7 @@ using System.Threading;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Core.Extensions;
+using CommunityToolkit.Maui.Core.Views;
 using CommunityToolkit.Maui.Storage;
 using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -61,8 +62,7 @@ public partial class MainPageViewModel(
 	{
 		var preview = new PreviewImage(new StreamImageSource()
 		{
-			Stream = async (c) => await DrawingView.GetImageStream(
-Lines, new Size(1000, 1000), Background)
+			Stream = async c => await DrawingView.GetImageStream(ImageLineOptions.JustLines(Lines, new Size(1000, 1000), Background), c)
 		});
 		var page = Application.Current?.Windows.LastOrDefault()?.Page;
 		page?.ShowPopup(preview);
@@ -234,10 +234,10 @@ Lines, new Size(1000, 1000), Background)
 	[RelayCommand]
 	async Task SaveImage(CancellationToken cancellationToken)
 	{
-		await using var stream = await DrawingView.GetImageStream(
+		await using var stream = await DrawingView.GetImageStream(ImageLineOptions.JustLines(
 			Lines,
 			new Size(1000, 1000),
-			Background);
+			Background), cancellationToken);
 		await SaveToFile(stream, "image.png", cancellationToken);
 	}
 

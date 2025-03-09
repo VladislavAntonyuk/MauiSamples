@@ -27,7 +27,6 @@ public partial class CommunityToolkitCameraPage : ContentPage
 		InitializeComponent();
 	}
 
-#if !TIZEN
 	protected override async void OnAppearing()
 	{
 		base.OnAppearing();
@@ -57,25 +56,20 @@ public partial class CommunityToolkitCameraPage : ContentPage
 			await Toast.Make(result.Text, ToastDuration.Long).Show();
 		});
 	}
-#endif
 
 	private async void StartButton_OnClicked(object? sender, EventArgs e)
 	{
 		timer = new(TimeSpan.FromMilliseconds(3000));
-#if !TIZEN
 		await ToolkitCameraView.StartCameraPreview(CancellationToken.None);
 		while (await timer.WaitForNextTickAsync())
 		{
 			await ToolkitCameraView.CaptureImage(CancellationToken.None);
 		}
-#endif
 	}
 
 	private void StopButton_OnClicked(object? sender, EventArgs e)
 	{
 		timer.Dispose();
-#if !TIZEN
 		ToolkitCameraView.StopCameraPreview();
-#endif
 	}
 }

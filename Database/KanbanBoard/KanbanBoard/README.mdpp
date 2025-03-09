@@ -13,7 +13,6 @@ xcrun simctl list devices
 dotnet build KanbanBoard.csproj -t:Run -f net9.0-ios -p:_DeviceName=:v2:udid=XXX
 dotnet build KanbanBoard.csproj -t:Run -f net9.0-maccatalyst
 dotnet build KanbanBoard.csproj -t:Run -f net9.0-windows10.0.19041.0
-dotnet build KanbanBoard.csproj -t:Run -f net9.0-tizen
 ```
 
 ## Images

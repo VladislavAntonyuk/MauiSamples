@@ -8,19 +8,19 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="XamPrototype.Android.MavenBinding.Tasks" />
+		<PackageReference Include="XamPrototype.Android.MavenBinding.Tasks" Version="0.0.11" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<!-- Include format is {GroupId}:{ArtifactId} -->
 		<AndroidMavenLibrary Include="com.github.skydoves:balloon" Version="1.6.4" />
-		<PackageReference Include="Xamarin.AndroidX.DataBinding.ViewBinding"/>
-		<PackageReference Include="Xamarin.AndroidX.Lifecycle.Runtime.Ktx"/>
-		<PackageReference Include="Xamarin.AndroidX.Annotation"/>
-		<PackageReference Include="Xamarin.Kotlin.StdLib"/>
-		<PackageReference Include="Xamarin.AndroidX.AppCompat"/>
-		<PackageReference Include="Xamarin.AndroidX.Core.Core.Ktx"/>
-		<PackageReference Include="Xamarin.AndroidX.Fragment.Ktx"/>
+		<PackageReference Include="Xamarin.AndroidX.Annotation" Version="1.9.1.2" />
+		<PackageReference Include="Xamarin.AndroidX.AppCompat" Version="1.7.0.5" />
+		<PackageReference Include="Xamarin.AndroidX.Core.Core.Ktx" Version="1.15.0.2" />
+		<PackageReference Include="Xamarin.AndroidX.DataBinding.ViewBinding" Version="8.8.2" />
+		<PackageReference Include="Xamarin.AndroidX.Fragment.Ktx" Version="1.8.6" />
+		<PackageReference Include="Xamarin.AndroidX.Lifecycle.Runtime.Ktx" Version="2.8.7.2" />
+		<PackageReference Include="Xamarin.Kotlin.StdLib" Version="2.0.21.2" />
 	</ItemGroup>
 	<ItemGroup>
 	  <None Update="ReadMe.md">

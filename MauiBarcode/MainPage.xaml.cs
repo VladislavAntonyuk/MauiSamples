@@ -17,7 +17,7 @@ public partial class MainPage : ContentPage
 		var barcode = await mlkit.ScanAsync();
 		await MainThread.InvokeOnMainThreadAsync(async () =>
 		{
-			await Toast.Make(barcode is null ? "Error has occurred during barcode scanning" : barcode.RawValue, ToastDuration.Long).Show();
+			await Toast.Make(barcode?.RawValue ?? "Error has occurred during barcode scanning", ToastDuration.Long).Show();
 		});
 #else
 		await Toast.Make("This feature is only available on Android", ToastDuration.Long).Show();

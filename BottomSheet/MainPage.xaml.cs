@@ -4,8 +4,6 @@
 using BottomSheetView = Google.Android.Material.BottomSheet.BottomSheetDialog;
 #elif IOS || MACCATALYST
 using BottomSheetView = UIKit.UIViewController;
-#elif TIZEN
-using BottomSheetView = Tizen.UIExtensions.NUI.Popup;
 #else
 using BottomSheetView = Microsoft.UI.Xaml.Controls.Primitives.Popup;
 #endif

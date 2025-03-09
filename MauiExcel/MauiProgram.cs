@@ -1,6 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
-
-namespace MauiExcel;
+﻿namespace MauiExcel;
 
 public static class MauiProgram
 {
