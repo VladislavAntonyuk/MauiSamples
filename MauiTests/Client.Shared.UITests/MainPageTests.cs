@@ -7,8 +7,7 @@ public class MainPageTests(ITestOutputHelper testOutputHelper) : BaseTest(testOu
 		RuntimePlatform.OsxAndroid,
 		RuntimePlatform.OsxIOs,
 		RuntimePlatform.OsxMacCatalyst,
-		RuntimePlatform.WindowsWindows,
-		RuntimePlatform.OsxTizen
+		RuntimePlatform.WindowsWindows
 	)]
 	public async Task AppLaunches()
 	{
@@ -21,8 +20,7 @@ public class MainPageTests(ITestOutputHelper testOutputHelper) : BaseTest(testOu
 		RuntimePlatform.OsxAndroid,
 		RuntimePlatform.OsxIOs,
 		RuntimePlatform.OsxMacCatalyst,
-		RuntimePlatform.WindowsWindows,
-		RuntimePlatform.OsxTizen
+		RuntimePlatform.WindowsWindows
 	)]
 	public async Task CounterBtnTest()
 	{

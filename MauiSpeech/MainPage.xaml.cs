@@ -67,37 +67,57 @@ Death to enemies!";
 		}, cancellationToken);
 	}
 
-	[RelayCommand(IncludeCancelCommand = true)]
-	async Task Listen(CancellationToken cancellationToken)
+	[RelayCommand]
+	async Task ListenCancel()
+	{
+		await speechToText.StopListenAsync();
+		speechToText.RecognitionResultUpdated -= SpeechToText_RecognitionResultUpdated;
+		speechToText.RecognitionResultCompleted -= SpeechToText_RecognitionResultCompleted;
+	}
+
+	[RelayCommand]
+	async Task Listen()
 	{
 		RecognitionText = string.Empty;
 		var isAuthorized = await speechToText.RequestPermissions(CancellationToken.None);
 		if (isAuthorized)
 		{
-			var recognitionResult = await speechToText.ListenAsync(CultureInfo.GetCultureInfo(Locale?.Language ?? "en-us"), new Progress<string>(async partialText =>
-			{
-				RecognitionText += partialText + " ";
-#if WINDOWS
-				await ProcessText(partialText);
-#else
-				await Task.CompletedTask;
-#endif
-			}), CancellationToken.None);
+			speechToText.RecognitionResultUpdated += SpeechToText_RecognitionResultUpdated;
+			speechToText.RecognitionResultCompleted += SpeechToText_RecognitionResultCompleted;
 
-			if (recognitionResult.IsSuccessful)
+			await speechToText.StartListenAsync(new SpeechToTextOptions()
 			{
-				RecognitionText = recognitionResult.Text;
-			}
-			else
-			{
-				await Toast.Make(recognitionResult.Exception.Message).Show(CancellationToken.None);
-			}
+				Culture = CultureInfo.GetCultureInfo(Locale?.Language ?? "en-us")
+			});
 		}
 		else
 		{
 			await Toast.Make("Permission denied").Show(CancellationToken.None);
 		}
 	}
+
+	private async void SpeechToText_RecognitionResultCompleted(object? sender, SpeechToTextRecognitionResultCompletedEventArgs e)
+	{
+		if (e.RecognitionResult.IsSuccessful)
+		{
+			RecognitionText = e.RecognitionResult.Text;
+		}
+		else
+		{
+			await Toast.Make(e.RecognitionResult.Exception.Message).Show();
+		}
+	}
+
+	private async void SpeechToText_RecognitionResultUpdated(object? sender, SpeechToTextRecognitionResultUpdatedEventArgs e)
+	{
+		RecognitionText += e.RecognitionResult + " ";
+#if WINDOWS
+		await ProcessText(e.RecognitionResult);
+#else
+		await Task.CompletedTask;
+#endif
+	}
+
 #if WINDOWS
 	async Task ProcessText(string prompt)
 	{

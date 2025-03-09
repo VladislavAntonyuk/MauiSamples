@@ -13,12 +13,12 @@ public sealed partial class TasksViewModel(AppDbContext context) : ObservableObj
 	public ObservableCollection<Task> FinishedTasks { get; } = new();
 
 	[ObservableProperty]
-	private Task task = new();
+	public partial Task Task { get; set; } = new();
 
 	public Task TaskEditMode { get; set; } = new();
 
 	[ObservableProperty]
-	private string hasErrorsCodeBehind = string.Empty;
+	public partial string HasErrorsCodeBehind { get; set; } = string.Empty;
 
 	[RelayCommand]
 	private void New()

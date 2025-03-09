@@ -70,5 +70,5 @@ internal class OpenXmlService
 		wbPart.Workbook.Save();
 	}
 
-	private static DocumentFormat.OpenXml.Spreadsheet.Cell ConstructCell(string value, CellValues dataTypes) => new() { CellValue = new CellValue(value), DataType = new EnumValue<CellValues>(dataTypes) };
+	private static DocumentFormat.OpenXml.Spreadsheet.Cell ConstructCell(string? value, CellValues dataTypes) => new() { CellValue = new CellValue(value ?? string.Empty), DataType = new EnumValue<CellValues>(dataTypes) };
 }

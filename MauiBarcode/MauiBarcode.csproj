@@ -33,6 +33,7 @@
 	  <PackageReference Include="Camera.MAUI.ZXing" />
 	  <PackageReference Include="CommunityToolkit.Maui.Camera" />
 	  <PackageReference Include="CommunityToolkit.Maui" />
+	  <PackageReference Include="Microsoft.Maui.Controls.Compatibility" />
 	</ItemGroup>
 
 </Project>

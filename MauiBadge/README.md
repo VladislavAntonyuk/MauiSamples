@@ -18,8 +18,4 @@ Article: https://vladislavantonyuk.github.io/articles/AppIcon-Badge-with-.NET-MA
 
 ![Windows](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/33/windows.gif)
 
-### Tizen
-
-![Tizen](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/33/tizen.png)
-
 [![Stand With Ukraine](https://img.shields.io/badge/made_in-ukraine-ffd700.svg?labelColor=0057b7)](https://stand-with-ukraine.pp.ua)

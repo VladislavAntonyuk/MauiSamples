@@ -137,7 +137,6 @@
 	<Project Path="MauiExcel/MauiExcel.csproj">
 		<Deploy />
 	</Project>
-	<Project Path="MauiExcel/MauiExcelBenchmark.csproj" />
 	<Project Path="MauiImageEffects/MauiImageEffects.csproj">
 		<Deploy />
 	</Project>

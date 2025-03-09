@@ -26,16 +26,16 @@ public abstract class BaseTest(ITestOutputHelper testOutputHelper) : IAsyncLifet
 		return App.FindElement(App is WindowsDriver ? MobileBy.AccessibilityId(id) : MobileBy.Id(id));
 	}
 
-	public Task InitializeAsync()
+	public ValueTask InitializeAsync()
 	{
 		testOutputHelper.WriteLine($"CIArtifactsDirectory: {Environment.GetEnvironmentVariable("Build.ArtifactStagingDirectory")}");
-		return Task.CompletedTask;
+		return ValueTask.CompletedTask;
 	}
 
-	public Task DisposeAsync()
+	public ValueTask DisposeAsync()
 	{
 		App.Dispose();
-		return Task.CompletedTask;
+		return ValueTask.CompletedTask;
 	}
 
 	protected async Task VerifyScreenshot(string name)

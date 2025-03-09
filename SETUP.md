@@ -1,27 +1,20 @@
 ## Build solution
 
 1. Install .NET 8
-2. Install .NET MAUI Workloads
-```pwsh
-dotnet workload install maui
-```
-3. Install Tizen
+1. Install .NET MAUI Workloads
+	```pwsh
+	dotnet workload install maui
+	```
 
-> If you don't want to run sample on Tizen you need to comment the next line: `<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);$(NetVersion)-tizen</TargetFrameworks>`. It exists in `Directory.Build.props` and `PizzaStore.Mobile.csproj`.
-
-```pwsh
-Invoke-WebRequest 'https://raw.githubusercontent.com/Samsung/Tizen.NET/main/workload/scripts/workload-install.ps1' -OutFile 'workload-install.ps1'
-.\workload-install.ps1
-```
-4. Build
-```pwsh
-dotnet restore --configfile NuGet.config
-dotnet build
-```
+1. Build
+	```pwsh
+	dotnet restore --configfile NuGet.config
+	dotnet build
+	```
 
 ## Update ReadMe
 
 1. Install Python 3
-3. Run `pip install MarkdownPP`
-4. Optional. You may need to add env variables to path: `C:\Program Files\Python312\Scripts`. This path should contain `markdown-pp`.
-5. Run PowerShell script `./md/run.ps1`
+1. Run `pip install MarkdownPP`
+1. Optional. You may need to add env variables to path: `C:\Program Files\Python312\Scripts`. This path should contain `markdown-pp`.
+1. Run PowerShell script `./md/run.ps1`

@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFrameworks>net9.0</TargetFrameworks>
+    <TargetFrameworks>$(NetVersion)</TargetFrameworks>
   </PropertyGroup>
 
   <ItemGroup>

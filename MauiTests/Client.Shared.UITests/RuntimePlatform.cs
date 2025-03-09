@@ -9,7 +9,6 @@ public class RuntimePlatform
 	public const string OsxIOs = "OSX,iOS";
 	public const string OsxMacCatalyst = "OSX,MacCatalyst";
 	public const string WindowsWindows = "WINDOWS,Windows";
-	public const string OsxTizen = "OSX,Tizen";
 
 	public static RuntimePlatform Parse(string runtimePlatform)
 	{
