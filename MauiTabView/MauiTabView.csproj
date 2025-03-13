@@ -3,7 +3,6 @@
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
 		<RootNamespace>MauiTabView</RootNamespace>
-		<UseMaui>true</UseMaui>
 
 		<!-- Display name -->
 		<ApplicationTitle>MauiTabView</ApplicationTitle>

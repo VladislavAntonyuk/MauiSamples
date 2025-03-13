@@ -4,7 +4,7 @@ using CoreGraphics;
 using Microsoft.Maui.Platform;
 using UIKit;
 
-public static class WindowExtensions
+public static partial class WindowExtensions
 {
 	public static Task<T?> OpenModalWindowAsync<T>(this Window parentWindow, ModalWindow<T> content)
 	{

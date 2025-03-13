@@ -4,6 +4,8 @@ using CommunityToolkit.Maui.Alerts;
 
 public partial class MainPage : ContentPage
 {
+	private int counter;
+
 	public MainPage()
 	{
 		InitializeComponent();
@@ -11,7 +13,25 @@ public partial class MainPage : ContentPage
 
 	private void OpenClicked(object sender, EventArgs e)
 	{
-		var newWindow = new Window(new SecondPage());
+		var page = new SecondPage
+		{
+			Title = "Second Page",
+			Content = new Button
+			{
+				Text = "Show Active Windows",
+				Command = new Command(async () =>
+				{
+					await Application.Current.GetActiveWindow().Page.DisplayAlert(
+						"Active Windows",
+						string.Join(Environment.NewLine, Application.Current.Windows.Select(x => $"{x.Title} - {x.IsActive()}")),
+						"OK");
+				})
+			}
+		};
+		var newWindow = new WindowEx(page)
+		{
+			Title = $"New Window {counter++}"
+		};
 		Application.Current?.OpenWindow(newWindow);
 	}
 
@@ -41,8 +61,8 @@ public partial class MainPage : ContentPage
 
 	private void CloseAllClicked(object sender, EventArgs e)
 	{
-		var windows = Application.Current?.Windows.Skip(1).ToArray();
-		foreach (var window in windows ?? Array.Empty<Window>())
+		var windows = Application.Current?.Windows.Except([Application.Current.GetActiveWindow()]).ToArray();
+		foreach (var window in windows ?? [])
 		{
 			Application.Current?.CloseWindow(window);
 		}

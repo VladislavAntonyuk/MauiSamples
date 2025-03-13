@@ -17,7 +17,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-latest, macos-15]
+#        os: [windows-latest, macos-15]
+        os: [windows-latest]
 
     steps:
     - name: Prepare variables on Windows

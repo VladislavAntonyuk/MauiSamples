@@ -9,7 +9,6 @@
 
 		<!-- App Identifier -->
 		<ApplicationId>com.vladislavantonyuk.mauispeech</ApplicationId>
-		<ApplicationIdGuid>44162988-feb5-4e47-a498-e52e83388fdf</ApplicationIdGuid>
 
 		<!-- Versions -->
 		<ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>

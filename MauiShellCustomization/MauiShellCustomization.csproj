@@ -9,7 +9,6 @@
 
         <!-- App Identifier -->
         <ApplicationId>com.vladislavantonyuk.mauishellcustomization</ApplicationId>
-        <ApplicationIdGuid>AAB47878-038C-4344-831F-6F601A94D746</ApplicationIdGuid>
 
         <!-- Versions -->
         <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>

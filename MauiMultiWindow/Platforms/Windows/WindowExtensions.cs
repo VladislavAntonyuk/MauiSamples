@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Maui.Platform;
 using Microsoft.UI.Xaml.Controls;
 
-public static class WindowExtensions
+public static partial class WindowExtensions
 {
 	public static async Task<T?> OpenModalWindowAsync<T>(this Window parentWindow, ModalWindow<T> content)
 	{

@@ -23,13 +23,13 @@
     <PackageVersion Include="m3uParser.NET" Version="1.0.17" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="9.0.40" />
     <PackageVersion Include="Microsoft.Azure.NotificationHubs" Version="4.2.0" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.2" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.2" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.2" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tasks" Version="9.0.2" />
-    <PackageVersion Include="Microsoft.Extensions.AI.Abstractions" Version="9.3.0-preview.1.25114.11" />
-    <PackageVersion Include="Microsoft.Extensions.AI.OpenAI" Version="9.3.0-preview.1.25114.11" />
-    <PackageVersion Include="Microsoft.Extensions.Http" Version="9.0.2" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.3" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.3" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.3" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tasks" Version="9.0.3" />
+    <PackageVersion Include="Microsoft.Extensions.AI.Abstractions" Version="9.3.0-preview.1.25161.3" />
+    <PackageVersion Include="Microsoft.Extensions.AI.OpenAI" Version="9.3.0-preview.1.25161.3" />
+    <PackageVersion Include="Microsoft.Extensions.Http" Version="9.0.3" />
     <PackageVersion Include="Microsoft.Extensions.Logging.ApplicationInsights" Version="2.23.0" />
     <PackageVersion Include="Microsoft.Identity.Client" Version="4.69.1" />
     <PackageVersion Include="Microsoft.Maui.Controls" Version="9.0.40" />
