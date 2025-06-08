@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:viewModels="clr-namespace:MauiIpCamera.ViewModels"
+             x:Class="MauiIpCamera.CommunityToolkitCameraPage"
+             x:DataType="viewModels:CameraViewModel">
+
+	<ScrollView>
+		<VerticalStackLayout>
+			<Editor Text="{Binding IpAddressText}" IsReadOnly="True"/>
+			<Button Text="Start" Command="{Binding StartCameraCommand}" CommandParameter="{x:Reference Name=ToolkitCameraView}"></Button>
+			<Button Text="Stop" Command="{Binding StartCameraCancelCommand}"></Button>
+			<Picker
+				Title="Available Resolutions"
+				ItemsSource="{Binding AvailableResolutions}"
+				SelectedItem="{Binding SelectedResolution}"/>
+			<toolkit:CameraView x:Name="ToolkitCameraView"
+			                    ImageCaptureResolution="{Binding SelectedResolution}"/>
+		</VerticalStackLayout>
+	</ScrollView>
+
+</ContentPage>
