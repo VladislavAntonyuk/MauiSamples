@@ -5,7 +5,7 @@
            xmlns:mauiPaint="using:MauiPaint"
            x:Class="MauiPaint.PreviewImage"
 		   x:DataType="mauiPaint:PreviewImage"
-		   Color="Transparent">
+		   BackgroundColor="Transparent">
 
 	<ScrollView>
 		<VerticalStackLayout>

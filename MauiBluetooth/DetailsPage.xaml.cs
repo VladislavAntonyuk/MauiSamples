@@ -16,7 +16,8 @@ public partial class DetailsPage : Popup
 		this.bluetoothService = bluetoothService;
 		InitializeComponent();
 		BindingContext = this;
-		Size = new Size(200, 500);
+		WidthRequest = 200;
+		HeightRequest = 500;
 	}
 
 	private async void GetServices(object sender, EventArgs e)

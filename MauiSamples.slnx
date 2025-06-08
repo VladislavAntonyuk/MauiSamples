@@ -21,13 +21,13 @@
 			<Deploy />
 		</Project>
 	</Folder>
-	<Folder Name="/Database/KanbanBoard/" Id="590a8336-dd1d-92bf-d9d0-67fb25d8536b">
+	<Folder Name="/Database/KanbanBoard/">
 		<Project Path="Database/KanbanBoard/KanbanBoard/KanbanBoard.csproj">
 			<Deploy Solution="Debug|*" />
 		</Project>
 		<Project Path="Database/KanbanBoard/KanbanBoardDb/KanbanBoardDb.csproj" />
 	</Folder>
-	<Folder Name="/Database/Sqlite/" Id="b2bb41b9-86f6-c877-ebac-94a879c6f10f">
+	<Folder Name="/Database/Sqlite/">
 		<Project Path="Database/Sqlite/MauiSqlite/MauiSqlite.csproj">
 			<Deploy />
 		</Project>
@@ -39,7 +39,7 @@
 	<Folder Name="/iOSExtensions/">
 		<File Path="iOSExtensions/Directory.Build.props" />
 	</Folder>
-	<Folder Name="/iOSExtensions/JokeApp/" Id="8d22f23f-89a4-d9d2-f19b-22af86e784bb">
+	<Folder Name="/iOSExtensions/JokeApp/">
 		<File Path="iOSExtensions/JokeApp/README.md" />
 		<File Path="iOSExtensions/JokeApp/README.mdpp" />
 		<Project Path="iOSExtensions/JokeApp/JokeApp/JokeApp.csproj">
@@ -49,7 +49,7 @@
 			<Deploy />
 		</Project>
 	</Folder>
-	<Folder Name="/iOSExtensions/ShareExtension/" Id="5ed4c664-a038-8a56-2a36-d6bf0b5e37a0">
+	<Folder Name="/iOSExtensions/ShareExtension/">
 		<File Path="iOSExtensions/ShareExtension/README.md" />
 		<File Path="iOSExtensions/ShareExtension/README.mdpp" />
 		<Project Path="iOSExtensions/ShareExtension/AppContainer/AppContainer.csproj">
@@ -72,11 +72,12 @@
 		<File Path=".github/workflows/dotnet.yml" />
 		<File Path="Directory.Build.props" />
 		<File Path="Directory.Packages.props" />
+		<File Path="global.json" />
 		<File Path="NuGet.config" />
 		<File Path="README.mdpp" />
 		<File Path="SETUP.md" />
 	</Folder>
-	<Folder Name="/Solution Items/md/" Id="b19059a3-056f-5683-33f9-33079b3e2203">
+	<Folder Name="/Solution Items/md/">
 		<File Path="md/footer.mdpp" />
 		<File Path="md/header.mdpp" />
 		<File Path="md/run.ps1" />
@@ -138,6 +139,9 @@
 		<Deploy />
 	</Project>
 	<Project Path="MauiImageEffects/MauiImageEffects.csproj">
+		<Deploy />
+	</Project>
+	<Project Path="MauiIpCamera/MauiIpCamera.csproj">
 		<Deploy />
 	</Project>
 	<Project Path="MauiLocalization/MauiLocalization.csproj">

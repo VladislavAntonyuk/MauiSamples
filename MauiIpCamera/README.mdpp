@@ -1,0 +1,9 @@
+# MAUI IP Camera
+
+A cross-platform IP camera application built with .NET MAUI that allows streaming video from your device's camera over a local network.
+
+!INCLUDE "./md/header.mdpp"
+
+Article: https://vladislavantonyuk.github.io/articles/Various-methods-for-barcode-scanning-in-.NET-MAUI
+
+!INCLUDE "./md/footer.mdpp"

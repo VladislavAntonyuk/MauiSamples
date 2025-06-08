@@ -5,6 +5,7 @@ using Camera.MAUI.ZXing;
 using Camera.MAUI.ZXingHelper;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
+using CameraPosition = Camera.MAUI.CameraPosition;
 
 public partial class ZxingCameraPage : ContentPage
 {

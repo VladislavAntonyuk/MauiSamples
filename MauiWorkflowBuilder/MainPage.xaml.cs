@@ -1,6 +1,7 @@
 ﻿namespace MauiWorkflowBuilder;
 
 using Blazor;
+using CommunityToolkit.Maui.Extensions;
 using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.Messaging;
 

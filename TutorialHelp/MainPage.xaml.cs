@@ -1,6 +1,6 @@
 ﻿namespace TutorialHelp;
 
-using CommunityToolkit.Maui.Views;
+using CommunityToolkit.Maui.Extensions;
 
 public partial class MainPage : ContentPage
 {

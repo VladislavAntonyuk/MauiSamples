@@ -2,7 +2,6 @@
 
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
-using CommunityToolkit.Maui.Views;
 using Microsoft.Maui.Graphics.Platform;
 using ZXing;
 using ZXing.Common;
@@ -33,7 +32,7 @@ public partial class CommunityToolkitCameraPage : ContentPage
 		ToolkitCameraView.MediaCaptured += OnMediaCaptured;
 
 		var cameras = await ToolkitCameraView.GetAvailableCameras(CancellationToken.None);
-		ToolkitCameraView.SelectedCamera = cameras.FirstOrDefault(x => x.Position != CommunityToolkit.Maui.Core.Primitives.CameraPosition.Front);
+		ToolkitCameraView.SelectedCamera = cameras.FirstOrDefault(x => x.Position != CameraPosition.Front);
 	}
 
 	protected override void OnDisappearing()

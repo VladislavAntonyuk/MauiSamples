@@ -7,6 +7,7 @@ using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Core.Extensions;
 using CommunityToolkit.Maui.Core.Views;
+using CommunityToolkit.Maui.Extensions;
 using CommunityToolkit.Maui.Storage;
 using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -35,7 +36,7 @@ public partial class MainPageViewModel(
 	[ObservableProperty]
 	public partial float CanvasHeight { get; set; }
 
-	public Action<ICanvas, RectF>? DrawAction = (canvas, rect) =>
+	public Action<ICanvas, RectF>? DrawAction { get; } = (canvas, rect) =>
 	{
 		foreach (var figure in _figures)
 		{
