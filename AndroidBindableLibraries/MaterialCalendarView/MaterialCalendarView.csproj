@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<SupportedOSPlatformVersion>23</SupportedOSPlatformVersion>
 		<PackageId>VladislavAntonyuk.$(AssemblyName)</PackageId>
-		<Version>1.9.0.1</Version>
+		<Version>1.9.2</Version>
 		<PackageReadmeFile>ReadMe.md</PackageReadmeFile>
 		<PackageOutputPath>..\..\LocalPackages\</PackageOutputPath>
 	</PropertyGroup>
@@ -13,16 +13,16 @@
 
 	<ItemGroup>
 		<!-- Include format is {GroupId}:{ArtifactId} -->
-		<AndroidMavenLibrary Include="org.jetbrains.kotlin:kotlin-android-extensions-runtime" Version="1.6.10" Bind="false" />
+		<AndroidMavenLibrary Include="org.jetbrains.kotlin:kotlin-android-extensions-runtime" Version="1.6.20" Bind="false" />
 		<AndroidMavenLibrary Include="com.annimon:stream" Version="1.2.2" Bind="false" />
-		<AndroidMavenLibrary Include="com.applandeo:material-calendar-view" Version="1.9.0" />
+		<AndroidMavenLibrary Include="com.applandeo:material-calendar-view" Version="1.9.2" />
 		<PackageReference Include="Xamarin.AndroidX.AppCompat" Version="1.7.0.5" />
 		<PackageReference Include="Xamarin.AndroidX.Collection" Version="1.4.5.2" />
 		<PackageReference Include="Xamarin.AndroidX.Collection.Jvm" Version="1.4.5.2" />
 		<PackageReference Include="Xamarin.AndroidX.Collection.Ktx" Version="1.4.5.2" />
 		<PackageReference Include="Xamarin.AndroidX.ConstraintLayout" Version="2.2.1" />
 		<PackageReference Include="Xamarin.AndroidX.Core.Core.Ktx" Version="1.15.0.2" />
-		<PackageReference Include="Xamarin.AndroidX.Fragment.Ktx" Version="1.8.6" />	
+		<PackageReference Include="Xamarin.AndroidX.Fragment.Ktx" Version="1.8.6" />
 		<PackageReference Include="Xamarin.Kotlin.StdLib" Version="2.0.21.2" />
 		<PackageReference Include="Xamarin.Kotlin.StdLib.Jdk8" Version="2.0.21.2" />
 	</ItemGroup>

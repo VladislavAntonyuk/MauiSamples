@@ -2,7 +2,7 @@
 	<PropertyGroup>
 		<SupportedOSPlatformVersion>23</SupportedOSPlatformVersion>
 		<PackageId>VladislavAntonyuk.$(AssemblyName)</PackageId>
-		<Version>1.6.4.1</Version>
+		<Version>1.6.12</Version>
 		<PackageReadmeFile>ReadMe.md</PackageReadmeFile>
 		<PackageOutputPath>..\..\LocalPackages\</PackageOutputPath>
 	</PropertyGroup>
@@ -13,14 +13,14 @@
 
 	<ItemGroup>
 		<!-- Include format is {GroupId}:{ArtifactId} -->
-		<AndroidMavenLibrary Include="com.github.skydoves:balloon" Version="1.6.4" />
-		<PackageReference Include="Xamarin.AndroidX.Annotation" Version="1.9.1.2" />
+		<AndroidMavenLibrary Include="com.github.skydoves:balloon" Version="1.6.12" />
+		<PackageReference Include="Xamarin.AndroidX.Annotation" Version="1.9.1.4" />
 		<PackageReference Include="Xamarin.AndroidX.AppCompat" Version="1.7.0.5" />
 		<PackageReference Include="Xamarin.AndroidX.Core.Core.Ktx" Version="1.15.0.2" />
 		<PackageReference Include="Xamarin.AndroidX.DataBinding.ViewBinding" Version="8.8.2" />
 		<PackageReference Include="Xamarin.AndroidX.Fragment.Ktx" Version="1.8.6" />
 		<PackageReference Include="Xamarin.AndroidX.Lifecycle.Runtime.Ktx" Version="2.8.7.2" />
-		<PackageReference Include="Xamarin.Kotlin.StdLib" Version="2.0.21.2" />
+		<PackageReference Include="Xamarin.Kotlin.StdLib" Version="2.2.0" />
 	</ItemGroup>
 	<ItemGroup>
 	  <None Update="ReadMe.md">
