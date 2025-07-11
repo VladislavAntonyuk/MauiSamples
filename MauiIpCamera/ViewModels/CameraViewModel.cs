@@ -30,6 +30,9 @@ public partial class CameraViewModel : ObservableObject
 	}
 
 	[ObservableProperty]
+	public partial bool IsPowerSavingModeEnabled { get; set; }
+
+	[ObservableProperty]
 	public partial string IpAddressText { get; set; }
 
 	public ObservableCollection<Size> AvailableResolutions { get; }
@@ -51,6 +54,18 @@ public partial class CameraViewModel : ObservableObject
 				AvailableResolutions.Add(resolution);
 			}
 		}
+	}
+
+	[RelayCommand]
+	void EnablePowerSavingMode()
+	{
+		IsPowerSavingModeEnabled = true;
+	}
+
+	[RelayCommand]
+	void DisablePowerSavingMode()
+	{
+		IsPowerSavingModeEnabled = false;
 	}
 
 	[RelayCommand(AllowConcurrentExecutions = false, IncludeCancelCommand = true)]

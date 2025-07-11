@@ -7,20 +7,60 @@
              x:Class="MauiIpCamera.CommunityToolkitCameraPage"
              x:DataType="viewModels:CameraViewModel">
 
-	<ScrollView>
-		<VerticalStackLayout>
-			<Editor Text="{Binding IpAddressText}" IsReadOnly="True"/>
-			<Button Text="Start Mjpeg" Command="{Binding StartMjpegStreamCommand}" CommandParameter="{x:Reference Name=ToolkitCameraView}"></Button>
-			<Button Text="Stop Mjpeg" Command="{Binding StartMjpegStreamCancelCommand}"></Button>
-			<Button Text="Start Video stream" Command="{Binding StartVideoStreamCommand}" CommandParameter="{x:Reference Name=ToolkitCameraView}"></Button>
-			<Button Text="Stop Video stream" Command="{Binding StartVideoStreamCancelCommand}"></Button>
-			<Picker
-				Title="Available Resolutions"
-				ItemsSource="{Binding AvailableResolutions}"
-				SelectedItem="{Binding SelectedResolution}"/>
-			<toolkit:CameraView x:Name="ToolkitCameraView"
-			                    ImageCaptureResolution="{Binding SelectedResolution}"/>
-		</VerticalStackLayout>
-	</ScrollView>
+	<ContentPage.Behaviors>
+		<toolkit:StatusBarBehavior StatusBarColor="Black" StatusBarStyle="LightContent" />
+	</ContentPage.Behaviors>
+
+	<Grid>
+
+		<ScrollView>
+
+			<VerticalStackLayout>
+				<Editor
+					Text="{Binding IpAddressText}"
+					IsReadOnly="True"/>
+
+				<Button
+					Text="Start Mjpeg"
+					Command="{Binding StartMjpegStreamCommand}"
+					CommandParameter="{x:Reference Name=ToolkitCameraView}"/>
+
+				<Button
+					Text="Stop Mjpeg"
+					Command="{Binding StartMjpegStreamCancelCommand}"/>
+
+				<Button
+					Text="Start Video stream"
+					Command="{Binding StartVideoStreamCommand}"
+					CommandParameter="{x:Reference Name=ToolkitCameraView}"/>
+
+				<Button
+					Text="Stop Video stream"
+					Command="{Binding StartVideoStreamCancelCommand}"/>
+
+				<Button
+					Text="Enable PowerSaving Mode"
+					Command="{Binding EnablePowerSavingModeCommand}"/>
+
+				<Picker
+					Title="Available Resolutions"
+					ItemsSource="{Binding AvailableResolutions}"
+					SelectedItem="{Binding SelectedResolution}"/>
+
+				<toolkit:CameraView
+					x:Name="ToolkitCameraView"
+					ImageCaptureResolution="{Binding SelectedResolution}"/>
+			</VerticalStackLayout>
+		</ScrollView>
+
+		<BoxView
+			IsVisible="{Binding IsPowerSavingModeEnabled}"
+			BackgroundColor="Black">
+			<BoxView.GestureRecognizers>
+				<TapGestureRecognizer Command="{Binding DisablePowerSavingModeCommand}"/>
+			</BoxView.GestureRecognizers>
+		</BoxView>
+
+	</Grid>
 
 </ContentPage>
