@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using CommunityToolkit.Maui.Storage;
 using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -27,7 +28,18 @@ public partial class CameraViewModel : ObservableObject
 		IpAddressText = ipAddress = $"{localIp}:{Port}";
 
 		AvailableResolutions = new ObservableCollection<Size>();
+		RecordingsFolder = Preferences.Get(nameof(RecordingsFolder), null);
+		if (!string.IsNullOrWhiteSpace(RecordingsFolder))
+		{
+			SaveRecordingToFileStorage = true;
+		}
 	}
+
+	[ObservableProperty]
+	public partial bool SaveRecordingToFileStorage { get; set; }
+
+	[ObservableProperty]
+	public partial string? RecordingsFolder { get; set; }
 
 	[ObservableProperty]
 	public partial bool IsPowerSavingModeEnabled { get; set; }
@@ -141,6 +153,7 @@ public partial class CameraViewModel : ObservableObject
 			await Task.Delay(VideoDurationMs, CancellationToken.None);
 			await cameraView.StopVideoRecording(CancellationToken.None);
 			server.SetVideoStream(stream);
+			await SaveStreamToFileSystem(stream, $"recording-{DateTimeOffset.Now.ToUnixTimeMilliseconds()}.mp4");
 		}
 
 		cameraView.StopCameraPreview();
@@ -151,5 +164,34 @@ public partial class CameraViewModel : ObservableObject
 	{
 		var currentTime = DateTime.Now;
 		return currentTime.Hour is >= 18 or < 6;
+	}
+
+	async Task SaveStreamToFileSystem(MemoryStream stream, string fileName)
+	{
+		if (string.IsNullOrWhiteSpace(RecordingsFolder) || !SaveRecordingToFileStorage)
+		{
+			return;
+		}
+
+		await using var file = new FileStream(Path.Combine(RecordingsFolder, fileName), FileMode.Create, FileAccess.Write);
+		await file.WriteAsync(stream.ToArray());
+	}
+
+	async partial void OnSaveRecordingToFileStorageChanged(bool value)
+	{
+		if (value)
+		{
+			var pickResult = await FolderPicker.PickAsync(CancellationToken.None);
+			if (pickResult.IsSuccessful)
+			{
+				RecordingsFolder = pickResult.Folder.Path;
+			}
+		}
+		else
+		{
+			RecordingsFolder = null;
+		}
+
+		Preferences.Set(nameof(RecordingsFolder), RecordingsFolder);
 	}
 }

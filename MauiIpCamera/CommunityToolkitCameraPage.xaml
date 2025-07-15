@@ -42,6 +42,11 @@
 					Text="Enable PowerSaving Mode"
 					Command="{Binding EnablePowerSavingModeCommand}"/>
 
+				<Label
+					Text="{Binding RecordingsFolder, StringFormat='SaveRecordingToFileStorage: {0}'}"/>
+				<CheckBox
+					IsChecked="{Binding SaveRecordingToFileStorage}"/>
+
 				<Picker
 					Title="Available Resolutions"
 					ItemsSource="{Binding AvailableResolutions}"
