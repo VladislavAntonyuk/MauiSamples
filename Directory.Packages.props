@@ -11,7 +11,7 @@
     <PackageVersion Include="Camera.MAUI.ZXing" Version="1.0.0" />
     <PackageVersion Include="ClosedXML" Version="0.105.0" />
     <PackageVersion Include="CommunityToolkit.Maui" Version="12.1.0" />
-    <PackageVersion Include="CommunityToolkit.Maui.Camera" Version="99.0.11" />
+    <PackageVersion Include="CommunityToolkit.Maui.Camera" Version="99.0.0-preview" />
     <PackageVersion Include="CommunityToolkit.Maui.Maps" Version="3.0.2" />
     <PackageVersion Include="CommunityToolkit.Maui.MediaElement" Version="6.1.1" />
     <PackageVersion Include="CommunityToolkit.Mvvm" Version="8.4.0" />
