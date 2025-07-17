@@ -58,6 +58,6 @@
     <PackageVersion Include="Xamarin.GooglePlayServices.Code.Scanner" Version="116.1.0.12" />
     <PackageVersion Include="Xamarin.GooglePlayServices.SafetyNet" Version="118.1.0.6" />
     <PackageVersion Include="Xamarin.Google.Dagger" Version="2.56.2.2" />
-    <PackageVersion Include="xunit.v3" Version="3.0.0-pre.40" />
+    <PackageVersion Include="xunit.v3" Version="3.0.0" />
   </ItemGroup>
 </Project>

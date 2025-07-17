@@ -18,6 +18,7 @@ public partial class CameraViewModel : ObservableObject
 	private const int VideoDurationMs = 10000;
 	private const int MaxConnectionsCount = 10;
 	private readonly string ipAddress;
+	private bool isFirstStart = true;
 
 	private readonly LocalHttpServer server;
 
@@ -27,7 +28,7 @@ public partial class CameraViewModel : ObservableObject
 		server = new LocalHttpServer(localIp, Port, Frequency);
 		IpAddressText = ipAddress = $"{localIp}:{Port}";
 
-		AvailableResolutions = new ObservableCollection<Size>();
+		AvailableResolutions = [];
 		RecordingsFolder = Preferences.Get(nameof(RecordingsFolder), null);
 		if (!string.IsNullOrWhiteSpace(RecordingsFolder))
 		{
@@ -179,6 +180,12 @@ public partial class CameraViewModel : ObservableObject
 
 	async partial void OnSaveRecordingToFileStorageChanged(bool value)
 	{
+		if (isFirstStart)
+		{
+			isFirstStart = false;
+			return;
+		}
+
 		if (value)
 		{
 			var pickResult = await FolderPicker.PickAsync(CancellationToken.None);
