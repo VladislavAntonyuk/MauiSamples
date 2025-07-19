@@ -15,6 +15,8 @@ public static class MauiProgram
 
 		builder.Services.AddSingleton<CameraViewModel>();
 		builder.Services.AddSingleton<ILocalIpService, LocalIpService>();
+		builder.Services.AddSingleton<IAutoStartService, AutoStartService>();
+		builder.Services.AddSingleton(Preferences.Default);
 
 		return builder.Build();
 	}

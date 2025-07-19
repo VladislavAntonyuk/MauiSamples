@@ -13,7 +13,7 @@ public class LocalHttpServer(IPAddress ipAddress, int port, int frequency)
 	private byte[]? videoStreamBytes;
 	private readonly ConcurrentDictionary<NetworkStream, byte> activeClients = new();
 
-	public void  SetMjpegStream(Stream stream)
+	public void SetMjpegStream(Stream stream)
 	{
 		if (stream.Length == 0 || activeClients.IsEmpty)
 		{
@@ -30,11 +30,6 @@ public class LocalHttpServer(IPAddress ipAddress, int port, int frequency)
 
 	public void SetVideoStream(MemoryStream stream)
 	{
-		if (stream.Length == 0)
-		{
-			return;
-		}
-
 		videoStreamBytes = stream.ToArray();
 	}
 
@@ -104,39 +99,41 @@ public class LocalHttpServer(IPAddress ipAddress, int port, int frequency)
 			var method = parts[0].ToUpperInvariant();
 			var path = parts[1];
 
-			if (method != "GET")
+			if (method == "GET")
 			{
-				const string errorResponse = "HTTP/1.1 405 Method Not Allowed\r\n\r\nOnly GET method is supported";
-				await stream.WriteAsync(Encoding.UTF8.GetBytes(errorResponse), serverToken);
-				return;
-			}
-
-			if (path.StartsWith("/mjpeg"))
-			{
-				activeClients.TryAdd(stream, 0);
-
-				try
+				if (path.StartsWith("/mjpeg"))
 				{
-					await SendMjpegStreamAsync(stream, serverToken);
+					activeClients.TryAdd(stream, 0);
+
+					try
+					{
+						await SendMjpegStreamAsync(stream, serverToken);
+					}
+					finally
+					{
+						activeClients.TryRemove(stream, out _);
+					}
 				}
-				finally
+				else if (path.StartsWith("/stream"))
 				{
-					activeClients.TryRemove(stream, out _);
+					await SendVideoStreamAsync(stream, serverToken);
 				}
-			}
-			else if (path.StartsWith("/stream"))
-			{
-				await SendVideoStreamAsync(stream, serverToken);
-			}
-			else if (path.StartsWith("/player"))
-			{
-				await SendPlayerAsync(stream, serverToken);
+				else if (path.StartsWith("/player"))
+				{
+					await SendPlayerAsync(stream, serverToken);
+				}
+				else
+				{
+					const string errorResponse = "HTTP/1.1 404 Not Found\r\n\r\nPage not found";
+					await stream.WriteAsync(Encoding.UTF8.GetBytes(errorResponse), serverToken);
+				}
 			}
 			else
 			{
-				const string errorResponse = "HTTP/1.1 404 Not Found\r\n\r\nPage not found";
+				const string errorResponse = "HTTP/1.1 405 Method Not Allowed\r\n\r\nOnly GET method is supported";
 				await stream.WriteAsync(Encoding.UTF8.GetBytes(errorResponse), serverToken);
 			}
+
 		}
 		catch
 		{
@@ -152,10 +149,10 @@ public class LocalHttpServer(IPAddress ipAddress, int port, int frequency)
 	{
 		var boundary = $"mjpeg-{Guid.NewGuid():N}";
 		var header = $"HTTP/1.1 200 OK\r\n" +
-		             $"Content-Type: multipart/x-mixed-replace; boundary={boundary}\r\n" +
-		             "Connection: keep-alive\r\n" +
-		             "Cache-Control: no-cache\r\n" +
-		             "Pragma: no-cache\r\n\r\n";
+					 $"Content-Type: multipart/x-mixed-replace; boundary={boundary}\r\n" +
+					 "Connection: keep-alive\r\n" +
+					 "Cache-Control: no-cache\r\n" +
+					 "Pragma: no-cache\r\n\r\n";
 
 		await stream.WriteAsync(Encoding.UTF8.GetBytes(header), token);
 
@@ -173,8 +170,8 @@ public class LocalHttpServer(IPAddress ipAddress, int port, int frequency)
 			}
 
 			var partHeader = $"--{boundary}\r\n" +
-			                 $"Content-Type: image/jpeg\r\n" +
-			                 $"Content-Length: {frame.Length}\r\n\r\n";
+							 $"Content-Type: image/jpeg\r\n" +
+							 $"Content-Length: {frame.Length}\r\n\r\n";
 
 			await stream.WriteAsync(Encoding.UTF8.GetBytes(partHeader), token);
 			await stream.WriteAsync(frame, token);
@@ -194,11 +191,11 @@ public class LocalHttpServer(IPAddress ipAddress, int port, int frequency)
 		}
 
 		var header = $"HTTP/1.1 200 OK\r\n" +
-		             $"Content-Type: video/mp4\r\n" +
-		             $"Content-Length: {videoStreamBytes.Length}\r\n" +
-		             "Connection: close\r\n" +
-		             "Cache-Control: no-cache\r\n" +
-		             "Pragma: no-cache\r\n\r\n";
+					 $"Content-Type: video/mp4\r\n" +
+					 $"Content-Length: {videoStreamBytes.Length}\r\n" +
+					 "Connection: close\r\n" +
+					 "Cache-Control: no-cache\r\n" +
+					 "Pragma: no-cache\r\n\r\n";
 
 		await stream.WriteAsync(Encoding.UTF8.GetBytes(header), token);
 		await stream.WriteAsync(videoStreamBytes, token);
@@ -218,61 +215,70 @@ public class LocalHttpServer(IPAddress ipAddress, int port, int frequency)
 		}
 
 		var header = $"HTTP/1.1 200 OK\r\n" +
-		             $"Content-Type: text/html\r\n" +
-		             "Connection: close\r\n" +
-		             "Cache-Control: no-cache\r\n" +
-		             "Pragma: no-cache\r\n\r\n";
+					 $"Content-Type: text/html\r\n" +
+					 "Connection: close\r\n" +
+					 "Cache-Control: no-cache\r\n" +
+					 "Pragma: no-cache\r\n\r\n";
 
 		await stream.WriteAsync(Encoding.UTF8.GetBytes(header), token);
 
-		await stream.WriteAsync(
-			"""
-						<!DOCTYPE html>
-						<html lang="en">
-						<head>
-						    <meta charset="UTF-8">
-						    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-						    <title>MAUI IP Camera Video player</title>
-						    <style>
-						        body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #000; }
-						        video { max-width: 100%; max-height: 100vh; }
-						        .controls { position: fixed; bottom: 10px; width: 100%; text-align: center; }
-						        button { background: rgba(255,255,255,0.7); border: none; padding: 8px 16px; border-radius: 4px; margin: 0 5px; }
-						    </style>
-						</head>
-						<body>
-						    <video id="videoPlayer" controls playsinline webkit-playsinline></video>
-						    <div class="controls">
-						        <button id="refreshBtn">Refresh Video</button>
-						    </div>
+		Guid viewerId = Guid.NewGuid();
+		await stream.WriteAsync(Encoding.UTF8.GetBytes(
+									$$"""
+			                          		<!DOCTYPE html>
+			                          		<html lang="en">
+			                          		<head>
+			                          		    <meta charset="UTF-8">
+			                          		    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+			                          		    <title>MAUI IP Camera Video player</title>
+			                          		    <style>
+			                          		        body { margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #000; color: #fff }
+			                          		        video { max-width: 100%; max-height: 100vh; }
+			                          		        .controls { position: fixed; bottom: 10px; width: 100%; text-align: center; }
+			                          		        button { background: rgba(255,255,255,0.7); border: none; padding: 8px 16px; border-radius: 4px; margin: 0 5px; }
+			                          		    </style>
+			                          		</head>
+			                          		<body>
+			                          		    <video id="videoPlayer" controls playsinline webkit-playsinline></video>
+			                          		    <div class="controls">
+			                          			    <p id="info">
+			                          					Viewer Id: {{viewerId}}<br>
+			                          					Device info: {{DeviceInfo.Current.Model}}<br>
+			                          			    </p>
+			                          			    <p id="status"></p>
+			                          		        <button id="refreshBtn">Refresh Video</button>
+			                          		    </div>
 
-						    <script>
-						        const video = document.getElementById('videoPlayer');
-						        const refreshBtn = document.getElementById('refreshBtn');
-						        let timestamp = new Date().getTime();
+			                          		    <script>
+			                          		        const viewerId = '{{viewerId}}';
+			                          		        const status = document.getElementById('status');
+			                          		        const info = document.getElementById('info');
+			                          		        const video = document.getElementById('videoPlayer');
+			                          		        const refreshBtn = document.getElementById('refreshBtn');
+			                          		        let timestamp = new Date().getTime();
 
-						        function loadVideo() {
-						            timestamp = new Date().getTime();
-						            video.src = `/stream?t=${timestamp}`;
-						            video.load();
-						            video.play().catch(err => {
-						                console.error('Error playing video:', err);
-						            });
-						        }
+			                          		        function loadVideo() {
+			                          		            timestamp = new Date().getTime();
+			                          		            video.src = `/stream?t=${timestamp}`;
+			                          		            video.load();
+			                          		            video.play().catch(err => {
+			                          		                status.innerText = 'Error playing video: ' + err;
+			                          		            });
+			                          		        }
 
-						        loadVideo();
+			                          		        loadVideo();
 
-						        video.addEventListener('ended', loadVideo);
-						        video.addEventListener('error', (e) => {
-						            console.error('Video error:', e);
-						            setTimeout(loadVideo, 2000);
-						        });
+			                          		        video.addEventListener('ended', loadVideo);
+			                          		        video.addEventListener('error', (e) => {
+			                          		            status.innerText = 'Video error: ' + e;
+			                          		            setTimeout(loadVideo, 2000);
+			                          		        });
 
-						        refreshBtn.addEventListener('click', loadVideo);
-						    </script>
-						</body>
-						</html>
-				"""u8.ToArray(), token);
+			                          		        refreshBtn.addEventListener('click', loadVideo);
+			                          		    </script>
+			                          		</body>
+			                          		</html>
+			                          """), token);
 
 		await stream.FlushAsync(token);
 		stream.Close();

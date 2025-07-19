@@ -2,19 +2,19 @@
 
 using ViewModels;
 
-public partial class CommunityToolkitCameraPage
+public partial class MainPage
 {
 	private readonly CameraViewModel viewModel;
 
-	public CommunityToolkitCameraPage(CameraViewModel viewModel)
+	public MainPage(CameraViewModel viewModel)
 	{
 		InitializeComponent();
 		BindingContext = this.viewModel = viewModel;
+		Loaded += OnPageLoaded;
 	}
 
-	protected override async void OnNavigatedTo(NavigatedToEventArgs args)
+	private async void OnPageLoaded(object? sender, EventArgs e)
 	{
-		base.OnNavigatedTo(args);
 		var cameraRequest = await Permissions.RequestAsync<Permissions.Camera>();
 		var microphoneRequest = await Permissions.RequestAsync<Permissions.Microphone>();
 		if (cameraRequest != PermissionStatus.Granted || microphoneRequest != PermissionStatus.Granted)
@@ -24,12 +24,6 @@ public partial class CommunityToolkitCameraPage
 		}
 
 		await viewModel.InitializeCameraAsync(ToolkitCameraView);
-	}
-
-	protected override void OnNavigatedFrom(NavigatedFromEventArgs args)
-	{
-		viewModel.StartMjpegStreamCancelCommand.Execute(null);
-		viewModel.StartVideoStreamCancelCommand.Execute(null);
-		base.OnNavigatedFrom(args);
+		Loaded -= OnPageLoaded;
 	}
 }

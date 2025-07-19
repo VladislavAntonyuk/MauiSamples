@@ -4,12 +4,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:viewModels="clr-namespace:MauiIpCamera.ViewModels"
-             x:Class="MauiIpCamera.CommunityToolkitCameraPage"
-             x:DataType="viewModels:CameraViewModel">
+             x:Class="MauiIpCamera.MainPage"
+             x:DataType="viewModels:CameraViewModel"
+             BackgroundColor="Black">
 
 	<ContentPage.Behaviors>
 		<toolkit:StatusBarBehavior StatusBarColor="Black" StatusBarStyle="LightContent" />
 	</ContentPage.Behaviors>
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Command="{Binding OpenSettingsCommand}" Text="Settings"></ToolbarItem>
+	</ContentPage.ToolbarItems>
 
 	<Grid>
 
@@ -18,36 +22,23 @@
 			<VerticalStackLayout>
 				<Editor
 					Text="{Binding IpAddressText}"
+					TextColor="White"
 					IsReadOnly="True"/>
 
 				<Button
-					Text="Start Mjpeg"
-					Command="{Binding StartMjpegStreamCommand}"
+					Text="Start"
+					TextColor="White"
+					Command="{Binding StartStreamCommand}"
 					CommandParameter="{x:Reference Name=ToolkitCameraView}"/>
 
 				<Button
-					Text="Stop Mjpeg"
-					Command="{Binding StartMjpegStreamCancelCommand}"/>
-
-				<Button
-					Text="Start Video stream"
-					Command="{Binding StartVideoStreamCommand}"
-					CommandParameter="{x:Reference Name=ToolkitCameraView}"/>
-
-				<Button
-					Text="Stop Video stream"
-					Command="{Binding StartVideoStreamCancelCommand}"/>
-
-				<Button
-					Text="Enable PowerSaving Mode"
-					Command="{Binding EnablePowerSavingModeCommand}"/>
-
-				<Label
-					Text="{Binding RecordingsFolder, StringFormat='SaveRecordingToFileStorage: {0}'}"/>
-				<CheckBox
-					IsChecked="{Binding SaveRecordingToFileStorage}"/>
+					Text="Stop"
+					TextColor="White"
+					Command="{Binding StartStreamCancelCommand}"/>
 
 				<Picker
+					TextColor="White"
+					TitleColor="White"
 					Title="Available Resolutions"
 					ItemsSource="{Binding AvailableResolutions}"
 					SelectedItem="{Binding SelectedResolution}"/>

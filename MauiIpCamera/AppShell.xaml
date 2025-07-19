@@ -8,7 +8,11 @@
     Title="MauiIpCamera">
 
 	<ShellContent
-        ContentTemplate="{DataTemplate local:CommunityToolkitCameraPage}"
-        Route="CommunityToolkitCameraPage" />
+        ContentTemplate="{DataTemplate local:MainPage}"
+        Route="IP Camera" />
+
+	<ShellContent
+        ContentTemplate="{DataTemplate local:SettingsPage}"
+        Route="Settings" />
 
 </Shell>

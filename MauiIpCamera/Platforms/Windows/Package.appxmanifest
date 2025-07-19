@@ -44,6 +44,8 @@
 	<Capabilities>
 		<rescap:Capability Name="runFullTrust"/>
 		<Capability Name="internetClientServer"/>
+		<DeviceCapability Name="microphone"/>
+		<DeviceCapability Name="webcam"/>
 	</Capabilities>
 
 </Package>

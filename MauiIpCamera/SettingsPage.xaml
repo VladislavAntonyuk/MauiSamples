@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModels="clr-namespace:MauiIpCamera.ViewModels"
+             x:Class="MauiIpCamera.SettingsPage"
+             x:DataType="viewModels:CameraViewModel"
+             BackgroundColor="White">
+
+	<ScrollView>
+
+		<VerticalStackLayout>
+
+			<Label
+				TextColor="Black"
+				Text="Is Power Saving Mode Enabled:"/>
+			<CheckBox
+				IsChecked="{Binding IsPowerSavingModeEnabled}"/>
+
+			<Label
+				TextColor="Black"
+				Text="Is Autostart Enabled:"/>
+			<CheckBox
+				IsChecked="{Binding IsAutoStartEnabled}"/>
+
+			<Label
+				TextColor="Black"
+				Text="Recording mode:"/>
+			<Picker
+				TextColor="Black"
+				TitleColor="Black"
+				Title="Recording mode"
+				ItemsSource="{Binding AvailableModes}"
+				SelectedItem="{Binding SelectedMode}"/>
+
+			<Label
+				TextColor="Black"
+				Text="{Binding MaxConnectionsCount, StringFormat='Max connections: {0}'}"/>
+			<Slider
+				ThumbColor="Black"
+				MinimumTrackColor="Black"
+				MaximumTrackColor="Black"
+				Minimum="1"
+				Maximum="10"
+				Value="{Binding MaxConnectionsCount}"/>
+
+			<Label
+				TextColor="Black"
+				Text="{Binding Frequency, StringFormat='Mjpeg frequency (ms): {0}'}"/>
+			<Slider
+				ThumbColor="Black"
+				MinimumTrackColor="Black"
+				MaximumTrackColor="Black"
+				Minimum="10"
+				Maximum="10000"
+				Value="{Binding Frequency}"/>
+
+			<Label
+				TextColor="Black"
+				Text="{Binding VideoDuration, StringFormat='Recording duration (sec): {0}'}"/>
+			<Slider
+				ThumbColor="Black"
+				MinimumTrackColor="Black"
+				MaximumTrackColor="Black"
+				Minimum="10"
+				Maximum="100"
+				Value="{Binding VideoDuration}"/>
+
+			<Label
+				TextColor="Black"
+				Text="{Binding RecordingsFolder, StringFormat='SaveRecordingToFileStorage: {0}'}"/>
+			<CheckBox
+				IsChecked="{Binding SaveRecordingToFileStorage}"/>
+
+			<Label
+				TextColor="Black"
+				Text="{Binding MaxFiles, StringFormat='Max files: {0}'}"/>
+			<Slider
+				ThumbColor="Black"
+				MinimumTrackColor="Black"
+				MaximumTrackColor="Black"
+				Minimum="0"
+				Maximum="100"
+				Value="{Binding MaxFiles}"/>
+
+		</VerticalStackLayout>
+	</ScrollView>
+
+</ContentView>
