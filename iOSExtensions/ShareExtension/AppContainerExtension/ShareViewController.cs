@@ -1,9 +1,15 @@
-﻿using Social;
+﻿using MobileCoreServices;
+using Social;
+using UniformTypeIdentifiers;
 
 namespace AppContainerExtension;
 
 public partial class ShareViewController : SLComposeServiceViewController
 {
+	private const string AppGroupIdentifier = "group.com.yourcompany.mauiapp";
+	private const string SharedImageKey = "shared_image";
+	private const int MaxAttemptsToFindUiApplication = 100;
+
 	protected ShareViewController(IntPtr handle) : base(handle)
 	{
 		// Note: this .ctor should not contain any initialization logic.
@@ -30,12 +36,119 @@ public partial class ShareViewController : SLComposeServiceViewController
 		return true;
 	}
 
-	public override void DidSelectPost()
+	public override async void DidSelectPost()
+	{
+		try
+		{
+			await ExportImageToMainApp();
+		}
+		catch (Exception e)
+		{
+			Console.WriteLine(e);
+		}
+		finally
+		{
+			CompleteExtension();
+		}
+	}
+
+	private async Task ExportImageToMainApp()
 	{
 		// This is called after the user selects Post. Do the upload of contentText and/or NSExtensionContext attachments.
-
 		// Inform the host that we're done, so it un-blocks its UI. Note: Alternatively you could call super's -didSelectPost, which will similarly complete the extension context.
-		ExtensionContext?.CompleteRequest(Array.Empty<NSExtensionItem>(), null);
+
+		var tcs = new TaskCompletionSource<bool>();
+
+		var extensionItem = ExtensionContext?.InputItems[0];
+		var attachments = extensionItem?.Attachments;
+
+		if (attachments is null)
+		{
+			return;
+		}
+
+		foreach (var itemProvider in attachments)
+		{
+			if (itemProvider.HasItemConformingTo(UTTypes.Image.ToString()))
+			{
+				itemProvider.LoadItem(UTTypes.Image.ToString(), null, (nsObject, _) =>
+				{
+					NSData? data = null;
+
+					if (nsObject is NSUrl url) //from photos
+					{
+						data = NSData.FromUrl(url);
+					}
+					else if (nsObject is UIImage uiImage) //from screenshot editor
+					{
+						data = uiImage.AsPNG();
+					}
+
+					if (data is null)
+					{
+						tcs.TrySetResult(false);
+					}
+
+					var userDefaults =
+						new NSUserDefaults(AppGroupIdentifier, NSUserDefaultsType.SuiteName);
+					userDefaults.SetValueForKey(data!, new NSString(SharedImageKey));
+					userDefaults.Synchronize();
+
+					tcs.TrySetResult(true);
+				});
+			}
+		}
+
+		var res = await tcs.Task;
+
+		if (!res)
+		{
+			CompleteExtension();
+			return;
+		}
+
+		var schemeUrl = new NSUrl("mauiapp://openFromShare");
+		OpenUrlInBrowser(schemeUrl);
+	}
+
+
+	private void OpenUrlInBrowser(NSUrl url)
+	{
+		UIResponder responder = this;
+
+		int count = 0;
+		//From the logs, should find UIApplication within max 10 iterations,
+		//however, this is to make sure we exit, if it tries to find infinitely
+		while (count < MaxAttemptsToFindUiApplication)
+		{
+			if (responder is UIApplication application)
+			{
+				if (UIDevice.CurrentDevice.CheckSystemVersion(18, 0))
+				{
+					application.OpenUrl(url, new UIApplicationOpenUrlOptions(), null);
+
+					CompleteExtension();
+
+					return;
+				}
+
+				//for ios < 18
+				var sel = new ObjCRuntime.Selector("openURL:");
+				application.PerformSelector(sel, url, 0f);
+
+				CompleteExtension();
+
+				return;
+			}
+
+			responder = responder.NextResponder;
+			count++;
+		}
+	}
+
+	private void CompleteExtension()
+	{
+		ExtensionContext?.CompleteRequest([], null);
 	}
 
 	public override SLComposeSheetConfigurationItem[] GetConfigurationItems()

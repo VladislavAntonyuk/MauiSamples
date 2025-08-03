@@ -9,20 +9,20 @@
             Padding="30,0"
             VerticalOptions="Center">
 
-            <Image
+            <Image x:Name="Img"
                 Source="dotnet_bot.png"
                 SemanticProperties.Description="Cute dot net bot waving hi to you!"
                 HeightRequest="200"
                 HorizontalOptions="Center" />
 
+
             <Label Text="Click button to open Safari. Then click on Share button"
                    HorizontalOptions="Center"/>
 
             <Button
-                Text="Open Safari"
-                Clicked="OnClicked"
-                HorizontalOptions="Center" />
-
+	            Text="Open Safari"
+	            Clicked="OnClicked"
+	            HorizontalOptions="Center" />
         </VerticalStackLayout>
     </ScrollView>
 
