@@ -6,8 +6,8 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using CommunityToolkit.Maui;
+using CommunityToolkit.Maui.Core;
 using CommunityToolkit.Maui.Extensions;
-using CommunityToolkit.Maui.Storage;
 using CommunityToolkit.Maui.Views;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -15,83 +15,57 @@ using Microsoft.Maui.Graphics;
 
 public partial class CameraViewModel : ObservableObject
 {
-	const string Mjpeg = "MJPEG";
-	const string Video = "VIDEO";
-	private readonly IAutoStartService autoStartService;
 	private readonly IPreferences preferences;
+	private readonly SettingsViewModel settingsViewModel;
 	private const int Port = 5555;
 	private readonly string ipAddress;
-	private bool isFirstStart = true;
+	private IReadOnlyList<CameraInfo> availableCameras = [];
 
 	private readonly LocalHttpServer server;
+	private readonly int frequency;
 
-	public CameraViewModel(ILocalIpService localIpService, IAutoStartService autoStartService, IPreferences preferences)
+	public CameraViewModel(ILocalIpService localIpService, IPreferences preferences, SettingsViewModel settingsViewModel)
 	{
-		this.autoStartService = autoStartService;
 		this.preferences = preferences;
+		this.settingsViewModel = settingsViewModel;
 		var localIp = localIpService.GetLocalIpAddress();
-		server = new LocalHttpServer(localIp, Port, Frequency);
+		frequency = preferences.Get(nameof(SettingsViewModel.Frequency), 100);
+		server = new LocalHttpServer(localIp, Port, frequency);
 		IpAddressText = ipAddress = $"{localIp}:{Port}";
 
 		AvailableResolutions = [];
-		AvailableModes = [Video, Mjpeg];
-		SelectedMode = preferences.Get(nameof(SelectedMode), AvailableModes.First());
-		MaxConnectionsCount = preferences.Get(nameof(MaxConnectionsCount), 10);
-		VideoDuration = preferences.Get(nameof(VideoDuration), 10);
-		Frequency = preferences.Get(nameof(Frequency), 10);
-		RecordingsFolder = preferences.Get<string?>(nameof(RecordingsFolder), null);
-		if (!string.IsNullOrWhiteSpace(RecordingsFolder))
-		{
-			SaveRecordingToFileStorage = true;
-		}
-		else
-		{
-			isFirstStart = false;
-		}
-
-		IsAutoStartEnabled = preferences.Get(nameof(IsAutoStartEnabled), autoStartService.IsAutoStartEnabledAsync().GetAwaiter().GetResult());
 	}
 
-	[ObservableProperty]
-	public partial int MaxConnectionsCount { get; set; }
-
-	[ObservableProperty]
-	public partial int VideoDuration { get; set; }
-
-	[ObservableProperty]
-	public partial int MaxFiles { get; set; }
-
-	[ObservableProperty]
-	public partial int Frequency { get; set; }
-
-	[ObservableProperty]
-	public partial bool IsAutoStartEnabled { get; set; }
-
-	[ObservableProperty]
-	public partial bool SaveRecordingToFileStorage { get; set; }
-
-	[ObservableProperty]
-	public partial string? RecordingsFolder { get; set; }
-
-	[ObservableProperty]
-	public partial bool IsPowerSavingModeEnabled { get; set; }
+	public bool IsPowerSavingModeEnabled
+	{
+		get => settingsViewModel.IsPowerSavingModeEnabled;
+		set
+		{
+			settingsViewModel.IsPowerSavingModeEnabled = value;
+			OnPropertyChanged();
+		}
+	}
 
 	[ObservableProperty]
 	public partial string IpAddressText { get; set; }
 
 	public ObservableCollection<Size> AvailableResolutions { get; }
 
-	public ObservableCollection<string> AvailableModes { get; }
-
-	[ObservableProperty]
-	public partial string? SelectedMode { get; set; }
-
 	[ObservableProperty]
 	public partial Size SelectedResolution { get; set; } = new(800, 600);
 
 	public async Task InitializeCameraAsync(CameraView cameraView)
 	{
-		var availableCameras = await cameraView.GetAvailableCameras(CancellationToken.None);
+		var cameraRequest = await Permissions.RequestAsync<Permissions.Camera>();
+		var microphoneRequest = await Permissions.RequestAsync<Permissions.Microphone>();
+		if (cameraRequest != PermissionStatus.Granted || microphoneRequest != PermissionStatus.Granted)
+		{
+			await Shell.Current.CurrentPage.DisplayAlert("Permission Denied", "Camera and Microphone permissions are required to use this feature.", "OK");
+			return;
+		}
+
+		availableCameras = await cameraView.GetAvailableCameras(CancellationToken.None);
+
 		cameraView.SelectedCamera = availableCameras.FirstOrDefault();
 
 		AvailableResolutions.Clear();
@@ -103,13 +77,15 @@ public partial class CameraViewModel : ObservableObject
 				AvailableResolutions.Add(resolution);
 			}
 		}
+
+		await cameraView.StartCameraPreview(CancellationToken.None);
 	}
 
-	[RelayCommand]
-	void OpenSettings()
+	[RelayCommand(AllowConcurrentExecutions = false)]
+	async Task OpenSettings()
 	{
-		var popup = new SettingsPage(this);
-		Shell.Current.ShowPopup(popup, new PopupOptions() { CanBeDismissedByTappingOutsideOfPopup = true });
+		var popup = new SettingsPage(settingsViewModel);
+		await Shell.Current.ShowPopupAsync(popup, new PopupOptions() { CanBeDismissedByTappingOutsideOfPopup = true });
 	}
 
 	[RelayCommand]
@@ -122,14 +98,17 @@ public partial class CameraViewModel : ObservableObject
 	private async Task StartStream(CameraView cameraView, CancellationToken cancellationToken)
 	{
 		DeviceDisplay.KeepScreenOn = true;
-		_ = server.StartAsync(MaxConnectionsCount, cancellationToken);
-		switch (SelectedMode)
+		var selectedMode = preferences.Get(nameof(SettingsViewModel.SelectedMode), SettingsViewModel.Mjpeg);
+		var maxConnectionsCount = preferences.Get(nameof(SettingsViewModel.MaxConnectionsCount), 1);
+		switch (selectedMode)
 		{
-			case Mjpeg:
+			case SettingsViewModel.Mjpeg:
+				_ = server.StartAsync(maxConnectionsCount, cancellationToken);
 				IpAddressText = $"http://{ipAddress}/mjpeg";
 				await CaptureMjpegAsync(cameraView, cancellationToken);
 				break;
-			case Video:
+			case SettingsViewModel.Video:
+				_ = server.StartAsync(maxConnectionsCount, cancellationToken);
 				IpAddressText = $"http://{ipAddress}/player";
 				await CaptureVideoAsync(cameraView, cancellationToken);
 				break;
@@ -145,7 +124,6 @@ public partial class CameraViewModel : ObservableObject
 		await cameraView.SetExtensionMode(mode);
 #endif
 		cameraView.ImageCaptureResolution = SelectedResolution;
-
 		while (!cancellationToken.IsCancellationRequested)
 		{
 #if ANDROID
@@ -159,7 +137,7 @@ public partial class CameraViewModel : ObservableObject
 
 			await using var stream = await cameraView.CaptureImage(CancellationToken.None);
 			server.SetMjpegStream(stream);
-			await Task.Delay(Frequency, CancellationToken.None);
+			await Task.Delay(frequency, CancellationToken.None);
 		}
 
 		server.Stop();
@@ -172,7 +150,7 @@ public partial class CameraViewModel : ObservableObject
 		await cameraView.SetExtensionMode(mode);
 #endif
 		cameraView.ImageCaptureResolution = SelectedResolution;
-
+		var videoDuration = preferences.Get(nameof(SettingsViewModel.VideoDuration), 10);
 		while (!cancellationToken.IsCancellationRequested)
 		{
 #if ANDROID
@@ -185,7 +163,7 @@ public partial class CameraViewModel : ObservableObject
 #endif
 			using var stream = new MemoryStream();
 			await cameraView.StartVideoRecording(stream, CancellationToken.None);
-			await Task.Delay(TimeSpan.FromSeconds(VideoDuration), CancellationToken.None);
+			await Task.Delay(TimeSpan.FromSeconds(videoDuration), CancellationToken.None);
 			await cameraView.StopVideoRecording(CancellationToken.None);
 			server.SetVideoStream(stream);
 			await SaveStreamToFileSystem(stream, $"recording-{DateTimeOffset.Now.ToUnixTimeMilliseconds()}.mp4");
@@ -202,84 +180,29 @@ public partial class CameraViewModel : ObservableObject
 
 	async Task SaveStreamToFileSystem(MemoryStream stream, string fileName)
 	{
-		if (string.IsNullOrWhiteSpace(RecordingsFolder) || !SaveRecordingToFileStorage)
+		var recordingsFolder = preferences.Get<string?>(nameof(SettingsViewModel.RecordingsFolder), null);
+		var saveRecordingToFileStorage = preferences.Get(nameof(SettingsViewModel.SaveRecordingToFileStorage), false);
+		if (string.IsNullOrWhiteSpace(recordingsFolder) || !saveRecordingToFileStorage)
 		{
 			return;
 		}
 
 
-		await using var recording = new FileStream(Path.Combine(RecordingsFolder, fileName), FileMode.Create, FileAccess.Write);
+		await using var recording = new FileStream(Path.Combine(recordingsFolder, fileName), FileMode.Create, FileAccess.Write);
 		await recording.WriteAsync(stream.ToArray());
 
-		var files = Directory.GetFiles(RecordingsFolder, "*.mp4");
-		if (files.Length >= MaxFiles)
+		var files = Directory.GetFiles(recordingsFolder, "*.mp4");
+		var maxFiles = preferences.Get(nameof(SettingsViewModel.MaxFiles), 10);
+		if (files.Length >= maxFiles)
 		{
 			var filesToDelete = files
 				.OrderByDescending(f => new FileInfo(f).CreationTime)
-				.Skip(MaxFiles - 1)
+				.Skip(maxFiles - 1)
 				.ToList();
 			foreach (var file in filesToDelete)
 			{
 				File.Delete(file);
 			}
 		}
-	}
-
-	async partial void OnIsAutoStartEnabledChanged(bool value)
-	{
-		if (value)
-		{
-			await autoStartService.EnableAutoStartAsync();
-		}
-		else
-		{
-			await autoStartService.DisableAutoStartAsync();
-		}
-
-		preferences.Set(nameof(IsAutoStartEnabled), await autoStartService.IsAutoStartEnabledAsync());
-	}
-
-	partial void OnSelectedModeChanged(string? value)
-	{
-		preferences.Set(nameof(SelectedMode), value);
-	}
-
-	partial void OnMaxConnectionsCountChanged(int value)
-	{
-		preferences.Set(nameof(MaxConnectionsCount), value);
-	}
-
-	partial void OnVideoDurationChanged(int value)
-	{
-		preferences.Set(nameof(VideoDuration), value);
-	}
-
-	partial void OnFrequencyChanged(int value)
-	{
-		preferences.Set(nameof(Frequency), value);
-	}
-
-	async partial void OnSaveRecordingToFileStorageChanged(bool value)
-	{
-		if (isFirstStart)
-		{
-			isFirstStart = false;
-			return;
-		}
-
-		if (value)
-		{
-			var pickResult = await FolderPicker.PickAsync(CancellationToken.None);
-			if (pickResult.IsSuccessful)
-			{
-				RecordingsFolder = pickResult.Folder.Path;
-			}
-		}
-		else
-		{
-			RecordingsFolder = null;
-		}
-
-		preferences.Set(nameof(RecordingsFolder), RecordingsFolder);
 	}
 }

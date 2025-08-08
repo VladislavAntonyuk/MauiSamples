@@ -14,6 +14,8 @@ public static class MauiProgram
 			.UseMauiCommunityToolkitCamera();
 
 		builder.Services.AddSingleton<CameraViewModel>();
+		builder.Services.AddSingleton<SettingsViewModel>();
+
 		builder.Services.AddSingleton<ILocalIpService, LocalIpService>();
 		builder.Services.AddSingleton<IAutoStartService, AutoStartService>();
 		builder.Services.AddSingleton(Preferences.Default);

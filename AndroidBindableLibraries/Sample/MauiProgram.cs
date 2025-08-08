@@ -2,6 +2,7 @@
 
 using Calendar;
 using MauiBells.Calendar;
+using RtpLibrary;
 
 public static class MauiProgram
 {
@@ -18,6 +19,7 @@ public static class MauiProgram
 			.ConfigureMauiHandlers(x =>
 			{
 				x.AddHandler<CalendarView, CalendarMaterialHandler>();
+				x.AddHandler<MauiSurfaceView, MauiSurfaceViewHandler>();
 			});
 
 		return builder.Build();

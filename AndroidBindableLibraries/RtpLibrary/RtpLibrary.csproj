@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net9.0-android</TargetFramework>
+		<UseMaui>true</UseMaui>
+		<SupportedOSPlatformVersion>23</SupportedOSPlatformVersion>
+		<PackageId>VladislavAntonyuk.$(AssemblyName)</PackageId>
+		<Version>2.2.6</Version>
+		<PackageReadmeFile>ReadMe.md</PackageReadmeFile>
+		<PackageOutputPath>..\..\LocalPackages\</PackageOutputPath>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Xamarin.Kotlin.StdLib.Jdk8" Version="1.8.21.1" />
+		<PackageReference Include="Xamarin.KotlinX.Coroutines.Android" Version="1.10.2" />
+		<PackageReference Include="Xamarin.KotlinX.Coroutines.Core" Version="1.10.2" />
+		<PackageReference Include="Xamarin.Kotlin.StdLib" Version="2.1.21" />
+		<PackageReference Include="Xamarin.AndroidX.Annotation" Version="1.9.1.4" />
+		<PackageReference Include="Xamarin.KotlinX.Serialization.Core" Version="1.8.1" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.90"/>
+	</ItemGroup>
+
+	<ItemGroup>
+		<AndroidMavenLibrary Include="com.github.pedroSG94.rtmp-rtsp-stream-client-java:rtplibrary" Version="2.2.6" Repository="https://jitpack.io/" Bind="true" />
+		<AndroidMavenLibrary Include="com.github.pedroSG94.rtmp-rtsp-stream-client-java:encoder" Version="2.2.6" Repository="https://jitpack.io/" Bind="true" />
+		<AndroidMavenLibrary Include="com.github.pedroSG94.rtmp-rtsp-stream-client-java:rtmp" Version="2.2.6" Repository="https://jitpack.io/" Bind="true" />
+		<AndroidMavenLibrary Include="com.github.pedroSG94.rtmp-rtsp-stream-client-java:rtsp" Version="2.2.6" Repository="https://jitpack.io/" Bind="true" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Update="ReadMe.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+</Project>

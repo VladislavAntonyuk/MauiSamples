@@ -3,6 +3,7 @@
 		<File Path="AndroidBindableLibraries/Directory.Build.props" />
 		<Project Path="AndroidBindableLibraries/Balloon/Balloon.csproj" />
 		<Project Path="AndroidBindableLibraries/MaterialCalendarView/MaterialCalendarView.csproj" />
+		<Project Path="AndroidBindableLibraries/RtpLibrary/RtpLibrary.csproj" />
 		<Project Path="AndroidBindableLibraries/Sample/Sample.csproj">
 			<Deploy />
 		</Project>
