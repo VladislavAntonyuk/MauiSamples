@@ -11,8 +11,4 @@
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="IP Camera" />
 
-	<ShellContent
-        ContentTemplate="{DataTemplate local:SettingsPage}"
-        Route="Settings" />
-
 </Shell>

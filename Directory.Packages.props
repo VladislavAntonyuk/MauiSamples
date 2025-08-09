@@ -21,7 +21,7 @@
     <PackageVersion Include="InterfaceConverter.SystemTextJson" Version="1.3.2" />
     <PackageVersion Include="IronBlock" Version="1.0.18" />
     <PackageVersion Include="m3uParser.NET" Version="1.0.17" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="9.0.81" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="9.0.90" />
     <PackageVersion Include="Microsoft.Azure.NotificationHubs" Version="4.2.0" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.6" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.6" />
@@ -49,7 +49,6 @@
     <PackageVersion Include="sqlite-net-pcl" Version="1.10.196-beta" />
     <PackageVersion Include="Sve.Blazor.InfiniteScroll" Version="1.0.0-alpha" />
     <PackageVersion Include="VisualTestUtils.MagickNet" Version="0.9.46-beta" />
-    <PackageVersion Include="VladislavAntonyuk.Balloon" Version="1.6.12" />
     <PackageVersion Include="VladislavAntonyuk.MaterialCalendarView" Version="1.9.2" />
     <PackageVersion Include="WindowsAPICodePack" Version="8.0.6" />
     <PackageVersion Include="Xamarin.Android.ShortcutBadger" Version="1.2.0" />

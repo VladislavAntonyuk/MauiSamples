@@ -1,5 +1,6 @@
 ﻿namespace MauiIpCamera;
 
+using Microsoft.Maui.Platform;
 using ViewModels;
 
 public partial class MainPage
@@ -15,14 +16,6 @@ public partial class MainPage
 
 	private async void OnPageLoaded(object? sender, EventArgs e)
 	{
-		var cameraRequest = await Permissions.RequestAsync<Permissions.Camera>();
-		var microphoneRequest = await Permissions.RequestAsync<Permissions.Microphone>();
-		if (cameraRequest != PermissionStatus.Granted || microphoneRequest != PermissionStatus.Granted)
-		{
-			await DisplayAlert("Permission Denied", "Camera permission is required to use this feature.", "OK");
-			return;
-		}
-
 		await viewModel.InitializeCameraAsync(ToolkitCameraView);
 		Loaded -= OnPageLoaded;
 	}
