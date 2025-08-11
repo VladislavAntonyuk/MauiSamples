@@ -32,5 +32,16 @@
 	<array>
 		<string>fetch</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLName</key>
+            <string>com.vladislavantonyuk.container</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>mauiapp</string>
+            </array>
+        </dict>
+    </array>
 </dict>
 </plist>

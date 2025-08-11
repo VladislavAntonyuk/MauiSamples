@@ -17,4 +17,12 @@
 	<PropertyGroup>
 		<Registrar>static</Registrar>
 	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="Entitlements.plist" />
+	</ItemGroup>
+
+	<PropertyGroup>
+		<CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+	</PropertyGroup>
   </Project>
