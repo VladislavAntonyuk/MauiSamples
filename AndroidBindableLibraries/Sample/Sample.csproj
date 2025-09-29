@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
@@ -41,9 +41,12 @@
 
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls" />
-		<PackageReference Include="VladislavAntonyuk.Balloon" />
-		<PackageReference Include="VladislavAntonyuk.MaterialCalendarView" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\Balloon\Balloon.csproj" />
+	  <ProjectReference Include="..\MaterialCalendarView\MaterialCalendarView.csproj" />
+	  <ProjectReference Include="..\RtpLibrary\RtpLibrary.csproj" />
+	</ItemGroup>
 
 </Project>

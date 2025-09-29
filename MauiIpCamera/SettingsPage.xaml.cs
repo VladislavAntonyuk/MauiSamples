@@ -4,7 +4,7 @@ using ViewModels;
 
 public partial class SettingsPage
 {
-	public SettingsPage(CameraViewModel viewModel)
+	public SettingsPage(SettingsViewModel viewModel)
 	{
 		InitializeComponent();
 		BindingContext = viewModel;

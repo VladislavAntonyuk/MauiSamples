@@ -8,10 +8,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="XamPrototype.Android.MavenBinding.Tasks" Version="0.0.11" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<!-- Include format is {GroupId}:{ArtifactId} -->
 		<AndroidMavenLibrary Include="com.github.skydoves:balloon" Version="1.6.12" />
 		<PackageReference Include="Xamarin.AndroidX.Annotation" Version="1.9.1.4" />

@@ -4,7 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModels="clr-namespace:MauiIpCamera.ViewModels"
              x:Class="MauiIpCamera.SettingsPage"
-             x:DataType="viewModels:CameraViewModel"
+             x:DataType="viewModels:SettingsViewModel"
              BackgroundColor="White">
 
 	<ScrollView>
