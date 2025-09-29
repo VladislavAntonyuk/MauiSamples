@@ -83,6 +83,10 @@ public partial class ShareViewController : SLComposeServiceViewController
 					{
 						data = uiImage.AsPNG();
 					}
+					else if (nsObject is NSData {Length: > 0} nsData) //from screenshot editor for iOS 26+
+					{
+						data = nsData;
+					}
 
 					if (data is null)
 					{
