@@ -128,6 +128,11 @@ public class CustomMapHandler : MapHandler
 			return;
 		}
 
+		if (PlatformView.Annotations.Length > 0)
+		{
+			PlatformView.RemoveAnnotations(PlatformView.Annotations);
+		}
+
 		foreach (var pin in mapPins)
 		{
 			var pinHandler = pin.ToHandler(MauiContext);
