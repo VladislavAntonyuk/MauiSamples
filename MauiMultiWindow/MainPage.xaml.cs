@@ -1,6 +1,7 @@
 ﻿namespace MauiMultiWindow;
 
 using CommunityToolkit.Maui.Alerts;
+using CommunityToolkit.Mvvm.Input;
 
 public partial class MainPage : ContentPage
 {
@@ -19,12 +20,16 @@ public partial class MainPage : ContentPage
 			Content = new Button
 			{
 				Text = "Show Active Windows",
-				Command = new Command(async () =>
+				Command = new AsyncRelayCommand(async () =>
 				{
-					await Application.Current.GetActiveWindow().Page.DisplayAlert(
-						"Active Windows",
-						string.Join(Environment.NewLine, Application.Current.Windows.Select(x => $"{x.Title} - {x.IsActive()}")),
-						"OK");
+					var page = Application.Current?.GetActiveWindow().Page;
+					if (Application.Current is not null && page is not null)
+					{
+						await page.DisplayAlertAsync(
+							"Active Windows",
+							string.Join(Environment.NewLine, Application.Current.Windows.Select(x => $"{x.Title} - {x.IsActive()}")),
+							"OK");
+					}
 				})
 			}
 		};

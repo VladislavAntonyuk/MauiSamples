@@ -1,7 +1,0 @@
-# MauiTaskListApp
-
-!INCLUDE "./md/header.mdpp"
-
-Cross-platform .NET MAUI app using MVVM development architecture performing CRUD operations with EF Core InMemory.
-
-!INCLUDE "./md/footer.mdpp"

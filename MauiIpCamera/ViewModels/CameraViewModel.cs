@@ -60,7 +60,7 @@ public partial class CameraViewModel : ObservableObject
 		var microphoneRequest = await Permissions.RequestAsync<Permissions.Microphone>();
 		if (cameraRequest != PermissionStatus.Granted || microphoneRequest != PermissionStatus.Granted)
 		{
-			await Shell.Current.CurrentPage.DisplayAlert("Permission Denied", "Camera and Microphone permissions are required to use this feature.", "OK");
+			await Shell.Current.CurrentPage.DisplayAlertAsync("Permission Denied", "Camera and Microphone permissions are required to use this feature.", "OK");
 			return;
 		}
 

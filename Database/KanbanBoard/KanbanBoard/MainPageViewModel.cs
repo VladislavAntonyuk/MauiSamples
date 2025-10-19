@@ -220,7 +220,7 @@ public partial class MainPageViewModel : ObservableObject
 		var currentPage = Application.Current?.Windows.LastOrDefault()?.Page;
 		return currentPage is null ?
 			Task.FromResult(false) :
-			currentPage.DisplayAlert(title, message, "Yes", "No");
+			currentPage.DisplayAlertAsync(title, message, "Yes", "No");
 	}
 
 	private static Task<string> UserPromptAsync(string title, string message, Keyboard keyboard)

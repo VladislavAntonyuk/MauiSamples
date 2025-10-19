@@ -20,6 +20,11 @@ public partial class MainPage : ContentPage
 	async void OnAndroidCaptchaVerificationClicked(object sender, EventArgs e)
 	{
 #if ANDROID
+		if (Platform.CurrentActivity is null)
+		{
+			return;
+		}
+
 		var api = Android.Gms.SafetyNet.SafetyNetClass.GetClient(Platform.CurrentActivity);
 		var response = await api.VerifyWithRecaptchaAsync(AndroidSiteKey);
 		if (response != null && !string.IsNullOrEmpty(response.TokenResult))

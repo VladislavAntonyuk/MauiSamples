@@ -3,8 +3,6 @@
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
 using KanbanBoardDb;
-using Microsoft.Maui.Controls.PlatformConfiguration;
-using Microsoft.Maui.Controls.PlatformConfiguration.iOSSpecific;
 using Application = Application;
 using Font = Microsoft.Maui.Font;
 
@@ -18,7 +16,6 @@ public partial class MainPage : ContentPage
 		this.serviceProvider = serviceProvider;
 		BindingContext = ViewModel = viewModel;
 		InitializeComponent();
-		On<iOS>().SetUseSafeArea(true);
 	}
 
 	private async void ResetButton_OnClicked(object sender, EventArgs e)

@@ -83,7 +83,7 @@ public partial class PinPageViewModel : ObservableObject
 	async Task ForgotPasswordButtonClicked()
 	{
 		await Toast.Make("Password: 1111").Show();
-		var result = await GetMainPage().DisplayAlert(
+		var result = await GetMainPage().DisplayAlertAsync(
 			"Restore password", "This will open browser. Do you want to continue?",
 			"OK",
 			"Cancel");

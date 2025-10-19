@@ -7,7 +7,8 @@
              xmlns:converters="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="KanbanBoard.MainPage"
              x:DataType="kanbanBoard:MainPageViewModel"
-             x:Name="MainContentPage">
+             x:Name="MainContentPage"
+             SafeAreaEdges="Default">
 	<ContentPage.Resources>
 		<Color x:Key="ColumnWipReachedBackgroundColor">IndianRed</Color>
 		<Color x:Key="SwipeVisibleBackgroundColor">Red</Color>
@@ -113,7 +114,7 @@
 									<Label
 										Grid.Column="1"
 										FontSize="{StaticResource ColumnTitleSize}"
-										HorizontalOptions="CenterAndExpand"
+										HorizontalOptions="Center"
 										VerticalOptions="Center">
 										<Label.FormattedText>
 											<FormattedString>
@@ -128,7 +129,7 @@
 										Grid.Column="2"
 										Command="{Binding ViewModel.DeleteColumnCommand, Source={x:Reference MainContentPage}, x:DataType={x:Type kanbanBoard:MainPage}}"
 										CommandParameter="{Binding .}"
-										HorizontalOptions="EndAndExpand"
+										HorizontalOptions="End"
 										VerticalOptions="Center">
 										<ImageButton.Source>
 											<FontImageSource
@@ -192,7 +193,7 @@
 														CommandParameter="{Binding .}"
 														WidthRequest="{StaticResource CardTitleSize}"
 														HeightRequest="{StaticResource CardTitleSize}"
-														HorizontalOptions="EndAndExpand">
+														HorizontalOptions="End">
 														<ImageButton.Source>
 															<FontImageSource
 																Color="{StaticResource Primary}"

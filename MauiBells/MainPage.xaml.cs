@@ -53,7 +53,7 @@ public sealed partial class MainPage : ContentPage, IDisposable
 		var angle = DeviceDisplay.Current.MainDisplayInfo.Orientation == DisplayOrientation.Portrait ?
 			e.Reading.Acceleration.X :
 			e.Reading.Acceleration.Y;
-		await Bell.RotateTo(angle * 180 / Math.PI);
+		await Bell.RotateToAsync(angle * 180 / Math.PI);
 	}
 
 	private void ShakeDetected(object? sender, EventArgs e)
@@ -78,12 +78,12 @@ public sealed partial class MainPage : ContentPage, IDisposable
 		var textString = text.ToString();
 		if (label.Text != textString)
 		{
-			await label.RotateXTo(90, 500);
+			await label.RotateXToAsync(90, 500);
 			await Dispatcher.DispatchAsync(() =>
 			{
 				label.Text = textString;
 			});
-			await label.RotateXTo(0, 500);
+			await label.RotateXToAsync(0, 500);
 		}
 	}
 

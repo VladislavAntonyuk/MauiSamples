@@ -17,11 +17,7 @@
 			<Deploy />
 		</Project>
 	</Folder>
-	<Folder Name="/Database/">
-		<Project Path="Database/MauiTaskListApp/MauiTaskListApp.csproj">
-			<Deploy />
-		</Project>
-	</Folder>
+	<Folder Name="/Database/" />
 	<Folder Name="/Database/KanbanBoard/">
 		<Project Path="Database/KanbanBoard/KanbanBoard/KanbanBoard.csproj">
 			<Deploy Solution="Debug|*" />
