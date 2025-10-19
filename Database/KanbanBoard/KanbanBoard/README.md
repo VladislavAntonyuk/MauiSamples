@@ -7,12 +7,12 @@ Article: https://vladislavantonyuk.github.io/articles/Creating-Kanban-Board-usin
 ## Build
 ```pwsh
 dotnet ef dbcontext optimize -o Models\Optimized -c KanbanBoardDbContext -n KanbanBoard
-dotnet build KanbanBoard.csproj -t:Run -f net9.0-android
+dotnet build KanbanBoard.csproj -t:Run -f net10.0-android
 
 xcrun simctl list devices
-dotnet build KanbanBoard.csproj -t:Run -f net9.0-ios -p:_DeviceName=:v2:udid=XXX
-dotnet build KanbanBoard.csproj -t:Run -f net9.0-maccatalyst
-dotnet build KanbanBoard.csproj -t:Run -f net9.0-windows10.0.19041.0
+dotnet build KanbanBoard.csproj -t:Run -f net10.0-ios -p:_DeviceName=:v2:udid=XXX
+dotnet build KanbanBoard.csproj -t:Run -f net10.0-maccatalyst
+dotnet build KanbanBoard.csproj -t:Run -f net10.0-windows10.0.19041.0
 ```
 
 ## Images

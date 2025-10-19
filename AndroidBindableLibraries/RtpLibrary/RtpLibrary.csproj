@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFramework>net9.0-android</TargetFramework>
+		<TargetFramework>net10.0-android</TargetFramework>
 		<UseMaui>true</UseMaui>
 		<SupportedOSPlatformVersion>23</SupportedOSPlatformVersion>
 		<PackageId>VladislavAntonyuk.$(AssemblyName)</PackageId>
@@ -16,7 +16,7 @@
 		<PackageReference Include="Xamarin.Kotlin.StdLib" Version="2.1.21" />
 		<PackageReference Include="Xamarin.AndroidX.Annotation" Version="1.9.1.4" />
 		<PackageReference Include="Xamarin.KotlinX.Serialization.Core" Version="1.8.1" />
-		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.90"/>
+		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.0-rc.2.25504.7"/>
 	</ItemGroup>
 
 	<ItemGroup>

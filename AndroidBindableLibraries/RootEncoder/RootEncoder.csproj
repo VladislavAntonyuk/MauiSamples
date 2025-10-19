@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net10.0-android</TargetFramework>
+		<UseMaui>true</UseMaui>
+		<SupportedOSPlatformVersion>23</SupportedOSPlatformVersion>
+		<PackageId>VladislavAntonyuk.$(AssemblyName)</PackageId>
+		<Version>2.6.2</Version>
+		<PackageReadmeFile>ReadMe.md</PackageReadmeFile>
+		<PackageOutputPath>..\..\LocalPackages\</PackageOutputPath>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!--<PackageReference Include="Xamarin.Kotlin.StdLib.Jdk8" Version="1.8.21.1" />>-->
+		<PackageReference Include="Xamarin.KotlinX.Coroutines.Core" Version="1.10.2" />
+		<PackageReference Include="Xamarin.KotlinX.Coroutines.Android" Version="1.10.2" />
+		<PackageReference Include="Xamarin.KotlinX.Serialization.Core" Version="1.8.1" />
+		<PackageReference Include="Xamarin.AndroidX.Annotation" Version="1.9.1.4" />
+		<PackageReference Include="Xamarin.Kotlin.StdLib" Version="2.2.0" />
+		<PackageReference Include="Microsoft.Maui.Controls" Version="10.0.0-rc.2.25504.7"/>
+	</ItemGroup>
+
+	<ItemGroup>
+		<AndroidMavenLibrary Include="com.github.pedroSG94.RootEncoder:encoder" Version="2.6.2" Repository="https://jitpack.io/" Bind="true" />
+		<AndroidMavenLibrary Include="com.github.pedroSG94.RootEncoder:rtmp" Version="2.6.2" Repository="https://jitpack.io/" Bind="true" />
+		<AndroidMavenLibrary Include="com.github.pedroSG94.RootEncoder:rtsp" Version="2.6.2" Repository="https://jitpack.io/" Bind="true" />
+		<AndroidMavenLibrary Include="com.github.pedroSG94.RootEncoder:srt" Version="2.6.2" Repository="https://jitpack.io/" Bind="true" />
+		<AndroidMavenLibrary Include="com.github.pedroSG94.RootEncoder:udp" Version="2.6.2" Repository="https://jitpack.io/" Bind="true" />
+		<AndroidMavenLibrary Include="com.github.pedroSG94.RootEncoder:common" Version="2.6.2" Repository="https://jitpack.io/" Bind="true" />
+
+		<AndroidMavenLibrary Include="io.ktor:ktor-network" Version="3.2.1" Bind="false" />
+		<AndroidMavenLibrary Include="io.ktor:ktor-network-tls" Version="3.2.1" Bind="false" />
+		<AndroidMavenLibrary Include="io.ktor:ktor-utils" Version="3.2.1" Bind="false" />
+		<AndroidMavenLibrary Include="io.ktor:ktor-http" Version="3.2.1" Bind="false" />
+		<AndroidMavenLibrary Include="io.ktor:ktor-io" Version="3.2.1" Bind="false" />
+		<AndroidMavenLibrary Include="org.jetbrains.kotlinx:kotlinx-io-core" Version="0.7.0" Bind="false" />
+		<AndroidMavenLibrary Include="org.jetbrains.kotlinx:kotlinx-io-bytestring" Version="0.7.0" Bind="false" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Update="ReadMe.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+</Project>
