@@ -52,7 +52,7 @@ public partial class TabView : VerticalStackLayout
 
 		// Remove the view from its current parent if it has one
 		// This is necessary when multiple TabView instances share the same Tab objects
-		if (activeTab is Element element && element.Parent is Layout parentLayout)
+		if (activeTab is Element element && element.Parent is ILayout parentLayout)
 		{
 			parentLayout.Remove(element);
 		}
@@ -97,7 +97,7 @@ public partial class TabView : VerticalStackLayout
 	}
 	IView? GetActiveTab()
 	{
-		if (Tabs.Count < ActiveTabIndex || ActiveTabIndex < 0)
+		if (Tabs.Count <= ActiveTabIndex || ActiveTabIndex < 0)
 		{
 			return null;
 		}
