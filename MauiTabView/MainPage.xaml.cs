@@ -21,6 +21,7 @@ public partial class MainViewModel : ObservableObject
 	public ObservableCollection<Tab> Tabs { get; set; } = new();
 	public ObservableCollection<Tab> Tabs2 { get; set; } = new();
 	public ObservableCollection<Tab> Tabs3 { get; set; } = new();
+	public ObservableCollection<Tab> Tabs4 { get; set; } = new();
 
 	public MainViewModel()
 	{
@@ -60,6 +61,14 @@ public partial class MainViewModel : ObservableObject
 			Content = new Label() { Text = "Tab2 Label" },
 			Icon = "dog.png"
 		});
+		
+		// Tabs4 shares the same Tab objects as Tabs3 to demonstrate the fix
+		// This would previously cause "The specified child already has a parent" exception
+		foreach (var tab in Tabs3)
+		{
+			Tabs4.Add(tab);
+		}
+		
 		SelectedTab = Tabs2[0];
 	}
 }

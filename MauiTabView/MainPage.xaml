@@ -115,6 +115,18 @@
 			      Y2="0"
 			      Stroke="Red" />
 
+			<Label Text="Multiple TabView (using same Tab objects)"
+			       FontSize="20"
+			       HorizontalOptions="Center"/>
+
+			<mauiTabView:TabView Tabs="{Binding Tabs4}"/>
+
+			<Line X1="0"
+			      Y1="0"
+			      X2="{Binding Width, Source={x:Reference Page}}"
+			      Y2="0"
+			      Stroke="Red" />
+
 			<Label Text="TabView Binding"
 			       FontSize="20"
 			       HorizontalOptions="Center"/>
