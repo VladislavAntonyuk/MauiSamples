@@ -3,43 +3,46 @@ namespace MauiTabView;
 
 using System.Collections.ObjectModel;
 using Maui.BindableProperty.Generator.Core;
+using ILayout = Microsoft.Maui.ILayout;
 
-public partial class Tab : View
+public partial class Tab : ContentView
 {
 	[AutoBindable]
 	private ImageSource? icon;
 
 	[AutoBindable]
 	private string title = string.Empty;
-
-	[AutoBindable(DefaultValue = "new ContentView()")]
-	private IView content = new ContentView();
 }
 
 public partial class TabView : VerticalStackLayout
 {
-	[AutoBindable(DefaultValue = "new System.Collections.ObjectModel.ObservableCollection<Tab>()", OnChanged = "OnTabsChanged")]
-	private ObservableCollection<Tab> tabs = new();
+	public static readonly BindableProperty ActiveTabIndexProperty = BindableProperty.Create(nameof(ActiveTabIndex), typeof(int), typeof(TabView), -1, propertyChanged: OnActiveTabIndexChanged);
 
-	[AutoBindable(DefaultValue = "-1", OnChanged = "OnActiveTabIndexChanged")]
-	private int activeTabIndex;
+	private static void OnActiveTabIndexChanged(BindableObject bindable, object oldValue, object newValue)
+	{
+		var tabView = (TabView)bindable;
+		tabView.OnActiveTabIndexChanged();
+	}
+
+	public static readonly BindableProperty TabsProperty = BindableProperty.Create(nameof(Tabs), typeof(ObservableCollection<Tab>), typeof(TabView));
 
 	void OnTabsChanged()
 	{
 		Children.Clear();
 		Children.Add(BuildTabs());
-		OnActiveTabIndexChanged();
-		ActiveTabIndex = Tabs.Count > 0 ? 0 : -1;
+		ActiveTabIndex = -1;
 	}
 
 	public TabView()
 	{
-		Loaded += TabView_Loaded;
+		Tabs = new ObservableCollection<Tab>();
+		Loaded += OnLoaded;
 	}
 
-	private void TabView_Loaded(object? sender, EventArgs e)
+	private void OnLoaded(object? sender, EventArgs e)
 	{
 		OnTabsChanged();
+		Loaded -= OnLoaded;
 	}
 
 	void OnActiveTabIndexChanged()
@@ -52,9 +55,9 @@ public partial class TabView : VerticalStackLayout
 
 		// Remove the view from its current parent if it has one
 		// This is necessary when multiple TabView instances share the same Tab objects
-		if (activeTab is Element element && element.Parent is ILayout parentLayout)
+		if (activeTab.Parent is ILayout parentLayout)
 		{
-			parentLayout.Remove(element);
+			parentLayout.Remove(activeTab);
 		}
 
 		if (Children.Count == 1)
@@ -95,6 +98,7 @@ public partial class TabView : VerticalStackLayout
 
 		return view;
 	}
+
 	IView? GetActiveTab()
 	{
 		if (Tabs.Count <= ActiveTabIndex || ActiveTabIndex < 0)
@@ -104,5 +108,17 @@ public partial class TabView : VerticalStackLayout
 
 		var activeTab = Tabs[ActiveTabIndex];
 		return activeTab.Content;
+	}
+
+	public ObservableCollection<Tab> Tabs
+	{
+		get => (ObservableCollection<Tab>)GetValue(TabsProperty);
+		set => SetValue(TabsProperty, value);
+	}
+
+	public int ActiveTabIndex
+	{
+		get => (int)GetValue(ActiveTabIndexProperty);
+		set => SetValue(ActiveTabIndexProperty, value);
 	}
 }

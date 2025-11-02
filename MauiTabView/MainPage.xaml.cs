@@ -18,57 +18,49 @@ public partial class MainViewModel : ObservableObject
 	[ObservableProperty]
 	public partial Tab SelectedTab { get; set; }
 
-	public ObservableCollection<Tab> Tabs { get; set; } = new();
+	public ObservableCollection<Tab> Tabs1 { get; set; } = new();
 	public ObservableCollection<Tab> Tabs2 { get; set; } = new();
 	public ObservableCollection<Tab> Tabs3 { get; set; } = new();
-	public ObservableCollection<Tab> Tabs4 { get; set; } = new();
 
 	public MainViewModel()
 	{
-		Tabs.Add(new Tab()
+		Tabs1.Add(new Tab()
 		{
-			Title = "Tab1",
-			Content = new Label() { Text = "Tab1 Label" },
+			Title = "Tab11",
+			Content = new Label() { Text = "Tab11 Label" },
 			Icon = "cat.png"
 		});
-		Tabs.Add(new Tab()
+		Tabs1.Add(new Tab()
 		{
-			Title = "Tab2",
-			Content = new Label() { Text = "Tab2 Label" },
+			Title = "Tab12",
+			Content = new Label() { Text = "Tab12 Label" },
 			Icon = "dog.png"
 		});
 		Tabs2.Add(new Tab()
 		{
-			Title = "Tab1",
-			Content = new Label() { Text = "Tab1 Label" },
+			Title = "Tab21",
+			Content = new Label() { Text = "Tab21 Label" },
 			Icon = "cat.png"
 		});
 		Tabs2.Add(new Tab()
 		{
-			Title = "Tab2",
-			Content = new Label() { Text = "Tab2 Label" },
+			Title = "Tab22",
+			Content = new Label() { Text = "Tab22 Label" },
 			Icon = "dog.png"
 		});
 		Tabs3.Add(new Tab()
 		{
-			Title = "Tab1",
-			Content = new Label() { Text = "Tab1 Label" },
+			Title = "Tab31",
+			Content = new Label() { Text = "Tab31 Label" },
 			Icon = "cat.png"
 		});
 		Tabs3.Add(new Tab()
 		{
-			Title = "Tab2",
-			Content = new Label() { Text = "Tab2 Label" },
+			Title = "Tab32",
+			Content = new Label() { Text = "Tab32 Label" },
 			Icon = "dog.png"
 		});
-		
-		// Tabs4 shares the same Tab objects as Tabs3 to demonstrate the fix
-		// This would previously cause "The specified child already has a parent" exception
-		foreach (var tab in Tabs3)
-		{
-			Tabs4.Add(tab);
-		}
-		
+
 		SelectedTab = Tabs2[0];
 	}
 }

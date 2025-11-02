@@ -3,18 +3,68 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mauiTabView="clr-namespace:MauiTabView"
              x:Class="MauiTabView.MainPage"
-             x:Name="Page">
+             x:Name="Page"
+             x:DataType="mauiTabView:MainViewModel">
 
 	<ContentPage.Resources>
-		<ControlTemplate x:Key="TabControlTemplate">
-			<VerticalStackLayout BindingContext="{Binding Source={RelativeSource TemplatedParent}}">
-				<Image Source="{Binding Value.Icon}"
-				       WidthRequest="30"
-				       HeightRequest="30"
-				       HorizontalOptions="Center"/>
-				<Label Text="{Binding Value.Title}"  FontSize="12"
-				       HorizontalOptions="Center"/>
-			</VerticalStackLayout>
+		<ControlTemplate x:Key="RadioButtonTemplate">
+			<Border Stroke="#F3F2F1"
+                    StrokeThickness="2"
+                    StrokeShape="RoundRectangle 10"
+                    BackgroundColor="#F3F2F1"
+                    HeightRequest="90"
+                    WidthRequest="90"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Start">
+				<VisualStateManager.VisualStateGroups>
+					<VisualStateGroupList>
+						<VisualStateGroup x:Name="CheckedStates">
+							<VisualState x:Name="Checked">
+								<VisualState.Setters>
+									<Setter Property="Stroke"
+                                            Value="#FF3300" />
+									<Setter TargetName="check"
+                                            Property="Opacity"
+                                            Value="1" />
+								</VisualState.Setters>
+							</VisualState>
+							<VisualState x:Name="Unchecked">
+								<VisualState.Setters>
+									<Setter Property="BackgroundColor"
+                                            Value="#F3F2F1" />
+									<Setter Property="Stroke"
+                                            Value="#F3F2F1" />
+									<Setter TargetName="check"
+                                            Property="Opacity"
+                                            Value="0" />
+								</VisualState.Setters>
+							</VisualState>
+						</VisualStateGroup>
+					</VisualStateGroupList>
+				</VisualStateManager.VisualStateGroups>
+				<Grid Margin="4"
+                      WidthRequest="90">
+					<Grid Margin="0,0,4,0"
+                          WidthRequest="18"
+                          HeightRequest="18"
+                          HorizontalOptions="End"
+                          VerticalOptions="Start">
+						<Ellipse Stroke="Blue"
+                                 Fill="White"
+                                 WidthRequest="16"
+                                 HeightRequest="16"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center" />
+						<Ellipse x:Name="check"
+                                 Fill="Blue"
+                                 WidthRequest="8"
+                                 HeightRequest="8"
+                                 HorizontalOptions="Center"
+                                 VerticalOptions="Center" />
+					</Grid>
+					<ContentPresenter />
+				</Grid>
+			</Border>
 		</ControlTemplate>
 
 		<DataTemplate x:Key="IndicatorDataTemplate">
@@ -35,7 +85,7 @@
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Center">
-
+			<!--1-->
 			<Label Text="Carousel + Indicator"
 				     FontSize="20"
 			       HorizontalOptions="Center"/>
@@ -45,14 +95,14 @@
                      SelectedIndicatorColor="LightBlue"
                      IndicatorTemplate="{StaticResource IndicatorDataTemplate}"/>
 			</Grid>
-			<CarouselView ItemsSource="{Binding Tabs}"
+			<CarouselView ItemsSource="{Binding Tabs1}"
 						  IndicatorView="{x:Reference Indicator}"
 						  HorizontalScrollBarVisibility="Never"
 						  Loop="False"
 						  Position="0">
 				<CarouselView.ItemTemplate>
 					<DataTemplate x:DataType="mauiTabView:Tab">
-						<ContentView Content="{Binding Content}"/>
+						<!-- <ContentView Content="{Binding Content}"/> -->
 					</DataTemplate>
 				</CarouselView.ItemTemplate>
 			</CarouselView>
@@ -63,26 +113,38 @@
 			      Y2="0"
 			      Stroke="Red" />
 
+			<!--2-->
 			<Label Text="RadioButton"
 			       FontSize="20"
 			       HorizontalOptions="Center"/>
 
 			<ScrollView Orientation="Horizontal"
 			            HorizontalOptions="Center">
-				<HorizontalStackLayout RadioButtonGroup.GroupName="tabs"
+				<HorizontalStackLayout BackgroundColor="Red"
+				                       RadioButtonGroup.GroupName="tabs"
 				                       BindableLayout.ItemsSource="{Binding Tabs2}"
 				                       RadioButtonGroup.SelectedValue="{Binding SelectedTab}">
 					<BindableLayout.ItemTemplate>
-						<DataTemplate x:DataType="Tab">
+						<DataTemplate x:DataType="mauiTabView:Tab">
 							<RadioButton Value="{Binding }"
-							             ControlTemplate="{StaticResource TabControlTemplate}">
+							             ControlTemplate="{StaticResource RadioButtonTemplate}">
+								<RadioButton.Content>
+									<VerticalStackLayout>
+										<Image Source="{Binding Icon}"
+									       WidthRequest="30"
+									       HeightRequest="30"
+									       HorizontalOptions="Center"/>
+										<Label Text="{Binding Title}" FontSize="12"
+									       HorizontalOptions="Center"/>
+									</VerticalStackLayout>
+								</RadioButton.Content>
 							</RadioButton>
 						</DataTemplate>
 					</BindableLayout.ItemTemplate>
 				</HorizontalStackLayout>
 			</ScrollView>
 
-			<ContentView Content="{Binding SelectedTab.Content}"/>
+			<ContentView Content="{Binding SelectedTab}"/>
 
 			<Line X1="0"
 			      Y1="0"
@@ -90,20 +152,36 @@
 			      Y2="0"
 			      Stroke="Red" />
 
+			<!--3-->
 			<Label Text="TabView"
 			       FontSize="20"
 			       HorizontalOptions="Center"/>
 
 			<mauiTabView:TabView>
 				<mauiTabView:TabView.Tabs>
-					<mauiTabView:Tab Title="Tab1" Icon="cat.png">
+					<mauiTabView:Tab Title="Tab1111" Icon="cat.png">
 						<mauiTabView:Tab.Content>
-							<Label Text="Tab1 Label"/>
+							<Label Text="Tab1111 Label"/>
 						</mauiTabView:Tab.Content>
 					</mauiTabView:Tab>
-					<mauiTabView:Tab Title="Tab2" Icon="dog.png">
+					<mauiTabView:Tab Title="Tab2222" Icon="dog.png">
 						<mauiTabView:Tab.Content>
-							<Label Text="Tab2 Label"/>
+							<Label Text="Tab2222 Label"/>
+						</mauiTabView:Tab.Content>
+					</mauiTabView:Tab>
+				</mauiTabView:TabView.Tabs>
+			</mauiTabView:TabView>
+
+			<mauiTabView:TabView ActiveTabIndex="1">
+				<mauiTabView:TabView.Tabs>
+					<mauiTabView:Tab Title="Tab2111" Icon="cat.png">
+						<mauiTabView:Tab.Content>
+							<Label Text="Tab2111 Label" />
+						</mauiTabView:Tab.Content>
+					</mauiTabView:Tab>
+					<mauiTabView:Tab Title="Tab2112" Icon="dog.png">
+						<mauiTabView:Tab.Content>
+							<Label Text="Tab2112 Label" />
 						</mauiTabView:Tab.Content>
 					</mauiTabView:Tab>
 				</mauiTabView:TabView.Tabs>
@@ -115,22 +193,12 @@
 			      Y2="0"
 			      Stroke="Red" />
 
-			<Label Text="Multiple TabView (using same Tab objects)"
+			<!--4-->
+			<Label Text="Multiple TabView with Binding (using same Tab objects)"
 			       FontSize="20"
 			       HorizontalOptions="Center"/>
 
-			<mauiTabView:TabView Tabs="{Binding Tabs4}"/>
-
-			<Line X1="0"
-			      Y1="0"
-			      X2="{Binding Width, Source={x:Reference Page}}"
-			      Y2="0"
-			      Stroke="Red" />
-
-			<Label Text="TabView Binding"
-			       FontSize="20"
-			       HorizontalOptions="Center"/>
-
+			<mauiTabView:TabView Tabs="{Binding Tabs3}"/>
 			<mauiTabView:TabView Tabs="{Binding Tabs3}"/>
 
 		</VerticalStackLayout>
