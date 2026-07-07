@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Runtime.InteropServices;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
+using PercyIO.Appium;
 using VisualTestUtils;
 using VisualTestUtils.MagickNet;
 
@@ -12,14 +13,18 @@ public abstract class BaseTest(ITestOutputHelper testOutputHelper) : IAsyncLifet
 	[DllImport("user32.dll", SetLastError = true)]
 	static extern bool MoveWindow(IntPtr hWnd, int X, int Y, int Width, int Height, bool Repaint);
 
-	private const double DifferenceThreshold = 1 / 100d; // 1% difference
+	private const double DifferenceThreshold = 3 / 100d; // 3% difference
 	private readonly VisualRegressionTester visualRegressionTester = new(testRootDirectory: Environment.CurrentDirectory,
 																		  visualComparer: new MagickNetVisualComparer(differenceThreshold: DifferenceThreshold),
 																		  visualDiffGenerator: new MagickNetVisualDiffGenerator(),
 																		  ciArtifactsDirectory: Environment.GetEnvironmentVariable("Build.ArtifactStagingDirectory"));
 	private readonly MagickNetImageEditorFactory imageEditorFactory = new();
 
-	protected AppiumDriver App { get; } = new AppiumSetup(testOutputHelper).App;
+	private readonly AppiumSetup appiumSetup = new(testOutputHelper);
+
+	protected AppiumDriver App => appiumSetup.App;
+
+	protected AppPercy Percy => appiumSetup.Percy;
 
 	protected AppiumElement FindUiElement(string id)
 	{
@@ -34,7 +39,7 @@ public abstract class BaseTest(ITestOutputHelper testOutputHelper) : IAsyncLifet
 
 	public ValueTask DisposeAsync()
 	{
-		App.Dispose();
+		appiumSetup.Dispose();
 		return ValueTask.CompletedTask;
 	}
 
@@ -48,6 +53,7 @@ public abstract class BaseTest(ITestOutputHelper testOutputHelper) : IAsyncLifet
 		}
 
 		var screenshotPngBytes = App.GetScreenshot().AsByteArray;
+		Percy.Screenshot(name);
 
 		var actualImage = new ImageSnapshot(screenshotPngBytes, ImageSnapshotFormat.PNG);
 

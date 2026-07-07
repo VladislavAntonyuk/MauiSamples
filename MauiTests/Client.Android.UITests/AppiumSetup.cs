@@ -3,6 +3,7 @@
 using AndroidSdk;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Android;
+using PercyIO.Appium;
 
 public sealed class AppiumSetup : IDisposable
 {
@@ -15,6 +16,8 @@ public sealed class AppiumSetup : IDisposable
 	private readonly Emulator.AndroidEmulatorProcess emulatorProcess;
 
 	public AppiumDriver App { get; }
+
+	public AppPercy Percy { get; }
 
 	public AppiumSetup(ITestOutputHelper testOutputHelper)
 	{
@@ -30,11 +33,21 @@ public sealed class AppiumSetup : IDisposable
 		{
 			AutomationName = "UIAutomator2",
 			PlatformName = Platform,
-			PlatformVersion = "13",
+			PlatformVersion = "15",
 			App = GetApp()
 		};
+		Dictionary<string, object> browserstackOptions = new Dictionary<string, object>();
+		browserstackOptions.Add("userName", "");
+		browserstackOptions.Add("accessKey", "");
 
-		App = new AndroidDriver(options);
+		//percyOptions
+		Dictionary<string, string> percyOtions = new Dictionary<string, string>();
+		percyOtions.Add("ignoreErrors", "true");
+		percyOtions.Add("enabled", "true");
+		// Adding capabilities
+		options.AddAdditionalAppiumOption("bstack:options", browserstackOptions);
+		App = new AndroidDriver(new Uri("http://hub-cloud.browserstack.com/wd/hub"), options);
+		Percy = new AppPercy(App);
 	}
 
 	public void Dispose()
@@ -46,11 +59,11 @@ public sealed class AppiumSetup : IDisposable
 
 	private static AndroidSdkManager InstallSoftware()
 	{
-		const string avdSdkId = "system-images;android-33;google_apis_playstore;x86_64";
+		const string avdSdkId = "system-images;android-35;google_apis_playstore;x86_64";
 
 		var sdkPackages = new[]
 		{
-			"platforms;android-33"
+			"platforms;android-35"
 		};
 
 		var sdk = new AndroidSdkManager();

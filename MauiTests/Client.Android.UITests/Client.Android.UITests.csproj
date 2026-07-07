@@ -4,16 +4,25 @@
 		<TargetFrameworks>$(NetVersion)</TargetFrameworks>
 		<RootNamespace>Client.UITests</RootNamespace>
 		<OutputType>Exe</OutputType>
+		<IsPackable>false</IsPackable>
+		<UseMicrosoftTestingPlatformRunner>true</UseMicrosoftTestingPlatformRunner>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="xunit.v3" />
+		<PackageReference Include="xunit.v3.mtp-v2" />
+		<PackageReference Include="Microsoft.Testing.Extensions.CodeCoverage" />
+		<PackageReference Include="Microsoft.Testing.Extensions.TrxReport" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="PercyIO.Appium" />
 		<PackageReference Include="Appium.WebDriver" />
 		<PackageReference Include="AndroidSdk" />
 		<PackageReference Include="VisualTestUtils.MagickNet" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="xunit.runner.json" CopyToOutputDirectory="PreserveNewest" />
 	</ItemGroup>
 
 	<ItemGroup>

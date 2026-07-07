@@ -3,6 +3,7 @@
 using System.Diagnostics;
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Windows;
+using PercyIO.Appium;
 
 public sealed class AppiumSetup : IDisposable
 {
@@ -12,6 +13,8 @@ public sealed class AppiumSetup : IDisposable
 	private readonly Process process;
 
 	public AppiumDriver App { get; }
+
+	public AppPercy Percy { get; }
 
 	public AppiumSetup(ITestOutputHelper testOutputHelper)
 	{
@@ -29,6 +32,7 @@ public sealed class AppiumSetup : IDisposable
 		};
 
 		App = new WindowsDriver(options);
+		Percy = new AppPercy(App);
 	}
 
 	public void Dispose()

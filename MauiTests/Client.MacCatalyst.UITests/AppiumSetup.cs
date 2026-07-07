@@ -3,6 +3,7 @@
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.Enums;
 using OpenQA.Selenium.Appium.Mac;
+using PercyIO.Appium;
 
 public sealed class AppiumSetup : IDisposable
 {
@@ -11,6 +12,8 @@ public sealed class AppiumSetup : IDisposable
 	private readonly AppiumServiceHelper appiumService;
 
 	public AppiumDriver App { get; }
+
+	public AppPercy Percy { get; }
 
 	public AppiumSetup(ITestOutputHelper testOutputHelper)
 	{
@@ -27,6 +30,7 @@ public sealed class AppiumSetup : IDisposable
 
 		options.AddAdditionalAppiumOption(IOSMobileCapabilityType.BundleId, "com.vladislavantonyuk.client");
 		App = new MacDriver(options);
+		Percy = new AppPercy(App);
 	}
 
 	public void Dispose()

@@ -2,6 +2,7 @@
 
 using OpenQA.Selenium.Appium;
 using OpenQA.Selenium.Appium.iOS;
+using PercyIO.Appium;
 
 public sealed class AppiumSetup : IDisposable
 {
@@ -10,6 +11,8 @@ public sealed class AppiumSetup : IDisposable
 	private readonly AppiumServiceHelper appiumService;
 
 	public AppiumDriver App { get; }
+
+	public AppPercy Percy { get; }
 
 	public AppiumSetup(ITestOutputHelper testOutputHelper)
 	{
@@ -21,12 +24,13 @@ public sealed class AppiumSetup : IDisposable
 		{
 			AutomationName = "XCUITest",
 			PlatformName = Platform,
-			PlatformVersion = "17.0",
-			DeviceName = "iPhone 15 Pro",
+			PlatformVersion = "26.0",
+			DeviceName = "iPhone 17 Pro",
 			App = GetApp()
 		};
 
 		App = new IOSDriver(options);
+		Percy = new AppPercy(App);
 	}
 
 	public void Dispose()
