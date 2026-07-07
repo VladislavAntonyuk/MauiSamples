@@ -162,6 +162,7 @@
 	<Project Path="MauiShellCustomization/MauiShellCustomization.csproj">
 		<Deploy />
 	</Project>
+	<Project Path="MauiSkiaSharpDashboard/MauiSkiaSharpDashboard.csproj" />
 	<Project Path="MauiSpeech/MauiSpeech.csproj">
 		<Deploy />
 	</Project>

@@ -1,0 +1,11 @@
+# MauiSkiaSharpDashboard
+
+!INCLUDE "./md/header.mdpp"
+
+Article: https://vladislavantonyuk.github.io/articles/Building-a-Zero-Allocation-Dashboard-with-SkiaSharp-and-C#-Markup
+
+## Images
+
+![Dashboard](https://ik.imagekit.io/VladislavAntonyuk/vladislavantonyuk/articles/78/78.gif)
+
+!INCLUDE "./md/footer.mdpp"

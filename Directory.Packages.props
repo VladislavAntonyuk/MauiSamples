@@ -10,7 +10,8 @@
     <PackageVersion Include="BenchmarkDotNet" Version="0.15.8" />
     <PackageVersion Include="Camera.MAUI.ZXing" Version="1.0.0" />
     <PackageVersion Include="ClosedXML" Version="0.105.0" />
-    <PackageVersion Include="CommunityToolkit.Maui" Version="99.0.0-pre1" />
+    <PackageVersion Include="CommunityToolkit.Maui" Version="14.2.0" />
+    <PackageVersion Include="CommunityToolkit.Maui.Markup" Version="7.0.1" />
     <PackageVersion Include="CommunityToolkit.Maui.Camera" Version="99.0.0-pre1" />
     <PackageVersion Include="CommunityToolkit.Maui.Maps" Version="3.0.2" />
     <PackageVersion Include="CommunityToolkit.Maui.MediaElement" Version="6.1.1" />
@@ -21,20 +22,20 @@
     <PackageVersion Include="InterfaceConverter.SystemTextJson" Version="1.3.2" />
     <PackageVersion Include="IronBlock" Version="1.0.18" />
     <PackageVersion Include="m3uParser.NET" Version="1.0.17" />
-    <PackageVersion Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="10.0.0-rc.2.25504.7" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.WebView.Maui" Version="10.0.80" />
     <PackageVersion Include="Microsoft.Azure.NotificationHubs" Version="4.2.0" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.0-rc.2.25502.107" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.0-rc.2.25502.107" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.0-rc.2.25502.107" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tasks" Version="10.0.0-rc.2.25502.107" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.9" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="10.0.9" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="10.0.9" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tasks" Version="10.0.9" />
     <PackageVersion Include="Microsoft.Extensions.AI.Abstractions" Version="9.10.0" />
     <PackageVersion Include="Microsoft.Extensions.AI.OpenAI" Version="9.10.0-preview.1.25513.3" />
     <PackageVersion Include="Microsoft.Extensions.Http" Version="10.0.0-rc.2.25502.107" />
     <PackageVersion Include="Microsoft.Extensions.Logging.ApplicationInsights" Version="2.23.0" />
     <PackageVersion Include="Microsoft.Identity.Client" Version="4.83.1" />
-    <PackageVersion Include="Microsoft.Maui.Controls" Version="10.0.0-rc.2.25504.7" />
-    <PackageVersion Include="Microsoft.Maui.Controls.Compatibility" Version="10.0.0-rc.2.25504.7" />
-    <PackageVersion Include="Microsoft.Maui.Graphics.Text.Markdig" Version="10.0.0-rc.2.25504.7" />
+    <PackageVersion Include="Microsoft.Maui.Controls" Version="10.0.80" />
+    <PackageVersion Include="Microsoft.Maui.Controls.Compatibility" Version="10.0.80" />
+    <PackageVersion Include="Microsoft.Maui.Graphics.Text.Markdig" Version="10.0.80" />
     <PackageVersion Include="Microsoft.Testing.Extensions.CodeCoverage" Version="18.5.2" />
     <PackageVersion Include="Microsoft.Testing.Extensions.TrxReport" Version="2.1.0" />
     <PackageVersion Include="MiniExcel" Version="2.0.0-preview.2" />
@@ -45,6 +46,7 @@
     <PackageVersion Include="Plugin.Maui.Audio" Version="4.0.0" />
     <PackageVersion Include="Refit" Version="10.1.6" />
     <PackageVersion Include="Refit.HttpClientFactory" Version="10.1.6" />
+    <PackageVersion Include="SkiaSharp.Views.Maui.Controls" Version="4.151.0-preview.1.1" />
     <PackageVersion Include="SQLitePCLRaw.bundle_green" Version="2.1.11" />
     <PackageVersion Include="SQLitePCLRaw.core" Version="2.1.11" />
     <PackageVersion Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.11" />
