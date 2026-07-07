@@ -87,4 +87,6 @@ The development guide can be found at [SETUP.md](./SETUP.md).
 
 1. [MauiConditionView](MauiConditionView) - .NET MAUI ConditionView control.
 
+1. [MauiSkiaSharpDashboard](MauiSkiaSharpDashboard) - Building a Zero-Allocation Dashboard with SkiaSharp and C# Markup.
+
 !INCLUDE "md/footer.mdpp"
