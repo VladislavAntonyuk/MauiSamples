@@ -111,9 +111,9 @@ public class CustomMapHandler : MapHandler
 	{
 		if (handler is CustomMapHandler mapHandler)
 		{
-			foreach (var marker in mapHandler.Markers)
+			if (mapHandler.PlatformView.Annotations.Length > 0)
 			{
-				mapHandler.PlatformView.RemoveAnnotation(marker);
+				mapHandler.PlatformView.RemoveAnnotations(mapHandler.PlatformView.Annotations);
 			}
 
 			mapHandler.Markers.Clear();
