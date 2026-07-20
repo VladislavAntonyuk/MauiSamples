@@ -1,4 +1,4 @@
-﻿namespace MauiMaps;
+namespace MauiMaps;
 
 using CoreLocation;
 using MapKit;
@@ -121,11 +121,22 @@ public class CustomMapHandler : MapHandler
 		}
 	}
 
+	/// <summary>
+	/// Replaces the map's current annotations with markers for the provided pins.
+	/// </summary>
+	/// <remarks>
+	/// If the handler's MauiContext is null, the method does nothing. Existing platform annotations are removed before new markers are added. For CustomPin instances, the pin's ImageSource is loaded asynchronously and the corresponding marker is added when the image load completes.
+	/// </remarks>
 	private void AddPins(IEnumerable<IMapPin> mapPins)
 	{
 		if (MauiContext is null)
 		{
 			return;
+		}
+
+		if (PlatformView.Annotations.Length > 0)
+		{
+			PlatformView.RemoveAnnotations(PlatformView.Annotations);
 		}
 
 		foreach (var pin in mapPins)
